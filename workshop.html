@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introductory Workshop – Maël Rolland</title>
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+        /* Page-specific styles */
+        .language-switcher {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .these-section {
+            margin: 30px auto;
+            max-width: 700px;
+        }
+        .back-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-link a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-size: 0.8em;
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ffcc66;
+        }
+        .back-link a:hover {
+            background-color: rgba(255, 204, 102, 0.2);
+        }
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+  </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Sun"> <span id="theme-text">Light</span>
+    </button>
+
+  <div class="language-switcher">
+        <a href="workshop.html">🇬🇧 English</a> | 
+        <a href="atelier.html">🇫🇷 Français</a>
+  </div>
+  <div class="container">
+    <header>
+      <h1 class="main-title">Introductory Workshop on Crypto-assets</h1>
+      <p class="subtitle">2 hours to understand, try out, and secure your first digital assets</p>
+    </header>
+
+    <section class="these-section">
+      <div class="these-intro">
+        <p>
+          This workshop is designed for beginners who are curious to discover crypto-assets with a critical, hands-on, and supported approach.
+        </p>
+        <p>
+          Objectives: lay down the essential technical and economic foundations, experiment in real-life conditions, and understand the limits and risks.
+        </p>
+      </div>
+
+      <div style="text-align: center; margin: 30px 0;">
+        <img src="assets/img/atelier-crypto-initiation.png" alt="Workshop flyer Crypto-assets Maël Rolland" style="max-width: 100%; height: auto; border: 2px solid #ffaa33;" />
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px;">
+        <a href="assets/pdf/Plaquette_initiation_cryptoV1.pdf" class="pixel-button" download>
+          📄 Download the brochure (PDF)
+        </a>
+  <div class="checksum-container" style="margin-top:8px;">
+    <button class="checksum-toggle" onclick="toggleChecksum('checksum-atelier')">Checksum (SHA-256)</button>
+    <div id="checksum-atelier" class="checksum-content" style="display:none;">
+      be4487ba833db5e18e17c28c087d7d53559f8b0f7fbf75efda81ef6bd2b8638e
+    </div>
+  </div>
+</div>
+
+      <h2 style="text-align: center; color: #33ff33;">Prices (excluding possible travel expenses)</h2>
+      <table style="margin: 0 auto; border-collapse: collapse; text-align: left; font-family: monospace; color: #ffaa33;">
+        <thead>
+          <tr style="border-bottom: 1px solid #ffaa33;">
+            <th style="padding: 8px;">Type of session</th>
+            <th style="padding: 8px;">Duration</th>
+            <th style="padding: 8px;">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px;">Individual workshop</td>
+            <td style="padding: 8px;">2h</td>
+            <td style="padding: 8px;">€80</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Group workshop (3 to 6 people)</td>
+            <td style="padding: 8px;">2h</td>
+            <td style="padding: 8px;">€50 / person</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Association or institutional session</td>
+            <td style="padding: 8px;">To be defined</td>
+            <td style="padding: 8px;">On request</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="text-align: center; margin: 30px 0;">
+  <a href="contact-en.html" 
+     class="pixel-button"
+     style="background-color: #ffaa33; color: black; border: 2px solid #ffaa33;" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    ✉️ Contact / Register for the workshop
+  </a>
+      </div>
+
+      <div class="json-notice">
+        <p>Detailed pricing and content are also available in the brochure.</p>
+        <p style="font-size: 0.8em;">For any specific request: please use the contact form.</p>
+      </div>
+
+      <div class="back-link">
+        <a href="collaborate.html">← Back to collaboration</a>
+      </div>
+    </div>
+
+    <!-- Theme Toggle JavaScript -->
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (savedTheme === 'dark') {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+            } else {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+            }
+        });
+
+        // Checksum toggle script
+        function toggleChecksum(id) {
+            var btn = event.target;
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+                btn.classList.add("active");
+            } else {
+                content.style.display = "none";
+                btn.classList.remove("active");
+            }
+        }
+    </script>
+</body>
+</html>
