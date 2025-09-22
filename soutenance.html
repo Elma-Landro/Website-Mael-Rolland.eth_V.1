@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defense – Maël Rolland</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+        
+        .these-section {
+            margin: 20px auto;
+            max-width: 700px;
+        }
+        .these-intro {
+            font-family: 'VT323', monospace;
+            font-size: 1.2em;
+            color: #ffaa33;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .download-complete {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .download-complete .pixel-button {
+            font-size: 1.2em;
+            padding: 15px 25px;
+            background-color: #8b0000;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        .chapters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+        }
+        .chapter-button {
+            flex-basis: calc(50% - 20px);
+            min-width: 200px;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        /* Style pour les boutons avec icône PDF */
+        .pixel-button.chapter-button .pixel-icon {
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        
+        /* Style pour le bouton complet */
+        .download-complete .pixel-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .json-notice {
+            margin-top: 40px;
+            padding: 15px;
+            border: 2px dashed #33ff33;
+            background-color: rgba(51, 255, 51, 0.1);
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .download-item {
+            margin-bottom: 10px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+        .pixel-icon {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            vertical-align: middle;
+        }
+        .avatar-icon {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #ffaa33;
+            background-color: #330000;
+            image-rendering: pixelated;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .video-container {
+           margin: 10px auto;
+           max-width: 100%;
+           border: 2px solid #ffaa33;
+           padding: 5px;
+           background-color: #000;
+        }
+
+        .video-container video {
+           width: 100%;
+           height: auto;
+           aspect-ratio: 16 / 9;
+           display: block;
+           border: none;
+        }
+
+         .caption {
+           text-align: center;
+           font-family: 'VT323', monospace;
+           font-size: 0.3em;
+           color: #ffaa33;
+           margin-top: 1px;
+         }
+        .pixel-button.small {
+           font-size: 0.4em;
+           padding: 1px 2px;
+           background-color: #330000;
+           color: #ffcc66;
+           border: 1px #ffaa33;
+           text-decoration: none;
+           font-family: 'Press Start 2P', monospace;
+          }
+
+         .pixel-button.small:hover {
+           background-color: #552200;
+           color: #ffffff;
+          }
+        .soutenance-button {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        .soutenance-button a {
+          display: inline-block;
+          padding: 10px 18px;
+          font-size: 1em;
+          font-family: 'Press Start 2P', monospace;
+          background-color: #330000;
+          color: #ffcc66;
+          border: 2px solid #ffaa33;
+          text-decoration: none;
+          text-shadow: 1px 1px #000;
+          margin-bottom: 10px;
+        }
+
+        .soutenance-button a:hover {
+          background-color: #552200;
+          color: #ffffff;
+        }
+
+        /* Responsive design pour les petits écrans */
+        @media (max-width: 768px) {
+            .chapter-button {
+                flex-basis: calc(100% - 20px);
+                font-size: 0.85em;
+                padding: 8px 10px;
+            }
+            .checksum-content {
+                font-size: 0.8em;
+            }
+        }
+        
+        /* Pour les très petits écrans - centrer l'icône en dessous */
+        @media (max-width: 480px) {
+            .chapter-button {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+                padding: 10px;
+            }
+            
+            .pixel-button.chapter-button .pixel-icon {
+                margin-left: 0;
+                align-self: center;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            .thesis-video {
+                max-width: 480px;
+                height: auto;
+            }
+        }
+        
+  </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
+    </button>
+
+<div class="language-switcher">
+  <a href="soutenance.html">🇬🇧 English</a> |
+  <a href="soutenance-fr.html">🇫🇷 Français</a>
+</div>
+
+<div class="container">
+  <header>
+    <h1 class="main-title">Thesis Defense</h1>
+    <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
+    <p class="subtitle">PhD Defense Presentation</p>
+    <div class="video-container">
+      <iframe width="100%" height="180" src="https://www.youtube.com/embed/dVYihgujyXA" title="Maël Rolland Defense" frameborder="0" allowfullscreen></iframe>
+      <div class="caption">
+        Source: <a href="https://m.youtube.com/c/FauneRadio" target="_blank" style="color: #33ff33; text-decoration: none;">Faune Radio</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="these-section">
+    <h2 style="color: #ffaa33; font-family: 'VT323', monospace; text-align: center;">Downloadable Documents</h2>
+
+    <div class="download-item download-complete">
+      <a href="assets/pdf/Exposé_soutenance_RM_2024.pdf" class="pixel-button large" download>Presentation Slides
+      <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+      </a>
+      <div class="checksum-container">
+        <button class="checksum-toggle" onclick="toggleChecksum('checksum-pp')">Checksum (SHA-256)</button>
+        <div id="checksum-pp" class="checksum-content">
+          2f18730e3d01321078c0bb34b23a2b6119d7b8c8052b8b87a0cb1c7f5275c6c8
+        </div>
+      </div>
+    </div>
+
+    <div class="download-item download-complete">
+      <a href="assets/pdf/Rapport-de-soutenance-Maël-Rolland.pdf" class="pixel-button large" download>Defense Report
+      <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+      </a>
+      <div class="checksum-container">
+        <button class="checksum-toggle" onclick="toggleChecksum('checksum-rapport')">Checksum (SHA-256)</button>
+        <div id="checksum-rapport" class="checksum-content">
+          dcfbe9cd27a60d68182a452785888b0f5743bd7893f3481b2223e9015df0228f
+        </div>
+      </div>
+    </div>
+
+    <div class="json-notice">
+      <h3 style="color: #33ff33; margin-bottom: 10px;">Beyond the Codes: Discreet and Polycentric Infrastructure and Governance of Cryptocurrencies Bitcoin and Ethereum Unveiled by Their Crises</h3>
+      <p><strong>Type:</strong> PhD Thesis</p>
+      <p><strong>Discipline(s):</strong> Economics and Social Sciences</p>
+      <p><strong>Date:</strong> Defense on 13/12/2024</p>
+      <p><strong>Institution(s):</strong> Paris, EHESS</p>
+      <p><strong>Doctoral School(s):</strong> École doctorale de l'École des hautes études en sciences sociales</p>
+      <p><strong>Supervision:</strong> Ève Chiapello</p>
+      <p><strong>Committee:</strong> President: Éric Monnet</p>
+      <p><strong>Examiners:</strong> Éric Monnet, Jérôme Blanc, Francesca Musiani, Jézabel Couppey-Soubeyran, Alexandre Mallard</p>
+      <p><strong>Rapporteurs:</strong> Jérôme Blanc, Francesca Musiani</p>
+    </div>
+
+    <div class="back-link">
+      <a href="these.html">← Back to Thesis Page</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+      <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
+      <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+      <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+      <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="Github" class="pixel-icon"></a>
+      <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens" class="pixel-icon"></a>
+    </div>
+    <div class="ethereum-badge-centered">
+      <a href="https://docs.ethswarm.org/" target="_blank">
+        <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
+      </a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggleChecksum(id) {
+    const content = document.getElementById(id);
+    const button = content.previousElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+      button.classList.remove("active");
+    } else {
+      content.style.display = "block";
+      button.classList.add("active");
+    }
+  }
+</script>
+</body>
+</html>

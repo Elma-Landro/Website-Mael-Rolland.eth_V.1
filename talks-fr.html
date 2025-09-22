@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conférences & Publications - Maël Rolland</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .language-switcher {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+        .these-section {
+            margin: 30px auto;
+            max-width: 700px;
+        }
+        .content-section {
+            text-align: left;
+            max-width: 700px;
+            margin: 40px auto;
+            font-family: 'VT323', monospace;
+            line-height: 1.8;
+        }
+        .content-section h2 {
+            font-family: 'Press Start 2P', monospace;
+            color: #ffcc66;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .content-section li {
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #ffaa33;
+            padding-bottom: 10px;
+        }
+        .content-section a {
+            color: #33ff33;
+            text-decoration: none;
+        }
+        .content-section a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-link a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-size: 0.8em;
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ffcc66;
+        }
+        .back-link a:hover {
+            background-color: rgba(255, 204, 102, 0.2);
+        }
+        .social-icons {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pixel-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 5px;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        .ethereum-badge-centered {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pixel-ethereum-badge {
+            width: 120px;
+            height: auto;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: #2a0000;
+            color: var(--text-primary);
+            border: 1px solid var(--button-border);
+            padding: 3px 6px;
+            font-family: 'VT323', monospace;
+            font-size: 0.7em;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .theme-toggle:hover {
+            background: #3a0000;
+            transform: scale(1.01);
+        }
+        
+        .theme-toggle img {
+            width: 10px;
+            height: 10px;
+            image-rendering: pixelated;
+            -ms-interpolation-mode: nearest-neighbor;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
+    </button>
+
+    <!-- 🌍 Language Switcher -->
+    <div class="language-switcher">
+        <a href="talks.html">🇬🇧 English</a> | <a href="talks-fr.html">🇫🇷 Français</a>
+    </div>
+    <div class="container">
+        <header>
+            <h1 class="main-title">Conférences & Publications</h1>
+            <p class="subtitle">Maël Rolland</p>
+        </header>
+        <section class="content-section">
+            <main class="talks-container">
+                <h2 class="section-title">Enseignement & Masterclasses</h2>
+                <p class="talk-entry">
+                    2025 – <strong>MasterClass – Alyra</strong> : <em>Gouvernance discrète de Bitcoin</em>
+                    [ <a href="https://docs.google.com/presentation/d/1Ejqp_0kwnZDbLRGpx2tsZY7kSRP6gXVHhuPd1tSVe9o/edit?usp=sharing" target="_blank">Diapositives</a> ]
+                </p>
+                <p class="talk-entry">
+                    2023 – <strong>Live Philo – Alyra</strong> : <em>Gouvernance politique à travers les crises crypto</em>
+                    [ <a href="https://docs.google.com/presentation/d/1_UZi4DUcps2GZoF7rXNWJTtDc72QaLwalCedux7V5mA/edit?usp=sharing" target="_blank">Diapositives</a> ]
+                </p>
+                <p class="talk-entry">
+                    2020 – <strong>Atelier monétaire – École de Design Strate</strong>
+                    <em>Anthropocène et monnaie : la théorie du FMI et la crise écologique</em>
+                </p>
+                <p class="talk-entry">
+                    2020 – <strong>Atelier monétaire – École de Design Strate</strong>
+                    <em>Anthropocène et monnaie : la théorie du FMI et la crise écologique</em>
+                </p>
+                <p class="talk-entry">
+                    2016–2019 – <strong>Séminaire EHESS</strong> : "Espaces monétaires, monnaies parallèles, crypto-monnaies et crises institutionnelles"<br>
+                    <em>Enseignant principal, séminaire central EHESS (24h/an, 6 ECTS – 12 séances annuelles)</em>
+                    [ <a href="https://drive.google.com/file/d/1aqzT3c2XKfXBja_KABpsnHRl-Q2qcVXl/view?usp=sharing" target="_blank">Programme 2016-17 (PDF)</a> ]
+                </p>
+                <p class="talk-entry">
+                    <strong>Séances :</strong><br>
+                    <u>PARTIE I : Quel cadre théorique pour la monnaie ? L'hypothèse de la monnaie comme institution</u><br>
+                    Séance 1 – <em>Introduction : L'analyse économique de la monnaie et la nécessité d'un retour aux théories institutionnalistes.</em>
+                    [ <a href="https://www.youtube.com/watch?v=w4PWO40s33E" target="_blank">Vidéo 31 oct. 2017</a> ]<br>
+                    Séance 2 – <em>La monnaie comme institution et ses invariants : le triptyque dette/confiance/souveraineté.</em><br>
+                    Séance 3 – <em>Monnaie, devises et représentations : pratiques et représentations formant des zones monétaires plus ou moins homogènes.</em><br>
+                    Séance 4 – <em>L'institutionnalisation contemporaine du système monétaire hiérarchique et la tension au centre de la souveraineté.</em><br>
+                    <u>PARTIE II : Les monnaies parallèles comme réponse et symptôme des problèmes monétaires locaux</u><br>
+                    Séance 5 – <em>Présentation générale du phénomène des monnaies parallèles et éléments de définition.</em><br>
+                    Séance 6 – <em>Le troc, un dispositif monétaire singulier en réponse à des contraintes situées : le cas de la Russie dans les années 1990.</em><br>
+                    Séance 7 – <em>Les monnaies sociales, réappropriation monétaire et revitalisation économique.</em><br>
+                    Séance 8 – <em>Démonétisation en Grèce et Plan B de Varoufakis.</em><br>
+                    <u>PARTIE III : La révolution des crypto-monnaies en termes d'arrangements institutionnels</u><br>
+                    Séance 9 – <em>Bitcoin, sa blockchain ou l'avènement des crypto-monnaies / La gouvernance socio-politique de Bitcoin en deux séances.</em> –
+                    <a href="https://www.youtube.com/watch?v=rG36P42k_bM" target="_blank">[ Vidéo 28 janv. 2018 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=KcTEkLEszJg" target="_blank">[ Vidéo 8 janv. 2019 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=iH8TCS6ZKM4&list=PLNTfo5zaucHGI0P4Q3Z6W0m4GCu3TXRMy&index=7" target="_blank">[ Vidéo partie 1, 21 janv. 2019 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=LJmj8jcXoxU&list=PLNTfo5zaucHGI0P4Q3Z6W0m4GCu3TXRMy&index=8" target="_blank">[ Vidéo partie 2, 4 fév. 2019 ]</a><br>
+                    Séance 10 – <em>Présentation générale du phénomène des crypto-monnaies et de son évolution / émergence des Altcoins.</em> – 
+                    <a href="https://www.youtube.com/watch?v=cLgVS7AnMsM" target="_blank">[ Vidéo 11 févr. 2018 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=jJuKANJziK8" target="_blank">[ Vidéo 4 mars 2019 ]</a><br>
+                    Séance 11 – <em>'Code is Law' et le retour du discrétionnaire : le problème des "forks" à travers l'exemple d'Ethereum.</em> – 
+                    <a href="https://www.youtube.com/watch?v=jFyhXjAw-i4" target="_blank">[ Vidéo 27 févr. 2018 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=4MZQRMVrTEw&list=PLNTfo5zaucHGI0P4Q3Z6W0m4GCu3TXRMy&index=5" target="_blank">[ Vidéo 1er avril 2019 ]</a><br>
+                    Séance 12 – <em>Conclusion : l'épineuse question de la régulation - entre défiance et confiance / Vers des Cryptomonnaies souveraines ?.</em> – 
+                    <a href="https://www.youtube.com/watch?v=W_FZkmAG35M" target="_blank">[ Vidéo 9 mars 2018 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=VlA2QjgCqgw&list=PLNTfo5zaucHGI0P4Q3Z6W0m4GCu3TXRMy&index=4" target="_blank">[ Vidéo 8 avril 2019 ]</a>
+                </p>
+                <p class="talk-entry">
+                    2019 – <strong>Enseignement – ESGI</strong> : institutions monétaires & écosystèmes crypto (30h)<br>
+                    [ Modules : Microéconomie, Théorie des jeux, Théorie monétaire institutionnelle ]
+                </p>
+                <p class="talk-entry">
+                    2019 – <strong>Enseignement – ESGI</strong> : institutions monétaires & écosystèmes crypto (30h)<br>
+                    [ Modules : Microéconomie, Théorie des jeux, Théorie monétaire institutionnelle ]
+                </p>
+                <p class="talk-entry">
+                    2018 – <strong>Chargé de cours – ESILV</strong> : Introduction aux cryptomonnaies (18h/an)<br>
+                    [ Cadre théorique appliqué ]
+                </p>
+                <p class="talk-entry">
+                    2018 – <strong>Enseignement – ESGI</strong> : modules crypto & théorie monétaire (15h)<br>
+                    [ Théorie institutionnelle | Économie crypto ]
+                </p>
+                <hr>
+                <h2 class="section-title">Communications académiques & Conférences</h2>
+                <p class="talk-entry">
+                    2025 – <strong>Atelier "De Crésus à Nakamoto" – Lyon</strong><br>
+                    <em>Des rêves libéraux à la monétisation carnavalesque dans Bitcoin</em><br>
+                    <a href="https://docs.google.com/presentation/d/1zTdRov2DScL14BQt9mwuvdr-vWdO1rQWUyz8osG0oLQ/edit?usp=drive_link" target="_blank">[ Diapositives ]</a>
+                </p>
+                <p class="talk-entry">
+                    2022 – <strong>Conférence Crypto & Monnaies Alternatives – Lyon</strong><br>
+                    <em>Gouvernance polycentrique révélée par la crise (Conférence principale)</em><br>
+                    <a href="https://docs.google.com/presentation/d/1zTdRov2DScL14BQt9mwuvdr-vWdO1rQWUyz8osG0oLQ/edit?usp=drive_link" target="_blank">[ Diapositives ]</a>
+                </p>
+                <p class="talk-entry">
+                    2021 – <strong>ACPR – Fintech Risk Suptech</strong><br>
+                    <em>Webinaire sur la gouvernance blockchain</em><br>
+                    <a href="https://docs.google.com/presentation/d/1tOdiXv0vRT7VBLEx_JuDZV37EefC4MnsGNuGnYIWkSY/edit?usp=sharing" target="_blank">[ Diapositives ]</a>
+                </p>
+                <p class="talk-entry">
+                    2019 – <strong>Atelier Monnaies Alternatives – Bruxelles</strong><br>
+                    <em>Des cryptomonnaies aux actifs numériques</em><br>
+                    <a href="https://docs.google.com/presentation/d/153DY7Zpnhy4Fkll54BX9LrmYkzBlFC9AMFCFm1UlO0U/edit?usp=sharing" target="_blank">[ Diapositives ]</a>
+                </p>
+                <p class="talk-entry">
+                    2019 – <strong>Séminaire Franco-russe – Moscou</strong><br>
+                    <em>10 ans après Bitcoin : des crypto-monnaies aux monnaies digitales et actifs numériques</em><br>
+                    <a href="https://docs.google.com/presentation/d/1_11pmCKxsrxqqdx9Rewbh1rcYOZhLWdtcI6FkRmaWFE/edit?usp=sharing" target="_blank">[ Diapositives ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=boBDj_XKmEo" target="_blank">[ Vidéo ]</a> | 
+                    <a href="https://ecfor.ru/publication/kriptovalyuty-kak-tsifrovoj-aktiv/" target="_blank">[ Traduction Russe ]</a>
+                </p>
+                <p class="talk-entry">
+                    2018 – <strong>Séminaire Franco-russe – Moscou</strong><br>
+                    <em>Les Monnaies Digitales entre contestation et réappropriation monétaire</em><br>
+                    <a href="https://drive.google.com/file/d/1AQz7wINKSBAx6ZOcrlDbWIEwm19w5WDd/view?usp=sharing" target="_blank">[ Programme ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=G6a8cJfHvzI" target="_blank">[ Vidéo ]</a> | 
+                    <a href="https://ecfor.ru/publication/kriptovalyuty-i-tsifrovye-dengi/" target="_blank">[ Traduction Russe ]</a>
+                </p>
+                <p class="talk-entry">
+                    2018 – <strong>IV Conférence Internationale sur les Monnaies Complémentaires et Sociales – Barcelone</strong><br>
+                    <em>Les crypto-monnaies à l'aune des monnaies parallèles, sociales et complémentaires : continuité et rupture dans le champ de la gouvernance monétaire</em><br>
+                    <a href="https://drive.google.com/file/d/1R0Owrn3JqKmkhxsuLhFofoKa1Fu5pt7y/view?usp=sharing" target="_blank">[ PDF ]</a> | 
+                    <a href="https://drive.google.com/file/d/1AIXjWGLZPjEf86Jrs4BoVQkiB-CNtHdD/view?usp=drive_link" target="_blank">[ Résumé ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=l9hQdZl0MIY" target="_blank">[ Vidéo 1/2 ]</a> | 
+                    <a href="https://www.youtube.com/watch?v=tBE5I96FUV4" target="_blank">[ Vidéo 2/2 ]</a>
+                </p>
+                <p class="talk-entry">
+                    2016 – <strong>Colloque Institutionnalisme Monétaire Français – Lyon</strong><br>
+                    <em>Bitcoin comme institutionnalisation sans institution</em><br>
+                    <a href="https://drive.google.com/file/d/1L3oesCrMweJQoDjTelko_rXCVfjySSYc/view?usp=sharing" target="_blank">[ Article ]</a> | 
+                    <a href="https://imf2016.sciencesconf.org/conference/imf2016/pages/Programme_ple_nie_res_et_ateliersV2.pdf" target="_blank">[ Programme ]</a>
+                </p>
+                <p class="talk-entry">
+                    2016 – <strong>Conférence de Philosophie Économique – Aix-en-Provence</strong><br>
+                    <em>L'épistémologie monétaire de Simmel</em><br>
+                    <a href="https://drive.google.com/file/d/1tkiQIz514pYPCLbzlTTkDl3p9o2hN5gY/view?usp=sharing" target="_blank">[ Article ]</a>
+                </p>
+                <p class="talk-entry">
+                    2012 – <strong>Doctoriales GDR Économie Sociologie</strong><br>
+                    <em>La liquidité comme bien public global ?</em>
+                </p>
+                <hr>
+                <h2 class="section-title">Médias & Presse</h2>
+                <p class="talk-entry">
+                    2025 – <strong>Meetup – Cercle du Coin (10ème anniversaire)</strong> : <em>Présentation de thèse</em><br>
+                    <a href="https://docs.google.com/presentation/d/14o28Q3QLu-nu8BWPRSxB_yo-AnMQwbk3nZccmKUOFV0/edit?usp=drive_link" target="_blank">[ Diapositives ]</a>
+                </p>
+                <p class="talk-entry">
+                    2019 – <strong>Conférence publique – SQY</strong> (1h30)<br>
+                    <em>Monnaie et crypto : défis contemporains</em>
+                    <a href="https://www.youtube.com/watch?v=JqWrgV96nnE" target="_blank">[ Vidéo ]</a>
+                </p>
+                <p class="talk-entry">
+                    2019 – <strong>Université Sorbonne Nouvelle – Table ronde</strong><br>
+                    <em>Tout ce que vous vouliez savoir sur les crypto</em>
+                </p>
+                <p class="talk-entry">
+                    2018 – <strong>Radio – France Inter "La tête au carré"</strong><br>
+                    <a href="https://www.youtube.com/watch?v=F7yXMlx2gn4&t=5s" target="_blank">[ Podcast ]</a>
+                </p>
+                <p class="talk-entry">
+                    2018 – <strong>ISG – Semaine "Nouveaux Mondes"</strong><br>
+                    <em>Introduction à Bitcoin & crypto</em>
+                </p>
+                <p class="talk-entry">
+                    2017 – <strong>"Rendez-vous de l'Histoire" – Blois</strong><br>
+                    <em>Du bitcoin à la blockchain : peut-on avoir confiance dans une monnaie virtuelle ?</em>
+                    <a href="https://rdv-histoire.com/programme/du-bitcoin-la-blockchain-peut-avoir-confiance-dans-une-monnaie-virtuelle" target="_blank">[ Programme & Audio ]</a>
+                </p>
+            </main>
+        </section>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="curriculum-fr.html" style="color: #33ff33; text-decoration: none; font-family: 'VT323', monospace; font-size: 1.1em; border: 1px dashed #33ff33; padding: 8px 15px; display: inline-block; margin-right: 15px;">
+                🎓 Voir le parcours académique complet →
+            </a>
+        </div>
+
+        <div class="back-link">
+            <a href="index-fr.html">← Retour à l'accueil</a>
+        </div>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
+                <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
+                <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
+                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon"></a>
+                <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
+                <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
+            </div>
+            <div class="sitemap-links" style="text-align: center; margin: 15px 0; font-family: 'VT323', monospace; font-size: 0.9em;">
+                <a href="plan-du-site.html" style="color: #33ff33; text-decoration: none; margin: 0 10px;">Plan du site</a>
+                <a href="sitemap.xml" style="color: #33ff33; text-decoration: none; margin: 0 10px;">Sitemap XML</a>
+            </div>
+            <div class="ethereum-badge-centered">
+                <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
+                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+                </a>
+                <div class="ethereum-tooltip">
+                    ALERTE FAUCILLE & MARTEAU ! Emprunté au troll épique de BTC Socialist contre l'élite Web3, un défi malicieux aux narratifs crypto libertariens. Consultez ma thèse pour le côté sérieux de cette plaisanterie pixelisée !
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (savedTheme === 'dark') {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            } else {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            }
+        });
+    </script>
+</body>
+</html>

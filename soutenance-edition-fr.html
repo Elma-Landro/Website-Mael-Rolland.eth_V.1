@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenance edition - Maël Rolland</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .language-switcher {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+        .these-section {
+            margin: 30px auto;
+            max-width: 700px;
+        }
+        .these-intro {
+            font-family: 'VT323', monospace;
+            font-size: 1.2em;
+            color: #ffaa33;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .download-complete {
+            margin: 30px auto;
+            text-align: center;
+        }
+        .download-complete .pixel-button {
+            font-size: 1.2em;
+            padding: 15px 25px;
+            background-color: #8b0000;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        .chapters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px auto;
+        }
+        .chapter-button {
+            flex-basis: calc(50% - 20px);
+            min-width: 200px;
+            text-align: left;
+            padding: 12px 15px;
+        }
+        .json-notice {
+            margin-top: 40px;
+            padding: 15px;
+            border: 2px dashed #33ff33;
+            background-color: rgba(51, 255, 51, 0.1);
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .download-item {
+            margin-bottom: 15px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
+        .pixel-icon {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            vertical-align: middle;
+        }
+        .avatar-icon {
+      width: 90px; /* ajuste à 120px ou 80px selon les pages */
+      height: 90px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #ffaa33; /* Encadrement doré rétro */
+      background-color: #330000;
+      image-rendering: pixelated;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+        .video-container {
+  margin: 20px auto;
+  max-width: 320px;
+  border: 2px solid #ffaa33;
+  padding: 5px;
+  background-color: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+}
+
+.caption {
+  text-align: right;
+  font-family: 'VT323', monospace;
+  font-size: 0.5em;
+  color: #ffaa33;
+  margin-top: 2px;
+}
+        .pixel-button.small {
+  font-size: 0.3em;
+  padding: 2px 5px;
+  background-color: #330000;
+  color: #ffcc66;
+  border: 1px solid #ffaa33;
+  text-decoration: none;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.pixel-button.small:hover {
+  background-color: #552200;
+  color: #ffffff;
+}
+        .pixel-img {
+  max-width: 40%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid #ffaa33; /* cadre doré rétro */
+  image-rendering: pixelated;
+  background-color: #330000;
+}
+        .image-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.image-row img {
+  flex: 1 1 280px;
+  max-width: 350px;
+}
+        .img-centered {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  margin: 15px auto;
+  border: 1px solid #ffaa33;
+  image-rendering: pixelated;
+  background-color: #330000;
+  display: block;
+        }
+/* === ZOOM LIGHTBOX === */
+.pixel-img.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 10, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  image-rendering: auto;
+  border: 2px solid #ffaa33;
+  background-color: #000;
+}
+
+        
+        @media (max-width: 768px) {
+            .chapter-button {
+                flex-basis: calc(100% - 20px);
+            }
+            .checksum-content {
+                font-size: 0.8em;
+            }
+            @media screen and (min-width: 768px) {
+            .thesis-video {
+                max-width: 480px;
+             height: auto;
+            }
+                a {
+  color: #33ff33 !important;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #33ff33 !important;
+}
+
+a:hover {
+  color: #ffaa33 !important;
+}
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Lune"> <span id="theme-text">Sombre</span>
+    </button>
+    
+    <div class="language-switcher">
+        <a href="soutenance-edition.html">🇬🇧 English</a> | 
+        <a href="soutenance-edition-fr.html">🇫🇷 Français</a>
+    </div>
+    <div class="container">
+        <header>
+            <h1 class="main-title">Édition limitée et tokenisée de la thèse</h1>
+                <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
+            <p class="subtitle">
+                 À l’occasion de ma soutenance de thèse, j’ai réalisé une édition limitée et tokenisée sur Bitcoin
+            </p>
+            <div class="video-container">
+  <video controls preload="metadata" poster="assets/img/poster-thesis.jpg">
+    <source src="https://arweave.net/YD_YPW7_V_fcQ14oGXomohG4cMroz3ponWmc21zj-bQ/5j1tzd_video.mp4" type="video/mp4">
+    Votre navigateur ne prend pas en charge les vidéos HTML5.
+  </video>
+               
+        </header>
+        <section class="these-section">
+  <div class="these-intro">
+    <p>
+      Voici l’histoire de cette double matérialisation, physique et numérique, qui redouble mes recherches.
+      Ma thèse explore la gouvernance des cryptomonnaies, notamment Bitcoin, conçues comme des infrastructures sociotechniques.
+      Pour marquer cette soutenance, j’ai voulu créer un objet unique : une édition limitée et tokenisée sur Bitcoin via Counterparty.
+    </p>
+  <div class="image-row">
+  <img src="assets/img/soutenance-edition.jpeg" alt="Coffret édition spéciale" class="pixel-img" />
+  <img src="assets/img/soutenance-edition2.jpeg" alt="Vue intérieure édition spéciale" class="pixel-img" />
+</div>
+
+    <p>
+      L’édition papier se compose de deux livrets regroupés dans un coffret en carton imprimé pour l’occasion. Chaque exemplaire est numéroté.</p>
+        <img src="assets/img/soutenance-edition3.jpeg" alt="Coffret édition spéciale" class="img-centered" />
+    <p>
+      <em>Anecdote :</em> la première impression étant imparfaite, chaque coffret a été retravaillé à la main, consolidé… et même fini au sparadrap médical.
+    </p>
+ <div class="image-row">
+  <img src="assets/img/soutenance-edition4.jpeg" alt="Vue intérieure édition spéciale" class="pixel-img" />
+  <img src="assets/img/soutenance-edition5.jpeg" alt="Vue intérieure édition spéciale" class="pixel-img" />
+</div>
+    <p>
+      La première de couverture détourne les formats austères imposés par l’administration. On y retrouve une illustration qui me tenait à cœur : un vieux mème humoristique,
+      détournant les codes des bitcoiners maximalistes, pour représenter mes recherches —
+      <a href="https://buff.ly/4giG59S" target="_blank">voir l’image</a>.
+    </p>
+      <img src="assets/img/soutenance-edition6.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
+
+    <p>
+      La 4<sup>e</sup> de couverture lie le matériel et l’immatériel. Chaque exemplaire contient un <strong>paper wallet</strong> avec une adresse publique visible et une clé privée cachée.
+      Ce wallet garantit l’autorité sur un token associé émis sur Counterparty.
+        <img src="assets/img/soutenance-edition7.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
+
+      Chaque exemplaire est lié à un token unique <code>ROLLANDTHESE.edition_soutenance</code>,
+      émis à 10 exemplaires sur Counterparty (<a href="https://buff.ly/4juw7VG" target="_blank">voir l’actif</a>).
+        <img src="assets/img/soutenance-edition10.jpeg" alt="Back cover of the limited edition" class="img-centered" />
+      Ces tokens sont des sous-actifs d’un actif principal, <code>ROLLANDTHESE</code>
+      (<a href="https://buff.ly/4hsrAB7" target="_blank">voir l’actif principal</a>), créé le jour du dépôt officiel.
+    </p>
+      <img src="assets/img/soutenance-edition8.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
+
+    <p>
+      Écho à ma première immersion dans l’écosystème Bitcoin (2017), où j’ai découvert Counterparty et les débats sur l’<code>OP_RETURN</code> :
+      d’où une 4<sup>e</sup> de couverture incluant deux <em>Rare Pepe’conomists</em> que j’ai créés en 2017 (Keynes & Hayek réunis),
+      crypto comme arrangement socio-technique négocié.
+    </p>
+      
+    <p>
+      Cette édition limitée est un <strong>manifeste théorico-pratique</strong> : la tokénisation redouble empiriquement mes affirmations théoriques :
+      <em>consignation, authentification et certification</em> ont nécessité l’usage d’unités BTC et XCP via des outils libres et communautaires.
+    </p>
+      <img src="assets/img/soutenance-edition9.jpeg" alt="4e de couverture de l'édition limitée" class="img-centered" />
+
+
+    <p>
+      La distribution des éditions : ma directrice et les membres du jury — È. Chiapello, F. Musiani, J. Blanc, J. Couppey-Soubeyran, É. Monnet, A. Mallard.
+      Une pour <a href="https://twitter.com/Adrian_Sauzade" target="_blank">@Adrian_Sauzade</a>, une pour le <a href="https://twitter.com/AssoCDC" target="_blank">@AssoCDC</a> et une pour moi.
+      La dernière ? Peut-être aux enchères pour un collectionneur 👀.
+    </p>
+  </div>
+</section>
+
+            <div class="back-link">
+                <a href="index.html">← retour à la page d'acceuil</a>
+            </div>
+        </section>
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank"><img src="assets/icons/LinkedIn.png" alt="LinkedIn" class="pixel-icon"></a>
+                <a href="https://x.com/elmalandr0" target="_blank"><img src="assets/icons/X.png" alt="X" class="pixel-icon"></a>
+                <a href="https://warpcast.com/maelrolland" target="_blank"><img src="assets/icons/Farcaster.png" alt="Farcaster" class="pixel-icon"></a>
+                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank"><img src="assets/icons/Bluesky.png" alt="Bluesky" class="pixel-icon"></a>
+                <a href="https://github.com/Elma-Landro" target="_blank"><img src="assets/icons/Github.png" alt="Github" class="pixel-icon"></a>
+                <a href="https://hey.xyz/u/mael-rolland" target="_blank"><img src="assets/icons/Lens.png" alt="Lens" class="pixel-icon"></a>
+            </div>
+            <div class="ethereum-badge-centered">
+                <a href="https://docs.ethswarm.org/" target="_blank">
+                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge" />
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function toggleChecksum(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                button.classList.remove("active");
+            } else {
+                content.style.display = "block";
+                button.classList.add("active");
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (savedTheme === 'light') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            }
+        });
+    </script>
+    <script>
+  document.querySelectorAll('.pixel-img, .img-centered').forEach(img => {
+    img.classList.add('zoomable');
+    img.addEventListener('click', () => {
+      const overlay = document.createElement('div');
+      overlay.className = 'lightbox-overlay';
+      const fullImg = document.createElement('img');
+      fullImg.src = img.src;
+      overlay.appendChild(fullImg);
+      document.body.appendChild(overlay);
+      overlay.addEventListener('click', () => {
+        overlay.remove();
+      });
+    });
+  });
+    </script>
+</body>
+</html>
