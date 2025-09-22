@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier d’initiation – Maël Rolland</title>
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+        /* Styles spécifiques à la page thèse */
+        .language-switcher {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .these-section {
+            margin: 30px auto;
+            max-width: 700px;
+        }
+    .back-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-size: 0.8em;
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ffcc66;
+        }
+
+        .back-link a:hover {
+            background-color: rgba(255, 204, 102, 0.2);
+        }
+    }
+        .checksum-container {
+            margin-top: 1px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .checksum-toggle {
+            background: none;
+            border: none;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 2px 5px;
+            text-align: left;
+            display: inline-flex;
+            align-items: center;
+        }
+        .checksum-toggle:hover {
+            text-decoration: underline;
+        }
+        .checksum-toggle::before {
+            content: '▶';
+            margin-right: 5px;
+            transition: transform 0.2s;
+        }
+        .checksum-toggle.active::before {
+            transform: rotate(90deg);
+        }
+        .checksum-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #33ff33;
+            padding: 8px;
+            font-family: 'VT323', monospace;
+            color: #33ff33;
+            font-size: 0.8em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode sombre/clair">
+        <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil"> <span id="theme-text">Clair</span>
+    </button>
+
+  <div class="language-switcher">
+        <a href="workshop.html">🇬🇧 English</a> | 
+        <a href="atelier.html">🇫🇷 Français</a>
+  </div>
+  <div class="container">
+    <header>
+      <h1 class="main-title">Atelier d’initiation aux crypto-actifs</h1>
+      <p class="subtitle">2h pour comprendre, manipuler et sécuriser ses premiers actifs numériques</p>
+    </header>
+
+    <section class="these-section">
+      <div class="these-intro">
+        <p>
+          Cet atelier s’adresse aux novices curieux de découvrir les crypto-actifs dans une démarche critique, pratique et accompagnée.
+        </p>
+        <p>
+          Objectifs : poser les repères techniques et économiques essentiels, expérimenter en conditions réelles, comprendre les limites et les risques.
+        </p>
+      </div>
+
+      <div style="text-align: center; margin: 30px 0;">
+        <img src="assets/img/atelier-crypto-initiation.png" alt="Flyer Atelier crypto-actifs Maël Rolland" style="max-width: 100%; height: auto; border: 2px solid #ffaa33;" />
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px;">
+        <a href="assets/pdf/Plaquette_initiation_cryptoV1.pdf" class="pixel-button" download>
+          📄 Télécharger la plaquette (PDF)
+           </a>
+  <div class="checksum-container" style="margin-top:8px;">
+    <button class="checksum-toggle" onclick="toggleChecksum('checksum-atelier')">Checksum (SHA-256)</button>
+    <div id="checksum-atelier" class="checksum-content" style="display:none;">
+      be4487ba833db5e18e17c28c087d7d53559f8b0f7fbf75efda81ef6bd2b8638e
+    </div>
+  </div>
+</div>
+
+      <h2 style="text-align: center; color: #33ff33;">Tarifs (hors frais de déplacement éventuels)</h2>
+      <table style="margin: 0 auto; border-collapse: collapse; text-align: left; font-family: monospace; color: #ffaa33;">
+        <thead>
+          <tr style="border-bottom: 1px solid #ffaa33;">
+            <th style="padding: 8px;">Type d’intervention</th>
+            <th style="padding: 8px;">Durée</th>
+            <th style="padding: 8px;">Tarif</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 8px;">Atelier individuel</td>
+            <td style="padding: 8px;">2h</td>
+            <td style="padding: 8px;">80 €</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Atelier collectif (3 à 6 personnes)</td>
+            <td style="padding: 8px;">2h</td>
+            <td style="padding: 8px;">50 € / personne</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;">Intervention associative ou institutionnelle</td>
+            <td style="padding: 8px;">Adaptée</td>
+            <td style="padding: 8px;">Sur devis</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="text-align: center; margin: 30px 0;">
+  <a href="contact-fr.html" 
+     class="pixel-button"
+     style="background-color: #ffaa33; color: black; border: 2px solid #ffaa33;" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    ✉️ Contact / inscription à l'atelier
+  </a>
+      </div>
+
+      <div class="json-notice">
+        <p>Tarifs et contenu détaillés également disponibles dans la plaquette.</p>
+        <p style="font-size: 0.8em;">Pour toute demande spécifique : utilisez le formulaire de contact.</p>
+      </div>
+
+      <div class="back-link">
+        <a href="collaborate.html">← Retour à la collaboration</a>
+      </div>
+    </div>
+
+    <!-- Theme Toggle JavaScript -->
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (savedTheme === 'dark') {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Soleil';
+                themeText.textContent = 'Clair';
+            } else {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Lune';
+                themeText.textContent = 'Sombre';
+            }
+        });
+    </script>
+</body>
+</html>

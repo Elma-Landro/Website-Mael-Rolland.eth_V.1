@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborate - Maël Rolland</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+              /* Styles spécifiques à la page thèse */
+        .language-switcher {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'VT323', monospace;
+            font-size: 0.9em;
+            color: #33ff33;
+        }
+        .language-switcher a {
+            color: #33ff33;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .language-switcher a:hover {
+            text-decoration: underline;
+        }
+
+        .these-section {
+            margin: 30px auto;
+            max-width: 700px;
+        }
+
+        /* Reusing styles from talks.html for consistency */
+        .content-section {
+            text-align: left;
+            max-width: 700px;
+            margin: 40px auto;
+            font-family: 'VT323', monospace; /* Use monospace for lists */
+            line-height: 1.8;
+            color: #ffaa33; /* Match description text color */
+        }
+        .content-section h2 {
+            font-family: 'Press Start 2P', monospace;
+            color: #ffcc66; /* Matte yellow-orange */
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .content-section ul {
+            list-style: '👾 '; /* Pixelated bullet point */
+            padding-left: 20px;
+        }
+        .content-section li {
+            margin-bottom: 10px;
+        }
+        .contact-link-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #ffcc66;
+            text-decoration: none;
+            font-size: 0.8em;
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #ffcc66;
+        }
+
+        .back-link a:hover {
+            background-color: rgba(255, 204, 102, 0.2);
+        }
+        .avatars-container {
+  display: flex;
+  justify-content: center; /* ou 'space-around' selon l'effet souhaité */
+  align-items: center;
+  gap: 24px; /* espace horizontal entre les deux avatars */
+  margin: 20px 0;
+}
+
+.avatar-icon {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffaa33;
+  background-color: #330000;
+  image-rendering: pixelated;
+}
+
+/* Tooltip container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; /* Optional: style as a clickable element */
+}
+
+/* Tooltip text */
+.tooltip-text {
+  visibility: hidden;
+  width: 200px; /* Adjust as needed */
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px; /* Half of width */
+
+  /* Fade in effect */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- 🌍 Language switcher -->
+    <div class="language-switcher">
+      <a href="collaborate.html">🇬🇧 English</a> | 
+      <a href="collaborate-fr.html">🇫🇷 Français</a>
+    </div>
+
+        <!-- Bouton de thème -->
+        <button id="theme-toggle" onclick="toggleTheme()">
+            <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Soleil" width="24" height="24">
+            <span id="theme-text">Clair</span>
+        </button>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title">Collaborate</h1>
+            <p class="subtitle">Maël&nbsp;Rolland&nbsp;TheDyorLab</p>
+            <div class="avatars-container">
+  <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël ENS avatar" class="avatar-icon" />
+  <img src="assets/img/avatar-raredesigner-thedyorlab.eth.jpg" alt="TheDyorLab avatar" class="avatar-icon" />
+            </div>
+        </header>
+
+        <section class="content-section">
+            <h2>Types de collaborations ouvertes :</h2>
+            <ul>
+                <li>Revue ou peer-review externe</li>
+                <li>Accompagnement Web3 / DeFi / research design
+  <div style="margin-top: 10px;">
+  <div class="tooltip-container">
+    <a href="atelier.html" class="pixel-button">
+      🎓 Atelier d'initiation crypto/Web3
+    </a>
+    <div class="tooltip-text">Atelier pratique crypto de 2h pour débutants</div>
+  </div>
+</div>
+                </li>
+                <li>Participation à DAO, governance, research guilds</li>
+                <li>Étude ethnographique/terrain</li>
+            </ul>
+        </section>
+
+        <section class="contact-link-section">
+            <p class="description">Intéressé(e) par une collaboration ou pour proposer une idée ?</p>
+            <a href="contact-fr.html" target="_blank" rel="noopener noreferrer" class="pixel-button large">Contactez-moi via le formulaire</a>
+        </section>
+
+        <div class="back-link">
+            <a href="index-fr.html">← Retour à l'accueil</a>
+        </div>
+
+        <footer>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ma%C3%ABl-rolland-phd-60a638b3/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/LinkedIn.png" alt="LinkedIn Icon" class="pixel-icon"></a>
+                <a href="https://x.com/elmalandr0" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><img src="assets/icons/X.png" alt="X Icon" class="pixel-icon"></a>
+                <a href="https://warpcast.com/maelrolland" target="_blank" rel="noopener noreferrer" aria-label="Farcaster"><img src="assets/icons/Farcaster.png" alt="Farcaster Icon" class="pixel-icon"></a>
+                <a href="https://bsky.app/profile/mael-rolland.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky"><img src="assets/icons/Bluesky.png" alt="Bluesky Icon" class="pixel-icon"></a>
+                <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener noreferrer" aria-label="Github"><img src="assets/icons/Github.png" alt="Github Icon" class="pixel-icon"></a>
+                <a href="https://hey.xyz/u/mael-rolland" target="_blank" rel="noopener noreferrer" aria-label="Lens Protocol"><img src="assets/icons/Lens.png" alt="Lens Icon" class="pixel-icon"></a>
+                <!-- Add Telegram and Discord if direct links are available -->
+                <!-- <a href="https://t.me/MaelRolland" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="assets/icons/telegram.png" alt="Telegram Icon" class="pixel-icon"></a> -->
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Discord"><img src="assets/icons/Discord.png" alt="Discord Icon" class="pixel-icon"></a> -->
+            </div>
+            <div class="sitemap-links" style="text-align: center; margin: 15px 0; font-family: 'VT323', monospace; font-size: 0.9em;">
+                <a href="plan-du-site.html" style="color: #33ff33; text-decoration: none; margin: 0 10px;">Plan du site</a>
+                <a href="sitemap.xml" style="color: #33ff33; text-decoration: none; margin: 0 10px;">Sitemap XML</a>
+            </div>
+            <div class="ethereum-badge-centered">
+                <a href="https://ipfs.tech/" target="_blank" rel="noopener noreferrer" aria-label="Built on Ethereum (Swarm)">
+                    <img src="assets/icons/builtonethereum.png" alt="Built on Ethereum" class="pixel-ethereum-badge">
+                </a>
+                <div class="ethereum-tooltip">
+                    ALERTE FAUCILLE & MARTEAU ! Emprunté au troll épique de BTC Socialist contre l'élite Web3, un défi malicieux aux narratifs crypto libertariens. Consultez ma thèse pour le côté sérieux de cette plaisanterie pixelisée !
+                </div>
+            </div>
+        </footer>
+    </div>
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+
+        if (body.dataset.theme === 'dark') {
+            body.dataset.theme = 'light';
+            themeIcon.src = 'assets/icons/Moon.jpg';
+            themeIcon.alt = 'Lune';
+            themeText.textContent = 'Sombre';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.dataset.theme = 'dark';
+            themeIcon.src = 'assets/icons/Sun.jpg';
+            themeIcon.alt = 'Soleil';
+            themeText.textContent = 'Clair';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // Load saved theme or default to light
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+
+        if (savedTheme === 'dark') {
+            body.dataset.theme = 'dark';
+            themeIcon.src = 'assets/icons/Sun.jpg';
+            themeIcon.alt = 'Soleil';
+            themeText.textContent = 'Clair';
+        } else {
+            body.dataset.theme = 'light';
+            themeIcon.src = 'assets/icons/Moon.jpg';
+            themeIcon.alt = 'Lune';
+            themeText.textContent = 'Sombre';
+        }
+    });
+  </script>
+</body>
+</html>
