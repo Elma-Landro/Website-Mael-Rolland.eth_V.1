@@ -1038,30 +1038,7 @@ footer {
     }
 }
 
-.ens-block img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border: 2px solid #ffaa33;
-  border-radius: 50%;
-  margin-top: 6px;
-  animation: float 6s ease-in-out infinite;
-  transition: transform 0.3s ease;
-}
 
-.ens-block:nth-child(2) img {
-  animation-delay: -2s; /* Décalage pour effet asynchrone */
-}
-
-.ens-block img:hover {
-  transform: scale(1.05) rotate(2deg);
-}
-
-/* Animation de flottement subtile */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-}
 
 .ens-block .asterisk-badge {
   position: absolute;
