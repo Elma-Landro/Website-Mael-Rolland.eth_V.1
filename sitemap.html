@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - Maël Rolland</title>
+    <meta name="description" content="Complete sitemap of Maël Rolland's research website including all pages and resources.">
+    <meta name="keywords" content="sitemap, navigation, Maël Rolland, site map">
+    <meta name="author" content="Maël Rolland">
+    <meta name="robots" content="index, follow">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .sitemap-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .sitemap-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2.5em;
+            color: #33ff33;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .sitemap-section {
+            margin-bottom: 40px;
+        }
+
+        .sitemap-category {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 2px solid #33ff33;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sitemap-category h3 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.2em;
+            color: #ffaa33;
+            margin-bottom: 15px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .sitemap-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .sitemap-link {
+            font-family: 'VT323', monospace;
+            font-size: 1.1em;
+            color: #33ff33;
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #33ff33;
+            border-radius: 4px;
+            background-color: rgba(51, 255, 51, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+
+        .sitemap-link:hover {
+            background-color: #33ff33;
+            color: #000;
+            text-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <img id="theme-icon" src="assets/icons/Moon.jpg" alt="Moon"> <span id="theme-text">Dark</span>
+    </button>
+
+    <!-- Language switcher -->
+    <div class="language-switcher" style="text-align: center; margin-top: 10px;">
+        <a href="sitemap.html">🇬🇧 English</a> | 
+        <a href="plan-du-site.html">🇫🇷 Français</a>
+    </div>
+
+    <div class="sitemap-container">
+        <h1 class="sitemap-title">Sitemap</h1>
+
+        <section class="sitemap-section">
+            <div class="sitemap-category">
+                <h3>Main Pages</h3>
+                <div class="sitemap-links">
+                    <a href="index.html" class="sitemap-link">Home (English)</a>
+                    <a href="index-fr.html" class="sitemap-link">Accueil (Français)</a>
+                </div>
+            </div>
+
+            <div class="sitemap-category">
+                <h3>Academic & Professional</h3>
+                <div class="sitemap-links">
+                    <a href="curriculum.html" class="sitemap-link">Curriculum (English)</a>
+                    <a href="curriculum-fr.html" class="sitemap-link">Curriculum (Français)</a>
+                    <a href="these.html" class="sitemap-link">Thesis (English)</a>
+                    <a href="these-fr.html" class="sitemap-link">Thèse (Français)</a>
+                </div>
+            </div>
+
+            <div class="sitemap-category">
+                <h3>Publications & Research</h3>
+                <div class="sitemap-links">
+                    <a href="talks.html" class="sitemap-link">Publications / Appearances (English)</a>
+                    <a href="talks-fr.html" class="sitemap-link">Publications / Interventions (Français)</a>
+                </div>
+            </div>
+
+            <div class="sitemap-category">
+                <h3>Collaboration & Workshops</h3>
+                <div class="sitemap-links">
+                    <a href="collaborate.html" class="sitemap-link">Collaborate (English)</a>
+                    <a href="collaborate-fr.html" class="sitemap-link">Collaborer (Français)</a>
+                    <a href="atelier.html" class="sitemap-link">Atelier d'initiation crypto (Français)</a>
+                </div>
+            </div>
+
+            <div class="sitemap-category">
+                <h3>Contact & Lab</h3>
+                <div class="sitemap-links">
+                    <a href="contact.html" class="sitemap-link">Contact (English)</a>
+                    <a href="contact-fr.html" class="sitemap-link">Contact (Français)</a>
+                </div>
+            </div>
+
+            <div class="sitemap-category">
+                <h3>Analysis & Tools</h3>
+                <div class="sitemap-links">
+                    <a href="crisis.html" class="sitemap-link">Crisis Analysis (English)</a>
+                    <a href="crisis-fr.html" class="sitemap-link">Analyse de crise (Français)</a>
+                </div>
+            </div>
+
+            <div class="sitemap-category">
+                <h3>Technical</h3>
+                <div class="sitemap-links">
+                    <a href="sitemap.html" class="sitemap-link">Sitemap HTML (English)</a>
+                    <a href="plan-du-site.html" class="sitemap-link">Plan du site (Français)</a>
+                    <a href="sitemap.xml" class="sitemap-link">XML Sitemap</a>
+                    <a href="404.html" class="sitemap-link">404 Error Page (English)</a>
+                    <a href="404-fr.html" class="sitemap-link">Page d'erreur 404 (Français)</a>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; margin-top: 40px; font-family: 'VT323', monospace; color: #666;">
+            <p>Last updated: September 2024</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (body.dataset.theme === 'dark') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme or default to light
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                body.dataset.theme = 'light';
+                themeIcon.src = 'assets/icons/Moon.jpg';
+                themeIcon.alt = 'Moon';
+                themeText.textContent = 'Dark';
+            } else {
+                body.dataset.theme = 'dark';
+                themeIcon.src = 'assets/icons/Sun.jpg';
+                themeIcon.alt = 'Sun';
+                themeText.textContent = 'Light';
+            }
+        });
+    </script>
+</body>
+</html>
