@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphe GRC-20 — Au-delà des codes</title>
+<link rel="stylesheet" href="style.css" id="site-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js" crossorigin="anonymous"></script>
+<style>
+/* ─── GRC-20 Graph Editor — Charte mael-rolland.eth ──────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+:root {
+  --bg:       #2a0000;
+  --bg2:      #1e0000;
+  --bg3:      #3a0000;
+  --border:   #c8a000;
+  --text:     #ffd700;
+  --text2:    #c8a000;
+  --accent:   #ffd700;
+  --accent2:  #ffea70;
+  --danger:   #ff4444;
+  --success:  #44ff88;
+  --warn:     #ffaa00;
+  --radius:   0px;
+  --sidebar-w:220px;
+  --panel-w:  340px;
+  --header-h: 54px;
+  --font:     'Press Start 2P', monospace;
+  --mono:     'Press Start 2P', monospace;
+}
+[data-theme="light"] {
+  --bg:    #4a0000; --bg2: #3a0000; --bg3: #5a0000;
+  --border:#ffd700; --text:#ffd700; --text2:#c8a000;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; height: 100%; width: 100%;
+  font-family: var(--font); background: var(--bg); color: var(--text);
+  overflow: hidden; font-size: 14px;
+}
+/* ─── Layout ────────────────────────────────────────────────────── */
+.grc-root { display: flex; flex-direction: column; height: 100vh; }
+.grc-header {
+  flex-shrink: 0; height: var(--header-h);
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px; padding: 0 14px;
+  flex-wrap: wrap; overflow: hidden;
+}
+.grc-logo { font-size: 1.4em; color: var(--accent2); flex-shrink: 0; }
+.grc-title-text { font-weight: 600; font-size: 0.92em; color: var(--text2); white-space: nowrap; flex-shrink: 0; }
+.grc-sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+.grc-main { flex: 1; display: flex; overflow: hidden; min-height: 0; }
+/* ─── Sidebar ────────────────────────────────────────────────────── */
+.grc-sidebar {
+  width: var(--sidebar-w); flex-shrink: 0;
+  background: var(--bg2); border-right: 1px solid var(--border);
+  overflow-y: auto; padding: 12px 10px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.sidebar-section-title {
+  font-size: 0.72em; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--text2); padding: 6px 2px 4px;
+  border-bottom: 1px solid var(--border); margin-bottom: 4px;
+}
+.type-filter-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 3px 4px; border-radius: var(--radius);
+  cursor: pointer; transition: background .15s;
+}
+.type-filter-item:hover { background: var(--bg3); }
+.type-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.type-label { font-size: 0.8em; flex: 1; }
+.type-count { font-size: 0.72em; color: var(--text2); }
+.stats-box {
+  margin-top: auto; padding: 10px 6px;
+  border-top: 1px solid var(--border); font-size: 0.77em;
+  color: var(--text2); display: flex; flex-direction: column; gap: 3px;
+}
+.stat-row { display: flex; justify-content: space-between; }
+.stat-val { color: var(--text); font-weight: 600; }
+/* ─── Canvas ────────────────────────────────────────────────────── */
+.grc-canvas-wrap { flex: 1; position: relative; background: var(--bg); min-width: 0; }
+#cy { width: 100%; height: 100%; display: block; }
+.canvas-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; background: var(--bg);
+}
+.canvas-overlay h2 { font-size: 1.1em; color: var(--text2); margin: 0; }
+.canvas-overlay p { font-size: 0.9em; color: var(--text2); margin: 0; }
+.hidden { display: none !important; }
+/* ─── Detail Panel ───────────────────────────────────────────────── */
+.grc-panel {
+  width: var(--panel-w); flex-shrink: 0;
+  background: var(--bg2); border-left: 1px solid var(--border);
+  overflow-y: auto; display: flex; flex-direction: column;
+}
+.panel-empty {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 24px; text-align: center; color: var(--text2); font-size: 0.9em;
+}
+.panel-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.panel-type-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.72em; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 20px; width: fit-content;
+}
+.panel-name { font-size: 1.1em; font-weight: 700; margin: 0; }
+.panel-desc { font-size: 0.84em; color: var(--text2); line-height: 1.5; margin: 0; }
+.panel-section-title {
+  font-size: 0.72em; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--text2);
+  border-bottom: 1px solid var(--border); padding-bottom: 4px; margin-bottom: 6px;
+}
+.attr-row { display: flex; flex-direction: column; gap: 2px; font-size: 0.82em; }
+.attr-key { color: var(--text2); font-family: var(--mono); font-size: 0.88em; }
+.attr-val { color: var(--text); word-break: break-word; }
+.attr-val a { color: var(--accent2); }
+.rel-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.75em; padding: 2px 7px; border-radius: 12px;
+  background: var(--bg3); border: 1px solid var(--border);
+  margin: 2px; cursor: pointer; transition: all .15s;
+}
+.rel-chip:hover { border-color: var(--accent2); color: var(--accent2); }
+.rel-chip .rel-arrow { color: var(--text2); }
+.rel-chip .rel-del { color: var(--danger); margin-left: 4px; font-size: 1.1em; }
+.rel-chip .rel-del:hover { color: #ff6b6b; }
+.rel-type-label { color: var(--accent2); font-style: italic; }
+.panel-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+/* ─── Buttons ────────────────────────────────────────────────────── */
+button {
+  cursor: pointer; border: 1px solid var(--border); border-radius: 0;
+  padding: 5px 11px; font-size: 0.62em; font-family: var(--font);
+  font-weight: normal; transition: all .15s; white-space: nowrap;
+  background: var(--bg2); color: var(--text); letter-spacing: 0.05em;
+}
+.btn-primary { background: var(--bg3); color: var(--accent); border: 2px solid var(--accent); }
+.btn-primary:hover { background: var(--accent); color: var(--bg2); }
+.btn-secondary { background: var(--bg2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); background: var(--bg3); }
+.btn-danger { background: var(--bg2); color: var(--danger); border: 1px solid var(--danger); }
+.btn-danger:hover { background: var(--danger); color: var(--bg2); }
+.btn-sm { padding: 3px 8px; font-size: 0.55em; }
+button:disabled { opacity: 0.3; cursor: not-allowed; }
+/* ─── Toolbar Controls ───────────────────────────────────────────── */
+.search-wrap { position: relative; flex-shrink: 0; }
+.search-input {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius); padding: 4px 28px 4px 9px;
+  font-size: 0.82em; width: 180px; outline: none; font-family: var(--font);
+}
+.search-input:focus { border-color: var(--accent2); }
+.search-clear {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  color: var(--text2); font-size: 1em; cursor: pointer;
+  background: none; border: none; padding: 0; line-height: 1;
+}
+select {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius); padding: 4px 8px; font-size: 0.82em;
+  font-family: var(--font); outline: none; cursor: pointer;
+}
+select:focus { border-color: var(--accent2); }
+.badge-error {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--danger); color: #fff; border-radius: 12px;
+  padding: 2px 9px; font-size: 0.75em; font-weight: 700; flex-shrink: 0;
+}
+.badge-warn {
+  background: var(--warn); color: #000;
+}
+.badge-ok { background: var(--success); }
+/* ─── Modals ─────────────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.65);
+  display: flex; align-items: center; justify-content: center; z-index: 9999;
+}
+.modal-box {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 24px; width: 480px; max-width: 95vw;
+  max-height: 88vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.modal-box.wide { width: 580px; }
+.modal-title { font-size: 1em; font-weight: 700; margin: 0; }
+.modal-footer { display: flex; justify-content: flex-end; gap: 8px; }
+.field-group { display: flex; flex-direction: column; gap: 5px; }
+.field-label { font-size: 0.8em; color: var(--text2); font-weight: 600; }
+.field-input, .field-textarea, .field-select {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--radius); padding: 7px 10px; font-size: 0.85em;
+  font-family: var(--font); outline: none; width: 100%;
+}
+.field-input:focus, .field-textarea:focus, .field-select:focus { border-color: var(--accent2); }
+.field-textarea { resize: vertical; min-height: 72px; }
+.attrs-editor { display: flex; flex-direction: column; gap: 6px; }
+.attr-edit-row { display: flex; gap: 6px; align-items: center; }
+.attr-edit-row .field-input { flex: 1; }
+/* ─── Notifications ──────────────────────────────────────────────── */
+.toast-container {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; gap: 6px; z-index: 99999; pointer-events: none;
+}
+.toast {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 8px 16px; font-size: 0.84em;
+  animation: fadeSlide .3s ease; pointer-events: all;
+}
+.toast.success { border-color: var(--success); color: var(--success); }
+.toast.error { border-color: var(--danger); color: var(--danger); }
+@keyframes fadeSlide { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+/* ─── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+/* ─── Misc ───────────────────────────────────────────────────────── */
+.version-label { font-size: 0.72em; color: var(--text2); font-family: var(--mono); flex-shrink: 0; }
+.undo-count { font-size: 0.72em; color: var(--text2); }
+hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="grc-root">
+
+<!-- ═══════════════════ HEADER ════════════════════════════════════════ -->
+<header class="grc-header">
+  <span class="grc-logo">◈</span>
+  <span class="grc-title-text">Au-delà des codes · GRC-20</span>
+  <div class="grc-sep"></div>
+
+  <button class="btn-secondary" id="btn-load" title="Charger un fichier JSON GRC-20">📂 Charger</button>
+  <input type="file" id="file-input" accept=".json" style="display:none">
+  <button class="btn-secondary btn-sm hidden" id="btn-undo" title="Annuler la dernière action">↩ Annuler</button>
+  <span class="undo-count hidden" id="undo-label"></span>
+
+  <div class="grc-sep"></div>
+
+  <div class="search-wrap">
+    <input type="text" class="search-input" id="search-input" placeholder="🔍 Rechercher…" autocomplete="off">
+    <button class="search-clear" id="search-clear" title="Effacer">✕</button>
+  </div>
+
+  <select id="layout-select" title="Changer le layout">
+    <option value="cose">Force-directed</option>
+    <option value="dagre">Hiérarchique</option>
+    <option value="circle">Cercle</option>
+    <option value="concentric">Concentrique</option>
+    <option value="grid">Grille</option>
+  </select>
+  <button class="btn-secondary btn-sm" id="btn-relayout" title="Recalculer le layout">↺</button>
+  <button class="btn-secondary btn-sm" id="btn-fit" title="Ajuster à l'écran">⊡ Ajuster</button>
+
+  <div class="grc-sep"></div>
+
+  <button class="btn-primary btn-sm" id="btn-add-entity" disabled>+ Entité</button>
+  <button class="btn-secondary btn-sm" id="btn-add-relation" disabled>+ Relation</button>
+  <button class="btn-secondary btn-sm" id="btn-validate" disabled>✓ Valider</button>
+
+  <div class="grc-sep"></div>
+
+  <button class="btn-secondary btn-sm" id="btn-export" disabled>⬇ JSON v<span id="export-version">2</span></button>
+  <span class="badge-error hidden" id="error-badge">0</span>
+
+  <div style="flex:1"></div>
+  <span class="version-label" id="version-label">–</span>
+  <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
+</header>
+
+<!-- ═══════════════════ MAIN ══════════════════════════════════════════ -->
+<div class="grc-main">
+
+<!-- ── Sidebar ── -->
+<aside class="grc-sidebar" id="sidebar">
+  <div class="sidebar-section-title">Types d'entités</div>
+  <div id="type-filters"></div>
+  <div style="margin-top:8px">
+    <button class="btn-secondary btn-sm" id="btn-filter-all" style="width:100%;margin-bottom:3px">Tout afficher</button>
+    <button class="btn-secondary btn-sm" id="btn-filter-none" style="width:100%">Tout masquer</button>
+  </div>
+  <div class="stats-box" id="stats-box">
+    <div class="stat-row"><span>Entités</span><span class="stat-val" id="stat-entities">–</span></div>
+    <div class="stat-row"><span>Relations</span><span class="stat-val" id="stat-relations">–</span></div>
+    <div class="stat-row"><span>Types</span><span class="stat-val" id="stat-types">–</span></div>
+    <div class="stat-row"><span>Visibles</span><span class="stat-val" id="stat-visible">–</span></div>
+    <div class="stat-row"><span>Erreurs</span><span class="stat-val" id="stat-errors" style="color:var(--danger)">–</span></div>
+  </div>
+</aside>
+
+<!-- ── Canvas ── -->
+<div class="grc-canvas-wrap">
+  <div id="cy"></div>
+  <div class="canvas-overlay" id="canvas-overlay">
+    <span style="font-size:2.5em">◈</span>
+    <h2>Graphe GRC-20 — Au-delà des codes</h2>
+    <p>Chargez votre fichier JSON pour commencer l'exploration et l'édition</p>
+    <button class="btn-primary" id="btn-load2">📂 Charger un fichier GRC-20</button>
+    <p style="font-size:0.8em;color:var(--text2);margin-top:8px">Fichier local · fonctionne sans serveur</p>
+  </div>
+</div>
+
+<!-- ── Detail Panel ── -->
+<aside class="grc-panel" id="detail-panel">
+  <div class="panel-empty" id="panel-empty">
+    <div>
+      <div style="font-size:2em;margin-bottom:8px">◎</div>
+      <div>Cliquez sur un nœud<br>pour voir ses détails</div>
+    </div>
+  </div>
+  <div class="hidden panel-body" id="panel-body">
+    <!-- dynamic content -->
+  </div>
+</aside>
+
+</div><!-- /grc-main -->
+</div><!-- /grc-root -->
+
+<!-- ═══════════════════ MODALS ══════════════════════════════════════════ -->
+
+<!-- Add Entity -->
+<div class="modal-backdrop hidden" id="modal-add-entity">
+<div class="modal-box">
+  <h2 class="modal-title">Ajouter une entité</h2>
+  <div class="field-group">
+    <label class="field-label">Type *</label>
+    <select class="field-select" id="ae-type"></select>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Nom *</label>
+    <input type="text" class="field-input" id="ae-name" placeholder="Nom de l'entité">
+  </div>
+  <div class="field-group">
+    <label class="field-label">Description</label>
+    <textarea class="field-textarea" id="ae-desc" placeholder="Description…"></textarea>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Langue de la description</label>
+    <select class="field-select" id="ae-lang">
+      <option value="fr">Français (fr)</option>
+      <option value="en">English (en)</option>
+    </select>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Attributs supplémentaires</label>
+    <div class="attrs-editor" id="ae-attrs-editor">
+      <div class="attr-edit-row">
+        <input type="text" class="field-input" placeholder="clé" style="max-width:110px">
+        <input type="text" class="field-input" placeholder="valeur">
+        <button class="btn-secondary btn-sm" onclick="UI.addAttrRow('ae-attrs-editor')">+</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-secondary" onclick="Modals.close('modal-add-entity')">Annuler</button>
+    <button class="btn-primary" id="ae-confirm">Créer</button>
+  </div>
+</div>
+</div>
+
+<!-- Add Relation -->
+<div class="modal-backdrop hidden" id="modal-add-relation">
+<div class="modal-box">
+  <h2 class="modal-title">Ajouter une relation</h2>
+  <div class="field-group">
+    <label class="field-label">De (source) *</label>
+    <input type="text" class="field-input" id="ar-from-search" placeholder="Chercher une entité…" autocomplete="off">
+    <div id="ar-from-suggestions" style="display:none;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);max-height:160px;overflow-y:auto;margin-top:2px"></div>
+    <input type="hidden" id="ar-from-id">
+    <div id="ar-from-preview" style="font-size:0.8em;color:var(--accent2);margin-top:3px"></div>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Type de relation *</label>
+    <select class="field-select" id="ar-type"></select>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Vers (cible) *</label>
+    <input type="text" class="field-input" id="ar-to-search" placeholder="Chercher une entité…" autocomplete="off">
+    <div id="ar-to-suggestions" style="display:none;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);max-height:160px;overflow-y:auto;margin-top:2px"></div>
+    <input type="hidden" id="ar-to-id">
+    <div id="ar-to-preview" style="font-size:0.8em;color:var(--accent2);margin-top:3px"></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-secondary" onclick="Modals.close('modal-add-relation')">Annuler</button>
+    <button class="btn-primary" id="ar-confirm">Créer la relation</button>
+  </div>
+</div>
+</div>
+
+<!-- Edit Entity -->
+<div class="modal-backdrop hidden" id="modal-edit-entity">
+<div class="modal-box wide">
+  <h2 class="modal-title">Modifier l'entité</h2>
+  <input type="hidden" id="ee-id">
+  <div class="field-group">
+    <label class="field-label">Type</label>
+    <select class="field-select" id="ee-type"></select>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Nom *</label>
+    <input type="text" class="field-input" id="ee-name">
+  </div>
+  <div class="field-group">
+    <label class="field-label">Description</label>
+    <textarea class="field-textarea" id="ee-desc"></textarea>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Langue</label>
+    <select class="field-select" id="ee-lang">
+      <option value="fr">fr</option>
+      <option value="en">en</option>
+    </select>
+  </div>
+  <div class="field-group">
+    <label class="field-label">Attributs</label>
+    <div class="attrs-editor" id="ee-attrs-editor"></div>
+    <button class="btn-secondary btn-sm" style="margin-top:4px" onclick="UI.addAttrRow('ee-attrs-editor')">+ Attribut</button>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-secondary" onclick="Modals.close('modal-edit-entity')">Annuler</button>
+    <button class="btn-primary" id="ee-confirm">Enregistrer</button>
+  </div>
+</div>
+</div>
+
+<!-- Confirm Delete -->
+<div class="modal-backdrop hidden" id="modal-confirm-delete">
+<div class="modal-box">
+  <h2 class="modal-title">⚠️ Confirmer la suppression</h2>
+  <p id="confirm-delete-msg" style="font-size:0.9em;color:var(--text2)"></p>
+  <div class="modal-footer">
+    <button class="btn-secondary" onclick="Modals.close('modal-confirm-delete')">Annuler</button>
+    <button class="btn-danger" id="confirm-delete-btn">Supprimer</button>
+  </div>
+</div>
+</div>
+
+<!-- Validation Report -->
+<div class="modal-backdrop hidden" id="modal-validation">
+<div class="modal-box wide">
+  <h2 class="modal-title">Rapport de validation</h2>
+  <div id="validation-report" style="font-size:0.84em;max-height:400px;overflow-y:auto"></div>
+  <div class="modal-footer">
+    <button class="btn-secondary" onclick="Modals.close('modal-validation')">Fermer</button>
+  </div>
+</div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ═══════════════════ JAVASCRIPT ══════════════════════════════════════ -->
+<script>
+'use strict';
+// ─────────────────────────────────────────────────────────
+//  CONSTANTS
+// ─────────────────────────────────────────────────────────
+const TYPE_COLORS = {
+  'AcademicWork':        '#8b5cf6',
+  'Person':              '#f59e0b',
+  'Institution':         '#14b8a6',
+  'Concept':             '#6366f1',
+  'TheoreticFramework':  '#06b6d4',
+  'CrisisEvent':         '#ef4444',
+  'Protocol':            '#ec4899',
+  'ActorNonHuman':       '#f97316',
+  'Corpus':              '#94a3b8',
+  'MonetaryObject':      '#fbbf24',
+  'Reference':           '#10b981',
+  'ActorGroup':          '#dc2626',
+  'PrimarySource':       '#3b82f6',
+  'Method':              '#84cc16',
+  'Chapter':             '#e879f9',
+  'ThesisSection':       '#c084fc',
+  'Argument':            '#fb923c',
+  'NarrativeCluster':    '#38bdf8',
+  'SourceQuote':         '#a3e635',
+  'CrisisPhase':         '#ff6b6b',
+  'InfrastructureDomain':'#4ade80',
+  'InfrastructureEvent': '#facc15',
+  'DevelopmentPhase':    '#67e8f9',
+  'Actor':               '#fda4af',
+  'PriceSeries':         '#86efac',
+  'PriceWindow':         '#fcd34d',
+  'ProtocolChange':      '#f9a8d4',
+  'Capability':          '#a5f3fc',
+};
+const TYPE_SHAPES = {
+  'AcademicWork':        'round-rectangle',
+  'Person':              'ellipse',
+  'Institution':         'round-rectangle',
+  'Concept':             'hexagon',
+  'TheoreticFramework':  'diamond',
+  'CrisisEvent':         'star',
+  'Protocol':            'round-triangle',
+  'ActorNonHuman':       'rectangle',
+  'Corpus':              'barrel',
+  'MonetaryObject':      'vee',
+  'Reference':           'round-rectangle',
+  'ActorGroup':          'pentagon',
+  'PrimarySource':       'round-rectangle',
+  'Method':              'cut-rectangle',
+  'Chapter':             'diamond',
+  'ThesisSection':       'round-rectangle',
+  'Argument':            'hexagon',
+  'NarrativeCluster':    'ellipse',
+  'SourceQuote':         'round-rectangle',
+  'CrisisPhase':         'star',
+  'InfrastructureDomain':'rectangle',
+  'InfrastructureEvent': 'round-triangle',
+  'DevelopmentPhase':    'barrel',
+  'Actor':               'ellipse',
+  'PriceSeries':         'round-rectangle',
+  'PriceWindow':         'round-rectangle',
+  'ProtocolChange':      'pentagon',
+  'Capability':          'cut-rectangle',
+};
+
+// ─────────────────────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────────────────────
+const State = (() => {
+  let _data = null;          // current working data
+  let _original = null;      // snapshot at load time
+  let _version = 2;
+  let _dirty = false;
+  let _selectedId = null;
+  let _hiddenTypes = new Set();
+  let _searchQ = '';
+  let _undoStack = [];
+  let _errors = [];
+
+  const maps = {
+    entities: {},   // id → entity
+    types: {},      // id → type obj
+    typeName: {},   // name → type obj
+    relTypes: {},   // id → relType obj
+    relTypeName:{}, // name → relType obj
+    outgoing: {},   // entityId → [relation …]
+    incoming: {},   // entityId → [relation …]
+  };
+
+  function buildMaps(data) {
+    maps.entities = {};
+    maps.types = {};
+    maps.typeName = {};
+    maps.relTypes = {};
+    maps.relTypeName = {};
+    maps.outgoing = {};
+    maps.incoming = {};
+    for (const t of data.types) {
+      maps.types[t.id] = t;
+      maps.typeName[t.name] = t;
+    }
+    for (const r of data.relation_types) {
+      maps.relTypes[r.id] = r;
+      maps.relTypeName[r.name] = r;
+    }
+    for (const e of data.entities) {
+      maps.entities[e.id] = e;
+      maps.outgoing[e.id] = [];
+      maps.incoming[e.id] = [];
+    }
+    for (const rel of data.relations) {
+      if (maps.outgoing[rel.from]) maps.outgoing[rel.from].push(rel);
+      if (maps.incoming[rel.to])   maps.incoming[rel.to].push(rel);
+    }
+  }
+
+  function load(data) {
+    _original = JSON.parse(JSON.stringify(data));
+    _data = JSON.parse(JSON.stringify(data));
+    _version = parseInt((data.space && data.space.version) || 2) || 2;
+    _dirty = false;
+    _undoStack = [];
+    _errors = [];
+    _selectedId = null;
+    buildMaps(_data);
+  }
+
+  function snapshot() {
+    _undoStack.push(JSON.parse(JSON.stringify(_data)));
+    if (_undoStack.length > 40) _undoStack.shift();
+    _dirty = true;
+  }
+
+  function undo() {
+    if (!_undoStack.length) return false;
+    _data = _undoStack.pop();
+    buildMaps(_data);
+    return true;
+  }
+
+  function getEntityTypeName(entity) {
+    if (!entity.types || !entity.types.length) return 'Unknown';
+    const tid = entity.types[0];
+    return maps.types[tid] ? maps.types[tid].name : 'Unknown';
+  }
+
+  function getEntityDesc(entity) {
+    if (!entity.description) return '';
+    return entity.description.value || '';
+  }
+
+  return {
+    get data() { return _data; },
+    get version() { return _version; },
+    get dirty() { return _dirty; },
+    get selectedId() { return _selectedId; },
+    set selectedId(v) { _selectedId = v; },
+    get hiddenTypes() { return _hiddenTypes; },
+    get searchQ() { return _searchQ; },
+    set searchQ(v) { _searchQ = v; },
+    get errors() { return _errors; },
+    set errors(v) { _errors = v; },
+    maps,
+    load, snapshot, undo,
+    getEntityTypeName, getEntityDesc,
+    get undoCount() { return _undoStack.length; },
+    bumpVersion() { _version++; },
+  };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  ID GENERATOR  (nanoid-compatible 22 chars)
+// ─────────────────────────────────────────────────────────
+function generateId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  const arr = new Uint8Array(22);
+  crypto.getRandomValues(arr);
+  for (let i = 0; i < 22; i++) id += chars[arr[i] % chars.length];
+  return id;
+}
+
+// ─────────────────────────────────────────────────────────
+//  CYTOSCAPE GRAPH
+// ─────────────────────────────────────────────────────────
+const Graph = (() => {
+  let cy = null;
+
+  function getNodeLabel(entity) {
+    const name = entity.name || '?';
+    return name.length > 28 ? name.slice(0, 26) + '…' : name;
+  }
+
+  function entityToNode(entity) {
+    const typeName = State.getEntityTypeName(entity);
+    const color = TYPE_COLORS[typeName] || '#64748b';
+    const shape = TYPE_SHAPES[typeName] || 'ellipse';
+    const degree = (State.maps.outgoing[entity.id] || []).length
+                 + (State.maps.incoming[entity.id] || []).length;
+    const size = Math.max(18, Math.min(52, 18 + degree * 1.4));
+    return {
+      data: {
+        id: entity.id, label: getNodeLabel(entity),
+        typeName, color, shape, size,
+        fullName: entity.name,
+      }
+    };
+  }
+
+  function relationToEdge(rel, idx) {
+    const rtObj = State.maps.relTypes[rel.type];
+    const label = rtObj ? rtObj.name : rel.type;
+    return {
+      data: {
+        id: 'e_' + idx + '_' + rel.from + '_' + rel.to,
+        source: rel.from, target: rel.to,
+        relTypeId: rel.type, label,
+        _relIdx: idx,
+      }
+    };
+  }
+
+  function buildElements() {
+    const data = State.data;
+    if (!data) return [];
+    const nodes = data.entities.map(e => entityToNode(e));
+    const edges = data.relations.map((r, i) => relationToEdge(r, i))
+      .filter(e => {
+        const s = e.data.source, t = e.data.target;
+        return State.maps.entities[s] && State.maps.entities[t];
+      });
+    return [...nodes, ...edges];
+  }
+
+  function init() {
+    cy = cytoscape({
+      container: document.getElementById('cy'),
+      elements: [],
+      style: getCyStyle(),
+      layout: { name: 'preset' },
+      hideEdgesOnViewport: true,
+      textureOnViewport: true,
+      motionBlur: false,
+      pixelRatio: 'auto',
+    });
+
+    cy.on('tap', 'node', e => {
+      const id = e.target.data('id');
+      State.selectedId = id;
+      UI.renderPanel(id);
+      highlightNeighbors(id);
+    });
+    cy.on('tap', e => {
+      if (e.target === cy) {
+        State.selectedId = null;
+        resetHighlight();
+        UI.clearPanel();
+      }
+    });
+    cy.on('taphold', 'node', e => {
+      // quick view on long press
+    });
+  }
+
+  function getCyStyle() {
+    return [
+      {
+        selector: 'node',
+        style: {
+          'background-color': 'data(color)',
+          'shape': 'data(shape)',
+          'width': 'data(size)', 'height': 'data(size)',
+          'label': 'data(label)',
+          'font-size': '8px',
+          'color': '#ffd700',
+          'text-valign': 'bottom', 'text-halign': 'center',
+          'text-margin-y': 4,
+          'text-outline-color': '#2a0000', 'text-outline-width': 2,
+          'border-width': 1,
+          'border-color': '#c8a000',
+          'overlay-padding': 4,
+        }
+      },
+      {
+        selector: 'node:selected',
+        style: {
+          'border-width': 3, 'border-color': '#ffd700',
+          'border-opacity': 1,
+        }
+      },
+      {
+        selector: 'node.highlighted',
+        style: { 'border-width': 2, 'border-color': '#ffd700', 'border-opacity': 1 }
+      },
+      {
+        selector: 'node.faded',
+        style: { 'opacity': 0.08 }
+      },
+      {
+        selector: 'node.hidden-type',
+        style: { 'display': 'none' }
+      },
+      {
+        selector: 'node.search-hidden',
+        style: { 'display': 'none' }
+      },
+      {
+        selector: 'edge',
+        style: {
+          'width': 1,
+          'line-color': '#5a2000',
+          'target-arrow-color': '#c8a000',
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'bezier',
+          'arrow-scale': 0.7,
+          'opacity': 0.6,
+        }
+      },
+      {
+        selector: 'edge.highlighted',
+        style: { 'line-color': '#ffd700', 'target-arrow-color': '#ffd700', 'opacity': 1, 'width': 2 }
+      },
+      {
+        selector: 'edge.faded',
+        style: { 'opacity': 0.03 }
+      },
+    ];
+  }
+
+  function render() {
+    if (!cy) init();
+    const els = buildElements();
+    cy.elements().remove();
+    cy.add(els);
+    applyLayout(document.getElementById('layout-select').value || 'cose');
+    applyFilters();
+  }
+
+  function applyLayout(name) {
+    const layoutConfigs = {
+      'cose': {
+        name: 'cose', animate: false,
+        nodeRepulsion: 8000, edgeElasticity: 100,
+        gravity: 0.25, numIter: 500,
+        initialTemp: 200, coolingFactor: 0.95, minTemp: 1,
+        randomize: true, fit: true, padding: 40,
+      },
+      'dagre': {
+        name: 'dagre', animate: false,
+        rankDir: 'TB', rankSep: 80, nodeSep: 40, edgeSep: 20,
+        fit: true, padding: 40,
+      },
+      'circle': { name: 'circle', animate: false, fit: true, padding: 40 },
+      'concentric': {
+        name: 'concentric', animate: false, fit: true, padding: 40,
+        concentric: n => (State.maps.outgoing[n.data('id')] || []).length
+                       + (State.maps.incoming[n.data('id')] || []).length,
+        levelWidth: () => 4,
+      },
+      'grid': { name: 'grid', animate: false, fit: true, padding: 40 },
+    };
+    const cfg = layoutConfigs[name] || layoutConfigs['cose'];
+    cy.layout(cfg).run();
+  }
+
+  function applyFilters() {
+    if (!cy) return;
+    const q = State.searchQ.toLowerCase().trim();
+    const hidden = State.hiddenTypes;
+    cy.nodes().forEach(n => {
+      const typeName = n.data('typeName');
+      const name = (n.data('fullName') || '').toLowerCase();
+      n.removeClass('hidden-type search-hidden');
+      if (hidden.has(typeName)) { n.addClass('hidden-type'); return; }
+      if (q && !name.includes(q)) n.addClass('search-hidden');
+    });
+    // hide edges where source or target is hidden
+    cy.edges().forEach(e => {
+      const src = e.source(), tgt = e.target();
+      const srcHidden = src.hasClass('hidden-type') || src.hasClass('search-hidden');
+      const tgtHidden = tgt.hasClass('hidden-type') || tgt.hasClass('search-hidden');
+      if (srcHidden || tgtHidden) e.style('display', 'none');
+      else e.removeStyle('display');
+    });
+    updateStats();
+  }
+
+  function highlightNeighbors(id) {
+    cy.elements().removeClass('highlighted faded');
+    const node = cy.$id(id);
+    if (!node.length) return;
+    const neighbors = node.neighborhood();
+    cy.elements().not(node).not(neighbors).addClass('faded');
+    neighbors.addClass('highlighted');
+    node.addClass('highlighted');
+  }
+
+  function resetHighlight() {
+    cy.elements().removeClass('highlighted faded');
+  }
+
+  function addNode(entity) {
+    if (!cy) return;
+    const nodeData = entityToNode(entity);
+    cy.add(nodeData);
+    cy.$id(entity.id).position({ x: cy.width()/2 + (Math.random()-0.5)*100, y: cy.height()/2 + (Math.random()-0.5)*100 });
+    applyFilters();
+  }
+
+  function removeNode(id) {
+    if (!cy) return;
+    cy.$id(id).remove();
+    cy.edges(`[source = "${id}"], [target = "${id}"]`).remove();
+  }
+
+  function updateNode(entity) {
+    if (!cy) return;
+    const n = cy.$id(entity.id);
+    if (n.length) {
+      const newData = entityToNode(entity).data;
+      n.data(newData);
+    }
+  }
+
+  function addEdge(rel, idx) {
+    if (!cy) return;
+    const edgeData = relationToEdge(rel, idx);
+    const src = cy.$id(rel.from), tgt = cy.$id(rel.to);
+    if (src.length && tgt.length) cy.add(edgeData);
+  }
+
+  function removeEdge(edgeId) {
+    if (!cy) return;
+    cy.$(`[id = "${edgeId}"]`).remove();
+  }
+
+  function fit() { cy && cy.fit(40); }
+
+  function updateStats() {
+    const visible = cy ? cy.nodes(':visible').not('.hidden-type, .search-hidden').length : 0;
+    document.getElementById('stat-visible').textContent = visible;
+  }
+
+  return { init, render, applyLayout, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  EDITOR
+// ─────────────────────────────────────────────────────────
+const Editor = (() => {
+
+  function addEntity({ typeId, name, description, lang, attrs }) {
+    if (!name.trim()) { toast('Le nom est requis', 'error'); return null; }
+    State.snapshot();
+    const id = generateId();
+    const entity = {
+      id, name: name.trim(),
+      description: description ? { type: 'TEXT', value: description, options: { language: lang || 'fr' } } : undefined,
+      types: typeId ? [typeId] : [],
+      attributes: {},
+    };
+    if (attrs) {
+      for (const [k, v] of attrs) {
+        if (k.trim() && v.trim()) entity.attributes[k.trim()] = { type: 'TEXT', value: v.trim() };
+      }
+    }
+    if (!entity.description) delete entity.description;
+    State.data.entities.push(entity);
+    State.maps.entities[id] = entity;
+    State.maps.outgoing[id] = [];
+    State.maps.incoming[id] = [];
+    Graph.addNode(entity);
+    refreshUI();
+    toast(`Entité « ${name} » créée`, 'success');
+    return id;
+  }
+
+  function editEntity({ id, typeId, name, description, lang, attrs }) {
+    const entity = State.maps.entities[id];
+    if (!entity) return;
+    if (!name.trim()) { toast('Le nom est requis', 'error'); return; }
+    State.snapshot();
+    entity.name = name.trim();
+    entity.types = typeId ? [typeId] : entity.types;
+    if (description !== undefined) {
+      entity.description = { type: 'TEXT', value: description, options: { language: lang || 'fr' } };
+    }
+    entity.attributes = {};
+    if (attrs) {
+      for (const [k, v] of attrs) {
+        if (k.trim() && v.trim()) entity.attributes[k.trim()] = { type: 'TEXT', value: v.trim() };
+      }
+    }
+    Graph.updateNode(entity);
+    refreshUI();
+    UI.renderPanel(id);
+    toast(`Entité « ${name} » mise à jour`, 'success');
+  }
+
+  function deleteEntity(id) {
+    const entity = State.maps.entities[id];
+    if (!entity) return;
+    State.snapshot();
+    // Remove all relations involving this entity
+    State.data.relations = State.data.relations.filter(r => r.from !== id && r.to !== id);
+    // Remove entity
+    State.data.entities = State.data.entities.filter(e => e.id !== id);
+    delete State.maps.entities[id];
+    delete State.maps.outgoing[id];
+    delete State.maps.incoming[id];
+    // Clean incoming/outgoing refs
+    for (const eid of Object.keys(State.maps.outgoing)) {
+      State.maps.outgoing[eid] = State.maps.outgoing[eid].filter(r => r.from !== id && r.to !== id);
+      State.maps.incoming[eid] = State.maps.incoming[eid].filter(r => r.from !== id && r.to !== id);
+    }
+    Graph.removeNode(id);
+    if (State.selectedId === id) {
+      State.selectedId = null;
+      UI.clearPanel();
+    }
+    refreshUI();
+    toast('Entité supprimée', 'success');
+  }
+
+  function addRelation({ typeId, fromId, toId }) {
+    if (!typeId || !fromId || !toId) { toast('Tous les champs sont requis', 'error'); return; }
+    if (!State.maps.entities[fromId]) { toast('Entité source introuvable', 'error'); return; }
+    if (!State.maps.entities[toId])   { toast('Entité cible introuvable', 'error'); return; }
+    State.snapshot();
+    const rel = { type: typeId, from: fromId, to: toId, index: 'a' + State.data.relations.length };
+    State.data.relations.push(rel);
+    State.maps.outgoing[fromId].push(rel);
+    State.maps.incoming[toId].push(rel);
+    Graph.addEdge(rel, State.data.relations.length - 1);
+    if (State.selectedId === fromId || State.selectedId === toId) UI.renderPanel(State.selectedId);
+    refreshUI();
+    toast('Relation créée', 'success');
+  }
+
+  function deleteRelation(relIdx) {
+    if (relIdx < 0 || relIdx >= State.data.relations.length) return;
+    State.snapshot();
+    const rel = State.data.relations[relIdx];
+    State.data.relations.splice(relIdx, 1);
+    // Rebuild incoming/outgoing for affected entities
+    if (State.maps.outgoing[rel.from])
+      State.maps.outgoing[rel.from] = State.maps.outgoing[rel.from].filter((_, i) => State.data.relations.indexOf(_) !== -1);
+    if (State.maps.incoming[rel.to])
+      State.maps.incoming[rel.to] = State.maps.incoming[rel.to].filter((_, i) => State.data.relations.indexOf(_) !== -1);
+    // Rebuild maps properly
+    State.maps.outgoing = {};
+    State.maps.incoming = {};
+    for (const e of State.data.entities) {
+      State.maps.outgoing[e.id] = [];
+      State.maps.incoming[e.id] = [];
+    }
+    for (const r of State.data.relations) {
+      if (State.maps.outgoing[r.from]) State.maps.outgoing[r.from].push(r);
+      if (State.maps.incoming[r.to])   State.maps.incoming[r.to].push(r);
+    }
+    Graph.render(); // full re-render (edge IDs change with indices)
+    if (State.selectedId) UI.renderPanel(State.selectedId);
+    refreshUI();
+    toast('Relation supprimée', 'success');
+  }
+
+  function refreshUI() {
+    const d = State.data;
+    document.getElementById('stat-entities').textContent = d ? d.entities.length : '–';
+    document.getElementById('stat-relations').textContent = d ? d.relations.length : '–';
+    document.getElementById('stat-types').textContent = d ? d.types.length : '–';
+    document.getElementById('stat-errors').textContent = State.errors.length;
+    document.getElementById('export-version').textContent = State.version;
+    const undoBtn = document.getElementById('btn-undo');
+    const undoLabel = document.getElementById('undo-label');
+    if (State.undoCount > 0) {
+      undoBtn.classList.remove('hidden');
+      undoLabel.classList.remove('hidden');
+      undoLabel.textContent = State.undoCount + ' action(s)';
+    } else {
+      undoBtn.classList.add('hidden');
+      undoLabel.classList.add('hidden');
+    }
+    Graph.applyFilters();
+  }
+
+  return { addEntity, editEntity, deleteEntity, addRelation, deleteRelation, refreshUI };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  VALIDATOR
+// ─────────────────────────────────────────────────────────
+const Validator = (() => {
+  function run() {
+    const data = State.data;
+    if (!data) return [];
+    const errors = [];
+    // Broken relations
+    for (let i = 0; i < data.relations.length; i++) {
+      const r = data.relations[i];
+      if (!State.maps.entities[r.from]) {
+        errors.push({ type: 'broken_rel', msg: `Relation #${i}: source introuvable (${r.from})`, relIdx: i });
+      }
+      if (!State.maps.entities[r.to]) {
+        errors.push({ type: 'broken_rel', msg: `Relation #${i}: cible introuvable (${r.to})`, relIdx: i });
+      }
+    }
+    // Duplicate names within same type
+    const nameByType = {};
+    for (const e of data.entities) {
+      const typeName = State.getEntityTypeName(e);
+      const key = typeName + '|' + e.name.toLowerCase().trim();
+      if (!nameByType[key]) nameByType[key] = [];
+      nameByType[key].push(e);
+    }
+    for (const [key, ents] of Object.entries(nameByType)) {
+      if (ents.length > 1) {
+        errors.push({ type: 'duplicate', msg: `Doublon : « ${ents[0].name} » (${ents.length}× dans ${key.split('|')[0]})`, ids: ents.map(e => e.id) });
+      }
+    }
+    // Empty types
+    for (const t of data.types) {
+      const count = data.entities.filter(e => e.types && e.types.includes(t.id)).length;
+      if (count === 0) errors.push({ type: 'empty_type', msg: `Type « ${t.name} » vide (aucune entité)` });
+    }
+    State.errors = errors;
+    return errors;
+  }
+
+  function updateBadge() {
+    const errs = State.errors.length;
+    const badge = document.getElementById('error-badge');
+    const statErr = document.getElementById('stat-errors');
+    badge.textContent = errs + (errs === 1 ? ' erreur' : ' erreurs');
+    if (errs === 0) {
+      badge.className = 'badge-error badge-ok';
+    } else {
+      badge.className = 'badge-error' + (errs > 5 ? '' : ' badge-warn');
+    }
+    badge.classList.remove('hidden');
+    statErr.textContent = errs;
+  }
+
+  return { run, updateBadge };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  EXPORTER
+// ─────────────────────────────────────────────────────────
+const Exporter = (() => {
+  function exportJSON() {
+    const data = State.data;
+    if (!data) return;
+    State.bumpVersion();
+    const out = JSON.parse(JSON.stringify(data));
+    out.space = out.space || {};
+    out.space.version = String(State.version);
+    out.space.exported = new Date().toISOString();
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `grc20-these-mael-rolland-v${State.version}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    document.getElementById('export-version').textContent = State.version;
+    toast(`Exporté : v${State.version}`, 'success');
+  }
+  return { exportJSON };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  MODALS
+// ─────────────────────────────────────────────────────────
+const Modals = (() => {
+  function open(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+  function close(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+  function closeAll() {
+    document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.add('hidden'));
+  }
+  // Close on backdrop click
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('modal-backdrop')) closeAll();
+  });
+  return { open, close, closeAll };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  UI
+// ─────────────────────────────────────────────────────────
+const UI = (() => {
+
+  function renderTypeFilters() {
+    const data = State.data;
+    if (!data) return;
+    const container = document.getElementById('type-filters');
+    container.innerHTML = '';
+    // Count entities by type
+    const counts = {};
+    for (const e of data.entities) {
+      for (const tid of (e.types || [])) {
+        counts[tid] = (counts[tid] || 0) + 1;
+      }
+    }
+    for (const t of data.types) {
+      const color = TYPE_COLORS[t.name] || '#64748b';
+      const count = counts[t.id] || 0;
+      const hidden = State.hiddenTypes.has(t.name);
+      const item = document.createElement('div');
+      item.className = 'type-filter-item';
+      item.style.opacity = hidden ? '0.4' : '1';
+      item.innerHTML = `
+        <input type="checkbox" ${hidden ? '' : 'checked'} data-typename="${t.name}" style="display:none">
+        <div class="type-dot" style="background:${color}"></div>
+        <span class="type-label">${t.name}</span>
+        <span class="type-count">${count}</span>
+      `;
+      item.addEventListener('click', () => {
+        if (State.hiddenTypes.has(t.name)) State.hiddenTypes.delete(t.name);
+        else State.hiddenTypes.add(t.name);
+        renderTypeFilters();
+        Graph.applyFilters();
+      });
+      container.appendChild(item);
+    }
+  }
+
+  function renderPanel(id) {
+    const entity = State.maps.entities[id];
+    if (!entity) { clearPanel(); return; }
+    const typeName = State.getEntityTypeName(entity);
+    const color = TYPE_COLORS[typeName] || '#64748b';
+    const desc = State.getEntityDesc(entity);
+    const outgoing = State.maps.outgoing[id] || [];
+    const incoming = State.maps.incoming[id] || [];
+
+    document.getElementById('panel-empty').classList.add('hidden');
+    const body = document.getElementById('panel-body');
+    body.classList.remove('hidden');
+
+    // Build attributes HTML
+    let attrsHtml = '';
+    const attrs = entity.attributes || {};
+    for (const [k, v] of Object.entries(attrs)) {
+      const val = typeof v === 'object' ? (v.value || '') : String(v);
+      const isUrl = k.toLowerCase().includes('url') || k.toLowerCase().includes('website') || k.toLowerCase().includes('link') || val.startsWith('http');
+      attrsHtml += `<div class="attr-row">
+        <span class="attr-key">${k}</span>
+        <span class="attr-val">${isUrl ? `<a href="${val}" target="_blank" rel="noopener">${val}</a>` : escHtml(val)}</span>
+      </div>`;
+    }
+
+    // Build relations HTML
+    function relChip(rel, dir) {
+      const rtObj = State.maps.relTypes[rel.type];
+      const rtName = rtObj ? rtObj.name : rel.type;
+      const otherId = dir === 'out' ? rel.to : rel.from;
+      const other = State.maps.entities[otherId];
+      const otherName = other ? other.name : '⚠️ ' + otherId.slice(0, 8);
+      const otherType = other ? State.getEntityTypeName(other) : 'Unknown';
+      const otherColor = TYPE_COLORS[otherType] || '#64748b';
+      const relIdx = State.data.relations.indexOf(rel);
+      return `<span class="rel-chip" data-goto="${otherId}" title="${dir === 'out' ? 'vers' : 'depuis'}: ${otherName}">
+        ${dir === 'out' ? `<span class="rel-type-label">${escHtml(rtName)}</span><span class="rel-arrow">→</span>` : `<span class="rel-arrow">→</span><span class="rel-type-label">${escHtml(rtName)}</span>`}
+        <span style="color:${otherColor};font-weight:600">${escHtml(otherName.length > 22 ? otherName.slice(0,20)+'…' : otherName)}</span>
+        <span class="rel-del" data-relidx="${relIdx}" title="Supprimer cette relation">×</span>
+      </span>`;
+    }
+
+    const outHtml = outgoing.map(r => relChip(r, 'out')).join('') || '<span style="color:var(--text2);font-size:0.8em">Aucune</span>';
+    const inHtml  = incoming.map(r => relChip(r, 'in')).join('')  || '<span style="color:var(--text2);font-size:0.8em">Aucune</span>';
+
+    body.innerHTML = `
+      <div>
+        <div class="panel-type-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">
+          <div class="type-dot" style="background:${color}"></div>${escHtml(typeName)}
+        </div>
+      </div>
+      <div>
+        <div class="panel-name">${escHtml(entity.name)}</div>
+        <div class="panel-desc" style="margin-top:6px">${escHtml(desc) || '<em style="opacity:.5">Pas de description</em>'}</div>
+      </div>
+      ${attrsHtml ? `<div><div class="panel-section-title">Attributs</div>${attrsHtml}</div>` : ''}
+      <div>
+        <div class="panel-section-title">Relations sortantes (${outgoing.length})</div>
+        <div>${outHtml}</div>
+      </div>
+      <div>
+        <div class="panel-section-title">Relations entrantes (${incoming.length})</div>
+        <div>${inHtml}</div>
+      </div>
+      <hr class="panel-hr">
+      <div class="panel-actions">
+        <button class="btn-secondary btn-sm" id="panel-btn-edit">✏️ Modifier</button>
+        <button class="btn-secondary btn-sm" id="panel-btn-addrel">+ Relation</button>
+        <button class="btn-danger btn-sm" id="panel-btn-delete">🗑 Supprimer</button>
+      </div>
+      <div style="font-size:0.68em;color:var(--text2);font-family:var(--mono);margin-top:4px">${entity.id}</div>
+    `;
+
+    // Event listeners
+    body.querySelectorAll('.rel-chip').forEach(chip => {
+      chip.addEventListener('click', e => {
+        if (e.target.classList.contains('rel-del')) {
+          const idx = parseInt(e.target.dataset.relidx);
+          confirmDeleteRelation(idx);
+          e.stopPropagation();
+          return;
+        }
+        const gotoId = chip.dataset.goto;
+        if (gotoId && State.maps.entities[gotoId]) {
+          selectEntity(gotoId);
+        }
+      });
+    });
+
+    document.getElementById('panel-btn-edit').addEventListener('click', () => openEditModal(id));
+    document.getElementById('panel-btn-addrel').addEventListener('click', () => {
+      openAddRelationModal(id);
+    });
+    document.getElementById('panel-btn-delete').addEventListener('click', () => {
+      const rels = (State.maps.outgoing[id] || []).length + (State.maps.incoming[id] || []).length;
+      document.getElementById('confirm-delete-msg').textContent =
+        `Supprimer « ${entity.name} » ? Cette action supprimera aussi ${rels} relation(s) liée(s).`;
+      document.getElementById('confirm-delete-btn').onclick = () => {
+        Editor.deleteEntity(id);
+        Modals.close('modal-confirm-delete');
+      };
+      Modals.open('modal-confirm-delete');
+    });
+  }
+
+  function clearPanel() {
+    document.getElementById('panel-empty').classList.remove('hidden');
+    document.getElementById('panel-body').classList.add('hidden');
+    document.getElementById('panel-body').innerHTML = '';
+  }
+
+  function selectEntity(id) {
+    State.selectedId = id;
+    renderPanel(id);
+    const n = Graph.cy && Graph.cy.$id(id);
+    if (n && n.length) {
+      Graph.cy.animate({ center: { eles: n }, zoom: Math.max(Graph.cy.zoom(), 1.2) }, { duration: 300 });
+      n.select();
+    }
+    Graph.highlightNeighbors(id);
+  }
+
+  function openAddEntityModal() {
+    const sel = document.getElementById('ae-type');
+    sel.innerHTML = '';
+    for (const t of State.data.types) {
+      const opt = document.createElement('option');
+      opt.value = t.id; opt.textContent = t.name;
+      sel.appendChild(opt);
+    }
+    document.getElementById('ae-name').value = '';
+    document.getElementById('ae-desc').value = '';
+    document.getElementById('ae-attrs-editor').innerHTML = `
+      <div class="attr-edit-row">
+        <input type="text" class="field-input" placeholder="clé" style="max-width:110px">
+        <input type="text" class="field-input" placeholder="valeur">
+        <button class="btn-secondary btn-sm" onclick="UI.addAttrRow('ae-attrs-editor')">+</button>
+      </div>`;
+    Modals.open('modal-add-entity');
+  }
+
+  function openAddRelationModal(prefillFromId) {
+    const sel = document.getElementById('ar-type');
+    sel.innerHTML = '';
+    for (const rt of State.data.relation_types) {
+      const opt = document.createElement('option');
+      opt.value = rt.id; opt.textContent = rt.name;
+      sel.appendChild(opt);
+    }
+    document.getElementById('ar-from-id').value = '';
+    document.getElementById('ar-to-id').value = '';
+    document.getElementById('ar-from-preview').textContent = '';
+    document.getElementById('ar-to-preview').textContent = '';
+    document.getElementById('ar-from-search').value = '';
+    document.getElementById('ar-to-search').value = '';
+    if (prefillFromId && State.maps.entities[prefillFromId]) {
+      const e = State.maps.entities[prefillFromId];
+      document.getElementById('ar-from-id').value = prefillFromId;
+      document.getElementById('ar-from-search').value = e.name;
+      document.getElementById('ar-from-preview').textContent = `✓ ${e.name}`;
+    }
+    Modals.open('modal-add-relation');
+  }
+
+  function openEditModal(id) {
+    const entity = State.maps.entities[id];
+    if (!entity) return;
+    document.getElementById('ee-id').value = id;
+
+    const sel = document.getElementById('ee-type');
+    sel.innerHTML = '';
+    for (const t of State.data.types) {
+      const opt = document.createElement('option');
+      opt.value = t.id; opt.textContent = t.name;
+      if (entity.types && entity.types.includes(t.id)) opt.selected = true;
+      sel.appendChild(opt);
+    }
+
+    document.getElementById('ee-name').value = entity.name || '';
+    const desc = entity.description;
+    document.getElementById('ee-desc').value = desc ? (desc.value || '') : '';
+    document.getElementById('ee-lang').value = desc && desc.options ? (desc.options.language || 'fr') : 'fr';
+
+    const attrsEditor = document.getElementById('ee-attrs-editor');
+    attrsEditor.innerHTML = '';
+    const attrs = entity.attributes || {};
+    for (const [k, v] of Object.entries(attrs)) {
+      const val = typeof v === 'object' ? (v.value || '') : String(v);
+      addAttrRow('ee-attrs-editor', k, val);
+    }
+    if (Object.keys(attrs).length === 0) addAttrRow('ee-attrs-editor');
+
+    Modals.open('modal-edit-entity');
+  }
+
+  function addAttrRow(editorId, key='', val='') {
+    const editor = document.getElementById(editorId);
+    const row = document.createElement('div');
+    row.className = 'attr-edit-row';
+    row.innerHTML = `
+      <input type="text" class="field-input" placeholder="clé" value="${escHtml(key)}" style="max-width:120px">
+      <input type="text" class="field-input" placeholder="valeur" value="${escHtml(val)}">
+      <button class="btn-danger btn-sm" onclick="this.parentElement.remove()">–</button>
+    `;
+    editor.appendChild(row);
+  }
+
+  function getAttrRows(editorId) {
+    const rows = document.querySelectorAll(`#${editorId} .attr-edit-row`);
+    const result = [];
+    rows.forEach(row => {
+      const inputs = row.querySelectorAll('input');
+      if (inputs.length >= 2) result.push([inputs[0].value, inputs[1].value]);
+    });
+    return result;
+  }
+
+  function setupEntitySearch(inputId, suggestId, hiddenId, previewId) {
+    const input = document.getElementById(inputId);
+    const suggest = document.getElementById(suggestId);
+    const hidden = document.getElementById(hiddenId);
+    const preview = document.getElementById(previewId);
+
+    input.addEventListener('input', () => {
+      const q = input.value.toLowerCase().trim();
+      suggest.innerHTML = '';
+      if (!q) { suggest.style.display = 'none'; return; }
+      const matches = State.data.entities.filter(e => e.name.toLowerCase().includes(q)).slice(0, 12);
+      if (!matches.length) { suggest.style.display = 'none'; return; }
+      matches.forEach(e => {
+        const typeName = State.getEntityTypeName(e);
+        const color = TYPE_COLORS[typeName] || '#64748b';
+        const item = document.createElement('div');
+        item.style.cssText = 'padding:6px 10px;cursor:pointer;font-size:0.82em;display:flex;gap:6px;align-items:center;';
+        item.innerHTML = `<div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0"></div>${escHtml(e.name)}<span style="color:var(--text2);font-size:0.85em">${typeName}</span>`;
+        item.addEventListener('mouseenter', () => item.style.background = 'var(--bg2)');
+        item.addEventListener('mouseleave', () => item.style.background = '');
+        item.addEventListener('click', () => {
+          input.value = e.name;
+          hidden.value = e.id;
+          preview.textContent = `✓ ${e.name} [${typeName}]`;
+          suggest.style.display = 'none';
+        });
+        suggest.appendChild(item);
+      });
+      suggest.style.display = 'block';
+    });
+    input.addEventListener('blur', () => setTimeout(() => { suggest.style.display = 'none'; }, 200));
+  }
+
+  function confirmDeleteRelation(relIdx) {
+    const rel = State.data.relations[relIdx];
+    if (!rel) return;
+    const rt = State.maps.relTypes[rel.type];
+    const from = State.maps.entities[rel.from];
+    const to = State.maps.entities[rel.to];
+    document.getElementById('confirm-delete-msg').textContent =
+      `Supprimer la relation « ${rt ? rt.name : rel.type} » de « ${from ? from.name : rel.from} » vers « ${to ? to.name : rel.to} » ?`;
+    document.getElementById('confirm-delete-btn').onclick = () => {
+      Editor.deleteRelation(relIdx);
+      Modals.close('modal-confirm-delete');
+    };
+    Modals.open('modal-confirm-delete');
+  }
+
+  return {
+    renderTypeFilters, renderPanel, clearPanel, selectEntity,
+    openAddEntityModal, openAddRelationModal, openEditModal,
+    addAttrRow, getAttrRows, setupEntitySearch, confirmDeleteRelation,
+  };
+})();
+
+// ─────────────────────────────────────────────────────────
+//  TOAST
+// ─────────────────────────────────────────────────────────
+function toast(msg, type='info') {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+// ─────────────────────────────────────────────────────────
+//  UTILS
+// ─────────────────────────────────────────────────────────
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─────────────────────────────────────────────────────────
+//  BOOT
+// ─────────────────────────────────────────────────────────
+function onDataLoaded(data) {
+  // Validate minimal structure
+  if (!data.entities || !data.relations || !data.types) {
+    toast('Fichier JSON invalide : structure GRC-20 attendue', 'error');
+    return;
+  }
+  State.load(data);
+  document.getElementById('canvas-overlay').classList.add('hidden');
+  document.getElementById('version-label').textContent = `GRC-20 v${data.space && data.space.version || '?'} · ${data.entities.length} entités · ${data.relations.length} rel.`;
+
+  // Enable buttons
+  ['btn-add-entity','btn-add-relation','btn-validate','btn-export'].forEach(id => {
+    document.getElementById(id).disabled = false;
+  });
+
+  Graph.render();
+  UI.renderTypeFilters();
+  Editor.refreshUI();
+
+  // Auto-validate
+  Validator.run();
+  Validator.updateBadge();
+
+  toast(`Graphe chargé : ${data.entities.length} entités, ${data.relations.length} relations`, 'success');
+}
+
+// ─────────────────────────────────────────────────────────
+//  EVENT LISTENERS
+// ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── File loading ──────────────────────────────────────
+  const fileInput = document.getElementById('file-input');
+  function triggerLoad() { fileInput.click(); }
+  document.getElementById('btn-load').addEventListener('click', triggerLoad);
+  document.getElementById('btn-load2').addEventListener('click', triggerLoad);
+  fileInput.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const data = JSON.parse(ev.target.result);
+        onDataLoaded(data);
+      } catch(err) {
+        toast('Erreur de lecture JSON : ' + err.message, 'error');
+      }
+    };
+    reader.readAsText(file);
+    fileInput.value = '';
+  });
+
+  // ── Layout ───────────────────────────────────────────
+  document.getElementById('btn-relayout').addEventListener('click', () => {
+    if (!State.data) return;
+    Graph.applyLayout(document.getElementById('layout-select').value);
+  });
+  document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
+
+  // ── Search ───────────────────────────────────────────
+  document.getElementById('search-input').addEventListener('input', e => {
+    State.searchQ = e.target.value;
+    Graph.applyFilters();
+  });
+  document.getElementById('search-clear').addEventListener('click', () => {
+    State.searchQ = '';
+    document.getElementById('search-input').value = '';
+    Graph.applyFilters();
+  });
+
+  // ── Filter all/none ───────────────────────────────────
+  document.getElementById('btn-filter-all').addEventListener('click', () => {
+    State.hiddenTypes.clear();
+    UI.renderTypeFilters();
+    Graph.applyFilters();
+  });
+  document.getElementById('btn-filter-none').addEventListener('click', () => {
+    if (!State.data) return;
+    State.data.types.forEach(t => State.hiddenTypes.add(t.name));
+    UI.renderTypeFilters();
+    Graph.applyFilters();
+  });
+
+  // ── Undo ─────────────────────────────────────────────
+  document.getElementById('btn-undo').addEventListener('click', () => {
+    if (State.undo()) {
+      Graph.render();
+      UI.renderTypeFilters();
+      Editor.refreshUI();
+      if (State.selectedId && State.maps.entities[State.selectedId]) {
+        UI.renderPanel(State.selectedId);
+      } else {
+        UI.clearPanel();
+      }
+      toast('Action annulée', 'success');
+    }
+  });
+
+  // ── Add Entity ────────────────────────────────────────
+  document.getElementById('btn-add-entity').addEventListener('click', () => {
+    if (!State.data) return;
+    UI.openAddEntityModal();
+  });
+  document.getElementById('ae-confirm').addEventListener('click', () => {
+    const typeId = document.getElementById('ae-type').value;
+    const name = document.getElementById('ae-name').value;
+    const desc = document.getElementById('ae-desc').value;
+    const lang = document.getElementById('ae-lang').value;
+    const attrs = UI.getAttrRows('ae-attrs-editor');
+    const newId = Editor.addEntity({ typeId, name, description: desc, lang, attrs });
+    if (newId) {
+      Modals.close('modal-add-entity');
+      UI.renderTypeFilters();
+      setTimeout(() => UI.selectEntity(newId), 100);
+    }
+  });
+
+  // ── Add Relation ──────────────────────────────────────
+  document.getElementById('btn-add-relation').addEventListener('click', () => {
+    if (!State.data) return;
+    UI.openAddRelationModal(State.selectedId);
+  });
+  UI.setupEntitySearch('ar-from-search', 'ar-from-suggestions', 'ar-from-id', 'ar-from-preview');
+  UI.setupEntitySearch('ar-to-search', 'ar-to-suggestions', 'ar-to-id', 'ar-to-preview');
+  document.getElementById('ar-confirm').addEventListener('click', () => {
+    const typeId = document.getElementById('ar-type').value;
+    const fromId = document.getElementById('ar-from-id').value;
+    const toId   = document.getElementById('ar-to-id').value;
+    Editor.addRelation({ typeId, fromId, toId });
+    if (fromId && toId) Modals.close('modal-add-relation');
+  });
+
+  // ── Edit Entity ───────────────────────────────────────
+  document.getElementById('ee-confirm').addEventListener('click', () => {
+    const id = document.getElementById('ee-id').value;
+    const typeId = document.getElementById('ee-type').value;
+    const name = document.getElementById('ee-name').value;
+    const desc = document.getElementById('ee-desc').value;
+    const lang = document.getElementById('ee-lang').value;
+    const attrs = UI.getAttrRows('ee-attrs-editor');
+    Editor.editEntity({ id, typeId, name, description: desc, lang, attrs });
+    Modals.close('modal-edit-entity');
+    UI.renderTypeFilters();
+  });
+
+  // ── Validate ─────────────────────────────────────────
+  document.getElementById('btn-validate').addEventListener('click', () => {
+    if (!State.data) return;
+    const errors = Validator.run();
+    Validator.updateBadge();
+    // Render report modal
+    let html = '';
+    if (errors.length === 0) {
+      html = '<div style="color:var(--success);font-weight:600">✓ Aucune erreur détectée</div>';
+    } else {
+      const grouped = { broken_rel: [], duplicate: [], empty_type: [] };
+      for (const e of errors) grouped[e.type] = grouped[e.type] || [];
+      for (const e of errors) grouped[e.type].push(e);
+      for (const [type, list] of Object.entries(grouped)) {
+        if (!list.length) continue;
+        const labels = { broken_rel: '⚠️ Relations cassées', duplicate: '🔁 Doublons', empty_type: '○ Types vides' };
+        html += `<div style="margin-bottom:10px"><div style="font-weight:700;margin-bottom:5px;color:var(--warn)">${labels[type] || type} (${list.length})</div>`;
+        for (const e of list) {
+          html += `<div style="padding:3px 0;border-bottom:1px solid var(--border);color:var(--text2)">${escHtml(e.msg)}</div>`;
+        }
+        html += '</div>';
+      }
+    }
+    document.getElementById('validation-report').innerHTML = html;
+    Modals.open('modal-validation');
+  });
+
+  // ── Export ────────────────────────────────────────────
+  document.getElementById('btn-export').addEventListener('click', () => Exporter.exportJSON());
+
+  // ── Theme toggle ──────────────────────────────────────
+  document.getElementById('btn-theme').addEventListener('click', () => {
+    const html = document.documentElement;
+    html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  });
+
+  // ── Keyboard shortcuts ────────────────────────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') Modals.closeAll();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+      e.preventDefault();
+      document.getElementById('btn-undo').click();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+      e.preventDefault();
+      document.getElementById('search-input').focus();
+    }
+  });
+
+  // ── Drag & drop JSON ──────────────────────────────────
+  document.addEventListener('dragover', e => e.preventDefault());
+  document.addEventListener('drop', e => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file && file.name.endsWith('.json')) {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try { onDataLoaded(JSON.parse(ev.target.result)); }
+        catch(err) { toast('JSON invalide', 'error'); }
+      };
+      reader.readAsText(file);
+    }
+  });
+
+});
+</script>
+</body>
+</html>
