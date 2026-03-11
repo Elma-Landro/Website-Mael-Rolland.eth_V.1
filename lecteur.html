@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Au-delà des codes — Lecteur de thèse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════
+   VARIABLES — charte mael-rolland.eth
+═══════════════════════════════════════════════════════ */
+:root {
+  --bg:        #1a0000;
+  --bg2:       #2a0000;
+  --bg3:       #3a0a00;
+  --border:    #8b6000;
+  --gold:      #ffd700;
+  --gold2:     #c8a000;
+  --gold-dim:  #6b5000;
+  --text:      #f0e0b0;
+  --text2:     #c0a060;
+  --accent:    #ff6600;
+  --danger:    #ff3333;
+  --success:   #44ff88;
+  --pixel:     'Press Start 2P', monospace;
+  --body:      'Courier Prime', 'Courier New', monospace;
+  --reader-w:  66%;
+  --graph-w:   34%;
+  --header-h:  52px;
+  --sidebar-w: 240px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%; width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 15px;
+  overflow: hidden;
+}
+
+/* ── SCANLINES effect ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* ═══ HEADER ═══════════════════════════════════════════ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header-h);
+  background: var(--bg2);
+  border-bottom: 2px solid var(--border);
+  display: flex; align-items: center; gap: 16px; padding: 0 20px;
+}
+
+.site-logo {
+  font-family: var(--pixel);
+  font-size: 0.7em;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(255,215,0,0.4);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.site-subtitle {
+  font-family: var(--pixel);
+  font-size: 0.45em;
+  color: var(--gold2);
+  white-space: nowrap;
+}
+
+.header-sep {
+  flex: 1;
+}
+
+/* Language toggle */
+.lang-toggle {
+  display: flex; gap: 4px;
+}
+.lang-btn {
+  font-family: var(--pixel);
+  font-size: 0.5em;
+  padding: 4px 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--gold2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+}
+.lang-btn:hover:not(.active) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Chapter nav */
+.chapter-nav {
+  display: flex; gap: 2px;
+}
+.ch-btn {
+  font-family: var(--pixel);
+  font-size: 0.45em;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.ch-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(255,215,0,0.08);
+}
+.ch-btn:hover {
+  border-color: var(--gold2);
+  color: var(--gold2);
+}
+
+/* Back link */
+.back-link {
+  font-family: var(--pixel);
+  font-size: 0.45em;
+  color: var(--gold2);
+  text-decoration: none;
+  border: 1px solid var(--gold-dim);
+  padding: 4px 8px;
+  transition: all 0.15s;
+}
+.back-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ═══ MAIN LAYOUT ════════════════════════════════════== */
+.main-layout {
+  display: flex;
+  height: 100vh;
+  padding-top: var(--header-h);
+}
+
+/* ═══ TOC SIDEBAR ═══════════════════════════════════════ */
+.toc-sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-title {
+  font-family: var(--pixel);
+  font-size: 0.5em;
+  color: var(--gold2);
+  letter-spacing: 0.1em;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.toc-chapter {
+  padding: 6px 16px;
+  font-family: var(--pixel);
+  font-size: 0.42em;
+  color: var(--gold2);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.6;
+}
+.toc-chapter:hover { color: var(--gold); background: rgba(255,215,0,0.05); }
+.toc-chapter.active { color: var(--gold); border-left-color: var(--gold); background: rgba(255,215,0,0.08); }
+
+.toc-section {
+  padding: 4px 16px 4px 28px;
+  font-family: var(--body);
+  font-size: 0.75em;
+  color: var(--text2);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.toc-section:hover { color: var(--text); background: rgba(255,215,0,0.03); }
+.toc-section.active { color: var(--gold2); border-left-color: var(--gold2); }
+
+/* ═══ READER COLUMN ════════════════════════════════════ */
+.reader-col {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 48px 80px;
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+/* Typography */
+.reader-content h1 {
+  font-family: var(--pixel);
+  font-size: 0.85em;
+  color: var(--gold);
+  margin: 48px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+.reader-content h2 {
+  font-family: var(--pixel);
+  font-size: 0.65em;
+  color: var(--gold2);
+  margin: 36px 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gold-dim);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+.reader-content h3 {
+  font-family: var(--pixel);
+  font-size: 0.52em;
+  color: var(--text);
+  margin: 28px 0 14px;
+  line-height: 1.6;
+}
+.reader-content h4 {
+  font-family: var(--body);
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--gold2);
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.reader-content p {
+  line-height: 1.85;
+  margin-bottom: 1.2em;
+  color: var(--text);
+  font-size: 0.95em;
+  text-align: justify;
+}
+
+.reader-content blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 12px 20px;
+  margin: 24px 0;
+  background: rgba(255,215,0,0.04);
+  font-style: italic;
+  color: var(--text2);
+}
+
+.reader-content em { color: var(--text); font-style: italic; }
+.reader-content strong { color: var(--gold2); font-weight: 700; }
+
+.reader-content a {
+  color: var(--gold2);
+  text-decoration: underline dotted;
+  transition: color 0.15s;
+}
+.reader-content a:hover { color: var(--gold); }
+
+.reader-content code {
+  font-family: var(--body);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  font-size: 0.88em;
+  color: var(--accent);
+}
+
+.reader-content sup {
+  font-size: 0.7em;
+  color: var(--gold2);
+  cursor: pointer;
+}
+
+.reader-content img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  display: block;
+  margin: 20px auto;
+}
+
+/* Entity highlight */
+.entity-mention {
+  background: rgba(255,215,0,0.12);
+  border-bottom: 1px solid var(--gold2);
+  color: var(--gold);
+  cursor: pointer;
+  padding: 0 2px;
+  border-radius: 0;
+  transition: background 0.15s;
+}
+.entity-mention:hover {
+  background: rgba(255,215,0,0.25);
+}
+
+/* Section anchor */
+.section-anchor {
+  display: block;
+  height: 1px;
+  margin-top: -var(--header-h);
+}
+
+/* Loading state */
+.loading-msg {
+  font-family: var(--pixel);
+  font-size: 0.6em;
+  color: var(--gold2);
+  text-align: center;
+  padding: 60px 20px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Footnotes section */
+.footnotes-section {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.82em;
+  color: var(--text2);
+  line-height: 1.6;
+}
+.footnotes-section ol { padding-left: 20px; }
+.footnotes-section li { margin-bottom: 8px; }
+
+/* ═══ GRAPH COLUMN ══════════════════════════════════════ */
+.graph-col {
+  width: 360px;
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-left: 2px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.graph-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg3);
+  flex-shrink: 0;
+}
+
+.graph-header-title {
+  font-family: var(--pixel);
+  font-size: 0.45em;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.graph-section-name {
+  font-family: var(--body);
+  font-size: 0.75em;
+  color: var(--text2);
+  line-height: 1.3;
+  min-height: 1.3em;
+}
+
+/* Type filters */
+.graph-filters {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 4px;
+  flex-shrink: 0;
+  max-height: 90px;
+  overflow-y: auto;
+}
+
+.filter-chip {
+  font-family: var(--pixel);
+  font-size: 0.38em;
+  padding: 3px 6px;
+  border: 1px solid;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+.filter-chip.on { opacity: 1; }
+
+/* Graph canvas */
+#cy-reader {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+/* Graph stats */
+.graph-stats {
+  padding: 6px 14px;
+  border-top: 1px solid var(--border);
+  font-family: var(--pixel);
+  font-size: 0.38em;
+  color: var(--gold-dim);
+  display: flex; justify-content: space-between;
+  flex-shrink: 0;
+}
+
+/* ═══ ENTITY PANEL ══════════════════════════════════════ */
+.entity-panel {
+  position: fixed;
+  top: var(--header-h);
+  right: 0;
+  width: 380px;
+  height: calc(100vh - var(--header-h));
+  background: var(--bg2);
+  border-left: 2px solid var(--gold);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 200;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.entity-panel.open { transform: translateX(0); }
+
+.panel-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-shrink: 0;
+  background: var(--bg3);
+}
+
+.panel-entity-name {
+  font-family: var(--pixel);
+  font-size: 0.55em;
+  color: var(--gold);
+  line-height: 1.6;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.panel-entity-type {
+  font-family: var(--pixel);
+  font-size: 0.4em;
+  padding: 3px 7px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.panel-close {
+  font-family: var(--pixel);
+  font-size: 0.5em;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gold2);
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.panel-close:hover { border-color: var(--gold); color: var(--gold); }
+
+.panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.panel-desc {
+  font-family: var(--body);
+  font-size: 0.88em;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-relations-title {
+  font-family: var(--pixel);
+  font-size: 0.42em;
+  color: var(--gold2);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.panel-relation {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(139,96,0,0.3);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.panel-relation:hover { background: rgba(255,215,0,0.04); }
+
+.rel-arrow {
+  font-family: var(--pixel);
+  font-size: 0.4em;
+  color: var(--gold-dim);
+  flex-shrink: 0;
+  margin-top: 2px;
+  min-width: 14px;
+}
+
+.rel-type {
+  font-family: var(--pixel);
+  font-size: 0.38em;
+  color: var(--gold2);
+  flex-shrink: 0;
+  background: var(--bg3);
+  padding: 2px 5px;
+  border: 1px solid var(--border);
+  margin-top: 1px;
+}
+
+.rel-target {
+  font-family: var(--body);
+  font-size: 0.82em;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* ═══ SCROLLBAR ═════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold2); }
+
+/* ═══ RESPONSIVE ════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .toc-sidebar { display: none; }
+  .graph-col { width: 280px; }
+}
+@media (max-width: 640px) {
+  .graph-col { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ════════════════════════════════════════════ -->
+<header class="site-header">
+  <a href="these.html" class="back-link">← Thèse</a>
+  <div>
+    <div class="site-logo">◈ Au-delà des codes</div>
+    <div class="site-subtitle">Lecteur de thèse · Maël Rolland (EHESS, 2024)</div>
+  </div>
+
+  <nav class="chapter-nav" id="chapter-nav">
+    <!-- populated by JS -->
+  </nav>
+
+  <div class="header-sep"></div>
+
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<!-- ══ MAIN ══════════════════════════════════════════════ -->
+<div class="main-layout">
+
+  <!-- TOC -->
+  <nav class="toc-sidebar" id="toc-sidebar">
+    <div class="toc-title">TABLE DES MATIÈRES</div>
+    <div id="toc-content"><!-- populated --></div>
+  </nav>
+
+  <!-- Reader -->
+  <main class="reader-col" id="reader-col">
+    <div class="reader-content" id="reader-content">
+      <div class="loading-msg">Chargement…</div>
+    </div>
+  </main>
+
+  <!-- Graph -->
+  <aside class="graph-col">
+    <div class="graph-header">
+      <div class="graph-header-title">◈ GRAPHE CONTEXTUEL</div>
+      <div class="graph-section-name" id="graph-section-name">—</div>
+    </div>
+    <div class="graph-filters" id="graph-filters"><!-- populated --></div>
+    <div id="cy-reader"></div>
+    <div class="graph-stats">
+      <span id="stat-nodes">0 nœuds</span>
+      <span id="stat-edges">0 liens</span>
+    </div>
+  </aside>
+
+</div>
+
+<!-- ══ ENTITY PANEL ═══════════════════════════════════════ -->
+<div class="entity-panel" id="entity-panel">
+  <div class="panel-header">
+    <div>
+      <div class="panel-entity-name" id="panel-name">—</div>
+      <div class="panel-entity-type" id="panel-type">—</div>
+    </div>
+    <button class="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="panel-desc" id="panel-desc">—</div>
+    <div class="panel-relations-title">RELATIONS</div>
+    <div id="panel-relations">—</div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  CONFIGURATION
+// ═══════════════════════════════════════════════════════
+const BASE = './assets/MD/';
+const GRAPH_FILE = './grc20-these-mael-rolland-v70.json';
+
+const CHAPTERS_DEF = [
+  { id: 'intro',   labelFR: 'Intro',    labelEN: 'Intro',
+    fileFR: '00_introduction.md',   fileEN: '00_introduction_EN.md' },
+  { id: 'ch1',     labelFR: 'Chap. I',  labelEN: 'Ch. I',
+    fileFR: '01_chapitre_I.md',     fileEN: '01_chapitre_I_EN.md' },
+  { id: 'ch2',     labelFR: 'Chap. II', labelEN: 'Ch. II',
+    fileFR: '02_chapitre_II.md',    fileEN: '02_chapitre_II_EN.md' },
+  { id: 'ch3',     labelFR: 'Chap. III',labelEN: 'Ch. III',
+    fileFR: '03_chapitre_III.md',   fileEN: '03_chapitre_III_EN.md' },
+  { id: 'ccl',     labelFR: 'Conclusion',labelEN: 'Conclusion',
+    fileFR: '04_conclusion.md',     fileEN: '04_conclusion_EN.md' },
+  { id: 'glossaire',labelFR: 'Glossaire',labelEN: 'Glossary',
+    fileFR: '05_glossaire_annexes.md', fileEN: null },
+];
+
+// ═══════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════
+let state = {
+  lang: 'fr',
+  currentChapter: 'intro',
+  graphData: null,
+  entityMap: {},
+  typeMap: {},
+  relTypeMap: {},
+  adjacency: {},       // id -> [{nid, relName, dir}]
+  sectionMap: {},      // section name (normalized) -> entity
+  chapterMap: {},      // chapter name (normalized) -> entity
+  activeFilters: new Set(),
+  cy: null,
+  observer: null,
+};
+
+// ═══════════════════════════════════════════════════════
+//  TYPE COLORS
+// ═══════════════════════════════════════════════════════
+const TYPE_COLORS = {
+  'AcademicWork':        '#8b5cf6',
+  'Person':              '#f59e0b',
+  'Institution':         '#14b8a6',
+  'Concept':             '#6366f1',
+  'TheoreticFramework':  '#06b6d4',
+  'CrisisEvent':         '#ef4444',
+  'Protocol':            '#ec4899',
+  'ActorNonHuman':       '#f97316',
+  'Corpus':              '#94a3b8',
+  'MonetaryObject':      '#fbbf24',
+  'Reference':           '#10b981',
+  'ActorGroup':          '#dc2626',
+  'PrimarySource':       '#3b82f6',
+  'Method':              '#84cc16',
+  'Chapter':             '#e879f9',
+  'ThesisSection':       '#c084fc',
+  'Argument':            '#fb923c',
+  'NarrativeCluster':    '#38bdf8',
+  'SourceQuote':         '#a3e635',
+  'CrisisPhase':         '#ff6b6b',
+  'InfrastructureDomain':'#4ade80',
+  'InfrastructureEvent': '#facc15',
+  'DevelopmentPhase':    '#67e8f9',
+  'Actor':               '#fda4af',
+  'PriceSeries':         '#86efac',
+  'PriceWindow':         '#fcd34d',
+  'ProtocolChange':      '#f9a8d4',
+  'Capability':          '#a5f3fc',
+  'GovernanceArena':     '#f97316',
+  'GovernanceConflict':  '#ef4444',
+  'GovernanceProcess':   '#22d3ee',
+  'ProtocolProposal':    '#a78bfa',};
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+async function init() {
+  renderChapterNav();
+  await loadGraph();
+  initCytoscape();
+  await loadChapter('intro');
+}
+
+// ═══════════════════════════════════════════════════════
+//  GRAPH LOADING
+// ═══════════════════════════════════════════════════════
+async function loadGraph() {
+  try {
+    const res = await fetch(GRAPH_FILE);
+    const data = await res.json();
+    state.graphData = data;
+
+    // Build lookup maps
+    state.typeMap    = Object.fromEntries(data.types.map(t => [t.id, t.name]));
+    state.relTypeMap = Object.fromEntries(data.relation_types.map(r => [r.id, r.name]));
+    state.entityMap  = Object.fromEntries(data.entities.map(e => [e.id, e]));
+
+    // Build adjacency
+    const adj = {};
+    for (const e of data.entities) adj[e.id] = [];
+    for (const r of data.relations) {
+      const rname = state.relTypeMap[r.type] || r.type;
+      adj[r.from]?.push({ nid: r.to,   relName: rname, dir: 'out' });
+      adj[r.to]?.push({  nid: r.from,  relName: rname, dir: 'in'  });
+    }
+    state.adjacency = adj;
+
+    // Build section/chapter maps (normalized name → entity)
+    for (const e of data.entities) {
+      const types = (e.types || []).map(t => state.typeMap[t]);
+      if (types.includes('ThesisSection')) {
+        state.sectionMap[normalize(e.name)] = e;
+      }
+      if (types.includes('Chapter')) {
+        state.chapterMap[normalize(e.name)] = e;
+      }
+    }
+
+    // Init filters (all types present in graph)
+    const presentTypes = new Set();
+    for (const e of data.entities) {
+      for (const t of (e.types || [])) {
+        const tn = state.typeMap[t];
+        if (tn && !['Chapter','ThesisSection'].includes(tn)) presentTypes.add(tn);
+      }
+    }
+    state.activeFilters = new Set(presentTypes);
+    renderFilters(presentTypes);
+  } catch (err) {
+    console.warn('Graph not loaded:', err);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  CYTOSCAPE INIT
+// ═══════════════════════════════════════════════════════
+function initCytoscape() {
+  state.cy = cytoscape({
+    container: document.getElementById('cy-reader'),
+    elements: [],
+    style: [
+      {
+        selector: 'node',
+        style: {
+          'background-color': 'data(color)',
+          'label': 'data(label)',
+          'font-size': '7px',
+          'font-family': 'Courier Prime, monospace',
+          'color': '#ffd700',
+          'text-valign': 'bottom',
+          'text-halign': 'center',
+          'text-margin-y': 3,
+          'text-outline-color': '#1a0000',
+          'text-outline-width': 2,
+          'width': 'data(size)',
+          'height': 'data(size)',
+          'border-width': 1,
+          'border-color': '#6b5000',
+          'shape': 'ellipse',
+        }
+      },
+      {
+        selector: 'node[type = "ThesisSection"]',
+        style: { 'shape': 'diamond', 'border-color': '#c084fc', 'border-width': 2 }
+      },
+      {
+        selector: 'node[type = "CrisisEvent"]',
+        style: { 'shape': 'star' }
+      },
+      {
+        selector: 'node[type = "Concept"]',
+        style: { 'shape': 'hexagon' }
+      },
+      {
+        selector: 'node[type = "Person"]',
+        style: { 'shape': 'ellipse' }
+      },
+      {
+        selector: 'node:selected',
+        style: { 'border-width': 3, 'border-color': '#ffd700' }
+      },
+      {
+        selector: 'node.highlighted',
+        style: { 'border-width': 2, 'border-color': '#ffd700', 'opacity': 1 }
+      },
+      {
+        selector: 'node.faded',
+        style: { 'opacity': 0.15 }
+      },
+      {
+        selector: 'node.hidden-filter',
+        style: { 'display': 'none' }
+      },
+      {
+        selector: 'edge',
+        style: {
+          'width': 1,
+          'line-color': '#5a2000',
+          'target-arrow-color': '#8b6000',
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'bezier',
+          'arrow-scale': 0.6,
+          'opacity': 0.5,
+        }
+      },
+      {
+        selector: 'edge.highlighted',
+        style: { 'line-color': '#ffd700', 'target-arrow-color': '#ffd700', 'opacity': 1, 'width': 2 }
+      },
+    ],
+    layout: { name: 'preset' },
+    hideEdgesOnViewport: true,
+    textureOnViewport: true,
+  });
+
+  // Events
+  state.cy.on('tap', 'node', e => {
+    const id = e.target.data('id');
+    openEntityPanel(id);
+  });
+  state.cy.on('mouseover', 'node', e => {
+    const id = e.target.data('id');
+    highlightNeighbors(id);
+  });
+  state.cy.on('mouseout', 'node', () => {
+    clearHighlight();
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  SUBGRAPH FOR SECTION
+// ═══════════════════════════════════════════════════════
+function getSubgraph(sectionEntity) {
+  if (!sectionEntity || !state.graphData) return { nodes: [], edges: [] };
+
+  const visited = new Set([sectionEntity.id]);
+  const hop1 = new Set();
+
+  // Hop 1
+  for (const { nid } of (state.adjacency[sectionEntity.id] || [])) {
+    hop1.add(nid);
+    visited.add(nid);
+  }
+
+  // Hop 2 (only non-Chapter, non-ThesisSection, non-Reference)
+  for (const nid of hop1) {
+    const e = state.entityMap[nid];
+    if (!e) continue;
+    const types = (e.types || []).map(t => state.typeMap[t]);
+    if (types.some(t => ['Chapter','Reference','SourceQuote'].includes(t))) continue;
+    for (const { nid: n2id } of (state.adjacency[nid] || [])) {
+      if (!visited.has(n2id)) {
+        const e2 = state.entityMap[n2id];
+        if (!e2) continue;
+        const t2 = (e2.types || []).map(t => state.typeMap[t]);
+        if (t2.some(t => ['Chapter','ThesisSection','Reference','SourceQuote'].includes(t))) continue;
+        visited.add(n2id);
+      }
+    }
+  }
+
+  // Build elements
+  const nodes = [];
+  for (const eid of visited) {
+    const e = state.entityMap[eid];
+    if (!e) continue;
+    const typeName = (e.types || []).map(t => state.typeMap[t]).find(t => t) || 'Unknown';
+    const isSection = typeName === 'ThesisSection';
+    nodes.push({
+      data: {
+        id: eid,
+        label: truncate(e.name, 18),
+        color: TYPE_COLORS[typeName] || '#6b5000',
+        type: typeName,
+        size: isSection ? 30 : (eid === sectionEntity.id ? 36 : 18),
+      }
+    });
+  }
+
+  const edges = [];
+  const edgeSet = new Set();
+  for (const r of state.graphData.relations) {
+    if (visited.has(r.from) && visited.has(r.to)) {
+      const key = `${r.from}|${r.to}|${r.type}`;
+      if (!edgeSet.has(key)) {
+        edgeSet.add(key);
+        edges.push({
+          data: {
+            id: key,
+            source: r.from,
+            target: r.to,
+            label: state.relTypeMap[r.type] || '',
+          }
+        });
+      }
+    }
+  }
+
+  return { nodes, edges };
+}
+
+function updateGraph(sectionName) {
+  if (!state.cy || !state.graphData) return;
+
+  // Find matching section entity
+  const sectionEntity = state.sectionMap[normalize(sectionName)] || null;
+
+  document.getElementById('graph-section-name').textContent =
+    sectionEntity ? sectionEntity.name : sectionName || '—';
+
+  const { nodes, edges } = sectionEntity
+    ? getSubgraph(sectionEntity)
+    : { nodes: [], edges: [] };
+
+  state.cy.elements().remove();
+  state.cy.add([...nodes, ...edges]);
+
+  // Apply filters
+  applyFilters();
+
+  // Layout
+  if (nodes.length > 0) {
+    state.cy.layout({
+      name: 'cose',
+      animate: true,
+      animationDuration: 400,
+      randomize: false,
+      nodeRepulsion: 6000,
+      edgeElasticity: 100,
+      gravity: 0.5,
+      numIter: 200,
+      initialTemp: 200,
+      coolingFactor: 0.95,
+      minTemp: 1.0,
+    }).run();
+  }
+
+  // Stats
+  document.getElementById('stat-nodes').textContent = `${nodes.length} nœuds`;
+  document.getElementById('stat-edges').textContent = `${edges.length} liens`;
+}
+
+// ═══════════════════════════════════════════════════════
+//  MARKDOWN LOADING & RENDERING
+// ═══════════════════════════════════════════════════════
+async function loadChapter(chapterId) {
+  state.currentChapter = chapterId;
+  updateChapterNav();
+
+  const def = CHAPTERS_DEF.find(c => c.id === chapterId);
+  if (!def) return;
+
+  const file = state.lang === 'en' && def.fileEN ? def.fileEN : def.fileFR;
+  if (!file) {
+    document.getElementById('reader-content').innerHTML =
+      `<p style="color:var(--gold2);font-family:var(--pixel);font-size:0.6em;padding:40px">
+        Traduction en cours…
+      </p>`;
+    return;
+  }
+
+  document.getElementById('reader-content').innerHTML =
+    `<div class="loading-msg">Chargement…</div>`;
+
+  try {
+    const res = await fetch(BASE + file);
+    if (!res.ok) throw new Error(res.status);
+    const md = await res.text();
+    renderMarkdown(md, def);
+    buildTOC(def);
+    setupIntersectionObserver();
+    // Load initial graph for first section
+    const firstH = document.querySelector('.reader-content h1, .reader-content h2');
+    if (firstH) updateGraph(firstH.textContent);
+  } catch (err) {
+    document.getElementById('reader-content').innerHTML =
+      `<p style="color:var(--danger);font-family:var(--pixel);font-size:0.6em;padding:40px">
+        Fichier non trouvé : assets/MD/${file}
+      </p>`;
+    console.error(err);
+  }
+}
+
+function renderMarkdown(md, def) {
+  // Clean Pandoc artifacts
+  let cleaned = md
+    // Remove Pandoc width/height attributes
+    .replace(/\{[^}]*width=[^}]*\}/g, '')
+    // Convert media/imageN.png → figures/ paths (fallback)
+    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](figures/$2)')
+    // Trim TOC lines at start (lines starting with [...](#...)
+    .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
+
+  // Parse markdown
+  marked.setOptions({ breaks: true, gfm: true });
+  let html = marked.parse(cleaned);
+
+  // Add section anchors to headings for IntersectionObserver
+  html = html.replace(/<(h[12])(.*?)>(.*?)<\/h[12]>/gs, (m, tag, attrs, content) => {
+    const slug = slugify(content.replace(/<[^>]+>/g, ''));
+    return `<${tag}${attrs} data-section="${content.replace(/<[^>]+>/g, '')}" id="section-${slug}">${content}</${tag}>`;
+  });
+
+  // Highlight entity mentions
+  html = highlightEntities(html);
+
+  document.getElementById('reader-content').innerHTML = html;
+}
+
+function highlightEntities(html) {
+  if (!state.graphData) return html;
+
+  // Build name→id map for quick lookup
+  const nameMap = {};
+  for (const e of state.graphData.entities) {
+    if (e.name && e.name.length > 3) {
+      const types = (e.types || []).map(t => state.typeMap[t]);
+      // Only highlight "interesting" types
+      if (types.some(t => ['Person','Concept','CrisisEvent','Protocol','Institution','TheoreticFramework','ActorGroup','ActorNonHuman'].includes(t))) {
+        nameMap[e.name] = e.id;
+      }
+    }
+  }
+
+  // Sort by length desc to match longest first
+  const names = Object.keys(nameMap).sort((a,b) => b.length - a.length);
+
+  // Simple replacement (avoiding re-processing inside tags)
+  // We do a crude but effective approach: replace in text nodes only
+  for (const name of names.slice(0, 60)) { // limit for perf
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try {
+      const re = new RegExp(`(?<![a-zA-Z>])${escaped}(?![a-zA-Z<])`, 'g');
+      html = html.replace(re, (match, offset, str) => {
+        // Don't replace inside HTML tags or already-replaced spans
+        const before = str.slice(Math.max(0, offset - 200), offset);
+        if ((before.match(/</g) || []).length > (before.match(/>/g) || []).length) return match;
+        return `<span class="entity-mention" data-entity-id="${nameMap[name]}" onclick="openEntityPanel('${nameMap[name]}')">${match}</span>`;
+      });
+    } catch(e) { /* skip */ }
+  }
+
+  return html;
+}
+
+// ═══════════════════════════════════════════════════════
+//  INTERSECTION OBSERVER — scrollytelling sync
+// ═══════════════════════════════════════════════════════
+function setupIntersectionObserver() {
+  if (state.observer) state.observer.disconnect();
+
+  const headings = document.querySelectorAll('.reader-content [data-section]');
+  if (!headings.length) return;
+
+  state.observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        const sectionName = entry.target.dataset.section;
+        updateGraph(sectionName);
+        // Update TOC active state
+        updateTOCActive(sectionName);
+      }
+    }
+  }, {
+    root: document.getElementById('reader-col'),
+    rootMargin: '-10% 0px -60% 0px',
+    threshold: 0,
+  });
+
+  for (const h of headings) state.observer.observe(h);
+}
+
+// ═══════════════════════════════════════════════════════
+//  TOC
+// ═══════════════════════════════════════════════════════
+function buildTOC(def) {
+  const headings = document.querySelectorAll('.reader-content h1, .reader-content h2');
+  const toc = document.getElementById('toc-content');
+  toc.innerHTML = '';
+
+  for (const h of headings) {
+    const isH1 = h.tagName === 'H1';
+    const div = document.createElement('div');
+    div.className = isH1 ? 'toc-chapter' : 'toc-section';
+    div.textContent = h.textContent.slice(0, 55) + (h.textContent.length > 55 ? '…' : '');
+    div.dataset.target = h.id;
+    div.onclick = () => {
+      h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    toc.appendChild(div);
+  }
+}
+
+function updateTOCActive(sectionName) {
+  const slug = 'section-' + slugify(sectionName);
+  document.querySelectorAll('.toc-chapter, .toc-section').forEach(el => {
+    el.classList.toggle('active', el.dataset.target === slug);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  CHAPTER NAV
+// ═══════════════════════════════════════════════════════
+function renderChapterNav() {
+  const nav = document.getElementById('chapter-nav');
+  nav.innerHTML = '';
+  for (const ch of CHAPTERS_DEF) {
+    const btn = document.createElement('button');
+    btn.className = 'ch-btn';
+    btn.id = 'ch-' + ch.id;
+    btn.textContent = state.lang === 'en' ? ch.labelEN : ch.labelFR;
+    btn.onclick = () => loadChapter(ch.id);
+    nav.appendChild(btn);
+  }
+}
+
+function updateChapterNav() {
+  for (const ch of CHAPTERS_DEF) {
+    const btn = document.getElementById('ch-' + ch.id);
+    if (btn) {
+      btn.classList.toggle('active', ch.id === state.currentChapter);
+      btn.textContent = state.lang === 'en' ? ch.labelEN : ch.labelFR;
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  LANGUAGE TOGGLE
+// ═══════════════════════════════════════════════════════
+function setLang(lang) {
+  state.lang = lang;
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.dataset.lang = lang;
+  updateChapterNav();
+  loadChapter(state.currentChapter);
+}
+
+// ═══════════════════════════════════════════════════════
+//  FILTERS
+// ═══════════════════════════════════════════════════════
+function renderFilters(types) {
+  const container = document.getElementById('graph-filters');
+  container.innerHTML = '';
+  for (const typeName of [...types].sort()) {
+    const color = TYPE_COLORS[typeName] || '#6b5000';
+    const chip = document.createElement('div');
+    chip.className = 'filter-chip on';
+    chip.textContent = typeName;
+    chip.style.borderColor = color;
+    chip.style.color = color;
+    chip.dataset.type = typeName;
+    chip.onclick = () => {
+      const isOn = chip.classList.toggle('on');
+      if (isOn) state.activeFilters.add(typeName);
+      else state.activeFilters.delete(typeName);
+      applyFilters();
+    };
+    container.appendChild(chip);
+  }
+}
+
+function applyFilters() {
+  if (!state.cy) return;
+  state.cy.nodes().forEach(node => {
+    const typeName = node.data('type');
+    if (state.activeFilters.has(typeName)) {
+      node.removeClass('hidden-filter');
+    } else {
+      node.addClass('hidden-filter');
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  HIGHLIGHT
+// ═══════════════════════════════════════════════════════
+function highlightNeighbors(id) {
+  if (!state.cy) return;
+  state.cy.elements().addClass('faded').removeClass('highlighted');
+  const node = state.cy.getElementById(id);
+  const neighbors = node.neighborhood();
+  node.addClass('highlighted').removeClass('faded');
+  neighbors.addClass('highlighted').removeClass('faded');
+}
+
+function clearHighlight() {
+  if (!state.cy) return;
+  state.cy.elements().removeClass('faded highlighted');
+}
+
+// ═══════════════════════════════════════════════════════
+//  ENTITY PANEL
+// ═══════════════════════════════════════════════════════
+function openEntityPanel(entityId) {
+  const e = state.entityMap[entityId];
+  if (!e) return;
+
+  const typeName = (e.types || []).map(t => state.typeMap[t]).find(t => t) || '?';
+  const color = TYPE_COLORS[typeName] || '#6b5000';
+
+  document.getElementById('panel-name').textContent = e.name;
+  const typeEl = document.getElementById('panel-type');
+  typeEl.textContent = typeName;
+  typeEl.style.borderColor = color;
+  typeEl.style.color = color;
+
+  document.getElementById('panel-desc').textContent =
+    e.description?.value || '—';
+
+  // Relations
+  const relsEl = document.getElementById('panel-relations');
+  relsEl.innerHTML = '';
+  const neighbors = state.adjacency[entityId] || [];
+  for (const { nid, relName, dir } of neighbors.slice(0, 30)) {
+    const ne = state.entityMap[nid];
+    if (!ne) continue;
+    const div = document.createElement('div');
+    div.className = 'panel-relation';
+    div.innerHTML = `
+      <span class="rel-arrow">${dir === 'out' ? '→' : '←'}</span>
+      <span class="rel-type">${relName}</span>
+      <span class="rel-target">${ne.name}</span>
+    `;
+    div.onclick = () => openEntityPanel(nid);
+    relsEl.appendChild(div);
+  }
+  if (neighbors.length > 30) {
+    const more = document.createElement('p');
+    more.style.cssText = 'font-size:0.75em;color:var(--text2);padding-top:8px;';
+    more.textContent = `+ ${neighbors.length - 30} autres relations`;
+    relsEl.appendChild(more);
+  }
+
+  document.getElementById('entity-panel').classList.add('open');
+}
+
+function closePanel() {
+  document.getElementById('entity-panel').classList.remove('open');
+}
+
+// ═══════════════════════════════════════════════════════
+//  UTILS
+// ═══════════════════════════════════════════════════════
+function normalize(str) {
+  return (str || '').toLowerCase().trim()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ');
+}
+
+function slugify(str) {
+  return normalize(str).replace(/\s+/g, '-').slice(0, 60);
+}
+
+function truncate(str, n) {
+  return str.length > n ? str.slice(0, n) + '…' : str;
+}
+
+// ═══════════════════════════════════════════════════════
+//  KEYBOARD
+// ═══════════════════════════════════════════════════════
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePanel();
+});
+
+// ═══════════════════════════════════════════════════════
+//  START
+// ═══════════════════════════════════════════════════════
+init();
+</script>
+</body>
+</html>
