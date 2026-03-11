@@ -21,6 +21,11 @@
     <meta property="twitter:image" content="https://mael-rolland.eth.limo/assets/img/avatar-closky-mael-rolland.eth.jpg">
 
     <link rel="canonical" href="https://mael-rolland.eth.limo/these.html"></meta>
+    <!-- Machine-readable / agent access -->
+    <link rel="alternate" type="application/json" href="grc20-these-mael-rolland-v70.json" title="Knowledge graph GRC-20 — Au-delà des codes">
+    <link rel="alternate" type="text/markdown" href="assets/MD/INDEX.md" title="Thesis index — agent-readable entry point">
+    <meta name="ai-content-index" content="assets/MD/INDEX.md">
+    <meta name="knowledge-graph" content="grc20-these-mael-rolland-v70.json">
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
@@ -487,9 +492,26 @@
                 </iframe>
             </div>
 
-            <div class="json-notice">
-                <p>Structured JSON version still in progress</p>
-                <p style="font-size: 0.8em; margin-top: 10px;">A machine-readable version for researchers and developers will soon be available</p>
+            <div class="json-notice" aria-label="Machine-readable access for researchers and AI agents">
+                <p>Machine-readable access</p>
+                <p style="font-size: 0.8em; margin-top: 10px; margin-bottom: 16px;">Knowledge graph (GRC-20 JSON) and full text (Markdown) — for researchers, developers &amp; autonomous agents.</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <a href="grc20-these-mael-rolland-v70.json"
+                       download
+                       class="pixel-button"
+                       style="font-size: 0.5em;"
+                       aria-label="Download GRC-20 knowledge graph JSON">
+                        ◈ Knowledge graph · JSON
+                    </a>
+                    <a href="assets/MD/INDEX.md"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="pixel-button"
+                       style="font-size: 0.5em;"
+                       aria-label="Read thesis index in Markdown — agent entry point">
+                        📄 Thesis index · Markdown
+                    </a>
+                </div>
             </div>
             <div class="back-link">
                 <a href="index.html">← Go to Homepage</a>
