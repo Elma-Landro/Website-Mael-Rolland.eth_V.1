@@ -149,42 +149,99 @@
             display: block;
             margin: 0 auto 10px auto;
         }
-        .video-container {
-           margin: 10px auto;
-           max-width: 180px;
-           border: 2px solid #ffaa33;
-           padding: 5px;
-           background-color: #000;
+        /* ── Hero video (YouTube 16:9) ── */
+        .video-hero-wrap {
+            margin: 24px auto 0 auto;
+            max-width: 620px;
+            width: 100%;
+        }
+        .video-hero-wrap iframe {
+            width: 100%;
+            height: 349px;
+            border: 2px solid #ffaa33;
+            display: block;
+        }
+        .video-hero-label {
+            font-family: 'VT323', monospace;
+            font-size: 1em;
+            color: #ffaa33;
+            text-align: center;
+            margin-top: 6px;
+            letter-spacing: 0.1em;
         }
 
-        .video-container video {
-           width: 100%;
-           height: auto;
-           display: block;
-           border: none;
-         }
+        /* ── Interactive Reader Card ── */
+        .reader-card {
+            margin: 32px auto 24px auto;
+            max-width: 560px;
+            border: 2px solid #ffaa33;
+            background: #1a0000;
+            padding: 28px 28px 24px 28px;
+            text-align: center;
+            position: relative;
+        }
+        .reader-card-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.65em;
+            color: #ffcc66;
+            letter-spacing: 0.12em;
+            margin-bottom: 14px;
+        }
+        .reader-card-desc {
+            font-family: 'VT323', monospace;
+            font-size: 1.4em;
+            color: #ffaa33;
+            margin: 0 0 18px 0;
+            line-height: 1.45;
+        }
+        .reader-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+        .reader-tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.48em;
+            padding: 4px 10px;
+            border: 1px solid #33ff33;
+            color: #33ff33;
+            background: rgba(51, 255, 51, 0.07);
+        }
 
-         .caption {
-           text-align: center;
-           font-family: 'VT323', monospace;
-           font-size: 0.3em;
-           color: #ffaa33;
-           margin-top: 1px;
-         }
-        .pixel-button.small {
-           font-size: 0.4em;
-           padding: 1px 2px;
-           background-color: #330000;
-           color: #ffcc66;
-           border: 1px #ffaa33;
-           text-decoration: none;
-           font-family: 'Press Start 2P', monospace;
-          }
+        /* ── YouTube Shorts (9:16 vertical) ── */
+        .shorts-wrap {
+            margin: 20px auto;
+            max-width: 315px;
+        }
+        .shorts-wrap iframe {
+            width: 315px;
+            height: 560px;
+            border: 2px solid #ffaa33;
+            display: block;
+            margin: 0 auto;
+        }
 
-         .pixel-button.small:hover {
-           background-color: #552200;
-           color: #ffffff;
-          }
+        /* ── Section divider ── */
+        .section-divider {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6em;
+            color: #33ff33;
+            text-align: center;
+            margin: 48px auto 24px auto;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            max-width: 560px;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            border-top: 1px solid #33ff33;
+            opacity: 0.4;
+        }
         .soutenance-button {
           text-align: center;
           margin-top: 10px;
@@ -297,26 +354,41 @@
     <div class="container">
         <header>
             <h1 class="main-title">Thèse</h1>
-                <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
+            <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
             <p class="subtitle">Au-delà des codes : infrastructures discrètes et gouvernance polycentrique des cryptomonnaies Bitcoin et Ethereum dévoilées par leurs crises</p>
-            
-            
-            
-             <div class="video-container">
-  <video controls preload="metadata" poster="assets/img/poster-thesis.jpg">
-    <source src="https://arweave.net/YD_YPW7_V_fcQ14oGXomohG4cMroz3ponWmc21zj-bQ/5j1tzd_video.mp4" type="video/mp4">
-    Votre navigateur ne prend pas en charge les vidéos HTML5.
-  </video>
-      </div>        
-<div class="soutenance-button">
-  <a href="soutenance-edition-fr.html">Édition Soutenance Edition Tokenisée</a>
-</div>
-
+            <div class="video-hero-wrap">
+                <iframe
+                    src="https://www.youtube.com/embed/FlzuhVJaM6M"
+                    frameborder="0"
+                    allowfullscreen
+                    title="Au-delà des codes — la thèse en 4 minutes">
+                </iframe>
+            </div>
+            <p class="video-hero-label">— la thèse en 4 minutes —</p>
         </header>
+
         <section class="these-section">
             <div class="these-intro">
-             <p>Cette thèse analyse les cryptomonnaies Bitcoin et Ethereum ainsi que leurs formes de gouvernance en remettant en question les récits libéraux-technicistes qui les décrivent comme acéphales, décentralisées, autonomes, neutres</p>
+                <p>Cette thèse analyse les cryptomonnaies Bitcoin et Ethereum ainsi que leurs formes de gouvernance en remettant en question les récits libéraux-technicistes qui les décrivent comme acéphales, décentralisées, autonomes, neutres</p>
             </div>
+
+            <!-- ── Lecteur interactif ── -->
+            <div class="reader-card">
+                <div class="reader-card-title">◈ LECTEUR INTERACTIF</div>
+                <p class="reader-card-desc">Texte intégral de la thèse — structuré, exportable,<br>lisible par machine. 564 pages.</p>
+                <div class="reader-tags">
+                    <span class="reader-tag">MARKDOWN</span>
+                    <span class="reader-tag">JSON</span>
+                    <span class="reader-tag">GRC-20</span>
+                    <span class="reader-tag">AGENT-READABLE</span>
+                </div>
+                <div class="soutenance-button">
+                    <a href="lecteur.html">LIRE LA THESE</a>
+                </div>
+            </div>
+
+            <!-- ── Téléchargements ── -->
+            <div class="section-divider">TELECHARGER</div>
 
             <div class="download-complete download-item">
                 <div class="tooltip-container">
@@ -332,14 +404,8 @@
                     </div>
                 </div>
             </div>
-            <div class="soutenance-button">
-                <div class="tooltip-container">
-                    <a href="soutenance-fr.html">Soutenance de thèse, voir plus</a>
-                    <div class="tooltip-text">Présentation soutenance, diapositives & rapport de jury</div>
-                </div>
-            </div>
 
-            <h2 style="color: #33ff33; font-size: 1em; margin-top: 40px; text-align: center;">Télécharger la thèse chapitre par chapitre</h2>
+            <h2 style="color: #33ff33; font-size: 1em; margin-top: 30px; text-align: center;">Télécharger la thèse chapitre par chapitre</h2>
             <div class="chapters-grid">
                 <div class="download-item">
                     <a href="assets/pdf/1_Premieres_pages.pdf" class="pixel-button chapter-button" download>1. Premières pages
@@ -452,27 +518,37 @@
                     </div>
                 </div>
             </div>
-            <h2 style="color: #33ff33; font-size: 1em; margin-top: 40px; text-align: center;">Explorer la thèse</h2>
-            <div style="text-align: center; margin: 20px auto; max-width: 640px;">
-                <iframe 
-                  width="100%" 
-                  height="400"
-                  src="https://www.youtube.com/embed/FlzuhVJaM6M"
-                  frameborder="0"
-                  allowfullscreen
-                  style="border: 2px solid #ffaa33;">
+            <!-- ── Soutenance & Edition ── -->
+            <div class="section-divider">SOUTENANCE &amp; EDITION</div>
+
+            <div class="soutenance-button">
+                <div class="tooltip-container">
+                    <a href="soutenance-fr.html">Soutenance de thèse, voir plus</a>
+                    <div class="tooltip-text">Présentation soutenance, diapositives &amp; rapport de jury</div>
+                </div>
+            </div>
+
+            <div class="shorts-wrap">
+                <iframe
+                    src="https://www.youtube.com/embed/OsPZZMLp6UY"
+                    frameborder="0"
+                    allowfullscreen
+                    title="Edition Soutenance Tokenisée">
                 </iframe>
             </div>
-            <div class="soutenance-button" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px auto;">
-                <a href="lecteur.html">📖 Lire la thèse</a>
+
+            <div class="soutenance-button">
+                <a href="soutenance-edition-fr.html">Edition Soutenance Tokenisée, voir plus</a>
+            </div>
+
+            <!-- ── Explorer le graphe ── -->
+            <div class="section-divider">EXPLORER</div>
+
+            <div class="soutenance-button">
                 <a href="graphe.html">◈ Explorer le graphe</a>
             </div>
 
-            <div class="json-notice">
-                <p>Une version JSON structurée est en cours de préparation</p>
-                <p style="font-size: 0.8em; margin-top: 10px;">Une version lisible par machine pour chercheurs et développeurs sera bientôt disponible</p>
-            </div>
-            <div class="back-link">
+            <div class="back-link" style="margin-top: 40px;">
                 <a href="index-fr.html">← Retour à la page d'accueil</a>
             </div>
         </section>
