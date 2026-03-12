@@ -87,13 +87,15 @@ html, body {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 14px; background: var(--bg);
+  pointer-events: none;
 }
+.canvas-overlay:not(.hidden) { pointer-events: auto; }
 .canvas-overlay h2 { font-size: 1.1em; color: var(--text2); margin: 0; }
 .canvas-overlay p { font-size: 0.9em; color: var(--text2); margin: 0; }
 .hidden { display: none !important; }
 /* ─── Detail Panel ───────────────────────────────────────────────── */
 .grc-panel {
-  width: var(--panel-w); flex-shrink: 0;
+  width: var(--panel-w); min-width: 260px; flex-shrink: 0;
   background: var(--bg2); border-left: 1px solid var(--border);
   overflow-y: auto; display: flex; flex-direction: column;
 }
@@ -239,10 +241,14 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   width: 55%;
   height: calc(100vh - var(--header-h));
   flex-shrink: 0;
+  align-self: flex-start; /* crucial : sticky dans flex exige flex-start */
 }
-.grc-root.scrolly-mode .scrolly-text-panel { display: block; }
-.grc-root.scrolly-mode body { overflow: auto; }
-html.scrolly-on, html.scrolly-on body { overflow: auto !important; height: auto !important; }
+.grc-root.scrolly-mode .scrolly-text-panel { display: block; overflow-y: visible; height: auto; }
+/* Correctif principal : grc-root doit s'étendre pour que la page scroll */
+.grc-root.scrolly-mode {
+  height: auto !important;
+  overflow: visible;
+}
 
 .story-section {
   padding: 60px 0;
@@ -823,17 +829,22 @@ const Graph = (() => {
       style: getCyStyle(),
       layout: { name: 'preset' },
       hideEdgesOnViewport: true,
-      textureOnViewport: true,
+      textureOnViewport: false,
       motionBlur: false,
       pixelRatio: 'auto',
     });
 
-    cy.on('tap', 'node', e => {
+    function handleNodeSelect(e) {
       const id = e.target.data('id');
+      if (!id) return;
       State.selectedId = id;
       UI.renderPanel(id);
       highlightNeighbors(id);
-    });
+    }
+
+    cy.on('tap', 'node', handleNodeSelect);
+    cy.on('click', 'node', handleNodeSelect); // fallback desktop
+
     cy.on('tap', e => {
       if (e.target === cy) {
         State.selectedId = null;
@@ -841,8 +852,12 @@ const Graph = (() => {
         UI.clearPanel();
       }
     });
-    cy.on('taphold', 'node', e => {
-      // quick view on long press
+    cy.on('click', e => {
+      if (e.target === cy) {
+        State.selectedId = null;
+        resetHighlight();
+        UI.clearPanel();
+      }
     });
   }
 
@@ -1877,17 +1892,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function initScrollyObserver() {
     if (scrollyObserver) scrollyObserver.disconnect();
     scrollyObserver = new IntersectionObserver((entries) => {
+      // Trouver l'entrée la plus visible
+      let best = null;
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          document.querySelectorAll('.story-section').forEach(s => s.classList.remove('active'));
-          entry.target.classList.add('active');
-          const types = entry.target.dataset.types
-            ? entry.target.dataset.types.split(',').map(t => t.trim())
-            : [];
-          highlightByTypes(types);
+          if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
         }
       });
-    }, { threshold: 0.35 });
+      if (best) {
+        document.querySelectorAll('.story-section').forEach(s => s.classList.remove('active'));
+        best.target.classList.add('active');
+        const types = best.target.dataset.types
+          ? best.target.dataset.types.split(',').map(t => t.trim())
+          : [];
+        highlightByTypes(types);
+      }
+    }, { threshold: [0.1, 0.25, 0.5], rootMargin: '-5% 0px -5% 0px' });
     document.querySelectorAll('.story-section').forEach(sec => scrollyObserver.observe(sec));
   }
 
@@ -1899,12 +1919,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('btn-scrolly');
     if (scrollyMode) {
       root.classList.add('scrolly-mode');
+      document.documentElement.style.height = 'auto';
       document.documentElement.style.overflow = 'auto';
       document.body.style.overflow = 'auto';
       document.body.style.height = 'auto';
       btn.textContent = '⊞ Éditeur';
       btn.classList.replace('btn-secondary', 'btn-primary');
-      if (Graph.cy) Graph.cy.resize();
+      setTimeout(() => { if (Graph.cy) Graph.cy.resize(); }, 50);
       initScrollyObserver();
       // Activer la première section
       const first = document.querySelector('.story-section');
@@ -1915,6 +1936,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } else {
       root.classList.remove('scrolly-mode');
+      document.documentElement.style.height = '';
       document.documentElement.style.overflow = '';
       document.body.style.overflow = 'hidden';
       document.body.style.height = '100%';
