@@ -550,6 +550,52 @@ body::before {
 @media (max-width: 640px) {
   .graph-col { display: none; }
 }
+
+/* ═══ MOBILE (≤ 768px) ══════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Header : scrollable horizontalement, hauteur auto */
+  .site-header {
+    height: auto;
+    min-height: var(--header-h);
+    padding: 8px 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+  /* Masquer le sous-titre long */
+  .site-subtitle { display: none; }
+  /* Logo plus compact */
+  .site-logo { font-size: 0.55em; }
+  /* Navigation chapitres : scroll horizontal */
+  .chapter-nav {
+    order: 10;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    gap: 3px;
+    flex-wrap: nowrap;
+  }
+  /* Layout : pas de padding-top fixe, laisser espace au header */
+  .main-layout {
+    padding-top: 0;
+    margin-top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+  }
+  /* Reader : padding réduit */
+  .reader-col {
+    padding: 20px 16px 60px;
+  }
+  /* Texte : pas de justify sur mobile (espacement catastrophique) */
+  .reader-content p {
+    text-align: left;
+    font-size: 0.9em;
+    line-height: 1.75;
+  }
+  .reader-content h1 { font-size: 0.7em; }
+  .reader-content h2 { font-size: 0.55em; }
+  .reader-content h3 { font-size: 0.45em; }
+}
 </style>
 </head>
 <body>
