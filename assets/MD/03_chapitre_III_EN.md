@@ -1,12 +1,12 @@
 III. Beyond the Code: The *Discreet* Governance of CM, Revealed Through Their Crises
 
-*"There are three eras for money: commodity-based money, politically-based money, and today, mathematically-based money."*
+> *"There are three eras for money: commodity-based money, politically-based money, and today, mathematically-based money."*
+>
+> **Chris Dixon (Co-Founder of Hunch and SiteAdvisor)**
 
-**Chris Dixon (Co-Founder of Hunch and SiteAdvisor)**
-
-*"So here it is, 'don't trust verify,' well yes, you must not trust, you must verify. 'Code is law,' on the other hand, over time, at first I was on that side, indeed: if the code says this, then that will happen. I was still on that side during the 'Bitcoin CVE 2018 bug'... I thought, well, if someone had exploited that, should we have accepted the changes or not? I thought, well... they did that, okay... Same with 'The Dao,' over time,* \[...\] *I tell myself that there is still a social consensus. 'Code is law,' as long as people don’t mind**"** [He laughs]. *"*
-
-**A. Le Calvez, Interview No. 20**
+> *"So here it is, ‘don’t trust verify,’ well yes, you must not trust, you must verify. ‘Code is law,’ on the other hand, over time, at first I was on that side, indeed: if the code says this, then that will happen. I was still on that side during the ‘Bitcoin CVE 2018 bug’... I thought, well, if someone had exploited that, should we have accepted the changes or not? I thought, well... they did that, okay... Same with ‘The Dao,’ over time,* \[...\] *I tell myself that there is still a social consensus. ‘Code is law,’ as long as people don’t mind**"** [He laughs]. *"*
+>
+> **A. Le Calvez, Interview No. 20**
 
 In 2018, "*the Bitcoin world was surprised*" to learn that a critical bug named "Bitcoin CVE 2018 #17144" had been secretly patched (Song 2018; hereafter Bitcoin CVE 2018). The surprise mentioned by Song (2018) stemmed from the fact that reality thus challenged the technicist liberal monetary claims of the coiners who portray Bitcoin as a naturally sound and incorruptible currency because it is "*regulated by an algorithm instead of being regulated by government bureaucracies*" (Antonopoulos cited by Kanev 2022). Such news was enough to shake those convinced they had "*placed their* \[...\] *money and* \[their\] *trust in a mathematical framework free from politics and human error*" (Tyler Winklevoss, cited by Mullin 2013). Yet, it must be acknowledged that the mantra of the most radical coiners clashes with reality and that, in fact, CM have managed to survive "*a litany of security problems* \[that\] *regularly make headlines*" (*Ibid*), as a simple online query combining the words "Bitcoin" / "Ethereum" and "vulnerability" readily confirms, yielding thousands of results[^1].
 

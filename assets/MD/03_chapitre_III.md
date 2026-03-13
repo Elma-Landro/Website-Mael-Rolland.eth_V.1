@@ -1,12 +1,12 @@
 III. Au-delà des codes : la gouvernance *discrète* des CM, dévoilée par leurs crises 
 
-*« Il y a trois époques pour la monnaie : la monnaie basée sur les matières premières, la monnaie basée sur la politique et, aujourd\'hui, la monnaie basée sur les mathématiques. »*
+> *« Il y a trois époques pour la monnaie : la monnaie basée sur les matières premières, la monnaie basée sur la politique et, aujourd\'hui, la monnaie basée sur les mathématiques. »*
+>
+> **Chris Dixon (Co-Founder of Hunch and SiteAdvisor)**
 
-**Chris Dixon (Co-Founder of Hunch and SiteAdvisor)**
-
-« *Donc voilà, \"don\'t trust verify\", ben oui, il ne faut pas truster, il faut vérifier. \"Code is law\", là par contre au fur et à mesure du temps, au début j\'étais dans ce côté-là, en effet : ben si le code dit cela, il va se passer cela. J\'étais encore dans ce côté-là pendant la \"CVE2018 je ne sais plus quoi là\"\... je me suis dit, ben finalement si quelqu\'un avait exploité cela, est-ce que il aurait fallu accepter ou pas les changements, je me suis dit bon\... il a fait ça, ok\... Pareil avec \"The Dao\", avec le temps,*\[...\] *je me dis qu\'il y a quand même un consensus social. \"Code is law\", as long as people don\'t mind**\"** \[Il rigole\]. *»
-
-**A. Le Calvez, Entretien n°20**
+> « *Donc voilà, \"don\'t trust verify\", ben oui, il ne faut pas truster, il faut vérifier. \"Code is law\", là par contre au fur et à mesure du temps, au début j\'étais dans ce côté-là, en effet : ben si le code dit cela, il va se passer cela. J\'étais encore dans ce côté-là pendant la \"CVE2018 je ne sais plus quoi là\"\... je me suis dit, ben finalement si quelqu\'un avait exploité cela, est-ce que il aurait fallu accepter ou pas les changements, je me suis dit bon\... il a fait ça, ok\... Pareil avec \"The Dao\", avec le temps,*\[...\] *je me dis qu\'il y a quand même un consensus social. \"Code is law\", as long as people don\'t mind**\"** \[Il rigole\]. *»
+>
+> **A. Le Calvez, Entretien n°20**
 
 En 2018, « *le monde du Bitcoin a été surpris* » d'apprendre qu'un bogue critique nommé « Bitcoin CVE 2018 #17144 », venait d'être corrigé en secret (Song 2018; Bitcoin CVE 2018 ci-après). La surprise qu'évoque Song (2018) tenait au fait que le réel mettait ainsi à l'épreuve les prétentions monétaires libérales technicistes des coiners qui font de Bitcoin une monnaie naturellement saine et incorruptible car « *régulée par un algorithme au lieu d\'être régulée par des bureaucraties gouvernementales* » (Antonopoulos cité par Kanev 2022). Une telle nouvelle avait de quoi ébranler ceux convaincus d'avoir « *placé leur* \[...\] *argent et* \[leur\] *confiance dans un cadre mathématique exempt de politique et d\'erreur humaine* » (Tyler Winklevoss, cité par Mullin 2013). Pourtant, force est de constater que l'antienne des coiners les plus radicaux se heurte à la réalité et que, de fait, les CM ont réussi à traverser *« une litanie de problèmes de sécurité* \[qui\] *alimentent régulièrement les gros titres des journaux* » (*Ibid*), ce qu'une simple requête en ligne associant les mots « Bitcoin » / « Ethereum » et « vulnérabilité » permet de vérifier en produisant de milliers de résultats [^1].
 
