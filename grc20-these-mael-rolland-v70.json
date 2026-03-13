@@ -1246,9 +1246,7 @@
     {
       "id": "99035f2e201742379673a84191a51ffb",
       "name": "operates in segment"
-    },
-    null,
-    null
+    }
   ],
   "entities": [
     {
@@ -72476,8 +72474,6 @@
         }
       }
     },
-    null,
-    null,
     {
       "id": "2a1cbbdf30d8436792bcc603ffce4367",
       "name": "Nœuds du réseau",
