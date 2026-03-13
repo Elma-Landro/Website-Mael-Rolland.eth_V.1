@@ -50,23 +50,23 @@
 
 [Cryptocurrencies Increasingly Emancipating Themselves from Bitcoin’s Architecture [75](#des-cm-qui-sémancipent-de-plus-en-plus-de-larchitecture-bitcoin)](#des-cm-qui-sémancipent-de-plus-en-plus-de-larchitecture-bitcoin)
 
-# War of the “Metaprotocols”: Modifying Bitcoin to Prohibit Certain Uses [80](#guerre-des-métaprotocoles-modifier-bitcoin-pour-en-interdire-certains-usages)
+[War of the “Metaprotocols”: Modifying Bitcoin to Prohibit Certain Uses [80](#guerre-des-métaprotocoles-modifier-bitcoin-pour-en-interdire-certains-usages)](#guerre-des-métaprotocoles-modifier-bitcoin-pour-en-interdire-certains-usages)
 
-## I.3.2. Ethereum: Continuity and Rupture with Bitcoin and Past Experiments [86](#ethereum-continuité-et-rupture-davec-bitcoin-et-les-expériences-passées)
+[I.3.2. Ethereum: Continuity and Rupture with Bitcoin and Past Experiments [86](#ethereum-continuité-et-rupture-davec-bitcoin-et-les-expériences-passées)](#ethereum-continuité-et-rupture-davec-bitcoin-et-les-expériences-passées)
 
-### Ethereum: A Design by Recognized Insiders of the Cryptocurrency Ecosystem [87](#ethereum-une-conception-par-des-insiders-reconnus-de-lécosystème-des-cm)
+[Ethereum: A Design by Recognized Insiders of the Cryptocurrency Ecosystem [87](#ethereum-une-conception-par-des-insiders-reconnus-de-lécosystème-des-cm)](#ethereum-une-conception-par-des-insiders-reconnus-de-lécosystème-des-cm)
 
-### Ethereum: A Material and Ideational Critical Synthesis of Past Experiences [89](#ethereum-une-synthèse-matérielle-et-idéelle-critique-des-expériences-passées)
+[Ethereum: A Material and Ideational Critical Synthesis of Past Experiences [89](#ethereum-une-synthèse-matérielle-et-idéelle-critique-des-expériences-passées)](#ethereum-une-synthèse-matérielle-et-idéelle-critique-des-expériences-passées)
 
-## I.3.3. Ethereum: Reconfigurations of Alliances Against Bitcoin’s Rigidities [92](#ethereum-des-recompositions-dalliances-contre-les-rigidités-de-bitcoin)
+[I.3.3. Ethereum: Reconfigurations of Alliances Against Bitcoin’s Rigidities [92](#ethereum-des-recompositions-dalliances-contre-les-rigidités-de-bitcoin)](#ethereum-des-recompositions-dalliances-contre-les-rigidités-de-bitcoin)
 
-### Ethereum: Differentiated Sociotechnical Trade-offs [93](#ethereum-des-arbitrages-sociotechniques-différenciés)
+[Ethereum: Differentiated Sociotechnical Trade-offs [93](#ethereum-des-arbitrages-sociotechniques-différenciés)](#ethereum-des-arbitrages-sociotechniques-différenciés)
 
-### Ethereum versus Bitcoin? Borrowings and Functional Differences [96](#ethereum-contre-bitcoin-emprunts-et-différences-de-fonctionnement)
+[Ethereum versus Bitcoin? Borrowings and Functional Differences [96](#ethereum-contre-bitcoin-emprunts-et-différences-de-fonctionnement)](#ethereum-contre-bitcoin-emprunts-et-différences-de-fonctionnement)
 
-### Ethereum: Reforms of Consensus and Monetary Systems as a Form of Revolution [100](#ethereum-des-réformes-du-consensus-et-du-monnayage-en-forme-de-révolution)
+[Ethereum: Reforms of Consensus and Monetary Systems as a Form of Revolution [100](#ethereum-des-réformes-du-consensus-et-du-monnayage-en-forme-de-révolution)](#ethereum-des-réformes-du-consensus-et-du-monnayage-en-forme-de-révolution)
 
-## I.3.4. Conclusion of Chapter I [107](#conclusion-du-chapitre-i)
+[I.3.4. Conclusion of Chapter I [107](#conclusion-du-chapitre-i)](#conclusion-du-chapitre-i)
 
 # I. The Emergence of the Cryptocurrency (CM) Phenomenon: Bitcoin and Ethereum as Sociotechnical Infrastructures
 
