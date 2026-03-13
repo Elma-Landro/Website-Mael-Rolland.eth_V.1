@@ -295,6 +295,16 @@ body::before {
   color: var(--gold2);
   cursor: pointer;
 }
+.reader-content sup.fn-ref {
+  font-family: var(--pixel);
+  font-size: 0.5em;
+  color: var(--text2);
+  background: rgba(255,170,51,0.12);
+  padding: 1px 3px;
+  border-radius: 2px;
+  vertical-align: super;
+  white-space: nowrap;
+}
 
 .reader-content img {
   max-width: 100%;
@@ -1064,6 +1074,25 @@ function renderMarkdown(md, def) {
     .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](figures/$2)')
     // Trim TOC lines at start (lines starting with [...](#...)
     .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
+
+  // ── Footnotes : supprimer les définitions [^N]: ... (doublon des #####)
+  cleaned = cleaned.replace(/^\[\^\d+\]:[ \t]*.*/gm, '');
+
+  // ── Remplacer les références inline [^N] par des superscripts stylés
+  cleaned = cleaned.replace(/\[\^(\d+)\]/g, '<sup class="fn-ref">[$1]</sup>');
+
+  // ── Zotero links → Google Scholar search
+  // Format original : [(Auteur Année)](https://www.zotero.org/google-docs/?CODE)
+  cleaned = cleaned.replace(
+    /\[([^\]]+)\]\(https?:\/\/(?:www\.)?zotero\.org\/google-docs\/[^)]+\)/g,
+    (_, text) => {
+      const q = encodeURIComponent(text.replace(/[()[\]]/g, '').trim());
+      return `[${text}](https://scholar.google.com/scholar?q=${q})`;
+    }
+  );
+
+  // ── Superscript Pandoc : ^texte^ → <sup>texte</sup>
+  cleaned = cleaned.replace(/\^([^^]+?)\^/g, '<sup>$1</sup>');
 
   // Parse markdown
   marked.setOptions({ breaks: true, gfm: true });
