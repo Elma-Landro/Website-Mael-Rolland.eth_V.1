@@ -372,38 +372,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   width: 0; padding: 0; overflow: hidden; border-right: none;
 }
 
-/* ─── Tour narratif overlay ───────────────────────────────────────── */
-.tour-overlay {
-  position: fixed;
-  bottom: 24px; left: 50%;
-  transform: translateX(-50%);
-  z-index: 600;
-  background: var(--bg2);
-  border: 2px solid var(--border);
-  border-radius: 0;
-  padding: 14px 18px;
-  min-width: 340px; max-width: 520px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.7);
-  font-family: var(--font);
-  display: flex; flex-direction: column; gap: 10px;
-}
-.tour-overlay.hidden { display: none; }
-.tour-header { display: flex; align-items: center; gap: 8px; }
-.tour-select {
-  flex: 1; font-family: var(--font); font-size: 0.65em;
-  background: var(--bg3); color: var(--text); border: 1px solid var(--border);
-  padding: 4px 6px; cursor: pointer;
-}
-.tour-step-counter { font-size: 0.6em; color: var(--text2); }
-.tour-step-name { font-size: 0.8em; color: var(--accent2); font-weight: 700; }
-.tour-step-desc { font-size: 0.62em; color: var(--text); line-height: 1.6; }
-.tour-footer { display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px; }
-.tour-progress {
-  height: 3px; background: var(--bg3); border-radius: 2px; overflow: hidden;
-}
-.tour-progress-bar {
-  height: 100%; background: var(--accent); transition: width 0.3s;
-}
 </style>
 </head>
 <body>
@@ -452,7 +420,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <span class="version-label" id="version-label">–</span>
   <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
   <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
-  <button class="btn-secondary btn-sm" id="btn-tour" title="Tour narratif guidé">🗺 Tour</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
@@ -561,24 +528,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
 </div><!-- /grc-main -->
 </div><!-- /grc-root -->
-
-<!-- ═══════════════════ TOUR OVERLAY ═══════════════════════════════════ -->
-<div class="tour-overlay hidden" id="tour-overlay">
-  <div class="tour-header">
-    <select id="tour-select" class="tour-select"></select>
-    <button class="btn-secondary btn-sm" id="tour-close" title="Fermer le tour">✕</button>
-  </div>
-  <div class="tour-progress"><div class="tour-progress-bar" id="tour-progress-bar" style="width:0%"></div></div>
-  <div>
-    <div class="tour-step-counter" id="tour-counter">Étape 1/1</div>
-    <div class="tour-step-name" id="tour-step-name"></div>
-    <div class="tour-step-desc" id="tour-step-desc"></div>
-  </div>
-  <div class="tour-footer">
-    <button class="btn-secondary btn-sm" id="tour-prev">← Préc.</button>
-    <button class="btn-primary btn-sm" id="tour-next">Suiv. →</button>
-  </div>
-</div>
 
 <!-- ═══════════════════ MODALS ══════════════════════════════════════════ -->
 
@@ -2104,117 +2053,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('sidebar-collapsed');
     if (Graph.cy) Graph.cy.resize();
-  });
-
-  // ── Tour narratif ─────────────────────────────────────────
-  const TOURS = [
-    {
-      title: "Crise CVE-2018 → recentralisation",
-      steps: [
-        { name: "Bitcoin CVE 2018-17144", desc: "Vulnérabilité critique découverte en 2018 : un bug permettait de créer des bitcoins ex nihilo. Révélateur de fragilités protocolaires profondes." },
-        { name: "Crise de vulnérabilité", desc: "Catégorie analytique regroupant les crises qui exposent les failles techniques et révèlent qui a réellement le pouvoir de corriger le code." },
-        { name: "Délégation et recentralisation (Bitcoin)", desc: "La délégation vers des nœuds légers génère une recentralisation de facto : moins de vérificateurs indépendants, plus de dépendance aux acteurs centraux." },
-        { name: "Noeuds legers (SPV)", desc: "Les nœuds SPV délèguent la vérification à des nœuds complets. Simplification pour l'utilisateur, mais vecteur de concentration du pouvoir." },
-        { name: "Electrum wallet", desc: "Portefeuille léger emblématique, exposé lors de la crise CVE-2018. Illustre la tension entre accessibilité et sécurité distribuée." },
-        { name: "Gouvernance polycentrique", desc: "La réponse collective à la crise révèle la nature polycentrique de la gouvernance Bitcoin : pas de centre unique, mais un réseau d'acteurs interdépendants." },
-      ]
-    },
-    {
-      title: "Blocksize War → SegWit → Lightning",
-      steps: [
-        { name: "Crise d'évolution", desc: "La guerre des blocs (2015-2017) est l'archétype d'une crise protocolaire : un débat technique qui dissimule des enjeux politiques et économiques profonds." },
-        { name: "ProtocolChange — SegWit", desc: "Segregated Witness : un compromis technique issu d'années de controverse, activé via UASF. La politique au cœur du code." },
-        { name: "Lightning Network", desc: "Réseau de paiement de seconde couche rendu possible par SegWit. Un déplacement de la valeur vers des couches moins visibles et moins décentralisées." },
-        { name: "Gouvernance duale", desc: "La tension entre on-chain et off-chain révèle une gouvernance à deux vitesses, où les décisions implicites sont aussi importantes que les votes explicites." },
-      ]
-    },
-    {
-      title: "The DAO → gouvernance Ethereum",
-      steps: [
-        { name: "The DAO", desc: "Organisation autonome décentralisée, finançant des projets via smart contracts. Sa faillite a redéfini les contours de la gouvernance Ethereum." },
-        { name: "Ethereum DAO Hard Fork", desc: "Fork controversé décidé en urgence : réponse collective à une crise d'intégrité. Premier grand test de la gouvernance Ethereum hors protocole." },
-        { name: "Gouvernance de huis clos", desc: "La décision du fork révèle une gouvernance opaque malgré l'idéologie décentralisatrice : un noyau restreint a tranché." },
-        { name: "Polycentricité comme dynamique d'arènes et de légitimités", desc: "Conclusion théorique : la gouvernance des protocoles est fondamentalement polycentrique — plusieurs centres de décision, légitimités concurrentes, équilibres instables." },
-      ]
-    },
-  ];
-
-  let tourState = { active: false, tourIdx: 0, stepIdx: 0 };
-
-  function tourResolveStep(step) {
-    if (!State.data) return null;
-    return State.data.entities.find(e => e.name === step.name) || null;
-  }
-
-  function tourRender() {
-    const tour = TOURS[tourState.tourIdx];
-    const step = tour.steps[tourState.stepIdx];
-    const total = tour.steps.length;
-    document.getElementById('tour-counter').textContent = `Étape ${tourState.stepIdx + 1}/${total}`;
-    document.getElementById('tour-step-name').textContent = step.name;
-    document.getElementById('tour-step-desc').textContent = step.desc;
-    document.getElementById('tour-progress-bar').style.width = `${((tourState.stepIdx + 1) / total) * 100}%`;
-    document.getElementById('tour-prev').disabled = tourState.stepIdx === 0;
-    document.getElementById('tour-next').textContent = tourState.stepIdx === total - 1 ? '✓ Fin' : 'Suiv. →';
-    // Navigate to entity
-    const entity = tourResolveStep(step);
-    if (entity && Graph.cy) {
-      const node = Graph.cy.$id(entity.id);
-      if (node.length) {
-        Graph.cy.animate({ center: { eles: node }, zoom: Math.max(Graph.cy.zoom(), 1.5) }, { duration: 400 });
-        node.select();
-        Graph.highlightNeighbors(entity.id);
-        UI.renderPanel(entity.id);
-      }
-    }
-  }
-
-  function tourOpen() {
-    tourState.active = true;
-    document.getElementById('tour-overlay').classList.remove('hidden');
-    tourRender();
-  }
-
-  function tourClose() {
-    tourState.active = false;
-    document.getElementById('tour-overlay').classList.add('hidden');
-    Graph.resetHighlight();
-  }
-
-  // Populate tour select
-  const tourSelect = document.getElementById('tour-select');
-  TOURS.forEach((t, i) => {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = t.title;
-    tourSelect.appendChild(opt);
-  });
-
-  tourSelect.addEventListener('change', () => {
-    tourState.tourIdx = parseInt(tourSelect.value);
-    tourState.stepIdx = 0;
-    tourRender();
-  });
-
-  document.getElementById('btn-tour').addEventListener('click', () => {
-    if (tourState.active) tourClose();
-    else tourOpen();
-  });
-
-  document.getElementById('tour-close').addEventListener('click', tourClose);
-
-  document.getElementById('tour-prev').addEventListener('click', () => {
-    if (tourState.stepIdx > 0) { tourState.stepIdx--; tourRender(); }
-  });
-
-  document.getElementById('tour-next').addEventListener('click', () => {
-    const tour = TOURS[tourState.tourIdx];
-    if (tourState.stepIdx < tour.steps.length - 1) {
-      tourState.stepIdx++;
-      tourRender();
-    } else {
-      tourClose();
-    }
   });
 
   // ── Toggle mode scrolly / éditeur ────────────────────────
