@@ -4243,43 +4243,6 @@
       }
     },
     {
-      "id": "f6ec9a6ee97e405cba397a87825d7780",
-      "name": "MtGox",
-      "types": [
-        "987c3b6582a34edc8be835560ed95a00"
-      ],
-      "description": {
-        "type": "TEXT",
-        "value": "Première grande bourse BTC/USD (70% des volumes 2010-2014), fondée par McCaleb, rachetée par Karpelès. Faillite 2014 après hack massif",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "attributes": {
-        "founded": {
-          "type": "TEXT",
-          "value": "2010",
-          "options": {
-            "language": "en"
-          }
-        },
-        "collapse": {
-          "type": "TEXT",
-          "value": "2014",
-          "options": {
-            "language": "en"
-          }
-        },
-        "slug": {
-          "type": "TEXT",
-          "value": "mtgox",
-          "options": {
-            "language": "en"
-          }
-        }
-      }
-    },
-    {
       "id": "1570f65e76a24fb0b3df247eef1d76d1",
       "name": "Silk Road",
       "types": [
@@ -33129,43 +33092,6 @@
       }
     },
     {
-      "id": "d29b2f2c58d24949a451d426aad8d68b",
-      "name": "Electrum wallet",
-      "description": {
-        "type": "TEXT",
-        "value": "Événement infrastructurel cité dans le Chapitre I, section I.2.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "49a98b36b4a94099a4d35ee6ca46f629"
-      ],
-      "attributes": {
-        "source": {
-          "type": "TEXT",
-          "value": "Chapitre I, section I.2",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "date": {
-          "type": "TEXT",
-          "value": "2011-12",
-          "options": {
-            "language": "en"
-          }
-        },
-        "description": {
-          "type": "TEXT",
-          "value": "Client Bitcoin léger lancé en novembre 2011, n'exigeant pas le téléchargement complet de la blockchain grâce aux serveurs SPV.",
-          "options": {
-            "language": "fr"
-          }
-        }
-      }
-    },
-    {
       "id": "4c335587eb4e430996890cb179d9052c",
       "name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
       "description": {
@@ -34254,36 +34180,6 @@
           "value": "PAGE_CONFIRMED",
           "options": {
             "language": "en"
-          }
-        }
-      }
-    },
-    {
-      "id": "8d5dcb9c0e6043d5aef0149edde10f8f",
-      "name": "Ghash.io",
-      "description": {
-        "type": "TEXT",
-        "value": "Événement infrastructurel cité dans le Chapitre I, section I.2.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "49a98b36b4a94099a4d35ee6ca46f629"
-      ],
-      "attributes": {
-        "source": {
-          "type": "TEXT",
-          "value": "Chapitre I, section I.2",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "description": {
-          "type": "TEXT",
-          "value": "Pool de minage Bitcoin ayant dépassé temporairement 51% de la puissance de hachage en janvier 2014, soulevant une alarme sur la sécurité du consensus décentralisé.",
-          "options": {
-            "language": "fr"
           }
         }
       }
@@ -67820,21 +67716,6 @@
       "attributes": {}
     },
     {
-      "id": "ee433d78950744f6b1be264115953e43",
-      "name": "The DAO",
-      "description": {
-        "type": "TEXT",
-        "value": "Fonds d'investissement décentralisé sur Ethereum (2016). ICO de 150M$, attaqué en juin 2016. Source: Chap. III.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "6e570c33e04743e199fc12848fbfdfed"
-      ],
-      "attributes": {}
-    },
-    {
       "id": "728bc85a162d4419b31672b06ce8e96a",
       "name": "Greg Maxwell",
       "description": {
@@ -72790,21 +72671,6 @@
       "attributes": {}
     },
     {
-      "id": "0c8495689a2b4f158648978782049d04",
-      "name": "Pools de minage",
-      "description": {
-        "type": "TEXT",
-        "value": "Coopératives de mineurs mutualisant leur puissance de calcul.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "92adb65e7a844256b121396b24e8451f"
-      ],
-      "attributes": {}
-    },
-    {
       "id": "a5df3efed6394d39845728d90d2959c6",
       "name": "Opérateurs Hashers",
       "description": {
@@ -73076,7 +72942,7 @@
     },
     {
       "id": "768c5992ebac4518a4fcc36026356608",
-      "name": "Bourses d'échange",
+      "name": "Bourses d'échange (segment)",
       "description": {
         "type": "TEXT",
         "value": "Plateformes d'échange centralisées entre Bitcoin et monnaies fiat ou autres cryptomonnaies (ex. Mt.Gox, Bitstamp, Kraken). Segment 6 de Rauchs (2016, p.118).",
@@ -73481,7 +73347,7 @@
     },
     {
       "id": "0a41290de4744cad998b0fb6131b011d",
-      "name": "Services de conformité",
+      "name": "Services de conformité (segment)",
       "description": {
         "type": "TEXT",
         "value": "Prestataires KYC/AML, surveillance de transactions et audit de conformité pour l'écosystème (ex. Chainalysis). Segment 21 de Rauchs (2016, p.119).",
@@ -73601,36 +73467,6 @@
           }
         }
       }
-    },
-    {
-      "id": "c13e3e381a9a45428b0c6abcf94c00b9",
-      "name": "Gouvernance sur l'infrastructure",
-      "description": {
-        "type": "TEXT",
-        "value": "Désigne la gouvernance exercée par des acteurs humains (externes) sur le protocole Bitcoin : développeurs, mineurs, marchands, régulateurs, médias, utilisateurs, factions idéologiques.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "ca07150c01414fbdaa4917d6a0344d0b"
-      ],
-      "attributes": {}
-    },
-    {
-      "id": "f44bf2c35e0d492093563f1b4b4cbb2f",
-      "name": "Gouvernance par l'infrastructure",
-      "description": {
-        "type": "TEXT",
-        "value": "Désigne la gouvernance exercée à travers l'infrastructure elle-même par des entités non-humaines (nœuds du réseau) dont le comportement détermine les règles de consensus.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "ca07150c01414fbdaa4917d6a0344d0b"
-      ],
-      "attributes": {}
     }
   ],
   "relations": [
@@ -74596,7 +74432,7 @@
     {
       "id": "rP7iJCyrWwEfp2RU9GfWy8",
       "type": "1835fb8b1f0c47ff9af190c66034c4b8",
-      "from": "f6ec9a6ee97e405cba397a87825d7780",
+      "from": "ad19591afb62496e90aba4dd1d65d1ef",
       "to": "a53b18d59a6c4ab18a407fd8fdced0c8",
       "attributes": []
     },
@@ -74617,7 +74453,7 @@
     {
       "id": "Aipr5rQfk5mt6UDcc94jjL",
       "type": "d780ba68b69f4c688026fb2ff1e8fade",
-      "from": "f6ec9a6ee97e405cba397a87825d7780",
+      "from": "ad19591afb62496e90aba4dd1d65d1ef",
       "to": "d35d720e1fa24d9fbe665a90ac0abc73",
       "attributes": []
     },
@@ -74835,7 +74671,7 @@
       "id": "Cfo5q2TVzXRF5HGqG2RZ66",
       "type": "fd27a5383f7a44aabc445a655b67e0e7",
       "from": "93c0f9f3b9ed47d3a70b5bb943251f65",
-      "to": "f6ec9a6ee97e405cba397a87825d7780",
+      "to": "ad19591afb62496e90aba4dd1d65d1ef",
       "attributes": []
     },
     {
@@ -75164,7 +75000,7 @@
       "id": "uZ3fafb3pYkdGm7rMrvJRq",
       "type": "1835fb8b1f0c47ff9af190c66034c4b8",
       "from": "a53b18d59a6c4ab18a407fd8fdced0c8",
-      "to": "f6ec9a6ee97e405cba397a87825d7780",
+      "to": "ad19591afb62496e90aba4dd1d65d1ef",
       "attributes": []
     },
     {
@@ -75822,7 +75658,7 @@
       "id": "nnN5H68XTTYCGBwR5JyPEY",
       "type": "f1375350fa414281aa72a15ce11b98c2",
       "from": "a078b1b274f74818a8c7f1abcfb3097f",
-      "to": "f6ec9a6ee97e405cba397a87825d7780",
+      "to": "ad19591afb62496e90aba4dd1d65d1ef",
       "attributes": []
     },
     {
@@ -79896,7 +79732,7 @@
       "id": "hcXM2aaj5DUvKCwzu6vU7R",
       "type": "1835fb8b1f0c47ff9af190c66034c4b8",
       "from": "c9c3add85b2d40e2afd5194688e12fb3",
-      "to": "f6ec9a6ee97e405cba397a87825d7780",
+      "to": "ad19591afb62496e90aba4dd1d65d1ef",
       "attributes": []
     },
     {
@@ -80813,7 +80649,7 @@
       "id": "penUyHt5f2zCngZzf9Urk2",
       "type": "7fd5d4c1e2f545fe84c6b84897e7e4eb",
       "from": "596826c3187e4f8cb9034357477eb14c",
-      "to": "f6ec9a6ee97e405cba397a87825d7780",
+      "to": "ad19591afb62496e90aba4dd1d65d1ef",
       "attributes": []
     },
     {
@@ -86431,14 +86267,14 @@
     {
       "id": "7xehQpJEcSHa6X2cDbhNBp",
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "d29b2f2c58d24949a451d426aad8d68b",
+      "from": "d4d0ceecec3d49abb956becb5cc0200f",
       "to": "10960c9c308b4a3dad7ff86a20a1d2b5",
       "attributes": []
     },
     {
       "id": "4nWFWZp3p3GzvaktQJHxNe",
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "d29b2f2c58d24949a451d426aad8d68b",
+      "from": "d4d0ceecec3d49abb956becb5cc0200f",
       "to": "5479509f9ca84a06a2aa3a9a2e63f1f8",
       "attributes": []
     },
@@ -86865,21 +86701,21 @@
     {
       "id": "NA1WeHp8p66xVfbjPTsM6j",
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "10960c9c308b4a3dad7ff86a20a1d2b5",
       "attributes": []
     },
     {
       "id": "sh3kmWsnMrvg3rHtE2egHn",
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "d642ff3e0fd04625ac7d6c6a95aca5d2",
       "attributes": []
     },
     {
       "id": "ttBGQ3yZBBSEuuLBTn9qKJ",
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "7b29b0d2d8404396bbaa5742e07d8f21",
       "attributes": []
     },
@@ -86887,7 +86723,7 @@
       "id": "Fk9ZGNPXBCGPfnt6xJBxgB",
       "type": "e8f2c7e9a46f4821a65ff96a071d9992",
       "from": "3ac0291d10b147f0a53559a7a4f0a1d8",
-      "to": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "to": "d3dcd3b1a7954ae48b78b39874609e96",
       "attributes": []
     },
     {
@@ -86900,7 +86736,7 @@
     {
       "id": "iinDMgqPvnuPnaheK83DUa",
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "5479509f9ca84a06a2aa3a9a2e63f1f8",
       "attributes": []
     },
@@ -88086,7 +87922,7 @@
     },
     {
       "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
-      "from": "d29b2f2c58d24949a451d426aad8d68b",
+      "from": "d4d0ceecec3d49abb956becb5cc0200f",
       "to": "55b5215088664257819b56a918ec67fd",
       "index": "a0"
     },
@@ -88104,7 +87940,7 @@
     },
     {
       "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "6b979b61416c4eb288f79f6053924afe",
       "index": "a0"
     },
@@ -91146,7 +90982,7 @@
     },
     {
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "e7b02492c3384c88900f164366253b39",
       "index": "a0"
     },
@@ -91183,7 +91019,7 @@
     {
       "type": "d8a4252d50c6428282d32a0c9566d899",
       "from": "bcd561cc100f4da38b912c31a7ea5d11",
-      "to": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "to": "d3dcd3b1a7954ae48b78b39874609e96",
       "index": "a0"
     },
     {
@@ -92016,7 +91852,7 @@
     },
     {
       "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "bfb839074ac9477c8e0e2cd00a17d7dd",
       "index": "a0"
     },
@@ -95280,7 +95116,7 @@
     },
     {
       "type": "58a5f51cfb604f12ab8cbeaf8a1d64d3",
-      "from": "f6ec9a6ee97e405cba397a87825d7780",
+      "from": "ad19591afb62496e90aba4dd1d65d1ef",
       "to": "ab4096771e454ece84ae3a904dad36ea",
       "index": "a0"
     },
@@ -95779,7 +95615,7 @@
     {
       "type": "58a5f51cfb604f12ab8cbeaf8a1d64d3",
       "from": "c69dd0dc58ff4c9d807ad8dc79987492",
-      "to": "f6ec9a6ee97e405cba397a87825d7780",
+      "to": "ad19591afb62496e90aba4dd1d65d1ef",
       "index": "a0"
     },
     {
@@ -103107,13 +102943,6 @@
       "attributes": []
     },
     {
-      "id": "r7bf61708892b48f0ba8f7c",
-      "type": "f13ff5887b7c4997ab84ac27e1b2d3a3",
-      "from": "d29b2f2c58d24949a451d426aad8d68b",
-      "to": "d4d0ceecec3d49abb956becb5cc0200f",
-      "attributes": []
-    },
-    {
       "id": "r8744111e522b41c0b80ac6",
       "type": "bfc9e9bbc2604ddeba0405a092ba3511",
       "from": "a39176beceff440da5a2bdde8b8e098b",
@@ -103335,13 +103164,6 @@
       "type": "fd27a5383f7a44aabc445a655b67e0e7",
       "from": "ed7476ec5a5040a281789a0b83cd4b90",
       "to": "eca094bdfcb84c61a7b2a9f6f6d505dc",
-      "attributes": []
-    },
-    {
-      "id": "r40398c69e42d4466bfdba6",
-      "type": "fd27a5383f7a44aabc445a655b67e0e7",
-      "from": "135a6604e6d042aba448a1a7eb628f25",
-      "to": "ee433d78950744f6b1be264115953e43",
       "attributes": []
     },
     {
@@ -104362,7 +104184,7 @@
     {
       "id": "r8bf1486c90c74f99a0ba56",
       "type": "bfc9e9bbc2604ddeba0405a092ba3511",
-      "from": "ee433d78950744f6b1be264115953e43",
+      "from": "ed7b68eeb3114b32a7ab0baabd62cc5a",
       "to": "d79fb4d0604a46af888889cb5ac5bf4b",
       "attributes": []
     },
@@ -106491,7 +106313,7 @@
       "id": "r090014abf682400db88f96",
       "type": "8ae77a9c635b4e469bbd241be48a708e",
       "from": "cf8cf57a5c414213a1120ec0ad287046",
-      "to": "ee433d78950744f6b1be264115953e43",
+      "to": "ed7b68eeb3114b32a7ab0baabd62cc5a",
       "attributes": []
     },
     {
@@ -107001,7 +106823,7 @@
     {
       "id": "r87f46dc99fb542ff87a92d",
       "type": "42c57b249283416ba8264e2beaf76cd5",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "1b268fa5dd1b4f07b5b9a0760cd46c34",
       "attributes": []
     },
@@ -107197,14 +107019,14 @@
     {
       "id": "rb3fc62cf4fc84b859bd89d",
       "type": "42c57b249283416ba8264e2beaf76cd5",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "c5b2300fbbc8446da52a26614d5bd1df",
       "attributes": []
     },
     {
       "id": "r03c5471d88b547d0a7ae19",
       "type": "42c57b249283416ba8264e2beaf76cd5",
-      "from": "8d5dcb9c0e6043d5aef0149edde10f8f",
+      "from": "d3dcd3b1a7954ae48b78b39874609e96",
       "to": "053d10d3a5b142778f078e3e2dfe79f4",
       "attributes": []
     },
@@ -108476,16 +108298,9 @@
       "attributes": []
     },
     {
-      "id": "ea5c64a58aad83d9f849ea66d05b5498",
-      "type": "bfc9e9bbc2604ddeba0405a092ba3511",
-      "from": "d29b2f2c58d24949a451d426aad8d68b",
-      "to": "55b5215088664257819b56a918ec67fd",
-      "attributes": []
-    },
-    {
       "id": "df0d7be09f84c690799ae520149d405d",
       "type": "bfc9e9bbc2604ddeba0405a092ba3511",
-      "from": "f6ec9a6ee97e405cba397a87825d7780",
+      "from": "ad19591afb62496e90aba4dd1d65d1ef",
       "to": "6b979b61416c4eb288f79f6053924afe",
       "attributes": []
     },
@@ -108611,7 +108426,7 @@
     {
       "id": "ec4a4535ccea181fc7a04b09ae2b78bf",
       "type": "cd3f12a1d626499289fb812a2254d5d6",
-      "from": "f6ec9a6ee97e405cba397a87825d7780",
+      "from": "ad19591afb62496e90aba4dd1d65d1ef",
       "to": "f8302e1ed5d3632e891d0e2823486947",
       "attributes": []
     },
@@ -110018,7 +109833,7 @@
     {
       "id": "fWO9gTpIGiO5xHA7LpAzig",
       "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "0c8495689a2b4f158648978782049d04",
+      "from": "5f7f718bd6284d718669ffc28e7cc18e",
       "to": "7059f3555f3a46aeae9355496ac1ef9d",
       "attributes": []
     },
@@ -110181,13 +109996,6 @@
       "type": "4291183556464b50b22ce82ada436ea5",
       "from": "5995286495544a848363ce1964e72887",
       "to": "83b6d7934daf41bd8c10caee48468615",
-      "attributes": []
-    },
-    {
-      "id": "AAZJFJxT7gzZ47AUjS1KEA",
-      "type": "4291183556464b50b22ce82ada436ea5",
-      "from": "5f7f718bd6284d718669ffc28e7cc18e",
-      "to": "0c8495689a2b4f158648978782049d04",
       "attributes": []
     },
     {
@@ -110627,7 +110435,7 @@
     {
       "id": "ySpY5LwdCvIJmpFHK5rCSQ",
       "type": "99035f2e201742379673a84191a51ffb",
-      "from": "0c8495689a2b4f158648978782049d04",
+      "from": "5f7f718bd6284d718669ffc28e7cc18e",
       "to": "1bdbc546f7344e1a9e030e926d286cbc",
       "attributes": []
     },
@@ -110677,56 +110485,56 @@
       "id": "UCZVCcHLjvu1pxKb",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "765578c9397e4a6fb7b76f019cc00831",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "nyDaImaxP6b_CnW9",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "16f9e7387f55457b80450f5add3707ef",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "uOXHsxy4HgmxOWD3",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "7059f3555f3a46aeae9355496ac1ef9d",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "xYtVaDAy1n74qJQc",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "92a9db47eb8842b4b6b365bb62532745",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "gdX52x7_glzQfZzJ",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "f47b82021b7845d689e9dcdf895bef0d",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "eIp8-65SHx-DEgDD",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "2e1c18bf58d14fb8a2054aae03a2241d",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "KJXcoLFx2JpsTskz",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "83b6d7934daf41bd8c10caee48468615",
-      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "to": "e22205f327564c608c4710150bbac16b",
       "attributes": []
     },
     {
       "id": "eLCcQqI0XTb19r34",
       "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
       "from": "2a1cbbdf30d8436792bcc603ffce4367",
-      "to": "f44bf2c35e0d492093563f1b4b4cbb2f",
+      "to": "ac80b824dedc47419211e4393dfcd681",
       "attributes": []
     }
   ]
