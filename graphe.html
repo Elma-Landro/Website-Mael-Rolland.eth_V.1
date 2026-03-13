@@ -1796,6 +1796,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!State.data) return;
     Graph.applyLayout(document.getElementById('layout-select').value);
   });
+  document.getElementById('layout-select').addEventListener('change', e => {
+    if (!State.data) return;
+    Graph.applyLayout(e.target.value);
+  });
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
 
   // ── Search ───────────────────────────────────────────
