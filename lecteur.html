@@ -355,8 +355,22 @@ body::before {
   color: var(--text2);
   line-height: 1.6;
 }
+.fn-title {
+  font-family: var(--pixel);
+  font-size: 0.55em;
+  color: var(--gold2);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
 .footnotes-section ol { padding-left: 20px; }
 .footnotes-section li { margin-bottom: 8px; }
+.fn-back {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85em;
+  opacity: 0.7;
+}
+.fn-back:hover { color: var(--gold); opacity: 1; }
 
 /* ═══ GRAPH COLUMN ══════════════════════════════════════ */
 .graph-col {
@@ -1075,14 +1089,21 @@ function renderMarkdown(md, def) {
     // Trim TOC lines at start (lines starting with [...](#...)
     .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
 
-  // ── Footnotes : supprimer les définitions [^N]: ... (doublon des #####)
-  cleaned = cleaned.replace(/^\[\^\d+\]:[ \t]*.*/gm, '');
+  // ── 1. Extraire les définitions [^N]: texte (une par ligne)
+  const footnoteDefs = {};
+  cleaned = cleaned.replace(/^\[\^(\d+)\]:\s*(.+)$/gm, (_, n, text) => {
+    footnoteDefs[parseInt(n)] = text.trim();
+    return '';
+  });
 
-  // ── Remplacer les références inline [^N] par des superscripts stylés
-  cleaned = cleaned.replace(/\[\^(\d+)\]/g, '<sup class="fn-ref">[$1]</sup>');
+  // ── 2. Supprimer les headings ##### (sidenotes = doublons des définitions)
+  cleaned = cleaned.replace(/^#{5}\s+.+$/gm, '');
 
-  // ── Zotero links → Google Scholar search
-  // Format original : [(Auteur Année)](https://www.zotero.org/google-docs/?CODE)
+  // ── 3. Remplacer [^N] inline par des ancres superscript numérotées
+  cleaned = cleaned.replace(/\[\^(\d+)\]/g,
+    '<sup id="fnref-$1"><a href="#fn-$1" class="fn-ref">[$1]</a></sup>');
+
+  // ── 4. Zotero links → Google Scholar
   cleaned = cleaned.replace(
     /\[([^\]]+)\]\(https?:\/\/(?:www\.)?zotero\.org\/google-docs\/[^)]+\)/g,
     (_, text) => {
@@ -1091,7 +1112,7 @@ function renderMarkdown(md, def) {
     }
   );
 
-  // ── Superscript Pandoc : ^texte^ → <sup>texte</sup>
+  // ── 5. Superscript Pandoc : ^texte^ → <sup>texte</sup>
   cleaned = cleaned.replace(/\^([^^]+?)\^/g, '<sup>$1</sup>');
 
   // Parse markdown
@@ -1103,6 +1124,25 @@ function renderMarkdown(md, def) {
     const slug = slugify(content.replace(/<[^>]+>/g, ''));
     return `<${tag}${attrs} data-section="${content.replace(/<[^>]+>/g, '')}" id="section-${slug}">${content}</${tag}>`;
   });
+
+  // ── 6. Construire la section notes de bas de page
+  const fnNums = Object.keys(footnoteDefs).map(Number).sort((a, b) => a - b);
+  if (fnNums.length) {
+    let fnHtml = '<div class="footnotes-section"><p class="fn-title">Notes</p><ol>';
+    for (const n of fnNums) {
+      // Zotero dans les textes de notes aussi
+      let txt = footnoteDefs[n].replace(
+        /\[([^\]]+)\]\(https?:\/\/(?:www\.)?zotero\.org\/google-docs\/[^)]+\)/g,
+        (_, t) => {
+          const q = encodeURIComponent(t.replace(/[()[\]]/g, '').trim());
+          return `<a href="https://scholar.google.com/scholar?q=${q}" target="_blank">${t}</a>`;
+        }
+      );
+      fnHtml += `<li id="fn-${n}" value="${n}">${txt} <a href="#fnref-${n}" class="fn-back">↩</a></li>`;
+    }
+    fnHtml += '</ol></div>';
+    html += fnHtml;
+  }
 
   // Highlight entity mentions
   html = highlightEntities(html);
