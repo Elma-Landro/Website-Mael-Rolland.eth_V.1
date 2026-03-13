@@ -301,6 +301,10 @@
           "language": "fr"
         }
       }
+    },
+    {
+      "id": "92adb65e7a844256b121396b24e8451f",
+      "name": "StakeholderCategory"
     }
   ],
   "relation_types": [
@@ -1222,6 +1226,14 @@
           "language": "fr"
         }
       }
+    },
+    {
+      "id": "e1233a62b5174de88dd6db02494bb10c",
+      "name": "subcategory of"
+    },
+    {
+      "id": "4291183556464b50b22ce82ada436ea5",
+      "name": "belongs to category"
     }
   ],
   "entities": [
@@ -72418,6 +72430,532 @@
           }
         }
       }
+    },
+    {
+      "id": "eed0b89cd2e740718059c16591f9bfb7",
+      "name": "Phase de maturation",
+      "description": {
+        "type": "TEXT",
+        "value": "Troisième phase de développement de l'écosystème Bitcoin (2013–2015) : institutionnalisation, émergence des grands acteurs marchands, premières régulations, essor du minage industriel et entrée d'Ethereum.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49b5c53cd2e14154a953ddadec303cdd"
+      ],
+      "attributes": {
+        "dateStart": {
+          "type": "TIME",
+          "value": "2013-01-01T00:00:00.000Z"
+        },
+        "dateEnd": {
+          "type": "TIME",
+          "value": "2015-12-31T00:00:00.000Z"
+        },
+        "slug": {
+          "type": "TEXT",
+          "value": "phase-de-maturation",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "9efd2171a88f426b833295c91dcbb169",
+      "name": "Gouvernance PAR l'infrastructure",
+      "description": {
+        "type": "TEXT",
+        "value": "Acteurs non humains : nœuds du réseau participant au consensus sans décision volontaire proprement dite.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "name": "Gouvernance SUR l'infrastructure",
+      "description": {
+        "type": "TEXT",
+        "value": "Acteurs humains exerçant une influence volontaire sur le protocole, les services ou la régulation.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "2a1cbbdf30d8436792bcc603ffce4367",
+      "name": "Nœuds du réseau",
+      "description": {
+        "type": "TEXT",
+        "value": "Entités techniques assurant la validation et la propagation des transactions et blocs.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "81649267f8bd4ec4b77a439a3f7fae34",
+      "name": "Nœuds mineurs",
+      "description": {
+        "type": "TEXT",
+        "value": "Nœuds qui participent activement à la création de nouveaux blocs (preuve de travail).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "0061e17c1ebd4b5fb50bba62a12eb96b",
+      "name": "Nœuds complets (Full Nodes)",
+      "description": {
+        "type": "TEXT",
+        "value": "Nœuds qui téléchargent et valident l'intégralité de la blockchain sans miner.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "ab4f4853d109470e8ad0e0559b13fe15",
+      "name": "Nœuds légers (SPV)",
+      "description": {
+        "type": "TEXT",
+        "value": "Clients simplifiant la vérification des paiements sans télécharger la blockchain complète.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "765578c9397e4a6fb7b76f019cc00831",
+      "name": "Développeurs",
+      "description": {
+        "type": "TEXT",
+        "value": "Acteurs contribuant au code du protocole ou des applications de l'écosystème.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "16f9e7387f55457b80450f5add3707ef",
+      "name": "Services Marchands & Passerelles",
+      "description": {
+        "type": "TEXT",
+        "value": "Entreprises et services assurant la médiation entre Bitcoin et l'économie réelle.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "7059f3555f3a46aeae9355496ac1ef9d",
+      "name": "Mineurs et assimilés",
+      "description": {
+        "type": "TEXT",
+        "value": "Acteurs humains organisant la production de blocs : pools, opérateurs, fabricants de matériel.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "92a9db47eb8842b4b6b365bb62532745",
+      "name": "Autorités de régulation",
+      "description": {
+        "type": "TEXT",
+        "value": "Institutions publiques exerçant ou revendiquant une autorité normative sur les cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "f47b82021b7845d689e9dcdf895bef0d",
+      "name": "Médias et assimilés",
+      "description": {
+        "type": "TEXT",
+        "value": "Acteurs de la production et diffusion de connaissances sur les cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "2e1c18bf58d14fb8a2054aae03a2241d",
+      "name": "Utilisateurs finaux",
+      "description": {
+        "type": "TEXT",
+        "value": "Grand public et utilisateurs ordinaires du réseau Bitcoin/Ethereum.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "83b6d7934daf41bd8c10caee48468615",
+      "name": "Mouvements idéologiques & Factions de gouvernance",
+      "description": {
+        "type": "TEXT",
+        "value": "Courants idéologiques fondateurs et factions émergentes lors des crises de gouvernance.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "210fa27d81c8421e8751e0c3b40fe6d9",
+      "name": "Développeurs — Couche Protocolaire",
+      "description": {
+        "type": "TEXT",
+        "value": "Contributeurs travaillant directement sur le protocole Bitcoin Core ou Ethereum.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "3f8bd31252d64ecaa81f0cbf7a24b6f1",
+      "name": "Développeurs — Couche Applicative",
+      "description": {
+        "type": "TEXT",
+        "value": "Développeurs construisant des applications, wallets, services sur le protocole.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "8d48bd51752d4c838a92d08261e1fe13",
+      "name": "Développeurs Core (mainteneurs avec accès commit)",
+      "description": {
+        "type": "TEXT",
+        "value": "Mainteneurs disposant des droits de commit sur le dépôt officiel Bitcoin Core ou Ethereum.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "a1aa24cf38094f67a0a97fcece7b0fd0",
+      "name": "Contributeurs",
+      "description": {
+        "type": "TEXT",
+        "value": "Développeurs contribuant via pull requests sans droits de commit directs.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "cd17655451a34a21bfe45af7541147cf",
+      "name": "Fournisseurs de portefeuilles",
+      "description": {
+        "type": "TEXT",
+        "value": "Services de stockage et gestion de clés privées (custodial, non-custodial, matériel).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "ad44585da1cf4240b8aa7e7a863bc929",
+      "name": "Services de paiement",
+      "description": {
+        "type": "TEXT",
+        "value": "Processeurs facilitant l'acceptation de Bitcoin par les commerçants.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "2a5fddbd25344c7c9b60ab36c9924455",
+      "name": "Analyse on-chain",
+      "description": {
+        "type": "TEXT",
+        "value": "Services de surveillance et d'analyse de la blockchain.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "cafbc70f0eb344e1818e0ba96df30e29",
+      "name": "Bourses d'échange",
+      "description": {
+        "type": "TEXT",
+        "value": "Plateformes d'échange entre cryptomonnaies et/ou monnaies fiat.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "2e90ec4b3be04f589fee3f681857be66",
+      "name": "Marchands",
+      "description": {
+        "type": "TEXT",
+        "value": "Commerçants et entreprises acceptant les cryptomonnaies en paiement.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "cf1ab10598e64522a9064a7f00c92043",
+      "name": "Services de conformité",
+      "description": {
+        "type": "TEXT",
+        "value": "Prestataires AML/KYC, audit et conformité réglementaire pour les acteurs de l'écosystème.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "0c8495689a2b4f158648978782049d04",
+      "name": "Pools de minage",
+      "description": {
+        "type": "TEXT",
+        "value": "Coopératives de mineurs mutualisant leur puissance de calcul.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "a5df3efed6394d39845728d90d2959c6",
+      "name": "Opérateurs Hashers",
+      "description": {
+        "type": "TEXT",
+        "value": "Opérateurs de grandes fermes de minage sans pool propre.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "cc227e6690bc4624b1eedd1839e3b43a",
+      "name": "Mineurs solos",
+      "description": {
+        "type": "TEXT",
+        "value": "Mineurs individuels opérant sans rejoindre un pool.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "da9c4eebd2984d25af385ccf4a90d0b2",
+      "name": "Fabricants de matériel dédié (ASIC)",
+      "description": {
+        "type": "TEXT",
+        "value": "Concepteurs et producteurs de circuits intégrés spécialisés pour le minage Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "25d4f70497d84741b8a061ce92ebc542",
+      "name": "Banques Centrales",
+      "description": {
+        "type": "TEXT",
+        "value": "Autorités monétaires nationales et supranationales.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "ce51af72cc144207881998196e6d598c",
+      "name": "Autorités prudentielles",
+      "description": {
+        "type": "TEXT",
+        "value": "Régulateurs sectoriels des services financiers (AMF, SEC, BaFin, etc.).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "63af93643ca64745ad113f0ddc51d081",
+      "name": "Médias généralistes",
+      "description": {
+        "type": "TEXT",
+        "value": "Presse généraliste couvrant les cryptomonnaies de manière incidente.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "90049a38bcda4c7fbefc7ab34a57c501",
+      "name": "Médias spécialisés",
+      "description": {
+        "type": "TEXT",
+        "value": "Publications et sites dédiés à l'actualité des cryptomonnaies (CoinDesk, Bitcoin.fr, etc.).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "4cdfb8b0b5f3413c858ef59046e047ca",
+      "name": "Enseignement et formation",
+      "description": {
+        "type": "TEXT",
+        "value": "Institutions et initiatives éducatives sur les cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "b0151a4b8d7b4f65932c549409bb0f89",
+      "name": "Grand public et utilisateurs du réseau",
+      "description": {
+        "type": "TEXT",
+        "value": "Utilisateurs ordinaires des cryptomonnaies sans rôle opérationnel dans le protocole.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "92adb65e7a844256b121396b24e8451f"
+      ],
+      "attributes": {}
     }
   ],
   "relations": [
@@ -85279,13 +85817,6 @@
       "attributes": []
     },
     {
-      "id": "bteRVCzwJ1R2nWRdCdJwYH",
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "1570f65e76a24fb0b3df247eef1d76d1",
-      "to": "6414d87541f941a0b428c536ce72e032",
-      "attributes": []
-    },
-    {
       "id": "7rL71JP7A5y7YiQRT9cYRp",
       "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
       "from": "1570f65e76a24fb0b3df247eef1d76d1",
@@ -85353,13 +85884,6 @@
       "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
       "from": "d969f6bc7b0444db8d228a13173b1b74",
       "to": "6414d87541f941a0b428c536ce72e032",
-      "attributes": []
-    },
-    {
-      "id": "3U2NRiwkbTN7aHvHF1YGiv",
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "d969f6bc7b0444db8d228a13173b1b74",
-      "to": "019689c1ce06489a84768c51637eb9ed",
       "attributes": []
     },
     {
@@ -86749,19 +87273,7 @@
     },
     {
       "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "d693882f7dc74d6cb9a875d029f155aa",
-      "to": "019689c1ce06489a84768c51637eb9ed",
-      "index": "a0"
-    },
-    {
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
       "from": "ae1cb2659fd7470b8ec1aa621226b3e1",
-      "to": "019689c1ce06489a84768c51637eb9ed",
-      "index": "a0"
-    },
-    {
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "8bc6f2749a284bb7add34a1739cec310",
       "to": "019689c1ce06489a84768c51637eb9ed",
       "index": "a0"
     },
@@ -86853,18 +87365,6 @@
       "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
       "from": "7b73ed5f4e7149baaf8c534c809bc33f",
       "to": "6414d87541f941a0b428c536ce72e032",
-      "index": "a0"
-    },
-    {
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "d693882f7dc74d6cb9a875d029f155aa",
-      "to": "6414d87541f941a0b428c536ce72e032",
-      "index": "a0"
-    },
-    {
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "608cc2e4c58247a48f6fa317fb91cbf8",
-      "to": "019689c1ce06489a84768c51637eb9ed",
       "index": "a0"
     },
     {
@@ -90267,12 +90767,6 @@
       "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
       "from": "93f13f18c6da412292eba80dcd630ac7",
       "to": "6414d87541f941a0b428c536ce72e032",
-      "index": "a0"
-    },
-    {
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "93f13f18c6da412292eba80dcd630ac7",
-      "to": "019689c1ce06489a84768c51637eb9ed",
       "index": "a0"
     },
     {
@@ -104052,13 +104546,6 @@
       "attributes": []
     },
     {
-      "id": "r8dabccf0ad364d14863987",
-      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
-      "from": "ae1cb2659fd7470b8ec1aa621226b3e1",
-      "to": "6414d87541f941a0b428c536ce72e032",
-      "attributes": []
-    },
-    {
       "id": "r5529cba384514f2798b7ee",
       "type": "98142520f9304dbea0a3027f375d97f7",
       "from": "cc346d7c8cdf450ca81c1cd08d65b68c",
@@ -108753,6 +109240,384 @@
       "type": "8a3f4e8e64fd463ea01c62381e025187",
       "from": "8a76b0da92254d76a4a330ddb8b40e4c",
       "to": "cf8cf57a5c414213a1120ec0ad287046",
+      "attributes": []
+    },
+    {
+      "id": "KaF0v-h0QB7aD8omV3JWuA",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "d693882f7dc74d6cb9a875d029f155aa",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "iDFD2pDW2EfHHlqoI-EsoQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "2a1cbbdf30d8436792bcc603ffce4367",
+      "to": "9efd2171a88f426b833295c91dcbb169",
+      "attributes": []
+    },
+    {
+      "id": "J9RyMm3D6XOdKX-DlESjUQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "81649267f8bd4ec4b77a439a3f7fae34",
+      "to": "2a1cbbdf30d8436792bcc603ffce4367",
+      "attributes": []
+    },
+    {
+      "id": "Kn04k8JviKavbwieZH3M2A",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "0061e17c1ebd4b5fb50bba62a12eb96b",
+      "to": "2a1cbbdf30d8436792bcc603ffce4367",
+      "attributes": []
+    },
+    {
+      "id": "Q2vdw8zY7zTFSvP5VD7Unw",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "ab4f4853d109470e8ad0e0559b13fe15",
+      "to": "2a1cbbdf30d8436792bcc603ffce4367",
+      "attributes": []
+    },
+    {
+      "id": "PhQLKMgXk8lHDXcb6aUt0Q",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "765578c9397e4a6fb7b76f019cc00831",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "tdBFtEuy-tf1NBWXQ64uDA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "16f9e7387f55457b80450f5add3707ef",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "LeFgU_bnhR7H_y6L6YeUUA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "7059f3555f3a46aeae9355496ac1ef9d",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "oj4rAcG99nSY_wOcLAlwsQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "92a9db47eb8842b4b6b365bb62532745",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "EOMhosgE3N2OW-E0P1PTwQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "f47b82021b7845d689e9dcdf895bef0d",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "cPm3_uF_7hoyR1EEepZrPQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "2e1c18bf58d14fb8a2054aae03a2241d",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "w-HNCQniV2CQq31V5V9MHg",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "83b6d7934daf41bd8c10caee48468615",
+      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
+      "attributes": []
+    },
+    {
+      "id": "2FDZ9NOi5XM3FGaXa1OCaA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "210fa27d81c8421e8751e0c3b40fe6d9",
+      "to": "765578c9397e4a6fb7b76f019cc00831",
+      "attributes": []
+    },
+    {
+      "id": "t4SaVZbx9_dv78nt39Qhcg",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "3f8bd31252d64ecaa81f0cbf7a24b6f1",
+      "to": "765578c9397e4a6fb7b76f019cc00831",
+      "attributes": []
+    },
+    {
+      "id": "fHrjU7VdD7M0Wcarc9mRAg",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "8d48bd51752d4c838a92d08261e1fe13",
+      "to": "210fa27d81c8421e8751e0c3b40fe6d9",
+      "attributes": []
+    },
+    {
+      "id": "dF24ufBagGhPzBKNZIVUaA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "a1aa24cf38094f67a0a97fcece7b0fd0",
+      "to": "765578c9397e4a6fb7b76f019cc00831",
+      "attributes": []
+    },
+    {
+      "id": "f_bAYiUvhJK2qWpX1tMlMg",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "cd17655451a34a21bfe45af7541147cf",
+      "to": "16f9e7387f55457b80450f5add3707ef",
+      "attributes": []
+    },
+    {
+      "id": "_mBiXE-24bXr-r5wznvNnA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "ad44585da1cf4240b8aa7e7a863bc929",
+      "to": "16f9e7387f55457b80450f5add3707ef",
+      "attributes": []
+    },
+    {
+      "id": "kj4JSv4D-87Hwfil1X3U2w",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "2a5fddbd25344c7c9b60ab36c9924455",
+      "to": "16f9e7387f55457b80450f5add3707ef",
+      "attributes": []
+    },
+    {
+      "id": "zMBuzV-tbA7pQSL3jyc6Rw",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "cafbc70f0eb344e1818e0ba96df30e29",
+      "to": "16f9e7387f55457b80450f5add3707ef",
+      "attributes": []
+    },
+    {
+      "id": "Nez19htPpatkKJpmS6UqVQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "2e90ec4b3be04f589fee3f681857be66",
+      "to": "16f9e7387f55457b80450f5add3707ef",
+      "attributes": []
+    },
+    {
+      "id": "CIr1M52Do4bUxLf5PGJZgw",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "cf1ab10598e64522a9064a7f00c92043",
+      "to": "16f9e7387f55457b80450f5add3707ef",
+      "attributes": []
+    },
+    {
+      "id": "fWO9gTpIGiO5xHA7LpAzig",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "0c8495689a2b4f158648978782049d04",
+      "to": "7059f3555f3a46aeae9355496ac1ef9d",
+      "attributes": []
+    },
+    {
+      "id": "CPze33Q5tkcyFvG2z5yVrA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "a5df3efed6394d39845728d90d2959c6",
+      "to": "7059f3555f3a46aeae9355496ac1ef9d",
+      "attributes": []
+    },
+    {
+      "id": "nGz-l1oZhpWUOqnUWHV5DA",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "cc227e6690bc4624b1eedd1839e3b43a",
+      "to": "7059f3555f3a46aeae9355496ac1ef9d",
+      "attributes": []
+    },
+    {
+      "id": "zjVNpQnVjf18GIJfeYrftw",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "da9c4eebd2984d25af385ccf4a90d0b2",
+      "to": "7059f3555f3a46aeae9355496ac1ef9d",
+      "attributes": []
+    },
+    {
+      "id": "iLuN_8jEMj-cck1FYnHspg",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "25d4f70497d84741b8a061ce92ebc542",
+      "to": "92a9db47eb8842b4b6b365bb62532745",
+      "attributes": []
+    },
+    {
+      "id": "hVvY-Kt42UyktpEEgC2dxg",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "ce51af72cc144207881998196e6d598c",
+      "to": "92a9db47eb8842b4b6b365bb62532745",
+      "attributes": []
+    },
+    {
+      "id": "w2UN_U4RdZWDeNMW2KbfAw",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "63af93643ca64745ad113f0ddc51d081",
+      "to": "f47b82021b7845d689e9dcdf895bef0d",
+      "attributes": []
+    },
+    {
+      "id": "kfTihq9vWEnUvMzmdtkaBQ",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "90049a38bcda4c7fbefc7ab34a57c501",
+      "to": "f47b82021b7845d689e9dcdf895bef0d",
+      "attributes": []
+    },
+    {
+      "id": "yFXO4QYiQY6wDmNm7Dwd2g",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "4cdfb8b0b5f3413c858ef59046e047ca",
+      "to": "f47b82021b7845d689e9dcdf895bef0d",
+      "attributes": []
+    },
+    {
+      "id": "-q7DtaB625pphJe8g0fi7g",
+      "type": "e1233a62b5174de88dd6db02494bb10c",
+      "from": "b0151a4b8d7b4f65932c549409bb0f89",
+      "to": "2e1c18bf58d14fb8a2054aae03a2241d",
+      "attributes": []
+    },
+    {
+      "id": "iZg7HP_A_MRDrIpk6gcpQw",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "11da1d978f254421a13e3d1dcac5bf03",
+      "to": "83b6d7934daf41bd8c10caee48468615",
+      "attributes": []
+    },
+    {
+      "id": "EVFnbh6114IbeWul4UwI7Q",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "3d9faae70db84ab4a548516f1adbaf67",
+      "to": "83b6d7934daf41bd8c10caee48468615",
+      "attributes": []
+    },
+    {
+      "id": "m9ii8UK9YG5lywx-50Kjzg",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "1b713b5b8ed045b09cd9e8ad988950e8",
+      "to": "210fa27d81c8421e8751e0c3b40fe6d9",
+      "attributes": []
+    },
+    {
+      "id": "CUOPVAqF3_1dttifFihseg",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "0d645f0347bc4002bb37ce04d3fd58b2",
+      "to": "210fa27d81c8421e8751e0c3b40fe6d9",
+      "attributes": []
+    },
+    {
+      "id": "8zcYg0n1LbsBaqm10XOj8Q",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "c4f60c1d99e248f386f1e871013462a7",
+      "to": "cafbc70f0eb344e1818e0ba96df30e29",
+      "attributes": []
+    },
+    {
+      "id": "jtGOvM1kFl1eUGlr8zbnQQ",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "164bce6707654ddf9b2aafec5a1b824c",
+      "to": "0061e17c1ebd4b5fb50bba62a12eb96b",
+      "attributes": []
+    },
+    {
+      "id": "K4A8L8vx4H-lR1eByYYkIg",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "7b29b0d2d8404396bbaa5742e07d8f21",
+      "to": "8d48bd51752d4c838a92d08261e1fe13",
+      "attributes": []
+    },
+    {
+      "id": "zx_hD87I57df-RubETc6Fw",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "d642ff3e0fd04625ac7d6c6a95aca5d2",
+      "to": "7059f3555f3a46aeae9355496ac1ef9d",
+      "attributes": []
+    },
+    {
+      "id": "1xjbccnMkk1PmraWW_E1aw",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "4c741e8749314b5e888f93ee5c76677e",
+      "to": "0061e17c1ebd4b5fb50bba62a12eb96b",
+      "attributes": []
+    },
+    {
+      "id": "DhzfAvne7javBv2s04Pllw",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "7182761a0ea542d1b4819fc6497d8261",
+      "to": "ab4f4853d109470e8ad0e0559b13fe15",
+      "attributes": []
+    },
+    {
+      "id": "3BATyqXrlvVcgwguv_iD6Q",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "5479509f9ca84a06a2aa3a9a2e63f1f8",
+      "to": "cafbc70f0eb344e1818e0ba96df30e29",
+      "attributes": []
+    },
+    {
+      "id": "Dhq5DP7O36j5gmDn2wKR6Q",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "38f199fc83654f508ad8ad0aac7d5dc2",
+      "to": "cd17655451a34a21bfe45af7541147cf",
+      "attributes": []
+    },
+    {
+      "id": "6nOpD20fPeRNZGMwW60gPg",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "8a5f85d939d240f1b246c65f3de6194c",
+      "to": "ad44585da1cf4240b8aa7e7a863bc929",
+      "attributes": []
+    },
+    {
+      "id": "x3ZfHDmZSmITPMxkac9ecw",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "5995286495544a848363ce1964e72887",
+      "to": "83b6d7934daf41bd8c10caee48468615",
+      "attributes": []
+    },
+    {
+      "id": "AAZJFJxT7gzZ47AUjS1KEA",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "5f7f718bd6284d718669ffc28e7cc18e",
+      "to": "0c8495689a2b4f158648978782049d04",
+      "attributes": []
+    },
+    {
+      "id": "SvlEsasPame0yaPBHwba8A",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "6507ded1532f40d89dfe61550b5bd7cb",
+      "to": "92a9db47eb8842b4b6b365bb62532745",
+      "attributes": []
+    },
+    {
+      "id": "Kqu1jiyWmvVgj_3w2dWGKg",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "6cbdb3dc321d4867b0842067a2642709",
+      "to": "90049a38bcda4c7fbefc7ab34a57c501",
+      "attributes": []
+    },
+    {
+      "id": "fU7vyrp9mD8Vjl-eKM7p4Q",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "c5f0d6a944544c3c93bdd731dbc83096",
+      "to": "8d48bd51752d4c838a92d08261e1fe13",
+      "attributes": []
+    },
+    {
+      "id": "UrnEArFI3wKQMCQtJGXBoQ",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "f4ff53b0291b42f099dc195a63878557",
+      "to": "83b6d7934daf41bd8c10caee48468615",
+      "attributes": []
+    },
+    {
+      "id": "6AKKokv17JBveqMiYumwnw",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "9db440a833244ec8b3353b04122d2ec7",
+      "to": "b0151a4b8d7b4f65932c549409bb0f89",
+      "attributes": []
+    },
+    {
+      "id": "OYZGahUd9sDV02NCPFycjg",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "3e1179f56c4e4340bcc55fcf1f569c6b",
+      "to": "83b6d7934daf41bd8c10caee48468615",
+      "attributes": []
+    },
+    {
+      "id": "Xn734BVdDNULCpYdJrZQ3g",
+      "type": "4291183556464b50b22ce82ada436ea5",
+      "from": "a761e61ee9ca47ed8452e06cf79d91a1",
+      "to": "da9c4eebd2984d25af385ccf4a90d0b2",
       "attributes": []
     }
   ]
