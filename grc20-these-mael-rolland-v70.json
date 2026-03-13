@@ -1246,7 +1246,9 @@
     {
       "id": "99035f2e201742379673a84191a51ffb",
       "name": "operates in segment"
-    }
+    },
+    null,
+    null
   ],
   "entities": [
     {
@@ -72474,36 +72476,8 @@
         }
       }
     },
-    {
-      "id": "9efd2171a88f426b833295c91dcbb169",
-      "name": "Gouvernance PAR l'infrastructure",
-      "description": {
-        "type": "TEXT",
-        "value": "Acteurs non humains : nœuds du réseau participant au consensus sans décision volontaire proprement dite.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "92adb65e7a844256b121396b24e8451f"
-      ],
-      "attributes": {}
-    },
-    {
-      "id": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "name": "Gouvernance SUR l'infrastructure",
-      "description": {
-        "type": "TEXT",
-        "value": "Acteurs humains exerçant une influence volontaire sur le protocole, les services ou la régulation.",
-        "options": {
-          "language": "fr"
-        }
-      },
-      "types": [
-        "92adb65e7a844256b121396b24e8451f"
-      ],
-      "attributes": {}
-    },
+    null,
+    null,
     {
       "id": "2a1cbbdf30d8436792bcc603ffce4367",
       "name": "Nœuds du réseau",
@@ -73631,6 +73605,36 @@
           }
         }
       }
+    },
+    {
+      "id": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "name": "Gouvernance sur l'infrastructure",
+      "description": {
+        "type": "TEXT",
+        "value": "Désigne la gouvernance exercée par des acteurs humains (externes) sur le protocole Bitcoin : développeurs, mineurs, marchands, régulateurs, médias, utilisateurs, factions idéologiques.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": {}
+    },
+    {
+      "id": "f44bf2c35e0d492093563f1b4b4cbb2f",
+      "name": "Gouvernance par l'infrastructure",
+      "description": {
+        "type": "TEXT",
+        "value": "Désigne la gouvernance exercée à travers l'infrastructure elle-même par des entités non-humaines (nœuds du réseau) dont le comportement détermine les règles de consensus.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": {}
     }
   ],
   "relations": [
@@ -109925,13 +109929,6 @@
       "attributes": []
     },
     {
-      "id": "iDFD2pDW2EfHHlqoI-EsoQ",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "2a1cbbdf30d8436792bcc603ffce4367",
-      "to": "9efd2171a88f426b833295c91dcbb169",
-      "attributes": []
-    },
-    {
       "id": "J9RyMm3D6XOdKX-DlESjUQ",
       "type": "e1233a62b5174de88dd6db02494bb10c",
       "from": "81649267f8bd4ec4b77a439a3f7fae34",
@@ -109950,55 +109947,6 @@
       "type": "e1233a62b5174de88dd6db02494bb10c",
       "from": "ab4f4853d109470e8ad0e0559b13fe15",
       "to": "2a1cbbdf30d8436792bcc603ffce4367",
-      "attributes": []
-    },
-    {
-      "id": "PhQLKMgXk8lHDXcb6aUt0Q",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "765578c9397e4a6fb7b76f019cc00831",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "attributes": []
-    },
-    {
-      "id": "tdBFtEuy-tf1NBWXQ64uDA",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "16f9e7387f55457b80450f5add3707ef",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "attributes": []
-    },
-    {
-      "id": "LeFgU_bnhR7H_y6L6YeUUA",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "7059f3555f3a46aeae9355496ac1ef9d",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "attributes": []
-    },
-    {
-      "id": "oj4rAcG99nSY_wOcLAlwsQ",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "92a9db47eb8842b4b6b365bb62532745",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "attributes": []
-    },
-    {
-      "id": "EOMhosgE3N2OW-E0P1PTwQ",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "f47b82021b7845d689e9dcdf895bef0d",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "attributes": []
-    },
-    {
-      "id": "cPm3_uF_7hoyR1EEepZrPQ",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "2e1c18bf58d14fb8a2054aae03a2241d",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
-      "attributes": []
-    },
-    {
-      "id": "w-HNCQniV2CQq31V5V9MHg",
-      "type": "e1233a62b5174de88dd6db02494bb10c",
-      "from": "83b6d7934daf41bd8c10caee48468615",
-      "to": "c93ecec9d94642e9a2ea271c6e8c3dad",
       "attributes": []
     },
     {
@@ -110727,6 +110675,62 @@
       "type": "99035f2e201742379673a84191a51ffb",
       "from": "1b713b5b8ed045b09cd9e8ad988950e8",
       "to": "8d45d1b9853f4c93a55ab6e382a11e7c",
+      "attributes": []
+    },
+    {
+      "id": "UCZVCcHLjvu1pxKb",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "765578c9397e4a6fb7b76f019cc00831",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "nyDaImaxP6b_CnW9",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "16f9e7387f55457b80450f5add3707ef",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "uOXHsxy4HgmxOWD3",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "7059f3555f3a46aeae9355496ac1ef9d",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "xYtVaDAy1n74qJQc",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "92a9db47eb8842b4b6b365bb62532745",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "gdX52x7_glzQfZzJ",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "f47b82021b7845d689e9dcdf895bef0d",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "eIp8-65SHx-DEgDD",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "2e1c18bf58d14fb8a2054aae03a2241d",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "KJXcoLFx2JpsTskz",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "83b6d7934daf41bd8c10caee48468615",
+      "to": "c13e3e381a9a45428b0c6abcf94c00b9",
+      "attributes": []
+    },
+    {
+      "id": "eLCcQqI0XTb19r34",
+      "type": "b1f2fdfb5c254687b5adbc8a6f947a09",
+      "from": "2a1cbbdf30d8436792bcc603ffce4367",
+      "to": "f44bf2c35e0d492093563f1b4b4cbb2f",
       "attributes": []
     }
   ]
