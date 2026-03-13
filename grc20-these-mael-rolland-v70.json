@@ -305,6 +305,10 @@
     {
       "id": "92adb65e7a844256b121396b24e8451f",
       "name": "StakeholderCategory"
+    },
+    {
+      "id": "764af2d5ece641f3bedae5b8b1fedf93",
+      "name": "InfrastructureSegment"
     }
   ],
   "relation_types": [
@@ -1234,6 +1238,14 @@
     {
       "id": "4291183556464b50b22ce82ada436ea5",
       "name": "belongs to category"
+    },
+    {
+      "id": "c84740ac79a7412ba0da5aed318807a1",
+      "name": "contains segment"
+    },
+    {
+      "id": "99035f2e201742379673a84191a51ffb",
+      "name": "operates in segment"
     }
   ],
   "entities": [
@@ -72956,6 +72968,669 @@
         "92adb65e7a844256b121396b24e8451f"
       ],
       "attributes": {}
+    },
+    {
+      "id": "37930f7555284acdb82a1bb1c3eb6cbf",
+      "name": "Jeux",
+      "description": {
+        "type": "TEXT",
+        "value": "Plateformes de jeux d'argent et de hasard en Bitcoin (ex. SatoshiDice). Segment 1 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "1"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "675ee75be7c741bbb29c38361cd3ee89",
+      "name": "Places de marché",
+      "description": {
+        "type": "TEXT",
+        "value": "Marchés peer-to-peer d'échange de biens et services (incluant marchés noirs type Silk Road). Segment 2 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "2"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "f727abb04ac043728ac7e7e187013bbb",
+      "name": "Services de courtage",
+      "description": {
+        "type": "TEXT",
+        "value": "Intermédiaires facilitant l'achat/vente de Bitcoin OTC (over-the-counter) hors bourse. Segment 3 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "3"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "5c0b61596a5e4586adfee1f08ec1546f",
+      "name": "Services de notarisation",
+      "description": {
+        "type": "TEXT",
+        "value": "Services d'horodatage et de preuve d'existence sur la blockchain (ex. OpenTimestamps). Segment 4 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "4"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "977c56bae40b4dfd8c7a05ac63aab2ef",
+      "name": "Innovations blockchain",
+      "description": {
+        "type": "TEXT",
+        "value": "Applications exploitant la blockchain pour des usages non monétaires (smart contracts, tokens, DAOs). Segment 5 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "5"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "768c5992ebac4518a4fcc36026356608",
+      "name": "Bourses d'échange",
+      "description": {
+        "type": "TEXT",
+        "value": "Plateformes d'échange centralisées entre Bitcoin et monnaies fiat ou autres cryptomonnaies (ex. Mt.Gox, Bitstamp, Kraken). Segment 6 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "6"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "766d0d3b5e5d4ec5b1d2f92f1021fdb7",
+      "name": "Plateformes de trading",
+      "description": {
+        "type": "TEXT",
+        "value": "Plateformes spécialisées dans le trading à effet de levier et les instruments dérivés sur Bitcoin. Segment 7 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "7"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "3c8cfdc4f533435d9480cf6c6b8a5fc6",
+      "name": "Services d'investissement",
+      "description": {
+        "type": "TEXT",
+        "value": "Fonds d'investissement, véhicules d'exposition et services de gestion d'actifs en cryptomonnaies. Segment 8 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "8"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "3462bec91fc14f18bac9aff4e1d4c4ef",
+      "name": "Processeurs de paiement",
+      "description": {
+        "type": "TEXT",
+        "value": "Services assurant la médiation des paiements Bitcoin pour les commerçants (ex. BitPay, Coinbase Commerce). Segment 9 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "9"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "d3dde8088b044953910cba15ef78b216",
+      "name": "Services financiers",
+      "description": {
+        "type": "TEXT",
+        "value": "Services financiers diversifiés : prêts, épargne, assurance en Bitcoin. Segment 10 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "10"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "32ccbd7ff4d6469db9d5977db5ac112e",
+      "name": "Distributeurs de bitcoin (ATM)",
+      "description": {
+        "type": "TEXT",
+        "value": "Guichets automatiques permettant l'achat/vente de Bitcoin contre espèces. Segment 11 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "11"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "c1ab699ac4d74dc8b99d1be764fa164d",
+      "name": "Micropaiements",
+      "description": {
+        "type": "TEXT",
+        "value": "Services et protocoles facilitant les paiements de très faible valeur (sous 0,01 BTC) sur le réseau. Segment 12 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "12"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "58fca7ecf53d44fdb0b072d231dc85e5",
+      "name": "Plateformes de transfert de fonds",
+      "description": {
+        "type": "TEXT",
+        "value": "Services de remittance et transferts internationaux d'argent via Bitcoin. Segment 13 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "13"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "9e4e4669fa9f44bda5f592336e16a6bd",
+      "name": "Marchands acceptant le Bitcoin",
+      "description": {
+        "type": "TEXT",
+        "value": "Commerçants en ligne et physiques acceptant le Bitcoin comme moyen de paiement. Segment 14 de Rauchs (2016, p.118).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "14"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "1bdbc546f7344e1a9e030e926d286cbc",
+      "name": "Minage",
+      "description": {
+        "type": "TEXT",
+        "value": "Activité de production de blocs par preuve de travail (pools, mineurs industriels, fabricants ASIC). Segment 15 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "15"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "75d4386065054ed3a2303fe2acf6280d",
+      "name": "Portefeuilles",
+      "description": {
+        "type": "TEXT",
+        "value": "Logiciels et matériels de stockage et gestion de clés privées Bitcoin (custodial, non-custodial, hardware). Segment 16 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "16"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "e3ce0e40a95a475285af2260bd24fc37",
+      "name": "Mixage et confidentialité",
+      "description": {
+        "type": "TEXT",
+        "value": "Services de mélange de transactions pour renforcer la fongibilité et la confidentialité (CoinJoin, tumblers). Segment 17 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "17"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "7eb21ad05d634d8e92b32b39db8d3723",
+      "name": "Médias",
+      "description": {
+        "type": "TEXT",
+        "value": "Publications, blogs, forums et médias spécialisés dans l'actualité des cryptomonnaies (Bitcoin Magazine, Bitcointalk, Bitcoin.fr). Segment 18 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "18"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "0f3a5734b8bf4dcbbf4e923fa420e998",
+      "name": "Services de données",
+      "description": {
+        "type": "TEXT",
+        "value": "Fournisseurs de données de marché, explorateurs de blockchain et services d'analyse on-chain. Segment 19 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "19"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "97020bb517874774bfa1045a9ee1128f",
+      "name": "Outils de développement",
+      "description": {
+        "type": "TEXT",
+        "value": "Bibliothèques, APIs, frameworks et outils facilitant le développement d'applications Bitcoin. Segment 20 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "20"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "0a41290de4744cad998b0fb6131b011d",
+      "name": "Services de conformité",
+      "description": {
+        "type": "TEXT",
+        "value": "Prestataires KYC/AML, surveillance de transactions et audit de conformité pour l'écosystème (ex. Chainalysis). Segment 21 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "21"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "c689a3796fdb48e1adf7de9ca9189dbb",
+      "name": "Autres services",
+      "description": {
+        "type": "TEXT",
+        "value": "Services périphériques non classés dans les segments précédents : conseil juridique, assurance, hébergement dédié. Segment 22 de Rauchs (2016, p.119).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "rauchsSegmentNumber": {
+          "type": "TEXT",
+          "value": "22"
+        },
+        "source": {
+          "type": "TEXT",
+          "value": "Rauchs (2016, p. 118-119)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "8d45d1b9853f4c93a55ab6e382a11e7c",
+      "name": "Développement protocolaire et logiciel (Bitcoin Core)",
+      "description": {
+        "type": "TEXT",
+        "value": "Maintenance et évolution du client de référence Bitcoin Core : BIPs, revues de code, releases. Segment additionnel, hors Rauchs (2016).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "source": {
+          "type": "TEXT",
+          "value": "Ajouté par l'auteur (hors Rauchs 2016)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "d0cecb8402c045fb9c1cf6d0337d1630",
+      "name": "Altcoins",
+      "description": {
+        "type": "TEXT",
+        "value": "Cryptomonnaies alternatives à Bitcoin : forks, nouvelles blockchains (Litecoin, Namecoin, puis Ethereum). Segment additionnel, hors Rauchs (2016).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "source": {
+          "type": "TEXT",
+          "value": "Ajouté par l'auteur (hors Rauchs 2016)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
+    },
+    {
+      "id": "849fe45a8b654fec95760c4420e025bf",
+      "name": "Événements et acteurs résiduels",
+      "description": {
+        "type": "TEXT",
+        "value": "Éléments événementiels ou institutionnels ne relevant d'aucun des domaines précédents (crises, régulateurs ponctuels, etc.). Segment résiduel, hors Rauchs (2016).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "764af2d5ece641f3bedae5b8b1fedf93"
+      ],
+      "attributes": {
+        "source": {
+          "type": "TEXT",
+          "value": "Ajouté par l'auteur (hors Rauchs 2016)",
+          "options": {
+            "language": "fr"
+          }
+        }
+      }
     }
   ],
   "relations": [
@@ -109618,6 +110293,440 @@
       "type": "4291183556464b50b22ce82ada436ea5",
       "from": "a761e61ee9ca47ed8452e06cf79d91a1",
       "to": "da9c4eebd2984d25af385ccf4a90d0b2",
+      "attributes": []
+    },
+    {
+      "id": "344yA1ki5HHkcYZVwNbAAA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "37930f7555284acdb82a1bb1c3eb6cbf",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "hCYSVVXH9x1DU6WSfG61LA",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "37930f7555284acdb82a1bb1c3eb6cbf",
+      "attributes": []
+    },
+    {
+      "id": "SW1pf5L9DI0mL-4sluB_Bw",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "675ee75be7c741bbb29c38361cd3ee89",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "zTBosl2bp0kJyCKwI8QIMw",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "675ee75be7c741bbb29c38361cd3ee89",
+      "attributes": []
+    },
+    {
+      "id": "FS9-AqnQwCUs6GqVp0DLqA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "f727abb04ac043728ac7e7e187013bbb",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "lu3L2cHf7cR0T-F4y56nWg",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "f727abb04ac043728ac7e7e187013bbb",
+      "attributes": []
+    },
+    {
+      "id": "g8VnyWSxF0dvMf7mn4k3uw",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "5c0b61596a5e4586adfee1f08ec1546f",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "5dj88c2gMg7lNsjUfOabQA",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "5c0b61596a5e4586adfee1f08ec1546f",
+      "attributes": []
+    },
+    {
+      "id": "wlZSjG3SbutCj57z7TQpRg",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "977c56bae40b4dfd8c7a05ac63aab2ef",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "nvUg04_HVYeQ3H7HlPTqTg",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "977c56bae40b4dfd8c7a05ac63aab2ef",
+      "attributes": []
+    },
+    {
+      "id": "G02LBRZjkrevfx5_h5f9Rw",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "768c5992ebac4518a4fcc36026356608",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "0wRY0sv8N3pn-JOTIcrrGQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "768c5992ebac4518a4fcc36026356608",
+      "attributes": []
+    },
+    {
+      "id": "CkEsFZ5Hf1ooAuaZwUQMBw",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "766d0d3b5e5d4ec5b1d2f92f1021fdb7",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "t-tFRh0pLeZthHc89aZBYg",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "766d0d3b5e5d4ec5b1d2f92f1021fdb7",
+      "attributes": []
+    },
+    {
+      "id": "C6rb1WXEHhA3OOQ1RmVKuQ",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "3c8cfdc4f533435d9480cf6c6b8a5fc6",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "gTkzCQ_dZz8DlekUwT96Yg",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "3c8cfdc4f533435d9480cf6c6b8a5fc6",
+      "attributes": []
+    },
+    {
+      "id": "q_avNma166v_iCcpEqJxpw",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "3462bec91fc14f18bac9aff4e1d4c4ef",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "iqm1xPvbmEg63v_ajL2g3w",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "3462bec91fc14f18bac9aff4e1d4c4ef",
+      "attributes": []
+    },
+    {
+      "id": "g-H0SIYiIQ7N9K9bBVLvIA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "d3dde8088b044953910cba15ef78b216",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "FPfueVsBvpPI2rJwf5qTRQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "d3dde8088b044953910cba15ef78b216",
+      "attributes": []
+    },
+    {
+      "id": "7LD8py_q3bd9TDNSRZhQpA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "32ccbd7ff4d6469db9d5977db5ac112e",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "uxIFDPPOJ9N-bvEfJ46Jlg",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "32ccbd7ff4d6469db9d5977db5ac112e",
+      "attributes": []
+    },
+    {
+      "id": "a8_-ZuP1-PsF1GYjLoiwMA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "c1ab699ac4d74dc8b99d1be764fa164d",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "4egb_20ZNNtM88VzibDdcQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "c1ab699ac4d74dc8b99d1be764fa164d",
+      "attributes": []
+    },
+    {
+      "id": "gZ6ZQrDhcDiz9rKwRFgz5Q",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "58fca7ecf53d44fdb0b072d231dc85e5",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "08_Npp3dpvZU1vNLF4t3dw",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "58fca7ecf53d44fdb0b072d231dc85e5",
+      "attributes": []
+    },
+    {
+      "id": "V6M2hp72URdpemHaYTHqcQ",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "9e4e4669fa9f44bda5f592336e16a6bd",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "yI0SCZBc_3BCH-YXU_lY9Q",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d47c813a4d0c424cb80422ff6e6109f9",
+      "to": "9e4e4669fa9f44bda5f592336e16a6bd",
+      "attributes": []
+    },
+    {
+      "id": "0pZdpOvc5ngrzSNOG30avA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "1bdbc546f7344e1a9e030e926d286cbc",
+      "to": "6b979b61416c4eb288f79f6053924afe",
+      "attributes": []
+    },
+    {
+      "id": "khmaL8V-JeMzjZbOGuRvHQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "6b979b61416c4eb288f79f6053924afe",
+      "to": "1bdbc546f7344e1a9e030e926d286cbc",
+      "attributes": []
+    },
+    {
+      "id": "vGOl8JqZ_Ztg13BMcHCi2g",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "75d4386065054ed3a2303fe2acf6280d",
+      "to": "55b5215088664257819b56a918ec67fd",
+      "attributes": []
+    },
+    {
+      "id": "L0tGp0PKTRx6yMMSxYE2NQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "55b5215088664257819b56a918ec67fd",
+      "to": "75d4386065054ed3a2303fe2acf6280d",
+      "attributes": []
+    },
+    {
+      "id": "AUc8xy-yC3UvveiwNGwkgg",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "e3ce0e40a95a475285af2260bd24fc37",
+      "to": "55b5215088664257819b56a918ec67fd",
+      "attributes": []
+    },
+    {
+      "id": "3_VmtUtJuYDaYrQg-Yi94g",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "55b5215088664257819b56a918ec67fd",
+      "to": "e3ce0e40a95a475285af2260bd24fc37",
+      "attributes": []
+    },
+    {
+      "id": "19GURpLnSAERdg5YOhPyCA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "7eb21ad05d634d8e92b32b39db8d3723",
+      "to": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "attributes": []
+    },
+    {
+      "id": "FhDEpUKeB7llmSfC0ztamQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "to": "7eb21ad05d634d8e92b32b39db8d3723",
+      "attributes": []
+    },
+    {
+      "id": "cfh61n_F3FmQ-EOxd9Y3uw",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "0f3a5734b8bf4dcbbf4e923fa420e998",
+      "to": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "attributes": []
+    },
+    {
+      "id": "kP4aTq7JGlxuD40biVRubA",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "to": "0f3a5734b8bf4dcbbf4e923fa420e998",
+      "attributes": []
+    },
+    {
+      "id": "6lJ4ZAbJnL6_ULguMd2kUA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "97020bb517874774bfa1045a9ee1128f",
+      "to": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "attributes": []
+    },
+    {
+      "id": "hp4_I1cQNyMtym_DFbu5wA",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "to": "97020bb517874774bfa1045a9ee1128f",
+      "attributes": []
+    },
+    {
+      "id": "m78DnKLbUKHrW2W9_MfA6g",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "0a41290de4744cad998b0fb6131b011d",
+      "to": "3960e7b3294c4364bca1b046734ef886",
+      "attributes": []
+    },
+    {
+      "id": "u0QVCNP6SH1qZTHpITK7oQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "3960e7b3294c4364bca1b046734ef886",
+      "to": "0a41290de4744cad998b0fb6131b011d",
+      "attributes": []
+    },
+    {
+      "id": "SSsm-T_R0Bw6ADRejVILEQ",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "c689a3796fdb48e1adf7de9ca9189dbb",
+      "to": "3960e7b3294c4364bca1b046734ef886",
+      "attributes": []
+    },
+    {
+      "id": "D2Rnl9CfwI56Ma_q-g2CVQ",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "3960e7b3294c4364bca1b046734ef886",
+      "to": "c689a3796fdb48e1adf7de9ca9189dbb",
+      "attributes": []
+    },
+    {
+      "id": "0-Cd5tS0LLad2c0kRkXSmg",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "8d45d1b9853f4c93a55ab6e382a11e7c",
+      "to": "3b17f5b612b54376963e5aa7fe13fff8",
+      "attributes": []
+    },
+    {
+      "id": "LHT4gRIUvhpA_Pf-Yd5t0g",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "3b17f5b612b54376963e5aa7fe13fff8",
+      "to": "8d45d1b9853f4c93a55ab6e382a11e7c",
+      "attributes": []
+    },
+    {
+      "id": "bCGNCQQIBYwXcLr0fpCXew",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "d0cecb8402c045fb9c1cf6d0337d1630",
+      "to": "bb565b2132f5430eac529b953711be41",
+      "attributes": []
+    },
+    {
+      "id": "fjfwYe3ZHwNzs5G8zERkzg",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "bb565b2132f5430eac529b953711be41",
+      "to": "d0cecb8402c045fb9c1cf6d0337d1630",
+      "attributes": []
+    },
+    {
+      "id": "OFhC-3smf8zyhka7ucZmJA",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "849fe45a8b654fec95760c4420e025bf",
+      "to": "273dcf0b4f784d78afc99c800c4a3be6",
+      "attributes": []
+    },
+    {
+      "id": "SuC5ZiVRRhlY7LMQ3ym4SA",
+      "type": "c84740ac79a7412ba0da5aed318807a1",
+      "from": "273dcf0b4f784d78afc99c800c4a3be6",
+      "to": "849fe45a8b654fec95760c4420e025bf",
+      "attributes": []
+    },
+    {
+      "id": "SbID52wgpEBl93V8gicwyA",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "0d645f0347bc4002bb37ce04d3fd58b2",
+      "to": "977c56bae40b4dfd8c7a05ac63aab2ef",
+      "attributes": []
+    },
+    {
+      "id": "uU8g-ruApc84yNqiKmbv0A",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "c4f60c1d99e248f386f1e871013462a7",
+      "to": "768c5992ebac4518a4fcc36026356608",
+      "attributes": []
+    },
+    {
+      "id": "U3uJMkvOuLpmqirQGfRODw",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "5479509f9ca84a06a2aa3a9a2e63f1f8",
+      "to": "768c5992ebac4518a4fcc36026356608",
+      "attributes": []
+    },
+    {
+      "id": "XYt0AZ1lEvfdF1J6qf-kVg",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "8a5f85d939d240f1b246c65f3de6194c",
+      "to": "3462bec91fc14f18bac9aff4e1d4c4ef",
+      "attributes": []
+    },
+    {
+      "id": "UrOY9WGPIYGEJ9wLmQZBdg",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "38f199fc83654f508ad8ad0aac7d5dc2",
+      "to": "75d4386065054ed3a2303fe2acf6280d",
+      "attributes": []
+    },
+    {
+      "id": "ySpY5LwdCvIJmpFHK5rCSQ",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "0c8495689a2b4f158648978782049d04",
+      "to": "1bdbc546f7344e1a9e030e926d286cbc",
+      "attributes": []
+    },
+    {
+      "id": "TM4_c_UbIYAXU_UV7dsqNQ",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "a761e61ee9ca47ed8452e06cf79d91a1",
+      "to": "1bdbc546f7344e1a9e030e926d286cbc",
+      "attributes": []
+    },
+    {
+      "id": "FmUFWIOAnJdZHy1nxT85bQ",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "6507ded1532f40d89dfe61550b5bd7cb",
+      "to": "0a41290de4744cad998b0fb6131b011d",
+      "attributes": []
+    },
+    {
+      "id": "khWqQcz28voCG3-NE1ELCA",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "6cbdb3dc321d4867b0842067a2642709",
+      "to": "7eb21ad05d634d8e92b32b39db8d3723",
+      "attributes": []
+    },
+    {
+      "id": "P5gNYT80nPEVEv6ofPay7Q",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "7b29b0d2d8404396bbaa5742e07d8f21",
+      "to": "8d45d1b9853f4c93a55ab6e382a11e7c",
+      "attributes": []
+    },
+    {
+      "id": "QuuAnLGwNY6X1hjA-RSgqg",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "c5f0d6a944544c3c93bdd731dbc83096",
+      "to": "8d45d1b9853f4c93a55ab6e382a11e7c",
+      "attributes": []
+    },
+    {
+      "id": "MU9IZvgcULpuGEagsqAokg",
+      "type": "99035f2e201742379673a84191a51ffb",
+      "from": "1b713b5b8ed045b09cd9e8ad988950e8",
+      "to": "8d45d1b9853f4c93a55ab6e382a11e7c",
       "attributes": []
     }
   ]
