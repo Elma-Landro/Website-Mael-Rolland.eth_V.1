@@ -331,6 +331,17 @@
           "language": "fr"
         }
       }
+    },
+    {
+      "id": "730f7e76b7f24e1e9ca76549f736b863",
+      "name": "DoctoralThesis",
+      "description": {
+        "type": "TEXT",
+        "value": "These de doctorat : objet principal du graphe, distinct des sources bibliographiques.",
+        "options": {
+          "language": "fr"
+        }
+      }
     }
   ],
   "relation_types": [
@@ -1282,7 +1293,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "730f7e76b7f24e1e9ca76549f736b863"
       ],
       "attributes": {
         "titleFr": {
@@ -39842,7 +39853,8 @@
       "id": "01b382d629ca4147885aba6de31028b4",
       "name": "Sedgwick 2018b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -39916,7 +39928,8 @@
       "id": "e3a66f5b481943e2bf8276c057d70694",
       "name": "Sedgwick 2018d",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -39990,7 +40003,8 @@
       "id": "17d787029b114193bac5a9a4eefac4c9",
       "name": "Sedgwick 2018e",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40064,7 +40078,8 @@
       "id": "1a65bbcf08a149a19181da4445b4d682",
       "name": "Sedgwick 2018f",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40145,7 +40160,8 @@
       "id": "2cc410abd7c54456be38e40470712548",
       "name": "Sedgwick 2019b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40226,7 +40242,8 @@
       "id": "b469ce6b277c4d61a8bd5a9b33619389",
       "name": "Sedgwick 2019c",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40300,7 +40317,8 @@
       "id": "36402a6863c344c4b894c0539b8f4308",
       "name": "Sedgwick 2019d",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40374,7 +40392,8 @@
       "id": "b8188c1ce1bd4aca8ad1cce14846467d",
       "name": "Sedgwick 2019e",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40448,7 +40467,8 @@
       "id": "0b6757906af240538fa81cb46e306e21",
       "name": "Sedgwick 2019f",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40522,7 +40542,8 @@
       "id": "7e8f363118eb44e7b9878864a8f5e58a",
       "name": "Sedgwick 2019g",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40596,7 +40617,8 @@
       "id": "e489ca0c8d744b43b166d85119fa4ec3",
       "name": "Sedgwick 2019o",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40670,7 +40692,8 @@
       "id": "601530e6aa0746329c195a14dcf24fd1",
       "name": "Sedgwick 2020b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40744,7 +40767,8 @@
       "id": "308a84881f5646149829a280121952b5",
       "name": "BitMEX Research 2020b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40781,7 +40805,8 @@
       "id": "c712736b311b4648a71c6edd75b29f70",
       "name": "Le Calvez 2020",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40818,7 +40843,8 @@
       "id": "51cd9218082f4db7b393a6d84f2f7b00",
       "name": "Moser et Bohme 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -40855,7 +40881,8 @@
       "id": "3cf3653bf51641c3bd3170342a520ffd",
       "name": "Greenberg 2011",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -40892,7 +40919,8 @@
       "id": "9d25569f745942b0a299160fbf8c8d2d",
       "name": "Kaushal Bagga Sobti 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -42460,7 +42488,8 @@
       "id": "72ad349cc28c4760a46521d685fca284",
       "name": "Chen 2011",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42497,7 +42526,8 @@
       "id": "28c3d1f7710b4fb18892b2f570d99464",
       "name": "Sedgwick 2019i",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42571,7 +42601,8 @@
       "id": "674f0f1ee7784a21866a6370f2ed4704",
       "name": "Sedgwick 2019j",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42645,7 +42676,8 @@
       "id": "47e012e3a2e9497b9441929a2cedf35e",
       "name": "Sedgwick 2020a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42719,7 +42751,8 @@
       "id": "482b58684cae41d8a755fc694a478b7b",
       "name": "May 2018",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42756,7 +42789,8 @@
       "id": "7be95456e6fd4fee9f0595e3aff2bf25",
       "name": "Buterin 2013a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42793,7 +42827,8 @@
       "id": "31a81419d5414f378aa59f43eb4e2bc9",
       "name": "Buterin 2013c",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42830,7 +42865,8 @@
       "id": "5827f98bffe845e5b17b188531d11aa0",
       "name": "Voorhees 2013",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42867,7 +42903,8 @@
       "id": "780f2dd665fa41fb8eb2ad24579f7451",
       "name": "O'Brien 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42904,7 +42941,8 @@
       "id": "81049b3899914142a40dd283772766c4",
       "name": "Castillo 2013",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42941,7 +42979,8 @@
       "id": "766c49236ee6484aa92a0566d223b8de",
       "name": "Rizzo 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -42978,7 +43017,8 @@
       "id": "117c1b4f6212439a832bb191383b4a7b",
       "name": "European Central Bank 2012",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -43015,7 +43055,8 @@
       "id": "00d8c6248c554ebe93373d571afbc833",
       "name": "Miles et Voorhees 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -43052,7 +43093,8 @@
       "id": "89565e90e4a64560bc4bf517d3aa4f9c",
       "name": "McCormack et Voorhees 2019",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -44858,7 +44900,8 @@
       "id": "0e225413a3db45f3934676e31efc9798",
       "name": "Chainalysis Team 2019",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -44895,7 +44938,8 @@
       "id": "fb35a999cb884cb0b95477677b5d9b0c",
       "name": "Kharpal 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -44932,7 +44976,8 @@
       "id": "e33df7df4c104ad78995359efb104629",
       "name": "Massa 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -44969,7 +45014,8 @@
       "id": "54491adc29114776a8b0167125f10f5a",
       "name": "Torpey 2018",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -45006,7 +45052,8 @@
       "id": "db27994d43c54873939c11e21dcf0ebe",
       "name": "Redman 2019b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -45043,7 +45090,8 @@
       "id": "bc199c173f12476b84c02907f386d0e8",
       "name": "Gandal et al. 2018",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -45080,7 +45128,8 @@
       "id": "05338358f9d7485dbef4110be604c4f8",
       "name": "Danzeis et Meiklejohn 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -45117,7 +45166,8 @@
       "id": "05ad44df186a4cfabf1d29fbba4f8233",
       "name": "Cuny 2013",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -45154,7 +45204,8 @@
       "id": "2c60a6c9e347410591eca661f394a64a",
       "name": "SatoshiLabs 2019",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -45191,7 +45242,8 @@
       "id": "6a3276869cdb4ac1904aa1067eabd63d",
       "name": "The Economist 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -46696,7 +46748,8 @@
       "id": "bcd561cc100f4da38b912c31a7ea5d11",
       "name": "Hajdarbegovic 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -46733,7 +46786,8 @@
       "id": "e57bb7366c66490b82597a1edab3d016",
       "name": "Wirdum 2019",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -46770,7 +46824,8 @@
       "id": "ecfda0e51bd147e3bd0329a9bf4bbc6b",
       "name": "Galbraith 1976",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -46807,7 +46862,8 @@
       "id": "ff72ee3a66e147bea1e07ee959bf612e",
       "name": "Gratsac-Legendre 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -46844,7 +46900,8 @@
       "id": "195c98aa665046b080bc073a045846e2",
       "name": "FreeCodeCamp 2019",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -46881,7 +46938,8 @@
       "id": "d672ddb50e8346f8be770f2fe60dbf46",
       "name": "Breed 2020",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -46918,7 +46976,8 @@
       "id": "f1f5f685ade34944a686ff28416c4700",
       "name": "Kumar Jain 2023",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -46955,7 +47014,8 @@
       "id": "3ceaf75ad5dc44f8baa0813b954cb5eb",
       "name": "Buterin 2013e",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48228,7 +48288,8 @@
       "id": "b987cb2865ba4b2c8723bc90bff194dd",
       "name": "Nakamoto 2011",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48265,7 +48326,8 @@
       "id": "6f4030bca8aa4f42b6ddbccef848a383",
       "name": "Nakamoto 2010a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -48302,7 +48364,8 @@
       "id": "007a894f83664b31b7c3a93b10c55296",
       "name": "Finney 2009",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -48339,7 +48402,8 @@
       "id": "aff449b29cc249a281a508728901c18f",
       "name": "Andresen 2011",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -48376,7 +48440,8 @@
       "id": "8568b77b9f1146a4b0c2afae69234578",
       "name": "Gaurav 2019",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48413,7 +48478,8 @@
       "id": "f8d9b4f12815491ba6ad9d2caa0387db",
       "name": "Andresen 2016",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48450,7 +48516,8 @@
       "id": "7bfdc2d35c024d118b936ae6b45dc973",
       "name": "Bier 2021d",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -48487,7 +48554,8 @@
       "id": "0db6743ed2b54329b3d5a1bc06de21e0",
       "name": "Apodaca 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48524,7 +48592,8 @@
       "id": "9c6092d4334640bca80190027bfbeef4",
       "name": "Theymos 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -48561,7 +48630,8 @@
       "id": "13392028e0914028989b1b58efe04c03",
       "name": "Bradbury 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48598,7 +48668,8 @@
       "id": "ce26299c018d4676a5d00a91188d5d47",
       "name": "Croman et al. 2016",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -48635,7 +48706,8 @@
       "id": "889c92c8790744b2b44b1b7971c6b43f",
       "name": "Keir 2022",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -48672,7 +48744,8 @@
       "id": "0eaba96a5e48469fb4e8b0d60f13e155",
       "name": "Shinobi 2022",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -49892,7 +49965,8 @@
       "id": "36a71df1f997487eab76b897d010da1d",
       "name": "Loibl 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -49929,7 +50003,8 @@
       "id": "0441f46f712d41489f63260e8f97be85",
       "name": "ElBahrawy et al. 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -49966,7 +50041,8 @@
       "id": "2272e5b8d44449d29f7429c2f59b5615",
       "name": "DeNardis et Musiani 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -50003,7 +50079,8 @@
       "id": "3246bf2cec9e45b18d9799ba6c64c9fe",
       "name": "Dréan 2013",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -50040,7 +50117,8 @@
       "id": "313c66ac111542d3a47de4607949a807",
       "name": "Nakamoto 2010b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -50077,7 +50155,8 @@
       "id": "4cf7803656584b009ba11f1a99fdb6e8",
       "name": "Whitebbit1111 2022",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51309,7 +51388,8 @@
       "id": "8ba11b69224445fba65e1e5160b365f7",
       "name": "Sunny King et Nadal 2012",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51346,7 +51426,8 @@
       "id": "762e6813527d4880b74075d23740679a",
       "name": "Bonneau et al. 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -51383,7 +51464,8 @@
       "id": "b4b693b0021941cfbfc70e4f4afe3c5b",
       "name": "Bartoletti et Pompianu 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -51420,7 +51502,8 @@
       "id": "3737dd82ad0e4819aaacee0061c57c58",
       "name": "Rosenfeld 2012",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51457,7 +51540,8 @@
       "id": "fb8879ffb00d42e08622b85212da0cbc",
       "name": "Rosenfeld et al. 2013",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51494,7 +51578,8 @@
       "id": "876698e2a15d4e6da5912cb1c391e08b",
       "name": "Buterin 2013b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51531,7 +51616,8 @@
       "id": "c0f588f7fb3747ea9c964a94661d0027",
       "name": "Buterin 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51568,7 +51654,8 @@
       "id": "644de7a85c76448fa1e1bbeabd176d03",
       "name": "Garzik 2014a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51605,7 +51692,8 @@
       "id": "fdafe6e12c094113a2e2ba841b4e324e",
       "name": "Garzik 2014b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51642,7 +51730,8 @@
       "id": "008659c674db4c8b91a0e6372fbf684f",
       "name": "Dashjr 2014a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51679,7 +51768,8 @@
       "id": "9c099cc93b3f4241930669bf1a939b2b",
       "name": "Dashjr 2014b",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "author": {
@@ -51716,7 +51806,8 @@
       "id": "e318cea2b733450ca0992a87ead0b345",
       "name": "Lars 2019a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51753,7 +51844,8 @@
       "id": "0e96ccb67e8e4b5ba0f2c9af8d3276bd",
       "name": "Brokaw 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51790,7 +51882,8 @@
       "id": "995d0c272da14d479572f406a5cd7423",
       "name": "Young 2017",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51827,7 +51920,8 @@
       "id": "20c955b4d08b43238954a2ddc14020d6",
       "name": "BitMEXResearch 2022",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51864,7 +51958,8 @@
       "id": "6a5e27f616b143dbb797376acca129cf",
       "name": "Bradbury 2013",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51901,7 +51996,8 @@
       "id": "9a33e38e33544b1c875225070fa40773",
       "name": "Jp Koning 2015",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51938,7 +52034,8 @@
       "id": "2e1ae899bf5d40898bf48160cbc59c6f",
       "name": "O'Leary 2018",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -51975,7 +52072,8 @@
       "id": "58bad1bd625d4ff4928204acc3705e6e",
       "name": "Bier 2021a",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "author": {
@@ -52049,7 +52147,8 @@
       "id": "8df0c49c307e4444b6d65be8754210f6",
       "name": "Rodriguez 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -52086,7 +52185,8 @@
       "id": "dce21d76b18f43509017a322d58f386a",
       "name": "Coldewey 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -52123,7 +52223,8 @@
       "id": "144d0cb97ace4d729d080510b48c7c81",
       "name": "Estrada 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -52160,7 +52261,8 @@
       "id": "be56089c62d34df08bd15f366454ab9e",
       "name": "David Gilbert 2014",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "author": {
@@ -56120,7 +56222,8 @@
       "id": "f8cf5fce5ed54a0291b3816d301bb148",
       "name": "Aglietta 1988 — L'ambivalence de l'argent",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56150,7 +56253,8 @@
       "id": "4568cc431bce437ba36f137dbafbc67e",
       "name": "Aglietta & Cartelier 1998 — Ordre monétaire",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56180,7 +56284,8 @@
       "id": "7c1a7e8719354b7e9aec465305888b4e",
       "name": "Aglietta & Orléan 1998 — La monnaie souveraine",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56217,7 +56322,8 @@
       "id": "dfeba626b96846cf988d4020424196d5",
       "name": "Aglietta & Orléan 2002 — Violence et confiance",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56261,7 +56367,8 @@
       "id": "7e9c5d90afd24211b0d8ba706bdad15f",
       "name": "Aglietta Ponsot Ould-Ahmed 2014 — Entretien",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56298,7 +56405,8 @@
       "id": "b8200b7c29ef4db1a0540db4dc4dd7b9",
       "name": "Aglietta & Scialom 2002 — Risques monnaie électronique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56328,7 +56436,8 @@
       "id": "be60c5d6b44049e683f476d2b3b497de",
       "name": "Aguiton Cabane Cornilleau 2019 — Politiques de la mise en crise",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56372,7 +56481,8 @@
       "id": "750fdaa27a5d4030a626673d3110ddf2",
       "name": "Akrich 1989 — Construction d'un système socio-technique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56416,7 +56526,8 @@
       "id": "204c323d3ad144c195cd0c0e3c85d0c5",
       "name": "Akrich 2010 — Comment décrire les objets techniques",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56460,7 +56571,8 @@
       "id": "c33c1251f58f47b3b0762b5054c43834",
       "name": "Alary 2009 — Genèse de la monnaie",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56490,7 +56602,8 @@
       "id": "8d16182a10884bd59e0b3f39c9e4a42a",
       "name": "Alary Blanc Desmedt Théret 2016 — Institutionnalismes monétaires",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56527,7 +56640,8 @@
       "id": "5060d49425084250939155fab66108ae",
       "name": "Allaire 2013 — Les communs comme infrastructure",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56557,7 +56671,8 @@
       "id": "c9331bbe47b548ae9237c5f31c277b60",
       "name": "Allard 2018 — Cryptomonnaies usages et pratiques",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56594,7 +56709,8 @@
       "id": "1b9ca92299994ccfb9a52cb3975a3567",
       "name": "Amato 2008 — Ethnométhodologie jeux vidéo",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56631,7 +56747,8 @@
       "id": "e82afd03ea514828a61d96054971f6e0",
       "name": "Andolfatto 2013 — Why gold and bitcoin make lousy money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -56668,7 +56785,8 @@
       "id": "b666ecd130b24eb3be67d61460d5a47e",
       "name": "Andolfatto 2016 — Is Bitcoin a Safe Asset",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -56698,7 +56816,8 @@
       "id": "8640b516c787428b9dd87ac173176e3e",
       "name": "Chaum 1982 — Blind Signatures for Untraceable Payments",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56735,7 +56854,8 @@
       "id": "67b9428e0daa430aa618c7730274fb66",
       "name": "Chaum 1985 — Security without Identification",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56772,7 +56892,8 @@
       "id": "d2c006f8f528491b9c3fb64f996fa607",
       "name": "Chaum 1994 — World's first electronic cash payment",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -56809,7 +56930,8 @@
       "id": "0eb3e354c767442f9cfad6071a35af03",
       "name": "Chaum 1996 — DigiCash eCash Deutsche Bank",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -56839,7 +56961,8 @@
       "id": "c76bb3ae5b4d43f680ca8c5f075e12ba",
       "name": "Hughes 1993 — A Cypherpunk's Manifesto",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -56876,7 +56999,8 @@
       "id": "f745b5915c8c45f48371d2136155ba94",
       "name": "May 1994 — Cyphernomicon",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -56920,7 +57044,8 @@
       "id": "7606d7fd6ff44bbc9266194c5165319c",
       "name": "Menger 1892 — On the Origin of Money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -56964,7 +57089,8 @@
       "id": "573d8b4226b84a089da2580fc046b334",
       "name": "Knapp 1924 — The State Theory of Money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57008,7 +57134,8 @@
       "id": "569ea7309d154d1e92acf5b177563629",
       "name": "Galbraith 1976 — L'argent",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57052,7 +57179,8 @@
       "id": "ed9405953e3f41b7a1a6b29ce7603128",
       "name": "Simmel 2009 — Philosophie de l'argent",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57089,7 +57217,8 @@
       "id": "1782b07fc7cc459e9636817b6350be4f",
       "name": "Polanyi 1944 — La grande transformation",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57119,7 +57248,8 @@
       "id": "24d1f1fef4004261b7828cee4ef56038",
       "name": "Polanyi 2011 — La subsistance de l'homme",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57163,7 +57293,8 @@
       "id": "9ed53d1f085b489a962e89be64beb58b",
       "name": "Friedman M. 1973 — Counter-Revolution in Monetary Theory",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57207,7 +57338,8 @@
       "id": "f6f9cab24c7b4c70b51e4c764803da2d",
       "name": "Friedman B. 1999 — Future of monetary policy",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57244,7 +57376,8 @@
       "id": "53915f16c8a34be58334fab98244a29e",
       "name": "Goodhart 2000 — Can Central Banking Survive the IT Revolution",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57274,7 +57407,8 @@
       "id": "16a72409709f431891600ea46e9cdbb0",
       "name": "Goodhart 2005 — What is the essence of money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57318,7 +57452,8 @@
       "id": "ae01bbd26c97490f9d613d92bd4a7081",
       "name": "Barro 1986 — Rules Versus Discretion",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57355,7 +57490,8 @@
       "id": "9c49d164ca0c46888f6b7f2ab8d5b49c",
       "name": "Barro & Gordon 1983 — Rules discretion and reputation",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57385,7 +57521,8 @@
       "id": "b9e7bc0ec25c464ea27d90d2a8038983",
       "name": "Orléan 1989 — Approche cognitive des conventions",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57422,7 +57559,8 @@
       "id": "a1dfb279c76040f7a8f7f05909efc7fe",
       "name": "Orléan 1992 — La monnaie comme lien social (Simmel)",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57452,7 +57590,8 @@
       "id": "206ffb42b0204d808a0923a54b25d29e",
       "name": "Orléan 1998 — La monnaie autoréférentielle",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57496,7 +57635,8 @@
       "id": "cd70a1754f4e4a2192c0823bb2a77319",
       "name": "Orléan 2003 — Fondements institutionnels objectivité marchande",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57526,7 +57666,8 @@
       "id": "a5130c632dec4665bb67201a5036b295",
       "name": "Orléan 2019 — La communauté bitcoin (Esprit)",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57570,7 +57711,8 @@
       "id": "a906b88366234d5d97901ee6cb3673d2",
       "name": "Blanc 1998a — Les monnaies parallèles approches historiques",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57614,7 +57756,8 @@
       "id": "96bdb9f6cad746f28ff711462c46d8b0",
       "name": "Blanc 1998b — Les monnaies parallèles évaluation",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57651,7 +57794,8 @@
       "id": "621555b126f4496c94f5ea08a904603e",
       "name": "Blanc 2008 — Usages de l'argent pratiques monétaires",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57695,7 +57839,8 @@
       "id": "4df197e434614e35879f37a0c40d6679",
       "name": "Blanc 2009a — Monnaies sociales contraintes organisationnelles",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57739,7 +57884,8 @@
       "id": "47d023c1e1b343b2b311162d19f9c365",
       "name": "Blanc 2009b — Usages de l'argent (Traité sociologie)",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57776,7 +57922,8 @@
       "id": "c6cda6d8c3b14482b6051e1703c5e756",
       "name": "Blanc & Fare 2013 — Role of Governments Community Currencies",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57820,7 +57967,8 @@
       "id": "923a78235ac1409288edfbcd7a3409a1",
       "name": "Blanc & Fare 2017 — La monnaie éclairages institutionnalistes",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57850,7 +57998,8 @@
       "id": "b4c4c35999af46698ed9c972a7e44b1f",
       "name": "Théret 2007 — La monnaie dévoilée par ses crises",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57880,7 +58029,8 @@
       "id": "22c9a9932b054b36959436c08c50d93e",
       "name": "Théret 2008 — Les trois états de la monnaie",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57924,7 +58074,8 @@
       "id": "1ac0b4d8f12e4313bad922acb6172fdb",
       "name": "Théret 2009 — Monnaie et dettes de vie",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -57961,7 +58112,8 @@
       "id": "fc15b39971ef481991580da9aa7cdaee",
       "name": "Théret 2012 — Du keynésianisme au libertarianisme",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58005,7 +58157,8 @@
       "id": "8e373ebfb6c24b6b84bbe0f67fc2b316",
       "name": "Servet Théret Yildirim 2016 — Universalité du fait monétaire",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58049,7 +58202,8 @@
       "id": "d80bed080db94483870db5f6fe1ebf88",
       "name": "Desmedt & Lakomski-Laguerre 2015 — Alternative monétaire Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58093,7 +58247,8 @@
       "id": "1716ed6bcad44771ad22101e932b843f",
       "name": "Dupré Ponsot Servet 2015 — Bitcoin contre la révolution des communs",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58137,7 +58292,8 @@
       "id": "708e681a656d41fd9104328794cab822",
       "name": "Rolland & Slim 2017 — Économie politique du Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58181,7 +58337,8 @@
       "id": "2165a0e1e59e479098a71d3b4213a0ae",
       "name": "Cartelier 1996 — La monnaie",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58218,7 +58375,8 @@
       "id": "0abc7476946d4dbdbd9d4bca209cc889",
       "name": "Cartelier 2001 — Monnaie et marché",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58262,7 +58420,8 @@
       "id": "735ad05fd0654bbaa9eca5d65cd118e1",
       "name": "Cartelier 2002 — Monnaie ou don",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58292,7 +58451,8 @@
       "id": "bc1361982acc4dff8ee8d5a270e61f34",
       "name": "Zelizer 1989 — Social Meaning of Money Special Monies",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58336,7 +58496,8 @@
       "id": "30006fbecce44ddd9e82e817d2cbbc5a",
       "name": "Zelizer 2000 — The Purchase of Intimacy",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58366,7 +58527,8 @@
       "id": "c274eca9c9e748abb5edd4e9306b4b45",
       "name": "Zelizer 2005 — La signification sociale de l'argent",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58403,7 +58565,8 @@
       "id": "c49fc20f07124c7087aec8554b68c6e9",
       "name": "Hess 2000 — Is There Anything New Under the Sun? New Commons",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58433,7 +58596,8 @@
       "id": "e3a53b9423334b69be4434874d4d6be2",
       "name": "Hess 2008 — Mapping the New Commons",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58463,7 +58627,8 @@
       "id": "50b94d8f76fa4e36a67e3dc28ad7a8d1",
       "name": "Hess & Ostrom 2003 — Information as Common-pool resource",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58500,7 +58665,8 @@
       "id": "a906df86be2b469dbac245ed5aeececf",
       "name": "Hess & Ostrom 2007 — Understanding knowledge as a commons",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58544,7 +58710,8 @@
       "id": "b86c5ec82ea14e47854fce42261981d6",
       "name": "Ostrom 1990 — Governing the Commons",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58581,7 +58748,8 @@
       "id": "43b7c14b59c1419e95aa6dcdf6885d84",
       "name": "Ostrom 2005 — Governing a Commons from a Citizen's Perspective",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58618,7 +58786,8 @@
       "id": "777d816556d94da2aee6d4ad48bf9dcb",
       "name": "Ostrom & Basurto 2013 — Outils d'analyse changement institutionnel",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58648,7 +58817,8 @@
       "id": "d33481e85d3243a08cabfe2cddeedff2",
       "name": "Chanteau & Labrousse 2013 — Institutionnalisme méthodologique Ostrom",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58692,7 +58862,8 @@
       "id": "b1e56c595625472bbd61740c7549cb4d",
       "name": "Bollier 2007 — The Growth of the Commons Paradigm",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58722,7 +58893,8 @@
       "id": "5abc57fb86bd4d16a10651f8520e7795",
       "name": "Coriat 2010 — Crise idéologie propriétaire retour des communs",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58766,7 +58938,8 @@
       "id": "74290febdb754d19aeee686c1a9a1b95",
       "name": "Coriat & Broca 2015 — Le logiciel libre et les communs",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58810,7 +58983,8 @@
       "id": "f420ad44b02844fa853e4035b9ad224e",
       "name": "Bowker 1996 — History of Information Infrastructures",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58854,7 +59028,8 @@
       "id": "e054a8412cf847b7b75c471e72bc414f",
       "name": "Star 1999 — Ethnography of Infrastructure",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58898,7 +59073,8 @@
       "id": "a5f0ee04162d4434ba7329ac575da1e4",
       "name": "Star & Ruhleder 2010 — Vers une écologie de l'infrastructure",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58942,7 +59118,8 @@
       "id": "2c3733bad1fc480ebfc9aff5d72fb6dc",
       "name": "Edwards et al. 2009 — Agenda for Infrastructure Studies",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -58986,7 +59163,8 @@
       "id": "9f8de37eda814c3089eb214ce8b8fcac",
       "name": "Trompette & Vinck 2009 — Retour sur la notion d'objet-frontière",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59016,7 +59194,8 @@
       "id": "e0b40d91bb424defaa9acf37536f339e",
       "name": "DeNardis & Musiani 2014 — Governance by Infrastructure",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59060,7 +59239,8 @@
       "id": "d929065369e94a1997a4bd634794c740",
       "name": "Mallard Méadel Musiani 2014 — Paradoxes of Distributed Trust",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59104,7 +59284,8 @@
       "id": "9d026d51d41e40edb4c8c7c15d563ca5",
       "name": "Musiani Mallard Méadel 2018 — Governing what wasn't meant to be governed",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59148,7 +59329,8 @@
       "id": "3a5f6962ebb4440283c245a23655a5a6",
       "name": "Baron 2003 — La gouvernance concept polysémique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59192,7 +59374,8 @@
       "id": "77653956f06d4f0092bb4d8f73c08a2e",
       "name": "Paye 2005 — La gouvernance notion polysémique à concept politologique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59236,7 +59419,8 @@
       "id": "82a5e853e54a44c3985266e0559dbdad",
       "name": "Rhodes 1996 — The New Governance: Governing without Government",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59280,7 +59464,8 @@
       "id": "ceabad5e9c0e4c36b74925272eff2df7",
       "name": "De Filippi & Loveluck 2016 — Invisible politics of Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59324,7 +59509,8 @@
       "id": "21d453b14d7f4cdd9ff7e8afc9ba3acd",
       "name": "Walch 2017a — Path of the Blockchain Lexicon",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59354,7 +59540,8 @@
       "id": "8640638b2d78436d8b471f947583747e",
       "name": "Walch 2017b — Open Source Operational Risk Blockchains",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59384,7 +59571,8 @@
       "id": "e703deab353348fa820f62287c090cce",
       "name": "Walch 2019 — Deconstructing Decentralization",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59421,7 +59609,8 @@
       "id": "4137356deade4efa9949582b186af808",
       "name": "Dupont 2018 — DAO Experiments in algorithmic governance",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59465,7 +59654,8 @@
       "id": "5c2cf7a5479d42bcaa2a9e3ee326ddf4",
       "name": "Böhme et al. 2015 — Bitcoin Economics Technology Governance",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59502,7 +59692,8 @@
       "id": "030117094d7c40deb5dea2f95e04c203",
       "name": "Böhme et al. 2020 — Responsible vulnerability disclosure",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59546,7 +59737,8 @@
       "id": "85ea3fbf6756411088682089319f9a25",
       "name": "Bonneau et al. 2015 — SoK Bitcoin Cryptocurrencies",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59590,7 +59782,8 @@
       "id": "cd4ebb49a5854494a4df0bb45e292369",
       "name": "Yermack 2013 — Is Bitcoin a real currency",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59634,7 +59827,8 @@
       "id": "57283ba8aa2c42beb27e7cb1ae91b230",
       "name": "Velde 2013 — Bitcoin a primer (Federal Reserve Chicago)",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -59671,7 +59865,8 @@
       "id": "9531cc48ccec4fa3b4dec6e4ea90f907",
       "name": "Rauchs 2016 — Cryptocurrencies meeting business ecosystems",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59715,7 +59910,8 @@
       "id": "c90459607fca4768b307d096e3e05378",
       "name": "Rauchs et al. 2018 — Distributed Ledger Systems Conceptual Framework",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59759,7 +59955,8 @@
       "id": "b84ba9333dae45b79c193be327fb769a",
       "name": "Vergne & Swain 2017 — Categorical Anarchy Bitcoin British Media",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59796,7 +59993,8 @@
       "id": "74b4e44f74614a38b5e319be177e46ee",
       "name": "Maurer Nelms Swartz 2013 — Practical materiality of Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59840,7 +60038,8 @@
       "id": "60dc60e0a2264130bb32004d421070df",
       "name": "Golumbia 2015 — Bitcoin as Politics Distributed Right-Wing Extremism",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59884,7 +60083,8 @@
       "id": "59cad7f544f743a3a42b7bfcf4c32991",
       "name": "Lustig & Nardi 2015 — Algorithmic authority Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59921,7 +60121,8 @@
       "id": "cde365fffc0140b2ae04ed6fd46b22d5",
       "name": "Dodd 2017 — The Social Life of Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59965,7 +60166,8 @@
       "id": "26fdb252fe8949d9bf413ed70677830b",
       "name": "Karlstrøm 2014 — Do libertarians dream of electric coins",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -59995,7 +60197,8 @@
       "id": "e16ccb5b8c394bf6b955596c918f6e43",
       "name": "Weber Beat 2014a — Bitcoin and the legitimacy crisis of money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60039,7 +60242,8 @@
       "id": "5ff1beb1ee0b43449c9ce88a1c21e2b6",
       "name": "Weber Beat 2014b — Can Bitcoin compete with money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60083,7 +60287,8 @@
       "id": "5680ab9e9b6a4a1f8f66964f7214266a",
       "name": "Selgin 2013 — Quasi-Commodity Money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60127,7 +60332,8 @@
       "id": "2639c718d6394322ab533a000887a2cf",
       "name": "Selgin 2014a — Bitcoin Problems and Prospects",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60157,7 +60363,8 @@
       "id": "3d76ab7fff1445c3a8dfb86736f5664f",
       "name": "Selgin 2014b — Synthetic Commodity Money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60194,7 +60401,8 @@
       "id": "3184a4a7d4c0431a98858b27194f30a4",
       "name": "Varoufakis 2013 — Bitcoin dangerous fantasy apolitical money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60231,7 +60439,8 @@
       "id": "f218069dfe51432f98163fa6991abef1",
       "name": "Varoufakis 2020 — Why Bitcoin is not a socialist's ally",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60268,7 +60477,8 @@
       "id": "2f1fca7ac1ff4ab39e90612457ec8dad",
       "name": "Tirole 2017 — Many reasons to be cautious about bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60305,7 +60515,8 @@
       "id": "200e76ca3d1844b0a3d45f9fa10310d2",
       "name": "Krugman 2018 — Bitcoin is Evil / Bubble Fraud",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60342,7 +60553,8 @@
       "id": "1b33d189e48c43a2ba529a9028c4659b",
       "name": "Roubini 2018 — Blockchain's Broken Promises",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60372,7 +60584,8 @@
       "id": "6c20274abd2640ff9f0a4e63ff156819",
       "name": "Kindleberger 2004 — Histoire mondiale spéculation financière",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60402,7 +60615,8 @@
       "id": "50f59bb92ad240b5846567c25ba452dd",
       "name": "Kindleberger 2017 — Bitcoin is fiat money too",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60432,7 +60646,8 @@
       "id": "63001807d7ae4b9393a7fc6dee70ee23",
       "name": "Favereau 1997 — L'incomplétude n'est pas le problème",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60469,7 +60684,8 @@
       "id": "971db49135bc46b5965e3f719923e6c5",
       "name": "Favereau 2010 — La place du marché",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60513,7 +60729,8 @@
       "id": "19963b499bc04acca003f466c28d906a",
       "name": "Lessig 2000 — Code is Law",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -60550,7 +60767,8 @@
       "id": "74f9134398d346a4b39be11431bc0baa",
       "name": "Andresen 2011 — Bitcoin v0.3.20.01 released",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60580,7 +60798,8 @@
       "id": "f8fb83d515424bad916e03ff5956d56d",
       "name": "Andresen 2012 — Blockchain Rule Update Process",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60617,7 +60836,8 @@
       "id": "63ed4d1a77544c98a047be919573aafb",
       "name": "Andresen 2016 — One-dollar lulz",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60654,7 +60874,8 @@
       "id": "2c773020f5214d0aab99737d494ef2c8",
       "name": "Bitcoin Core 2014 — version 0.9.0 released",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60691,7 +60912,8 @@
       "id": "dd3e2896aaa6408a84dded4e2922471e",
       "name": "Bitcoin Core 2018a — CVE-2018-17144 Full Disclosure",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60728,7 +60950,8 @@
       "id": "a22db16b88124625a0514a2f6ea0545b",
       "name": "Bitcoin Core 2018b — CONTRIBUTING to Bitcoin Core",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60765,7 +60988,8 @@
       "id": "2657595f89414142abf89fef823260b5",
       "name": "Bitcoin Foundation 2013 — About",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60802,7 +61026,8 @@
       "id": "bc7f490962eb4ef0a437207bd6b56905",
       "name": "Bitcoin Foundation 2014 — The Foundation's Vision",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60832,7 +61057,8 @@
       "id": "67fb1ee45c044b9b8ceb44519f69f122",
       "name": "Bitmex Research 2017a — History Bitcoin Consensus Forks",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60869,7 +61095,8 @@
       "id": "a42a1798e79d47b7a9e3a02921b24cf7",
       "name": "Bitmex Research 2017b — Revisiting The DAO",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60906,7 +61133,8 @@
       "id": "3ed56967e0d24141a3fe023d6dfe5a01",
       "name": "BitMEX Research 2018b — Ripple story",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -60943,7 +61171,8 @@
       "id": "b4cb7a3ba9d04d969296b774a74028ea",
       "name": "Harper 2019 — Bitcoin Independence Day",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -60980,7 +61209,8 @@
       "id": "62b3883426c9461da17f87d967b36766",
       "name": "Hearn & Peck 2013 — Major Bug Bitcoin Software",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -61017,7 +61247,8 @@
       "id": "32ec3a3526bd41d48320f1ddbebc65c0",
       "name": "Jeffrey 2017 — Consensus Pitfalls Breaking Bitcoin",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61047,7 +61278,8 @@
       "id": "7bc3f1a8265a481f9d8bd75a09c915d2",
       "name": "Janssens 2017 — Why non-mining full nodes are a terrible idea",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61077,7 +61309,8 @@
       "id": "b95feb4b7ce94d2c9903c5a192e3421d",
       "name": "Lopp 2018 — Who Controls Bitcoin Core",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61114,7 +61347,8 @@
       "id": "a4a15c4d930e4c53ac47ceb110695686",
       "name": "Lopp 2021 — History Bitcoin Transaction Dust Spam Storms",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61151,7 +61385,8 @@
       "id": "b904b5171b4f4236894208cdbdc3686c",
       "name": "Torpey 2016 — Checks and Balances of Bitcoin Governance",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61181,7 +61416,8 @@
       "id": "4304b6cc4a5540a5957f98aea18c2792",
       "name": "Bier 2021b — Blocksize War Ch.3 Scaling I Montreal",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -61218,7 +61454,8 @@
       "id": "e8798f2d51f74a519e8b5c7a55d7c8f6",
       "name": "Bier 2021c — Blocksize War Ch.8 Hong Kong Roundtable",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -61248,7 +61485,8 @@
       "id": "7ee2037b78e14507b44f8caa68251619",
       "name": "Bier 2021e — Blocksize War Ch.4 Scaling II Hong Kong",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -61278,7 +61516,8 @@
       "id": "e9b77ef3c0cc4f659881702b3bd36bac",
       "name": "Bier 2021f — Blocksize War Ch.18 New York Agreement",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -61315,7 +61554,8 @@
       "id": "cbbc7f90349f49c9b6e13bdb26132439",
       "name": "Anonyme 2018 — CVE-2018-17144 reward schedule StackExchange",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61352,7 +61592,8 @@
       "id": "2d5638fefb314cd6be9d120f091878b9",
       "name": "Awemany 2018 — 600 Microseconds CVE-2018-17144",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61389,7 +61630,8 @@
       "id": "df887492f61d4ae2bb03d935cfcce178",
       "name": "Antonopoulos 2018 — CVE-2018-17144 Q&A",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61426,7 +61668,8 @@
       "id": "573249a6c8904a05bc21c1e970401d21",
       "name": "Fields 2018 — Responsible disclosure cryptocurrencies",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61470,7 +61713,8 @@
       "id": "713a81a48e5143068ff221c6eec9c138",
       "name": "Dashjr 2019 — CVE-2018-20587 Advisory",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61507,7 +61751,8 @@
       "id": "1b5d7a273c734210b0b121e57a2de26f",
       "name": "Arvicco 2016a — ETC exchange trading",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61544,7 +61789,8 @@
       "id": "93fa2e758d06412cb39831626cb062db",
       "name": "Arvicco 2016b — ETC new ticker symbol",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61581,7 +61827,8 @@
       "id": "62bafe2074254283882c378aeac17e24",
       "name": "Arvicco 2016c — What can I do to help ETC",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61618,7 +61865,8 @@
       "id": "2dc9c4588b0742c88169833739626868",
       "name": "Attaquant 2016 — An Open Letter (DAO hacker statement)",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61655,7 +61903,8 @@
       "id": "9e885649ad6e4b53bdd7ec9161236f2d",
       "name": "Daian 2016 — Analysis of the DAO exploit",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61692,7 +61941,8 @@
       "id": "2b6dd92a7ea0472b81fd2d76e79d9a94",
       "name": "Mark Zamfir Sirer 2016 — Call for Moratorium on The DAO",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61729,7 +61979,8 @@
       "id": "285dc19bba3b4ccab0bca71ca9019636",
       "name": "Jentzsch 2016a — What an accomplishment DAO",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61759,7 +62010,8 @@
       "id": "ae1e3d2a720540f58e475e74ec8ea700",
       "name": "Jentzsch 2016b — DAO White Paper",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61803,7 +62055,8 @@
       "id": "4f5fca111aea4a4e9e658bc10a8c6cbb",
       "name": "Jentzsch 2016c — History of the DAO and Lessons Learned",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61840,7 +62093,8 @@
       "id": "f70403d82d894d4daa466a00d34c7570",
       "name": "Reitwiessner 2016 — Smart Contract Security",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61877,7 +62131,8 @@
       "id": "b4c29d75b01748fe9b457b73e0b045f3",
       "name": "Wilcke 2016 — To Fork or not to Fork",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -61914,7 +62169,8 @@
       "id": "f42300a97eb0484082ebad01ab1727d7",
       "name": "Assouan 2018 — Banque de France bitcoin cryptoactifs",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -61951,7 +62207,8 @@
       "id": "8ede23ee7ccd4888a68285224ae8720a",
       "name": "Lagarde 2017 — Fintech A Brave New World",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -61995,7 +62252,8 @@
       "id": "a66144d9679d4045a8af300cb88541e8",
       "name": "Lagarde 2018 — Winds of Change New Digital Currency",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62025,7 +62283,8 @@
       "id": "a8a74b6f711c4aa99d7cb161a9c878df",
       "name": "Le Maire 2019 — Discours Eurofi Financial Forum",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62062,7 +62321,8 @@
       "id": "6764629f79164965926d3b12df278d39",
       "name": "Carney 2019 — Growing Challenges for Monetary Policy",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62099,7 +62359,8 @@
       "id": "6197ae54ffc647c8a745daff547aebd1",
       "name": "Bercy Infos 2020 — Crypto-actifs comment s'y retrouver",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62136,7 +62397,8 @@
       "id": "5c29ca6480a54f67a950bf0495caf898",
       "name": "Avenier & Thomas 2011 — Mixer quali et quanti",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62180,7 +62442,8 @@
       "id": "ffef0b73382d4670bdf83e9aae4c24e6",
       "name": "Berry 2012 — Ethnographie sur Internet",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62224,7 +62487,8 @@
       "id": "3de49d9ee3894690974b7273eb058edc",
       "name": "Pastinelli 2011 — Pour en finir avec l'ethnographie du virtuel",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62268,7 +62532,8 @@
       "id": "3219f8784d754aedb612e5bec517a2aa",
       "name": "Cefai 2009 — Codifier l'engagement ethnographique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62305,7 +62570,8 @@
       "id": "d39ba9cddee04648bc27e75b4e0bc02d",
       "name": "Abdelatif Hafid 2022 — Sharding Blockchain Protocols",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62349,7 +62615,8 @@
       "id": "dd9f7883d03e4bc2a49a1f9e18ed8bbd",
       "name": "Abraham 2020 — Prestataires actifs numériques cadre légal",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62386,7 +62653,8 @@
       "id": "8d060dcfd4e54ad48c445af6cadec8e6",
       "name": "AFP 2018 — Bitcoin fait fureur au Japon",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62423,7 +62691,8 @@
       "id": "eefe27284b08444cb1ddc05773972197",
       "name": "Allard 2017 — Bitcoin et exclus du système bancaire",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -62460,7 +62729,8 @@
       "id": "e7daf0b469ff4a0a9dc9be81ac269477",
       "name": "Barlow 2016 — Declaration of Independence of Cyberspace",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -62504,7 +62774,8 @@
       "id": "154e47beee654756a38fcc0d7c8aba2b",
       "name": "Bezbakh 2019 — Inflation et désinflation",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62548,7 +62819,8 @@
       "id": "e842404ac62041138262f6fb317485f8",
       "name": "Bounie 2001 — Incidences bancaires paiement électronique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62585,7 +62857,8 @@
       "id": "9ec05e6390f2465c96df8c0dcff5d1d0",
       "name": "Bounie & Lavoisier 2003 — La monnaie électronique",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62615,7 +62888,8 @@
       "id": "9e5fedf5dc2947db899b6bf622c16db9",
       "name": "Christin 2013 — Traveling the Silk Road",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62659,7 +62933,8 @@
       "id": "b8686137916e4a11b1655e3edc8d85ee",
       "name": "Cohen 1998 — The Geography of Money",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62696,7 +62971,8 @@
       "id": "411ff4df32994128bb93fc522fa8c2b2",
       "name": "Cohen 2002 — Monnaie électronique aube trompeuse",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62733,7 +63009,8 @@
       "id": "b84f59ace9b6403c88067c46af4c7582",
       "name": "Favier 2017 — Tulipes (blog La voie du Bitcoin)",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -62770,7 +63047,8 @@
       "id": "e19babe53a3d4f0291ed683b3118e0ef",
       "name": "Favier & Takkal Bataille 2017 — Bitcoin la monnaie acéphale",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62807,7 +63085,8 @@
       "id": "2cdf45abce9a473ead388f8611b12fa3",
       "name": "Gerard 2017 — Attack of the 50 Foot Blockchain",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62837,7 +63116,8 @@
       "id": "bcb6224ca258462e815df9678e1992b1",
       "name": "Russo 2020 — The Infinite Machine Ethereum",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62888,7 +63168,8 @@
       "id": "89e4b24810e94abe98890e581be45e7d",
       "name": "Shin 2022 — The Cryptopians",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "9a2fd04e026a410281686e02a6de3dcd"
       ],
       "attributes": {
         "title": {
@@ -62932,7 +63213,8 @@
       "id": "d253190f545f4cdd9548b161201e72eb",
       "name": "Antonopoulos 2013 — Bitcoin Neutrality Conference",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
@@ -62969,7 +63251,8 @@
       "id": "3e7501abd4be41d991b3915e35c24b6c",
       "name": "Zamfir 2019 — Against Szabo's Law For A New Crypto Legal System",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "b6ff2981875a4027a8cbd56e26010732"
       ],
       "attributes": {
         "title": {
@@ -63014,7 +63297,8 @@
       "id": "04dd36dce5e64b6487820a2b61229d43",
       "name": "NewLibertyStandard 2009 — Bitcoin exchange rate post",
       "types": [
-        "51f53c59535b4e22b1dd0d83f6593fe1"
+        "51f53c59535b4e22b1dd0d83f6593fe1",
+        "d62cf376f60449dfbdb1350c924231bc"
       ],
       "attributes": {
         "title": {
