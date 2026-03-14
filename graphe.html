@@ -175,6 +175,23 @@ select:focus { border-color: var(--accent2); }
   background: var(--warn); color: #000;
 }
 .badge-ok { background: var(--success); }
+/* ─── Tools dropdown ─────────────────────────────────────────────── */
+.tools-dropdown { position: relative; flex-shrink: 0; }
+.tools-menu {
+  position: absolute; top: calc(100% + 4px); left: 0;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 10px; z-index: 1000;
+  display: flex; flex-direction: column; gap: 8px; min-width: 260px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+}
+.tools-menu.hidden { display: none; }
+.tools-section { display: flex; flex-direction: column; gap: 5px; }
+.tools-section-label {
+  font-size: 0.52em; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text2); font-family: var(--mono); padding-bottom: 3px;
+  border-bottom: 1px solid var(--border);
+}
+.tools-row { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
 /* ─── Modals ─────────────────────────────────────────────────────── */
 .modal-backdrop {
   position: fixed; inset: 0; background: rgba(0,0,0,.65);
@@ -311,15 +328,17 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   .grc-sep,
   .grc-title-text,
   .version-label,
-  #btn-add-entity,
-  #btn-add-relation,
-  #btn-validate,
-  #btn-export,
+  #btn-fit,
   #btn-undo,
-  #btn-relayout,
   #btn-theme,
-  .undo-count,
-  #layout-select { display: none !important; }
+  .undo-count { display: none !important; }
+
+  /* Dropdown outils : plein écran sur mobile */
+  .tools-menu {
+    position: fixed; top: var(--header-h); left: 0; right: 0;
+    min-width: unset; border-radius: 0;
+    max-height: 60vh; overflow-y: auto;
+  }
 
   /* Sidebar masquée, canvas plein écran */
   .grc-sidebar { display: none !important; }
@@ -395,26 +414,40 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <button class="search-clear" id="search-clear" title="Effacer">✕</button>
   </div>
 
-  <select id="layout-select" title="Changer le layout">
-    <option value="cose">Force-directed</option>
-    <option value="dagre">Hiérarchique</option>
-    <option value="circle">Cercle</option>
-    <option value="concentric">Concentrique</option>
-    <option value="grid">Grille</option>
-  </select>
-  <button class="btn-secondary btn-sm" id="btn-relayout" title="Recalculer le layout">↺</button>
+  <div class="tools-dropdown" id="tools-dropdown">
+    <button class="btn-secondary btn-sm" id="btn-tools-toggle" title="Outils avancés">⚙ Outils ▾</button>
+    <div class="tools-menu hidden" id="tools-menu">
+      <div class="tools-section">
+        <span class="tools-section-label">Disposition</span>
+        <div class="tools-row">
+          <select id="layout-select" title="Changer le layout">
+            <option value="cose">Force-directed</option>
+            <option value="dagre">Hiérarchique</option>
+            <option value="circle">Cercle</option>
+            <option value="concentric">Concentrique</option>
+            <option value="grid">Grille</option>
+          </select>
+          <button class="btn-secondary btn-sm" id="btn-relayout" title="Recalculer le layout">↺</button>
+        </div>
+      </div>
+      <div class="tools-section">
+        <span class="tools-section-label">Édition</span>
+        <div class="tools-row">
+          <button class="btn-primary btn-sm" id="btn-add-entity" disabled>+ Entité</button>
+          <button class="btn-secondary btn-sm" id="btn-add-relation" disabled>+ Relation</button>
+          <button class="btn-secondary btn-sm" id="btn-validate" disabled>✓ Valider</button>
+        </div>
+      </div>
+      <div class="tools-section">
+        <span class="tools-section-label">Export</span>
+        <div class="tools-row">
+          <button class="btn-secondary btn-sm" id="btn-export" disabled>⬇ JSON v<span id="export-version">2</span></button>
+          <span class="badge-error hidden" id="error-badge">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <button class="btn-secondary btn-sm" id="btn-fit" title="Ajuster à l'écran">⊡ Ajuster</button>
-
-  <div class="grc-sep"></div>
-
-  <button class="btn-primary btn-sm" id="btn-add-entity" disabled>+ Entité</button>
-  <button class="btn-secondary btn-sm" id="btn-add-relation" disabled>+ Relation</button>
-  <button class="btn-secondary btn-sm" id="btn-validate" disabled>✓ Valider</button>
-
-  <div class="grc-sep"></div>
-
-  <button class="btn-secondary btn-sm" id="btn-export" disabled>⬇ JSON v<span id="export-version">2</span></button>
-  <span class="badge-error hidden" id="error-badge">0</span>
 
   <div style="flex:1"></div>
   <span class="version-label" id="version-label">–</span>
@@ -1789,6 +1822,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     reader.readAsText(file);
     fileInput.value = '';
+  });
+
+  // ── Tools dropdown toggle ────────────────────────────
+  const toolsMenu = document.getElementById('tools-menu');
+  document.getElementById('btn-tools-toggle').addEventListener('click', e => {
+    e.stopPropagation();
+    toolsMenu.classList.toggle('hidden');
+  });
+  document.addEventListener('click', e => {
+    if (!document.getElementById('tools-dropdown').contains(e.target)) {
+      toolsMenu.classList.add('hidden');
+    }
   });
 
   // ── Layout ───────────────────────────────────────────
