@@ -56239,13 +56239,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56270,13 +56263,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56298,13 +56284,6 @@
         "year": {
           "type": "TEXT",
           "value": "1998",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56336,13 +56315,6 @@
         "year": {
           "type": "TEXT",
           "value": "2002",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56385,13 +56357,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -56422,13 +56387,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56450,13 +56408,6 @@
         "year": {
           "type": "TEXT",
           "value": "2019",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56499,13 +56450,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Introduction",
@@ -56540,13 +56484,6 @@
         "year": {
           "type": "TEXT",
           "value": "2010",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56588,13 +56525,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56616,13 +56546,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56657,13 +56580,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56685,13 +56601,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56727,13 +56636,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Introduction",
@@ -56761,13 +56663,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -56802,13 +56697,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56830,13 +56718,6 @@
         "year": {
           "type": "TEXT",
           "value": "1982",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -56872,13 +56753,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I",
@@ -56906,13 +56780,6 @@
         "year": {
           "type": "TEXT",
           "value": "1994",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -56947,13 +56814,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -56975,13 +56835,6 @@
         "year": {
           "type": "TEXT",
           "value": "1993",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -57013,13 +56866,6 @@
         "year": {
           "type": "TEXT",
           "value": "1994",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -57062,13 +56908,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -57103,13 +56942,6 @@
         "year": {
           "type": "TEXT",
           "value": "1924",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57152,13 +56984,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Chapitre II",
@@ -57197,13 +57022,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Introduction",
@@ -57234,13 +57052,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -57262,13 +57073,6 @@
         "year": {
           "type": "TEXT",
           "value": "2011",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57311,13 +57115,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -57356,13 +57153,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -57393,13 +57183,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -57421,13 +57204,6 @@
         "year": {
           "type": "TEXT",
           "value": "2005",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57470,13 +57246,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -57507,13 +57276,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -57535,13 +57297,6 @@
         "year": {
           "type": "TEXT",
           "value": "1989",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57576,13 +57331,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -57604,13 +57352,6 @@
         "year": {
           "type": "TEXT",
           "value": "1998",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57652,13 +57393,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -57680,13 +57414,6 @@
         "year": {
           "type": "TEXT",
           "value": "2019",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57729,13 +57456,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Introduction",
@@ -57774,13 +57494,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -57808,13 +57521,6 @@
         "year": {
           "type": "TEXT",
           "value": "2008",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57857,13 +57563,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -57902,13 +57601,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Introduction",
@@ -57936,13 +57628,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -57984,13 +57669,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58015,13 +57693,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58043,13 +57714,6 @@
         "year": {
           "type": "TEXT",
           "value": "2008",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58092,13 +57756,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -58126,13 +57783,6 @@
         "year": {
           "type": "TEXT",
           "value": "2012",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58175,13 +57825,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -58216,13 +57859,6 @@
         "year": {
           "type": "TEXT",
           "value": "2015",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58265,13 +57901,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Chapitre III, Introduction",
@@ -58306,13 +57935,6 @@
         "year": {
           "type": "TEXT",
           "value": "2017",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58355,13 +57977,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Introduction",
@@ -58389,13 +58004,6 @@
         "year": {
           "type": "TEXT",
           "value": "2001",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58437,13 +58045,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58465,13 +58066,6 @@
         "year": {
           "type": "TEXT",
           "value": "1989",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58513,13 +58107,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58541,13 +58128,6 @@
         "year": {
           "type": "TEXT",
           "value": "2005",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58582,13 +58162,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58613,13 +58186,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58641,13 +58207,6 @@
         "year": {
           "type": "TEXT",
           "value": "2003",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58679,13 +58238,6 @@
         "year": {
           "type": "TEXT",
           "value": "2007",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58728,13 +58280,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Introduction",
@@ -58762,13 +58307,6 @@
         "year": {
           "type": "TEXT",
           "value": "2005",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58803,13 +58341,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58831,13 +58362,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58879,13 +58403,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -58907,13 +58424,6 @@
         "year": {
           "type": "TEXT",
           "value": "2010",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -58956,13 +58466,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Chapitre II",
@@ -58997,13 +58500,6 @@
         "year": {
           "type": "TEXT",
           "value": "1996",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59046,13 +58542,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Chapitre II, Introduction",
@@ -59087,13 +58576,6 @@
         "year": {
           "type": "TEXT",
           "value": "2010",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59136,13 +58618,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Conclusion, Introduction",
@@ -59180,13 +58655,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -59208,13 +58676,6 @@
         "year": {
           "type": "TEXT",
           "value": "2014",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59257,13 +58718,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Introduction",
@@ -59298,13 +58752,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59347,13 +58794,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -59388,13 +58828,6 @@
         "year": {
           "type": "TEXT",
           "value": "2005",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59437,13 +58870,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -59478,13 +58904,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59526,13 +58945,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -59557,13 +58969,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -59585,13 +58990,6 @@
         "year": {
           "type": "TEXT",
           "value": "2019",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59623,13 +59021,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59672,13 +59063,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I",
@@ -59706,13 +59090,6 @@
         "year": {
           "type": "TEXT",
           "value": "2020",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59755,13 +59132,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Introduction",
@@ -59796,13 +59166,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59845,13 +59208,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -59879,13 +59235,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -59928,13 +59277,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Chapitre II, Introduction",
@@ -59973,13 +59315,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Introduction",
@@ -60007,13 +59342,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60056,13 +59384,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Introduction",
@@ -60101,13 +59422,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III, Introduction",
@@ -60135,13 +59449,6 @@
         "year": {
           "type": "TEXT",
           "value": "2017",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60183,13 +59490,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -60211,13 +59511,6 @@
         "year": {
           "type": "TEXT",
           "value": "2014",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60260,13 +59553,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -60301,13 +59587,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60349,13 +59628,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -60377,13 +59649,6 @@
         "year": {
           "type": "TEXT",
           "value": "2014",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60419,13 +59684,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Chapitre III",
@@ -60453,13 +59711,6 @@
         "year": {
           "type": "TEXT",
           "value": "2020",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -60495,13 +59746,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "media",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II, Introduction",
@@ -60529,13 +59773,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "media",
           "options": {
             "language": "fr"
           }
@@ -60570,13 +59807,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -60598,13 +59828,6 @@
         "year": {
           "type": "TEXT",
           "value": "2004",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60632,13 +59855,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "media",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -60660,13 +59876,6 @@
         "year": {
           "type": "TEXT",
           "value": "1997",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60698,13 +59907,6 @@
         "year": {
           "type": "TEXT",
           "value": "2010",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -60747,13 +59949,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -60784,13 +59979,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -60812,13 +60000,6 @@
         "year": {
           "type": "TEXT",
           "value": "2012",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -60854,13 +60035,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I",
@@ -60888,13 +60062,6 @@
         "year": {
           "type": "TEXT",
           "value": "2014",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -60930,13 +60097,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -60964,13 +60124,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61006,13 +60159,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I",
@@ -61043,13 +60189,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -61071,13 +60210,6 @@
         "year": {
           "type": "TEXT",
           "value": "2017",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -61113,13 +60245,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61147,13 +60272,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -61189,13 +60307,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -61223,13 +60334,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "media",
           "options": {
             "language": "fr"
           }
@@ -61264,13 +60368,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -61295,13 +60392,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -61323,13 +60413,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61365,13 +60448,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I, Chapitre III",
@@ -61402,13 +60478,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -61430,13 +60499,6 @@
         "year": {
           "type": "TEXT",
           "value": "2021",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -61471,13 +60533,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -61502,13 +60557,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -61530,13 +60578,6 @@
         "year": {
           "type": "TEXT",
           "value": "2021",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -61572,13 +60613,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61606,13 +60640,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61648,13 +60675,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61682,13 +60702,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61731,13 +60744,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61765,13 +60771,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61807,13 +60806,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61841,13 +60833,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61883,13 +60868,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61917,13 +60895,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -61959,13 +60930,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -61996,13 +60960,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -62024,13 +60981,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -62073,13 +61023,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -62107,13 +61050,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -62149,13 +61085,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -62187,13 +61116,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62221,13 +61143,6 @@
         "year": {
           "type": "TEXT",
           "value": "2017",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -62269,13 +61184,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -62297,13 +61205,6 @@
         "year": {
           "type": "TEXT",
           "value": "2019",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -62339,13 +61240,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Introduction",
@@ -62377,13 +61271,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62411,13 +61298,6 @@
         "year": {
           "type": "TEXT",
           "value": "2011",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -62460,13 +61340,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Introduction",
@@ -62501,13 +61374,6 @@
         "year": {
           "type": "TEXT",
           "value": "2011",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -62550,13 +61416,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Introduction",
@@ -62584,13 +61443,6 @@
         "year": {
           "type": "TEXT",
           "value": "2022",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -62633,13 +61485,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62667,13 +61512,6 @@
         "year": {
           "type": "TEXT",
           "value": "2018",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "media",
           "options": {
             "language": "fr"
           }
@@ -62709,13 +61547,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "media",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62743,13 +61574,6 @@
         "year": {
           "type": "TEXT",
           "value": "2016",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
@@ -62792,13 +61616,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62837,13 +61654,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62874,13 +61684,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -62902,13 +61705,6 @@
         "year": {
           "type": "TEXT",
           "value": "2013",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -62951,13 +61747,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -62985,13 +61774,6 @@
         "year": {
           "type": "TEXT",
           "value": "2002",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -63027,13 +61809,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre II",
@@ -63061,13 +61836,6 @@
         "year": {
           "type": "TEXT",
           "value": "2017",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -63102,13 +61870,6 @@
           "options": {
             "language": "fr"
           }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
         }
       }
     },
@@ -63130,13 +61891,6 @@
         "year": {
           "type": "TEXT",
           "value": "2020",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
           "options": {
             "language": "fr"
           }
@@ -63186,13 +61940,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "academic",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre III",
@@ -63231,13 +61978,6 @@
             "language": "fr"
           }
         },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
-          "options": {
-            "language": "fr"
-          }
-        },
         "cited_in_chapters": {
           "type": "TEXT",
           "value": "Chapitre I",
@@ -63265,13 +62005,6 @@
         "year": {
           "type": "TEXT",
           "value": "2019",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "grey",
           "options": {
             "language": "fr"
           }
@@ -63311,13 +62044,6 @@
         "year": {
           "type": "TEXT",
           "value": "2009",
-          "options": {
-            "language": "fr"
-          }
-        },
-        "source_type": {
-          "type": "TEXT",
-          "value": "indigenous",
           "options": {
             "language": "fr"
           }
