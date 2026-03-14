@@ -309,6 +309,28 @@
     {
       "id": "764af2d5ece641f3bedae5b8b1fedf93",
       "name": "InfrastructureSegment"
+    },
+    {
+      "id": "b6ff2981875a4027a8cbd56e26010732",
+      "name": "GreyLiterature",
+      "description": {
+        "type": "TEXT",
+        "value": "Litterature grise : rapports institutionnels, documents officiels, publications sans peer-review.",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "id": "d62cf376f60449dfbdb1350c924231bc",
+      "name": "IndigenousLiterature",
+      "description": {
+        "type": "TEXT",
+        "value": "Litterature indigene crypto : whitepapers, BIPs/EIPs, forum posts, documents natifs de l ecosysteme.",
+        "options": {
+          "language": "fr"
+        }
+      }
     }
   ],
   "relation_types": [
@@ -16731,7 +16753,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -16804,7 +16825,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -16877,7 +16897,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -17023,7 +17042,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -17241,7 +17259,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -17386,7 +17403,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -17459,7 +17475,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -17532,7 +17547,6 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd",
         "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
@@ -17605,7 +17619,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
@@ -17721,7 +17735,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
@@ -17765,7 +17779,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
@@ -17809,7 +17823,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
@@ -17925,7 +17939,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
@@ -17969,7 +17983,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
@@ -18055,7 +18069,7 @@
         }
       },
       "types": [
-        "9a2fd04e026a410281686e02a6de3dcd"
+        "4674ab9a271a425b9d5ba06504d32b9c"
       ],
       "attributes": {
         "slug": {
