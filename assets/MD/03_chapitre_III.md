@@ -3,7 +3,7 @@ III. Au-delà des codes : la gouvernance *discrète* des CM, dévoilée par leur
 > *« Il y a trois époques pour la monnaie : la monnaie basée sur les matières premières, la monnaie basée sur la politique et, aujourd\'hui, la monnaie basée sur les mathématiques. »*
 >
 > **Chris Dixon (Co-Founder of Hunch and SiteAdvisor)**
-
+>
 > « *Donc voilà, \"don\'t trust verify\", ben oui, il ne faut pas truster, il faut vérifier. \"Code is law\", là par contre au fur et à mesure du temps, au début j\'étais dans ce côté-là, en effet : ben si le code dit cela, il va se passer cela. J\'étais encore dans ce côté-là pendant la \"CVE2018 je ne sais plus quoi là\"\... je me suis dit, ben finalement si quelqu\'un avait exploité cela, est-ce que il aurait fallu accepter ou pas les changements, je me suis dit bon\... il a fait ça, ok\... Pareil avec \"The Dao\", avec le temps,*\[...\] *je me dis qu\'il y a quand même un consensus social. \"Code is law\", as long as people don\'t mind**\"** \[Il rigole\]. *»
 >
 > **A. Le Calvez, Entretien n°20**

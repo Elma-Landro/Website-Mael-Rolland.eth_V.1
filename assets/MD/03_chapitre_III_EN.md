@@ -3,7 +3,7 @@ III. Beyond the Code: The *Discreet* Governance of CM, Revealed Through Their Cr
 > *"There are three eras for money: commodity-based money, politically-based money, and today, mathematically-based money."*
 >
 > **Chris Dixon (Co-Founder of Hunch and SiteAdvisor)**
-
+>
 > *"So here it is, ‘don’t trust verify,’ well yes, you must not trust, you must verify. ‘Code is law,’ on the other hand, over time, at first I was on that side, indeed: if the code says this, then that will happen. I was still on that side during the ‘Bitcoin CVE 2018 bug’... I thought, well, if someone had exploited that, should we have accepted the changes or not? I thought, well... they did that, okay... Same with ‘The Dao,’ over time,* \[...\] *I tell myself that there is still a social consensus. ‘Code is law,’ as long as people don’t mind**"** [He laughs]. *"*
 >
 > **A. Le Calvez, Interview No. 20**
