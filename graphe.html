@@ -426,6 +426,56 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   width: 0; padding: 0; overflow: hidden; border-right: none;
 }
 
+/* ─── Guided initial overlay ─────────────────────────────────────── */
+.guided-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 18px; max-width: 560px; width: 100%; padding: 0 20px;
+}
+.guided-title {
+  font-size: 0.88em; color: var(--accent2); letter-spacing: .1em;
+  text-transform: uppercase; text-align: center;
+}
+.guided-entries {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 9px; width: 100%;
+}
+.guided-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  padding: 11px 13px; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 4px;
+  transition: all .18s; border-radius: 0; font-family: var(--font);
+}
+.guided-card:hover { background: var(--bg3); transform: translateY(-2px); }
+.guided-card-type { font-size: 0.5em; letter-spacing: .1em; text-transform: uppercase; }
+.guided-card-name { font-size: 0.68em; color: var(--text); font-weight: 700; line-height: 1.4; }
+.guided-card-deg  { font-size: 0.52em; color: var(--text2); }
+.guided-search-wrap { position: relative; width: 100%; }
+.guided-search {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  padding: 8px 12px; font-size: 0.82em; width: 100%;
+  font-family: var(--font); outline: none; border-radius: 0;
+}
+.guided-search:focus { border-color: var(--accent2); }
+.guided-suggestions {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--bg2); border: 1px solid var(--border); border-top: none;
+  max-height: 200px; overflow-y: auto; z-index: 100; display: none;
+}
+.guided-suggest-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 12px; cursor: pointer; font-size: 0.78em;
+  border-bottom: 1px solid var(--border); transition: background .12s;
+}
+.guided-suggest-item:last-child { border-bottom: none; }
+.guided-suggest-item:hover { background: var(--bg3); }
+.guided-suggest-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.guided-suggest-type { color: var(--text2); font-size: 0.85em; margin-left: auto; padding-left: 6px; }
+.guided-modes { display: flex; gap: 10px; width: 100%; }
+.guided-mode-btn {
+  flex: 1; padding: 10px 14px; font-size: 0.6em;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+.guided-mode-sub { font-size: 0.82em; font-weight: normal; opacity: .75; }
+
 </style>
 </head>
 <body>
@@ -1822,6 +1872,123 @@ function escHtml(str) {
 }
 
 // ─────────────────────────────────────────────────────────
+//  GUIDED OVERLAY
+// ─────────────────────────────────────────────────────────
+const MEDIUM_TYPES = new Set([
+  'Chapter','ThesisSection','Concept','TheoreticFramework',
+  'CrisisEvent','CrisisPhase','Protocol','Person',
+  'GovernanceArena','GovernanceProcess','GovernanceConflict',
+  'ActorGroup','Actor'
+]);
+
+function showGuidedOverlay() {
+  const overlay = document.getElementById('canvas-overlay');
+
+  // Top 4 most-connected entities as featured entries
+  const featured = [...State.data.entities]
+    .map(e => ({
+      id: e.id, name: e.name,
+      typeName: State.getEntityTypeName(e),
+      degree: (State.maps.outgoing[e.id]||[]).length + (State.maps.incoming[e.id]||[]).length,
+    }))
+    .filter(e => e.degree > 0)
+    .sort((a, b) => b.degree - a.degree)
+    .slice(0, 4);
+
+  overlay.innerHTML = `
+    <div class="guided-wrap">
+      <div class="guided-title">◈ Par où commencer ?</div>
+      <div class="guided-entries">
+        ${featured.map(f => {
+          const color = TYPE_COLORS[f.typeName] || '#64748b';
+          return `<button class="guided-card" data-id="${f.id}" style="border-color:${color}55">
+            <span class="guided-card-type" style="color:${color}">${f.typeName}</span>
+            <span class="guided-card-name">${escHtml(f.name)}</span>
+            <span class="guided-card-deg">${f.degree} liens</span>
+          </button>`;
+        }).join('')}
+      </div>
+      <div class="guided-search-wrap">
+        <input type="text" class="guided-search" id="guided-search-input"
+               placeholder="🔍 Chercher un concept, acteur, crise…" autocomplete="off">
+        <div class="guided-suggestions" id="guided-suggestions"></div>
+      </div>
+      <div class="guided-modes">
+        <button class="btn-primary guided-mode-btn" id="guided-btn-full">
+          ⚡ Très fort
+          <span class="guided-mode-sub">Tout le graphe</span>
+        </button>
+        <button class="btn-secondary guided-mode-btn" id="guided-btn-medium">
+          → Moyen, on y va
+          <span class="guided-mode-sub">Vue essentielle</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Entry card clicks
+  overlay.querySelectorAll('.guided-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.dataset.id;
+      overlay.classList.add('hidden');
+      State.hiddenTypes.clear();
+      Graph.applyFilters();
+      UI.selectEntity(id);
+    });
+  });
+
+  // Live search
+  const searchInput = document.getElementById('guided-search-input');
+  const suggestDiv  = document.getElementById('guided-suggestions');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase().trim();
+    suggestDiv.innerHTML = '';
+    if (!q) { suggestDiv.style.display = 'none'; return; }
+    const matches = State.data.entities.filter(e => e.name.toLowerCase().includes(q)).slice(0, 10);
+    if (!matches.length) { suggestDiv.style.display = 'none'; return; }
+    matches.forEach(e => {
+      const typeName = State.getEntityTypeName(e);
+      const color = TYPE_COLORS[typeName] || '#64748b';
+      const item = document.createElement('div');
+      item.className = 'guided-suggest-item';
+      item.innerHTML = `
+        <span class="guided-suggest-dot" style="background:${color}"></span>
+        <span>${escHtml(e.name)}</span>
+        <span class="guided-suggest-type">${typeName}</span>
+      `;
+      item.addEventListener('click', () => {
+        overlay.classList.add('hidden');
+        State.hiddenTypes.clear();
+        Graph.applyFilters();
+        UI.selectEntity(e.id);
+      });
+      suggestDiv.appendChild(item);
+    });
+    suggestDiv.style.display = 'block';
+  });
+
+  // Très fort : tout afficher
+  document.getElementById('guided-btn-full').addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    State.hiddenTypes.clear();
+    Graph.applyFilters();
+    UI.renderTypeFilters();
+  });
+
+  // Moyen : masquer les types secondaires
+  document.getElementById('guided-btn-medium').addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    for (const t of State.data.types) {
+      if (!MEDIUM_TYPES.has(t.name)) State.hiddenTypes.add(t.name);
+    }
+    Graph.applyFilters();
+    UI.renderTypeFilters();
+  });
+
+  overlay.classList.remove('hidden');
+}
+
+// ─────────────────────────────────────────────────────────
 //  BOOT
 // ─────────────────────────────────────────────────────────
 function onDataLoaded(data) {
@@ -1831,7 +1998,6 @@ function onDataLoaded(data) {
     return;
   }
   State.load(data);
-  document.getElementById('canvas-overlay').classList.add('hidden');
   document.getElementById('version-label').textContent = `GRC-20 v${data.space && data.space.version || '?'} · ${data.entities.length} entités · ${data.relations.length} rel.`;
 
   // Enable buttons
@@ -1847,6 +2013,7 @@ function onDataLoaded(data) {
   Validator.run();
   Validator.updateBadge();
 
+  showGuidedOverlay();
   toast(`Graphe chargé : ${data.entities.length} entités, ${data.relations.length} relations`, 'success');
 }
 
