@@ -1094,8 +1094,8 @@ function renderMarkdown(md, def) {
   let cleaned = md
     // Remove Pandoc width/height attributes
     .replace(/\{[^}]*width=[^}]*\}/g, '')
-    // Convert media/imageN.png → figures/ paths (fallback)
-    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](figures/$2)')
+    // Convert media/imageN.png → assets/figures/ paths
+    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](assets/figures/$2)')
     // Trim TOC lines at start (lines starting with [...](#...)
     .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
 
