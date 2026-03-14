@@ -729,6 +729,7 @@ let state = {
   relTypeMap: {},
   adjacency: {},       // id -> [{nid, relName, dir}]
   sectionMap: {},      // section name (normalized) -> entity
+  sectionCodeMap: {},  // section code (e.g. "i1", "ii3") -> entity
   chapterMap: {},      // chapter name (normalized) -> entity
   activeFilters: new Set(),
   cy: null,
@@ -811,6 +812,9 @@ async function loadGraph() {
       const types = (e.types || []).map(t => state.typeMap[t]);
       if (types.includes('ThesisSection')) {
         state.sectionMap[normalize(e.name)] = e;
+        // Also index by section code prefix (e.g. "i1", "ii3", "a", "b")
+        const code = extractSectionCode(e.name);
+        if (code) state.sectionCodeMap[code] = e;
       }
       if (types.includes('Chapter')) {
         state.chapterMap[normalize(e.name)] = e;
@@ -1003,8 +1007,11 @@ function getSubgraph(sectionEntity) {
 function updateGraph(sectionName) {
   if (!state.cy || !state.graphData) return;
 
-  // Find matching section entity
-  const sectionEntity = state.sectionMap[normalize(sectionName)] || null;
+  // Find matching section entity — try full name first, then section code prefix
+  const code = extractSectionCode(sectionName);
+  const sectionEntity = state.sectionMap[normalize(sectionName)]
+    || (code ? state.sectionCodeMap[code] : null)
+    || null;
 
   document.getElementById('graph-section-name').textContent =
     sectionEntity ? sectionEntity.name : sectionName || '—';
@@ -1392,6 +1399,12 @@ function normalize(str) {
   return (str || '').toLowerCase().trim()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ');
+}
+
+// Extract section code prefix: "I.1", "II.3", "III.2b", "A", "B" → "i1", "ii3", "iii2b", "a", "b"
+function extractSectionCode(str) {
+  const m = (str || '').trim().match(/^([IVX]{1,4}(?:\.\d+(?:\.\d+)?[a-z]?)?|[A-E])[\s.]/i);
+  return m ? m[1].toLowerCase().replace(/\./g, '') : null;
 }
 
 function slugify(str) {
