@@ -315,12 +315,13 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
 .story-section {
   padding: 60px 0;
+  min-height: 80vh;
   border-bottom: 1px solid var(--border);
   opacity: 0.45;
   transition: opacity 0.4s;
 }
 .story-section.active { opacity: 1; }
-.story-section:last-child { border-bottom: none; min-height: 50vh; }
+.story-section:last-child { border-bottom: none; min-height: 100vh; }
 .story-tag {
   display: inline-block;
   font-size: 0.55em; letter-spacing: .12em; text-transform: uppercase;
@@ -605,21 +606,21 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 <!-- ── Scrollytelling narrative panel ── -->
 <div class="scrolly-text-panel" id="scrolly-text">
 
-  <section class="story-section" data-types="Chapter,ThesisSection">
+  <section class="story-section" data-types="Chapter,ThesisSection,DoctoralThesis">
     <span class="story-tag">Introduction</span>
     <h2>Au-delà des codes</h2>
     <p>Cette thèse cartographie Bitcoin et Ethereum à travers leurs crises. Chaque chapitre constitue un nœud dans le graphe : les relations qui les unissent révèlent une architecture de gouvernance profondément polycentrique.</p>
     <div class="story-dots" id="dots-chapters"></div>
   </section>
 
-  <section class="story-section" data-types="TheoreticFramework,Concept">
+  <section class="story-section" data-types="TheoreticFramework,Concept,Argument,NarrativeCluster">
     <span class="story-tag">Cadres théoriques</span>
     <h2>Les concepts structurants</h2>
     <p>Plasticité institutionnelle, polycentralité, communs numériques — les cadres théoriques mobilisés relient économie politique et science des protocoles. Ils forment l'ossature invisible du graphe.</p>
     <div class="story-dots" id="dots-theory"></div>
   </section>
 
-  <section class="story-section" data-types="Person,Institution,ActorGroup,Actor,ActorNonHuman">
+  <section class="story-section" data-types="Person,Institution,ActorGroup,Actor,ActorNonHuman,StakeholderCategory">
     <span class="story-tag">Acteurs</span>
     <h2>Qui gouverne réellement ?</h2>
     <p>Mineurs, développeurs core, fondations, exchanges, grandes fortunes — les acteurs humains et non-humains constituent la sociologie réelle des cryptomonnaies. Leurs positions dans le graphe trahissent leur pouvoir.</p>
@@ -640,14 +641,14 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="story-dots" id="dots-governance"></div>
   </section>
 
-  <section class="story-section" data-types="Protocol,ProtocolChange,InfrastructureDomain,InfrastructureEvent,DevelopmentPhase">
+  <section class="story-section" data-types="Protocol,ProtocolChange,InfrastructureDomain,InfrastructureEvent,InfrastructureSegment,DevelopmentPhase,Capability,MonetaryObject,PriceSeries,PriceWindow">
     <span class="story-tag">Infrastructure</span>
     <h2>La plasticité des protocoles</h2>
     <p>SegWit, Lightning, EIP-1559, le passage au Proof-of-Stake — chaque modification protocolaire est une décision politique. L'infrastructure n'est pas neutre : elle cristallise des rapports de force.</p>
     <div class="story-dots" id="dots-infra"></div>
   </section>
 
-  <section class="story-section" data-types="PrimarySource,Method,Corpus,Reference,SourceQuote,AcademicWork">
+  <section class="story-section" data-types="PrimarySource,Method,Corpus,Reference,SourceQuote,AcademicWork,GreyLiterature,IndigenousLiterature">
     <span class="story-tag">Méthode</span>
     <h2>Sources & corpus</h2>
     <p>Analyse documentaire, entretiens, ethnographie numérique — le dispositif méthodologique croise les sources pour reconstituer les controverses. La bibliographie du graphe en témoigne.</p>
@@ -827,7 +828,6 @@ const TYPE_COLORS = {
   'GovernanceArena':     '#0f9688',  // teal vif
   'GovernanceProcess':   '#0d7a6e',  // teal foncé
   'GovernanceConflict':  '#e05050',  // rouge distinct (conflit ≠ crise)
-  'GovernanceConflict':  '#c94a4a',
   'ProtocolProposal':    '#2ab3a6',  // teal clair
 
   // ── Famille Protocoles / Infrastructure (Verts) ──────────────────
@@ -842,11 +842,18 @@ const TYPE_COLORS = {
   'Corpus':              '#7a9ab8',  // gris-bleu clair
   'Method':              '#5a8a6a',  // vert-gris
   'SourceQuote':         '#8ab040',  // vert-jaune doux
+  'GreyLiterature':      '#8a9ab0',  // gris-bleu neutre
+  'IndigenousLiterature':'#6a8060',  // vert-gris discret
 
   // ── Famille Données économiques (Jaunes/Or) ──────────────────────
   'MonetaryObject':      '#c9a020',  // or foncé
   'PriceSeries':         '#a8b840',  // jaune-vert
   'PriceWindow':         '#d4b830',  // or moyen
+
+  // ── Types complémentaires ────────────────────────────────────────
+  'StakeholderCategory': '#b07040',  // brun-ambre (variante Acteurs)
+  'InfrastructureSegment':'#4a8870', // vert-teal intermédiaire
+  'DoctoralThesis':      '#c060c0',  // violet distinctif
 };
 const TYPE_SHAPES = {
   'AcademicWork':        'round-rectangle',
