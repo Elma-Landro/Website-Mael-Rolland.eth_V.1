@@ -6,8 +6,8 @@
     "controller_ens": "mael-rolland.eth",
     "website": "https://mael-rolland.eth.limo",
     "standard": "GRC-20 v0.1.0",
-    "generated": "2026-03-04T00:00:00.000Z",
-    "note": "V20 — evidence layer hardened: replaced 2 provisional HTML SourceQuotes with exact PDF quotations and confirmed pagination (p.53 syllogisme; p.223 crises-as-refutation)."
+    "generated": "2026-03-15T00:00:00.000Z",
+    "note": "V71 — Audit complet 5 chapitres : ajout de 126 entités candidates identifiées par croisement PDF/JSON (Introduction, Chapitres I-III, Conclusion). Personnes, institutions, concepts, références, événements infrastructure et acteurs non-humains (composants techniques reclassés ActorNonHuman). Généré 2026-03-15."
   },
   "types": [
     {
@@ -72491,6 +72491,1461 @@
           }
         }
       }
+    },
+    {
+      "id": "69da33157871cfed74609509d8aa0409",
+      "name": "The General Theory of Employment, Interest and Money",
+      "description": {
+        "type": "TEXT",
+        "value": "Ouvrage fondateur de J.M. Keynes (1936), cité en exergue de la thèse.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "bc083765c6c20c4840d5eef4873c9814",
+      "name": "Crise bancaire et financière de 2008",
+      "description": {
+        "type": "TEXT",
+        "value": "Crise financière mondiale de 2008, contexte d'émergence de Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "60d73f836afb4d6ebcccea0d0491ac87"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "bed4df005c7ce36030703bd68cb521d1",
+      "name": "cryptomonnaie",
+      "description": {
+        "type": "TEXT",
+        "value": "Classe de monnaies numériques décentralisées reposant sur la cryptographie et la blockchain.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "8b6fcbf0640d39251634844b02ac40fe",
+      "name": "Nakamoto 2008a",
+      "description": {
+        "type": "TEXT",
+        "value": "Satoshi Nakamoto, 2008 — écrits en ligne sur Bitcoin (version a, exergue de la thèse).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "d62cf376f60449dfbdb1350c924231bc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "dd5827d0f60ca83da5c8790159348427",
+      "name": "Wirdum 2014",
+      "description": {
+        "type": "TEXT",
+        "value": "Aaron van Wirdum, 2014 — démocratiser la monnaie et les communs, cité p.15.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "15e514aa2f965ee5fc25ac5a6ba7b0ef",
+      "name": "monnaies locales et complémentaires",
+      "description": {
+        "type": "TEXT",
+        "value": "Monnaies parallèles aux monnaies officielles (MLC), critique en actes du système monétaire dominant.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "c1ac22eb78bd1c844d95c0c13b2f57b7",
+      "name": "Blanc 1998a",
+      "description": {
+        "type": "TEXT",
+        "value": "Jérôme Blanc, 1998 — travaux pionniers sur les monnaies parallèles (version a).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "47b8d7b7a80506dd7a7f0ae8db1d59c8",
+      "name": "Dodd 2017 (Intro)",
+      "description": {
+        "type": "TEXT",
+        "value": "Nigel Dodd, 2017 — statut monétaire discuté voire contesté des cryptomonnaies, cité p.16.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "ce7047344df440e2d9758b023c94af29",
+      "name": "Nakamoto 2009a",
+      "description": {
+        "type": "TEXT",
+        "value": "Satoshi Nakamoto, 2009 — sur le problème fondamental de la monnaie traditionnelle : la confiance imposée.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "d62cf376f60449dfbdb1350c924231bc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "22efd2a399180ddf6b43f2e7d5481547",
+      "name": "chaîne de blocs",
+      "description": {
+        "type": "TEXT",
+        "value": "Structure de données partagée et horodatée formant le registre immuable de Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "987c3b6582a34edc8be835560ed95a00"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "8beb86d1f106ef8c4b968e6db8e077f4",
+      "name": "réseau pair-à-pair",
+      "description": {
+        "type": "TEXT",
+        "value": "Architecture réseau distribuée sans serveur central, fondement technique de Bitcoin (P2P).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "987c3b6582a34edc8be835560ed95a00"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "dcd10825d6ddd231dda4b6057d7296c1",
+      "name": "Tyler Winklevoss",
+      "description": {
+        "type": "TEXT",
+        "value": "Co-fondateur de la plateforme Gemini, investisseur précoce en Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "0b7bd88ab7580b4513c4ff0df722a1eb",
+      "name": "De Filippi 2013",
+      "description": {
+        "type": "TEXT",
+        "value": "Primavera De Filippi, 2013 — étude pionnière sur les fondements techniques et théoriques de Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a9fd809426d7308532e694cd3e01a485",
+      "name": "Jacques Sapir",
+      "description": {
+        "type": "TEXT",
+        "value": "Économiste institutionnaliste, directeur du séminaire d'économie institutionnaliste à l'EHESS.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "30dca2569de464285604c4babb93c7d9",
+      "name": "Bano et al. 2017 (Intro)",
+      "description": {
+        "type": "TEXT",
+        "value": "Bano et al., 2017 — le consensus est une propriété théorique démontrable mais non une garantie empirique.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d54e3c39cc836fdd915285b4230eb737",
+      "name": "Preuve de Travail (PoW)",
+      "description": {
+        "type": "TEXT",
+        "value": "Algorithme de consensus de Bitcoin : résolution probabiliste du problème des généraux byzantins par calcul coûteux.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "987c3b6582a34edc8be835560ed95a00"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "1e4e694fd7a39547c34d0899a0c1597f",
+      "name": "consensus de Nakamoto",
+      "description": {
+        "type": "TEXT",
+        "value": "Résolution probabiliste du problème des généraux byzantins introduite par Satoshi Nakamoto dans Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "ac087739c5a6543efdad8cf8dfb3218a",
+      "name": "Libra / Diem",
+      "description": {
+        "type": "TEXT",
+        "value": "Projet de cryptomonnaie de Meta/Facebook (Libra 2019, rebaptisé Diem, abandonné en 2022).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "97188a0680da4a788137ce0038fabce5"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "6390dcaf87ea9c439228bdd2cff8d1c3",
+      "name": "Central Bank Digital Currency",
+      "description": {
+        "type": "TEXT",
+        "value": "Monnaie numérique émise par une banque centrale (CBDC/MNBC), réponse institutionnelle aux cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "77214f36adca11f76592932111ae3eb9",
+      "name": "European Central Bank",
+      "description": {
+        "type": "TEXT",
+        "value": "Banque Centrale Européenne (BCE), institution monétaire supranationale de la zone euro.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "6e570c33e04743e199fc12848fbfdfed"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "94dc9908a0d1eacc7b02e249602d5b68",
+      "name": "Krugman 2018",
+      "description": {
+        "type": "TEXT",
+        "value": "Paul Krugman, 2018 — qualification de Bitcoin comme 'bulle' spéculative.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "e030d16a8f2c28d30382cb57c6ea6b61",
+      "name": "Stiglitz 2017",
+      "description": {
+        "type": "TEXT",
+        "value": "Joseph Stiglitz, 2017 — qualification de Bitcoin comme 'Ponzi'.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "dd7e80244bccd58335a050dddddf035f",
+      "name": "Halaburda et Gandal 2014",
+      "description": {
+        "type": "TEXT",
+        "value": "Halaburda & Gandal, 2014 — propriétés de Bitcoin et déterminants de son prix de marché.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "7dd91d459a3396b0205fdb0f1cf0064d",
+      "name": "Brito et Castillo 2013",
+      "description": {
+        "type": "TEXT",
+        "value": "Brito & Castillo, 2013 — risques et enjeux macroéconomiques des cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d1a9cf840d19b1564cd0157c785cee44",
+      "name": "Aglietta, Ponsot et Ould-Ahmed 2014",
+      "description": {
+        "type": "TEXT",
+        "value": "Aglietta, Ponsot & Ould-Ahmed, 2014 — enjeux macroéconomiques des cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a97e6731b97b32372dc29020e1317b59",
+      "name": "Raskin et Yermack 2016",
+      "description": {
+        "type": "TEXT",
+        "value": "Raskin & Yermack, 2016 — implications des CM sur les taux de change et les contrôles de capitaux.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d24f408be2c115da692d12c2ace24bdd",
+      "name": "Walch 2017",
+      "description": {
+        "type": "TEXT",
+        "value": "Angela Walch, 2017 — problèmes de l'encadrement légal de Bitcoin et des plateformes CM.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "806288e640364375dc33d96befa5037a",
+      "name": "David Yermack",
+      "description": {
+        "type": "TEXT",
+        "value": "Économiste, auteur de travaux pionniers sur le statut monétaire de Bitcoin (Yermack 2013).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "67f3f453063feb8a51665d0f6da926b6",
+      "name": "Dupré, Ponsot et Servet 2015",
+      "description": {
+        "type": "TEXT",
+        "value": "Dupré, Ponsot & Servet, 2015 — la monnaie n'est pas une marchandise ni un voile.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "53983b5343c0ff0a8253aa23d5c3ad45",
+      "name": "Institutionnalisme Monétaire Francophone",
+      "description": {
+        "type": "TEXT",
+        "value": "École de pensée institutionnaliste francophone sur la monnaie (Aglietta, Orléan, Blanc, Théret, etc.).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a1c097925afd4bd074ea2448f2e7e9e8",
+      "name": "Cartelier 1996 (Intro)",
+      "description": {
+        "type": "TEXT",
+        "value": "Jean Cartelier, 1996 — l'unité de compte comme 'indéterminée'.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "db4e7b892fcb6a0b049a7a32dbd5b601",
+      "name": "Knapp 1924",
+      "description": {
+        "type": "TEXT",
+        "value": "Georg Friedrich Knapp, 1924 — Staatliche Theorie des Geldes, théorie chartaliste (étatiste) de la monnaie.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "458f2205963eb70d776d08e70310cd09",
+      "name": "Desmedt et Lakomski-Laguerre",
+      "description": {
+        "type": "TEXT",
+        "value": "Ludovic Desmedt & Odile Lakomski-Laguerre — économistes institutionnalistes, formalisme de la valeur-utilité.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "4efa61674cbd5af26dd57b8a8618180e",
+      "name": "Règle contre la discrétion (politique monétaire)",
+      "description": {
+        "type": "TEXT",
+        "value": "Controverse fondamentale sur la politique monétaire : automaticité (Currency School) vs pouvoir discrétionnaire.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
+      "name": "De Boyer des Roches et Rosales",
+      "description": {
+        "type": "TEXT",
+        "value": "De Boyer des Roches & Rosales, 2003 — auteurs montrant la persistance de la controverse Règle/Discrétion.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "c595798ac80219f3250635684d5e3627",
+      "name": "Currency School",
+      "description": {
+        "type": "TEXT",
+        "value": "École monétaire britannique du XIXe siècle défendant la Règle et la couverture métallique stricte.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "39971c04ad2e63cc5d00c9e4f0ce5da1",
+      "name": "Banking School",
+      "description": {
+        "type": "TEXT",
+        "value": "École monétaire britannique du XIXe siècle défendant la Discrétion et l'élasticité du crédit.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "e415a12d8815bfe158d45eeea72d07eb",
+      "name": "Nouveau Consensus Monétaire",
+      "description": {
+        "type": "TEXT",
+        "value": "Doctrine macroéconomique dominante ('Nouvelle Synthèse Néoclassique'), politiques monétaires 'discrétionnaires contraintes'.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "cfc5ccfec20718e675f89a24487294bd",
+      "name": "Friedman 2008",
+      "description": {
+        "type": "TEXT",
+        "value": "Milton Friedman, 2008 — référence monétariste sur la politique monétaire d'essence monétariste.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "81b89cf559ebb5be57d4dba68dafae39",
+      "name": "Métallisme numérique",
+      "description": {
+        "type": "TEXT",
+        "value": "Idéologie monétaire de Bitcoin : métallisme classique articulé à des innovations techniques (PoW, offre limitée).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "80919108e22811bbe582df17f9bea512",
+      "name": "Free Banking",
+      "description": {
+        "type": "TEXT",
+        "value": "Doctrine libérale de liberté d'émission monétaire concurrentielle sans cours légal imposé.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "7486621579b552edc8aed12feed95ddf",
+      "name": "Von Mises 1912",
+      "description": {
+        "type": "TEXT",
+        "value": "Ludwig von Mises, 1912 (Theorie des Geldes) — concurrence des monnaies, école autrichienne.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "34ea55dac097a8dbcd499fa329aecc84",
+      "name": "Hayek 1976",
+      "description": {
+        "type": "TEXT",
+        "value": "Friedrich Hayek, 1976 (Denationalisation of Money) — concurrence des monnaies privées.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "1357a6a731125ab4c62e401564cad652",
+      "name": "Gouvernance duale (CM)",
+      "description": {
+        "type": "TEXT",
+        "value": "Concept central de la thèse : gouvernance qualifiée de 'duale', privée/discrète ou publique/conflictuelle.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "6cf3e50b5a65ce3ac4e3e1ba4b1d784e",
+      "name": "De Filippi et Loveluck 2016 (Intro)",
+      "description": {
+        "type": "TEXT",
+        "value": "Primavera De Filippi & Loveluck, 2016 — interactions des agents humains et non humains dans Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "02e716132dc58a584cc728791409bf60",
+      "name": "Sociologie des Sciences et Techniques",
+      "description": {
+        "type": "TEXT",
+        "value": "Champ disciplinaire (SST/STS) analysant les interactions entre technique et social, mobilisé dans la thèse.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "6569ffa350046954451929655aea3835",
+      "name": "Karl Polanyi",
+      "description": {
+        "type": "TEXT",
+        "value": "Économiste et anthropologue hongrois (1886-1964), auteur de 'La Grande Transformation', concept d'encastrement.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "e13692901c36f2d9cb7ab48c06859472",
+      "name": "Orléan et Aglietta 1982",
+      "description": {
+        "type": "TEXT",
+        "value": "André Orléan & Michel Aglietta, 1982 — approches institutionnalistes de la monnaie.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "42169b253e082bb8fb8e7ccca23cd917",
+      "name": "Viviana Zelizer",
+      "description": {
+        "type": "TEXT",
+        "value": "Sociologue américaine de la monnaie, auteure de travaux sur les qualifications sociales de l'argent.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "7ebabc5db653f3a685220ae0bbde1c52",
+      "name": "Wray 2010",
+      "description": {
+        "type": "TEXT",
+        "value": "L. Randall Wray, 2010 — la monnaie comme dette liée à une incertitude radicale de nature sociale.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "73ec82f5ffa03829ef5ab301dfadad9b",
+      "name": "Mauss 1914",
+      "description": {
+        "type": "TEXT",
+        "value": "Marcel Mauss, 1914 — la monnaie comme institution et comme foi ('d'une institution, d'une foi').",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "78c9029a9c61594936bd680163cb0f75",
+      "name": "Aglietta et Cartelier 1998",
+      "description": {
+        "type": "TEXT",
+        "value": "Michel Aglietta & Jean Cartelier, 1998 — langage métrologique de la valeur et relations de dettes.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "fc76177e8cc9b4a6dff45672173edc07",
+      "name": "Théorie chartaliste",
+      "description": {
+        "type": "TEXT",
+        "value": "Théorie monétaire (Knapp) selon laquelle la monnaie tire sa valeur de l'autorité de l'État.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a9340f8c0366860c9b2a0e96160a6766",
+      "name": "Orléan 1998",
+      "description": {
+        "type": "TEXT",
+        "value": "André Orléan, 1998 — approche nominaliste non étatiste de la monnaie.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "3b34cd1c6c37560d071ef4b881420fd8",
+      "name": "Aglietta et Orléan 2002",
+      "description": {
+        "type": "TEXT",
+        "value": "Michel Aglietta & André Orléan, 2002 — confiance méthodique, hiérarchique et éthique.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "153bbb0f47fbf97608e54e1cd58de30d",
+      "name": "Courbis, Froment et Servet 1990",
+      "description": {
+        "type": "TEXT",
+        "value": "Courbis, Froment & Servet, 1990 — approche historique des pratiques monétaires observables.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "8c869199825557872b51a5ca1745d4b8",
+      "name": "Universaux monétaires",
+      "description": {
+        "type": "TEXT",
+        "value": "Trois propriétés universelles de la monnaie selon l'IMF : la dette, la confiance et la souveraineté.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d8487a469e8bd4c1cab3737344ff4aca",
+      "name": "Cadre IAD/SES",
+      "description": {
+        "type": "TEXT",
+        "value": "Cadre d'Analyse et de Développement Institutionnel / Socio-Écologique (Ostrom), appliqué aux communs numériques.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "37863a189d699cfd17f6b5a27f705c2a",
+      "name": "École de Bloomington",
+      "description": {
+        "type": "TEXT",
+        "value": "École académique fondée par Vincent et Elinor Ostrom à l'Université d'Indiana, gouvernance des communs.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "6e570c33e04743e199fc12848fbfdfed"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "61e8b86323f1e019d395d87e8f08e47f",
+      "name": "Common Pool Resources",
+      "description": {
+        "type": "TEXT",
+        "value": "Ressources communes (CPR) gouvernées collectivement, ni privatisées ni étatisées (Ostrom).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a11d118b95379132fab758f02ccf4902",
+      "name": "Philosophie de l'argent (Simmel 1900)",
+      "description": {
+        "type": "TEXT",
+        "value": "Georg Simmel, 1900 — analyse philosophique de la monnaie comme forme sociale et supplément de foi.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d59d4daf9118bb32716098b7f00f0328",
+      "name": "Polanyi 2011",
+      "description": {
+        "type": "TEXT",
+        "value": "Karl Polanyi, 2011 — concept de l'encastrement de l'économie dans le social.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "178d6109372d4ba3a22c41984f75b559",
+      "name": "Special Purpose Money",
+      "description": {
+        "type": "TEXT",
+        "value": "Monnaies à usages spécifiques (Zelizer), opposées aux 'All Purpose Money'.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "c825d237dc25b3e9af61dc7982f3da95",
+      "name": "All Purpose Money",
+      "description": {
+        "type": "TEXT",
+        "value": "Monnaies à usages généraux (Zelizer), opposées aux 'Special Purpose Money'.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "5828177699931e169966ce9e03ff4a6b",
+      "name": "Objet socio-technique",
+      "description": {
+        "type": "TEXT",
+        "value": "Concept analytique pour les CM comme objets dont l'analyse ne peut séparer le technique du social.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "7cab4b2ab227f56dfae0524e137a0247",
+      "name": "Bruno Latour",
+      "description": {
+        "type": "TEXT",
+        "value": "Sociologue et philosophe français (1947-2022), père de la théorie de l'acteur-réseau (ANT).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "3f8368bb91f49d621e4439adc2b6b446",
+      "name": "Susan Leigh Star",
+      "description": {
+        "type": "TEXT",
+        "value": "Sociologue américaine (1954-2010), auteure du concept d'infrastructure comme 'objets sans coutures'.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "e324660d7944e4c3b398b652c9eb490d",
+      "name": "Nakamoto 2008c — Bitcoin: A Peer-to-Peer Electronic Cash System",
+      "description": {
+        "type": "TEXT",
+        "value": "Le White Paper de Bitcoin de Satoshi Nakamoto (2008), document fondateur du protocole.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "17498d46de3114ecfad0f57c3077da34",
+      "name": "Jeong 2013",
+      "description": {
+        "type": "TEXT",
+        "value": "Jeong, 2013 — Bitcoin comme projet politique et constitutionnel distribué.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "79a6188852c21b87bf22e8c9c28e719d",
+      "name": "Infrastructure sociotechnique (CM)",
+      "description": {
+        "type": "TEXT",
+        "value": "Concept analysant les CM comme infrastructures sociotechniques dont la forme encode des valeurs sociales.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "25b9562f132d329e49abd53406021dea",
+      "name": "Dynamique carnavalesque du développement infrastructurel",
+      "description": {
+        "type": "TEXT",
+        "value": "Métaphore analytique (Kavanagh & Miscione 2017) pour la dynamique chaotique du développement des CM.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a605c562dc792727eb4644dcc2c6ae50",
+      "name": "Pouliot 2018",
+      "description": {
+        "type": "TEXT",
+        "value": "Pouliot, 2018 — Bitcoin comme émergence ex nihilo d'un démiurge révolutionnaire issu de l'idéologie cypherpunk.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d41e873a58e8e4eeb1f0ae715f884f8a",
+      "name": "Narayanan et Clark 2017",
+      "description": {
+        "type": "TEXT",
+        "value": "Arvind Narayanan & Jeremy Clark, 2017 — Nakamoto qualifié d''outsider académique', genèse de Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "c1ebf64c7d6734e73472a545f04cec05",
+      "name": "Lars 2021",
+      "description": {
+        "type": "TEXT",
+        "value": "Lars, 2021 — développement 'organique' de Bitcoin, ouvert à tous dès ses débuts.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "10973e59658ab43d2652a03ebd56a505",
+      "name": "Martti Malmi (Sirius)",
+      "description": {
+        "type": "TEXT",
+        "value": "Développeur finnois (alias Sirius), premier contributeur de Bitcoin après Nakamoto (premiers 30 jours).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "34c52771cbcf9e7e7a941c4307055ee4",
+      "name": "Nakamoto 2010g",
+      "description": {
+        "type": "TEXT",
+        "value": "Satoshi Nakamoto, 2010 — écrits en ligne sur WikiLeaks et Bitcoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "d62cf376f60449dfbdb1350c924231bc"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "280036a113783d4eaaa0e4bb481c808c",
+      "name": "Buterin 2014j — On altcoins limits",
+      "description": {
+        "type": "TEXT",
+        "value": "Vitalik Buterin, 2014 — article sur les limites des altcoins, cité p.129.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "51f53c59535b4e22b1dd0d83f6593fe1"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "4d5634d4359646c9cd1ee839036724eb",
+      "name": "Yellow Paper (Ethereum, Gavin Wood 2014)",
+      "description": {
+        "type": "TEXT",
+        "value": "Gavin Wood, 2014 — spécifications formelles et protocolaires d'Ethereum ('Yellow Paper').",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "344cef0c6643488946ab489f73e2e97f",
+      "name": "North American Bitcoin Conference (Miami 2014)",
+      "description": {
+        "type": "TEXT",
+        "value": "Conférence de Miami, 26 janvier 2014 — première annonce officielle publique d'Ethereum par Buterin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "d0f3f4e1a1796c486a136d142127c321",
+      "name": "Ether Genesis Sale (ICO Ethereum 2014)",
+      "description": {
+        "type": "TEXT",
+        "value": "Vente publique initiale d'Ether du 22 juillet au 2 septembre 2014 (42 jours, 31 725 BTC levés).",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "647cfd915fa09e9703fa8cbd1e60e819",
+      "name": "Campagne de financement Ethereum (ICO 2014)",
+      "description": {
+        "type": "TEXT",
+        "value": "Financement initial d'Ethereum par ICO (2014) : ~18 millions de $ levés via 31 725 BTC.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "6cbe860718afbd70507b3dc92aba5973",
+      "name": "Frontier (lancement mainnet Ethereum, juillet 2015)",
+      "description": {
+        "type": "TEXT",
+        "value": "Première version du mainnet Ethereum, lancée le 30 juillet 2015.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "a0559d93583c16893a939e5b9d816e1e",
+      "name": "Crypto Valley (Zoug, Suisse)",
+      "description": {
+        "type": "TEXT",
+        "value": "Canton de Zoug (Suisse), hub mondial des entreprises blockchain pour ses facilités légales et fiscales.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "6e570c33e04743e199fc12848fbfdfed"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "f4b9aff00c1976c266295ed020e3c8e2",
+      "name": "Mastercoin / Omni Layer",
+      "description": {
+        "type": "TEXT",
+        "value": "Premier protocole de méta-couche sur Bitcoin (2013), précurseur conceptuel direct d'Ethereum.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "97188a0680da4a788137ce0038fabce5"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "43188ec45e15dbb64adc77e81b89dacd",
+      "name": "Op_Return War",
+      "description": {
+        "type": "TEXT",
+        "value": "Controverse au sein de Bitcoin sur l'opcode OP_RETURN et l'usage de la blockchain pour stocker des données.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "60d73f836afb4d6ebcccea0d0491ac87"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "2e4e25ff8883988739a49a0e0202e695",
+      "name": "Dust limit (Bitcoin)",
+      "description": {
+        "type": "TEXT",
+        "value": "'Limite de poussière' ajoutée par Nakamoto pour filtrer les transactions de très faible montant.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "5c3c493f16c80de9a51750d2089cf873",
+      "name": "Limitation de taille des blocs (1 Mo, Bitcoin)",
+      "description": {
+        "type": "TEXT",
+        "value": "Limitation à 1 Mo par bloc introduite discrètement par Nakamoto, au cœur du Blocksize War.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "6981af036b58c4f0fe0379fc702e0933",
+      "name": "Dwork & Noar 1992",
+      "description": {
+        "type": "TEXT",
+        "value": "Cynthia Dwork & Moni Naor, 1992 — première proposition de Preuve de Travail (PoW) contre les spams.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "1afa31fa6c935556e9802672355ac191",
+      "name": "Attaque de déni de service (DoS/DDoS)",
+      "description": {
+        "type": "TEXT",
+        "value": "Attaque informatique saturant un serveur par un volume de requêtes (DoS/DDoS), vecteur contre lequel la PoW protège.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "ee37e0547319686a35525290da894404",
+      "name": "Haber et Stornetta 1991",
+      "description": {
+        "type": "TEXT",
+        "value": "Stuart Haber & W. Scott Stornetta, 1991 — structure d'horodatage lié, précurseur direct de la blockchain.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "9a2fd04e026a410281686e02a6de3dcd"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "805879ef12780478a182ee9ce35257f9",
+      "name": "Statut monétaire des cryptomonnaies",
+      "description": {
+        "type": "TEXT",
+        "value": "Question centrale de la thèse : les CM sont-elles des monnaies au sens institutionnaliste du terme ?",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "21107fb980daa17e698237df5d7daa2f",
+      "name": "Institutionnalisme intéressé aux usages",
+      "description": {
+        "type": "TEXT",
+        "value": "Approche institutionnaliste focalisée sur les usages effectifs de la monnaie plutôt que sur ses fonctions formelles.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "0be32c5d6649a5962af80206844aa324",
+      "name": "Approche institutionnaliste de la monnaie",
+      "description": {
+        "type": "TEXT",
+        "value": "Cadre analytique combinant économie institutionnaliste et sociologie de la monnaie pour analyser les CM.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "bed2df7ff94f6ded0c32dc33d530571a",
+      "name": "Triptyque fonctionnel de la monnaie",
+      "description": {
+        "type": "TEXT",
+        "value": "Trois fonctions monétaires classiques (unité de compte, réserve de valeur, moyen d'échange), débattues pour les CM.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "758e9ca93d00591b0a077b2d4f0125eb",
+      "name": "Controverse statut monétaire des cryptomonnaies",
+      "description": {
+        "type": "TEXT",
+        "value": "Débat académique et institutionnel multidimensionnel sur la qualification monétaire des cryptomonnaies.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "538e905c19fcb164558cc35c08c88112",
+      "name": "Gouvernance discrète des cryptomonnaies",
+      "description": {
+        "type": "TEXT",
+        "value": "Concept central de la thèse : gouvernance non formalisée, invisible, polycentrique, dévoilée par les crises.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ],
+      "attributes": []
+    },
+    {
+      "id": "770f6e540b075c5c56e45ed5f170347d",
+      "name": "Robin Hood Group (DAO 2016)",
+      "description": {
+        "type": "TEXT",
+        "value": "Groupe de contre-attaque formé en 2016 (Campbell et al.) pour protéger les fonds du DAO face au hacker.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "202b9e189bda40559622fc75becab2fe"
+      ],
+      "attributes": []
     }
   ],
   "relations": [
