@@ -2350,6 +2350,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeSet.has(src) || typeSet.has(tgt)) e.addClass('highlighted');
       else e.addClass('faded');
     });
+    // Recadrer le canvas sur les nœuds mis en évidence
+    const highlighted = cy.nodes('.highlighted');
+    if (highlighted.length) {
+      cy.animate({ fit: { eles: highlighted, padding: 60 } }, { duration: 500 });
+    }
   }
 
   // ── Scrollytelling : IntersectionObserver ────────────────
