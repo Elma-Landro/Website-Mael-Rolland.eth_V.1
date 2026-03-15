@@ -365,6 +365,13 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   border-left-color: transparent; opacity: 0.75;
 }
 .toc-page { flex-shrink: 0; opacity: 0.6; font-size: 0.85em; }
+.story-toc li[data-section-key] {
+  cursor: pointer; transition: background .15s, color .15s, border-left-color .15s;
+}
+.story-toc li[data-section-key]:hover { background: rgba(255,204,102,.08); color: var(--accent2); }
+.story-toc li[data-section-key].toc-active {
+  color: var(--success); border-left-color: var(--success);
+}
 .story-dot {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 0.55em; padding: 2px 7px;
@@ -610,7 +617,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
     <h2 id="overlay-title">Chargement du graphe…</h2>
-    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v71.json</p>
+    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v72.json</p>
     <button class="btn-primary hidden" id="btn-load2">📂 Charger manuellement</button>
   </div>
 </div>
@@ -640,19 +647,19 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <details class="story-toc-wrap">
       <summary>Plan détaillé</summary>
       <ul class="story-toc">
-        <li><span>A. La gouvernance des CM : construction de notre objet de recherche</span><span class="toc-page">p. 17</span></li>
+        <li data-section-key="intro_A"><span>A. La gouvernance des CM : construction de notre objet de recherche</span><span class="toc-page">p. 17</span></li>
         <li class="toc-sub"><span>1) Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »</span><span class="toc-page">p. 18</span></li>
         <li class="toc-sub"><span>2) La controverse sur le caractère monétaire des CM</span><span class="toc-page">p. 19</span></li>
         <li class="toc-sub"><span>3) Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes</span><span class="toc-page">p. 21</span></li>
-        <li><span>B. Un institutionnalisme articulé à une sociologie des sciences et techniques</span><span class="toc-page">p. 24</span></li>
+        <li data-section-key="intro_B"><span>B. Un institutionnalisme articulé à une sociologie des sciences et techniques</span><span class="toc-page">p. 24</span></li>
         <li class="toc-sub"><span>1) L'institutionnalisme monétaire pour caractériser les CM comme monnaies</span><span class="toc-page">p. 24</span></li>
         <li class="toc-sub"><span>2) Gouvernance des CM : perspectives sociologiques</span><span class="toc-page">p. 28</span></li>
         <li class="toc-sub"><span>3) La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises</span><span class="toc-page">p. 32</span></li>
-        <li><span>C. Une démarche ethnographique, pour un terrain d'enquête multi-niveau</span><span class="toc-page">p. 34</span></li>
+        <li data-section-key="intro_C"><span>C. Une démarche ethnographique, pour un terrain d'enquête multi-niveau</span><span class="toc-page">p. 34</span></li>
         <li class="toc-sub"><span>1) Enquêter sur la gouvernance des CM : contraintes et enjeux</span><span class="toc-page">p. 34</span></li>
         <li class="toc-sub"><span>2) Stratégie d'accès et matériaux de terrain récoltés</span><span class="toc-page">p. 39</span></li>
-        <li><span>D. Objectifs, apports et organisation générale de la thèse</span><span class="toc-page">p. 47</span></li>
-        <li><span>E. Déclaration d'intérêts</span><span class="toc-page">p. 51</span></li>
+        <li data-section-key="intro_D"><span>D. Objectifs, apports et organisation générale de la thèse</span><span class="toc-page">p. 47</span></li>
+        <li data-section-key="intro_E"><span>E. Déclaration d'intérêts</span><span class="toc-page">p. 51</span></li>
       </ul>
     </details>
   </section>
@@ -665,18 +672,18 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <details class="story-toc-wrap">
       <summary>Plan détaillé</summary>
       <ul class="story-toc">
-        <li><span>I.1 Quand Bitcoin définit son monde : l'aloi politique d'une CM pionnière</span><span class="toc-page">p. 55</span></li>
-        <li class="toc-sub"><span>I.1.1 Du terreau matériel et idéal aux racines de Bitcoin</span><span class="toc-page">p. 58</span></li>
-        <li class="toc-sub"><span>I.1.2 Bitcoin : une chimère théorico-pratique très politique</span><span class="toc-page">p. 68</span></li>
-        <li class="toc-sub"><span>I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto</span><span class="toc-page">p. 78</span></li>
-        <li><span>I.2 Quand le « monde redéfini » Bitcoin de manière carnavalesque</span><span class="toc-page">p. 84</span></li>
-        <li class="toc-sub"><span>I.2.1 Un développement infrastructural au-delà du protocole Bitcoin</span><span class="toc-page">p. 89</span></li>
-        <li class="toc-sub"><span>I.2.1 Un protocole débordé de « carnavalesques » improvisations d'acteurs</span><span class="toc-page">p. 100</span></li>
-        <li><span>I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins</span><span class="toc-page">p. 109</span></li>
-        <li class="toc-sub"><span>I.3.1 De la constellation des altcoins : construire « sur » ou « à côté » de Bitcoin</span><span class="toc-page">p. 111</span></li>
-        <li class="toc-sub"><span>I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées</span><span class="toc-page">p. 123</span></li>
-        <li class="toc-sub"><span>I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin</span><span class="toc-page">p. 128</span></li>
-        <li><span>I.4 Conclusion du chapitre I</span><span class="toc-page">p. 140</span></li>
+        <li data-section-key="I.1"><span>I.1 Quand Bitcoin définit son monde : l'aloi politique d'une CM pionnière</span><span class="toc-page">p. 55</span></li>
+        <li class="toc-sub" data-section-key="I.1.1"><span>I.1.1 Du terreau matériel et idéal aux racines de Bitcoin</span><span class="toc-page">p. 58</span></li>
+        <li class="toc-sub" data-section-key="I.1.2"><span>I.1.2 Bitcoin : une chimère théorico-pratique très politique</span><span class="toc-page">p. 68</span></li>
+        <li class="toc-sub" data-section-key="I.1.3"><span>I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto</span><span class="toc-page">p. 78</span></li>
+        <li data-section-key="I.2"><span>I.2 Quand le « monde redéfini » Bitcoin de manière carnavalesque</span><span class="toc-page">p. 84</span></li>
+        <li class="toc-sub" data-section-key="I.2.1"><span>I.2.1 Un développement infrastructural au-delà du protocole Bitcoin</span><span class="toc-page">p. 89</span></li>
+        <li class="toc-sub" data-section-key="I.2.2"><span>I.2.2 Un protocole débordé de « carnavalesques » improvisations d'acteurs</span><span class="toc-page">p. 100</span></li>
+        <li data-section-key="I.3"><span>I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins</span><span class="toc-page">p. 109</span></li>
+        <li class="toc-sub" data-section-key="I.3.1"><span>I.3.1 De la constellation des altcoins : construire « sur » ou « à côté » de Bitcoin</span><span class="toc-page">p. 111</span></li>
+        <li class="toc-sub" data-section-key="I.3.2"><span>I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées</span><span class="toc-page">p. 123</span></li>
+        <li class="toc-sub" data-section-key="I.3.3"><span>I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin</span><span class="toc-page">p. 128</span></li>
+        <li data-section-key="I.4"><span>I.4 Conclusion du chapitre I</span><span class="toc-page">p. 140</span></li>
       </ul>
     </details>
   </section>
@@ -689,18 +696,18 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <details class="story-toc-wrap">
       <summary>Plan détaillé</summary>
       <ul class="story-toc">
-        <li><span>II.1 « Les CM ne sont pas monnaie » : arguments contre le caractère monétaire des CM</span><span class="toc-page">p. 147</span></li>
-        <li class="toc-sub"><span>II.1.1 La critique des CM depuis les grands courants de théorie monétaire</span><span class="toc-page">p. 148</span></li>
-        <li class="toc-sub"><span>II.1.2 Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables</span><span class="toc-page">p. 154</span></li>
-        <li><span>II.2 « Pourtant, elles font monnaie » à l'aune d'un nominalisme « non étatiste » attentif aux usages</span><span class="toc-page">p. 160</span></li>
-        <li class="toc-sub"><span>II.2.1 Des chimères monétaires inédites, reléguées à des usages spéculatifs</span><span class="toc-page">p. 161</span></li>
-        <li class="toc-sub"><span>II.2.2 L'institutionnalisme Monétaire Francophone : un nominalisme non étatiste, apte à contenir les CM</span><span class="toc-page">p. 165</span></li>
-        <li class="toc-sub"><span>II.2.3 Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives</span><span class="toc-page">p. 173</span></li>
-        <li><span>II.3 Au-delà de la revendication d'une absence de gouvernance !</span><span class="toc-page">p. 185</span></li>
-        <li class="toc-sub"><span>II.3.1 D'un concept de gouvernance problématique à la problématique de la gouvernance des CM</span><span class="toc-page">p. 186</span></li>
-        <li class="toc-sub"><span>II.3.2 Quand les CM réactivent un débat monétaire ancien : conflit symbolique et matériel autour de la « bonne » gouvernance des CM</span><span class="toc-page">p. 190</span></li>
-        <li class="toc-sub"><span>II.3.3 Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial</span><span class="toc-page">p. 202</span></li>
-        <li><span>II.4 Conclusion du chapitre II</span><span class="toc-page">p. 216</span></li>
+        <li data-section-key="II.1"><span>II.1 « Les CM ne sont pas monnaie » : arguments contre le caractère monétaire des CM</span><span class="toc-page">p. 147</span></li>
+        <li class="toc-sub" data-section-key="II.1.1"><span>II.1.1 La critique des CM depuis les grands courants de théorie monétaire</span><span class="toc-page">p. 148</span></li>
+        <li class="toc-sub" data-section-key="II.1.2"><span>II.1.2 Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables</span><span class="toc-page">p. 154</span></li>
+        <li data-section-key="II.2"><span>II.2 « Pourtant, elles font monnaie » à l'aune d'un nominalisme « non étatiste » attentif aux usages</span><span class="toc-page">p. 160</span></li>
+        <li class="toc-sub" data-section-key="II.2.1"><span>II.2.1 Des chimères monétaires inédites, reléguées à des usages spéculatifs</span><span class="toc-page">p. 161</span></li>
+        <li class="toc-sub" data-section-key="II.2.2"><span>II.2.2 L'institutionnalisme Monétaire Francophone : un nominalisme non étatiste, apte à contenir les CM</span><span class="toc-page">p. 165</span></li>
+        <li class="toc-sub" data-section-key="II.2.3"><span>II.2.3 Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives</span><span class="toc-page">p. 173</span></li>
+        <li data-section-key="II.3"><span>II.3 Au-delà de la revendication d'une absence de gouvernance !</span><span class="toc-page">p. 185</span></li>
+        <li class="toc-sub" data-section-key="II.3.1"><span>II.3.1 D'un concept de gouvernance problématique à la problématique de la gouvernance des CM</span><span class="toc-page">p. 186</span></li>
+        <li class="toc-sub" data-section-key="II.3.2"><span>II.3.2 Quand les CM réactivent un débat monétaire ancien : conflit symbolique et matériel autour de la « bonne » gouvernance des CM</span><span class="toc-page">p. 190</span></li>
+        <li class="toc-sub" data-section-key="II.3.3"><span>II.3.3 Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial</span><span class="toc-page">p. 202</span></li>
+        <li data-section-key="II.4"><span>II.4 Conclusion du chapitre II</span><span class="toc-page">p. 216</span></li>
       </ul>
     </details>
   </section>
@@ -713,19 +720,19 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <details class="story-toc-wrap">
       <summary>Plan détaillé</summary>
       <ul class="story-toc">
-        <li><span>III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres</span><span class="toc-page">p. 224</span></li>
-        <li class="toc-sub"><span>III.1.1 Présentation périodisée de la crise Bitcoin CVE 2018</span><span class="toc-page">p. 225</span></li>
-        <li class="toc-sub"><span>III.1.2 Restituer cette crise dans l'histoire de celles traversées par Bitcoin</span><span class="toc-page">p. 241</span></li>
-        <li><span>III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière</span><span class="toc-page">p. 254</span></li>
-        <li class="toc-sub"><span>III.2.1 Des acteurs au cœur de la gouvernance sur le protocole</span><span class="toc-page">p. 255</span></li>
-        <li class="toc-sub"><span>III.2.2 Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé</span><span class="toc-page">p. 265</span></li>
-        <li class="toc-sub"><span>III.2.3 Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public</span><span class="toc-page">p. 277</span></li>
-        <li><span>III.3 Une gouvernance publique d'exception : le hard fork d'Ethereum consécutif à l'attaque de « The DAO »</span><span class="toc-page">p. 287</span></li>
-        <li class="toc-sub"><span>III.3.1 Une mise en crise brutale, publique et tapageuse</span><span class="toc-page">p. 288</span></li>
-        <li class="toc-sub"><span>III.3.2 Une remise en ordre complexe, contrainte et controversée : moyens et enjeux d'un consensus multi-acteur</span><span class="toc-page">p. 303</span></li>
-        <li class="toc-sub"><span>III.3.3 Gouvernance ouverte et publique pour les forks controversés</span><span class="toc-page">p. 314</span></li>
-        <li class="toc-sub"><span>III.3.4 « Fork You ?! » : une scission surprise fondatrice et ses enseignements</span><span class="toc-page">p. 322</span></li>
-        <li><span>III.4 Conclusion du chapitre III</span><span class="toc-page">p. 329</span></li>
+        <li data-section-key="III.1"><span>III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres</span><span class="toc-page">p. 224</span></li>
+        <li class="toc-sub" data-section-key="III.1.1"><span>III.1.1 Présentation périodisée de la crise Bitcoin CVE 2018</span><span class="toc-page">p. 225</span></li>
+        <li class="toc-sub" data-section-key="III.1.2"><span>III.1.2 Restituer cette crise dans l'histoire de celles traversées par Bitcoin</span><span class="toc-page">p. 241</span></li>
+        <li data-section-key="III.2"><span>III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière</span><span class="toc-page">p. 254</span></li>
+        <li class="toc-sub" data-section-key="III.2.1"><span>III.2.1 Des acteurs au cœur de la gouvernance sur le protocole</span><span class="toc-page">p. 255</span></li>
+        <li class="toc-sub" data-section-key="III.2.2"><span>III.2.2 Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé</span><span class="toc-page">p. 265</span></li>
+        <li class="toc-sub" data-section-key="III.2.3"><span>III.2.3 Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public</span><span class="toc-page">p. 277</span></li>
+        <li data-section-key="III.3"><span>III.3 Une gouvernance publique d'exception : le hard fork d'Ethereum consécutif à l'attaque de « The DAO »</span><span class="toc-page">p. 287</span></li>
+        <li class="toc-sub" data-section-key="III.3.1"><span>III.3.1 Une mise en crise brutale, publique et tapageuse</span><span class="toc-page">p. 288</span></li>
+        <li class="toc-sub" data-section-key="III.3.2"><span>III.3.2 Une remise en ordre complexe, contrainte et controversée : moyens et enjeux d'un consensus multi-acteur</span><span class="toc-page">p. 303</span></li>
+        <li class="toc-sub" data-section-key="III.3.3"><span>III.3.3 Gouvernance ouverte et publique pour les forks controversés</span><span class="toc-page">p. 314</span></li>
+        <li class="toc-sub" data-section-key="III.3.4"><span>III.3.4 « Fork You ?! » : une scission surprise fondatrice et ses enseignements</span><span class="toc-page">p. 322</span></li>
+        <li data-section-key="III.4"><span>III.4 Conclusion du chapitre III</span><span class="toc-page">p. 329</span></li>
       </ul>
     </details>
   </section>
@@ -738,12 +745,12 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <details class="story-toc-wrap">
       <summary>Plan détaillé</summary>
       <ul class="story-toc">
-        <li><span>Résumé de la thèse</span><span class="toc-page">p. 332</span></li>
-        <li><span>Décrypter la crypto par l'approche infrastructurelle</span><span class="toc-page">p. 334</span></li>
-        <li><span>De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises</span><span class="toc-page">p. 336</span></li>
-        <li><span>D'une intégration cohérente des CM dans le champ de la théorie monétaire</span><span class="toc-page">p. 337</span></li>
-        <li><span>Un effort de traduction attentif aux ET à l'attention des acteurs</span><span class="toc-page">p. 337</span></li>
-        <li><span>CM : boucs émissaires communs d'un système monétaire en crise ?</span><span class="toc-page">p. 338</span></li>
+        <li data-section-key="conclu_resume"><span>Résumé de la thèse</span><span class="toc-page">p. 332</span></li>
+        <li data-section-key="conclu_infra"><span>Décrypter la crypto par l'approche infrastructurelle</span><span class="toc-page">p. 334</span></li>
+        <li data-section-key="conclu_aceph"><span>De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises</span><span class="toc-page">p. 336</span></li>
+        <li data-section-key="conclu_theo_mon"><span>D'une intégration cohérente des CM dans le champ de la théorie monétaire</span><span class="toc-page">p. 337</span></li>
+        <li data-section-key="conclu_traduction"><span>Un effort de traduction attentif aux ET à l'attention des acteurs</span><span class="toc-page">p. 337</span></li>
+        <li data-section-key="conclu_boucs"><span>CM : boucs émissaires communs d'un système monétaire en crise ?</span><span class="toc-page">p. 338</span></li>
       </ul>
     </details>
   </section>
@@ -2393,11 +2400,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Auto-fetch du graphe au chargement ──────────────────
   (async () => {
     try {
-      const resp = await fetch('grc20-these-mael-rolland-v71.json');
+      const resp = await fetch('grc20-these-mael-rolland-v72.json');
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       onDataLoaded(data);
       populateStoryDots();
+      initSectionClickHandlers();
     } catch(err) {
       // Affichage d'une option de chargement manuel en cas d'échec
       document.getElementById('auto-spinner').style.display = 'none';
@@ -2425,10 +2433,30 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
     // Sections basées sur chapitre : afficher le nombre de nœuds liés
+    if (!State.data) return;
+    const appears_rt = State.data.relation_types &&
+      State.data.relation_types.find(rt => rt.name === 'appears in section');
+    // Build section_id → entity_count map from appears_in_section relations
+    const sectionEntityCounts = {};
+    if (appears_rt) {
+      State.data.relations.forEach(r => {
+        if (r.type === appears_rt.id) {
+          sectionEntityCounts[r.to] = (sectionEntityCounts[r.to] || 0) + 1;
+        }
+      });
+    }
+    // Build section_key → node_id map
+    const sectionKeyToId = {};
+    State.data.entities.forEach(e => {
+      const key = e.attributes && e.attributes.section_key &&
+        (e.attributes.section_key.value || e.attributes.section_key);
+      if (key) sectionKeyToId[key] = e.id;
+    });
+
     document.querySelectorAll('.story-section[data-chapter-id]').forEach(sec => {
       const chapterId = sec.dataset.chapterId;
       const dotsEl = sec.querySelector('.story-dots');
-      if (!dotsEl || !State.data) return;
+      if (!dotsEl) return;
       const linked = new Set();
       State.data.relations.forEach(r => {
         if (r.from === chapterId) linked.add(r.to);
@@ -2440,6 +2468,26 @@ document.addEventListener('DOMContentLoaded', () => {
       span.className = 'story-dot';
       span.innerHTML = `<span class="dot" style="background:var(--accent)"></span>${linked.size} entités liées`;
       dotsEl.appendChild(span);
+
+      // Add section entity counts from appears_in_section
+      if (appears_rt) {
+        const toc = sec.querySelectorAll('.story-toc li[data-section-key]');
+        toc.forEach(li => {
+          const skey = li.dataset.sectionKey;
+          const sid = sectionKeyToId[skey];
+          if (sid && sectionEntityCounts[sid]) {
+            // Append count badge to toc-page span or create one
+            let pageSpan = li.querySelector('.toc-page');
+            if (pageSpan && !li.querySelector('.toc-count')) {
+              const badge = document.createElement('span');
+              badge.className = 'toc-count';
+              badge.style.cssText = 'font-size:0.75em;opacity:0.55;margin-left:4px;font-family:var(--mono)';
+              badge.textContent = `(${sectionEntityCounts[sid]})`;
+              pageSpan.after(badge);
+            }
+          }
+        });
+      }
     });
   }
 
@@ -2492,6 +2540,65 @@ document.addEventListener('DOMContentLoaded', () => {
     if (highlighted.length) {
       cy.animate({ fit: { eles: highlighted, padding: 60 } }, { duration: 500 });
     }
+  }
+
+  // ── Scrollytelling : highlight par sous-section ──────────
+  function highlightBySection(sectionKey) {
+    const cy = Graph.cy;
+    if (!cy || !State.data) return;
+
+    // Find the ThesisSection node with matching section_key attribute
+    const sectionNode = State.data.entities.find(e =>
+      e.attributes && e.attributes.section_key &&
+      (e.attributes.section_key.value === sectionKey ||
+       e.attributes.section_key === sectionKey)
+    );
+    if (!sectionNode) return;
+
+    const sectionId = sectionNode.id;
+    cy.elements().removeClass('highlighted faded');
+
+    // Collect all entities linked via appears_in_section to this section
+    const appears_rt = State.data.relation_types &&
+      State.data.relation_types.find(rt => rt.name === 'appears in section');
+    const linked = new Set();
+    State.data.relations.forEach(r => {
+      if (r.to === sectionId && r.type === (appears_rt && appears_rt.id)) {
+        linked.add(r.from);
+      }
+    });
+    linked.add(sectionId);
+
+    cy.nodes().forEach(n => {
+      if (linked.has(n.data('id'))) n.addClass('highlighted');
+      else n.addClass('faded');
+    });
+    cy.edges().forEach(e => {
+      const src = e.source().data('id');
+      const tgt = e.target().data('id');
+      if (linked.has(src) && linked.has(tgt)) e.addClass('highlighted');
+      else e.addClass('faded');
+    });
+
+    const highlighted = cy.nodes('.highlighted');
+    if (highlighted.length) {
+      cy.animate({ fit: { eles: highlighted, padding: 60 } }, { duration: 500 });
+    }
+
+    // Update active state in TOC
+    document.querySelectorAll('.story-toc li[data-section-key]').forEach(li => {
+      li.classList.toggle('toc-active', li.dataset.sectionKey === sectionKey);
+    });
+  }
+
+  // ── Attach section click handlers once graph is ready ────
+  function initSectionClickHandlers() {
+    document.querySelectorAll('.story-toc li[data-section-key]').forEach(li => {
+      li.addEventListener('click', e => {
+        e.stopPropagation();
+        highlightBySection(li.dataset.sectionKey);
+      });
+    });
   }
 
   // ── Scrollytelling : IntersectionObserver ────────────────
