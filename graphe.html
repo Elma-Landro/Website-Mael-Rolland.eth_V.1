@@ -167,6 +167,17 @@ html, body {
 .panel-rel-entity { font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .panel-rel-del { color: var(--danger); cursor: pointer; flex-shrink: 0; opacity: .5; font-size: 1.1em; line-height: 1; }
 .panel-rel-del:hover { opacity: 1; }
+/* ─── Panel: grouped relation blocks ────────────────────────────── */
+.panel-rel-group { margin-bottom: 8px; }
+.panel-rel-group-title {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.70em; padding: 3px 0 3px 2px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3px; color: var(--accent2);
+}
+.panel-rel-dir-label { color: var(--text2); font-weight: 700; }
+.panel-rel-count { color: var(--text2); margin-left: auto; }
+.panel-rel-group .panel-rel-row { padding-left: 10px; font-size: 0.76em; }
 /* ─── Buttons ────────────────────────────────────────────────────── */
 button {
   cursor: pointer; border: 1px solid var(--border); border-radius: 0;
@@ -446,8 +457,9 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 }
 .guided-card:hover { background: var(--bg3); transform: translateY(-2px); }
 .guided-card-type { font-size: 0.5em; letter-spacing: .1em; text-transform: uppercase; }
-.guided-card-name { font-size: 0.68em; color: var(--text); font-weight: 700; line-height: 1.4; }
-.guided-card-deg  { font-size: 0.52em; color: var(--text2); }
+.guided-card-icon { font-size: 1.4em; line-height: 1; }
+.guided-card-name { font-size: 0.65em; color: var(--text); font-weight: 700; line-height: 1.4; }
+.guided-card-deg  { font-size: 0.5em; color: var(--text2); font-family: 'VT323', monospace; }
 .guided-search-wrap { position: relative; width: 100%; }
 .guided-search {
   background: var(--bg3); border: 1px solid var(--border); color: var(--text);
@@ -787,38 +799,55 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 //  CONSTANTS
 // ─────────────────────────────────────────────────────────
 const TYPE_COLORS = {
-  'AcademicWork':        '#8b5cf6',
-  'Person':              '#f59e0b',
-  'Institution':         '#14b8a6',
-  'Concept':             '#6366f1',
-  'TheoreticFramework':  '#06b6d4',
-  'CrisisEvent':         '#ef4444',
-  'Protocol':            '#ec4899',
-  'ActorNonHuman':       '#f97316',
-  'Corpus':              '#94a3b8',
-  'MonetaryObject':      '#fbbf24',
-  'Reference':           '#10b981',
-  'ActorGroup':          '#dc2626',
-  'PrimarySource':       '#3b82f6',
-  'Method':              '#84cc16',
-  'Chapter':             '#e879f9',
-  'ThesisSection':       '#c084fc',
-  'Argument':            '#fb923c',
-  'NarrativeCluster':    '#38bdf8',
-  'SourceQuote':         '#a3e635',
-  'CrisisPhase':         '#ff6b6b',
-  'InfrastructureDomain':'#4ade80',
-  'InfrastructureEvent': '#facc15',
-  'DevelopmentPhase':    '#67e8f9',
-  'Actor':               '#fda4af',
-  'PriceSeries':         '#86efac',
-  'PriceWindow':         '#fcd34d',
-  'ProtocolChange':      '#f9a8d4',
-  'Capability':          '#a5f3fc',
-  'GovernanceArena':     '#f97316',
-  'GovernanceConflict':  '#ef4444',
-  'GovernanceProcess':   '#22d3ee',
-  'ProtocolProposal':    '#a78bfa',};
+  // ── Famille Acteurs (Oranges/Ambre) ──────────────────────────────
+  'Person':              '#e8943a',  // orange vif
+  'ActorGroup':          '#a05c1e',  // orange foncé
+  'Actor':               '#f5b87a',  // orange clair
+  'ActorNonHuman':       '#c87d3a',  // orange moyen
+  'Institution':         '#d4a056',  // ambre chaud
+
+  // ── Famille Concepts / Théorie (Bleus/Indigo) ────────────────────
+  'Concept':             '#5b6fd6',  // bleu-indigo
+  'TheoreticFramework':  '#3b3f9e',  // indigo foncé
+  'Argument':            '#7b8de8',  // bleu clair
+  'NarrativeCluster':    '#4a88c7',  // bleu moyen
+
+  // ── Famille Structure de la thèse (Violets) ──────────────────────
+  'Chapter':             '#9b5fc4',  // violet vif
+  'ThesisSection':       '#7a45a3',  // violet foncé
+  'AcademicWork':        '#b87de0',  // violet clair
+  'Reference':           '#6b3a8c',  // prune
+
+  // ── Famille Événements / Crises (Rouges différenciés) ────────────
+  'CrisisEvent':         '#e03030',  // rouge vif
+  'CrisisPhase':         '#c05050',  // rouge assombri
+  'InfrastructureEvent': '#c0783c',  // rouge-orangé doux
+
+  // ── Famille Gouvernance (Teals / Cyans) ──────────────────────────
+  'GovernanceArena':     '#0f9688',  // teal vif
+  'GovernanceProcess':   '#0d7a6e',  // teal foncé
+  'GovernanceConflict':  '#e05050',  // rouge distinct (conflit ≠ crise)
+  'GovernanceConflict':  '#c94a4a',
+  'ProtocolProposal':    '#2ab3a6',  // teal clair
+
+  // ── Famille Protocoles / Infrastructure (Verts) ──────────────────
+  'Protocol':            '#3a9e5a',  // vert vif
+  'ProtocolChange':      '#2d7d46',  // vert foncé
+  'InfrastructureDomain':'#52b86e',  // vert clair
+  'DevelopmentPhase':    '#6ccf85',  // vert pâle
+  'Capability':          '#4ab87a',  // vert-teal
+
+  // ── Famille Sources / Méthode (Gris-bleutés) ─────────────────────
+  'PrimarySource':       '#4a7fc0',  // bleu-gris vif
+  'Corpus':              '#7a9ab8',  // gris-bleu clair
+  'Method':              '#5a8a6a',  // vert-gris
+  'SourceQuote':         '#8ab040',  // vert-jaune doux
+
+  // ── Famille Données économiques (Jaunes/Or) ──────────────────────
+  'MonetaryObject':      '#c9a020',  // or foncé
+  'PriceSeries':         '#a8b840',  // jaune-vert
+  'PriceWindow':         '#d4b830',  // or moyen
+};
 const TYPE_SHAPES = {
   'AcademicWork':        'round-rectangle',
   'Person':              'ellipse',
@@ -988,7 +1017,7 @@ const Graph = (() => {
     const shape = TYPE_SHAPES[typeName] || 'ellipse';
     const degree = (State.maps.outgoing[entity.id] || []).length
                  + (State.maps.incoming[entity.id] || []).length;
-    const size = Math.max(18, Math.min(52, 18 + degree * 1.4));
+    const size = Math.max(18, Math.min(52, 18 + Math.sqrt(degree) * 5));
     return {
       data: {
         id: entity.id, label: getNodeLabel(entity),
@@ -1075,11 +1104,12 @@ const Graph = (() => {
           'shape': 'data(shape)',
           'width': 'data(size)', 'height': 'data(size)',
           'label': 'data(label)',
-          'font-size': '8px',
-          'color': '#ffcc66',
+          'font-family': 'VT323, monospace',
+          'font-size': '13px',
+          'color': '#ffdd99',
           'text-valign': 'bottom', 'text-halign': 'center',
-          'text-margin-y': 4,
-          'text-outline-color': '#4d0000', 'text-outline-width': 2,
+          'text-margin-y': 5,
+          'text-outline-color': '#1a0000', 'text-outline-width': 2,
           'border-width': 1,
           'border-color': '#ffaa33',
           'overlay-padding': 4,
@@ -1599,10 +1629,8 @@ const UI = (() => {
          </div>`
       : '';
 
-    // ── Relations as rows ─────────────────────────────────────────────
+    // ── Relations groupées par type ───────────────────────────────────
     function relRow(rel, dir) {
-      const rtObj = State.maps.relTypes[rel.type];
-      const rtName = rtObj ? rtObj.name : rel.type;
       const otherId = dir === 'out' ? rel.to : rel.from;
       const other = State.maps.entities[otherId];
       const otherName = other ? other.name : '⚠ ' + otherId.slice(0, 8);
@@ -1612,23 +1640,46 @@ const UI = (() => {
       const arrow = dir === 'out' ? '→' : '←';
       return `<div class="panel-rel-row" data-goto="${otherId}">
         <span class="panel-rel-dir">${arrow}</span>
-        <span class="panel-rel-type">${escHtml(rtName)}</span>
         <span class="panel-rel-entity" style="color:${otherColor}">${escHtml(otherName)}</span>
         <span class="panel-rel-del" data-relidx="${relIdx}" title="Supprimer">×</span>
       </div>`;
     }
 
     const totalRels = outgoing.length + incoming.length;
-    const relsHtml = totalRels
-      ? `<div>
+    let relsHtml;
+    if (totalRels) {
+      // Grouper par type de relation
+      const grouped = {};
+      const addToGroup = (rel, dir) => {
+        const rtObj = State.maps.relTypes[rel.type];
+        const rtName = rtObj ? rtObj.name : rel.type;
+        const key = rtName + '|' + dir;
+        if (!grouped[key]) grouped[key] = { rtName, dir, rows: [] };
+        grouped[key].rows.push(relRow(rel, dir));
+      };
+      outgoing.forEach(r => addToGroup(r, 'out'));
+      incoming.forEach(r => addToGroup(r, 'in'));
+
+      const groupsHtml = Object.values(grouped).map(g => `
+        <div class="panel-rel-group">
+          <div class="panel-rel-group-title">
+            <span class="panel-rel-dir-label">${g.dir === 'out' ? '→' : '←'}</span>
+            <span class="panel-rel-type">${escHtml(g.rtName)}</span>
+            <span class="panel-rel-count">(${g.rows.length})</span>
+          </div>
+          ${g.rows.join('')}
+        </div>`).join('');
+
+      relsHtml = `<div>
            <div class="panel-section-title">Relations (${totalRels})</div>
-           ${outgoing.map(r => relRow(r, 'out')).join('')}
-           ${incoming.map(r => relRow(r, 'in')).join('')}
-         </div>`
-      : `<div>
+           ${groupsHtml}
+         </div>`;
+    } else {
+      relsHtml = `<div>
            <div class="panel-section-title">Relations</div>
            <span style="color:var(--text2);font-size:0.8em">Aucune relation</span>
          </div>`;
+    }
 
     body.innerHTML = `
       <div>
@@ -1884,29 +1935,48 @@ const MEDIUM_TYPES = new Set([
 function showGuidedOverlay() {
   const overlay = document.getElementById('canvas-overlay');
 
-  // Top 4 most-connected entities as featured entries
-  const featured = [...State.data.entities]
-    .map(e => ({
-      id: e.id, name: e.name,
-      typeName: State.getEntityTypeName(e),
-      degree: (State.maps.outgoing[e.id]||[]).length + (State.maps.incoming[e.id]||[]).length,
-    }))
-    .filter(e => e.degree > 0)
-    .sort((a, b) => b.degree - a.degree)
-    .slice(0, 4);
+  // Entrées sémantiques fixes par famille de types
+  const SEMANTIC_ENTRIES = [
+    {
+      icon: '⚡',
+      label: 'Qui gouverne réellement ?',
+      sub: 'Acteurs, institutions, groupes',
+      types: ['Person', 'Institution', 'ActorGroup', 'Actor', 'ActorNonHuman'],
+      color: '#e8943a',
+    },
+    {
+      icon: '◈',
+      label: 'Comprendre les concepts clés',
+      sub: 'Théorie, arguments, cadres',
+      types: ['Concept', 'TheoreticFramework', 'Argument', 'NarrativeCluster'],
+      color: '#5b6fd6',
+    },
+    {
+      icon: '✶',
+      label: 'Revivre les crises',
+      sub: 'Événements, phases, conflits',
+      types: ['CrisisEvent', 'CrisisPhase', 'GovernanceConflict'],
+      color: '#e03030',
+    },
+    {
+      icon: '⊞',
+      label: 'Décrypter les protocoles',
+      sub: 'Infrastructure, propositions, changements',
+      types: ['Protocol', 'ProtocolChange', 'ProtocolProposal', 'InfrastructureDomain', 'GovernanceArena'],
+      color: '#3a9e5a',
+    },
+  ];
 
   overlay.innerHTML = `
     <div class="guided-wrap">
       <div class="guided-title">◈ Par où commencer ?</div>
       <div class="guided-entries">
-        ${featured.map(f => {
-          const color = TYPE_COLORS[f.typeName] || '#64748b';
-          return `<button class="guided-card" data-id="${f.id}" style="border-color:${color}55">
-            <span class="guided-card-type" style="color:${color}">${f.typeName}</span>
-            <span class="guided-card-name">${escHtml(f.name)}</span>
-            <span class="guided-card-deg">${f.degree} liens</span>
-          </button>`;
-        }).join('')}
+        ${SEMANTIC_ENTRIES.map(entry => `
+          <button class="guided-card guided-card-semantic" data-types="${entry.types.join(',')}" style="border-color:${entry.color}66">
+            <span class="guided-card-icon" style="color:${entry.color}">${entry.icon}</span>
+            <span class="guided-card-name">${entry.label}</span>
+            <span class="guided-card-deg">${entry.sub}</span>
+          </button>`).join('')}
       </div>
       <div class="guided-search-wrap">
         <input type="text" class="guided-search" id="guided-search-input"
@@ -1926,14 +1996,18 @@ function showGuidedOverlay() {
     </div>
   `;
 
-  // Entry card clicks
-  overlay.querySelectorAll('.guided-card').forEach(card => {
+  // Entry card clicks (semantic category filter)
+  overlay.querySelectorAll('.guided-card-semantic').forEach(card => {
     card.addEventListener('click', () => {
-      const id = card.dataset.id;
+      const types = card.dataset.types.split(',');
       overlay.classList.add('hidden');
-      State.hiddenTypes.clear();
+      // Hide all types except those in this semantic family
+      for (const t of State.data.types) {
+        if (!types.includes(t.name)) State.hiddenTypes.add(t.name);
+        else State.hiddenTypes.delete(t.name);
+      }
       Graph.applyFilters();
-      UI.selectEntity(id);
+      UI.renderTypeFilters();
     });
   });
 
