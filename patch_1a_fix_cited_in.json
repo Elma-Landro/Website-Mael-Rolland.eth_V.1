@@ -1,0 +1,406 @@
+{
+  "description": "Fix 22 wrong-chapter cited_in links",
+  "source_graph": "grc20-these-mael-rolland-v72.json",
+  "operations": [
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "f420ad44b02844fa853e4035b9ad224e",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Bowker 1996 — History of Information Infrastructures",
+      "wrong_chapter": "chap3",
+      "relation_id": "127e5deede7d4aacab09dae66257694d"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "f420ad44b02844fa853e4035b9ad224e",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Bowker 1996 — History of Information Infrastructures",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "e054a8412cf847b7b75c471e72bc414f",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Star 1999 — Ethnography of Infrastructure",
+      "wrong_chapter": "chap3",
+      "relation_id": "49aeaef6faa54cf3a43551a683627cb6"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e054a8412cf847b7b75c471e72bc414f",
+      "relation_type": "cited_in",
+      "to_entity_id": "6b64e26836434471917262334655952c",
+      "entity_name": "Star 1999 — Ethnography of Infrastructure",
+      "correct_chapter": "conclu",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "2c3733bad1fc480ebfc9aff5d72fb6dc",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Edwards et al. 2009 — Agenda for Infrastructure Studies",
+      "wrong_chapter": "chap3",
+      "relation_id": "b6078897b84f44a9ac3c66b32ac1eeb5"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2c3733bad1fc480ebfc9aff5d72fb6dc",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Edwards et al. 2009 — Agenda for Infrastructure Studies",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "c90459607fca4768b307d096e3e05378",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Rauchs et al. 2018 — Distributed Ledger Systems Conceptual Framework",
+      "wrong_chapter": "chap2",
+      "relation_id": "8f962f2c0f8d4544ab5a76fc287619e3"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c90459607fca4768b307d096e3e05378",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Rauchs et al. 2018 — Distributed Ledger Systems Conceptual Framework",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "c14637f57d5a423894cbd35856129302",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Edwards et al. 2009",
+      "wrong_chapter": "chap3",
+      "relation_id": "409fcebc3cb5436c9c86f3d32d0dfd9b"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c14637f57d5a423894cbd35856129302",
+      "relation_type": "cited_in",
+      "to_entity_id": "6b64e26836434471917262334655952c",
+      "entity_name": "Edwards et al. 2009",
+      "correct_chapter": "conclu",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "39132e6135dc49c3a491ae16941dd004",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Latour 2006 — Changer de société, refaire de la sociologie",
+      "wrong_chapter": "chap1",
+      "relation_id": "a96ef06d13724676aab732d950fc9c92"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "39132e6135dc49c3a491ae16941dd004",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Latour 2006 — Changer de société, refaire de la sociologie",
+      "correct_chapter": "intro",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "9014e9b2177a48e9a334fa483f52ccea",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Randall Wray 2010 — Modern Monetary Theory and the origins of money",
+      "wrong_chapter": "intro",
+      "relation_id": "2fb5012063144da3af953bc15322a19e"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "9014e9b2177a48e9a334fa483f52ccea",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Randall Wray 2010 — Modern Monetary Theory and the origins of money",
+      "correct_chapter": "chap2",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "b4b693b0021941cfbfc70e4f4afe3c5b",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Bartoletti et Pompianu 2017",
+      "wrong_chapter": "chap3",
+      "relation_id": "60fa7016506f4bb4a052f1e2b2c2f5a1"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b4b693b0021941cfbfc70e4f4afe3c5b",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Bartoletti et Pompianu 2017",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "0e225413a3db45f3934676e31efc9798",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Chainalysis Team 2019",
+      "wrong_chapter": "chap2",
+      "relation_id": "743482fe007d4082aaf241ca64a8d054"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "0e225413a3db45f3934676e31efc9798",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Chainalysis Team 2019",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "008659c674db4c8b91a0e6372fbf684f",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Dashjr 2014a",
+      "wrong_chapter": "chap3",
+      "relation_id": "2c87c573b2364da690a14ce7498a82b1"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "008659c674db4c8b91a0e6372fbf684f",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Dashjr 2014a",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "2272e5b8d44449d29f7429c2f59b5615",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "DeNardis et Musiani 2014",
+      "wrong_chapter": "chap2",
+      "relation_id": "f03306d7fc544ab78424a7b09937c52f"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2272e5b8d44449d29f7429c2f59b5615",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "DeNardis et Musiani 2014",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "bc199c173f12476b84c02907f386d0e8",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Gandal et al. 2018",
+      "wrong_chapter": "chap1",
+      "relation_id": "d4acebac943c48ab84aa0534cf7ca227"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "bc199c173f12476b84c02907f386d0e8",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Gandal et al. 2018",
+      "correct_chapter": "intro",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "1a65bbcf08a149a19181da4445b4d682",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Sedgwick 2018f",
+      "wrong_chapter": "chap2",
+      "relation_id": "6289a889c81b42ccb6b1242c046bed14"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1a65bbcf08a149a19181da4445b4d682",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Sedgwick 2018f",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "601530e6aa0746329c195a14dcf24fd1",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Sedgwick 2020b",
+      "wrong_chapter": "intro",
+      "relation_id": "1b7478d0a89e496386a72be553844dd7"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "601530e6aa0746329c195a14dcf24fd1",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Sedgwick 2020b",
+      "correct_chapter": "chap3",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "f9dffa750bf5466eb6ab2c836395672c",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Star 1999 Ethnography Infrastructure",
+      "wrong_chapter": "chap3",
+      "relation_id": "2feaaa409c604399ba7b035cb0241fb6"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "f9dffa750bf5466eb6ab2c836395672c",
+      "relation_type": "cited_in",
+      "to_entity_id": "6b64e26836434471917262334655952c",
+      "entity_name": "Star 1999 Ethnography Infrastructure",
+      "correct_chapter": "conclu",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "1fd79ed6648e43538068fa4540bc12b7",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Bowker 1996 Infrastructure Inversion",
+      "wrong_chapter": "chap3",
+      "relation_id": "37afbc83cbd0449ebc738552709fe95a"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1fd79ed6648e43538068fa4540bc12b7",
+      "relation_type": "cited_in",
+      "to_entity_id": "6b64e26836434471917262334655952c",
+      "entity_name": "Bowker 1996 Infrastructure Inversion",
+      "correct_chapter": "conclu",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "11ca49860474402ab03050357095c728",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Musiani 2018 CM Gouvernance",
+      "wrong_chapter": "chap3",
+      "relation_id": "1c5e890a4c054ed485d968ca08a33f95"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "11ca49860474402ab03050357095c728",
+      "relation_type": "cited_in",
+      "to_entity_id": "6b64e26836434471917262334655952c",
+      "entity_name": "Musiani 2018 CM Gouvernance",
+      "correct_chapter": "conclu",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "9984b3924a284a1d881e34ffcf669c39",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Rauchs et al. 2018",
+      "wrong_chapter": "chap2",
+      "relation_id": "e25154e167724ff4af20a21573128b6f"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "9984b3924a284a1d881e34ffcf669c39",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Rauchs et al. 2018",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "fa666856c4f246b598664a99053dceee",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Sedgwick 2018g",
+      "wrong_chapter": "chap2",
+      "relation_id": "a46013fa987b48c7b8d8d9fe87ae1d80"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fa666856c4f246b598664a99053dceee",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Sedgwick 2018g",
+      "correct_chapter": "chap1",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "e1081407d2d44750a89902ea2b7dccfc",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Sedgwick 2020c",
+      "wrong_chapter": "intro",
+      "relation_id": "cd03be043005477caa0ef15b7be68c6d"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e1081407d2d44750a89902ea2b7dccfc",
+      "relation_type": "cited_in",
+      "to_entity_id": "444d654ce38c41c7a277d883c77ba41b",
+      "entity_name": "Sedgwick 2020c",
+      "correct_chapter": "chap3",
+      "note": "new_relation"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "26fdb252fe8949d9bf413ed70677830b",
+      "relation_type": "cited_in",
+      "to_entity_id": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "entity_name": "Karlstrøm 2014 — Do libertarians dream of electric coins",
+      "wrong_chapter": "chap2",
+      "relation_id": "1fb53cd5e32f40b1bad8585171f924b8"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "26fdb252fe8949d9bf413ed70677830b",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Karlstrøm 2014 — Do libertarians dream of electric coins",
+      "correct_chapter": "intro",
+      "note": "already_present"
+    },
+    {
+      "op": "REMOVE_RELATION",
+      "from_entity_id": "ce7047344df440e2d9758b023c94af29",
+      "relation_type": "cited_in",
+      "to_entity_id": "df405dcd975b406486a260da72f1ad4a",
+      "entity_name": "Nakamoto 2009a",
+      "wrong_chapter": "intro",
+      "relation_id": null
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ce7047344df440e2d9758b023c94af29",
+      "relation_type": "cited_in",
+      "to_entity_id": "a2c452a77b394a9d836eed0e16ed5851",
+      "entity_name": "Nakamoto 2009a",
+      "correct_chapter": "chap1",
+      "note": "new_relation"
+    }
+  ],
+  "summary": {
+    "remove_count": 22,
+    "add_count": 22
+  }
+}
