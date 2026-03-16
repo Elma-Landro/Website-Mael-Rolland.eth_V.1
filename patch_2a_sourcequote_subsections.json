@@ -1,0 +1,1250 @@
+{
+  "description": "Patch 2a: link SourceQuote entities to their ThesisSection",
+  "graph_version": "v73",
+  "relation_type_id": "f004d0e68f0964e8787d19b350e3ca24",
+  "relation_type_name": "appears in section",
+  "operations": [
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fb6106526ebd4d8caa5d9eb4ea39e080",
+      "to_entity_id": "45b91ae1d82a40ab8029f3b8835b3af4",
+      "note": "Quote — gouvernance sur l’infrastructure conflictuelle et polycentrique → De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "302da3d678614292bdebe97402db785b",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "Quote — régulations protocolaires comme cristallisations normatives → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "62b6a07afc6d45b694b2a75cd18545f2",
+      "to_entity_id": "596826c3187e4f8cb9034357477eb14c",
+      "note": "Quote — choix techniques comme cristallisation de compromis → I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c6fadcf486a54b64ad07f6652e49fb53",
+      "to_entity_id": "eda05ae2f601e62bf53294a2be373d2a",
+      "note": "Quote — CM comme épreuve d’explicitation de la monnaie → II.1.2 — La monnaie « créature de l'État » : critiques nominalistes et chartalistes"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d81885f8476544a781b03162de14d584",
+      "to_entity_id": "123b661853db78e3660f05f73d9ab081",
+      "note": "Quote — mise en crise / remise en ordre (cadre) → III.3.2 — Une remise en ordre complexe, contrainte et controversée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "48b7151d0c344ff99e3e176aa675fd22",
+      "to_entity_id": "123b661853db78e3660f05f73d9ab081",
+      "note": "Quote — phases de mise en crise (insémination/déclenchement) → III.3.2 — Une remise en ordre complexe, contrainte et controversée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "bf5be34e9f364deaa71d1ec56ea5f800",
+      "to_entity_id": "123b661853db78e3660f05f73d9ab081",
+      "note": "Quote — attaque donne le tempo de la remise en ordre → III.3.2 — Une remise en ordre complexe, contrainte et controversée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3fc6a16c37b34d0f874290984f04553a",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — divulgation responsable (CVE 2018) → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7516b24c3adb4db8b2e4dd1bc1a75e7d",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — CVE-2018-17144 (divulgation responsable) → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "0c0ae5d318144d75a198399716a74ff2",
+      "to_entity_id": "da7e8dda9cacdb8cddfbab73bb6ecd0b",
+      "note": "Quote — CVE-2018-17144 (gouvernance de huis clos) → III.2.3 — Des acteurs au cœur de la gouvernance sur le protocole : gouvernance de huis clos"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1400799615ac4d479b2dfb022999df0d",
+      "to_entity_id": "da7e8dda9cacdb8cddfbab73bb6ecd0b",
+      "note": "Quote — CVE-2018-17144 (absence de controverse) → III.2.3 — Des acteurs au cœur de la gouvernance sur le protocole : gouvernance de huis clos"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "09150d4b4c8d46398813b5c774e1b405",
+      "to_entity_id": "0420e53c4c8fd12fef6dcee451a50f61",
+      "note": "Quote — CVE-2018-17144 (absence d’exploitation effective) → III.1.2 — Une remise en ordre rapide (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "09cd4a94a5c94e1ab6b0283f9c6bc154",
+      "to_entity_id": "da7e8dda9cacdb8cddfbab73bb6ecd0b",
+      "note": "Quote — CVE-2018-17144 (table des canaux mobilisés) → III.2.3 — Des acteurs au cœur de la gouvernance sur le protocole : gouvernance de huis clos"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "0b39eebac0c94fc7a2f210e800a6ac59",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — CVE 2018 : résolution silencieuse off chain → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c54092da200441519f388c649307c386",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — CVE 2018 : non-activation (ni exploitation ni accident) → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "acb5bee92b384b1eadda87025039abd7",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — divulgation responsable (définition) → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7e848d1ec0cc48b99712469d666395bf",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — black hat / white hat (typologie) → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7fd447b64e184701a40c4c19c579d712",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — CVE 2018 : le « mensonge blanc » s’évente (20/09) → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "90999270714a419d962a5c1260d69d69",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — CVE 2018 : hash rate déjà mis à niveau → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "6b2b1f8797794456b3cbb3ae3e635b56",
+      "to_entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "note": "Quote — CVE 2018 : aucune tentative d’exploitation détectée → III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3108c405412744959c92ecc3dfe06879",
+      "to_entity_id": "123b661853db78e3660f05f73d9ab081",
+      "note": "Quote — Moratorium : hypothèse d’un hard fork avec rollback → III.3.2 — Une remise en ordre complexe, contrainte et controversée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5d36cfc3bda94e5ca53f304447a02b2c",
+      "to_entity_id": "123b661853db78e3660f05f73d9ab081",
+      "note": "Quote — attaque : « attaques par imitation » → III.3.2 — Une remise en ordre complexe, contrainte et controversée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ddaa3ebd96354c21a6a155cf3bc28139",
+      "to_entity_id": "123b661853db78e3660f05f73d9ab081",
+      "note": "Quote — attaque : facilité de reproduction → III.3.2 — Une remise en ordre complexe, contrainte et controversée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "4c007966650f45708b5d6065a25d94bc",
+      "to_entity_id": "7a1965a429f1468180346e845d793eab",
+      "note": "SourceQuote — Chapitre I — 53 → D. Objectifs, apports et organisation générale de la thèse"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5efd9565343d4719ad0961211c8c1b40",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — Chapitre III — 223 → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e35c45d17a7f41cf97a124e2638fcced",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — 8 domaines infrastructurels — p.87 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "82813457681d44d09f136eeb4aeed690",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Faucet — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "633e33174ee34a7591e998f36a8f05f4",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Mt. Gox — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3a75f8de77b0423bb2dd7ac504ac0471",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Multisig wallet — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5b5d18205ead4d7f9b4ebf918c6d85e5",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — WikiLeaks — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ce6fe9864b844c58bf7629fb851fa30b",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Mt. Gox — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "f2c6c6b8357f43c6a8e31602ededa7cb",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Silk Road — p.93 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ffcde6fc46474f5e9d93b81e1104bef1",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — WikiLeaks — p.93 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "6a68a10cd6cf4257a33acf0ea830175c",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Silk Road — p.94 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "4797931e56df4fd6a07499c766a77a23",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Satoshi Dice — p.94 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2a26ad43fcbb49d281259c2aa5263428",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Silk Road — p.95 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "678c996d2e61469098e70dff9112caa7",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Satoshi Dice — p.95 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "665cb1403ac54ece8c123092aa32a268",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Mt. Gox — p.95 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c5d53d216cfc4cd4ad224e9d2919fd64",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Silk Road — p.96 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7489c26d6eb3435c91b9d0258e8e45b9",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Mt. Gox — p.96 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "274c5a83399f4ec8a24e1046caba680e",
+      "to_entity_id": "93f13f18c6da412292eba80dcd630ac7",
+      "note": "SourceQuote — WikiLeaks — p.98 → I.2.1 Un protocole deborde de carnavalesques improvisations d acteurs"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "93f6e0a576ee445e8d37735e55dd6ae5",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Mining pools — p.105 → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2825bf6e414944459a0a9164283025c2",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Mining pools — p.106 → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3ac0291d10b147f0a53559a7a4f0a1d8",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Ghash.io — p.106 → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "4cd0f3aed4bf4dbfb1c34170098715c6",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Phase de preuve de concept — p.89 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "64a6b86e34a14879b273b47748745518",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Faucet (Gavin Andresen) — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "47dfac1479884cf795db905e67191153",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — WikiLeaks accepte le BTC — p.93 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "43058b2c519748f6ba2f54840d6342d3",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — MtGox (bourse centrale) — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c80f819dcb99461daccbd6220853d816",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Premier minage GPU — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "6e7c968895604e7e87538b6972007fb7",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Mining pools (coopératives de minage) — p.105 → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "deb832f4b72c49ce8a1063223b4ae56d",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — ASICs (spécialisation du minage) — p.104 → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "bec4bc9b9d814dd0bb9a02471138645d",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — WikiLeaks — médiatisation et valeur du cours — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "110bdfda074c49da92e7a47077700a13",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — MtGox — volumes d’échange — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "62d98ffc1447440f9abe547b637c0ee5",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Valeur des UCN — « poule et de l’œuf » — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a98ea8f0d1e34f51af41c320c1b6b7ec",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Crise chypriote — bond du cours — p.96 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "f70acf9aa0994418ab59cf9ae505d5b2",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Prix/cours — Forbes & WikiLeaks — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "073d0e18acd649b68cefa69e72257288",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Prix/cours — MtGox flash crack — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "251e08cd9b804f479d4275aa56dda32c",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Prix/cours — Chypre / DDOS / SilkRoad — p.96 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "df8fc86848824886811e45c873cebc75",
+      "to_entity_id": "93f13f18c6da412292eba80dcd630ac7",
+      "note": "SourceQuote — Prix/cours — Pic décembre 2013 — p.98 → I.2.1 Un protocole deborde de carnavalesques improvisations d acteurs"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5b23d0d68517432385ec2374149773f1",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Demande — WikiLeaks — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b1d76aa0f223458eadd2a019dc2e7e73",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Offre — MtGox — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d9e57b9d278a49959fc9c2409f7f226c",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — SegWit + Lightning Network — p.205 → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "83a5e30a7c3347f78f0fadf9a8289577",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — UASF (activation SegWit) + redistribution pouvoir — p.205 → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "bf8a3b2e6722400091b7218e6d248843",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — P2SH / HTLC — p.81 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a75fc819d1c64aa6805c470c93fba2bc",
+      "to_entity_id": "439782308b5dedb9c5da7022bc2b82ef",
+      "note": "SourceQuote — Multi-signature / séquestre non centralisé — p.70 → I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3b2a9710e0734ec4bd818be5a80fd6e6",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — WikiLeaks — système de paiement alternatif / canal auxiliaire — p.93 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5ba83db911454b9d8b492ff97e21c8bd",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — WikiLeaks — médiatisation et cours (x8) — p.92 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "4e5dca7fa0a8440bb1c78b7b688a2580",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Silk Road (phase charnière) — p.96 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ae08b7bf612b415585ff3b2a8fb50dc8",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Silk Road (revenus/commissions) — p.94 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fbfe3506451e4559aaa8cd540f2f1765",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Démantèlement de Silk Road — p.95 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d44b5cf9679a472a840943a48410e666",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Electrum (portefeuille léger) — p.91 (note 133) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "86325317e4e948df8f3d7ff228969196",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — date — Electrum wallet launch — p.91 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "cfba4dfb28a14b3cabb0ab89dafef9e6",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Crise chypriote (cours 230$) — p.96 → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "49c9c524d6ec482099c958bef788fb96",
+      "to_entity_id": "596826c3187e4f8cb9034357477eb14c",
+      "note": "SourceQuote — Silk Road marketplace launch → I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2d0b344055f6441789ef8f0265ab4f01",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Nakamoto : developpement progressif (2010f) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c6a6336fbafa466788d636d490c6a140",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Nakamoto : 10 ans niches etroites (Champagne 2014 p.94) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3353b0f3d77544ea8e55c4505507d352",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Nakamoto : boucle retroaction positive (Champagne 2014 p.106) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "adcee8496adb426db05d7aacdf1746e5",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Nakamoto : coup de pied au nid de frelons (2010g) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3fdeea6de4544052b1de8b154fe51bd7",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Nakamoto : ne pas mettre en peril le reseau (2010f) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d8b3649c745841a297f1d55f5eeee714",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "SourceQuote — Nakamoto : tous types de transactions (Champagne 2014 p.159-160) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "6ccd02611a624e10b9e5756dacfb01de",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — 'Not your keys, not your coins' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a446bbdc6ce344cfaedfbd5a5915a735",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Nakamoto : vérifier paiements sans nœud complet (2008 WP p.5) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b965c10b863441a7abd8dd4238f2520a",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Nakamoto : faire confiance à un nœud tiers (Champagne 2014 p.178) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2f3052182833490ea3a04a5fabf65df9",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Nakamoto : fermes de serveurs spécialisées (Champagne 2014 p.36) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c877b2341b56438f8c88094ab7237747",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Antoine Le Calvez : le SPV 'ça va pas marcher' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "8fb6db820d86471897ef0cdcbe337a78",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Mineur individuel : GPU contre les 'riches bâtards' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b88f2525f0e348898375203dfc203cda",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Nakamoto : 'entre de bonnes mains avec Gavin [Andresen]' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b214bf1d05804daf992cb65a2079433a",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Nakamoto : 'mystérieuse figure d'ombre' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1c0f4b0d8a314f5ea7c38835582136a9",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Nakamoto : 'frais de transaction si nécessaire' (Champagne 2014, p. 91) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a49967a693af4032a04eb4c15bff6aa3",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Jeff Garzik : deux seuils frais relais / frais de transaction (Bradbury 2014) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "8057b83d66de4edfbb261237a66817e7",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Andresen : 'blocs intentionnellement coûteux à valider' (2016) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a8d6adc75f72408bb3b4159bb3fb91c3",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Keir : frais comme 'offre du marché libre' (2022) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "f28872b50db54393aa148b4a43f6da65",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — DeNardis et Musiani : DNS comme 'lutte de pouvoir mondiale' (2014, p. 10-14) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "0e639d8466ab452e9dd430e671e4bf0d",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Dréan : 'processus de sélection naturelle des monnaies' de Hayek (2013) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "68d8c0d57cbe4c6e9a1dc642fa33354b",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Buterin : peur que les règles changent 'sous ses pieds' (2017) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d0bc18a3794a44c9983eaf4c02e5b52f",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Garzik : 'abuser d'une ressource réseau bénévole' (Russo 2020, p. 56) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "435c3eec9f434582afdc1072c5b183e8",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Duffield : 'les développeurs veulent que le protocole de base reste le même' (2014) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "45c0739a6a284ac59c2abb709cb68488",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Sunny King & Nadal : PoS et dépendance énergétique de la PoW (2012, p. 2) → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7c7bf025a9bf4e18b2c4aca1857fb9ea",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Buterin : 'la couche fondamentale abstraite ultime' (2013d) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ca81bca55f21444798d9d35f683966b3",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Buterin : protocole 'aussi généralisé que possible' (2014j) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "6b1a40ec612241d3afc1abc1cfd29713",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Buterin : dépendances au sentier (Russo 2020, p. 57) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ab4249424b6c4df5a051763a8c757eca",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Buterin : 'distribution en loi de puissance' des usages (2013d) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "0923cb0e478e40eb9f8c9cd23359d7c2",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "SourceQuote — Gerring : développeurs sans rémunération six mois (2016) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "597894115b8d44aeb51b8abd72ac78bd",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — Corallo : 'allez-vous faire foutre' (Scaling Debate, entretien n°15) → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c8b6701bb8d0405dae7750212d4c0b2a",
+      "to_entity_id": "d93cb2ceee6dea674fecc4f44d113643",
+      "note": "SourceQuote — Friedman : anticipation d'un 'ecash' anonyme (1999) → II.3.2 — Retournement positif du concept : réintégrer le pouvoir et la politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c1ca75bbe39a432c94ca82b41fc8808c",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — Zamfir : la loi de Szabo est 'profondément anti-juridique' (2019) → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3e8cd949f5d246b6ae0b516045474ac2",
+      "to_entity_id": "d93cb2ceee6dea674fecc4f44d113643",
+      "note": "SourceQuote — Mervyn King : l'immutabilité monétaire est impossible (2004) → II.3.2 — Retournement positif du concept : réintégrer le pouvoir et la politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "0d1ec2559d804cf4bc6a587f6cc926a3",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — Camus : 'mal nommer un objet c'est ajouter au malheur du monde' → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2a326df566e841dfac836f168751c860",
+      "to_entity_id": "596826c3187e4f8cb9034357477eb14c",
+      "note": "SourceQuote — Sedgwick 2019c : pool de minage 'communisme fondamentalement défectueux' → I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3422d90c510a4fd4a2801505d6fd3cac",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "SourceQuote — Buterin : 'dans un monde idéal le concept d'\"abus\" n'existerait pas' → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b9120b79d88747ca9b2bc99f19bbf8db",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Dashjr : 'mineurs doivent filtrer les abus' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fac7acbf209340f8ac1906756fb985df",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "SourceQuote — Garzik : métaprotocoles = 'pure paresse intellectuelle' → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "90d58fbba87e4e2c8abc5e433e5e25da",
+      "to_entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "note": "SourceQuote — De Tychet : 'Le Yellow Paper décrit spécifiquement comment chaque fonction doit être implémentée' → I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "9bf7254cfa144884a8664987bc3a47e6",
+      "to_entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "note": "SourceQuote — Zamfir : 'tout opérateur de nœuds doit décider consciemment d'installer un hard fork' → I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b17361efc35179a35069eda91701406f",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — The General Theory of Employment, Interest and Money → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e3266e274829732433413179856ac582",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Crise bancaire et financière de 2008 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7c595e5bc59c68d49e9aa19cc6c6458a",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — cryptomonnaie → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "230b9f21fbf694d4a84c2024efb0a05b",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Nakamoto 2008a → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "73f3a8d677eae98aa4e101a2a2a26096",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Wirdum 2014 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a16f8f41434e8fa40149fcd90c7027fe",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — monnaies locales et complémentaires → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "763bf40274abc0b741d478dca716634f",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Blanc 1998a → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "82e36d40f1f619a0337ed3a7518843bf",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Dodd 2017 (Intro) → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "526a2351f263e45e7055cd8d8659b728",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Nakamoto 2009a → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1e58bf66cb08d39fde0ae4ada3d0f6a9",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — chaîne de blocs → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e9724f86737949327c5fde5473eb8702",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — réseau pair-à-pair → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "85b91c317701a9114835e49d64caaf24",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Tyler Winklevoss → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5537c17dc091210af97e7859d08cd8f9",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — De Filippi 2013 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5bb01f77d4400a7331d5d14debbd02b2",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Jacques Sapir → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ef36db8a2215dcce1fb94bd7c8efc72c",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Bano et al. 2017 (Intro) → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "6306b966ecfa4c628301afbba84d28f1",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Preuve de Travail (PoW) → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "bc9bd718a6c737f8b5247d1a27e0a11d",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — consensus de Nakamoto → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "23f75ed7b48222f6792c6eee09d6371d",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Libra / Diem → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "da3fe7ace418a699cdd5643baaf2f51c",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Central Bank Digital Currency → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "2823a5ac8bc059fb110a0326d3ca0dea",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — European Central Bank → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "9d0c38bc72a49f0482a1b1ed5dcabb85",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Krugman 2018 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c06ee39f2ae7c87f9aa4aae26c29c28a",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Stiglitz 2017 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "edf074ca957bfc5e4dbfec8b0a766e15",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Halaburda et Gandal 2014 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fd603b42d164993bdf522666f83f839d",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Brito et Castillo 2013 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "f260b6fe30fb808ad4c71744b5172b5e",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Aglietta, Ponsot et Ould-Ahmed 2014 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "afa3606f3be2c41432ec7e04ead35e71",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Raskin et Yermack 2016 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "56961d650f51d99b30d8bb3216c9de9f",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Walch 2017 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "45b2d7f7a41ac3a40bddde6b71f2ac08",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — David Yermack → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "483e745f9c2c127f746d0750843ac9a9",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Dupré, Ponsot et Servet 2015 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "251c8c2b237c984df2933d47a2230d32",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Institutionnalisme Monétaire Francophone → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3d3e6d2f5a57f544e82a62918b6ac714",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Cartelier 1996 (Intro) → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1037c3fec5ef863dc264e2c602615df1",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Knapp 1924 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c6ba05aa7025b825d62b4dab9a484c18",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Desmedt et Lakomski-Laguerre → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "4934a3d82e301437cef436aa053d9c90",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Règle contre la discrétion (politique monétaire) → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "09e251ee7f72840abb5f27bfc2a8980c",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — De Boyer des Roches et Rosales → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "8cb926887aa7a241c69310fb4571809b",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Currency School → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e658f7abe2b7510dd179b29f43bb3585",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Banking School → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d851c55a3005de233c077ef23ef23184",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Nouveau Consensus Monétaire → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "161d489f22a7593b5bad0a7a3a1e70d1",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Friedman 2008 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "8d39eb33e072ef0a28a0fc07d6f24436",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Métallisme numérique → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "098a4dd0dfd89307d41e5db61dd03545",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Free Banking → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a9ec34372b163d6946a83e95de827e19",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Von Mises 1912 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "54b4587e96505999483cf0854af1690b",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Hayek 1976 → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fede96f20c3e270160cd26a3af49cf8a",
+      "to_entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "note": "Quote — Gouvernance duale (CM) → A. La gouvernance des cryptomonnaies : construction de notre objet de recherche"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "47e1e27343cb84839b4c3d1de2211b75",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — De Filippi et Loveluck 2016 (Intro) → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "73c2a0a3d541387d3599b99d2e074b85",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Sociologie des Sciences et Techniques → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "94da61214e745c072bea0e37f593e488",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Karl Polanyi → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "78272343dd049fef21552fd7bed6b4a6",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Orléan et Aglietta 1982 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3ebaa5a4d4b6cbd207f3038b9bf3220b",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Viviana Zelizer → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "31b88a20438835e16928df05358bd1b3",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Wray 2010 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "fd4ee3e9b47644eb6541475ef85bf523",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Mauss 1914 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "81f4e832d344830ec9439fd0035e0cef",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Aglietta et Cartelier 1998 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1dfe7e2c8de699f851885d7f5950192d",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Théorie chartaliste → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "8b8cc76336dbf7647e63e6551eb20080",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Orléan 1998 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "3319aae6ee88e6f19db5bbc01a0c101b",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Aglietta et Orléan 2002 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d1d6964b693ea5bebae0b3c20aff1af7",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Courbis, Froment et Servet 1990 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "52403c8c32615531142a28206ed67d0d",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Universaux monétaires → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1e6d8598862135de2d39307b07bff9c0",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Cadre IAD/SES → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "26e470bc7db4c2160bc00f09fac47a2c",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — École de Bloomington → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "86f6569d885516f94fdc7db0a38ab3d9",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Common Pool Resources → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b89079af72c8a0c9a21f0d15fa7d17fe",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Philosophie de l'argent (Simmel 1900) → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "79fe221da32a96862207f1f40ab87da2",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Georg Simmel → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "e95029b817014f818a05eb749162ab76",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Polanyi 2011 → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "1c7b8cd493330ff40a0145f8954a199c",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Special Purpose Money → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d3411fed24d1702cddbdb707143cb1af",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — All Purpose Money → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "d6cb4dc115f989f771758d00a600185b",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Objet socio-technique → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "7ffc5f72e4b7ebfc42e186839c1b0e3f",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Bruno Latour → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "5ab67534ffd78ce04efe81cc73bc5618",
+      "to_entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "note": "Quote — Susan Leigh Star → B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "9bc52bccff9cc34ee75c3a30871d7642",
+      "to_entity_id": "7a1965a429f1468180346e845d793eab",
+      "note": "Quote — Syllogisme libéral-techniciste → D. Objectifs, apports et organisation générale de la thèse"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "98b94304ad4b34d8ba41dbb131febb31",
+      "to_entity_id": "7a1965a429f1468180346e845d793eab",
+      "note": "Quote — Jeong 2013 → D. Objectifs, apports et organisation générale de la thèse"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "9bd259bdb454c07ce33d107a5572b2aa",
+      "to_entity_id": "7a1965a429f1468180346e845d793eab",
+      "note": "Quote — Infrastructure sociotechnique (CM) → D. Objectifs, apports et organisation générale de la thèse"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "88c15dbe94a2dcf3cb5717f154543da7",
+      "to_entity_id": "7a1965a429f1468180346e845d793eab",
+      "note": "Quote — Dynamique carnavalesque du développement infrastructurel → D. Objectifs, apports et organisation générale de la thèse"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "cd6af248cce3b9dff788733c002c6b91",
+      "to_entity_id": "4ec3224a44f06315d26d3cac111e5efc",
+      "note": "Quote — Pouliot 2018 → I.1.1 — Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "51cf731ae7cd1c02b959c1401ea3e63d",
+      "to_entity_id": "4ec3224a44f06315d26d3cac111e5efc",
+      "note": "Quote — Narayanan et Clark 2017 → I.1.1 — Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "aa75dd5f4ab7b73440f5db4c9b389130",
+      "to_entity_id": "4ec3224a44f06315d26d3cac111e5efc",
+      "note": "Quote — Lars 2021 → I.1.1 — Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "15f93043ba5415b38ee7c6c8bb667992",
+      "to_entity_id": "439782308b5dedb9c5da7022bc2b82ef",
+      "note": "Quote — Dwork & Noar 1992 → I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a1b71293c9f22e3259e2f9420ba100da",
+      "to_entity_id": "439782308b5dedb9c5da7022bc2b82ef",
+      "note": "Quote — Attaque de déni de service (DoS/DDoS) → I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "58291df914d2e338f5d2544fee5944f4",
+      "to_entity_id": "439782308b5dedb9c5da7022bc2b82ef",
+      "note": "Quote — Haber et Stornetta 1991 → I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "839f852e9030c63aa5f9131f81f9354e",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "Quote — Martti Malmi (Sirius) → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ab989232c23d3587af9bdc4a8f846fce",
+      "to_entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "note": "Quote — Nakamoto 2010g → I.1.3 — Bitcoin : une chimère théorico-pratique très politique"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ad4b5695b4a7a472d7c05e6e8a94eef8",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "Quote — Buterin 2014j — On altcoins limits → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "c2a1952bbe6183541452abb3c4cf71ba",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "Quote — Gavin Wood → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ce7092bd41fe20328f98e31d745ca5f2",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "Quote — Crypto Valley (Zoug, Suisse) → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "447bc91bbbb044d007d979a5805c0d77",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "Quote — Mastercoin / Omni Layer → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "580c6e3f209fdb23dabbe7dde804ae96",
+      "to_entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "note": "Quote — Op_Return War → I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "037a43098035654430fb89de6abe07a2",
+      "to_entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "note": "Quote — Solidity → I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "ee9ea71439c46e10893edc53fad3aef6",
+      "to_entity_id": "46111186b53041829a0a98218f9611fe",
+      "note": "Quote — Statut monétaire des cryptomonnaies → I.3.3 Ethereum : différences architecturales et normativité politique des designs"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "dce8efe4f39bbd41f856b5f9cf67dbd0",
+      "to_entity_id": "46111186b53041829a0a98218f9611fe",
+      "note": "Quote — Institutionnalisme intéressé aux usages → I.3.3 Ethereum : différences architecturales et normativité politique des designs"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "882729d7425a5f6c338ace638bc74979",
+      "to_entity_id": "46111186b53041829a0a98218f9611fe",
+      "note": "Quote — Approche institutionnaliste de la monnaie → I.3.3 Ethereum : différences architecturales et normativité politique des designs"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "08c03bdf8fb114f1c221114458f15b16",
+      "to_entity_id": "46111186b53041829a0a98218f9611fe",
+      "note": "Quote — Triptyque fonctionnel de la monnaie → I.3.3 Ethereum : différences architecturales et normativité politique des designs"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "a1ee97b5d441cc3d1f11998515c74d23",
+      "to_entity_id": "0b521ac19a2f5ee0cdd07d7460ebdfd0",
+      "note": "Quote — Controverse statut monétaire des cryptomonnaies → II.2.3 — La monnaie à l'épreuve : dettes, confiance et souveraineté"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "b5095c128a4949385ac8fe1c4f3bb753",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "Quote — Gouvernance discrète des cryptomonnaies → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    },
+    {
+      "op": "ADD_RELATION",
+      "from_entity_id": "941dc941ade6bc5578536908bb56d3d0",
+      "to_entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "note": "Quote — Robin Hood Group (DAO 2016) → II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance"
+    }
+  ]
+}
