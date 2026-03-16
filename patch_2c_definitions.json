@@ -1,0 +1,2642 @@
+{
+  "schemaVersion": 1,
+  "ops": [
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a25fc6eb5f3549a69f4ce17d6969ee01",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les STS se sont constituées contre ce « technologisme » : la technologie et la société sont « deux objets fabriqués » (Latour 2006, p. Pour dépasser ce « technologisme », comme éviter les ornières de la vision opposée du « sociologisme »[^35], la technique est considérée comme « un tissu sans couture » , un objet socio-technique (Latour 2006; Akrich 1989)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7460bdc7054a4dfa9d484ace685c9f11",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Constituer un réseau distribué ouvert et fonctionnel d'archivage partagé\\ renvoie à un problème posé dès 1970, sous le nom de « tolérance aux fautes byzantines », une version globale du « problème des deux généraux » (Champagne 2014, dit aussi « problème des généraux byzantins », théorisé par Lamport & al, 1982, cité par Narayanan et Clark 2017, p. Cela offre « une solution au problème des généraux byzantins, [\\...] la façon dont tous l"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f871e99e439541438291d12e78b9b5a5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Un portrait sombre était brossé, insistant sur les usages illégaux, les arnaques, les attaques informatiques, et le caractère erratique des cours boursiers. Dans notre champ, ces écarts au scénario prennent la forme de failles, de bogues, d'attaques informatiques ou d'ajouts et d'évolutions des dispositifs socio-techniques au cœur de la CM."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "acd16826920c47f4afc5e6ea59a3c56a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Problème auquel fait face toute monnaie numérique. Il correspond à un acte frauduleux par lequel une unité de compte, du fait de son caractère numérique, est falsifiable et duplicable, et peut être dépensé plus d'une fois. Comme pour la fausse monnaie, une telle pratique peut faire augmenter la masse monétaire et éroder la confiance des utilisateurs dans le système de paiement."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fe2429e337ab4f41b99482861f8a9d45",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Nakamoto est informé des recherches précédentes et des risques qu'encourent les systèmes de protocoles de registre distribués P2P (sybille attaque et double dépense, cf. 2) -, s'ajoutent les attaques sybilles, où une même entité crée une multitude de nœuds au sein d'un système afin de « contourner les garanties de consensus » en obtenant la majorité (Narayanan et Clark 2017, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3854197ebf514c738a62a673913fe8dd",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "![](media/image2.png){width=\"3.8534722222222224in\" height=\"3.85625in\"}Ces systèmes font face au théorème d'impossibilité de CAP (pour « Coherence, Availability and Partition tolerance » ou théorème de Brewer, cf. On retrouve là le théorème de CAP."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8c27fbf65b8544e281fbd6d09a004cbe",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à une méthode cryptographique permettant de structurer des données d'un volume souvent important, via des empreintes numériques\\. Elle permet d\\'accéder à un ensemble de données et d'en vérifier l'intégrité, réduites à des Hash\\ sans avoir à les posséder elles-mêmes dans leur totalité. Un arbre de hachage est constitué par un ensemble d'empreintes numériques interdépendantes où les feuilles sont le hash\\ de chacun des blocs de données initiales, et qui, concaténés deux à deux, perm…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "95550536862b49a19ca7625cbd6487b1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Enfin, nous présenterons le fonctionnement de Bitcoin au travers de l'exemple idéal typique du traitement d'une transaction suivant le script original de Nakamoto (sect. Dans le sillage d'Akrich (1989), la restitution de ces éléments génétiques permet d'éclairer la « trame principale », mais aussi les contraintes de « réalisation » et de « montage » afin de rendre intelligibles les intrigues du « scénario », le « script » et le casting des « pers"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b2176f93632a42f7a5601a67e07ad436",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Wood joue un rôle de premier plan dans le développement de la couche protocolaire [(Buterin 2017)](https://www.zotero.org/google-docs/?TUJHkN) puisqu'on lui doit le développement du langage de programmation natif d'Ethereum : Solidity[^137]. Critique d'un langage trop simple ne permettant qu'un choix limité de fonctions[^152], Ethereum a développé un langage de programmation propre : « Solidity » (Wood 2014b; Wood 2014a)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d518be4403df44229c0af50f6c3ebc87",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Certaines expériences, comme Ethereum, offrent des services financiers complexes (dépôts et crédits, véhicule d'investissement, produits dérivés de toutes sortes, etc.). ## 3) La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises Pour aborder la gouvernance des CM, nous avons choisi d'examiner les phénomènes de crise."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bbb341041f074852a96fa9c1ab014954",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Là où les Bitcoiners revendiquent des codes résistant à l'intervention humaine, les codes Ethereum intègrent un mécanisme qui empêche le statu quo et oblige au contraire cette intervention : la « difficulty bomb » (ou « Ice Age »)[^154]. « difficulty bomb », Chapitre I.3.2) : cela s'inscrit dans un principe d'agilité visant à être moins rigide au niveau infrastructurel que Bitcoin."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dc7d9845171b4f4285ac2ffae1e412ef",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En outre, les frais de transaction comme mécanisme de discrimination de transactions publiques non confirmées se sont traduits sur Ethereum par un bouleversement d'ampleur : la « valeur maximale extractible » (ou « MEV » pour « Maximum Extractable Value », en langage indigène)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "33438ea6d80d49b2bbf2a515934781b3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Il fait des UCN BTC le seul véhicule d'investissement et d'usage de son écosystème : elles sont les seules acceptées lors de sa levée de fonds - ainsi débute le phénomène des « Initial Coin Offering » (voir Annexe n° I.4, pour une Chronologie circonstanciée) - et utilisables en paiement des frais de transaction liés à l'usage de son protocole."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a2cb828bde51457685cea55f1236284a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les CM offraient la chance inouïe d'étudier un phénomène rare dans le champ de la monnaie : l'émergence ex nihilo d'« une nouvelle forme d'argent » (Kavanagh et Miscione 2017, p. Dans le champ émergeant des CM régnait une indistinction marquée de classifications « inconsistantes » et « anarchiques » ([Vergne et Swain, 2017](https://www.zotero.org/google-docs/?WPG7cK)) du fait d'un manque relatif de littérature académique (Bonneau et al."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b4ebc0adb0204170ac44217265b54714",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En ce début de période, Bitcoin est encore pour un temps l'astre central de cet univers en expansion et, avant d'être remplacée par les stablecoins, c'est son UCN qui y tient le rôle d'étalon pivot : en tant que principale paire d'échanges, elle sera le vecteur de l'interpénétration des marchés de CM et cryptoactifs. En tant que premier stablecoin adossé au dollar, Tether participe grandement au développement des bourses d\\'échange et, ce fai"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "11bfff4d60b642658dcaf8ad9f38a9b6",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En ce « début 2014, l\\'expérimentation, l\\'activité des développeurs, l\\'innovation et l\\'enthousiasme étaient considérables autour de Counterparty, qui avait une longueur d\\'avance sur une plateforme rivale » Mastercoin/Omni : elle pouvait héberger des « Applications décentralisées » (ou « Dapp ») comme des plateformes d'exchange distribuées (ou « DEX »), l'émission de jetons, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0fe6dab37ea84f01b46b784d6260c4a3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La transparence et l'auditabilité des codes sont indispensables, tout comme l'holoptisme, propriété essentielle permettant à chacun de vérifier l'ensemble des activités qui s'y déroulent."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fb0bad347a0d4e87b74ea08a6c2b9983",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Et le fait de travailler sur les codes et de proposer des modifications protocolaires est tôt encadré, avec la mise en place en 2011 des « Bitcoin Improvement Proposals », ou « BIP »[^72], par exemple (cf. Introduite par une mise à jour protocolaire (« Frontier », du 7/09/2015), discutée dans le cadre formel d'un « Ethereum Improvement Proposal » (ou EIP, empruntant au BIP de Bitcoin, cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "597f2c0d09c34298921baa27ef8792b2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Introduite par une mise à jour protocolaire (« Frontier », du 7/09/2015), discutée dans le cadre formel d'un « Ethereum Improvement Proposal » (ou EIP, empruntant au BIP de Bitcoin, cf. Soumise à des évolutions proposée sous forme d'Ethereum Improvement Proposal, la politique monétaire connaît donc des réductions de récompenses successives (de 5 à 3 ETH/bloc avec l'EIP 649 et de 3 à 2 avec l'EIP 1234, Ibid. , Ethhub NC)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1b74ff180cc847e6900941cb93fa4006",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "### La phase de « preuve de concept » (de juillet 2008 à mars 2012) Dans sa phase de « preuve de concept[^69] », connaissance et pratique de Bitcoin restent confidentielles ; l'activité de minage prédomine et « sans véritable activité commerciale », le bitcoin n'est qu'une monnaie de « Monopoly » échangée entre des joueurs peu nombreux (Tasca et Liu 2018, p. ### La phase de « péché » (d'avril 2012 à octobre 2013) Avec WikiLeaks, Bitcoin dépasse"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3e760009bf2d408e86cfc962b61466c9",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "### La phase de « péché » (d'avril 2012 à octobre 2013) Avec WikiLeaks, Bitcoin dépasse le statut de preuve de concept, démontrant pratiquement ses ambitions de système de paiement alternatif : il s'érige en canal financier et monétaire auxiliaire, relai de dernier ressort des flux économiques de l'organisation en contournement de sanctions qui tentaient de l'en priver."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "645079ad66ee41b689112d383dd54798",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les arrangements sociotechniques qu'elles nécessitent d'élaborer (plus normalisés) permettront à Bitcoin, via ses services et passerelles, une bien meilleure intégration à l'infrastructure monétaire et financière existante que par le passé, intégration qui s'opère en phase de maturation. ### La phase de « maturation » (de novembre de 2013 à aujourd'hui) Fin 2013, grâce aux activités précédentes, Bitcoin débute l'ultime période de son développem"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e555921942e74d19b6d14881d57d7be5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Contrairement au mythe économique du troc, aucune société ne « fut complètement démunie » d'argent, qui est « un fait social » : c\\'est « d\\'une institution, d\\'une foi » dont il est question, « nullement un fait matériel et physique [...] ; sa valeur est celle de sa force d\\'achat, et la mesure de la confiance qu\\'on a en elle » (Mauss 1914, p. Le cadre ostromien développé autour des ressources communes, « Common Pool Ressources »"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9cd22888032e4170974fb09ef2070f83",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Objectifs, Apports et Organisation générale de la thèse [43](#d.-objectifs-apports-et-organisation-générale-de-la-thèse)](#d.-objectifs-apports-et-organisation-générale-de-la-thèse) [E. Cette « décentralisation » produirait des systèmes monétaires « neutres » et « apolitique », avec des monnaies « saines » d'une crédibilité inégalée (Antonopoulos Bitcoin Q&A 2018) : leur monnayage (quantité d'UCN, modalités d'émission et de circulation) « i"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "413742a37c1c4575b69643f37a4dd82d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'innovation repose dans un consensus hybride mêlant PoW et preuve d'enjeu (« Proof of Stake » ou PoS)[^117]. En premier lieu, le WP envisage comme probable qu'Ethereum « passe à un modèle de proof-of-stake (preuve d'enjeu) pour des raisons de sécurité » : conçu comme « plus sûr, [ce mécanisme serait aussi] moins gourmand en énergie et mieux adapté à la mise en œuvre de nouvelles solutions de mise à l\\'échelle par rapport » à la PoW ("
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a791eb6ba90f46f5a736a2abbba10f45",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Puisqu'un ASIC est efficace en calcul mais non en mémoire, Ethereum a développé un algorithme de PoW ad hoc, « EthHash » construit sur l\\'algorithme Dagger-Hashimoto, nécessitant « non seulement un grand nombre de calculs, mais aussi une grande quantité de mémoire » (Buterin 2013d; Buterin 2014h)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e4b95e6a7ec94ac18025381781bb547e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les règles monétaires sont définies et rendues exécutoires au sein d'un réseau d'acteurs suivant un protocole informatique que l'on rejoint sous pseudonyme et par choix. Aux privilèges verticaux du système hiérarchique répondraient l'horizontalité et l'universalité d'un protocole de communication et d'un réseau pair-à-pair (P2P) ouvert et accessible à tous."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b0cdc054ef7e48d0ae2526a555fb2cc3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En tant qu'unité de compte, la monnaie sert d'étalon général de la valeur au fondement de tout calcul économique : toute valeur d'échange en dépend, et cette fonction conditionne la fixation de grandeurs nominales qui permettent de rendre commensurables, comparables et échangeables entre eux des biens hétérogènes en quantité et qualité."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "826c32caed754ecfabee8368e4819bff",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cette « décentralisation » produirait des systèmes monétaires « neutres » et « apolitique », avec des monnaies « saines » d'une crédibilité inégalée (Antonopoulos Bitcoin Q&A 2018) : leur monnayage (quantité d'UCN, modalités d'émission et de circulation) « immutable », « objectif », « transparent » et « automatique » garantirait une cohérence temporelle à toute épreuve. » (Ibid.; rejoint par Antonopoulos 2013). Un carcan logiciel immut"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a83983180c55495fbf01d46c94d10362",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concept analytique mobilisé dans la thèse pour désigner et analyser « Monnetisation » dans le cadre de l'étude de la gouvernance des crypto-monnaies Bitcoin et Ethereum."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "92b00fd0ab9049cea901c66a63c8fc1f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Aucun instrument, d'hier ou d'aujourd'hui, ne porte parfaitement les fonctions canoniques de la monnaie, et l'exclusivité cache toujours une pluralité de monnaies et de communautés de paiement/groupes monétaires qui, grâce à ces monnaies, peuvent se relier et échanger. On peut ainsi distinguer des « groupes monétaires » conçus comme des « sous-ensembles hiérarchiquement insérés dans la communauté de paiement » qui, s'ils « en respectent les pr"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "12a350af254945d3a1342c43e53961fc",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "D'abord, trois modes de présence au monde simultanés de la monnaie (qualifiés d'états) dont il est impérieux d'analyser l'articulation, sont distingués."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "202442f070694e70a001e5cdb1b03fe0",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Offrir un système monétaire à côté des systèmes de paiement et de règlements nationaux ne suffit pas à caractériser le côté novateur des CM. Pas de crédit en contrepartie de la création monétaire, mais la participation au traitement et à la sécurisation des transactions du système de paiement : les nouvelles UCN sont distribuées aux nœuds pour inciter leur participation « honnête » (Ibid.)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d4ad72fbd8704bc59ed788fbe32bb7ad",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les monnaies parallèles, notamment les monnaies locales et complémentaires (MLC), le faisaient déjà à moindre échelle (Blanc 1998a; Blanc 1998b; Blanc 2009a). Des problèmes théoriques similaires se posent pour les monnaies parallèles."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d8a44f54a23f498390c0a9c9cefd0a97",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les premiers relevaient de « Special Purpose Money » (SPM), suivant la coprésence d'une diversité d'objets monétaires couvrant des fonctions différenciées, structurant des espaces économiques pluriels et cloisonnés."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c7299000a92b4630a6542320c021fa13",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "333) : s'il y a dissociation, l'ontologie sociale et abstraite de l'argent comme signifié devient évidente, ce que saisit le concept de « monnaies imaginaires » ou de « monnaie fantôme »[^50]. La valeur d'une pièce utilisée comme monnaie de compte peut également être différente de celle de la même pièce en circulation, un phénomène appelé \"monnaie fantôme\" par Cipolla (1956) et \"monnaie imaginaire\" par Einaudi (1937, 1953) » (Doepke et Schn"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9844a696ceb145d281a7df4a0837d436",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La logique fiduciaire du sceau, au cœur de la monnaie, s'oppose aux titres et monnaies privées sous logique contractuelle de signature. Cette gouvernance duale et polycentrique explique alors que les CM ne se fondent ni dans la logique de sceau (des monnaies étatiques), ni dans celle de signature (des monnaies privées), ce qui offre une voie d'éclaircissement catégoriel dans le champ monétaire (II.3)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a4a3cedd64464712aea243607d1641d5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ces caractéristiques hybrides définissent une nouvelle catégorie monétaire : celle de « monnaie marchandise synthétique »[^26]. Ce que traduit l'appellation « monnaie marchandise synthétique » de Selgin."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "51e1b48ca126423bbf42f6f2e8d2c788",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Au même titre que les monnaies papier non parfaitement convertibles (les fiat monnaies), l'intégration des CM dans cet appareillage n'est pas aisée : leur « métallisme digital » (Maurer et al, 2014 ; Mallard et al, 2018) ne suffit pas à les identifier pleinement aux monnaies métalliques (d'or et d'argent), représentantes idéales typiques de monnaie marchandise pour ce courant. De leur « métallisme digital » (Maurer et al, 2014 ; Mallard et al,"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dafa7054bc5a450ca3f248090113e732",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Pour ce courant, seule compte la stabilité de l'unité de compte, et il faut donc tout sacrifier à une monnaie saine (« sound money ») à l'offre limitée pour garantir sa valeur dans le temps. Pour qu'une monnaie soit considérée comme saine (« Sound money »), seule la stabilité de l'unité de compte doit être assurée, car la fonction de réserve de valeur est la plus importante à leurs yeux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a5a8b549c08e499fba0fd51dba848cfe",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "D'où le fait qu'ils prennent aux mots certains coiners et leur « hyper-cryptomonétisation » (ou l'« hyper-bitcoinisation » qu'appellent de leurs vœux des bitcoiners, cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f69e580c364d4b51a2f36574ba3b7e83",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Toute monnaie d'hier ou d'aujourd'hui, qu'elle soit marchandise ou fiat, est conçue comme ayant une valeur intrinsèque, déterminant son utilité, donc sa demande. À côté de cette famille de stable coin adossée aux fiat monnaies et administrée centralement (dont de nombreux émetteurs concurrent à Tether existent aujourd'hui), une autre forme a été développée : adossée à des CM, leur administration relève de smart contract dont l'administration"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "33779ee2b6b848258b8f724c225714f0",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Ouvrir « un nouvel espace de liberté pour plusieurs années » [(Nakamoto 2008a)](https://www.zotero.org/google-docs/?4mCGVq), « démocratiser la monnaie"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "197253674a064412ba65528117c61d3d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "On peut distinguer en son sein, en plus des CM, les unités de compte émises par des entités privées, comme Tether, qui sont des monnaies numériques privées, et des monnaies publiques, avec l'arrivée des monnaies digitales de banque centrale (CBDC), dont la confiance repose sur une autorité émettrice publique."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "926e5d2796ab4b48ae28ade2b7fcbb17",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les crypto-actifs sont des objets numériques dont la matérialité, bien qu'inscrite dans un protocole de registre distribué, repose sur un ou plusieurs centre(s) établi(s), reconnu(s) et disposant de droits exorbitants. Comme tout actif financier, ces formes suivent une logique contractuelle de signature et, en cela, se rapprochent des titres financiers. Voir encadré Chap.II.3."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c622e5a68f014acaaad86e7cb080ec1b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "» > > « Monetary Policy in a World Without Money »; Michael Woodford 2000, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "960b092be6124acf96b497036730d474",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cette question apparaît dans toute introduction aux questions de théorie monétaire, avec la loi de Gresham, affirmant que « la mauvaise monnaie chasse la bonne ». L'intérêt de la loi de Gresham réside dans sa normativité et sa relativité, qui mettent en perspective celles du champ monétaire."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9f37583aced248cb96dccdbcf50c0cc8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le consensus politique variable et ses « codes humides » seraient remplacés tout entiers par un consensus technique, indiscutable et non négociable, car programmatiquement déterministe, produit par un protocole informatique, lui codé en « sec » (Szabo 2008b)[^3]. 2017; Pouliot 2018; Van Wirdum 2018; Jean-Luc 2018; McCormack et Szabo 2019; McCormack et Van Wirdum 2020; Cuen 2020; McCormack et Van Wirdum 2020)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "992df364d6d64036af1cccea08c8c33e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Zamfir, chercheur en conception qui reconnaît ne pas savoir coder, annexe n°5). Zamfir, de la communauté Ethereum, appelle cette conception la « loi de Szabo », en référence au cypherpunk libertarien Szabo, qui a popularisé cette interprétation."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "aee0e3a5cb614e6b92115a71e03886f8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concept analytique mobilisé dans la thèse pour désigner et analyser « Fiatsplaining » dans le cadre de l'étude de la gouvernance des crypto-monnaies Bitcoin et Ethereum."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "76c4e686d40345f2bc695052929482b8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cette controverse ancienne, structurée autour de la formule « la règle contre la discrétion », interroge le rôle du politique dans les affaires monétaires. Notre questionnaire ne parlait pas le bon langage, allait « à l\\'encontre de presque » toutes les conventions tacites du forum, là où nous nous étions naïvement arrêté à notre interprétation des règles formelles d'usage."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "afc0d50c564647839eaf83ccbae5a463",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "#### De la « règle contre la discrétion » à la « discrétion-contrainte » Les partisans de la neutralité de la monnaie -- ou de sa neutralisation -- s'inscrivent dans les approches instrumentales et substantialistes déjà vues. 705) Ce « ciblage d'inflation » correspond en fait à un troisième régime, qualifié de « discrétion contrainte », qui revient « à contraindre la banque centrale par la transparence à agir comme si elle pouvait s'engager"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bec2386f4e3f4eb2a6932ffb1afc2756",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Complémentés par les outils conceptuels de l'institutionnalisme monétaire, ils permettent selon nous de remettre de l'ordre au sein de l'anarchie catégorielle dans le champ de la monnaie. Cette altérité que les CM entretiennent vis-à-vis de la logique fiduciaire du sceau et celle contractuelle de signature conduit à proposer une hypothèse conclusive permettant une remise en ordre de l'anarchie catégorielle entourant les CM : elles sont des formes"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7489dce9688a43df9843144626811dae",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les innovations monétaires relèvent d'« épreuves d'explicitation » qui forcent les académiques et praticiens à clarifier la définition de la monnaie, comme les innovations financières remettent en question la définition du marché (Muniesa, 2017, p. Nous examinerons les critiques existantes des CM, en les replaçant dans leur contexte théorique et épistémologique, en soulignant qu'elles représentent une épreuve d'explicitation de la monnaie pour"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8b02dc202f9841acb6b3213cfc65c5c8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "## Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables La monnaie n'est pas que l'objet de débats théoriques abstraits, elle est aussi une construction pratique très concrète : l'ordre monétaire et financier est d'abord défini formellement par la loi et par la pratique des autorités monétaires. De la même manière, les CM s'apparentent à des « monstres monétaires », forçant les praticiens à re"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f018e4490ac24705a1017203d60a97d1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les universaux monétaires sont : dette, confiance, souveraineté. Si, à l'image des fiat monnaies, les CM ne peuvent se prévaloir d'une quelconque « valeur intrinsèque », leur indépendance à la souveraineté politique nationale et aux autorités monétaires les rendrait inaptes à se voir reconnues comme monnaies."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b4c3838e9ede4dbeb736f1572f6eb2d8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "### Des objets non couverts par les catégories juridiques et empiriques de la monnaie Les espaces monétaires nationaux sont aujourd\\'hui des espaces juridictionnels souverains, qui se sont structurés sur le temps long, à la fois hiérarchiquement et territorialement, concomitamment aux développements des États-nations (Cohen 1998; Gilbert et Helleiner 1999a; Helleiner 2003). ### Monnaies nationales et monnaies parallèles, un espace monétaire toujo"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9e63b6e996b3416dbcc1a94f8ff0ae50",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les monnaies locales et complémentaires visent à instituer des systèmes monétaires faisant la part belle à l'humain et aux relations sociales, réinstillant proximité, confiance, valeurs partagées et délibérations dans les affaires monétaires (Ibid.). Les universaux monétaires sont : dette, confiance, souveraineté."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4c09d3bbb80846aead4052636ce2869e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'articulation des monnaies étrangères au niveau international et la question des relations entre autorités monétaires dépendent d'une activité très encadrée, qui s'est internationalisée (sur la construction historique de l\\'\\\"International Central Banking\\\", voir Feiertag et Margairaz 2012). La remise en cause de SPM ne s'est pas faite en un jour, mais relève plutôt d'un processus d'homogénéisation difficile, long, heurté et jamais achevé : co"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "eedacf072b7c40f6b39e9ec2fb6f213c",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ils jugeaient les CM sans valeur intrinsèque, imparfaites techniquement et économiquement, et utiles uniquement pour des activités illégales ou spéculatives. Toute monnaie d'hier ou d'aujourd'hui, qu'elle soit marchandise ou fiat, est conçue comme ayant une valeur intrinsèque, déterminant son utilité, donc sa demande."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d187580f08144ab3bdf495c351f7b322",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À trop discuter les seuls avis des coiners les plus libertariens et à comparer les CM aux monnaies nationales, les professionnels de l'argent se privent de voir l'hétérogénéité des représentations monétaires coineuses, les conflits communautaires qu'elle implique par définition et donc la gouvernance en place pour les réguler. ### L'irréductible hétérogénéité des monnaies d'hier et d'aujourd'hui Quand on s'intéresse aux usages effectifs de l'arg"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "22d52249dba84e33a0f4488cb81747ba",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les problèmes et solutions que doit résoudre la gouvernance sur l'infrastructure se situent au-delà la « technique », dans des espaces de débat et de décision socialement construits, exogènes au protocole. Qu'importe la face de la gouvernance, le consensus du protocole apparaît soumis in fine à un consensus communautaire sur ses propriétés désirées, associant plus ou moins directement les membres de la communauté et leurs intérêts différents."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "604158d5bab84e82821d53e75070899a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les problèmes et solutions que doit résoudre la gouvernance sur l'infrastructure se situent au-delà la « technique », dans des espaces de débat et de décision socialement construits, exogènes au protocole. Qu'importe la face de la gouvernance, le consensus du protocole apparaît soumis in fine à un consensus communautaire sur ses propriétés désirées, associant plus ou moins directement les membres de la communauté et leurs intérêts différents."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "119915486da7457e8d6c841d419ac8e6",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les MLC contestent l'enfermement technocratique de la gouvernance monétaire nationale, à laquelle les membres revendiquent d'être associés. À l'opposé, les coiners\\ en défendent la suppression pure et simple : il s'agit de substituer la gouvernance par la technique."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2f54deb5da1440c8bdd5ca16dbc8c647",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Sa découverte n'est révélée qu'à un groupe restreint de personne de confiance, dans le cadre d'une procédure de « divulgation responsable »[^2]: d'abord à des membres de son équipe, ensuite à ceux d'équipes travaillant sur des implémentations de CM exposées à la même vulnérabilité (Awemany 2018). Elle renvoie explicitement à la date de mise en œuvre de la procédure de divulgation responsable."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f202291ba1fd4bdca66a5d1a719d5984",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le numéro d'identification CVE renseigne sur le fait que les bitcoiners ont intégré à leur infrastructure des artefacts existants, en l'espèce la procédure d'étiquetage/publicisation normalisée du système « Common Vulnerabilities & Exposures » (ou CVE). [^43]: Voir <https://en.bitcoin.it/wiki/Common_Vulnerabilities_and_Exposures> [consultation au 20/10/2021]."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9e9eac4d98ca4d27892e19d17415a7b7",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Figure 3 suivante) - prit la forme de « Pull Requests » (PR) acceptées et fusionnées, donnant lieu à la publication des versions vulnérables (le traitement de ces termes et des dispositifs auxquels ils renvoient est renvoyé à une section prochaine). Ainsi, si tout un chacun est théoriquement libre de forker un répertoire, c'est-à-dire de créer une nouvelle branche, produire un correctif et proposer sa fusion dans la branche principale (« Pull"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7983b60ea7bc40aeb128c3062c4dfaa2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Peut-être traduit par bifurcation, mais, même en français, cet anglicisme s'est imposé. Suivant la situation, il peut qualifier un événement (volontaire ou non) qui voit un réseau se scinder en deux ou plusieurs réseaux (Fork de chaîne), avec autant de registres différents de transaction. Il sert aussi généralement à qualifier les modifications protocolaires considérées comme importantes, pour les faire évoluer dans une direction souhaitée (ajout/suppression de fonctionnalités, changement d'a…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a8108e74b9d9483bb66d929e347fd7bd",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Peut-être traduit par bifurcation, mais, même en français, cet anglicisme s'est imposé. Suivant la situation, il peut qualifier un événement (volontaire ou non) qui voit un réseau se scinder en deux ou plusieurs réseaux (Fork de chaîne), avec autant de registres différents de transaction. Il sert aussi généralement à qualifier les modifications protocolaires considérées comme importantes, pour les faire évoluer dans une direction souhaitée (ajout/suppression de fonctionnalités, changement d'a…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "df9265f551724ef2bff38c73f591f24f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En pratique, en plus d'une augmentation discrétionnaire/arbitraire de la masse monétaire de bitcoin, l'activation de ce bogue aurait entraîné un autre risque important pour toute CM : une « scission de chaîne » (un « chain split »). ### Crise de « scission de chaine » : l'unicité des paiements mise en péril Comme les bogues de faux monnayage, les « scissions de chaîne » (ou « chain split ») sont rares (4 recensées, crises n°7, 11, 19 et 26, e"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "cbf51f368ab14bc09d7c9501abcb7d41",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La première crise de faux monnayage dont parle Corallo est la faille CVE 2010 #5139 (crise n°4) d'août 2010, communément appelée « Bitcoin bug Value Overflow » . Ce que ceux-ci savent moins, c'est que ce cadre et le cap des 21 millions d'UCN bitcoin, soi-disant fixés dans le marbre dès l'origine, Nakamoto, faillible, l'avait mal programmé à l'origine, et il ne fut effectivement « fixé » dans le code qu'en 2014, à l'occasion de la seconde cr"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7c6a36aeea924f209742c220507917e2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "6, préface de la 1^ère^édition anglaise (1936) En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXI^e^ siècle, une contestation monétaire radicale fut lancée : Bitcoin. Selon son créateur Satoshi Nakamoto [(2008)](https://www.zotero.org/google-docs/?CPNkOD), Bitcoin répond à la crise et à sa gestion."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e03397b2a1b9443bb4be6a9f5aa836b4",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les vulnérabilités de type « Theft » sont rares (au nombre de 4 ; crises n° 1, 22, 36 et 39), mais critiques, renvoyant à des situations où un attaquant peut prendre le contrôle d'UTXO en dehors des règles consensuelles canoniques (cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "850f081c506a4833b4fb7824bd9192a8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Dans notre champ, ces écarts au scénario prennent la forme de failles, de bogues, d'attaques informatiques ou d'ajouts et d'évolutions des dispositifs socio-techniques au cœur de la CM. Se dessinent les crises de vulnérabilité, liées à une faille relevant d'une situation où les codes donnent lieu à des résultats qui sont, pour les acteurs, en contradiction explicite avec ce qui est attendu."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0da46d5bf0d8461caf763b6ba26a9961",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Objectifs, Apports et Organisation générale de la thèse [43](#d.-objectifs-apports-et-organisation-générale-de-la-thèse)](#d.-objectifs-apports-et-organisation-générale-de-la-thèse) [E. Pas de crédit en contrepartie de la création monétaire, mais la participation au traitement et à la sécurisation des transactions du système de paiement : les nouvelles UCN sont distribuées aux nœuds pour inciter leur participation « honnête » (Ibid.)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "26edc95bf98c4de399f95486dcd3ceb4",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le premier type est ce que nous appellerons une « crise de vulnérabilité » et l'autre une « crise d'évolution ». Chaque type est défini relativement à la situation conçue comme normale : ce qui est permis par les codes protocolaires - la « lettre du code » - est conforme à ce qui est attendu et considéré comme légitime par le consensus social -- l'« esprit du code ». Deux formes de hiatus peuvent cependant apparaître entre la lettre et l'espr"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "20eefb0873d54b08ba3fff2be1e6af77",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les bitcoiners auraient une « déférence aux codes » absolue, contenue dans le slogan « Code is Law », réductible à une confiance individuelle garantie par la nature technique de leur « autorité algorithmique » (Lustig & Nardi 2015). 1) qui, avec le concept d'« autorité algorithmique », démontrent que les bitcoiners reconnaissent la nécessité de la compléter par des jugements et médiations sociales, soulignant l'hétérogénéité des sphères axiol"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2f8fdd85e00b4da5b88d33702b48e266",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les bitcoiners auraient une « déférence aux codes » absolue, contenue dans le slogan « Code is Law », réductible à une confiance individuelle garantie par la nature technique de leur « autorité algorithmique » (Lustig & Nardi 2015). II section II.3.3), la « déférence au code » (Hinkes 2021) et à l' « autorité algorithmique » (Lustig et Nardi 2015) est totale et sans limites : tous les résultats d'un code sont par définition normaux, indiscuta"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b1bb006e31bc4a8d8fe471dae3436c7f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Une forge est une plateforme d'hébergement de projets logiciels, correspondant à un environnement web regroupant un ensemble d\\'outils qui permettent le développement collaboratif et distribué de logiciels. Elle offre un portail communautaire et l'accès à un site internet, un ensemble d'outils de gestion de projet et un environnement de développement collaboratif. Les services disponibles vont de la fourniture d'un système de gestion des versions à des trackers permettant de faire remonter de…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2e2583ea54b54efd85855ad949dc4753",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "### D'une hiérarchie formelle selon le principe « du moindre privilège » à la désignation informelle des mainteneurs « Core » Le chapitre II a conclu que la gouvernance d'une CM comme Bitcoin se présentait comme polycentrique : en tant que système de ressources, une CM est constituée de sous-systèmes de ressources propres, articulés entre eux (Hess et Ostrom 2003 ; cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "189314da7afb44978724c7d538a7c6dd",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "6, préface de la 1^ère^édition anglaise (1936) En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXI^e^ siècle, une contestation monétaire radicale fut lancée : Bitcoin. Selon son créateur Satoshi Nakamoto [(2008)](https://www.zotero.org/google-docs/?CPNkOD), Bitcoin répond à la crise et à sa gestion."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3bfc96e54e6b4cd693cc69ef73faa524",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concept analytique mobilisé dans la thèse pour désigner et analyser « Carbonvote » dans le cadre de l'étude de la gouvernance des crypto-monnaies Bitcoin et Ethereum."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d49e7a2de4a641309874f94206294270",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les médias (Vergne et Swain 2017), la littérature indigène et grise (Walch 2017) utilisaient indistinctement les termes de CM, de « Blockchain\\ », de « crypto-actifs\\ », de « monnaies digitales », de « cybermonnaie »[^10]. Nakamoto comme données non transactionnelles dans l’ enregistrement de genèse  (ou genesis block  ) lors du lancement de Bitcoin (cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "83104c22911c43899472b5c9eb17e33d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ce bloc aurait subi « un débordement d'entier » (« integer overflow ») où la « somme des deux sorties déborde sur un négatif."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "123309e12e54424d99f51311bcb39c02",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Elle est réceptionnée par les nœuds dans un journal local dédié : « la mempool » (étape 2.a). Bitcoin dispose de deux procédures de publication : soit avec des transactions publiques issues de portefeuilles (« mempool transaction », cas C), soit il s'agit d'une transaction privée intégrée directement dans un bloc (« block transaction », cas D, Song 2018)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6fa13dc6307840ac805cb5df76bc7298",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "2) : leur foi est moins « dans le bitcoin » que dans les « super codeurs » qui en ont la charge (« In Super Coders We Trust »)[^92]. [^117]: « In Super Coders We Trust », voir <https://twitter.com/APompliano/status/1420095187578195974?s=20> [consultation au 01/01/2022]."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3d6c84e50c764219bb344247f7a66828",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concluons par le « Darkcoin » / « Dash » (ticker : DASH), lancé début 2014. Buterin, en plus de participer au projet Egora, prend part au développement de Dark Wallet de Taaki."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "81f523f3033c46d1ab78d85daffbf7c8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le 22 est annoncé qu'il a donné « de l\\'éther à la DAO et [rejoint ainsi] l\\'un des splits whitehat », mais la communauté est enjointe à ne pas « paniquer », « tout autre mouvement que l\\'attaquant essaierait de faire se produirait après 24 jours », « cela [...] donne plus de temps qu\\'il n\\'en faut pour mettre en place un fork » (Karapetsas 2016c). Avec son activation est exécuté le « changement d\\'état irrégulier qui [trans"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bdff81b9431b4a8990912e7447e60426",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Le cadre ostromien développé autour des ressources communes, « Common Pool Ressources » (CPR) - physiques ou immatérielles -- est tourné tout entier ver"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9be50de248b1465cbf2e7ac9a2a5e1ac",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Pour dépasser ce « technologisme », comme éviter les ornières de la vision opposée du « sociologisme »[^35], la technique est considérée comme « un tissu sans couture » , un objet socio-technique (Latour 2006; Akrich 1989). [^36]: Le sociologisme se réfère à des « modèles plus savant s », où la technologie est conçue comme « une construction éminemment sociale »."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5e6aaa5a229b43f6a9b1ab180b79ea49",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Leur analyse requiert une « inversion infrastructurelle », qui met en avant les éléments sous-jacents des pratiques qui s'y rapportent et lui donnent corps (Bowker, 1994, cité par Starr, 1999, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "85451768515f4d70a241a5b7a2607557",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ces textes invitent à leur dépassement, soulignant que « la fiabilité de l'argent est basée sur une confiance partagée entre les individus et soutenue par de multiples institutions et infrastructures techniques » (Mallard, Méadel et Musiani 2014, p. ### Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures » Malgré leur opposition apparente, les détracteurs et promoteurs des CM partagent une vision réifiante de la monnaie"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "eccebadfbfc24deb8c5e160e9289f3fa",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cette altérité que les CM entretiennent vis-à-vis de la logique fiduciaire du sceau et celle contractuelle de signature conduit à proposer une hypothèse conclusive permettant une remise en ordre de l'anarchie catégorielle entourant les CM : elles sont des formes monétaires inédites, fondées sur une logique que nous qualifions (faute de mieux) « de logique de consensus distribué ». ![](media/image3.png){width=\"6.63125in\" height=\"4.92361111111111"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a4d612b858fb481fb373ccea31aee98a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Nous montrerons que, dans leurs usages, les CM possèdent les caractéristiques minimales de toute monnaie (elles se rapportent à la dette, à la confiance et à la souveraineté), et s'intègrent facilement au champ de la monnaie, en tant que monnaies parallèles communautaires, dont elles représentent une forme inédite. Nous avons mis en lumière la souveraineté communautaire qui fait des UCN de CM des créances au porteur sur le protocole et la confian"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2909e051733a41e29f5efb62ab613bce",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le premier type est ce que nous appellerons une « crise de vulnérabilité » et l'autre une « crise d'évolution ». Chaque type est défini relativement à la situation conçue comme normale : ce qui est permis par les codes protocolaires - la « lettre du code » - est conforme à ce qui est attendu et considéré comme légitime par le consensus social -- l'« esprit du code ». Se dessinent les crises de vulnérabilité, liées à une faille relevant d'un"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b7c586c26bdb4837a4d9a21bb48e9add",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le premier type est ce que nous appellerons une « crise de vulnérabilité » et l'autre une « crise d'évolution ». Chaque type est défini relativement à la situation conçue comme normale : ce qui est permis par les codes protocolaires - la « lettre du code » - est conforme à ce qui est attendu et considéré comme légitime par le consensus social -- l'« esprit du code ». Les crises d'évolution, quant à elles, se révèlent différentes, dans leurs"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ae7be15c2dd74d6fbe63f1f705a092c2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le Bitcoin script est considéré comme peu expressif : c'est un langage de programmation à pile, très simple et non Turing complet, sans boucles, ni pointeurs, « rien que des mathématiques et de la cryptographie » (Champagne 2014, p. Un langage dit « Turing-complet » (comme « Solidity » d'Ethereum) possède un haut degré d'expressivité en ce qu'il permet la réalisation de boucles -- cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ec7f21c08c834c6fb54d80a2e2c326ba",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les CM sont un puissant agent de contraste visibilisant la financiarisation de nos sociétés et ses effets, comme la régulation marchande de l'énergie et l'évasion fiscale."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "75cf13aa0a3e4d1fa94e7e571f52989b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Macron rangeait le Bitcoin et les crypto-actifs aux côtés du shadow banking, les qualifiant de forces les plus dérégulées et dérégulatrices du système bancaire et financier mondial[^1]. Le président Macron devait savoir que le shadow banking, les paradis fiscaux et la fraude existaient bien avant les CM et sont intégrés au système bancaire et financier traditionnel, sur lesquels les régulateurs peuvent agir."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6725a3ba6cb94d3ca477e914dab4784f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La constitution d'un langage etic fondé sur le langage emic des coiners (traduit par la construction d'un glossaire et d'annexes riches) doit nous permettre non seulement de parler d'eux, mais aussi de dialoguer avec eux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e277c6d62d8a4e52ba9ec127099bea7d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En tant que chercheur, nous sommes parti de ces réseaux, d'où un effort de réflexivité poussant à nous interroger sur les interactions et les traductions mutuelles entre les acteurs (humains et non humains) que nous contribuions à former sur le monde des CM."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "eb2ccbd73d8d439f8bb38d2f4b456b99",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Back reproche à Walch de chercher par ces questions à dresser l'image d'une gouvernance de Bitcoin centralisée, comme pour démontrer que ne pas parler de politique de Bitcoin releverait moins de la naïveté qu'une invisibilisation stratégique : les crises révèlent aux grand jours, ce qui pour certains Bitcoiners relèvent de « tabous » [et de] questions qui ne sont pas posées !"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ccc4ed32a02a4d0e9d9d69bce522cbf5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Comme « tissu sans couture », Bitcoin est une étoffe au motif arlequin (cf. Pour autant qu'elle est un « tissu sans couture », c'est une étoffe au motif arlequin (saisi par notre code couleur), dont la confection renvoie à l'entrecroisement du travail d'une multiplicité de tisserands et de navettes."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6271402f630148c7b1a6a758dbaafc2e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'une des neuf propriétés infrastructurelles, Star 1999, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "769095ae0a16408eaeebe9cfffb5110e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ensuite, nous expliciterons notre cadre théorique, combinant une approche monétaire institutionnaliste et une démarche ethnographique empruntant à la Sociologie des Sciences et Technique (STS) (B). L'explicitation de notre inscription épistémologique et théorique retranscrira le processus qui nous a conduit à élaborer notre approche, combinant un institutionnalisme monétaire et une sociologie économique, empreinte de sociologie des sciences et te"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0193495c40754614a45ba35786738ec3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'appellation « actif digital » est le terme le plus englobant, ne se limitant pas aux technologies de registre distribué. Elle inclut également toutes les formes d'actifs et monnaies sous forme numérique, comme les points de fidélité, les accessoires et skin dans un jeu, etc., qui sont aussi des actifs de ce type. Voir encadré Chap.II.3."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "815d09b01606439b8ad159c4ec89eaad",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La dénomination indigène Altcoin regroupe et qualifie péjorativement toutes les cryptomonnaies, actifs numériques et monnaies digitales, à l\\'exception du Bitcoin, pris comme idéal-type. Certains termes utilisés par des figures communautaires dites Maximalistes\\ sont encore plus péjoratifs (scamcoin ; shitcoin, etc\\...) et mettent en évidence les différences et les critiques philosophiques et pratiques qui structurent ces communautés."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7f4f018391584e708ee2a97f76d35c2b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'ensemble de règles et processus utilisés par les participants afin de vérifier, traiter et parvenir à un accord sur un enregistrement canonique, gage du maintien dynamique de la cohérence\\ des données endogènes\\. Il en existe différentes familles - Preuve de travail\\ (PoW), Preuve d'enjeu\\ (PoS), Preuve d'enjeu déléguée (DPoS), etc. Ce terme renvoie d'abord à l\\'algorithme utilisé au sein de la famille PoW pour valider un nouvel enregistrement candidat (Sha 256, Scrypt, etc.)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "084ad32c4b554d038d8209f2725ec5e3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Désigne la capacité du système à permettre à plusieurs parties de créer, entretenir et mettre à jour collectivement un ensemble d'enregistrements partagés."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0a6054a2aafd4476a516e829a4e39703",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Interactions, transactions, processus qui se produisent au sein des frontières formelles du protocole de registre distribué et qui se retrouvent représentées dans la couche de données du système."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "81ccd09814a44463a40014171ac92ee7",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Interactions, transactions, processus qui se produisent en dehors des frontières formelles du protocole de registre distribué."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7483cc3501de49d1a0cf36516b7f2209",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'usage du terme Blockchain est une synecdoque particularisante réduisant le tout à une de ses parties, en l\\'espèce à la structure de données. Ce concept, popularisé par des slogans comme « Forget Bitcoin, embrace Blockchain » émanant d'acteurs de la finance traditionnelle (en l'espèce Blythe Master de JP Morgan), reste discutable, car il invisibilise l'essentiel, à savoir le protocole qui le soutient et le rôle incitatif du monnayage et de l\\'unité de compte native émise dans la production …"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7bb996780189451097667409f6274038",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Dans un consensus basé sur la preuve de travail\\, il s'agit d'un seuil à atteindre pour que l'empreinte numérique de l\\'en-tête d'un enregistrement candidat soit considérée comme valide (être inférieur ou égal). Cette cible de difficulté est programmée pour augmenter ou diminuer afin de maintenir un temps d'enregistrement\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7bfdb4a56f1d40d9aa63f3ad11e44b44",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le code source de l'implémentation logicielle est accessible au public et ouvre, suivant les droits accordés, à des modifications et à des copies, contrairement au code propriétaire, non accessible au public et couvert par des droits de propriété intellectuelle."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0d3dbc3df0f940339cc2556eed9c8710",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Propriété recherchée par tout système informatique de calcul distribué permettant que tous les nœuds du système accèdent exactement aux mêmes données endogènes\\. Aucune cryptomonnaie n'est cohérente à un instant T et cette propriété renvoie à la probabilité (forte ou faible) que le système parvienne à un consensus sur une valeur proposée. C'est l\\'algorithme de consensus\\ qui lève à court terme l\\'ambiguïté, forçant l'ensemble des nœuds du réseau à converger sur une histoire commune qu\\'ils d…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d14c32c8bb244b5280464b69c0e6589d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond au nombre d'enregistrements successifs « minés » au-dessus du bloc d'une transaction considérée. Ce nombre indique également combien d'enregistrements doivent être inversés ou écrasés pour supprimer une transaction du registre. La finalité d'une transaction renvoie à un nombre de confirmations considéré comme suffisant pour s'assurer d'un règlement irréversible. Sur Bitcoin, c'est généralement 6 confirmations qui sont attendues aujourd'hui."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "90ad9ef75f4442c884ac4f74ff5c79c6",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Désigne la capacité d'un système de protocole de registre distribué à arriver à un accord entre différentes parties prenantes sur un ensemble partagé d'enregistrements faisant autorité et ce, en l'absence d'une autorité centrale."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5534cbaa12bb4044b86f25fc453072df",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à une discipline qui s'intéresse à un ensemble de techniques et d'algorithmes permettant de chiffrer/déchiffrer des informations. Loin de ne faire que « cacher », les outils cryptographiques permettent, par chiffrement, la certification et l'authentification de données (signature par clef privée, déchiffrement/vérification par clef publique), comme des voies de structuration des données (les fonctions de hash\\, arbre de Merkle\\)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a928f23acc214cdf9f8aa094c68231f1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le débit représente le taux maximum auquel un protocole de registre distribué peut traiter des transactions, généralement mesuré en transactions par seconde (TPS). Il dépend de divers facteurs, tels que le type d'algorithme de consensus ou la taille des blocs de données. Un débit élevé est crucial pour la scalabilité et la performance des systèmes de registre distribué."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "572f2cb24b674424977cb1ab65afaa65",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à une propriété recherchée par tout protocole de registre distribué permettant de garantir que toutes les requêtes soient satisfaites et que les données endogènes\\ soient toujours disponibles."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7c36969bde1d485eb3a4a942a216789f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspondent aux données pouvant être créées et transférées uniquement par le biais du protocole de registre distribué et qui, par leur format, leur sémantique, etc., ont un sens en son sein. Essentielles à son fonctionnement, elles garantissent la cohérence et l'intégrité des transactions et des enregistrements. Par exemple, pour Bitcoin et Ethereum, les données endogènes incluent les transactions, les blocs et les contrats intelligents."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d2e781ec1f9643e0b70762ddec120147",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Données endogènes | Endogenous references : Correspondent aux données pouvant être créées et transférées uniquement par le biais du protocole de registre distribué et qui, par leur format, leur sémantique, etc., ont un sens en son sein."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3ba20dcf685d4e708cd990cb721e409b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Voir fonction de hachage."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "34302ac00c364d60a486ad68885c69e1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un enregistrement fraîchement propagé au réseau et donc, qui ne fait pas encore l'objet d'un consensus en son sein. C'est lorsqu'une majorité de nœuds l'ont reçu, vérifié et intégré dans leur registre transactionnel qu'il s'érige en enregistrement canonique\\"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "06a9fe756f7341e98970fc2347a147e7",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Un enregistrement - pour Bitcoin et Ethereum, il est d'usage de le nommer « Bloc » - représente un ensemble de données de transaction conteneurisé, reconnu par l'ensemble des nœuds comme canonique, après que chacun en a vérifié la validité. Un enregistrement est composé d'un en-tête de bloc\\ et de la liste des transactions qu'il contient, c'est-à-dire des transactions traitées et validées depuis le bloc précédent, à laquelle s'ajoute la plupart du temps une transaction attribuant une récompen…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "00983765d6a24a51b35f79d212579a43",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À la manière des triangles d'incompatibilité connus en science économique, qui soulignent comment certains choix (ici sociotechniques), sont ontologiquement politiques, voilà que toute CM doit trouver une architecture équilibrée entre trois objectifs qui, bien que principaux, sont contradictoires : la sécurité, la décentralisation et la scalabilité (ou évolutivité)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0fd27bcb9f3b488bb5ac3fa8668659e3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un outil offrant une interface utilisateur pour visualiser les données en temps réel d'un protocole de registre distribué. Facilitant la transparence et la vérification des transactions, il s'agit d'un outil off chain essentiel pour les utilisateurs et les développeurs qui souhaitent suivre l'activité et la santé du réseau."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c639a09d769445cd88963e70ef9c418c",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Désigne le moment où un enregistrement confirmé peut être considéré comme définitif et irréversible. Elle peut être probabiliste, comme avec la PoW de Bitcoin, où la réversibilité devient computationnellement impossible après quelques blocs. Elle peut aussi être explicite, avec des protocoles intégrant des points de contrôle. En général, ce sont les acteurs économiques acceptant les unités de compte natives (UCN) qui définissent le nombre de confirmations nécessaires pour considérer une trans…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "41863390d2124a54ad4eda535a43fdc7",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à une fonction cryptographique qui, appliquée à des données brutes entrantes, les chiffre sous la forme d'une empreinte numérique unique et partielle (un Hash), de taille définie, et qui permet d\\'identifier facilement les données initiales. Voir Annexe n°V.3."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0d0cfe1493904a4daf20e6cbeb1eafdd",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Peut-être traduit par bifurcation, mais, même en français, cet anglicisme s'est imposé. Suivant la situation, il peut qualifier un événement (volontaire ou non) qui voit un réseau se scinder en deux ou plusieurs réseaux (Fork de chaîne), avec autant de registres différents de transaction. Il sert aussi généralement à qualifier les modifications protocolaires considérées comme importantes, pour les faire évoluer dans une direction souhaitée (ajout/suppression de fonctionnalités, changement d'a…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "36f8da3ba8e6493280ae29896dfa39f3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Processus d'enregistrement de la date et de l'heure exactes auxquelles un événement se produit. Il est couramment utilisé dans les fichiers journaux, les bases de données, les documents numériques et les systèmes de suivi pour assurer la traçabilité et l'intégrité des données."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "aaa182bebfef47f2b799b81696ec263a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un ensemble d'enregistrements consignés localement dans un nœud, qui n'est pas nécessairement conforme au consensus des autres nœuds. Les Journaux locaux sont partiels, provisoires et hétérogènes."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ba76e677525f4d22bd2a30999ebce68f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ce protocole permettrait à des machines indifférenciées -- les « nœuds » -- via un système de règles et procédures standardisées, de s'entendre sur la validité d'un ensemble de données endogènes : la possession et la cession d'unités de compte natives (UCN), les bitcoins de Bitcoin[^6]. Et les acteurs et/ou les UCN d'endosser de nouveaux costumes, les uns en différents « Pierrots » de l'intermédiation, les autres en autant de reconnaissance de"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "78e6158cfaa8480dba1a27ecaf36eaa9",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Appellation qui tire son origine de la vie politique anglaise, où des documents imprimés sur un papier blanc servaient à présenter des politiques gouvernementales, et les soumettre à l'avis de la population. Ce terme a été utilisé par les entreprises pour décrire certains projets ou politiques commerciales. Désigne, dans notre champ, une publication plus ou moins longue, qui vise à donner une somme d'informations sur un projet donné. Le Livre Blanc sert à exposer un objectif comme les moyens …"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1a0786075553472a87cdd071f6441538",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Terme apparu en 2014, souvent attribué à Vitalik Buterin (2014). Il désigne les Bitcoiners pour qui Bitcoin devrait dominer toutes les autres CM (qualifiées d' « altcoins » ou de « shitcoins »), considérées comme inférieures ou inutiles. Ils considèrent qu\\'un environnement d'une multiplicité de CM concurrentes n\\'est pas souhaitable et que toutes les innovations, le développement dans le domaine crypto devraient se faire exclusivement sur Bitcoin. Par extension, le terme maximaliste peut éga…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "99194988975047098af0f3e215ccdd2f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "De manière générale, ce terme recouvre les acteurs non humains et leurs opérateurs humains participant du réseau, communiquant avec leurs pairs en suivant les règles canoniques du protocole de registre distribué considéré. Ils peuvent revêtir différentes formes et, suivant celles-ci, prendre part à tout ou partie des processus liés au traitement des transactions et à la production d'enregistrements ou à leur vérification : nœuds mineurs, nœuds complets, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "cd439cdd81fa447f986ed45b56c61226",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond en cryptographie à un nombre arbitraire (aléatoire ou pseudo-aléatoire) destiné à être utilisé une seule fois. Pour ce qui est des fonctions de preuve de travail\\, certains processus demandent de fournir un nonce qui, combiné au bloc de données mis en entrée d'une fonction de hachage, fournit un résultat ayant certaines caractéristiques recherchées, rendant beaucoup plus difficile de créer un résultat cible que de le vérifier. Pour Bitcoin, c'est ce nonce qui est modifié par les op…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c9c3add85b2d40e2afd5194688e12fb3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Contient l'ensemble des acteurs qui fournissent une interface entre le système de protocole de registre distribué et le monde extérieur. On retrouve ici les bourses d'échange crypto fiat qui offrent une passerelle monétaire, mais aussi de nombreux autres services comme les explorateurs de registre\\, par exemple."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6a54cc9ad211488e94e759e08686d88e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un logiciel client capable de générer, stocker et administrer des couples de clefs cryptographiques afin de conserver et transférer ses CM et actifs digitaux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "eb707c05941d4b2384d9d65d324c6003",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à une récompense en unité de compte native\\ perçue par un opérateur de transaction dont l'enregistrement candidat\\ devient canonique en étant intégré au registre\\. Elle tient le rôle de création monétaire, rémunérant les acteurs en contrepartie du travail de traitement et de sécurisation des transactions et du registre."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ef99069ebd094162b7567e810a4ed888",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond, à tout moment, à l'ensemble des enregistrements faisant autorité, consignés dans une portion substantielle des nœuds participant au réseau. Un registre se compose d\\'une série de différents enregistrements stockant des informations relatives aux transactions qui ont lieu sur le réseau. Les enregistrements intégrés dans un tel registre sont peu susceptibles d'être effacés ou modifiés, et sont considérés comme finaux. Voir finalité de paiement\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1ec862d0f0e646f8bc6aa139e3e8e750",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Il s'agit d'un événement normal de tout protocole de registre distribué où un nœud du réseau découvre qu'un autre enregistrement valide existe en parallèle de celui qu'il suit. Par l'algorithme de consensus et à la suite d'un nouveau cycle de production d'enregistrement, cette version alternative du registre est devenue canonique pour tous, excluant un ou plusieurs enregistrement(s) auparavant inclus, dit(s) « orphelin(s) ». L'attaque 51% dont parle extensivement Nakamoto se rapporte à un cas…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8c6c711d89e24630bbff13c8d28b5174",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un réseau\\ où les nœuds\\ qui participent à l'échange d'information sont, contrairement au mode « client/serveur », tour à tour client et serveur, demandeur et donneur. Chaque nœud\\ est sur un pied d'égalité avec les autres nœuds\\ constituant le réseau\\, et ils sont donc des pairs. Il n'y a plus un acteur qui dispose des informations auxquelles souhaite accéder une multitude d'utilisateurs, car les informations sont répliquées sur une multitude de nœuds\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "747ac07dc8f8433ca4638f1b30998576",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'impossibilité pour un acteur ou un cartel d'effectuer unilatéralement et arbitrairement : (i) une modification des règles du protocole ; (ii) de bloquer ou de censurer des transactions ; et (iii) de saisir un compte ou de geler des avoirs."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "49d5a9f279014202aa1426ae010e3f14",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Reposant sur la cryptographie asymétrique, ce type de signature permet de vérifier mathématiquement la possession d'un ensemble de données, si tant est que l'utilisateur conserve secrète sa clef privée pour signer ses transactions. Voir Annexe n°V.1."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e504524108584e36bbddc1bda68d1d17",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le modèle basé sur compte, comme pour le modèle basé sur UTXO, sert en premier lieu au suivi de l'état de la structure de donnée. Mais ici, comme pour un compte bancaire traditionnel, à un instant T, le système de protocole de registre distribué renseigne des soldes pour chaque compte. Une transaction authentifiée correspond alors à une cession qui réduit le solde de l'envoyeur d'autant que ce que le receveur reçoit sur son compte. Ce choix d'Ethereum s'explique par le fait que, en plus des c…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "abba1eed18834c889c6c7f94b641a957",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond, à tout moment, à l'ensemble des enregistrements faisant autorité, consignés dans une portion substantielle des nœuds participant au réseau. Un registre se compose d\\'une série de différents enregistrements stockant des informations relatives aux transactions qui ont lieu sur le réseau. Les enregistrements intégrés dans un tel registre sont peu susceptibles d'être effacés ou modifiés, et sont considérés comme finaux. Voir finalité de paiement\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "868007499c1a4246946e4535cacc6418",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond, à tout moment, à l'ensemble des enregistrements faisant autorité, consignés dans une portion substantielle des nœuds participant au réseau. Un registre se compose d\\'une série de différents enregistrements stockant des informations relatives aux transactions qui ont lieu sur le réseau. Les enregistrements intégrés dans un tel registre sont peu susceptibles d'être effacés ou modifiés, et sont considérés comme finaux. Voir finalité de paiement\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ba43520a111548a097cb04adfd18de31",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond, à tout moment, à l'ensemble des enregistrements faisant autorité, consignés dans une portion substantielle des nœuds participant au réseau. Un registre se compose d\\'une série de différents enregistrements stockant des informations relatives aux transactions qui ont lieu sur le réseau. Les enregistrements intégrés dans un tel registre sont peu susceptibles d'être effacés ou modifiés, et sont considérés comme finaux. Voir finalité de paiement\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b62f35ac648f4254a73547c8c76f06f4",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond, à tout moment, à l'ensemble des enregistrements faisant autorité, consignés dans une portion substantielle des nœuds participant au réseau. Un registre se compose d\\'une série de différents enregistrements stockant des informations relatives aux transactions qui ont lieu sur le réseau. Les enregistrements intégrés dans un tel registre sont peu susceptibles d'être effacés ou modifiés, et sont considérés comme finaux. Voir finalité de paiement\\."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8fc8b0d7aa1a4510acea6831021bb4ac",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'ensemble des processus qui spécifient les mécanismes de mise à jour du registre. Il définit : (i) quels participants ont le droit de mettre à jour l'ensemble d'enregistrements partagés faisant autorité (sans autorisation pour les systèmes ouverts et avec autorisation formelle pour les systèmes privés ou de consortium), et (ii) comment les participants parviennent à un accord consensuel sur la mise en place de cette mise à jour. Appelé aussi « mining »."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d9e274f2546742b4b3d9aa34f81ea452",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Renvoie à toute modification proposée au registre ; elle n'est pas nécessairement de nature économique (transfert de valeur). Une transaction peut être soit non confirmée (non incluse dans le registre, elle se trouve encore seulement dans la mempool), soit confirmée (incluse dans le registre). Une même transaction peut contenir une multitude de transactions différentes : différents receveurs ; différentes modifications de registre, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "987f117d2262455ab042aff0d39b3ad2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'ensemble des processus requis afin d'assurer que les acteurs arrivent indépendamment à la même conclusion en ce qui concerne l'état du registre. Cela inclut la vérification de la validité des transactions non confirmées, la vérification des enregistrements, qu'ils soient confirmés ou non, et l'audit de l'état du système."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "07bc5ee6ef6b4f429496848d000e303f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Désigne la capacité du système de protocole de registre distribué à permettre à chaque participant la vérification indépendante de l'état des transactions et de l'intégrité du système. Annexes # Table des matières [Annexe I : Données synthétiques relatives à l'écosystème des CM pris dans son ensemble [11](#annexe-i-données-synthétiques-relatives-à-lécosystème-des-cm-pris-dans-son-ensemble)](#annexe-i-données-synthétiques-relatives-à-lécosystème-des-cm-pris-dans-son-ensemble) [Annexe n°I.1 : C…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "21fff41c8c6142deb3eacf919ae56c9e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À l'opposé, les coiners\\ en défendent la suppression pure et simple : il s'agit de substituer la gouvernance par la technique. Pour les coiners, les CM réussissent là où les expériences passées ont échoué."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "006fa61df97b46168470eac0cbc04f78",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'ensemble des acteurs qui, suivant leurs compétences spécifiques, peuvent écrire et relire les codes informatiques qui sous-tendent les éléments technologiques constitutifs des systèmes de protocoles de registre distribué (couche protocolaire) et/ou de leurs systèmes connectés (couche applicative). Ils peuvent être professionnels ou participer comme contributeurs bénévoles."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4a28244c6596401ea6f24c848309a315",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Notation formelle utilisée pour définir des codes informatiques et les faire exécuter par un programme. Il comprend un ensemble d\\'instructions produisant divers types de résultats. La description d\\'un langage de programmation se divise généralement en deux : la syntaxe (forme) et la sémantique (signification). Elles peuvent être définies par un document de spécification ou ne relever que d'une implémentation dominante traitée comme une référence. Les développeurs peuvent utiliser de nombreu…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "40964c873ddc4491a1d08ff94ffb8e10",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Nos premières tentatives de contact nous montrèrent que l'obtention d'entretien n'allait pas être chose aisée : nombreux sont les acteurs contactés à n'avoir jamais répondu, quand d'autres n'ont fait qu'y opposer leur refus, arguant de leur appréhension des risques encourus (nous pensons au CEO de Slock-it et à certains de ses salariés ayant pris part aux opérations de sauvetage, par exemple). Cette phase nous fit maîtriser plus que les seules pr"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d622d318825741cda43212d7831a88c7",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Au-delà de la revendication d'une absence de gouvernance ! [54](#au-delà-de-la-revendication-dune-absence-de-gouvernance)](#au-delà-de-la-revendication-dune-absence-de-gouvernance) [I.3.1."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "41e14735f0af4e9a832041a8168cc4e9",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Peut-être traduit par bifurcation, mais, même en français, cet anglicisme s'est imposé. Suivant la situation, il peut qualifier un événement (volontaire ou non) qui voit un réseau se scinder en deux ou plusieurs réseaux (Fork de chaîne), avec autant de registres différents de transaction. Il sert aussi généralement à qualifier les modifications protocolaires considérées comme importantes, pour les faire évoluer dans une direction souhaitée (ajout/suppression de fonctionnalités, changement d'a…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c2ff5cd25ad54dfc94da9a01f67d0bf8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Peut-être traduit par bifurcation, mais, même en français, cet anglicisme s'est imposé. Suivant la situation, il peut qualifier un événement (volontaire ou non) qui voit un réseau se scinder en deux ou plusieurs réseaux (Fork de chaîne), avec autant de registres différents de transaction. Il sert aussi généralement à qualifier les modifications protocolaires considérées comme importantes, pour les faire évoluer dans une direction souhaitée (ajout/suppression de fonctionnalités, changement d'a…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "05dae3dc59784e53bf5f7eb6a4d8030e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Et le fait de travailler sur les codes et de proposer des modifications protocolaires est tôt encadré, avec la mise en place en 2011 des « Bitcoin Improvement Proposals », ou « BIP »[^72], par exemple (cf. Introduite par une mise à jour protocolaire (« Frontier », du 7/09/2015), discutée dans le cadre formel d'un « Ethereum Improvement Proposal » (ou EIP, empruntant au BIP de Bitcoin, cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dea76780ff6843e4a12e9604a117baac",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Introduite par une mise à jour protocolaire (« Frontier », du 7/09/2015), discutée dans le cadre formel d'un « Ethereum Improvement Proposal » (ou EIP, empruntant au BIP de Bitcoin, cf. Soumise à des évolutions proposée sous forme d'Ethereum Improvement Proposal, la politique monétaire connaît donc des réductions de récompenses successives (de 5 à 3 ETH/bloc avec l'EIP 649 et de 3 à 2 avec l'EIP 1234, Ibid. , Ethhub NC)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "586e00d1ca15450ca9b25fe4595bc662",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le regard des STS nous engage à étudier « la politique de la crise » et « son gouvernement », d'un bout à l'autre - de la mise en crise à la remise en ordre - afin de faire apparaître les ressorts, enjeux et acteurs de cette entreprise (Ibid.). Les crises d'évolution, quant à elles, se révèlent différentes, dans leurs processus de mise en crise et de remise en ordre."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ca0f8cf0b9d541ba8eb4c99fa2875c18",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concept analytique mobilisé dans la thèse pour désigner et analyser « Noeuds complets (full nodes) » dans le cadre de l'étude de la gouvernance des crypto-monnaies Bitcoin et Ethereum."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4977f6c788964274956bb1078d81f2c3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Aussi, le WP aborde deux types de portefeuilles : les portefeuilles « nœuds complets » et les portefeuilles dits « légers » ou « SPV » (pour « Simplified Payment Verification », Nakamoto 2008, p. L'éventail large de clients légers, développé pour faciliter l'accès à et donc l'usage de Bitcoin à l'endroit de publics moins techniciens, s'est fait au prix de délégations et de recentralisations, que les utilisateurs cibles ne conçoivent nulleme"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e1ca84f824a94bf8bb9c021a127f34f5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Au lieu d'imposer aux nœuds mineurs de travailler exclusivement sur l'un ou l'autre des protocoles, ce qui fragmente la puissance de calcul et baisse la sécurité relative des deux, le merge mining permet une mutualisation accroissant leur sécurité respective. Pour les protocoles de registre dont le consensus repose sur une Proof of Work, ce processus est appelé « mining », et les opérateurs qui s'en chargent sont les « mineurs »."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "66b29307553742abaef277610d3a1559",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Problème de double dépense | Double spending problem : Problème auquel fait face toute monnaie numérique."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3ca250e00efd44f4bdc187a39c6e3c10",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cela interroge un phénomène de confiance articulant trois dimensions : méthodique, hiérarchique et éthique (Aglietta et Orléan 2002 ; Théret 2008). La confiance éthique, enfin, met en branle l\\'autorité du système normatif (normes et valeurs) et induit que la régulation monétaire assure la reproduction de la société dans le respect de ses valeurs constitutives."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c6bc54c40ebc4229a5309b679079b6fe",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cela interroge un phénomène de confiance articulant trois dimensions : méthodique, hiérarchique et éthique (Aglietta et Orléan 2002 ; Théret 2008). La confiance hiérarchique renvoie au fait que la monnaie est toujours garantie par une ou plusieurs autorités souveraines, d'où des hiérarchies entre les émetteurs et les moyens de paiement."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a2e5e59b69a74679a582dd186d77659d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cela interroge un phénomène de confiance articulant trois dimensions : méthodique, hiérarchique et éthique (Aglietta et Orléan 2002 ; Théret 2008). Le niveau le plus individuel relève d'une confiance dite méthodique, renvoyant à ces conditions d'usage et au mimétisme des comportements individuels, de l\\'ordre d\\'une croyance routinière dans l'acceptation collective des moyens de paiement."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c4ff6f8bb34a4bc4acf61ebb16943bde",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "à l'aune d'un nominalisme « non étatiste » attentif aux usages De notre point de vue, l'un des obstacles à la reconnaissance du statut monétaire des CM tient à « l'incapacité des analystes à s'abstraire de ce qu'ils connaissent déjà : la monnaie bancaire, unitaire et centralisée, garantie en dernier ressort par l'État. Inscrit dans un nominalisme non étatiste, nous considérons que la nature monétaire des CM réside moins dans leur capacité à port"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f71ee316f413448c8b9823c2799aba30",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Nous soutenons que les CM font monnaie, à l'aune de notre institutionnalisme monétaire ainsi que de leur usage en compte et en paiement : des monnaies parallèles aux localismes communautaires. Nous montrerons que, dans leurs usages, les CM possèdent les caractéristiques minimales de toute monnaie (elles se rapportent à la dette, à la confiance et à la souveraineté), et s'intègrent facilement au champ de la monnaie, en tant que monnaies parallèles"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "40bace4b96224d138b3f198e18ffa173",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Un portrait sombre était brossé, insistant sur les usages illégaux, les arnaques, les attaques informatiques, et le caractère erratique des cours boursiers. Dans notre champ, ces écarts au scénario prennent la forme de failles, de bogues, d'attaques informatiques ou d'ajouts et d'évolutions des dispositifs socio-techniques au cœur de la CM."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e3b561607c3844ec9755ee97cdc16b11",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "119), puisqu'il est constitué d'une multiplicité de « mondes sociaux » et d'arrangements sociotechniques dont l'articulation repose sur des secteurs, des acteurs et des « objets-frontières »[^68] (Leigh Star et Ruhleder 2010; Trompette et Vinck 2009, p. Relevant d'infrastructures et d'objets-frontières, elles induisent différents points de vue suivant la position relative de l'observateur (Star 1999; Trompette et Vinck 2009), expliquant la visi"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ac80b824dedc47419211e4393dfcd681",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "D'abord, il y a la gouvernance par l'infrastructure qui encadre les interactions et résout les conflits sur l'historique des transactions via l'algorithme de consensus\\, comme avec le « consensus de Nakamoto » pour Bitcoin (cf. Cependant, cette gouvernance mène à une autre, plus sociale et politique : la gouvernance sur l'infrastructure."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e22205f327564c608c4710150bbac16b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "D'abord, il y a la gouvernance par l'infrastructure qui encadre les interactions et résout les conflits sur l'historique des transactions via l'algorithme de consensus\\, comme avec le « consensus de Nakamoto » pour Bitcoin (cf. Cependant, cette gouvernance mène à une autre, plus sociale et politique : la gouvernance sur l'infrastructure."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4e1ab5fc2fa342bca2cfc734f5c36424",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les crises démontrent que ce n'est pas n'importe quel code qui peut être considéré comme la loi, alors même que le slogan « code is law » prive de sens les concepts de failles, de vulnérabilités, de bogues voire d'attaques, puisque tout résultat d'un code est réputé normal, indiscutable et légitime. ### D'autres types de crises passées et encore à découvrir D'autres types de vulnérabilités peuvent exister et leur gravité (et leurs conséquences"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3efade56eb0c450a8d1f3060bca119ff",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À l'opposé, les coiners\\ en défendent la suppression pure et simple : il s'agit de substituer la gouvernance par la technique. En outre, il faut questionner l'absence présupposée de toute intermédiation et gouvernance humaines, en particulier pour ce qui a trait à leur code protocolaire, dont l'immutabilité annoncée attend d'être confirmée ou infirmée."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "881dd0f54e0747f2b3737ba34fc30693",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Certains objets présentés comme CM relevaient simplement de monnaies digitales ou de crypto-actifs, sans révolutionner la monnaie comme Bitcoin."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "68999dd6e7d64457b1f9a77ebd61a3e2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Supposant des liens construits « entre les dispositifs impliqués dans son usage, et les conceptions de la valeur qu\\'elle incarne », confiance et légitimité se jouent dans les modalités d\\'établissement d\\'un réseau hétérogène d'acteurs et de dispositifs plus ou moins capables de faire émerger de la valeur et d'en « mettre en œuvre la circulation » (Ibid.). Avant MtGox et sans espace de conversion suffisant, la valeur des UCN se fait dilemm"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "55fe068d49e04e379fa6b0ccfcd3b3e0",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cela induit une grande complexité technique et un travail de conception important, car chaque nouvelle « implémentation doit recommencer à zéro une chaîne indépendante, et nécessite l'écriture et les tests de tout le code de transition d'état et de réseau », sans même que ces protocoles ne soient assurés de rencontrer une demande justifiant leur développement. Le premier usage particularisant du concept de gouvernance date d'un rapport de la Ba"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8f8adbbb5da5460eaacedc696259ce56",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Autre différence radicale quant à la création monétaire, les concepteurs d'Ethereum refusent, comme pour Peercoin, le concept d'offre monétaire limitée et finie."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "cf44312c32734899b2de9c7efdf1e3c2",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À travers l'examen de leur conception et de leur fonctionnement, il faut éprouver la neutralité et l'autonomie technique que garantirait leur protocole informatique. Bitcoin y a été largement « étudié dans la communauté des systèmes distribués pour les systèmes [de protocole de registre] fermés [et] a revitalisé le domaine et conduit à une pléthore de nouvelles conceptions » (Bano ; et al."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ec999565ab0e4474a00a79a2dd6f705e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Mais l'offre « multi-signature », nécessaire à la mise en œuvre de solution de séquestre non centralisée, reste absente, impliquant des échanges de biens et services réels périlleux, car suspendus à l'existence de confiance intuitue personae entre coéchangistes. Cette conception privilégie les dispositifs de gouvernance off chain, et propose de réfléchir aux institutions décentralisées permettant de reconstruire un système politique plus démo"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a6d2b7e9dee94a32b6e442824d889e9d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin y a été largement « étudié dans la communauté des systèmes distribués pour les systèmes [de protocole de registre] fermés [et] a revitalisé le domaine et conduit à une pléthore de nouvelles conceptions » (Bano ; et al. Les CM comme « Bitcoin [sont] difficile[s] à intégrer dans une conception politique de la monnaie [qui s'avère] peut-être [...] incomplète » (Jeong, 2013, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d9cbeb9053194544b2a6efc5e1277854",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "### La phase de « péché » (d'avril 2012 à octobre 2013) Avec WikiLeaks, Bitcoin dépasse le statut de preuve de concept, démontrant pratiquement ses ambitions de système de paiement alternatif : il s'érige en canal financier et monétaire auxiliaire, relai de dernier ressort des flux économiques de l'organisation en contournement de sanctions qui tentaient de l'en priver."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a58d61a8fbb24b94af41ffcda9c147d8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À cette quantité de GAS est appliqué un prix par unité de gaz (le « GASPRICE », exprimé en Wei, l'unité la plus petite de l'Ether, comme le Satoshi du bitcoin ; cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fd337ea6749747b3a9f576ee3c3488a1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Contient l'ensemble des acteurs qui fournissent une interface entre le système de protocole de registre distribué et le monde extérieur. On retrouve ici les bourses d'échange crypto fiat qui offrent une passerelle monétaire, mais aussi de nombreux autres services comme les explorateurs de registre\\, par exemple."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1457c3a130204346b3e3919b88fd10f3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin y a été largement « étudié dans la communauté des systèmes distribués pour les systèmes [de protocole de registre] fermés [et] a revitalisé le domaine et conduit à une pléthore de nouvelles conceptions » (Bano ; et al. Plus nuancés, ces travaux ont étudié les propriétés de Bitcoin et les déterminants de son prix de marché (et d'éventuelles manipulations de cours, Halaburda et Gandal 2014 ; Gandal et al."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "cd5fe8d501bd468abd0be818a6237cd0",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Renvoie à toute modification proposée au registre ; elle n'est pas nécessairement de nature économique (transfert de valeur). Une transaction peut être soit non confirmée (non incluse dans le registre, elle se trouve encore seulement dans la mempool), soit confirmée (incluse dans le registre). Une même transaction peut contenir une multitude de transactions différentes : différents receveurs ; différentes modifications de registre, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f608f24486464db7af3b43a2e014948f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Au sein de cette famille d'usages, le concept de gouvernance permet moins de relativiser la place du marché que de l'absolutiser, puisqu'il « renvoie à des mécanismes de coordination essentiellement économiques afin de réduire les coûts de coordination. ### Retournement positif du concept : réintégrer le pouvoir et la politique Cette famille d'usages n'épuise pas le concept de gouvernance et une myriade d'approches en ont fait un outil heuristiq"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c149df7c23504f61b048c92e25d4d448",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À travers l'examen de leur conception et de leur fonctionnement, il faut éprouver la neutralité et l'autonomie technique que garantirait leur protocole informatique. Bitcoin y a été largement « étudié dans la communauté des systèmes distribués pour les systèmes [de protocole de registre] fermés [et] a revitalisé le domaine et conduit à une pléthore de nouvelles conceptions » (Bano ; et al."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c327e51615ca43a5bae0ff13bd2c1bcb",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "[^55]: À l'aune du concept d'optimum de Pareto, au fondement de la mesure de l'efficacité économique, cela est impossible : chaque situation de dotations initiales possible est optimum au sens de Pareto (Harribey 1997). Il révèle les arbitrages, problématiques et compromis hybrides qui ont marqué chaque étape de leur développement, depuis leurs conceptions initiales jusqu'à leurs phases de développement infrastructurel."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "50691d10d9794d1fa8dbee96558bc48b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les règles monétaires sont définies et rendues exécutoires au sein d'un réseau d'acteurs suivant un protocole informatique que l'on rejoint sous pseudonyme et par choix. Aux privilèges verticaux du système hiérarchique répondraient l'horizontalité et l'universalité d'un protocole de communication et d'un réseau pair-à-pair (P2P) ouvert et accessible à tous."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0a0bc9a2601f438ea2a367641eb12942",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un logiciel client capable de générer, stocker et administrer des couples de clefs cryptographiques afin de conserver et transférer ses CM et actifs digitaux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5d1b55d2b4ec41558bd0f387582378d5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un logiciel client capable de générer, stocker et administrer des couples de clefs cryptographiques afin de conserver et transférer ses CM et actifs digitaux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a7f56621c7fb44039c965fcc2023a2af",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un logiciel client capable de générer, stocker et administrer des couples de clefs cryptographiques afin de conserver et transférer ses CM et actifs digitaux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "650898ae995941b98f031da08ede996a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un logiciel client capable de générer, stocker et administrer des couples de clefs cryptographiques afin de conserver et transférer ses CM et actifs digitaux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3e1285d6e6c841e9ba7d50749cc76f2c",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Aller plus loin dans l'expérience nous fit prendre les casquettes du trader, de l'investisseur, du hasher et nous procurer des CM contre des euros via l'intermédiaire de différents services de passerelle. La majorité reconnaît porter - ou avoir porté - plusieurs « casquettes », comme celles d'opérateurs de « nœuds complets » (tous, que ce soit personnellement ou via leur entreprise), voire de nœuds de minage (« hasheurs », sur Bitcoin m"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f78859ad308a4a7a880ee3f474bf3924",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Il conviendrait alors d'examiner plus avant une telle organisation, pour comprendre son fonctionnement et spécifier les rôles, statuts et positionnements des différents acteurs qui la composent : mineurs, promoteurs, responsables de sites officiels, utilisateurs, etc. En soi, une liste de participants est disponible, mais elle est dynamique et non statique, évoluant au gré des entrées et sorties de mineurs."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fe98ae72d33a49208a2d301d9a46e156",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Au niveau matériel, les renégociations seront rapides : là où de simples ordinateurs de bureau suffisaient à miner du bitcoin la première année, il faut désormais des équipements spécifiquement dédiés, optimisant le couple quantité de calculs et énergie consommée. Puisque le développement de nouveaux ASICs est perçu comme un risque de centralisation, érigeant des barrières à l'entrée contrevenant au principe d'ouverture au plus grand nombre, le c"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0f7fc885a3174c789cdce2b73a22cad1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Si contribuer à l'activité de minage fut la première manière d'obtenir des UCN, il est aujourd'hui possible d'en obtenir en don ou en paiement, en échange de biens, de services ou d'autres devises... 54-58) : introduction de comptes épargne, de cartes et services de paiement (pour consommateurs et entreprises, offrant une conversion directe en monnaie nationale), de distributeurs de BTC, de plateformes de financement participatif et de transfert"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2256f8438e3d4274a113f9f7417c4f86",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Aux usages financiers s'en s'ajoutent d'autres : lancement de l'API de « Blockchain.info », de services de notarisation utilisant Bitcoin pour horodater, certifier et suivre l'existence de données. Ces services permettent de suivre le traitement des transactions, de consulter les enregistrements et les transactions passées depuis le lancement de la chaîne de blocs et d'accéder à d'autres données (sur le minage ou la répartition des UCN par adress"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ab4096771e454ece84ae3a904dad36ea",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Contient l'ensemble des acteurs qui fournissent une interface entre le système de protocole de registre distribué et le monde extérieur. On retrouve ici les bourses d'échange crypto fiat qui offrent une passerelle monétaire, mais aussi de nombreux autres services comme les explorateurs de registre\\, par exemple."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8c43948184d34e48a9529aead1ad5b1f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Contient l'ensemble des acteurs qui fournissent une interface entre le système de protocole de registre distribué et le monde extérieur. On retrouve ici les bourses d'échange crypto fiat qui offrent une passerelle monétaire, mais aussi de nombreux autres services comme les explorateurs de registre\\, par exemple."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "12df60f090274a3eb3adee0e2d07111e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Certaines expériences, comme Ethereum, offrent des services financiers complexes (dépôts et crédits, véhicule d'investissement, produits dérivés de toutes sortes, etc.). D'autres servent d'intermédiaires financiers (services de passerelles\\ comme les bourses d'échange, les portefeuilles gérés par des tiers, etc.), permettant aux UCN d'avoir une sphère d'usage et une valeur d'échange."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "86fb4e88f8e640119994f794d645d5ab",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "À côté de Bitcointalk, des médias spécialisés sont apparus (WeUseCoins, crypto.fr) qui, s'ils émanent encore de membres d'une communauté Bitcoin grandissante, seront de plus en plus concurrencés par les médias traditionnels, s'emparant d'un objet pour eux spectaculaire."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "675b100273aa4992bb74aaac14bb8199",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Van der Laan, trois développeurs Bitcoin Core reconnus[^25]. Toute modification de code est un « coordination challenge » puisqu' « aucun développeur ou mainteneur n\\'a naturellement le rôle de coordonner la correction des bogues, et encore moins l\\'autorité de déployer des mises à jour contre la volonté des autres participants » (Ibid.)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e1a7b06839404dbdacba7f00782a5450",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Plus que de simples objets socio-techniques, les CM correspondent à la définition et aux propriétés d'une infrastructure - physique ou numérique[^36] - selon les STS et les Infrastructural Studies (Star 1999 ; Bowker 1996 ; Edwards et al. Un protocole nu ne fait pas monnaie, cela nécessite une infrastructure : des usages, d'autres arrangements socio-techniques pour s'y connecter, une maintenance et des évolutions qui en renégocient formes, co"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "34cf4660dca146a0a39e28594481c8bb",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Objectifs, Apports et Organisation générale de la thèse [43](#d.-objectifs-apports-et-organisation-générale-de-la-thèse)](#d.-objectifs-apports-et-organisation-générale-de-la-thèse) [E. Cette « décentralisation » produirait des systèmes monétaires « neutres » et « apolitique », avec des monnaies « saines » d'une crédibilité inégalée (Antonopoulos Bitcoin Q&A 2018) : leur monnayage (quantité d'UCN, modalités d'émission et de circulation) « i"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c6b4b17b411847afacfad6b82df39055",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avant MtGox et sans espace de conversion suffisant, la valeur des UCN se fait dilemme de la « poule et de l'œuf » puisque sans valeur, pas d'acceptation en échange et sans échanges, pas d'apparition de valeur (\\\"The Madhatter\\\" cité par Sedgwick 2019b)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dc4d30d9136b4d0ea66df5d6628fc73f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'injonction faite de sécuriser individuellement ses clefs cryptographiques (à l'époque un fichier « wallet.dat ») s'érige en enjeu opérationnel crucial, car être sa propre banque n'est pas à la portée de tous, ce qui se traduit par des pertes importantes[^73][(Banque de France 2013, p. Ici, les utilisateurs finaux, en plus d'affronter les risques précédents, se trouvent privés de la gestion des clefs cryptographiques qui relèvent du seul servi"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "de0b904e361b431c894e53b1acff91f1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Renvoie à toute modification proposée au registre ; elle n'est pas nécessairement de nature économique (transfert de valeur). Une transaction peut être soit non confirmée (non incluse dans le registre, elle se trouve encore seulement dans la mempool), soit confirmée (incluse dans le registre). Une même transaction peut contenir une multitude de transactions différentes : différents receveurs ; différentes modifications de registre, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a742fa34c7c14da38d0867fe80bc309d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin est d'abord perçu comme « un truc cool et nerveux, pas juste un autre PayPal » et l'engouement à son égard « concernait principalement le contournement des contrôles » pour des usages « exotiques » (May 2018), déjà décrits et prescrits dans les écrits Cypherpunks (le \\\"BlackNet\\\" de May, 1992; 1994)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4c0181544af34d1caedc41d7dff567c5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'impossibilité pour un acteur ou un cartel d'effectuer unilatéralement et arbitrairement : (i) une modification des règles du protocole ; (ii) de bloquer ou de censurer des transactions ; et (iii) de saisir un compte ou de geler des avoirs."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f479306eeb9348bda7c10665ec93d1ad",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'échange entre Malmi et « NewLibertyStandard » au taux de 0.00099\\$/BTC (Sedgwick 2018b), ou la cotation en continu produite par « Bitcoinmarket.com » (Sedgwick 2018b) restent pour le moins éloignés des canons du prix d'équilibre et du marché parfait (liquide et profond) théorisé par la science économique."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1395e56e2f364df4a4add424b87613a3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ces services reposent sur une chaîne d\\'intermédiation et de responsabilité complexe, faite d'une multiplicité d'arrangements sociotechniques disparates - liaison au système bancaire, infrastructure centralisée, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d8022a1e77fe48b0bf01cb915a6c9945",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Pour ce faire, nous sommes partis du travail de Rauchs (2016), couvrant l'évolution des segments et acteurs de l'écosystème Bitcoin entre 2009 et 2015. [^71]: Entre 2010 et 2011, l'écosystème Bitcoin passe des cinq segments initiaux à 13, voire Rauch 2016, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8c7f7093cd5b4b95b3512c13fa0ab1d1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Dès lors, dans ces domaines, nous allions prendre part aux controverses indigènes (mais étaient-elles encore indigènes ?), sans rougir -- ce que nous nous étions empêché de faire au début - trouvant même parfois le soutien d'acteurs de poids[^49]. Nous présenterons d'abord chacune des phases du développement infrastructurel de Bitcoin, en présentant certaines compositions d'arrangements, de pratiques, de secteurs et d'acteurs qui s'y développent"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "36fef8a79e3740f3b70788765b36d02f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Parmi les derniers segments de l'écosystème apparus, on compte les marchés prédictifs, de nouveaux services et logiciels à visée de conformité, la sécurisation des portefeuilles qui progresse avec les premiers portefeuilles physiques - Trezor [(SatoshiLabs 2019)](https://www.zotero.org/google-docs/?fXPij4) suivi dès 2014 par Ledger, une firme française devenue leader du secteur [Entretien n°8]. En ce début de période, Bitcoin est encore pour un"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "878455ba7b7a48ad944d05748bd8afce",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "6, préface de la 1^ère^édition anglaise (1936) En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXI^e^ siècle, une contestation monétaire radicale fut lancée : Bitcoin. Cette « décentralisation » produirait des systèmes monétaires « neutres » et « apolitique », avec des monnaies « saines » d'une crédibilité inégalée (Antonopoulos Bitcoin Q&A 2018) : leur monnayage (quantité d'UCN, modalités d'émission"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a7eed337853c42baaa35bdfb0b2a6f69",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Certains objets présentés comme CM relevaient simplement de monnaies digitales ou de crypto-actifs, sans révolutionner la monnaie comme Bitcoin. Cette insertion dans le « réseau crypto » parisien nous conduisit à assister à un ou plusieurs événements publics internationaux sur Bitcoin et Ethereum, comme à établir des contacts pour nos entretiens."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b7fe31dae5034877822bae63092f4a38",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les autorités et les acteurs bancaires et financiers s'érigent en « tiers de confiance » et « médiateur[s] de conflit », statut leur conférant autorité et pouvoir dans la gouvernance d'ensemble. Dans le réel, suivant des communautés dispersées et par le travail de certains acteurs (individus ou organisations) qui organisent des rencontres, conférences, présentations, etc., là encore, plus ou moins ouvertes et ciblant différents types d\\'a"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "409eb8134a5c48a49b1508a38e25d649",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Dans le même sens, la présentation d'Ethereum mettra en lumière ses aspects normatifs et son développement infrastructurel propre, influencé par Bitcoin, mais enrichi de critiques sur ce qui est perçu comme ses rigidités protocolaires et infrastructurelles. Le développement infrastructurel de Bitcoin n'y déroge pas, il se fait même exemplaire."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f77fee10399c40a89d321ea884a70b79",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Dans le champ juridique, un vaste pan de la littérature s'est concentré sur les problèmes de l'encadrement légal du Bitcoin et des autres CM, plateformes et pratiques qu'il a initiées (Walch 2017). [De Filippi et Loveluck (2016)](https://www.zotero.org/google-docs/?u9lygj) et Kavanagh et Miscione (2017) l'ont souligné pour Bitcoin."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "03f93467fc1f4650acdc64167a8ecce4",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Certains objets présentés comme CM relevaient simplement de monnaies digitales ou de crypto-actifs, sans révolutionner la monnaie comme Bitcoin. La majorité des économistes et des praticiens vouait Bitcoin aux gémonies sans vraiment s'y être intéressée (d'où l'absence de travaux académiques pour les premiers), le décriait dans les journaux, sur les réseaux sociaux ou dans des blogs."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b609ad6d0bee4ec69b2474c6260537da",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Renvoie à toute modification proposée au registre ; elle n'est pas nécessairement de nature économique (transfert de valeur). Une transaction peut être soit non confirmée (non incluse dans le registre, elle se trouve encore seulement dans la mempool), soit confirmée (incluse dans le registre). Une même transaction peut contenir une multitude de transactions différentes : différents receveurs ; différentes modifications de registre, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d66b452862854afc98a024f06ddbf56a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "![](media/image6.png){width=\"6.834027777777778in\" height=\"6.472916666666666in\"}Figure n°7 : Division sociale du travail protocolaire et spécialisation des acteurs Notre présentation vise, en les décomposant, à mieux cerner les différents rôles et statuts qui structurent la communauté des Bitcoiners, comme les modalités de leurs interrelations."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1d59213c63a94764b97781963305b81d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à un logiciel client capable de générer, stocker et administrer des couples de clefs cryptographiques afin de conserver et transférer ses CM et actifs digitaux."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3bdb90206ead401498ae3f9cadd1fb8f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'éventail large de clients légers, développé pour faciliter l'accès à et donc l'usage de Bitcoin à l'endroit de publics moins techniciens, s'est fait au prix de délégations et de recentralisations, que les utilisateurs cibles ne conçoivent nullement comme un problème."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2cce8c93e3984269bf089e262d3af80d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin réalise « sa première révolution industrielle » quand, d'individuelle, la compétition de la POW devient collective : des mineurs coopèrent afin « de combiner leur puissance de hachage » (Ibid.) pour augmenter leurs chances de trouver une PoW et ce, malgré une cible de difficulté de plus en plus élevée et face à des capacités de minage de plus en plus grandes et concentrées[^97]."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "05cf2ce325b24b63aae5a257f524a2aa",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le maintien d'un nœud n'est pas anodin : aux ressources et compétences requises (d'abord informatives et techniques, rapidement économiques suivant que l'activité de minage rencontre des économies d'échelle vectrices de concentration) s'ajoute une exposition à des risques importants (pertes ou vols par compromission des clefs cryptographiques, monitoring et maintenance du nœud, etc.). Face à cette concurrence accrue et les barrières à l'entrée qu"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c5b2300fbbc8446da52a26614d5bd1df",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Nakamoto est informé des recherches précédentes et des risques qu'encourent les systèmes de protocoles de registre distribués P2P (sybille attaque et double dépense, cf. Cette architecture prémunit contre les risques d'attaque sybille et la double dépense\\, puisque le protocole spécifie l'« accord de plusieurs nœuds sur une valeur » à « ajouter à la blockchain », généralement via l'élection par roulement, parmi les nœuds de ce comité, d'"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1b268fa5dd1b4f07b5b9a0760cd46c34",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concept analytique mobilisé dans la thèse pour désigner et analyser « Mobilité des hashers (force équilibrante contre centralisation) » dans le cadre de l'étude de la gouvernance des crypto-monnaies Bitcoin et Ethereum."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0ee7b79bff9a477db1a47af2421b5ce3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "De manière générale, ce terme recouvre les acteurs non humains et leurs opérateurs humains participant du réseau, communiquant avec leurs pairs en suivant les règles canoniques du protocole de registre distribué considéré. Ils peuvent revêtir différentes formes et, suivant celles-ci, prendre part à tout ou partie des processus liés au traitement des transactions et à la production d'enregistrements ou à leur vérification : nœuds mineurs, nœuds complets, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "22cda34c732d4ed389639be2024b5a18",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "S'agissant de la limite de la taille des blocs fixée à 1 Mo, elle n'est pas le choix initial (contrairement à ce qu'en disent De Filippi et Loveluck 2016, par exemple) : à son lancement, Bitcoin n'avait pas formellement « de limite de taille de bloc, bien qu\\'il soit probable que des blocs plus grands, peut-être plus de 32 Mo, auraient brisé le système » (Bier 2021b). Comme pour se distinguer un peu plus de Bitcoin, voilà qu'Ethereum établit de"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5906a40da0324b92a5178f6aac6e7184",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Une partie des Bitcoiners, dits Bitcoiners Maximalistes\\, condamne et rejette tout objet apparenté à une CM autre que leur sacro-saint Bitcoin, alors même qu'ils se réfèrent à un free banking valorisant la concurrence monétaire (cf."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3a486f75b5d449c1a903e3019afb82e5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "[^51]: Les auteurs de Bitcoin Métamorphose, De l’or des fous à l’or numérique ? Il s'appuie aussi sur des recherches appliquées et des expérimentations singulières (logiciels libres, réseaux P2P et monnaies privées numériques dont Bitcoin est plus ou moins explicitement inspiré, en violet ; Narayanan et Clark 2017; Bano; et al."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "13989b28210b4313a20754a322f64cdb",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "» > > Bitcoin : A Peer-to-Peer Electronic Cash System > > Satoshi Nakamoto, 2008, p. Le papier séminal - « Bitcoin : Un système de cash électronique pair-à-pair »[^9] - prend la forme d'un court WP, publié le 31 octobre 2008 sous le pseudonyme de Nakamoto (Nakamoto 2008b), d'abord diffusé dans un cercle d'initiés via la Cryptography Mailing List[^10]."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d9179704d39747c3995e6eddc21df3c7",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "D'abord, il y a la gouvernance par l'infrastructure qui encadre les interactions et résout les conflits sur l'historique des transactions via l'algorithme de consensus\\, comme avec le « consensus de Nakamoto » pour Bitcoin (cf. Nécessaire mais non suffisante, car l'architecture et les paramètres initiaux de Bitcoin renvoient à des contraintes hybrides et négociées, aussi théoriques que pratiques, impliquant de trancher des arbitrages : ce"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "00a5790b48414546ab2ef8f585e0b4b5",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Citons déjà les expériences de monnaies numériques privées : que ce soit de l' « eCash », reconnu comme le premier système de paiement basé sur la cryptographie du début 1990 par D. D'ailleurs, des cypherpunks et cryptoanarchistes notoires, d'obédience libérale/libertarienne assumée, avaient pensé avant lui à la création de monnaies numériques décentralisées via des architectures P2P."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "31c523b093144c57a62c94e6f37e01d1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La dénomination indigène Altcoin regroupe et qualifie péjorativement toutes les cryptomonnaies, actifs numériques et monnaies digitales, à l\\'exception du Bitcoin, pris comme idéal-type. Certains termes utilisés par des figures communautaires dites Maximalistes\\ sont encore plus péjoratifs (scamcoin ; shitcoin, etc\\...) et mettent en évidence les différences et les critiques philosophiques et pratiques qui structurent ces communautés."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "91db2d018fae451f8f8d23d559fa30e1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Son architecture à deux étages, alliant PoW et PoS, permet optionnellement des transactions anonymisées par mixage via « CoinJoin » et des paiements instantanés. Le Dash se fait exemplaire, démontrant que, derrière la grande diversité des protocoles de CM, c'est finalement à la normativité de l'architecture et des paramètres de Bitcoin que tous essayent de se soustraire."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0386bd526a04481d9ce4501f8c41374f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ces derniers sont aussi les seuls à avoir un droit de vote, car au sein du protocole est formalisé un cadre de gouvernance définissant les modalités de prise de décision (avec proposition communautaire et vote) et un budget commun, auquel est allouée une partie des récompenses de création monétaire. Voilà qu'à l'instar de Bitcoin où la totalité des incitations est dirigée vers le minage et ses opérateurs, ici l'émission monétaire est répartie ent"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4a60ea3c20584ccebb616ffc0d774c88",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Renvoie à toute modification proposée au registre ; elle n'est pas nécessairement de nature économique (transfert de valeur). Une transaction peut être soit non confirmée (non incluse dans le registre, elle se trouve encore seulement dans la mempool), soit confirmée (incluse dans le registre). Une même transaction peut contenir une multitude de transactions différentes : différents receveurs ; différentes modifications de registre, etc."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "88ed51b76f564ae6b1460ab17d821bce",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Son architecture à deux étages, alliant PoW et PoS, permet optionnellement des transactions anonymisées par mixage via « CoinJoin » et des paiements instantanés. [^93]: Lightning Network (LN) est un protocole de paiement en surcouche de Bitcoin formalisé dès 2015 par Joseph Poon et Thaddeus Dryja (<https://web.archive.org/web/20150228162703/http://lightning.network/> [consultation au 24/08/2020]), permettant des paiements très rapides (qu"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f2ca6785c24a4b8986b7d26a1ea6e313",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le Dash se fait exemplaire, démontrant que, derrière la grande diversité des protocoles de CM, c'est finalement à la normativité de l'architecture et des paramètres de Bitcoin que tous essayent de se soustraire."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "86d9acf8b5d94e66a0e417ae45910bfa",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les recherches protocolaires vont au-delà de Bitcoin stricto sensu et conduisent à l'apparition d'innovations de métaprotocole visant une extension de ses usages non financiers (Omni/Mastercoin, Counterparty, en rose dans la chronologie, Rizzo 2015). Le métaprotocole Omni/Mastercoin, protocole de surcouche ajoutant des usages non monétaires à Bitcoin, ouvre le bal."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8d578d2f715f4cd19b995be543776414",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Correspond à l'ensemble des acteurs qui, suivant leurs compétences spécifiques, peuvent écrire et relire les codes informatiques qui sous-tendent les éléments technologiques constitutifs des systèmes de protocoles de registre distribué (couche protocolaire) et/ou de leurs systèmes connectés (couche applicative). Ils peuvent être professionnels ou participer comme contributeurs bénévoles."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bb6e1c5c9e864e19bfdc3286cea4076a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avant cette version, « les règles de consensus de Bitcoin autorisent une taille d\\'OP_Return allant jusqu\\'à 10 000 octets », avec Bitcoin Core 0.9.0, les transactions OP_Return, pour être relayées, devront être inférieures ou égales à 40 octets et non à 80 octets, limite discutée à l'origine (BitMEXResearch 2022). Par un effet retour négatif, cette baisse à 40 octets allait « par inadvertance [rendre l'] OP_RETURN moins attrayant » rap"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "944ea610bc09480fbefccb064b48d192",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L\\'absence de langage etic, comme cadre conceptuel rigoureux et unifié, était problématique pour les chercheurs, les régulateurs, mais aussi pour les citoyens, face à un langage indigène évoluant au gré des stratégies économiques et discursives des acteurs. Nos e-monnayeurs, comme Edison, naviguent « en eaux troubles entre le social, le technique, l'économique, etc., négociant les contenus mêmes de leurs innovations avec les acteurs qu'ils"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f6c7446fa0fe4f318142a09f4848f84f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "S'il conserve un rôle de référent et une forme de leadership (en termes de capitalisation boursière), l'infrastructure crypto-monétaire ne tourne plus exclusivement autour de lui : Ethereum s'érige comme étoile émergente, autour de laquelle gravite le développement de nouveaux protocoles et de nouveaux services."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5e14740096bb483a98711a1ead675d43",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Concept analytique mobilisé dans la thèse pour désigner et analyser « Contournement des rails bancaires (stablecoin) » dans le cadre de l'étude de la gouvernance des crypto-monnaies Bitcoin et Ethereum."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a7bec8b7df704a9599e46628baf2f8c1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Certains objets présentés comme CM relevaient simplement de monnaies digitales ou de crypto-actifs, sans révolutionner la monnaie comme Bitcoin. Le besoin est d'avoir un système de paiement électronique basé sur une preuve cryptographique au lieu de la confiance, permettant à deux parties volontaires de réaliser entre elles des transactions sans le besoin d'un tiers de confiance."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dbaa2fa2fe86491990df355f8996bc03",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Il pose les bases d'une catégorie d'actifs qui deviendra centrale dans l'écosystème et qui conteste à Bitcoin son statut d'UCN pivot sur les marché cryptos : la grande majorité des volumes d'échanges de CM sera désormais libellée en stablecoin et non plus en BTC, dans ce qui s'apparente à une « dollarisation de Bitcoin » (Koning 2015). Arbre de Merkle (ou de Hachage) | Merkle tree (or Hash Tree) : Correspond à une méthode cryptographique"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d929e6af23cc48cc9f910dcd6e90d95a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ce processus est complexe, multi-acteur et multi-niveau, et permet aux CM d'évoluer, de s'adapter, d'étendre leurs usages et de s'intégrer au système monétaire et financier, leur conférant, par monétisation, une valeur d'échange. [^7]: S ous l'appellation générique Bitcoin , on distingue conventionnellement entre le protocole et s es processus , e t la devise en tant qu’ unité de compte , dénommée respectivement Bitcoin (grand B) et bitcoin (peti"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f84329132a4e42c8b7ed6f183f62fbc6",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Intéressons-nous d'abord à l'objet de cette normalisation des crises, ces implémentations et versions de clients Bitcoin jugés défaillants. Que la faille CVE 2018 soit multiforme, impliquant deux types de bogues selon les implémentations et les versions des clients Bitcoin concernées, illustre la dimension infrastructurelle et écosystémique de Bitcoin."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "641da162d8044da39035aafc996f7f9f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Pour restreindre encore notre terrain, nous avons choisi d'analyser pour chacune d'elles un moment de « crise » particulier : le bogue CVE 2018 #17144 pour Bitcoin et la crise ouverte par l\\'attaque de « The DAO » pour Ethereum (cf. D'autres correspondent à des matériaux à visée plus générale et à une audience plus large, comme c'est le cas pour les textes de journaux spécialisés en ligne, les billets de blogs, les rapports de divulgation de la f"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b69a769ca24848269ead1bac5d5f08f6",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "S'y déploient des enjeux de passerelles et de standardisation (vecteurs problématiques d'interopérabilité), d'alignement d'intérêts entre parties prenantes pour lesquelles stabilité, durabilité et innovation (et les risques afférents) n'ont pas le même attrait suivant ce qu'elles attendent de l'infrastructure (Ibid.). Summer Hill, Entretien n°26]. Ethereum a choisi a contrario d'« avoir des clients multiples » et donc différentes équipes"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "455a1b658d1e41abbf2c34f6a56b676a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avant même le lancement d'Ethereum coexistait une diversité d'implémentations protocolaires indépendantes, avec « Vitalik qui faisait un client Python, Gav qui faisait un client C++, Jeff qui faisait un client en Go, tout en parallèle » [B. Là encore, le statut d'implémentation « focale » relève moins d'une assignation formelle que d'une convention d'acteurs[^156] : Geth est le client officiel de l'EF, sa maintenance n'a jamais été remise en c"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1ec92dbbf42d4d5cbc23f35fe3ec0e64",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En premier lieu, le WP envisage comme probable qu'Ethereum « passe à un modèle de proof-of-stake (preuve d'enjeu) pour des raisons de sécurité » : conçu comme « plus sûr, [ce mécanisme serait aussi] moins gourmand en énergie et mieux adapté à la mise en œuvre de nouvelles solutions de mise à l\\'échelle par rapport » à la PoW (Ethereum Foundation 2023a). Zamfir Recherche PoS (Casper), Ethereum Foundation ;F."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bed4df005c7ce36030703bd68cb521d1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les CM recouvrent les UCN émises et administrées par des protocoles de registre distribué publics et s'apparentent à une nouvelle catégorie de monnaie, suivant leur gouvernance singulière qui les voit reposer ni sur la logique de signature propre à la finance, ni sur la logique de sceau propre aux monnaies nationales. Bien que collective, cette logique de co-monnayage distribué est fondée sur un consensus entre l'ensemble des participants d'où une transparence, une sécurité et une intégrité d…"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "15e514aa2f965ee5fc25ac5a6ba7b0ef",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les monnaies parallèles, notamment les monnaies locales et complémentaires (MLC), le faisaient déjà à moindre échelle (Blanc 1998a; Blanc 1998b; Blanc 2009a). Les monnaies locales et complémentaires visent à instituer des systèmes monétaires faisant la part belle à l'humain et aux relations sociales, réinstillant proximité, confiance, valeurs partagées et délibérations dans les affaires monétaires (Ibid.)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1e4e694fd7a39547c34d0899a0c1597f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le « consensus de Nakamoto » fondé sur la preuve de travail (PoW), premier algorithme de consensus\\ permettant à des systèmes de protocole de registre ouvert, y est le « composant le plus débattu » (Bonneau et al. D'abord, il y a la gouvernance par l'infrastructure qui encadre les interactions et résout les conflits sur l'historique des transactions via l'algorithme de consensus\\, comme avec le « consensus de Nakamoto » pour Bitco"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6390dcaf87ea9c439228bdd2cff8d1c3",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les projets d'entreprises privées d'envergure, comme Facebook et la désormais mort-née Libra/Diem ont accru les inquiétudes et accéléré les travaux sur les « Central Bank Digital Currency » (CBDC)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "53983b5343c0ff0a8253aa23d5c3ad45",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "En revanche, il était plus surprenant de voir ces objets relégués hors du champ de la monnaie par des auteurs de l'institutionnalisme monétaire francophone (IMF) (Dupré, Ponsot et Servet, 2015). L'institutionnalisme monétaire francophone (IMF) s'inscrit dans ces approches."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4efa61674cbd5af26dd57b8a8618180e",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Cette controverse ancienne, structurée autour de la formule « la règle contre la discrétion », interroge le rôle du politique dans les affaires monétaires."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c595798ac80219f3250635684d5e3627",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ces lignes de fracture sont récurrentes dans l'histoire de la pensée monétaire : présentes dans les débats préclassiques, elles réapparaissent dans les controverses entre l'école de la monnaie (Currency School) et l'école de la banque (Banking school), entre monétaristes et keynésiens (Ibid.; Tutin 2009). Les lignes de fracture précédentes sont récurrentes dans l'histoire de la pensée monétaire : alors qu'elles étaient déjà présentes dans l"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "39971c04ad2e63cc5d00c9e4f0ce5da1",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ces lignes de fracture sont récurrentes dans l'histoire de la pensée monétaire : présentes dans les débats préclassiques, elles réapparaissent dans les controverses entre l'école de la monnaie (Currency School) et l'école de la banque (Banking school), entre monétaristes et keynésiens (Ibid.; Tutin 2009). Les lignes de fracture précédentes sont récurrentes dans l'histoire de la pensée monétaire : alors qu'elles étaient déjà présentes dans l"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e415a12d8815bfe158d45eeea72d07eb",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Aujourd\\'hui, les politiques de libéralisation financière et l\\'émergence du Nouveau Consensus Monétaire, succédané de monétarisme, marquent la victoire de la règle et d'une vision quantitativiste (Galbraith, 2008)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "81b89cf559ebb5be57d4dba68dafae39",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "» (Ibid.; rejoint par Antonopoulos 2013). Un carcan logiciel immutable garantirait cette neutralité, dotant les CM de monnayage empreint, à des degrés divers, d'un « métallisme numérique » (Maurer et al, 2014, p. Cependant, ce « métallisme numérique » cache mal leur dimension nominaliste : le pouvoir d'achat des UCN, sans adossement à un actif ou passif de tiers, se fait promesse d'acceptation future (Maurer, Nelms et Swartz 2013, p."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "80919108e22811bbe582df17f9bea512",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Sous cet angle, ces expériences tentent de dépasser les ambitions monétaires les plus rigoristes, comme celles du Free Banking, soulignées par de nombreux auteurs (De Filippi 2013 ; Dréan 2013 ; Karlstrøm 2014 ; Desmedt et Lakomski-Laguerre 2015). Le Free Banking vise à abolir le monopole des États et des banques centrales dans l'émission et la circulation de la monnaie, ambitions centrales de l'école autrichienne, exprimée par Von Mises (191"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1357a6a731125ab4c62e401564cad652",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les CM relèvent d'une gouvernance duale (De Filippi et Loveluck, 2016 ; Rolland et Slim, 2017). Les CM, avec leur gouvernance - duale et polycentrique - singulière, définissent plus ou moins formellement le rôle et le statut de parties prenantes, ce qui soulève des questions : comment rendre compte de leur institutionnalisation et du rôle des médiations techniques ?"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "02e716132dc58a584cc728791409bf60",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "La gouvernance des CM dévoilée par leurs crises : un institutionnalisme monétaire secondé d'une sociologie des sciences et techniques Cette section et la suivante situeront notre type de recherche - son « design » ([Avenier et Thomas 2011, p. L'explicitation de notre inscription épistémologique et théorique retranscrira le processus qui nous a conduit à élaborer notre approche, combinant un institutionnalisme monétaire et une sociologie économiqu"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fc76177e8cc9b4a6dff45672173edc07",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "L'IMF adopte une approche nominaliste qui n'est pas « étatiste », contrairement aux théories chartalistes ou néo-chartalistes (Orléan 1998 ; Desmedt et Piégay 2007). 817), aucune ne fait de place aux CM : ces dernières sont reléguées tantôt par les approches instrumentales et substantielles, qui, au cœur de la théorie néoclassique, conçoivent la monnaie comme une marchandise (voir encadré n°1), tantôt par les approches concurrentes dites nomina"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8c869199825557872b51a5ca1745d4b8",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les universaux monétaires sont : dette, confiance, souveraineté. Malgré leurs apparences singulières, les CM relèvent de nos universaux monétaires."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d8487a469e8bd4c1cab3737344ff4aca",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ce cadre conceptuel nous est apparu trop abstrait et théorique pour traiter de la gouvernance des CM, aussi nous emprunterons au cadre d'analyse et de développement institutionnel (IAD/SES[^29]) développé dans les travaux d'Ostrom et de l'école de Bloomington."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "61e8b86323f1e019d395d87e8f08e47f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Le cadre ostromien développé autour des ressources communes, « Common Pool Ressources » (CPR) - physiques ou immatérielles -- est tourné tout entier vers l'analyse de la diversité des modes de gouvernance, par des communautés « autogérées » et « polycentriques »[^30]. Si la remise en ordre fut réalisée secrètement et sans publicité, selon un consensus local entre des acteurs en réseau (« core devs » et opérateurs de « pool de minage »), des rég"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "178d6109372d4ba3a22c41984f75b559",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les premiers relevaient de « Special Purpose Money » (SPM), suivant la coprésence d'une diversité d'objets monétaires couvrant des fonctions différenciées, structurant des espaces économiques pluriels et cloisonnés."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c825d237dc25b3e9af61dc7982f3da95",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Les monnaies modernes, après la « grande transformation » de la révolution industrielle, auraient remplacé ces SPM coûteuses et inefficaces par des « All Purpose Money » (APM) unitaires et intégrées, remplissant pleinement lesdites fonctions monétaires. On doit à Polanyi (2011) d'avoir systématiquement contesté l'hypostase d'un argent partout et toujours « tout usage » («  All Purpose Money » ou « APM », portant parfaitement les fonctions mon"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5828177699931e169966ce9e03ff4a6b",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Pour dépasser ce « technologisme », comme éviter les ornières de la vision opposée du « sociologisme »[^35], la technique est considérée comme « un tissu sans couture » , un objet socio-technique (Latour 2006; Akrich 1989). La métaphore de l'absence de couture souligne qu'un objet socio-technique mêle toujours, de l'origine aux fils de ses développements, des problématisations, grammaires argumentatives et références hétérogènes, non purement"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "79a6188852c21b87bf22e8c9c28e719d",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Plus que de simples objets socio-techniques, les CM correspondent à la définition et aux propriétés d'une infrastructure - physique ou numérique[^36] - selon les STS et les Infrastructural Studies (Star 1999 ; Bowker 1996 ; Edwards et al. Un protocole nu ne fait pas monnaie, cela nécessite une infrastructure : des usages, d'autres arrangements socio-techniques pour s'y connecter, une maintenance et des évolutions qui en renégocient formes, co"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "25b9562f132d329e49abd53406021dea",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "C'est ce que prouve la dynamique carnavalesque de son développement infrastructurel, caractérisée par son aspect composite, négocié, fait de critiques et d'« inversions paradoxales » (Ibid., p. Que l'œil du lecteur ne s'y trompe pas, comme avec une peinture pointilliste, il est moins incité à regarder le détail (ce qu'il peut faire) que la figure d'ensemble : la surcharge est volontaire et vise à restituer dynamique crypto-carnavalesque multi"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2e4e25ff8883988739a49a0e0202e695",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "6, préface de la 1^ère^édition anglaise (1936) En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXI^e^ siècle, une contestation monétaire radicale fut lancée : Bitcoin. Selon son créateur Satoshi Nakamoto [(2008)](https://www.zotero.org/google-docs/?CPNkOD), Bitcoin répond à la crise et à sa gestion."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5c3c493f16c80de9a51750d2089cf873",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Pour maintenir stable le rythme d'émission, Bitcoin compense « l\\'augmentation de la vitesse du matériel et la variation de l\\'intérêt pour l\\'exécution des nœuds » suivant que la cible de difficulté de la PoW « est déterminée par une moyenne mobile visant un nombre moyen de blocs par heure. Tout utilisateur participe à et use de Bitcoin via ce client logiciel complet qui dispose d'un historique de la chaîne de blocs et participe à l'a"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1afa31fa6c935556e9802672355ac191",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Ce type d'arrangement est aussi mobilisé contre les attaques par déni de service\\ (DOS). Ce cours permet de démontrer encore sa dépendance aux aléas infrastructurels exogènes par rapport aux qualités protocolaires de Bitcoin : en mai, il chute à 76 \\$ suite à une attaque par déni de service (DDOS) rencontrée par MtGox, et la fermeture par le FBI du site SilkRoad est aussi l'occasion d'une chute brutale (Ibid.)."
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "805879ef12780478a182ee9ce35257f9",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "6, préface de la 1^ère^édition anglaise (1936) En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXI^e^ siècle, une contestation monétaire radicale fut lancée : Bitcoin. Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets mon"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "21107fb980daa17e698237df5d7daa2f",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Nous montrerons que, du point de vue d'un institutionnalisme monétaire non étatique, intéressé aux usages, ni les fonctions canoniques de la monnaie, ni l'exclusivité étatique ne peuvent reléguer les CM hors du champ monétaire : leur usage en compte et en paiement sont indéniables, quand leurs UCN sont les seules à pouvoir exprimer et régler les frais d'usage de leurs protocoles. : Dépasser la controverse du statut monétaire des CM par un institu"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0be32c5d6649a5962af80206844aa324",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Ouvrir « un nouvel espace de liberté pour plusieurs années » [(Nakamoto 2008a)](https://www.zotero.org/google-docs/?4mCGVq), « démocratiser la monnaie"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bed2df7ff94f6ded0c32dc33d530571a",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Ouvrir « un nouvel espace de liberté pour plusieurs années » [(Nakamoto 2008a)](https://www.zotero.org/google-docs/?4mCGVq), « démocratiser la monnaie"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "758e9ca93d00591b0a077b2d4f0125eb",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Leur prétention monétaire soulève la question de leur statut et de leur monétisation : il faut enquêter sur la capacité de leur UCN à être usée en compte"
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "538e905c19fcb164558cc35c08c88112",
+      "attributeId": "definition",
+      "value": {
+        "type": "TEXT",
+        "value": "Avec lui commence le phénomène des crypto-monnaies\\ (CM), dont l'ouverture des codes sources\\- permettant l'accès, la duplication, la modification et le ré-usage des codes logiciels -- a permis la création d'une diversité d'objets monétaires non identifiés, présentés sous ce néologisme. Les MLC contestent l'enfermement technocratique de la gouvernance monétaire nationale, à laquelle les membres revendiquent d'être associés."
+      }
+    }
+  ]
+}
