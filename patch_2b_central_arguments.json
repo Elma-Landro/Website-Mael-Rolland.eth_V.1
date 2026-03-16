@@ -1,0 +1,398 @@
+{
+  "patch_id": "2b",
+  "description": "Add central_argument attribute to ThesisSection entities",
+  "operations": [
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "0fcc7028560c47cc9b82309f469b700c",
+      "entity_name": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "attribute_name": "central_argument",
+      "value": "Les crypto-monnaies constituent un objet de recherche inédit dont la gouvernance reste méconnue : ni purement technique comme le soutiennent leurs promoteurs libéraux-technicistes, ni réductible à leur origine libertarienne, leur étude impose de construire un objet pluriel articulant trois problématiques emboîtées. La contestation monétaire radicale portée par Bitcoin réactive le débat ancien entre règle et discrétion et force l'analyse à aller au-delà des prétentions d'apolitisme et d'absence de gouvernance pour en révéler les ressorts sociaux et politiques."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "entity_name": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "attribute_name": "central_argument",
+      "value": "La gouvernance des CM ne peut être saisie qu'en combinant un institutionnalisme monétaire attentif aux usages et une sociologie des sciences et techniques (STS) mobilisant la notion d'infrastructure sociotechnique sans coutures. Les crises constituent des points d'observation privilégiés car elles dévoilent les dimensions sociales et politiques ordinairement occultées par le technologisme ambiant, révélant une gouvernance duale — par et sur l'infrastructure — que ni les coiners ni leurs contempteurs ne reconnaissent."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "018c87f7337246b99ab36add53a537e3",
+      "entity_name": "C. Une démarche ethnographique, pour un terrain d'enquête multi-niveau",
+      "attribute_name": "central_argument",
+      "value": "L'étude de la gouvernance des CM requiert une démarche ethnographique qualitative multi-niveau combinant recherches documentaires, immersions participantes en ligne, observations participantes hors ligne et entretiens semi-directifs, en raison de la nature infrastructurelle distribuée de l'objet et des contraintes spécifiques d'accès à des communautés méfiantes. Cette démarche idiographique est seule à même de rendre compte de la face invisible du travail social et politique qui sous-tend le fonctionnement des CM, en articulant observations en ligne et hors ligne."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "7a1965a429f1468180346e845d793eab",
+      "entity_name": "D. Objectifs, apports et organisation générale de la thèse",
+      "attribute_name": "central_argument",
+      "value": "Cette thèse soutient que les CM sont bien des monnaies mais que l'idéologie libérale-techniciste qui les entoure est contrefactuelle : comme toute monnaie, elles sont des artefacts socio-politiques conflictuels relevant de compromis toujours en reconstruction et non d'une gouvernance technique neutre. Elle déconstruit le syllogisme des coiners en trois temps — la genèse des CM (chap. I), leur statut monétaire (chap. II), et leur gouvernance dévoilée par les crises (chap. III) — pour démontrer l'existence d'une gouvernance polycentrique, discrète et sociale que leurs crises rendent visible."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "280a842a11bd4101b743f6527821c04e",
+      "entity_name": "E. Déclaration d'intérêts",
+      "attribute_name": "central_argument",
+      "value": "Dans un souci de transparence scientifique, l'auteur déclare détenir un portefeuille de crypto-monnaies et crypto-actifs dont la valeur était comprise entre 160 000 et 190 000 euros au moment de la finalisation de la thèse, composé majoritairement d'ether et de bitcoin, issu d'une dynamique d'expérimentation antérieure à la recherche formelle. Ses seules activités économiques rémunérées dans ce champ se limitent à des activités d'enseignement rémunérées en euros."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "b7db7ae7597d45b3ab95ad64cad6214c",
+      "entity_name": "E. Déclaration d'intérêts",
+      "attribute_name": "central_argument",
+      "value": "Dans un souci de transparence scientifique, l'auteur déclare détenir un portefeuille de crypto-monnaies et crypto-actifs dont la valeur était comprise entre 160 000 et 190 000 euros au moment de la finalisation de la thèse, composé majoritairement d'ether et de bitcoin, issu d'une dynamique d'expérimentation antérieure à la recherche formelle. Ses seules activités économiques rémunérées dans ce champ se limitent à des activités d'enseignement rémunérées en euros."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "179eaeedc85c47a09b7a4ada23fc825b",
+      "entity_name": "I.1 Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière",
+      "attribute_name": "central_argument",
+      "value": "Le design de Bitcoin n'est pas le fruit d'une « immaculée conception » technique mais l'aboutissement d'un entrelacs de philosophies politiques (cypherpunk, cryptoanarchisme, libertarianisme), de recherches académiques en cryptographie et de pratiques des logiciels libres que Nakamoto synthétise en réponse à la crise bancaire de 2008. Chaque choix architectural — notamment le consensus fondé sur la preuve de travail et l'émission monétaire des UCN — est hybride, négocié et porteur d'une normativité politique constitutive, rendant illusoire toute prétention à la neutralité technique."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "19222ba7434e48048b655809d185c019",
+      "entity_name": "I.1 Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière",
+      "attribute_name": "central_argument",
+      "value": "Le design de Bitcoin n'est pas le fruit d'une « immaculée conception » technique mais l'aboutissement d'un entrelacs de philosophies politiques (cypherpunk, cryptoanarchisme, libertarianisme), de recherches académiques en cryptographie et de pratiques des logiciels libres que Nakamoto synthétise en réponse à la crise bancaire de 2008. Chaque choix architectural — notamment le consensus fondé sur la preuve de travail et l'émission monétaire des UCN — est hybride, négocié et porteur d'une normativité politique constitutive, rendant illusoire toute prétention à la neutralité technique."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "4ec3224a44f06315d26d3cac111e5efc",
+      "entity_name": "I.1.1 — Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques",
+      "attribute_name": "central_argument",
+      "value": "Bitcoin s'inscrit dans une généalogie intellectuelle précise qui articule la philosophie politique cypherpunk et crypto-anarchiste, le libertarianisme et les expériences des logiciels libres et réseaux P2P, dont Nakamoto est l'héritier et le synthétiseur. Cette filiation idéologique et pratique, loin d'être anecdotique, est inscrite dans les choix architecturaux fondamentaux de Bitcoin et détermine le scénario sociotechnique qu'il incarne."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "439782308b5dedb9c5da7022bc2b82ef",
+      "entity_name": "I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée",
+      "attribute_name": "central_argument",
+      "value": "La création de Bitcoin résulte d'un entremêlement singulier entre la recherche académique en cryptographie et systèmes distribués (dont Nakamoto est intimement informé) et des recherches appliquées issues d'expérimentations de monnaies numériques antérieures (b-money, Hashcash, etc.), démontrant que l'innovation n'est pas une rupture ex nihilo mais une recomposition critique de contributions préalables. Cette histoire intellectuelle réfute le mythe de la genèse miraculeuse et révèle la nature profondément hybride et construite de l'objet."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "1168d4e0c868c27a81ac371cb6879359",
+      "entity_name": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "attribute_name": "central_argument",
+      "value": "L'architecture de Bitcoin — en particulier son algorithme de consensus fondé sur la preuve de travail associée à l'émission de bitcoins — est une chimère théorico-pratique qui incorpore des arbitrages profondément politiques : le système d'incitations mis en place pour garantir la participation honnête des nœuds révèle des compromis hybrides entre contraintes théoriques de la cryptographie et objectifs idéologiques de désintermédiation. Cette dimension politique constitutive démontre que la prétendue neutralité du protocole est une illusion dès l'origine."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "596826c3187e4f8cb9034357477eb14c",
+      "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+      "attribute_name": "central_argument",
+      "value": "Le développement infrastructurel de Bitcoin s'est opéré de manière carnavalesque, par une série d'improvisations d'acteurs qui ont débordé et renégocié le scénario original de Nakamoto à travers trois phases successives (preuve de concept, péché, maturation). Ce développement révèle que Bitcoin, en tant qu'infrastructure sans coutures, ne se réduit ni aux desseins de son concepteur ni à ses frontières protocolaires, mais est le produit d'un travail continu de réintermédiations, d'adaptations et de conflits politiques entre acteurs humains et non humains."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "abdb06a2683c4822a8ce7973f78a58f0",
+      "entity_name": "I.2 Quand le \"monde redéfinit\" Bitcoin de manière carnavalesque",
+      "attribute_name": "central_argument",
+      "value": "Le développement infrastructurel de Bitcoin s'est opéré de manière carnavalesque, par une série d'improvisations d'acteurs qui ont débordé et renégocié le scénario original de Nakamoto à travers trois phases successives (preuve de concept, péché, maturation). Ce développement révèle que Bitcoin, en tant qu'infrastructure sans coutures, ne se réduit ni aux desseins de son concepteur ni à ses frontières protocolaires, mais est le produit d'un travail continu de réintermédiations, d'adaptations et de conflits politiques entre acteurs humains et non humains."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "93f13f18c6da412292eba80dcd630ac7",
+      "entity_name": "I.2.1 Un protocole deborde de carnavalesques improvisations d acteurs",
+      "attribute_name": "central_argument",
+      "value": "Les acteurs ont débordé le protocole Bitcoin par des improvisations carnavalesques qui ont progressivement réintroduit les intermédiaires et les structures organisationnelles que le scénario de Nakamoto entendait éliminer : bourses d'échange, portefeuilles hébergés, services de mining, etc. Ces renégociations pratiques illustrent l'impossibilité pour tout objet sociotechnique de se soustraire aux acteurs qui l'habitent et le redéfinissent selon leurs propres intérêts et contraintes."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "3ce505bcd3e74def8b78094b4cc06b6e",
+      "entity_name": "I.2.1b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques",
+      "attribute_name": "central_argument",
+      "value": "L'adaptation du protocole Bitcoin à la pression de ses usages — notamment via les politiques de sélection des transactions par les mineurs et les mécanismes de frais — révèle des régulations transactionnelles profondément politiques qui démentent l'idée d'un protocole neutre et immutable. Ces ajustements institutionnalisent des hiérarchies entre usagers et reflètent des arbitrages normatifs sur ce que doit être la « bonne » utilisation du réseau, débordant largement les intentions initiales de Nakamoto."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "97eb62676b0052c4ab3652fc2bd15535",
+      "entity_name": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "attribute_name": "central_argument",
+      "value": "L'adaptation du protocole Bitcoin à la pression de ses usages — notamment via les politiques de sélection des transactions par les mineurs et les mécanismes de frais — révèle des régulations transactionnelles profondément politiques qui démentent l'idée d'un protocole neutre et immutable. Ces ajustements institutionnalisent des hiérarchies entre usagers et reflètent des arbitrages normatifs sur ce que doit être la « bonne » utilisation du réseau, débordant largement les intentions initiales de Nakamoto."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+      "attribute_name": "central_argument",
+      "value": "Ethereum représente une rupture assumée avec Bitcoin et les premiers altcoins, constituant une synthèse critique qui ajoute aux critiques de Nakamoto envers le système monétaire traditionnel des critiques ciblant les rigidités protocolaires et infrastructurelles de Bitcoin lui-même. Conçu par des insiders reconnus de l'écosystème des CM, Ethereum incorpore dans son architecture des choix normatifs différenciés qui, par contraste, révèlent la normativité constitutive de Bitcoin et démontrent que tout protocole est le produit de compromis sociopolitiques situés."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "ad828085274a481f964bc843ee5b5db8",
+      "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+      "attribute_name": "central_argument",
+      "value": "Ethereum représente une rupture assumée avec Bitcoin et les premiers altcoins, constituant une synthèse critique qui ajoute aux critiques de Nakamoto envers le système monétaire traditionnel des critiques ciblant les rigidités protocolaires et infrastructurelles de Bitcoin lui-même. Conçu par des insiders reconnus de l'écosystème des CM, Ethereum incorpore dans son architecture des choix normatifs différenciés qui, par contraste, révèlent la normativité constitutive de Bitcoin et démontrent que tout protocole est le produit de compromis sociopolitiques situés."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "attribute_name": "central_argument",
+      "value": "La constellation des altcoins qui s'est développée autour de Bitcoin illustre deux stratégies concurrentes — construire « sur » Bitcoin ou « à côté » de lui — révélant que toute CM est génétiquement liée à Bitcoin et que son design résulte de modifications critiques plus ou moins radicales de l'architecture pionnière. Ces choix différenciés, jusqu'aux guerres de métaprotocoles sur l'usage légitime de la chaîne Bitcoin, montrent que la gouvernance sur l'infrastructure est un enjeu politique fondamental dès l'origine des CM."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "ed2c565cbede474da7b6144bcb22d753",
+      "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+      "attribute_name": "central_argument",
+      "value": "L'émergence d'Ethereum s'explique par la conjonction d'un réseau d'insiders reconnus de l'écosystème des CM, d'une critique articulée des limitations architecturales de Bitcoin et des altcoins, et d'une capacité à mobiliser des ressources et des alliances inédites via une ICO. Ces conditions d'émergence singulières permettent à Ethereum d'inscrire dès son origine une stratégie différenciée fondée sur la « platine programmable » et les contrats intelligents, incarnant une normativité sociotechnique distincte de celle de Bitcoin."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "46111186b53041829a0a98218f9611fe",
+      "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+      "attribute_name": "central_argument",
+      "value": "Les différences architecturales entre Ethereum et Bitcoin — notamment la machine virtuelle Ethereum (EVM), la complétude de Turing du langage de script et les réformes envisagées du consensus et du monnayage — ne sont pas de simples choix techniques mais la matérialisation de visions normatives différenciées sur ce que doit être une « bonne » CM. Ces arbitrages sociotechniques différenciés révèlent, par contraste mutuel, que les deux protocoles sont des objets politiques au sens plein du terme, incorporant des représentations antagonistes de la gouvernance monétaire désirable."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "3268b571c4ce4389bf99a35c93ed287b",
+      "entity_name": "I.4 Conclusion du Chapitre I",
+      "attribute_name": "central_argument",
+      "value": "La restitution de l'épaisseur socio-historique de Bitcoin, des altcoins et d'Ethereum administre la preuve que les CM ne sont pas indépendantes de rapports sociaux et que leur conception comme leur développement sont traversés d'enjeux, de débats et de conflits politiques structurant code et communauté. Ce résultat réfute le technologisme qui réduit les CM à de simples protocoles autonomes et apolitiques, et prépare l'hypothèse du chapitre II : la singularité monétaire des CM réside précisément dans leur gouvernance polycentrique, et non dans son absence."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "87a54f067fbb44f7b32c4207fa23a3b2",
+      "entity_name": "II.1 « Les CM ne sont pas monnaie ! » : arguments contre le caractère monétaire des CM",
+      "attribute_name": "central_argument",
+      "value": "Les arguments académiques et praticiens niant le statut monétaire des CM se divisent en deux familles — approches instrumentales-substantialistes et approches nominalistes-chartalistes — qui, malgré leurs divergences théoriques, partagent une définition réifiée de la monnaie calquée sur ses formes modernes centralisées et étatiques. Cette revue critique démontre que ces approches constituent des cadres inadaptés pour saisir des innovations monétaires qui débordent leurs catégories, et que leurs limites invitent à un décentrement théorique vers un institutionnalisme attentif aux usages."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "f07c8415a468b6c900bd14b3cefa24fb",
+      "entity_name": "II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques",
+      "attribute_name": "central_argument",
+      "value": "Les critiques instrumentales des CM, fondées sur les trois fonctions monétaires canoniques (unité de compte, moyen de paiement, réserve de valeur), échouent à disqualifier leur statut monétaire parce qu'elles postulent une définition essentialiste et désincarnée de la monnaie héritée de l'économie néoclassique, qui peine à intégrer les innovations monétaires même dans son propre champ théorique. Le mauvais accomplissement des fonctions canoniques par les CM révèle davantage les limites de ce cadre d'analyse que la non-monétarité de ces objets."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "eda05ae2f601e62bf53294a2be373d2a",
+      "entity_name": "II.1.2 — La monnaie « créature de l'État » : critiques nominalistes et chartalistes",
+      "attribute_name": "central_argument",
+      "value": "Les critiques nominalistes et chartalistes des CM, qui les disqualifient faute de garantie étatique, reposent sur une conception de la souveraineté monétaire indûment réduite à sa forme étatique moderne, que contredit l'histoire longue des systèmes monétaires hétérogènes et des monnaies parallèles. Un nominalisme non étatiste, attentif à la diversité empirique des usages et des autorités monétaires légitimes, est plus à même de rendre compte de la monétisation des CM sans les rabattre sur des catégories réglementaires inadaptées."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "38e637cc84f14883b96d064b8e387c0f",
+      "entity_name": "II.2 « Pourtant, elles font monnaie ! » : à l'aune d'un nominalisme « non étatiste » attentif aux usages",
+      "attribute_name": "central_argument",
+      "value": "Contre la majorité des analystes, cette section défend que les CM font bien monnaie au sens de l'institutionnalisme monétaire francophone, qui définit la monnaie par ses usages en compte et en paiement plutôt que par ses caractéristiques formelles. En partant des pratiques empiriques des coiners et d'une conception de la monnaie comme système de paiement mobilisant dette, confiance et souveraineté, il est possible de démontrer que le bitcoin et l'ether remplissent des fonctions monétaires réelles, même si leur modalité de monétisation est inédite et non exclusive."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "5f7a512aa7074f12b4ed083696b986dc",
+      "entity_name": "II.2 « Pourtant, elles font monnaie ! » : à l'aune d'un nominalisme « non étatiste » attentif aux usages",
+      "attribute_name": "central_argument",
+      "value": "Contre la majorité des analystes, cette section défend que les CM font bien monnaie au sens de l'institutionnalisme monétaire francophone, qui définit la monnaie par ses usages en compte et en paiement plutôt que par ses caractéristiques formelles. En partant des pratiques empiriques des coiners et d'une conception de la monnaie comme système de paiement mobilisant dette, confiance et souveraineté, il est possible de démontrer que le bitcoin et l'ether remplissent des fonctions monétaires réelles, même si leur modalité de monétisation est inédite et non exclusive."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "f8a8acbfa05a53c07498346df21f6808",
+      "entity_name": "II.2.1 — Au-delà de la monnaie, l'argent : questionner la monétisation à l'aune des usages",
+      "attribute_name": "central_argument",
+      "value": "Le renouveau programmatique de la sociologie et de l'anthropologie monétaire, initié par Simmel et développé par Polanyi, Zelizer et l'institutionnalisme monétaire francophone, déplace l'analyse de la monnaie des fonctions abstraites désincarnées vers les usages concrets et leurs significations sociales. Ce décentrement permet de questionner la monétisation des CM à l'aune des pratiques empiriques des utilisateurs, substituant à la définition essentialiste orthodoxe une approche relationnelle et historicisée de ce qui fait argent."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "f34ad8e32d22d905708d07fc6f0e8150",
+      "entity_name": "II.2.2 — La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes",
+      "attribute_name": "central_argument",
+      "value": "L'institutionnalisme monétaire francophone conçoit la monnaie comme un système de paiement articulant trois états simultanés — incorporé (étalon de valeur), objectivé (instruments de paiement) et institutionnalisé (règles et régulations) — et trois invariants universaux — dette, confiance, souveraineté. Cette boîte conceptuelle permet d'analyser la monétisation des CM comme processus de liquidation de dettes hétérogènes sans réduire la monnaie à ses seules représentations matérielles, ouvrant la voie à une intégration des CM dans le champ monétaire."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "0b521ac19a2f5ee0cdd07d7460ebdfd0",
+      "entity_name": "II.2.3 — La monnaie à l'épreuve : dettes, confiance et souveraineté",
+      "attribute_name": "central_argument",
+      "value": "Un nominalisme monétaire non étatique démontre que la souveraineté monétaire ne se réduit pas à sa forme étatique moderne : toute monnaie fait face à la souveraineté des utilisateurs, et la légitimité de l'autorité monétaire s'éprouve empiriquement dans les pratiques plutôt qu'elle ne se décrète formellement. Les CM confirment cette thèse en montrant que la confiance et l'autorité qui les fondent, bien que d'une nature inédite, relèvent d'un phénomène de souveraineté monétaire communautaire irréductible à la seule délégation étatique."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "d622d318825741cda43212d7831a88c7",
+      "entity_name": "II.3 Au‑delà de la revendication d'une absence de gouvernance !",
+      "attribute_name": "central_argument",
+      "value": "La singularité monétaire des CM réside non dans l'absence de gouvernance humaine — que démentent les faits — mais dans la présence d'une gouvernance polycentrique d'apparence singulière, que l'analyse du concept de gouvernance permet de caractériser positivement. En réactivant le débat ancien entre règle et discrétion, les CM cristallisent un conflit symbolique et matériel autour de la « bonne » gouvernance monétaire où coiners et professionnels de l'argent s'affrontent depuis des positions théoriques opposées mais partageant une même normativité réifiante."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "515088f012136277d7375fa65d7a3e3f",
+      "entity_name": "II.3.1 — Du concept de gouvernance et de sa polysémie : un concept normatif",
+      "attribute_name": "central_argument",
+      "value": "Le concept de gouvernance est intrinsèquement polysémique et normatif : son usage dominant, importé de la Banque mondiale, constitue un véhicule idéologique néolibéral destiné à contourner les décisions politiques sous couvert de « bonne gouvernance ». Cette polysémie impose d'adopter une acception scientifique et positive du concept, le définissant comme un ensemble de processus dynamiques, indéterminés et informels d'action collective, sans présupposer les formes et fonctions que la gouvernance devrait revêtir."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "d93cb2ceee6dea674fecc4f44d113643",
+      "entity_name": "II.3.2 — Retournement positif du concept : réintégrer le pouvoir et la politique",
+      "attribute_name": "central_argument",
+      "value": "Le retournement positif du concept de gouvernance par les sciences politique et sociale permet de réintégrer le pouvoir et le politique dans l'analyse des modes de coordination collective, en dépassant la fausse opposition entre État et marché. Appliqué aux CM, ce cadre analytique anormatif et agnostique (inspiré notamment du cadre ostromien des ressources communes polycentriques) permet de caractériser leur gouvernance comme un ensemble de règles, faisceaux de droits et interactions situées, sans présupposer ce qu'elle devrait être."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "7b3312fed875cffb74320f0a579763c7",
+      "entity_name": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "attribute_name": "central_argument",
+      "value": "En réactivant le débat séculaire entre règle et discrétion dans les affaires monétaires, les CM cristallisent un conflit symbolique et matériel où coiners et professionnels de l'argent partagent paradoxalement un même fond normatif — la recherche d'une « bonne » monnaie — mais s'affrontent sur la définition de celle-ci. Cette réactivation révèle les filiations intellectuelles hétérodoxes des CM (métallisme numérique, free banking autrichien) et montre que leur prétendu apolitisme est lui-même une prise de position politique dans ce débat ancestral."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "53461143c45d4413af3d6be003a34f27",
+      "entity_name": "II.4 Conclusion du Chapitre II",
+      "attribute_name": "central_argument",
+      "value": "Ce chapitre conclut en affirmant contre la majorité des analystes que les CM sont bien des monnaies, tout en rejetant la perspective libérale-techniciste des coiners selon laquelle elles seraient de « meilleures » monnaies du fait d'un prétendu apolitisme. Si les CM font monnaie, c'est non pas en l'absence mais en raison de la présence d'une gouvernance singulière d'apparence polycentrique : leur singularité monétaire tient précisément à cette gouvernance, que le chapitre III se propose de dévoiler à travers l'étude de leurs crises."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "5a5684979bf84b37af3771f915f677e2",
+      "entity_name": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "attribute_name": "central_argument",
+      "value": "La crise ouverte par la faille CVE 2018-17144, touchant aux règles de monnayage de Bitcoin, révèle l'existence d'une gouvernance off-chain discrète et confidentielle opérée par une poignée de développeurs de confiance : sans activation de la faille ni dissensus communautaire public, la résolution silencieuse par « divulgation responsable » démontre que la pérennité de Bitcoin repose sur des capacités humaines d'intervention très politiques, et non sur l'immutabilité présupposée de son code."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "9160f2bd7a6a48eea62f51c61c0c8ea9",
+      "entity_name": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "attribute_name": "central_argument",
+      "value": "La crise ouverte par la faille CVE 2018-17144, touchant aux règles de monnayage de Bitcoin, révèle l'existence d'une gouvernance off-chain discrète et confidentielle opérée par une poignée de développeurs de confiance : sans activation de la faille ni dissensus communautaire public, la résolution silencieuse par « divulgation responsable » démontre que la pérennité de Bitcoin repose sur des capacités humaines d'intervention très politiques, et non sur l'immutabilité présupposée de son code."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "ac859fd14006e379e55373d31090b6c6",
+      "entity_name": "III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)",
+      "attribute_name": "central_argument",
+      "value": "La genèse de la faille CVE 2018-17144 résulte d'une sédimentation lente et silencieuse de six modifications successives du code source de Bitcoin Core sur plusieurs années, dont chacune était individuellement justifiée par des optimisations légitimes mais dont la combinaison engendrait une vulnérabilité potentiellement catastrophique pour les règles de monnayage. Cette mise en crise longue et invisible illustre la nature infrastructurelle de Bitcoin et la difficulté de maintenir la cohérence d'un code distribué en perpétuelle évolution."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "0420e53c4c8fd12fef6dcee451a50f61",
+      "entity_name": "III.1.2 — Une remise en ordre rapide (CVE 2018)",
+      "attribute_name": "central_argument",
+      "value": "La remise en ordre rapide de la crise CVE 2018 — en moins de 24 heures pour le diagnostic et la production d'un correctif par une poignée de Core Developers — illustre l'efficacité d'une gouvernance de huis clos reposant sur des relations de confiance interpersonnelles et une procédure de divulgation responsable qui retarde l'information publique. La stratégie du « mensonge blanc » — présenter le correctif comme une simple correction de sécurité mineure — révèle la dimension très politique des arbitrages opérés entre transparence et sécurité du réseau."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "89663a261c1545c1941ab7f871314a53",
+      "entity_name": "III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière",
+      "attribute_name": "central_argument",
+      "value": "La gouvernance sur le protocole Bitcoin, structurée autour du répertoire logiciel Bitcoin Core et de ses mainteneurs désignés, constitue une gouvernance de huis clos routinière qui contredit frontalement la thèse de l'immutabilité et de l'apolitisme du code. Organisée selon le principe du moindre privilège mais hiérarchisée de fait par des relations de confiance informelles, cette gouvernance technocratique est suspendue à l'absence de dissensus communautaire public, dont la gouvernance ouverte et publique d'Ethereum constitue le contrepoint nécessaire."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "9b1c553a1b7948be816fabfb56fdc787",
+      "entity_name": "III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière",
+      "attribute_name": "central_argument",
+      "value": "La gouvernance sur le protocole Bitcoin, structurée autour du répertoire logiciel Bitcoin Core et de ses mainteneurs désignés, constitue une gouvernance de huis clos routinière qui contredit frontalement la thèse de l'immutabilité et de l'apolitisme du code. Organisée selon le principe du moindre privilège mais hiérarchisée de fait par des relations de confiance informelles, cette gouvernance technocratique est suspendue à l'absence de dissensus communautaire public, dont la gouvernance ouverte et publique d'Ethereum constitue le contrepoint nécessaire."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "9fbdbbc3f81ee08fb89b5c5dfbcd2929",
+      "entity_name": "III.2.1 — De la diversité des crises aux crises protocolaires des CM",
+      "attribute_name": "central_argument",
+      "value": "Les CM, en tant qu'infrastructures multi-couches, sont exposées à une diversité de crises débordant largement le seul domaine protocolaire pour affecter l'ensemble de leurs sous-systèmes (applicatif, de gouvernance des échanges, légal, etc.). L'étude des crises protocolaires de Bitcoin permet cependant de dégager une nomenclature indigène des pathologies — faux-monnayage, scission de chaîne, déni de service — qui révèle les propriétés désirées et les valeurs normatives au cœur du consensus communautaire sur ce qu'est une « bonne » CM."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "5a82e90b2cc17baf91baa9102bd48034",
+      "entity_name": "III.2.2 — Enjeux des crises Bitcoin : labélisations indigènes et exemples historiques",
+      "attribute_name": "central_argument",
+      "value": "L'histoire des crises protocolaires de Bitcoin, documentée dans une base de données communautaire, révèle un processus de fabrication et de labélisation des crises par des acteurs désignés qui constituent autant de marques d'une gouvernance politique de huis clos. Les catégories indigènes mobilisées (CVE, BIP, niveaux de sévérité) et les dispositifs d'information associés dessinent une nomenclature de pathologies qui reflète les valeurs normatives de la communauté et les arrangements institutionnels présidant à leur résolution."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "da7e8dda9cacdb8cddfbab73bb6ecd0b",
+      "entity_name": "III.2.3 — Des acteurs au cœur de la gouvernance sur le protocole : gouvernance de huis clos",
+      "attribute_name": "central_argument",
+      "value": "La matérialité de la gouvernance sur le protocole Bitcoin se concentre dans le répertoire logiciel Bitcoin Core, administré par un groupe restreint de mainteneurs informels dont la légitimité repose sur des relations de confiance interpersonnelles et une technocratie soumise à consensus communautaire. Cette structure — hiérarchisée de fait malgré le principe formel du moindre privilège, et dominée de facto par l'implémentation Bitcoin Core au détriment des implémentations alternatives — constitue un gouvernement de huis clos du protocole qui n'épuise pas mais conditionne la gouvernance plus large sur l'infrastructure."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
+      "entity_name": "III.3 Une gouvernance publique d'exception : le hard fork d'Ethereum consécutif à l'attaque de \"The DAO\"",
+      "attribute_name": "central_argument",
+      "value": "Le hard fork d'Ethereum consécutif à l'attaque de « The DAO » constitue le contrepoint nécessaire à la gouvernance de huis clos de Bitcoin : il révèle une gouvernance publique et ouverte d'exception, mobilisant une cellule de crise diversifiée, des procédures de délibération multi-acteurs et des dispositifs de vote communautaire, pour répondre à une crise d'évolution brutale et tapageuse. Ce cas fondateur démontre que la gouvernance sur l'infrastructure peut prendre des formes radicalement différentes selon le type de crise, l'architecture protocolaire et les valeurs normatives de la communauté."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "cf7dfaf42b4f3caa74d2078a8eacc9e6",
+      "entity_name": "III.3.1 — Une mise en crise brutale, publique et tapageuse (The DAO)",
+      "attribute_name": "central_argument",
+      "value": "L'attaque de « The DAO » constitue une crise d'évolution typique, où l'exploitation d'une faille dans un smart contract — et non dans le protocole Ethereum lui-même — engendre une mise en crise brutale, publique et médiatisée qui contraste radicalement avec la discrétion de la crise CVE 2018. La démesure du fonds d'investissement distribué attaqué, la spectacularité du vol et la visibilité des débats sur la remédiation font de cette crise un révélateur particulièrement saillant de la gouvernance socio-politique d'Ethereum."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "123b661853db78e3660f05f73d9ab081",
+      "entity_name": "III.3.2 — Une remise en ordre complexe, contrainte et controversée",
+      "attribute_name": "central_argument",
+      "value": "La remise en ordre de la crise DAO est complexe, contrainte et controversée parce qu'elle nécessite d'articuler des stratégies de remédiation à deux niveaux — applicatif et protocolaire — impliquant une cellule de crise diversifiée et des arbitrages profondément contestés entre des interprétations concurrentes du slogan « Code is Law ». Le diagnostic pluriel de la situation et la multiplicité des stratégies envisagées révèlent l'hétérogénéité des représentations normatives traversant la communauté Ethereum sur ce qui constitue une action légitime de gouvernance."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "7b9eff43f3726247610d73a7fcbd0e06",
+      "entity_name": "III.3.3 — Gouvernance ouverte et publique pour des forks controversés",
+      "attribute_name": "central_argument",
+      "value": "La stratégie du hard fork — intervention discrétionnaire directe sur la lettre du code protocolaire d'Ethereum — est controversée car elle viole les attentes rigoristes du « Code is Law » mais s'impose comme la seule solution permettant un recouvrement total des fonds. Son encadrement procédural — délibérations publiques, sondages communautaires, signalement des mineurs — constitue une forme de gouvernance ouverte et publique qui tranche avec le huis clos de Bitcoin, révélant deux faces complémentaires et opposées d'une même gouvernance polycentrique des CM."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "83985da6c275abd60faf4dbe9f08f332",
+      "entity_name": "III.3.4 — « Fork You ?! » : scission surprise fondatrice et ses enseignements",
+      "attribute_name": "central_argument",
+      "value": "La persistance inattendue d'une minorité de nœuds refusant le hard fork — donnant naissance à Ethereum Classic — démontre que la gouvernance ouverte ne garantit pas le consensus mais peut produire une scission fondatrice qui recompose durablement le paysage des CM. Ce « Fork You ?! » enseigne que toute gouvernance publique et délibérative reste suspendue à la possibilité du dissensus radical, révélant les limites structurelles de tout mécanisme de consensus communautaire face à des positions normatives irréconciliables sur ce que doit être une CM."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "486a5848fb304465a19d3a28bafcb603",
+      "entity_name": "III.4 Conclusion du Chapitre III",
+      "attribute_name": "central_argument",
+      "value": "L'analyse des deux crises de CM confirme et précise l'hypothèse conclusive du chapitre II : la gouvernance polycentrique des CM, dévoilée par leurs crises, réfute les prétentions libérales-technicistes présentant les CM comme des monnaies acéphales régulées uniquement par le code. Les deux faces de cette gouvernance — huis clos routinier pour Bitcoin, public et ouvert pour Ethereum — dessinent un tableau complexe où la confiance des coiners en leur CM repose non sur l'autorité algorithmique mais sur des autorités communautaires institutionnalisées dotées de capacités réelles d'intervention."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "711fe2aa7c734731bccb42ccd5843924",
+      "entity_name": "A. Décrypter la crypto par l'approche infrastructurelle",
+      "attribute_name": "central_argument",
+      "value": "L'inscription de la recherche dans les études infrastructurelles constitue une contribution méthodologique majeure qui permet de visibiliser les aspects invisibles et négligés soutenant les CM : en traitant Bitcoin et Ethereum comme des infrastructures sociotechniques complexes plutôt que comme de purs protocoles techniques, cette approche révèle la nature composite et relationnelle de leur monétisation, intégrant pratiques organisées, entités matérielles et abstraites, et travail continu d'acteurs hétérogènes."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "b5386fe92a5b4cac94888ffc298469bf",
+      "entity_name": "B. Les CM, comme \"en plus\" dans la théorie monétaire et l'analyse des systèmes monétaires",
+      "attribute_name": "central_argument",
+      "value": "La contribution de la thèse à la théorie monétaire consiste à intégrer les CM dans ce champ non comme curiosité marginale mais comme forme inédite de monnaie parallèle qui enrichit l'analyse des systèmes monétaires hétérogènes. En affirmant leur caractère monétaire depuis un nominalisme non étatiste attentif aux usages, et en démontrant que leur singularité réside dans une gouvernance polycentrique visible à travers leurs crises, la thèse contribue à élargir les catégories analytiques disponibles pour penser l'innovation monétaire."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "11fe6aacd1c440bdb795f073d9572b34",
+      "entity_name": "C. Le travail de traduction : prolongements pour les acteurs",
+      "attribute_name": "central_argument",
+      "value": "Par sa forme encyclopédique délibérée — granularité fine des exposés, place donnée aux paroles d'acteurs, glossaire élaboré — cette thèse ambitionne un travail de traduction entre le monde académique des sciences humaines et celui des coiners, facilitant un dialogue où les deux univers peuvent se reconnaître mutuellement. Ce positionnement de traduction constitue un choix épistémologique et éthique qui, sans renoncer à la distanciation critique, cherche à construire un langage etic fondé sur le langage emic des coiners pour enrichir la connaissance de part et d'autre."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "45b91ae1d82a40ab8029f3b8835b3af4",
+      "entity_name": "De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises",
+      "attribute_name": "central_argument",
+      "value": "La contribution de la thèse à la sociologie des crises consiste à ajouter les CM comme objets d'étude singuliers permettant de valider les enjeux théoriques et les outils de ce corpus, tout en enrichissant la caractérisation des types de crises — vulnérabilité versus évolution — et des formes de gouvernance associées. L'étude de « la politique de la crise » et de « son gouvernement » de la mise en crise à la remise en ordre réfute les prétentions libérales-technicistes en visibilisant la complexité et la diversité des mécanismes socio-politiques par lesquels les communautés de coiners gèrent leurs crises protocolaires."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "9c72c7227c3e0cee55b8b4820e7492d8",
+      "entity_name": "Conclusion — Résumé de la thèse",
+      "attribute_name": "central_argument",
+      "value": "Cette thèse démontre que les CM Bitcoin et Ethereum sont bien des monnaies mais que leur prétention libérale-techniciste à l'apolitisme est contrefactuelle : elles sont des artefacts socio-politiques conflictuels dont la gouvernance polycentrique, discrète et sociale — dévoilée par leurs crises — constitue précisément leur singularité monétaire. Ce résultat est établi en déconstruisant le syllogisme des coiners en trois temps articulés : la socio-histoire de leur genèse (chap. I), la démonstration de leur caractère monétaire depuis un institutionnalisme attentif aux usages (chap. II), et l'étude empirique de leur gouvernance à travers deux crises typiques (chap. III)."
+    },
+    {
+      "op": "SET_ATTRIBUTE",
+      "entity_id": "d9f534f9f849a3c54eac31746ed11222",
+      "entity_name": "Conclusion — Les CM : boucs émissaires d'un système monétaire en crise ?",
+      "attribute_name": "central_argument",
+      "value": "Les CM, loin d'être la solution aux crises du système monétaire international, pourraient en être les boucs émissaires commodes : leur succès à attirer la méfiance et les critiques des gardiens du système monétaire établi révèle davantage les tensions et contradictions de ce système que les défauts intrinsèques des CM. Cette question ouverte invite à poursuivre l'analyse en replaçant les CM dans la dynamique plus large des crises et transformations du système monétaire international contemporain."
+    }
+  ]
+}
