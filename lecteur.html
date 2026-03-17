@@ -519,6 +519,39 @@ body::before {
   border-bottom: 1px solid var(--border);
 }
 
+.panel-attrs {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.panel-attr-title {
+  font-family: var(--pixel);
+  font-size: 0.42em;
+  color: var(--gold2);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.panel-attr-block {
+  font-family: var(--body);
+  font-size: 0.85em;
+  color: var(--text);
+  line-height: 1.6;
+  background: rgba(255,204,102,0.06);
+  border-left: 2px solid var(--gold2);
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border-radius: 0 4px 4px 0;
+}
+.panel-attr-key {
+  font-family: var(--pixel);
+  font-size: 0.75em;
+  color: var(--gold2);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.06em;
+}
+
 .panel-relations-title {
   font-family: var(--pixel);
   font-size: 0.42em;
@@ -690,6 +723,7 @@ body::before {
   </div>
   <div class="panel-body">
     <div class="panel-desc" id="panel-desc">—</div>
+    <div id="panel-attrs"></div>
     <div class="panel-relations-title">RELATIONS</div>
     <div id="panel-relations">—</div>
   </div>
@@ -700,7 +734,7 @@ body::before {
 //  CONFIGURATION
 // ═══════════════════════════════════════════════════════
 const BASE = './assets/MD/';
-const GRAPH_FILE = './grc20-these-mael-rolland-v77.json';
+const GRAPH_FILE = './grc20-these-mael-rolland-v78.json';
 
 const CHAPTERS_DEF = [
   { id: 'intro',   labelFR: 'Intro',    labelEN: 'Intro',
@@ -1360,6 +1394,26 @@ function openEntityPanel(entityId) {
 
   document.getElementById('panel-desc').textContent =
     e.description?.value || '—';
+
+  // Attributes (definition, central_argument, etc.)
+  const attrsEl = document.getElementById('panel-attrs');
+  attrsEl.innerHTML = '';
+  const SKIP_ATTRS = new Set(['titleFr','titleEn','titleOriginal','sourceFile',
+    'sourcePage','pdfPage','page','pageRef','pdfQuote']);
+  const attrs = Object.entries(e.attributes || {})
+    .filter(([k]) => !SKIP_ATTRS.has(k))
+    .filter(([, v]) => { const t = typeof v === 'object' ? v?.value : v; return t && String(t).length > 0; });
+  if (attrs.length > 0) {
+    attrsEl.className = 'panel-attrs';
+    for (const [key, val] of attrs) {
+      const text = typeof val === 'object' ? (val.value || '') : String(val);
+      if (!text) continue;
+      const block = document.createElement('div');
+      block.className = 'panel-attr-block';
+      block.innerHTML = `<span class="panel-attr-key">${key.replace(/_/g,' ')}</span>${text}`;
+      attrsEl.appendChild(block);
+    }
+  }
 
   // Relations
   const relsEl = document.getElementById('panel-relations');
