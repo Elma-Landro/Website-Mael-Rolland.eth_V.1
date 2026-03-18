@@ -596,6 +596,29 @@ body::before {
   line-height: 1.3;
 }
 
+/* ═══ READING PROGRESS BAR ══════════════════════════════ */
+.reading-progress {
+  position: fixed;
+  top: var(--header-h);
+  left: var(--sidebar-w);
+  right: 360px;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold2), var(--accent));
+  z-index: 150;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ═══ GRAPH SECTION TOTAL ═══════════════════════════════ */
+.graph-section-total {
+  font-family: var(--pixel);
+  font-size: 0.35em;
+  color: var(--gold-dim);
+  margin-top: 3px;
+  letter-spacing: 0.06em;
+}
+
 /* ═══ SCROLLBAR ═════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -680,6 +703,9 @@ body::before {
   </div>
 </header>
 
+<!-- Reading progress -->
+<div class="reading-progress" id="reading-progress"></div>
+
 <!-- ══ MAIN ══════════════════════════════════════════════ -->
 <div class="main-layout">
 
@@ -701,6 +727,7 @@ body::before {
     <div class="graph-header">
       <div class="graph-header-title">◈ GRAPHE CONTEXTUEL</div>
       <div class="graph-section-name" id="graph-section-name">—</div>
+      <div class="graph-section-total" id="graph-section-total"></div>
     </div>
     <div class="graph-filters" id="graph-filters"><!-- populated --></div>
     <div id="cy-reader"></div>
@@ -733,21 +760,24 @@ body::before {
 // ═══════════════════════════════════════════════════════
 //  CONFIGURATION
 // ═══════════════════════════════════════════════════════
-const BASE = './assets/MD/';
-const GRAPH_FILE = './grc20-these-mael-rolland-v79.json';
+const BASE            = './assets/MD/';
+const GRAPH_FILE      = './grc20-these-mael-rolland-v79.json';
+const SECTION_MAP_FILE= './section_entities_map.json';
+const MAX_GRAPH_NODES = 50;   // top N entities by occurrence_count
+const MAX_HIGHLIGHT   = 150;  // max entity names for DOM highlighting
 
 const CHAPTERS_DEF = [
-  { id: 'intro',   labelFR: 'Intro',    labelEN: 'Intro',
-    fileFR: '00_introduction.md',   fileEN: '00_introduction_EN.md' },
-  { id: 'ch1',     labelFR: 'Chap. I',  labelEN: 'Ch. I',
-    fileFR: '01_chapitre_I.md',     fileEN: '01_chapitre_I_EN.md' },
-  { id: 'ch2',     labelFR: 'Chap. II', labelEN: 'Ch. II',
-    fileFR: '02_chapitre_II.md',    fileEN: '02_chapitre_II_EN.md' },
-  { id: 'ch3',     labelFR: 'Chap. III',labelEN: 'Ch. III',
-    fileFR: '03_chapitre_III.md',   fileEN: '03_chapitre_III_EN.md' },
-  { id: 'ccl',     labelFR: 'Conclusion',labelEN: 'Conclusion',
-    fileFR: '04_conclusion.md',     fileEN: '04_conclusion_EN.md' },
-  { id: 'glossaire',labelFR: 'Glossaire',labelEN: 'Glossary',
+  { id: 'intro',    labelFR: 'Intro',      labelEN: 'Intro',
+    fileFR: '00_introduction.md',      fileEN: '00_introduction_EN.md' },
+  { id: 'ch1',      labelFR: 'Chap. I',   labelEN: 'Ch. I',
+    fileFR: '01_chapitre_I.md',        fileEN: '01_chapitre_I_EN.md' },
+  { id: 'ch2',      labelFR: 'Chap. II',  labelEN: 'Ch. II',
+    fileFR: '02_chapitre_II.md',       fileEN: '02_chapitre_II_EN.md' },
+  { id: 'ch3',      labelFR: 'Chap. III', labelEN: 'Ch. III',
+    fileFR: '03_chapitre_III.md',      fileEN: '03_chapitre_III_EN.md' },
+  { id: 'ccl',      labelFR: 'Conclusion',labelEN: 'Conclusion',
+    fileFR: '04_conclusion.md',        fileEN: '04_conclusion_EN.md' },
+  { id: 'glossaire',labelFR: 'Glossaire', labelEN: 'Glossary',
     fileFR: '05_glossaire_annexes.md', fileEN: '05_glossary_appendix_en.md' },
 ];
 
@@ -755,57 +785,68 @@ const CHAPTERS_DEF = [
 //  STATE
 // ═══════════════════════════════════════════════════════
 let state = {
-  lang: 'fr',
-  currentChapter: 'intro',
-  graphData: null,
-  entityMap: {},
-  typeMap: {},
-  relTypeMap: {},
-  adjacency: {},       // id -> [{nid, relName, dir}]
-  sectionMap: {},      // section name (normalized) -> entity
-  sectionCodeMap: {},  // section code (e.g. "i1", "ii3") -> entity
-  chapterMap: {},      // chapter name (normalized) -> entity
-  activeFilters: new Set(),
-  cy: null,
-  observer: null,
+  lang:              'fr',
+  currentChapter:    'intro',
+  graphData:         null,
+  sectionEntitiesMap:null,   // section_entities_map.json
+  entityMap:         {},
+  typeMap:           {},
+  relTypeMap:        {},
+  adjacency:         {},     // entityId → [{nid, relName, dir}]
+  activeFilters:     new Set(),
+  cy:                null,
+  observer:          null,
+  currentSectionKey: null,
 };
 
 // ═══════════════════════════════════════════════════════
-//  TYPE COLORS
+//  TYPE COLORS & HIGHLIGHT TYPES
 // ═══════════════════════════════════════════════════════
 const TYPE_COLORS = {
-  'AcademicWork':        '#8b5cf6',
-  'Person':              '#f59e0b',
-  'Institution':         '#14b8a6',
-  'Concept':             '#6366f1',
-  'TheoreticFramework':  '#06b6d4',
-  'CrisisEvent':         '#ef4444',
-  'Protocol':            '#ec4899',
-  'ActorNonHuman':       '#f97316',
-  'Corpus':              '#94a3b8',
-  'MonetaryObject':      '#fbbf24',
-  'Reference':           '#10b981',
-  'ActorGroup':          '#dc2626',
-  'PrimarySource':       '#3b82f6',
-  'Method':              '#84cc16',
-  'Chapter':             '#e879f9',
-  'ThesisSection':       '#c084fc',
-  'Argument':            '#fb923c',
-  'NarrativeCluster':    '#38bdf8',
-  'SourceQuote':         '#a3e635',
-  'CrisisPhase':         '#ff6b6b',
-  'InfrastructureDomain':'#4ade80',
-  'InfrastructureEvent': '#facc15',
-  'DevelopmentPhase':    '#67e8f9',
-  'Actor':               '#fda4af',
-  'PriceSeries':         '#86efac',
-  'PriceWindow':         '#fcd34d',
-  'ProtocolChange':      '#f9a8d4',
-  'Capability':          '#a5f3fc',
-  'GovernanceArena':     '#f97316',
-  'GovernanceConflict':  '#ef4444',
-  'GovernanceProcess':   '#22d3ee',
-  'ProtocolProposal':    '#a78bfa',};
+  'AcademicWork':          '#8b5cf6',
+  'Person':                '#f59e0b',
+  'Institution':           '#14b8a6',
+  'Concept':               '#6366f1',
+  'TheoreticFramework':    '#06b6d4',
+  'CrisisEvent':           '#ef4444',
+  'Protocol':              '#ec4899',
+  'ActorNonHuman':         '#f97316',
+  'Corpus':                '#94a3b8',
+  'MonetaryObject':        '#fbbf24',
+  'Reference':             '#10b981',
+  'ActorGroup':            '#dc2626',
+  'PrimarySource':         '#3b82f6',
+  'Method':                '#84cc16',
+  'Chapter':               '#e879f9',
+  'ThesisSection':         '#c084fc',
+  'Argument':              '#fb923c',
+  'NarrativeCluster':      '#38bdf8',
+  'SourceQuote':           '#a3e635',
+  'CrisisPhase':           '#ff6b6b',
+  'InfrastructureDomain':  '#4ade80',
+  'InfrastructureEvent':   '#facc15',
+  'DevelopmentPhase':      '#67e8f9',
+  'PriceSeries':           '#86efac',
+  'PriceWindow':           '#fcd34d',
+  'ProtocolChange':        '#f9a8d4',
+  'Capability':            '#a5f3fc',
+  'GovernanceArena':       '#f97316',
+  'GovernanceConflict':    '#ef4444',
+  'GovernanceProcess':     '#22d3ee',
+  'ProtocolProposal':      '#a78bfa',
+  'StakeholderCategory':   '#fb7185',
+  'InfrastructureSegment': '#34d399',
+  'DoctoralThesis':        '#ffd700',
+};
+
+// Types eligible for in-text entity highlighting
+const HIGHLIGHT_TYPES = new Set([
+  'Person','Concept','CrisisEvent','Protocol','Institution',
+  'TheoreticFramework','ActorGroup','ActorNonHuman',
+  'GovernanceArena','GovernanceConflict','GovernanceProcess',
+  'ProtocolProposal','ProtocolChange','CrisisPhase',
+  'DevelopmentPhase','InfrastructureDomain','Argument',
+]);
 
 // ═══════════════════════════════════════════════════════
 //  INIT
@@ -814,60 +855,75 @@ async function init() {
   renderChapterNav();
   await loadGraph();
   initCytoscape();
+  initReadingProgress();
   await loadChapter('intro');
 }
 
 // ═══════════════════════════════════════════════════════
-//  GRAPH LOADING
+//  DATA LOADING (graph + section map in parallel)
 // ═══════════════════════════════════════════════════════
 async function loadGraph() {
   try {
-    const res = await fetch(GRAPH_FILE);
-    const data = await res.json();
-    state.graphData = data;
+    const [graphRes, sectionRes] = await Promise.all([
+      fetch(GRAPH_FILE),
+      fetch(SECTION_MAP_FILE),
+    ]);
+    const [data, sectionMap] = await Promise.all([
+      graphRes.json(),
+      sectionRes.json(),
+    ]);
 
-    // Build lookup maps
+    state.graphData          = data;
+    state.sectionEntitiesMap = sectionMap;
     state.typeMap    = Object.fromEntries(data.types.map(t => [t.id, t.name]));
     state.relTypeMap = Object.fromEntries(data.relation_types.map(r => [r.id, r.name]));
     state.entityMap  = Object.fromEntries(data.entities.map(e => [e.id, e]));
 
-    // Build adjacency
+    // Adjacency list (needed for entity panel relations)
     const adj = {};
     for (const e of data.entities) adj[e.id] = [];
     for (const r of data.relations) {
       const rname = state.relTypeMap[r.type] || r.type;
       adj[r.from]?.push({ nid: r.to,   relName: rname, dir: 'out' });
-      adj[r.to]?.push({  nid: r.from,  relName: rname, dir: 'in'  });
+      adj[r.to  ]?.push({ nid: r.from, relName: rname, dir: 'in'  });
     }
     state.adjacency = adj;
 
-    // Build section/chapter maps (normalized name → entity)
-    for (const e of data.entities) {
-      const types = (e.types || []).map(t => state.typeMap[t]);
-      if (types.includes('ThesisSection')) {
-        state.sectionMap[normalize(e.name)] = e;
-        // Also index by section code prefix (e.g. "i1", "ii3", "a", "b")
-        const code = extractSectionCode(e.name);
-        if (code) state.sectionCodeMap[code] = e;
-      }
-      if (types.includes('Chapter')) {
-        state.chapterMap[normalize(e.name)] = e;
-      }
-    }
-
-    // Init filters (all types present in graph)
+    // Build type filter list from entities present in graph
     const presentTypes = new Set();
     for (const e of data.entities) {
       for (const t of (e.types || [])) {
         const tn = state.typeMap[t];
-        if (tn && !['Chapter','ThesisSection'].includes(tn)) presentTypes.add(tn);
+        if (tn && !['Chapter','ThesisSection','SourceQuote'].includes(tn)) presentTypes.add(tn);
       }
     }
     state.activeFilters = new Set(presentTypes);
     renderFilters(presentTypes);
+
   } catch (err) {
-    console.warn('Graph not loaded:', err);
+    console.warn('Data loading error:', err);
   }
+}
+
+// ═══════════════════════════════════════════════════════
+//  SECTION KEY MAPPING
+//  Maps heading text → key in section_entities_map.json
+//  Keys: 'intro_A'…'intro_E', 'I.1', 'I.1.1', 'II.3', …
+// ═══════════════════════════════════════════════════════
+function headingToSectionKey(text, chapterId) {
+  const clean = text.replace(/<[^>]+>/g, '').trim();
+
+  // Roman numeral + digits: "I.1", "I.1.1", "II.3.2", "III.4"
+  const roman = clean.match(/^([IVX]{1,4}\.\d+(?:\.\d+)?(?:\.\d+)?)/);
+  if (roman) return roman[1];
+
+  // Intro sub-sections: "A.", "A —", "A. Titre", lone "A"
+  if (chapterId === 'intro') {
+    const letter = clean.match(/^([A-E])(?:[.\s\u2014\-]|$)/);
+    if (letter) return 'intro_' + letter[1];
+  }
+
+  return null;
 }
 
 // ═══════════════════════════════════════════════════════
@@ -881,239 +937,209 @@ function initCytoscape() {
       {
         selector: 'node',
         style: {
-          'background-color': 'data(color)',
-          'label': 'data(label)',
-          'font-size': '7px',
-          'font-family': 'Courier Prime, monospace',
-          'color': '#ffd700',
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'text-margin-y': 3,
-          'text-outline-color': '#1a0000',
-          'text-outline-width': 2,
-          'width': 'data(size)',
-          'height': 'data(size)',
-          'border-width': 1,
-          'border-color': '#6b5000',
-          'shape': 'ellipse',
+          'background-color':           'data(color)',
+          'label':                      'data(label)',
+          'font-size':                  '7px',
+          'font-family':                'Courier Prime, monospace',
+          'color':                      '#ffd700',
+          'text-valign':                'bottom',
+          'text-halign':                'center',
+          'text-margin-y':              3,
+          'text-outline-color':         '#1a0000',
+          'text-outline-width':         2,
+          'width':                      'data(size)',
+          'height':                     'data(size)',
+          'border-width':               1,
+          'border-color':               '#6b5000',
+          'shape':                      'ellipse',
+          'transition-property':        'opacity, border-width, border-color',
+          'transition-duration':        '0.25s',
+          'transition-timing-function': 'ease',
         }
       },
-      {
-        selector: 'node[type = "ThesisSection"]',
-        style: { 'shape': 'diamond', 'border-color': '#c084fc', 'border-width': 2 }
-      },
-      {
-        selector: 'node[type = "CrisisEvent"]',
-        style: { 'shape': 'star' }
-      },
-      {
-        selector: 'node[type = "Concept"]',
-        style: { 'shape': 'hexagon' }
-      },
-      {
-        selector: 'node[type = "Person"]',
-        style: { 'shape': 'ellipse' }
-      },
-      {
-        selector: 'node:selected',
-        style: { 'border-width': 3, 'border-color': '#ffd700' }
-      },
-      {
-        selector: 'node.highlighted',
-        style: { 'border-width': 2, 'border-color': '#ffd700', 'opacity': 1 }
-      },
-      {
-        selector: 'node.faded',
-        style: { 'opacity': 0.15 }
-      },
-      {
-        selector: 'node.hidden-filter',
-        style: { 'display': 'none' }
-      },
+      { selector: 'node[type = "CrisisEvent"]',        style: { 'shape': 'star' } },
+      { selector: 'node[type = "Concept"]',            style: { 'shape': 'hexagon' } },
+      { selector: 'node[type = "TheoreticFramework"]', style: { 'shape': 'diamond' } },
+      { selector: 'node[type = "Protocol"]',           style: { 'shape': 'barrel' } },
+      { selector: 'node[type = "Institution"]',        style: { 'shape': 'round-rectangle' } },
+      { selector: 'node:selected',
+        style: { 'border-width': 3, 'border-color': '#ffd700' } },
+      { selector: 'node.highlighted',
+        style: { 'border-width': 2, 'border-color': '#ffd700', 'opacity': 1 } },
+      { selector: 'node.faded',
+        style: { 'opacity': 0.12 } },
+      { selector: 'node.hidden-filter',
+        style: { 'display': 'none' } },
       {
         selector: 'edge',
         style: {
-          'width': 1,
-          'line-color': '#5a2000',
-          'target-arrow-color': '#8b6000',
-          'target-arrow-shape': 'triangle',
-          'curve-style': 'bezier',
-          'arrow-scale': 0.6,
-          'opacity': 0.5,
+          'width':               1,
+          'line-color':          '#5a2000',
+          'target-arrow-color':  '#8b6000',
+          'target-arrow-shape':  'triangle',
+          'curve-style':         'bezier',
+          'arrow-scale':         0.6,
+          'opacity':             0.45,
+          'transition-property': 'opacity',
+          'transition-duration': '0.25s',
         }
       },
-      {
-        selector: 'edge.highlighted',
-        style: { 'line-color': '#ffd700', 'target-arrow-color': '#ffd700', 'opacity': 1, 'width': 2 }
-      },
+      { selector: 'edge.highlighted',
+        style: { 'line-color': '#ffd700', 'target-arrow-color': '#ffd700', 'opacity': 1, 'width': 2 } },
+      { selector: 'edge.faded',
+        style: { 'opacity': 0.05 } },
     ],
     layout: { name: 'preset' },
     hideEdgesOnViewport: true,
-    textureOnViewport: true,
+    textureOnViewport:   true,
   });
 
-  // Events
-  state.cy.on('tap', 'node', e => {
-    const id = e.target.data('id');
-    openEntityPanel(id);
-  });
-  state.cy.on('mouseover', 'node', e => {
-    const id = e.target.data('id');
-    highlightNeighbors(id);
-  });
-  state.cy.on('mouseout', 'node', () => {
-    clearHighlight();
-  });
+  state.cy.on('tap',      'node', e => openEntityPanel(e.target.data('id')));
+  state.cy.on('mouseover','node', e => highlightNeighbors(e.target.data('id')));
+  state.cy.on('mouseout', 'node', () => clearHighlight());
 }
 
 // ═══════════════════════════════════════════════════════
-//  SUBGRAPH FOR SECTION
+//  GRAPH UPDATE — uses section_entities_map.json directly
 // ═══════════════════════════════════════════════════════
-function getSubgraph(sectionEntity) {
-  if (!sectionEntity || !state.graphData) return { nodes: [], edges: [] };
+let _graphTimer = null;
+function debouncedUpdateGraph(sectionKey) {
+  clearTimeout(_graphTimer);
+  _graphTimer = setTimeout(() => updateGraph(sectionKey), 250);
+}
 
-  const visited = new Set([sectionEntity.id]);
-  const hop1 = new Set();
+function updateGraph(sectionKey) {
+  if (!state.cy || !state.graphData || !state.sectionEntitiesMap) return;
+  if (!sectionKey || sectionKey === state.currentSectionKey) return;
+  state.currentSectionKey = sectionKey;
 
-  // Hop 1
-  for (const { nid } of (state.adjacency[sectionEntity.id] || [])) {
-    hop1.add(nid);
-    visited.add(nid);
+  const sectionData = state.sectionEntitiesMap[sectionKey];
+  document.getElementById('graph-section-name').textContent = sectionKey;
+
+  if (!sectionData?.entities?.length) {
+    state.cy.elements().remove();
+    document.getElementById('stat-nodes').textContent      = '0 nœuds';
+    document.getElementById('stat-edges').textContent      = '0 liens';
+    document.getElementById('graph-section-total').textContent = '';
+    return;
   }
 
-  // Hop 2 (only non-Chapter, non-ThesisSection, non-Reference)
-  for (const nid of hop1) {
-    const e = state.entityMap[nid];
-    if (!e) continue;
-    const types = (e.types || []).map(t => state.typeMap[t]);
-    if (types.some(t => ['Chapter','Reference','SourceQuote'].includes(t))) continue;
-    for (const { nid: n2id } of (state.adjacency[nid] || [])) {
-      if (!visited.has(n2id)) {
-        const e2 = state.entityMap[n2id];
-        if (!e2) continue;
-        const t2 = (e2.types || []).map(t => state.typeMap[t]);
-        if (t2.some(t => ['Chapter','ThesisSection','Reference','SourceQuote'].includes(t))) continue;
-        visited.add(n2id);
-      }
-    }
-  }
+  // Sort by occurrence_count DESC, keep top N
+  const sorted = [...sectionData.entities]
+    .sort((a, b) => b.occurrence_count - a.occurrence_count)
+    .slice(0, MAX_GRAPH_NODES);
 
-  // Build elements
-  const nodes = [];
-  for (const eid of visited) {
-    const e = state.entityMap[eid];
-    if (!e) continue;
-    const typeName = (e.types || []).map(t => state.typeMap[t]).find(t => t) || 'Unknown';
-    const isSection = typeName === 'ThesisSection';
-    nodes.push({
+  const entityIdSet = new Set(sorted.map(e => e.entity_id));
+  const maxOcc = sorted[0]?.occurrence_count || 1;
+
+  // Build nodes — size proportional to occurrence_count [12, 36]
+  const newNodes = [];
+  for (const { entity_id, occurrence_count } of sorted) {
+    const entity = state.entityMap[entity_id];
+    if (!entity) continue;
+    const typeName = (entity.types || []).map(t => state.typeMap[t]).find(t => t) || 'Unknown';
+    newNodes.push({
       data: {
-        id: eid,
-        label: truncate(e.name, 18),
-        color: TYPE_COLORS[typeName] || '#6b5000',
-        type: typeName,
-        size: isSection ? 30 : (eid === sectionEntity.id ? 36 : 18),
+        id:     entity_id,
+        label:  truncate(entity.name, 18),
+        color:  TYPE_COLORS[typeName] || '#6b5000',
+        type:   typeName,
+        size:   12 + (occurrence_count / maxOcc) * 24,
+        weight: occurrence_count,
       }
     });
   }
 
-  const edges = [];
-  const edgeSet = new Set();
+  // Build edges only between entities present in the subgraph
+  const newEdges = [];
+  const edgeSet  = new Set();
   for (const r of state.graphData.relations) {
-    if (visited.has(r.from) && visited.has(r.to)) {
+    if (entityIdSet.has(r.from) && entityIdSet.has(r.to)) {
       const key = `${r.from}|${r.to}|${r.type}`;
       if (!edgeSet.has(key)) {
         edgeSet.add(key);
-        edges.push({
-          data: {
-            id: key,
-            source: r.from,
-            target: r.to,
-            label: state.relTypeMap[r.type] || '',
-          }
-        });
+        newEdges.push({ data: { id: key, source: r.from, target: r.to, label: state.relTypeMap[r.type] || '' } });
       }
     }
   }
 
-  return { nodes, edges };
+  smoothUpdateGraph(newNodes, newEdges);
+
+  document.getElementById('stat-nodes').textContent = `${newNodes.length} nœuds`;
+  document.getElementById('stat-edges').textContent = `${newEdges.length} liens`;
+  const total = sectionData.entities.length;
+  document.getElementById('graph-section-total').textContent =
+    total > newNodes.length ? `top ${newNodes.length}/${total} entités` : `${newNodes.length} entités`;
 }
 
-function updateGraph(sectionName) {
-  if (!state.cy || !state.graphData) return;
+function smoothUpdateGraph(newNodes, newEdges) {
+  const cy         = state.cy;
+  const newNodeIds = new Set(newNodes.map(n => n.data.id));
+  const newEdgeIds = new Set(newEdges.map(e => e.data.id));
 
-  // Find matching section entity — try full name first, then section code prefix
-  const code = extractSectionCode(sectionName);
-  const sectionEntity = state.sectionMap[normalize(sectionName)]
-    || (code ? state.sectionCodeMap[code] : null)
-    || null;
+  // Remove elements absent from new subgraph
+  cy.elements().filter(el => !newNodeIds.has(el.id()) && !newEdgeIds.has(el.id())).remove();
 
-  document.getElementById('graph-section-name').textContent =
-    sectionEntity ? sectionEntity.name : sectionName || '—';
-
-  const { nodes, edges } = sectionEntity
-    ? getSubgraph(sectionEntity)
-    : { nodes: [], edges: [] };
-
-  state.cy.elements().remove();
-  state.cy.add([...nodes, ...edges]);
-
-  // Apply filters
-  applyFilters();
-
-  // Layout
-  if (nodes.length > 0) {
-    state.cy.layout({
-      name: 'cose',
-      animate: true,
-      animationDuration: 400,
-      randomize: false,
-      nodeRepulsion: 6000,
-      edgeElasticity: 100,
-      gravity: 0.5,
-      numIter: 200,
-      initialTemp: 200,
-      coolingFactor: 0.95,
-      minTemp: 1.0,
-    }).run();
+  // Add genuinely new elements and fade them in
+  const existingIds = new Set(cy.elements().map(el => el.id()));
+  const toAdd = [
+    ...newNodes.filter(n => !existingIds.has(n.data.id)),
+    ...newEdges.filter(e => !existingIds.has(e.data.id)),
+  ];
+  if (toAdd.length) {
+    const added = cy.add(toAdd);
+    added.nodes().style('opacity', 0).animate({ style: { opacity: 1 } }, { duration: 350 });
   }
 
-  // Stats
-  document.getElementById('stat-nodes').textContent = `${nodes.length} nœuds`;
-  document.getElementById('stat-edges').textContent = `${edges.length} liens`;
+  applyFilters();
+
+  if (cy.nodes(':visible').length > 0) {
+    cy.layout({
+      name:              'cose',
+      animate:           true,
+      animationDuration: 500,
+      animationEasing:   'ease-out',
+      randomize:         false,
+      nodeRepulsion:     8000,
+      edgeElasticity:    100,
+      gravity:           0.6,
+      numIter:           250,
+      initialTemp:       200,
+      coolingFactor:     0.95,
+      minTemp:           1.0,
+    }).run();
+  }
 }
 
 // ═══════════════════════════════════════════════════════
 //  MARKDOWN LOADING & RENDERING
 // ═══════════════════════════════════════════════════════
 async function loadChapter(chapterId) {
-  state.currentChapter = chapterId;
+  state.currentChapter    = chapterId;
+  state.currentSectionKey = null;
   updateChapterNav();
 
-  const def = CHAPTERS_DEF.find(c => c.id === chapterId);
+  const def  = CHAPTERS_DEF.find(c => c.id === chapterId);
   if (!def) return;
 
   const file = state.lang === 'en' && def.fileEN ? def.fileEN : def.fileFR;
   if (!file) {
     document.getElementById('reader-content').innerHTML =
-      `<p style="color:var(--gold2);font-family:var(--pixel);font-size:0.6em;padding:40px">
-        Traduction en cours…
-      </p>`;
+      `<p style="color:var(--gold2);font-family:var(--pixel);font-size:0.6em;padding:40px">Traduction en cours…</p>`;
     return;
   }
 
-  document.getElementById('reader-content').innerHTML =
-    `<div class="loading-msg">Chargement…</div>`;
+  document.getElementById('reader-content').innerHTML = `<div class="loading-msg">Chargement…</div>`;
 
   try {
     const res = await fetch(BASE + file);
     if (!res.ok) throw new Error(res.status);
-    const md = await res.text();
-    renderMarkdown(md, def);
-    buildTOC(def);
+    renderMarkdown(await res.text());
+    buildTOC();
     setupIntersectionObserver();
-    // Load initial graph for first section
-    const firstH = document.querySelector('.reader-content h1, .reader-content h2');
-    if (firstH) updateGraph(firstH.textContent);
+    // Trigger graph for first mapped section
+    const firstKeyed = document.querySelector('.reader-content [data-section-key]');
+    if (firstKeyed?.dataset.sectionKey) updateGraph(firstKeyed.dataset.sectionKey);
   } catch (err) {
     document.getElementById('reader-content').innerHTML =
       `<p style="color:var(--danger);font-family:var(--pixel);font-size:0.6em;padding:40px">
@@ -1123,111 +1149,182 @@ async function loadChapter(chapterId) {
   }
 }
 
-function renderMarkdown(md, def) {
-  // Clean Pandoc artifacts
+function renderMarkdown(md) {
   let cleaned = md
-    // Remove Pandoc width/height attributes
     .replace(/\{[^}]*width=[^}]*\}/g, '')
-    // Convert media/imageN.png → assets/figures/ paths
     .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](assets/figures/$2)')
-    // Trim TOC lines at start (lines starting with [...](#...)
     .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
 
-  // ── 1. Extraire les définitions [^N]: texte (une par ligne)
+  // Extract footnote definitions
   const footnoteDefs = {};
   cleaned = cleaned.replace(/^\[\^(\d+)\]:\s*(.+)$/gm, (_, n, text) => {
     footnoteDefs[parseInt(n)] = text.trim();
     return '';
   });
 
-  // ── 2. Supprimer les headings ##### (sidenotes = doublons des définitions)
+  // Remove ##### sidenotes (Pandoc artifact)
   cleaned = cleaned.replace(/^#{5}\s+.+$/gm, '');
 
-  // ── 3. Remplacer [^N] inline par des ancres superscript numérotées
+  // Inline footnote refs
   cleaned = cleaned.replace(/\[\^(\d+)\]/g,
     '<sup id="fnref-$1"><a href="#fn-$1" class="fn-ref">[$1]</a></sup>');
 
-  // ── 4. Zotero links → Google Scholar
-  cleaned = cleaned.replace(
-    /\[([^\]]+)\]\(https?:\/\/(?:www\.)?zotero\.org\/google-docs\/[^)]+\)/g,
-    (_, text) => {
-      const q = encodeURIComponent(text.replace(/[()[\]]/g, '').trim());
-      return `[${text}](https://scholar.google.com/scholar?q=${q})`;
-    }
-  );
+  // Zotero → Google Scholar
+  const zoteroRe = /\[([^\]]+)\]\(https?:\/\/(?:www\.)?zotero\.org\/google-docs\/[^)]+\)/g;
+  const zoteroFn = (_, text) => {
+    const q = encodeURIComponent(text.replace(/[()[\]]/g, '').trim());
+    return `[${text}](https://scholar.google.com/scholar?q=${q})`;
+  };
+  cleaned = cleaned.replace(zoteroRe, zoteroFn);
 
-  // ── 5. Superscript Pandoc : ^texte^ → <sup>texte</sup>
+  // Pandoc superscripts
   cleaned = cleaned.replace(/\^([^^]+?)\^/g, '<sup>$1</sup>');
 
-  // Parse markdown
   marked.setOptions({ breaks: true, gfm: true });
   let html = marked.parse(cleaned);
 
-  // Add section anchors to headings for IntersectionObserver
+  // Attach data-section and data-section-key to h1/h2 for IntersectionObserver
   html = html.replace(/<(h[12])(.*?)>(.*?)<\/h[12]>/gs, (m, tag, attrs, content) => {
-    const slug = slugify(content.replace(/<[^>]+>/g, ''));
-    return `<${tag}${attrs} data-section="${content.replace(/<[^>]+>/g, '')}" id="section-${slug}">${content}</${tag}>`;
+    const text       = content.replace(/<[^>]+>/g, '');
+    const slug       = slugify(text);
+    const sectionKey = headingToSectionKey(text, state.currentChapter) || '';
+    const keyAttr    = sectionKey ? ` data-section-key="${sectionKey}"` : '';
+    return `<${tag}${attrs}${keyAttr} data-section="${text}" id="section-${slug}">${content}</${tag}>`;
   });
 
-  // ── 6. Construire la section notes de bas de page
+  // Footnotes section
   const fnNums = Object.keys(footnoteDefs).map(Number).sort((a, b) => a - b);
   if (fnNums.length) {
     let fnHtml = '<div class="footnotes-section"><p class="fn-title">Notes</p><ol>';
     for (const n of fnNums) {
-      // Zotero dans les textes de notes aussi
-      let txt = footnoteDefs[n].replace(
-        /\[([^\]]+)\]\(https?:\/\/(?:www\.)?zotero\.org\/google-docs\/[^)]+\)/g,
-        (_, t) => {
-          const q = encodeURIComponent(t.replace(/[()[\]]/g, '').trim());
-          return `<a href="https://scholar.google.com/scholar?q=${q}" target="_blank">${t}</a>`;
-        }
-      );
+      let txt = footnoteDefs[n].replace(zoteroRe, (_, t) => {
+        const q = encodeURIComponent(t.replace(/[()[\]]/g, '').trim());
+        return `<a href="https://scholar.google.com/scholar?q=${q}" target="_blank">${t}</a>`;
+      });
       fnHtml += `<li id="fn-${n}" value="${n}">${txt} <a href="#fnref-${n}" class="fn-back">↩</a></li>`;
     }
     fnHtml += '</ol></div>';
     html += fnHtml;
   }
 
-  // Highlight entity mentions
-  html = highlightEntities(html);
+  // Inject HTML first — then walk DOM safely for entity highlighting
+  const container = document.getElementById('reader-content');
+  container.innerHTML = html;
 
-  document.getElementById('reader-content').innerHTML = html;
+  // Highlight entities using the first section's entity list
+  const firstKey = container.querySelector('[data-section-key]')?.dataset.sectionKey;
+  highlightEntitiesInDOM(container, firstKey);
 }
 
-function highlightEntities(html) {
-  if (!state.graphData) return html;
+// ═══════════════════════════════════════════════════════
+//  DOM ENTITY HIGHLIGHTING  (TextNode TreeWalker — no regex on HTML)
+//
+//  Why TreeWalker and not innerHTML regex?
+//  ─ Operates on text nodes AFTER the DOM is built → zero risk of breaking HTML
+//  ─ Skips headings, code, footnotes, and already-wrapped spans automatically
+//  ─ Section-aware: uses section_entities_map for contextual accuracy
+//  ─ Anti-overlap via Uint8Array bitmap → no double-wrapping
+// ═══════════════════════════════════════════════════════
+function highlightEntitiesInDOM(container, sectionKey) {
+  if (!state.graphData || !container) return;
 
-  // Build name→id map for quick lookup
-  const nameMap = {};
-  for (const e of state.graphData.entities) {
-    if (e.name && e.name.length > 3) {
-      const types = (e.types || []).map(t => state.typeMap[t]);
-      // Only highlight "interesting" types
-      if (types.some(t => ['Person','Concept','CrisisEvent','Protocol','Institution','TheoreticFramework','ActorGroup','ActorNonHuman'].includes(t))) {
-        nameMap[e.name] = e.id;
+  const sectionData = sectionKey ? state.sectionEntitiesMap?.[sectionKey] : null;
+
+  // Build name→id map. Section entities are already sorted by occurrence_count.
+  const nameToId = new Map();
+  const sources  = sectionData?.entities
+    || state.graphData.entities.map(e => ({ entity_id: e.id, entity_name: e.name }));
+
+  for (const { entity_id, entity_name } of sources.slice(0, MAX_HIGHLIGHT)) {
+    if (!entity_name || entity_name.length <= 3) continue;
+    const entity = state.entityMap[entity_id];
+    if (!entity) continue;
+    const types = (entity.types || []).map(t => state.typeMap[t]);
+    if (types.some(t => HIGHLIGHT_TYPES.has(t))) nameToId.set(entity_name, entity_id);
+  }
+  if (!nameToId.size) return;
+
+  // Sort by length DESC so "Bitcoin Cash" is matched before "Bitcoin"
+  const names = [...nameToId.keys()].sort((a, b) => b.length - a.length);
+
+  // Tags whose text content must never be touched
+  const SKIP_TAGS = new Set(['script','style','code','pre','sup','a','h1','h2','h3','h4','h5','h6']);
+
+  const walker = document.createTreeWalker(
+    container,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode(node) {
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        if (SKIP_TAGS.has(p.tagName.toLowerCase()))  return NodeFilter.FILTER_REJECT;
+        if (p.classList?.contains('entity-mention')) return NodeFilter.FILTER_REJECT;
+        if (p.closest?.('.footnotes-section'))       return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
       }
+    }
+  );
+
+  // Collect text nodes first (modifying the DOM while walking breaks the walker)
+  const textNodes = [];
+  let n;
+  while ((n = walker.nextNode())) textNodes.push(n);
+
+  for (const textNode of textNodes) {
+    const frag = buildHighlightFragment(textNode.textContent, names, nameToId);
+    if (frag && textNode.parentNode) textNode.parentNode.replaceChild(frag, textNode);
+  }
+}
+
+/**
+ * Scans `text` for entity names (longest-first), avoids overlaps via bitmap,
+ * checks unicode-aware word boundaries, returns a DocumentFragment or null.
+ */
+function buildHighlightFragment(text, names, nameToId) {
+  const occupied = new Uint8Array(text.length);
+  const matches  = [];
+
+  for (const name of names) {
+    let idx = 0;
+    while (idx <= text.length - name.length) {
+      const pos = text.indexOf(name, idx);
+      if (pos === -1) break;
+
+      // Unicode word-boundary: char before/after must not be a word character
+      const before = pos > 0                  ? text[pos - 1]              : ' ';
+      const after  = pos + name.length < text.length ? text[pos + name.length] : ' ';
+      const ok     = !/[\wÀ-öø-ÿ]/.test(before) && !/[\wÀ-öø-ÿ]/.test(after);
+
+      if (ok) {
+        // Check no byte already claimed by a longer match
+        let free = true;
+        for (let i = pos; i < pos + name.length; i++) { if (occupied[i]) { free = false; break; } }
+        if (free) {
+          for (let i = pos; i < pos + name.length; i++) occupied[i] = 1;
+          matches.push({ start: pos, end: pos + name.length, name, id: nameToId.get(name) });
+        }
+      }
+      idx = pos + name.length;
     }
   }
 
-  // Sort by length desc to match longest first
-  const names = Object.keys(nameMap).sort((a,b) => b.length - a.length);
+  if (!matches.length) return null;
+  matches.sort((a, b) => a.start - b.start);
 
-  // Simple replacement (avoiding re-processing inside tags)
-  // We do a crude but effective approach: replace in text nodes only
-  for (const name of names.slice(0, 60)) { // limit for perf
-    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    try {
-      const re = new RegExp(`(?<![a-zA-Z>])${escaped}(?![a-zA-Z<])`, 'g');
-      html = html.replace(re, (match, offset, str) => {
-        // Don't replace inside HTML tags or already-replaced spans
-        const before = str.slice(Math.max(0, offset - 200), offset);
-        if ((before.match(/</g) || []).length > (before.match(/>/g) || []).length) return match;
-        return `<span class="entity-mention" data-entity-id="${nameMap[name]}" onclick="openEntityPanel('${nameMap[name]}')">${match}</span>`;
-      });
-    } catch(e) { /* skip */ }
+  const frag = document.createDocumentFragment();
+  let pos = 0;
+  for (const m of matches) {
+    if (m.start > pos) frag.appendChild(document.createTextNode(text.slice(pos, m.start)));
+    const span = document.createElement('span');
+    span.className       = 'entity-mention';
+    span.dataset.entityId = m.id;
+    span.textContent      = m.name;
+    span.addEventListener('click', () => openEntityPanel(m.id));
+    frag.appendChild(span);
+    pos = m.end;
   }
-
-  return html;
+  if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+  return frag;
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1236,22 +1333,23 @@ function highlightEntities(html) {
 function setupIntersectionObserver() {
   if (state.observer) state.observer.disconnect();
 
-  const headings = document.querySelectorAll('.reader-content [data-section]');
+  // Only observe headings that have a mapped section key
+  const headings = document.querySelectorAll('.reader-content [data-section-key]');
   if (!headings.length) return;
 
   state.observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (entry.isIntersecting) {
+        const sectionKey  = entry.target.dataset.sectionKey;
         const sectionName = entry.target.dataset.section;
-        updateGraph(sectionName);
-        // Update TOC active state
-        updateTOCActive(sectionName);
+        if (sectionKey) debouncedUpdateGraph(sectionKey);
+        if (sectionName) updateTOCActive(sectionName);
       }
     }
   }, {
-    root: document.getElementById('reader-col'),
-    rootMargin: '-10% 0px -60% 0px',
-    threshold: 0,
+    root:       document.getElementById('reader-col'),
+    rootMargin: '-15% 0px -55% 0px',
+    threshold:  0,
   });
 
   for (const h of headings) state.observer.observe(h);
@@ -1260,20 +1358,17 @@ function setupIntersectionObserver() {
 // ═══════════════════════════════════════════════════════
 //  TOC
 // ═══════════════════════════════════════════════════════
-function buildTOC(def) {
+function buildTOC() {
   const headings = document.querySelectorAll('.reader-content h1, .reader-content h2');
   const toc = document.getElementById('toc-content');
   toc.innerHTML = '';
-
   for (const h of headings) {
     const isH1 = h.tagName === 'H1';
-    const div = document.createElement('div');
-    div.className = isH1 ? 'toc-chapter' : 'toc-section';
-    div.textContent = h.textContent.slice(0, 55) + (h.textContent.length > 55 ? '…' : '');
-    div.dataset.target = h.id;
-    div.onclick = () => {
-      h.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
+    const div  = document.createElement('div');
+    div.className       = isH1 ? 'toc-chapter' : 'toc-section';
+    div.textContent     = h.textContent.slice(0, 55) + (h.textContent.length > 55 ? '…' : '');
+    div.dataset.target  = h.id;
+    div.onclick         = () => h.scrollIntoView({ behavior: 'smooth', block: 'start' });
     toc.appendChild(div);
   }
 }
@@ -1292,11 +1387,11 @@ function renderChapterNav() {
   const nav = document.getElementById('chapter-nav');
   nav.innerHTML = '';
   for (const ch of CHAPTERS_DEF) {
-    const btn = document.createElement('button');
+    const btn    = document.createElement('button');
     btn.className = 'ch-btn';
-    btn.id = 'ch-' + ch.id;
+    btn.id        = 'ch-' + ch.id;
     btn.textContent = state.lang === 'en' ? ch.labelEN : ch.labelFR;
-    btn.onclick = () => loadChapter(ch.id);
+    btn.onclick     = () => loadChapter(ch.id);
     nav.appendChild(btn);
   }
 }
@@ -1331,16 +1426,16 @@ function renderFilters(types) {
   container.innerHTML = '';
   for (const typeName of [...types].sort()) {
     const color = TYPE_COLORS[typeName] || '#6b5000';
-    const chip = document.createElement('div');
-    chip.className = 'filter-chip on';
-    chip.textContent = typeName;
+    const chip  = document.createElement('div');
+    chip.className       = 'filter-chip on';
+    chip.textContent     = typeName;
     chip.style.borderColor = color;
-    chip.style.color = color;
-    chip.dataset.type = typeName;
+    chip.style.color       = color;
+    chip.dataset.type      = typeName;
     chip.onclick = () => {
       const isOn = chip.classList.toggle('on');
       if (isOn) state.activeFilters.add(typeName);
-      else state.activeFilters.delete(typeName);
+      else      state.activeFilters.delete(typeName);
       applyFilters();
     };
     container.appendChild(chip);
@@ -1350,30 +1445,36 @@ function renderFilters(types) {
 function applyFilters() {
   if (!state.cy) return;
   state.cy.nodes().forEach(node => {
-    const typeName = node.data('type');
-    if (state.activeFilters.has(typeName)) {
-      node.removeClass('hidden-filter');
-    } else {
-      node.addClass('hidden-filter');
-    }
+    if (state.activeFilters.has(node.data('type'))) node.removeClass('hidden-filter');
+    else                                             node.addClass('hidden-filter');
   });
 }
 
 // ═══════════════════════════════════════════════════════
-//  HIGHLIGHT
+//  GRAPH HIGHLIGHT / FOCUS
 // ═══════════════════════════════════════════════════════
 function highlightNeighbors(id) {
   if (!state.cy) return;
   state.cy.elements().addClass('faded').removeClass('highlighted');
   const node = state.cy.getElementById(id);
-  const neighbors = node.neighborhood();
   node.addClass('highlighted').removeClass('faded');
-  neighbors.addClass('highlighted').removeClass('faded');
+  node.neighborhood().addClass('highlighted').removeClass('faded');
 }
 
 function clearHighlight() {
   if (!state.cy) return;
   state.cy.elements().removeClass('faded highlighted');
+}
+
+function focusNodeInGraph(entityId) {
+  if (!state.cy) return;
+  const node = state.cy.getElementById(entityId);
+  if (!node.length) return;
+  state.cy.animate(
+    { center: { eles: node }, zoom: Math.max(state.cy.zoom(), 1.6) },
+    { duration: 350 }
+  );
+  highlightNeighbors(entityId);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1384,26 +1485,25 @@ function openEntityPanel(entityId) {
   if (!e) return;
 
   const typeName = (e.types || []).map(t => state.typeMap[t]).find(t => t) || '?';
-  const color = TYPE_COLORS[typeName] || '#6b5000';
+  const color    = TYPE_COLORS[typeName] || '#6b5000';
 
   document.getElementById('panel-name').textContent = e.name;
   const typeEl = document.getElementById('panel-type');
-  typeEl.textContent = typeName;
+  typeEl.textContent     = typeName;
   typeEl.style.borderColor = color;
-  typeEl.style.color = color;
+  typeEl.style.color       = color;
 
-  document.getElementById('panel-desc').textContent =
-    e.description?.value || '—';
+  document.getElementById('panel-desc').textContent = e.description?.value || '—';
 
-  // Attributes (definition, central_argument, etc.)
-  const attrsEl = document.getElementById('panel-attrs');
+  // Key attributes
+  const attrsEl    = document.getElementById('panel-attrs');
   attrsEl.innerHTML = '';
-  const SKIP_ATTRS = new Set(['titleFr','titleEn','titleOriginal','sourceFile',
+  const SKIP_ATTRS  = new Set(['titleFr','titleEn','titleOriginal','sourceFile',
     'sourcePage','pdfPage','page','pageRef','pdfQuote']);
   const attrs = Object.entries(e.attributes || {})
     .filter(([k]) => !SKIP_ATTRS.has(k))
     .filter(([, v]) => { const t = typeof v === 'object' ? v?.value : v; return t && String(t).length > 0; });
-  if (attrs.length > 0) {
+  if (attrs.length) {
     attrsEl.className = 'panel-attrs';
     for (const [key, val] of attrs) {
       const text = typeof val === 'object' ? (val.value || '') : String(val);
@@ -1416,9 +1516,9 @@ function openEntityPanel(entityId) {
   }
 
   // Relations
-  const relsEl = document.getElementById('panel-relations');
+  const relsEl   = document.getElementById('panel-relations');
   relsEl.innerHTML = '';
-  const neighbors = state.adjacency[entityId] || [];
+  const neighbors  = state.adjacency[entityId] || [];
   for (const { nid, relName, dir } of neighbors.slice(0, 30)) {
     const ne = state.entityMap[nid];
     if (!ne) continue;
@@ -1434,16 +1534,34 @@ function openEntityPanel(entityId) {
   }
   if (neighbors.length > 30) {
     const more = document.createElement('p');
-    more.style.cssText = 'font-size:0.75em;color:var(--text2);padding-top:8px;';
-    more.textContent = `+ ${neighbors.length - 30} autres relations`;
+    more.style.cssText  = 'font-size:0.75em;color:var(--text2);padding-top:8px;';
+    more.textContent    = `+ ${neighbors.length - 30} autres relations`;
     relsEl.appendChild(more);
   }
 
   document.getElementById('entity-panel').classList.add('open');
+  // Simultaneously focus the node in the graph
+  focusNodeInGraph(entityId);
 }
 
 function closePanel() {
   document.getElementById('entity-panel').classList.remove('open');
+  clearHighlight();
+}
+
+// ═══════════════════════════════════════════════════════
+//  READING PROGRESS BAR
+// ═══════════════════════════════════════════════════════
+function initReadingProgress() {
+  const col = document.getElementById('reader-col');
+  const bar = document.getElementById('reading-progress');
+  if (!col || !bar) return;
+  col.addEventListener('scroll', () => {
+    const pct = col.scrollHeight > col.clientHeight
+      ? (col.scrollTop / (col.scrollHeight - col.clientHeight)) * 100
+      : 0;
+    bar.style.width = pct + '%';
+  });
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1453,12 +1571,6 @@ function normalize(str) {
   return (str || '').toLowerCase().trim()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ');
-}
-
-// Extract section code prefix: "I.1", "II.3", "III.2b", "A", "B" → "i1", "ii3", "iii2b", "a", "b"
-function extractSectionCode(str) {
-  const m = (str || '').trim().match(/^([IVX]{1,4}(?:\.\d+(?:\.\d+)?[a-z]?)?|[A-E])[\s.]/i);
-  return m ? m[1].toLowerCase().replace(/\./g, '') : null;
 }
 
 function slugify(str) {
