@@ -2182,6 +2182,76 @@
         "entity_id": "17498d46de3114ecfad0f57c3077da34",
         "entity_name": "Jeong 2013",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "1ebbb9b8ce4b48179e92e640cc161393",
+        "entity_name": "Monnaies digitales",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ef3943810af1439d8380f4986b125303",
+        "entity_name": "Neutralité de la monnaie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "51399bac6c09439e861d937b86f662e3",
+        "entity_name": "Pretentions Liberales Technicistes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d54e3c39cc836fdd915285b4230eb737",
+        "entity_name": "Preuve de Travail (PoW)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2e24bde03cad4d56b1c0c012d7cf1e57",
+        "entity_name": "Institutionnalisme Monetaire Francophone (IMF)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7ee960755783430c9db0bb016e87b78b",
+        "entity_name": "Disponibilité",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "55080609af4740bbbd99113405d526ef",
+        "entity_name": "André Orléan",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c77a61a3a67147a4b31cff3100c7a784",
+        "entity_name": "Investissements de forme",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
       }
     ]
   },
@@ -4933,6 +5003,66 @@
         "entity_id": "c825d237dc25b3e9af61dc7982f3da95",
         "entity_name": "All Purpose Money",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 7
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "24e5eafb0b1e46e6a06b390f9ff579aa",
+        "entity_name": "Consensus social",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2e24bde03cad4d56b1c0c012d7cf1e57",
+        "entity_name": "Institutionnalisme Monetaire Francophone (IMF)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
+        "occurrence_count": 1
       }
     ]
   },
@@ -7519,6 +7649,51 @@
         "entity_id": "6bf464cdabd1057b7228d0f3021cb144",
         "entity_name": "Quote — Limitation de taille des blocs (1 Mo, Bitcoin)",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae97de14e40e48d1965902c9dce6473a",
+        "entity_name": "Slock.it",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c98f23ad2a1b48b9b4d1a046e75259d0",
+        "entity_name": "Authentification cryptographique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fdf68d972e241988ac9cb374b2128c2",
+        "entity_name": "Moment initiatique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 1
       }
     ]
   },
@@ -8519,6 +8694,61 @@
       {
         "entity_id": "5828177699931e169966ce9e03ff4a6b",
         "entity_name": "Objet socio-technique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 14
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 10
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "51399bac6c09439e861d937b86f662e3",
+        "entity_name": "Pretentions Liberales Technicistes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "604158d5bab84e82821d53e75070899a",
+        "entity_name": "Gouvernance sur le protocole",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7489dce9688a43df9843144626811dae",
+        "entity_name": "Epreuve d'explicitation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1ebbb9b8ce4b48179e92e640cc161393",
+        "entity_name": "Monnaies digitales",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
         "occurrence_count": 1
       }
     ]
@@ -9850,6 +10080,51 @@
       {
         "entity_id": "da1955d12014df7049bee1a5799c255a",
         "entity_name": "Quote — Frontier (lancement mainnet Ethereum, juillet 2015)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 24
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "7ee960755783430c9db0bb016e87b78b",
+        "entity_name": "Disponibilité",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "168adf802d18403f85862b8db5469118",
+        "entity_name": "Enregistrement de genèse",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1ebbb9b8ce4b48179e92e640cc161393",
+        "entity_name": "Monnaies digitales",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
         "occurrence_count": 1
       }
     ]
@@ -11366,6 +11641,221 @@
       {
         "entity_id": "e324660d7944e4c3b398b652c9eb490d",
         "entity_name": "Nakamoto 2008c — Bitcoin: A Peer-to-Peer Electronic Cash System",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5534cbaa12bb4044b86f25fc453072df",
+        "entity_name": "Cryptographie",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "34302ac00c364d60a486ad68885c69e1",
+        "entity_name": "Enregistrement candidat",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "c98f23ad2a1b48b9b4d1a046e75259d0",
+        "entity_name": "Authentification cryptographique",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "8c27fbf65b8544e281fbd6d09a004cbe",
+        "entity_name": "Arbre de Merkle",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "41863390d2124a54ad4eda535a43fdc7",
+        "entity_name": "Fonction de hachage",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "168adf802d18403f85862b8db5469118",
+        "entity_name": "Enregistrement de genèse",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "1e4e694fd7a39547c34d0899a0c1597f",
+        "entity_name": "consensus de Nakamoto",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7bb996780189451097667409f6274038",
+        "entity_name": "Cible de difficulté",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8991d9f05d234b6d876d16334f60af63",
+        "entity_name": "Coinbase",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5828177699931e169966ce9e03ff4a6b",
+        "entity_name": "Objet socio-technique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "12242085c21141b2b39a3a93f79854a7",
+        "entity_name": "Problème de double dépense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a93718aa38d14725a40a71ff91045c80",
+        "entity_name": "Cryptography Mailing List",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "809baa01e70344cf8eedc2fdd193e885",
+        "entity_name": "Cypherpunk Mailing List",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "66d3987a23f84935b4227aa416f3161f",
+        "entity_name": "Philip Zimmermann",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7c36969bde1d485eb3a4a942a216789f",
+        "entity_name": "Données endogènes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6f6b4ab6f46a460797b9a489ff13c9a1",
+        "entity_name": "Monnaie numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "80919108e22811bbe582df17f9bea512",
+        "entity_name": "Free Banking",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5ceba4d46f924ff59ccba2873d8d86e3",
+        "entity_name": "Eric Hughes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f24be352e0e143b08948165612ead1f9",
+        "entity_name": "Nick Szabo",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0fe6dab37ea84f01b46b784d6260c4a3",
+        "entity_name": "Holoptisme",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7460bdc7054a4dfa9d484ace685c9f11",
+        "entity_name": "Probleme des generaux byzantins",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f87e9246cf2b407bb996bf5632733b88",
+        "entity_name": "Consensus distribué",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "084ad32c4b554d038d8209f2725ec5e3",
+        "entity_name": "Archivage partagé",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "fe2429e337ab4f41b99482861f8a9d45",
+        "entity_name": "Attaque sybille",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7ee960755783430c9db0bb016e87b78b",
+        "entity_name": "Disponibilité",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d54e3c39cc836fdd915285b4230eb737",
+        "entity_name": "Preuve de Travail (PoW)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bf07dcda83d84da7a0a34452762c5eed",
+        "entity_name": "Empreinte numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22efd2a399180ddf6b43f2e7d5481547",
+        "entity_name": "chaîne de blocs",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "aaa182bebfef47f2b799b81696ec263a",
+        "entity_name": "Journal local",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "123309e12e54424d99f51311bcb39c02",
+        "entity_name": "Mempool",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d14c32c8bb244b5280464b69c0e6589d",
+        "entity_name": "Confirmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "40bace4b96224d138b3f198e18ffa173",
+        "entity_name": "Attaque 51%",
         "occurrence_count": 1
       }
     ]
@@ -14771,6 +15261,291 @@
         "entity_id": "da1955d12014df7049bee1a5799c255a",
         "entity_name": "Quote — Frontier (lancement mainnet Ethereum, juillet 2015)",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 35
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 29
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 22
+      },
+      {
+        "entity_id": "1570f65e76a24fb0b3df247eef1d76d1",
+        "entity_name": "Silk Road",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "d969f6bc7b0444db8d228a13173b1b74",
+        "entity_name": "WikiLeaks",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "ad19591afb62496e90aba4dd1d65d1ef",
+        "entity_name": "MtGox",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "5f7f718bd6284d718669ffc28e7cc18e",
+        "entity_name": "Pools de minage",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "5d696ac4f7aa4645baa0e5f88e2b190d",
+        "entity_name": "Régulations transactionnelles",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "41714811849844938debb935f0609cda",
+        "entity_name": "Banque de France",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e395c577f5ec4455af2d8a7aa464d2c6",
+        "entity_name": "Martti Malmi",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8991d9f05d234b6d876d16334f60af63",
+        "entity_name": "Coinbase",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "596f2b5ff3f24f478da71675656c7d58",
+        "entity_name": "\"Not your keys, not your coins\"",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ed7476ec5a5040a281789a0b83cd4b90",
+        "entity_name": "Gavin Andresen",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "66744118d90e4a459df2cd009e19c6b7",
+        "entity_name": "Institutionnalisation carnavalesque de l'infrastructure Bitcoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a53b18d59a6c4ab18a407fd8fdced0c8",
+        "entity_name": "Réintermédiation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9b9c6eb4c0914b95a4cd087d1f5517b7",
+        "entity_name": "\"The Madhatter\"",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "93c0f9f3b9ed47d3a70b5bb943251f65",
+        "entity_name": "Jed McCaleb",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eb7ef87dec2248569a8caeb2aeed6687",
+        "entity_name": "Jeff Garzik",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a8f1cc8213fc45cc948e5502f9caf3a6",
+        "entity_name": "Hal Finney",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e1891c0de0654e0697d722f8421f40f7",
+        "entity_name": "Paymium",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "77214f36adca11f76592932111ae3eb9",
+        "entity_name": "European Central Bank",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eed0b89cd2e740718059c16591f9bfb7",
+        "entity_name": "Phase de maturation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "aa6405e330214181ac9e18a1e52cc932",
+        "entity_name": "Bitcoin Magazine",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7620d78dcf0c489582b5305b7d797303",
+        "entity_name": "Blockchain.info",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "019689c1ce06489a84768c51637eb9ed",
+        "entity_name": "Phase de péché",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0a0a466b928545a49b5bdc6df3abd0cb",
+        "entity_name": "Ross Ulbricht",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ffdc27d9e9c7485a81c0482017ed9246",
+        "entity_name": "Counterparty",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c250bf2c0a5e4a7bbb11c49d67e1053d",
+        "entity_name": "SatoshiDice",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7b3ff3d2bf564f719978c489f609a4c8",
+        "entity_name": "Mastercoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e5b12cd1015f44e9bf6660e52ab23482",
+        "entity_name": "Bitcoin Foundation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "34465c1304e242a48889f6225c6cae44",
+        "entity_name": "Tether / USDT",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a4553092b4a94a52a56858474c8da2c9",
+        "entity_name": "Bitcoin Cash",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "926e5d2796ab4b48ae28ade2b7fcbb17",
+        "entity_name": "Crypto-actif",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b4ebc0adb0204170ac44217265b54714",
+        "entity_name": "Stablecoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "01709955e13e40ea8bf5af2a4c09ef4c",
+        "entity_name": "ShapeShift",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c00c4cbafefe439b87c01d0e37e1abee",
+        "entity_name": "Ledger",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4bb00756332143b597f51ceddac87ec4",
+        "entity_name": "Trezor",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7bb996780189451097667409f6274038",
+        "entity_name": "Cible de difficulté",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22efd2a399180ddf6b43f2e7d5481547",
+        "entity_name": "chaîne de blocs",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f1481a194f6047f8977b8a8c7a15b27e",
+        "entity_name": "Stratum V2",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d3dcd3b1a7954ae48b78b39874609e96",
+        "entity_name": "GHash.io",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "43188ec45e15dbb64adc77e81b89dacd",
+        "entity_name": "Op_Return War",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f266d482c99043ce809e7106960c93e0",
+        "entity_name": "Mike Hearn",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2af42270c40746e2876a3617ed8f7694",
+        "entity_name": "OP_RETURN",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8db449e7a01f49589f19abd510071e97",
+        "entity_name": "Theymos",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8d70eb53a87648b5a227bd31079e25db",
+        "entity_name": "Apodaca",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f9eedaf0f6f040399c4c207f8c5e9129",
+        "entity_name": "Keir",
+        "occurrence_count": 1
       }
     ]
   },
@@ -17493,6 +18268,356 @@
       {
         "entity_id": "da1955d12014df7049bee1a5799c255a",
         "entity_name": "Quote — Frontier (lancement mainnet Ethereum, juillet 2015)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 62
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 38
+      },
+      {
+        "entity_id": "4c6fd0d7d2dd48b3ba56eb748ecbe212",
+        "entity_name": "Namecoin",
+        "occurrence_count": 13
+      },
+      {
+        "entity_id": "7b3ff3d2bf564f719978c489f609a4c8",
+        "entity_name": "Mastercoin",
+        "occurrence_count": 12
+      },
+      {
+        "entity_id": "2af42270c40746e2876a3617ed8f7694",
+        "entity_name": "OP_RETURN",
+        "occurrence_count": 9
+      },
+      {
+        "entity_id": "ffdc27d9e9c7485a81c0482017ed9246",
+        "entity_name": "Counterparty",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "5fd4d8dcdc404c1998aa8015ff944ecb",
+        "entity_name": "Peercoin",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "933ea1ffffba4a38ac567d3c55cd8e73",
+        "entity_name": "Litecoin",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "587ec87def084d2c965bc33353a01985",
+        "entity_name": "Dogecoin",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "7cbdc5b61b6f4dc482d9bc4d707d796f",
+        "entity_name": "J.R. Willet",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "34302ac00c364d60a486ad68885c69e1",
+        "entity_name": "Enregistrement candidat",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "926e5d2796ab4b48ae28ade2b7fcbb17",
+        "entity_name": "Crypto-actif",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "22efd2a399180ddf6b43f2e7d5481547",
+        "entity_name": "chaîne de blocs",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7f4f018391584e708ee2a97f76d35c2b",
+        "entity_name": "Algorithme de consensus",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "81b89cf559ebb5be57d4dba68dafae39",
+        "entity_name": "Métallisme numérique",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "95550536862b49a19ca7625cbd6487b1",
+        "entity_name": "Bitcoin Script",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5e4c337b84714fb086d36f65b4805fe6",
+        "entity_name": "Colored Coins",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "b4ebc0adb0204170ac44217265b54714",
+        "entity_name": "Stablecoin",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "aa6405e330214181ac9e18a1e52cc932",
+        "entity_name": "Bitcoin Magazine",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a3b6763378a942ce9b83d25d25212772",
+        "entity_name": "Mihai Alisie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "0509d0c5196545e2aece85e595fe55c5",
+        "entity_name": "Smart Contracts",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8c27fbf65b8544e281fbd6d09a004cbe",
+        "entity_name": "Arbre de Merkle",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "d14c32c8bb244b5280464b69c0e6589d",
+        "entity_name": "Confirmation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5d696ac4f7aa4645baa0e5f88e2b190d",
+        "entity_name": "Régulations transactionnelles",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e4b95e6a7ec94ac18025381781bb547e",
+        "entity_name": "Protocole GHOST",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5906a40da0324b92a5178f6aac6e7184",
+        "entity_name": "Bitcoiners maximalistes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f87e9246cf2b407bb996bf5632733b88",
+        "entity_name": "Consensus distribué",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bb565b2132f5430eac529b953711be41",
+        "entity_name": "Des \"Altcoins\"",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "11596aed3e4340fdb6811050176a3c74",
+        "entity_name": "Whitebbit1111",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a5589aacde884128b9accb26d6410291",
+        "entity_name": "Jackson Palmer",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "23843f48bd72434db7c160ea19be777b",
+        "entity_name": "Evan Duffield",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "aa152a0f199c4e52b7d933e495329c40",
+        "entity_name": "Billy Markus",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3988cc57610d46faafff880b078d970f",
+        "entity_name": "Charlie Lee",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4322f9923b8442358e0b8e700cd613dc",
+        "entity_name": "Primecoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d884160e8a5d4240988a5233cdcb6c36",
+        "entity_name": "Bobby Lee",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "168adf802d18403f85862b8db5469118",
+        "entity_name": "Enregistrement de genèse",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1537366704fb42f1ad70f57b0f95d6f0",
+        "entity_name": "Mastercoin / Omni",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9f22ca059499443fbabd465bbe639d0c",
+        "entity_name": "Meni Rosenfeld",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0a475a2cf449417fad958f1264553955",
+        "entity_name": "Alex Mizrahi",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f9eedaf0f6f040399c4c207f8c5e9129",
+        "entity_name": "Keir",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bf653891dd9e4c1cbf23f40e4609f55b",
+        "entity_name": "Vitalik Buterin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a5c38aba77e445d69268dde3314c6634",
+        "entity_name": "Stephan Thomas",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "93c0f9f3b9ed47d3a70b5bb943251f65",
+        "entity_name": "Jed McCaleb",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "373f59b6b2064900aee138570d5f6a3f",
+        "entity_name": "Amir Taaki",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "511c17f9610440d399c39ef346e6f2cb",
+        "entity_name": "Yoni Assia",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d58ed0e96f11446e84fed2f8b360e793",
+        "entity_name": "Ron Gross",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c4eab4f4b3f54162b2404b3da684b840",
+        "entity_name": "Attaque de The DAO",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3fd42e66b6da429980f7b184078bb4bc",
+        "entity_name": "Taylor Gerring",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6ec8c7db180146f587acf2870b33c282",
+        "entity_name": "Gavin Wood",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b2176f93632a42f7a5601a67e07ad436",
+        "entity_name": "Solidity",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ed7b68eeb3114b32a7ab0baabd62cc5a",
+        "entity_name": "The DAO",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6213eb5f73954b8e957f5649a854c578",
+        "entity_name": "Lightning Network",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8efe32d89256468cbee8d7d2f7505dbd",
+        "entity_name": "Christian Reitwiessner",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7bb996780189451097667409f6274038",
+        "entity_name": "Cible de difficulté",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6b979b61416c4eb288f79f6053924afe",
+        "entity_name": "De l'activité de traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5f7f718bd6284d718669ffc28e7cc18e",
+        "entity_name": "Pools de minage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "09fcce1d9ae8400bbe50931845ded369",
+        "entity_name": "Bitmain",
         "occurrence_count": 1
       }
     ]
@@ -21598,6 +22723,76 @@
         "entity_id": "da1955d12014df7049bee1a5799c255a",
         "entity_name": "Quote — Frontier (lancement mainnet Ethereum, juillet 2015)",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 125
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 60
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 23
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "95550536862b49a19ca7625cbd6487b1",
+        "entity_name": "Bitcoin Script",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "926e5d2796ab4b48ae28ade2b7fcbb17",
+        "entity_name": "Crypto-actif",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7bb996780189451097667409f6274038",
+        "entity_name": "Cible de difficulté",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e736fa745e3f41cb9b54f9734e861c9e",
+        "entity_name": "MyBitcoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2af42270c40746e2876a3617ed8f7694",
+        "entity_name": "OP_RETURN",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "43dfc16fb4084fcfaacc165f8ffdd726",
+        "entity_name": "Stellar",
+        "occurrence_count": 1
       }
     ]
   },
@@ -23068,6 +24263,111 @@
       {
         "entity_id": "6bf464cdabd1057b7228d0f3021cb144",
         "entity_name": "Quote — Limitation de taille des blocs (1 Mo, Bitcoin)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f69e580c364d4b51a2f36574ba3b7e83",
+        "entity_name": "Fiat monnaie",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "926e5d2796ab4b48ae28ade2b7fcbb17",
+        "entity_name": "Crypto-actif",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "f018e4490ac24705a1017203d60a97d1",
+        "entity_name": "Souverainete monetaire",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "41714811849844938debb935f0609cda",
+        "entity_name": "Banque de France",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "77214f36adca11f76592932111ae3eb9",
+        "entity_name": "European Central Bank",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7489dce9688a43df9843144626811dae",
+        "entity_name": "Epreuve d'explicitation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0bb65ed8a7894205b3d46a8c22c483e1",
+        "entity_name": "J.P. Koning",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
+        "entity_name": "De Boyer des Roches et Rosales",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7cce18e885084cf5a5e7f48e71fac4d1",
+        "entity_name": "Métallisme digital",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "55080609af4740bbbd99113405d526ef",
+        "entity_name": "André Orléan",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
         "occurrence_count": 1
       }
     ]
@@ -27381,6 +28681,196 @@
       {
         "entity_id": "d59d4daf9118bb32716098b7f00f0328",
         "entity_name": "Polanyi 2011",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 15
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 12
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 10
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "55080609af4740bbbd99113405d526ef",
+        "entity_name": "André Orléan",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "f69e580c364d4b51a2f36574ba3b7e83",
+        "entity_name": "Fiat monnaie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "f018e4490ac24705a1017203d60a97d1",
+        "entity_name": "Souverainete monetaire",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "f07878254e144095a9644a091f3ef5cb",
+        "entity_name": "Logique de sceau",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0bb65ed8a7894205b3d46a8c22c483e1",
+        "entity_name": "J.P. Koning",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a4a3cedd64464712aea243607d1641d5",
+        "entity_name": "Monnaie marchandise synthetique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
+        "entity_name": "De Boyer des Roches et Rosales",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9ea86ea9b6cb4160a3eaec7a287cdddb",
+        "entity_name": "John Kenneth Galbraith",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7cce18e885084cf5a5e7f48e71fac4d1",
+        "entity_name": "Métallisme digital",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d4ad72fbd8704bc59ed788fbe32bb7ad",
+        "entity_name": "Monnaie parallele",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a1ca343331774a58a8a23fcda8a88f0b",
+        "entity_name": "Gold Bug",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c6bc54c40ebc4229a5309b679079b6fe",
+        "entity_name": "Confiance hierarchique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "71908f95dad74d9ab8abdfd19c8b733b",
+        "entity_name": "Logique de signature",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3ca250e00efd44f4bdc187a39c6e3c10",
+        "entity_name": "Confiance ethique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "178d6109372d4ba3a22c41984f75b559",
+        "entity_name": "Special Purpose Money",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c825d237dc25b3e9af61dc7982f3da95",
+        "entity_name": "All Purpose Money",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "083e49d8b08d42c0b03f8aa2f81ade32",
+        "entity_name": "Seigneuriage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8c869199825557872b51a5ca1745d4b8",
+        "entity_name": "Universaux monétaires",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d642ff3e0fd04625ac7d6c6a95aca5d2",
+        "entity_name": "Mineurs Bitcoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8991d9f05d234b6d876d16334f60af63",
+        "entity_name": "Coinbase",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "41714811849844938debb935f0609cda",
+        "entity_name": "Banque de France",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
         "occurrence_count": 1
       }
     ]
@@ -33251,6 +34741,421 @@
         "entity_id": "f0197a1202d1a60d0741096d307cf7eb",
         "entity_name": "Quote — Campagne de financement Ethereum (ICO 2014)",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 38
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 15
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 10
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 7
+      },
+      {
+        "entity_id": "9f37583aced248cb96dccdbcf50c0cc8",
+        "entity_name": "Loi de Szabo",
+        "occurrence_count": 7
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "f4fa0d2621154a349e948e275efdacd3",
+        "entity_name": "Big Blockers",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "926e5d2796ab4b48ae28ade2b7fcbb17",
+        "entity_name": "Crypto-actif",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "f87e9246cf2b407bb996bf5632733b88",
+        "entity_name": "Consensus distribué",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "7ac886525e3e40babdead4d8806f4653",
+        "entity_name": "Small Blockers",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "eccebadfbfc24deb8c5e160e9289f3fa",
+        "entity_name": "Logique de consensus distribué",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "71908f95dad74d9ab8abdfd19c8b733b",
+        "entity_name": "Logique de signature",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "6d520920dd3747afbfdd76ef66ded59b",
+        "entity_name": "Banque mondiale",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
+        "entity_name": "De Boyer des Roches et Rosales",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "f69e580c364d4b51a2f36574ba3b7e83",
+        "entity_name": "Fiat monnaie",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "80919108e22811bbe582df17f9bea512",
+        "entity_name": "Free Banking",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "b9340051279b422a8497bfcf6a822445",
+        "entity_name": "Wei Dai",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "083e49d8b08d42c0b03f8aa2f81ade32",
+        "entity_name": "Seigneuriage",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "1fc737f7cde3481cad33cab26dc381e4",
+        "entity_name": "Communs numériques",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a432cc76f9ea4e949e374476082b89ab",
+        "entity_name": "Gouvernance duale",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "6213eb5f73954b8e957f5649a854c578",
+        "entity_name": "Lightning Network",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e5be47cbc79b4d98b559857707881618",
+        "entity_name": "SegWit2X",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ed7b68eeb3114b32a7ab0baabd62cc5a",
+        "entity_name": "The DAO",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "1ebbb9b8ce4b48179e92e640cc161393",
+        "entity_name": "Monnaies digitales",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bec2386f4e3f4eb2a6932ffb1afc2756",
+        "entity_name": "Anarchie categorielle",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "f07878254e144095a9644a091f3ef5cb",
+        "entity_name": "Logique de sceau",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e84089eb533445f6981db78c87085a56",
+        "entity_name": "Consensus de Washington",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "37863a189d699cfd17f6b5a27f705c2a",
+        "entity_name": "École de Bloomington",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "87aee3c6c4e546ba825fc940fe964b41",
+        "entity_name": "Hyper-cryptomonétisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a1ca343331774a58a8a23fcda8a88f0b",
+        "entity_name": "Gold Bug",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7489dce9688a43df9843144626811dae",
+        "entity_name": "Epreuve d'explicitation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e415a12d8815bfe158d45eeea72d07eb",
+        "entity_name": "Nouveau Consensus Monétaire",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ef3943810af1439d8380f4986b125303",
+        "entity_name": "Neutralité de la monnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "afc0d50c564647839eaf83ccbae5a463",
+        "entity_name": "Discretion contrainte",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c595798ac80219f3250635684d5e3627",
+        "entity_name": "Currency School",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "39971c04ad2e63cc5d00c9e4f0ce5da1",
+        "entity_name": "Banking School",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "458f2205963eb70d776d08e70310cd09",
+        "entity_name": "Desmedt et Lakomski-Laguerre",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f47469e28b2643ed8644122475d1fb95",
+        "entity_name": "Théorie du free banking",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7cce18e885084cf5a5e7f48e71fac4d1",
+        "entity_name": "Métallisme digital",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0c71ec7c72644934af939061f9ff531c",
+        "entity_name": "George Selgin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0bb65ed8a7894205b3d46a8c22c483e1",
+        "entity_name": "J.P. Koning",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a8f1cc8213fc45cc948e5502f9caf3a6",
+        "entity_name": "Hal Finney",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7bfdb4a56f1d40d9aa63f3ad11e44b44",
+        "entity_name": "Code Source Ouvert",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ba637b01789c4904bc35bb88866d8715",
+        "entity_name": "Saifedean Ammous",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3ecc025a3f6745ba85e3b46ecd90901b",
+        "entity_name": "Communauté épistémique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "aee0e3a5cb614e6b92115a71e03886f8",
+        "entity_name": "Fiatsplaining",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7fe4e4f0462445de98bfb76b16e7c4b9",
+        "entity_name": "Mervyn King",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6b979b61416c4eb288f79f6053924afe",
+        "entity_name": "De l'activité de traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3960e7b3294c4364bca1b046734ef886",
+        "entity_name": "De conformité aux réglementations nationales",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
+        "entity_name": "De l'information et de la connaissance",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "10d9492a847049979cf9f441e56d41f4",
+        "entity_name": "Trilemme des blockchains",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "39a4c914ab2342818739598102c19499",
+        "entity_name": "Autorité algorithmique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c157790787f842a385fe46a62f07fd43",
+        "entity_name": "Bitcoin Unlimited",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "add9992e724044d4a4d9c9328c873fb2",
+        "entity_name": "Bitcoin Classic",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a4553092b4a94a52a56858474c8da2c9",
+        "entity_name": "Bitcoin Cash",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d14c32c8bb244b5280464b69c0e6589d",
+        "entity_name": "Confirmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c1aedcf4e18c40198d09624d1de2b0dc",
+        "entity_name": "Shaoling Fry",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7d4e6994bf1a4058a6142dcdf93b9563",
+        "entity_name": "Bitcoin XT",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7983b60ea7bc40aeb128c3062c4dfaa2",
+        "entity_name": "Soft Fork",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "933ea1ffffba4a38ac567d3c55cd8e73",
+        "entity_name": "Litecoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8db449e7a01f49589f19abd510071e97",
+        "entity_name": "Theymos",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "09fcce1d9ae8400bbe50931845ded369",
+        "entity_name": "Bitmain",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "07bc5ee6ef6b4f429496848d000e303f",
+        "entity_name": "Validation independante",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bb565b2132f5430eac529b953711be41",
+        "entity_name": "Des \"Altcoins\"",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "815d09b01606439b8ad159c4ec89eaad",
+        "entity_name": "Altcoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9e63b6e996b3416dbcc1a94f8ff0ae50",
+        "entity_name": "Confiance monetaire",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "124438f6ba3749adbe7e6caa86aabf99",
+        "entity_name": "Actif numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a3d5db5e8de7bdb604321ffb6990a1cb",
+        "entity_name": "Tether Limited",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
+        "occurrence_count": 1
       }
     ]
   },
@@ -35835,6 +37740,86 @@
         "entity_id": "153bbb0f47fbf97608e54e1cd58de30d",
         "entity_name": "Courbis, Froment et Servet 1990",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 60
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "7489dce9688a43df9843144626811dae",
+        "entity_name": "Epreuve d'explicitation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f87e9246cf2b407bb996bf5632733b88",
+        "entity_name": "Consensus distribué",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1ebbb9b8ce4b48179e92e640cc161393",
+        "entity_name": "Monnaies digitales",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f07878254e144095a9644a091f3ef5cb",
+        "entity_name": "Logique de sceau",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
+        "occurrence_count": 1
       }
     ]
   },
@@ -37530,6 +39515,171 @@
       {
         "entity_id": "9e426c62359a4ac1b2218b0ccbe5d815",
         "entity_name": "QTUM 2020 — CVE-2018-17144 impact on QTUM network",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 43
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 11
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "34302ac00c364d60a486ad68885c69e1",
+        "entity_name": "Enregistrement candidat",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "123309e12e54424d99f51311bcb39c02",
+        "entity_name": "Mempool",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "9719ca52884d4d318cd13e3b6a4633b7",
+        "entity_name": "Bitcoin ABC",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "dd8539b5233e4672bf723045ebba1183",
+        "entity_name": "Slush Pool",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "d14c32c8bb244b5280464b69c0e6589d",
+        "entity_name": "Confirmation",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "1e4e694fd7a39547c34d0899a0c1597f",
+        "entity_name": "consensus de Nakamoto",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c6ce8b085fbc4e8e9142f2d0e73a3078",
+        "entity_name": "Pieter Wuille",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2ad2e63e6a0143feac048489d8e40124",
+        "entity_name": "Cory Fields",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c0c1bec510f54099ab608e3488f93223",
+        "entity_name": "White Hat",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0170870141524d469e6c6c6ed9c01620",
+        "entity_name": "Black Hat",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
+        "entity_name": "Chaincode Labs",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7bfdb4a56f1d40d9aa63f3ad11e44b44",
+        "entity_name": "Code Source Ouvert",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cbf51f368ab14bc09d7c9501abcb7d41",
+        "entity_name": "Crise de faux monnayage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7c36969bde1d485eb3a4a942a216789f",
+        "entity_name": "Données endogènes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3ca250e00efd44f4bdc187a39c6e3c10",
+        "entity_name": "Confiance ethique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "83104c22911c43899472b5c9eb17e33d",
+        "entity_name": "Integer Overflow",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "24e5eafb0b1e46e6a06b390f9ff579aa",
+        "entity_name": "Consensus social",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "429698f190504ebab4bbef4794092c3f",
+        "entity_name": "Dino Mark",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5f7f718bd6284d718669ffc28e7cc18e",
+        "entity_name": "Pools de minage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a2e5e59b69a74679a582dd186d77659d",
+        "entity_name": "Confiance methodique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7ee960755783430c9db0bb016e87b78b",
+        "entity_name": "Disponibilité",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8d70eb53a87648b5a227bd31079e25db",
+        "entity_name": "Apodaca",
         "occurrence_count": 1
       }
     ]
@@ -40339,6 +42489,241 @@
         "entity_id": "3f8bd31252d64ecaa81f0cbf7a24b6f1",
         "entity_name": "Développeurs — Couche Applicative",
         "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 38
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "24e5eafb0b1e46e6a06b390f9ff579aa",
+        "entity_name": "Consensus social",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "0d645f0347bc4002bb37ce04d3fd58b2",
+        "entity_name": "Blockstream",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "2cc2e87266524c59bfd887bd0280661a",
+        "entity_name": "Awemany",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "dd8539b5233e4672bf723045ebba1183",
+        "entity_name": "Slush Pool",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
+        "entity_name": "Chaincode Labs",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "7bfdb4a56f1d40d9aa63f3ad11e44b44",
+        "entity_name": "Code Source Ouvert",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "22d52249dba84e33a0f4488cb81747ba",
+        "entity_name": "Gouvernance par le protocole",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "604158d5bab84e82821d53e75070899a",
+        "entity_name": "Gouvernance sur le protocole",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "9f37583aced248cb96dccdbcf50c0cc8",
+        "entity_name": "Loi de Szabo",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8d70eb53a87648b5a227bd31079e25db",
+        "entity_name": "Apodaca",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "b1bb006e31bc4a8d8fe471dae3436c7f",
+        "entity_name": "Forge logicielle / GitHub",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "2f54deb5da1440c8bdd5ca16dbc8c647",
+        "entity_name": "Divulgation responsable",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5d0223e0ce014a2688619e8c20d537c4",
+        "entity_name": "Luke Dashjr",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ed7b68eeb3114b32a7ab0baabd62cc5a",
+        "entity_name": "The DAO",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a4553092b4a94a52a56858474c8da2c9",
+        "entity_name": "Bitcoin Cash",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "68c6592878a34164a5a37edc8c49382d",
+        "entity_name": "Crise de vulnérabilité",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "39a4c914ab2342818739598102c19499",
+        "entity_name": "Autorité algorithmique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5cf3c3e7fefd424280ef88908b0add9b",
+        "entity_name": "Crise d'évolution",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2f8fdd85e00b4da5b88d33702b48e266",
+        "entity_name": "Deference au code",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "764a775ae8c74db990354cf0a7e8d0db",
+        "entity_name": "Bcoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6fa13dc6307840ac805cb5df76bc7298",
+        "entity_name": "In Super Coders We Trust",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4ceab8fe810c40ea912957840fd6d593",
+        "entity_name": "Ethereum Foundation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5d6203275f6a40ddb8ede1d7c01cad1e",
+        "entity_name": "Bitcoin Core (repo)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "fe2429e337ab4f41b99482861f8a9d45",
+        "entity_name": "Attaque sybille",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7983b60ea7bc40aeb128c3062c4dfaa2",
+        "entity_name": "Soft Fork",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5828177699931e169966ce9e03ff4a6b",
+        "entity_name": "Objet socio-technique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "548ff3dd6ad548cbb34ee9ed853273ab",
+        "entity_name": "Matt Corallo",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f4fa0d2621154a349e948e275efdacd3",
+        "entity_name": "Big Blockers",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 1
       }
     ]
   },
@@ -42737,6 +45122,371 @@
       {
         "entity_id": "7eb21ad05d634d8e92b32b39db8d3723",
         "entity_name": "Médias",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 20
+      },
+      {
+        "entity_id": "7983b60ea7bc40aeb128c3062c4dfaa2",
+        "entity_name": "Soft Fork",
+        "occurrence_count": 7
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "ae97de14e40e48d1965902c9dce6473a",
+        "entity_name": "Slock.it",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "39a4c914ab2342818739598102c19499",
+        "entity_name": "Autorité algorithmique",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "7a9e233da168419fad3af4573a1038e5",
+        "entity_name": "Fabian Vogelsteller",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "b2176f93632a42f7a5601a67e07ad436",
+        "entity_name": "Solidity",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bf886a7f94454c48829b2eb7989f6e53",
+        "entity_name": "Kraken",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "839bce39dfde4941a484b1a0722fc9bc",
+        "entity_name": "George Hallam",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "2f8fdd85e00b4da5b88d33702b48e266",
+        "entity_name": "Deference au code",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "9a785a9901f24c89a5ed37c7d8830177",
+        "entity_name": "Alex Van de Sande",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "c0c1bec510f54099ab608e3488f93223",
+        "entity_name": "White Hat",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "3d6c84e50c764219bb344247f7a66828",
+        "entity_name": "Dark DAO",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7f4f018391584e708ee2a97f76d35c2b",
+        "entity_name": "Algorithme de consensus",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "604158d5bab84e82821d53e75070899a",
+        "entity_name": "Gouvernance sur le protocole",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eed0b89cd2e740718059c16591f9bfb7",
+        "entity_name": "Phase de maturation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8efe32d89256468cbee8d7d2f7505dbd",
+        "entity_name": "Christian Reitwiessner",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a4d99259f312478fb23eab589525bf78",
+        "entity_name": "Lefteris Karapetsas",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6f6b4ab6f46a460797b9a489ff13c9a1",
+        "entity_name": "Monnaie numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0509d0c5196545e2aece85e595fe55c5",
+        "entity_name": "Smart Contracts",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "571934eb6d074fb883382b1e21d66a9b",
+        "entity_name": "Auryn Macmillan",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "50090ee584834fec9e260bdc63d274a7",
+        "entity_name": "Simon Jentzsch",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "48b1526f065e40fa92d8e69f3a51729b",
+        "entity_name": "Stephane Tual",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5534cbaa12bb4044b86f25fc453072df",
+        "entity_name": "Cryptographie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f69e580c364d4b51a2f36574ba3b7e83",
+        "entity_name": "Fiat monnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4d583f06ee5247f8bde64ae8dcfdc025",
+        "entity_name": "Felix Albert",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7cbdc5b61b6f4dc482d9bc4d707d796f",
+        "entity_name": "J.R. Willet",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "88a5ab2924b240468818edca02c0eef4",
+        "entity_name": "Griff Green",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6ec8c7db180146f587acf2870b33c282",
+        "entity_name": "Gavin Wood",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7b3ff3d2bf564f719978c489f609a4c8",
+        "entity_name": "Mastercoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "01709955e13e40ea8bf5af2a4c09ef4c",
+        "entity_name": "ShapeShift",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2f54deb5da1440c8bdd5ca16dbc8c647",
+        "entity_name": "Divulgation responsable",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4d76a2feec394612976423c178b00a53",
+        "entity_name": "Vlad Zamfir",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b4ebc0adb0204170ac44217265b54714",
+        "entity_name": "Stablecoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c00c4cbafefe439b87c01d0e37e1abee",
+        "entity_name": "Ledger",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7c36969bde1d485eb3a4a942a216789f",
+        "entity_name": "Données endogènes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "20b8c4f053744b0193b295fd719f7d6b",
+        "entity_name": "Tristan D'Agosta",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bc01af013a2140cf81a2747c230fb7e6",
+        "entity_name": "Peter Szilágyi",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3fd42e66b6da429980f7b184078bb4bc",
+        "entity_name": "Taylor Gerring",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7cfa754375534826aa3d70e8f5a5b6f0",
+        "entity_name": "Aeron Buchanan",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "633ccadaea354e76a73adf24477ae894",
+        "entity_name": "Bill Shihara",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "429698f190504ebab4bbef4794092c3f",
+        "entity_name": "Dino Mark",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "344699b9593049aab807def5c05579cc",
+        "entity_name": "GitHub Bitcoin Core",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9f37583aced248cb96dccdbcf50c0cc8",
+        "entity_name": "Loi de Szabo",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f24be352e0e143b08948165612ead1f9",
+        "entity_name": "Nick Szabo",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9db440a833244ec8b3353b04122d2ec7",
+        "entity_name": "Détenteurs de jetons DAO",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "026703922bb14846947d61d047329236",
+        "entity_name": "Nethermind",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ecb160978b5840e896ee6b720724ec6d",
+        "entity_name": "Erigon",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5f7f718bd6284d718669ffc28e7cc18e",
+        "entity_name": "Pools de minage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "49ce14952768472a9fe4c0c8f712e2e9",
+        "entity_name": "Jeffrey Wilcke",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "81f523f3033c46d1ab78d85daffbf7c8",
+        "entity_name": "Whitehat DAO",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "aa6405e330214181ac9e18a1e52cc932",
+        "entity_name": "Bitcoin Magazine",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "728bc85a162d4419b31672b06ce8e96a",
+        "entity_name": "Greg Maxwell",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "50e34c203d394a7faede02f1f6351235",
+        "entity_name": "Arivicco",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8991d9f05d234b6d876d16334f60af63",
+        "entity_name": "Coinbase",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5b6c1bb3fb734c53899662612f54242a",
+        "entity_name": "Bitfinex",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "815d09b01606439b8ad159c4ec89eaad",
+        "entity_name": "Altcoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6414d87541f941a0b428c536ce72e032",
+        "entity_name": "Phase de preuve de concept",
         "occurrence_count": 1
       }
     ]
@@ -46992,6 +49742,146 @@
       {
         "entity_id": "da1955d12014df7049bee1a5799c255a",
         "entity_name": "Quote — Frontier (lancement mainnet Ethereum, juillet 2015)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 211
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 44
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 34
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 13
+      },
+      {
+        "entity_id": "4ceab8fe810c40ea912957840fd6d593",
+        "entity_name": "Ethereum Foundation",
+        "occurrence_count": 10
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "a22f20aea49d4f86ab927e9c71d0a850",
+        "entity_name": "Gouvernance de huis clos",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a4553092b4a94a52a56858474c8da2c9",
+        "entity_name": "Bitcoin Cash",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "9719ca52884d4d318cd13e3b6a4633b7",
+        "entity_name": "Bitcoin ABC",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5cf3c3e7fefd424280ef88908b0add9b",
+        "entity_name": "Crise d'évolution",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c157790787f842a385fe46a62f07fd43",
+        "entity_name": "Bitcoin Unlimited",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "24e5eafb0b1e46e6a06b390f9ff579aa",
+        "entity_name": "Consensus social",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "20b8c4f053744b0193b295fd719f7d6b",
+        "entity_name": "Tristan D'Agosta",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "95cb2415164e42b28a48bddb7f10094d",
+        "entity_name": "Gustav Simonsson",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "571934eb6d074fb883382b1e21d66a9b",
+        "entity_name": "Auryn Macmillan",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bb565b2132f5430eac529b953711be41",
+        "entity_name": "Des \"Altcoins\"",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6f2112778a2f4a8694caca07761bd38c",
+        "entity_name": "Amaury Séchet",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c863f2be561148beb0579cc0f3f968c6",
+        "entity_name": "Fedor Indutny",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7ee960755783430c9db0bb016e87b78b",
+        "entity_name": "Disponibilité",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ede2e91df72748eab288d43591971627",
+        "entity_name": "Yoichi Hirai",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4d583f06ee5247f8bde64ae8dcfdc025",
+        "entity_name": "Felix Albert",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "764a775ae8c74db990354cf0a7e8d0db",
+        "entity_name": "Bcoin",
         "occurrence_count": 1
       }
     ]
@@ -59703,6 +62593,1265 @@
       {
         "entity_id": "6bf464cdabd1057b7228d0f3021cb144",
         "entity_name": "Quote — Limitation de taille des blocs (1 Mo, Bitcoin)",
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "intro_preamble": {
+    "entities": [
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 13
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 7
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "15e514aa2f965ee5fc25ac5a6ba7b0ef",
+        "entity_name": "monnaies locales et complémentaires",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7c36969bde1d485eb3a4a942a216789f",
+        "entity_name": "Données endogènes",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "02e716132dc58a584cc728791409bf60",
+        "entity_name": "Sociologie des Sciences et Techniques",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "51399bac6c09439e861d937b86f662e3",
+        "entity_name": "Pretentions Liberales Technicistes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "12242085c21141b2b39a3a93f79854a7",
+        "entity_name": "Problème de double dépense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7f4f018391584e708ee2a97f76d35c2b",
+        "entity_name": "Algorithme de consensus",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "909cc7f5cae7466198dac07dff0b1f4f",
+        "entity_name": "John Maynard Keynes",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8c6c711d89e24630bbff13c8d28b5174",
+        "entity_name": "Réseau pair-à-pair",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "10960c9c308b4a3dad7ff86a20a1d2b5",
+        "entity_name": "Satoshi Nakamoto",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "22efd2a399180ddf6b43f2e7d5481547",
+        "entity_name": "chaîne de blocs",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "ch1_preamble": {
+    "entities": [
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 83
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 35
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 28
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 13
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "4c6fd0d7d2dd48b3ba56eb748ecbe212",
+        "entity_name": "Namecoin",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "815d09b01606439b8ad159c4ec89eaad",
+        "entity_name": "Altcoin",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "f9eedaf0f6f040399c4c207f8c5e9129",
+        "entity_name": "Keir",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "a53b18d59a6c4ab18a407fd8fdced0c8",
+        "entity_name": "Réintermédiation",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "10960c9c308b4a3dad7ff86a20a1d2b5",
+        "entity_name": "Satoshi Nakamoto",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "6b979b61416c4eb288f79f6053924afe",
+        "entity_name": "De l'activité de traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5d696ac4f7aa4645baa0e5f88e2b190d",
+        "entity_name": "Régulations transactionnelles",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e1a7b06839404dbdacba7f00782a5450",
+        "entity_name": "Infrastructure sociotechnique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "34302ac00c364d60a486ad68885c69e1",
+        "entity_name": "Enregistrement candidat",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f87e9246cf2b407bb996bf5632733b88",
+        "entity_name": "Consensus distribué",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eedacf072b7c40f6b39e9ec2fb6f213c",
+        "entity_name": "Valeur intrinseque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "dcd10825d6ddd231dda4b6057d7296c1",
+        "entity_name": "Tyler Winklevoss",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bf653891dd9e4c1cbf23f40e4609f55b",
+        "entity_name": "Vitalik Buterin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0509d0c5196545e2aece85e595fe55c5",
+        "entity_name": "Smart Contracts",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "124438f6ba3749adbe7e6caa86aabf99",
+        "entity_name": "Actif numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bb565b2132f5430eac529b953711be41",
+        "entity_name": "Des \"Altcoins\"",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5e4c337b84714fb086d36f65b4805fe6",
+        "entity_name": "Colored Coins",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a25fc6eb5f3549a69f4ce17d6969ee01",
+        "entity_name": "Technologisme",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9be50de248b1465cbf2e7ac9a2a5e1ac",
+        "entity_name": "Sociologisme",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "ch2_preamble": {
+    "entities": [
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 14
+      },
+      {
+        "entity_id": "1a4cccd801224a8fa0ef8b8af372538c",
+        "entity_name": "BTC-e",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "a432cc76f9ea4e949e374476082b89ab",
+        "entity_name": "Gouvernance duale",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "53983b5343c0ff0a8253aa23d5c3ad45",
+        "entity_name": "Institutionnalisme Monétaire Francophone",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
+        "entity_name": "De Boyer des Roches et Rosales",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7489dce9688a43df9843144626811dae",
+        "entity_name": "Epreuve d'explicitation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "21107fb980daa17e698237df5d7daa2f",
+        "entity_name": "Institutionnalisme intéressé aux usages",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "458f2205963eb70d776d08e70310cd09",
+        "entity_name": "Desmedt et Lakomski-Laguerre",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a34001a6571f4fdf8ae13d5e3b64587b",
+        "entity_name": "Développement carnavalesque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d187580f08144ab3bdf495c351f7b322",
+        "entity_name": "Heterogeneite des monnaies",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "87aee3c6c4e546ba825fc940fe964b41",
+        "entity_name": "Hyper-cryptomonétisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e52533a29c654bc4b9a3d7622279ef50",
+        "entity_name": "Ethnographie économique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bec2386f4e3f4eb2a6932ffb1afc2756",
+        "entity_name": "Anarchie categorielle",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ba637b01789c4904bc35bb88866d8715",
+        "entity_name": "Saifedean Ammous",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f07878254e144095a9644a091f3ef5cb",
+        "entity_name": "Logique de sceau",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5534cbaa12bb4044b86f25fc453072df",
+        "entity_name": "Cryptographie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "55080609af4740bbbd99113405d526ef",
+        "entity_name": "André Orléan",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7fe4e4f0462445de98bfb76b16e7c4b9",
+        "entity_name": "Mervyn King",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "ch3_preamble": {
+    "entities": [
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 37
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 9
+      },
+      {
+        "entity_id": "22c507bdaa874229b5a4a145e23d123c",
+        "entity_name": "Scaling Debate",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "ed7b68eeb3114b32a7ab0baabd62cc5a",
+        "entity_name": "The DAO",
+        "occurrence_count": 8
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "a444085b9b2d4ea1aa734f7e25db6a6c",
+        "entity_name": "Gouvernance polycentrique",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a22f20aea49d4f86ab927e9c71d0a850",
+        "entity_name": "Gouvernance de huis clos",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "39a4c914ab2342818739598102c19499",
+        "entity_name": "Autorité algorithmique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "06099088d8e14f7c8596a4f9fc8d3193",
+        "entity_name": "Politique de crise",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a432cc76f9ea4e949e374476082b89ab",
+        "entity_name": "Gouvernance duale",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "dcd10825d6ddd231dda4b6057d7296c1",
+        "entity_name": "Tyler Winklevoss",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "24e5eafb0b1e46e6a06b390f9ff579aa",
+        "entity_name": "Consensus social",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1570f65e76a24fb0b3df247eef1d76d1",
+        "entity_name": "Silk Road",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2cc2e87266524c59bfd887bd0280661a",
+        "entity_name": "Awemany",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ad19591afb62496e90aba4dd1d65d1ef",
+        "entity_name": "MtGox",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ea02ab155cfa4a1582c48b73064a5d96",
+        "entity_name": "Dell",
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "ccl_preamble": {
+    "entities": [
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 16
+      },
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 11
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "a444085b9b2d4ea1aa734f7e25db6a6c",
+        "entity_name": "Gouvernance polycentrique",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a22f20aea49d4f86ab927e9c71d0a850",
+        "entity_name": "Gouvernance de huis clos",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ed7b68eeb3114b32a7ab0baabd62cc5a",
+        "entity_name": "The DAO",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "815d09b01606439b8ad159c4ec89eaad",
+        "entity_name": "Altcoin",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "504644ee3f7a4253b88b6139f239693a",
+        "entity_name": "Etudes infrastructurelles",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "83f9ceb540d04f3b9aab986cf6436035",
+        "entity_name": "Sociologie de la traduction",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a25fc6eb5f3549a69f4ce17d6969ee01",
+        "entity_name": "Technologisme",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b685ac7b6c294cc387cbdf4e885ee453",
+        "entity_name": "Michel Callon",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9be50de248b1465cbf2e7ac9a2a5e1ac",
+        "entity_name": "Sociologisme",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eccebadfbfc24deb8c5e160e9289f3fa",
+        "entity_name": "Logique de consensus distribué",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a34001a6571f4fdf8ae13d5e3b64587b",
+        "entity_name": "Développement carnavalesque",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6414d87541f941a0b428c536ce72e032",
+        "entity_name": "Phase de preuve de concept",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eed0b89cd2e740718059c16591f9bfb7",
+        "entity_name": "Phase de maturation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f87e9246cf2b407bb996bf5632733b88",
+        "entity_name": "Consensus distribué",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "06099088d8e14f7c8596a4f9fc8d3193",
+        "entity_name": "Politique de crise",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "24e5eafb0b1e46e6a06b390f9ff579aa",
+        "entity_name": "Consensus social",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "019689c1ce06489a84768c51637eb9ed",
+        "entity_name": "Phase de péché",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d337ebdb9be74af2b5324f472235f095",
+        "entity_name": "Code is Law",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "25b9562f132d329e49abd53406021dea",
+        "entity_name": "Dynamique carnavalesque du développement infrastructurel",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6271402f630148c7b1a6a758dbaafc2e",
+        "entity_name": "Neuf proprietes infrastructurelles",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ac80b824dedc47419211e4393dfcd681",
+        "entity_name": "Gouvernance par l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e22205f327564c608c4710150bbac16b",
+        "entity_name": "Gouvernance sur l'infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a53b18d59a6c4ab18a407fd8fdced0c8",
+        "entity_name": "Réintermédiation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2e14d6cba3b648638dc754cf0c3869d0",
+        "entity_name": "Leigh Star",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a4d612b858fb481fb373ccea31aee98a",
+        "entity_name": "Souverainete communautaire",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7489dce9688a43df9843144626811dae",
+        "entity_name": "Epreuve d'explicitation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "39a4c914ab2342818739598102c19499",
+        "entity_name": "Autorité algorithmique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a2e5e59b69a74679a582dd186d77659d",
+        "entity_name": "Confiance methodique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "71908f95dad74d9ab8abdfd19c8b733b",
+        "entity_name": "Logique de signature",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a432cc76f9ea4e949e374476082b89ab",
+        "entity_name": "Gouvernance duale",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f07878254e144095a9644a091f3ef5cb",
+        "entity_name": "Logique de sceau",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "02e716132dc58a584cc728791409bf60",
+        "entity_name": "Sociologie des Sciences et Techniques",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 1
+      }
+    ]
+  },
+  "glossaire_preamble": {
+    "entities": [
+      {
+        "entity_id": "d35d720e1fa24d9fbe665a90ac0abc73",
+        "entity_name": "Bitcoin",
+        "occurrence_count": 82
+      },
+      {
+        "entity_id": "2956b3b87db1448f8a2ddde82d39e9c9",
+        "entity_name": "Ethereum",
+        "occurrence_count": 64
+      },
+      {
+        "entity_id": "d9e274f2546742b4b3d9aa34f81ea452",
+        "entity_name": "Transaction",
+        "occurrence_count": 61
+      },
+      {
+        "entity_id": "1a4cccd801224a8fa0ef8b8af372538c",
+        "entity_name": "BTC-e",
+        "occurrence_count": 16
+      },
+      {
+        "entity_id": "ffdc27d9e9c7485a81c0482017ed9246",
+        "entity_name": "Counterparty",
+        "occurrence_count": 15
+      },
+      {
+        "entity_id": "ed7b68eeb3114b32a7ab0baabd62cc5a",
+        "entity_name": "The DAO",
+        "occurrence_count": 10
+      },
+      {
+        "entity_id": "7c36969bde1d485eb3a4a942a216789f",
+        "entity_name": "Données endogènes",
+        "occurrence_count": 7
+      },
+      {
+        "entity_id": "bed4df005c7ce36030703bd68cb521d1",
+        "entity_name": "cryptomonnaie",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "cd439cdd81fa447f986ed45b56c61226",
+        "entity_name": "Nonce",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "926e5d2796ab4b48ae28ade2b7fcbb17",
+        "entity_name": "Crypto-actif",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "c00c4cbafefe439b87c01d0e37e1abee",
+        "entity_name": "Ledger",
+        "occurrence_count": 6
+      },
+      {
+        "entity_id": "34302ac00c364d60a486ad68885c69e1",
+        "entity_name": "Enregistrement candidat",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "bf07dcda83d84da7a0a34452762c5eed",
+        "entity_name": "Empreinte numérique",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "d14c32c8bb244b5280464b69c0e6589d",
+        "entity_name": "Confirmation",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "815d09b01606439b8ad159c4ec89eaad",
+        "entity_name": "Altcoin",
+        "occurrence_count": 5
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "7f4f018391584e708ee2a97f76d35c2b",
+        "entity_name": "Algorithme de consensus",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "987f117d2262455ab042aff0d39b3ad2",
+        "entity_name": "Validation",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "7d46971b631a46e1a23d8e43f4f853cb",
+        "entity_name": "Débit",
+        "occurrence_count": 4
+      },
+      {
+        "entity_id": "7bb996780189451097667409f6274038",
+        "entity_name": "Cible de difficulté",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "41863390d2124a54ad4eda535a43fdc7",
+        "entity_name": "Fonction de hachage",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "1ebbb9b8ce4b48179e92e640cc161393",
+        "entity_name": "Monnaies digitales",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "084ad32c4b554d038d8209f2725ec5e3",
+        "entity_name": "Archivage partagé",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "0509d0c5196545e2aece85e595fe55c5",
+        "entity_name": "Smart Contracts",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "8c27fbf65b8544e281fbd6d09a004cbe",
+        "entity_name": "Arbre de Merkle",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5534cbaa12bb4044b86f25fc453072df",
+        "entity_name": "Cryptographie",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
+        "entity_name": "Cohérence",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "8991d9f05d234b6d876d16334f60af63",
+        "entity_name": "Coinbase",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "933ea1ffffba4a38ac567d3c55cd8e73",
+        "entity_name": "Litecoin",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "16356e60caba44d2977a5f66b58ec84d",
+        "entity_name": "PolkaDot",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "0d645f0347bc4002bb37ce04d3fd58b2",
+        "entity_name": "Blockstream",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "5d58d0b8ec2440059a6be390aa1bdfe6",
+        "entity_name": "Mist",
+        "occurrence_count": 3
+      },
+      {
+        "entity_id": "49d5a9f279014202aa1426ae010e3f14",
+        "entity_name": "Signature cryptographique",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "4a28244c6596401ea6f24c848309a315",
+        "entity_name": "Langage de programmation",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "21fff41c8c6142deb3eacf919ae56c9e",
+        "entity_name": "No Coiners vs Coiners",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "ef99069ebd094162b7567e810a4ed888",
+        "entity_name": "Registre / Ledger",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "0193495c40754614a45ba35786738ec3",
+        "entity_name": "Actif digital",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "826c32caed754ecfabee8368e4819bff",
+        "entity_name": "Monnayage",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a8108e74b9d9483bb66d929e347fd7bd",
+        "entity_name": "Hard Fork",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a4553092b4a94a52a56858474c8da2c9",
+        "entity_name": "Bitcoin Cash",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "e23b3f521e7a44e6bb87cbedc2aa2088",
+        "entity_name": "USDT",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "aa6405e330214181ac9e18a1e52cc932",
+        "entity_name": "Bitcoin Magazine",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "a3b6763378a942ce9b83d25d25212772",
+        "entity_name": "Mihai Alisie",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7b3ff3d2bf564f719978c489f609a4c8",
+        "entity_name": "Mastercoin",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "5bf9c25933cb44a8aaa8dd335a662f89",
+        "entity_name": "Frais de transaction Bitcoin",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "7a9e233da168419fad3af4573a1038e5",
+        "entity_name": "Fabian Vogelsteller",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
+        "entity_name": "Chaincode Labs",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "abba1eed18834c889c6c7f94b641a957",
+        "entity_name": "Systeme de protocole de registre distribue / DLT",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "eb707c05941d4b2384d9d65d324c6003",
+        "entity_name": "Recompense d'enregistrement / Block Reward",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b62f35ac648f4254a73547c8c76f06f4",
+        "entity_name": "Temps d'enregistrement / Block Time",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c98f23ad2a1b48b9b4d1a046e75259d0",
+        "entity_name": "Authentification cryptographique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1ec862d0f0e646f8bc6aa139e3e8e750",
+        "entity_name": "Reorganisation d'enregistrement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "3ba20dcf685d4e708cd990cb721e409b",
+        "entity_name": "Empreinte numerique / Hash",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c639a09d769445cd88963e70ef9c418c",
+        "entity_name": "Finalite de la transaction",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "12242085c21141b2b39a3a93f79854a7",
+        "entity_name": "Problème de double dépense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "78e6158cfaa8480dba1a27ecaf36eaa9",
+        "entity_name": "Livre Blanc / White Paper",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "168adf802d18403f85862b8db5469118",
+        "entity_name": "Enregistrement de genèse",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "90ad9ef75f4442c884ac4f74ff5c79c6",
+        "entity_name": "Consensus multi-parties",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "0fd27bcb9f3b488bb5ac3fa8668659e3",
+        "entity_name": "Explorateur de registre",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "747ac07dc8f8433ca4638f1b30998576",
+        "entity_name": "Resistance a la censure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "07bc5ee6ef6b4f429496848d000e303f",
+        "entity_name": "Validation independante",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "d54e3c39cc836fdd915285b4230eb737",
+        "entity_name": "Preuve de Travail (PoW)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "36f8da3ba8e6493280ae29896dfa39f3",
+        "entity_name": "Horodatage / Timestamp",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "1a0786075553472a87cdd071f6441538",
+        "entity_name": "Maximaliste Bitcoiner",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6a54cc9ad211488e94e759e08686d88e",
+        "entity_name": "Portefeuille / Wallet",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "c9c3add85b2d40e2afd5194688e12fb3",
+        "entity_name": "Passerelle / Gateway",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "71908f95dad74d9ab8abdfd19c8b733b",
+        "entity_name": "Logique de signature",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f3e7754db9ee4502ae4180e36200ade1",
+        "entity_name": "Proof of Work (PoW)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "202442f070694e70a001e5cdb1b03fe0",
+        "entity_name": "Systeme de paiement",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7bfdb4a56f1d40d9aa63f3ad11e44b44",
+        "entity_name": "Code Source Ouvert",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "a928f23acc214cdf9f8aa094c68231f1",
+        "entity_name": "Debit / Throughput",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8c6c711d89e24630bbff13c8d28b5174",
+        "entity_name": "Réseau pair-à-pair",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6f6b4ab6f46a460797b9a489ff13c9a1",
+        "entity_name": "Monnaie numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f07878254e144095a9644a091f3ef5cb",
+        "entity_name": "Logique de sceau",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bf653891dd9e4c1cbf23f40e4609f55b",
+        "entity_name": "Vitalik Buterin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "acd16826920c47f4afc5e6ea59a3c56a",
+        "entity_name": "Double depense",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "aaa182bebfef47f2b799b81696ec263a",
+        "entity_name": "Journal local",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7ee960755783430c9db0bb016e87b78b",
+        "entity_name": "Disponibilité",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "99194988975047098af0f3e215ccdd2f",
+        "entity_name": "Nœud / Node",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "40bace4b96224d138b3f198e18ffa173",
+        "entity_name": "Attaque 51%",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7983b60ea7bc40aeb128c3062c4dfaa2",
+        "entity_name": "Soft Fork",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b2176f93632a42f7a5601a67e07ad436",
+        "entity_name": "Solidity",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "123309e12e54424d99f51311bcb39c02",
+        "entity_name": "Mempool",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "49ce14952768472a9fe4c0c8f712e2e9",
+        "entity_name": "Jeffrey Wilcke",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bc01af013a2140cf81a2747c230fb7e6",
+        "entity_name": "Peter Szilágyi",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6ec8c7db180146f587acf2870b33c282",
+        "entity_name": "Gavin Wood",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bb565b2132f5430eac529b953711be41",
+        "entity_name": "Des \"Altcoins\"",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "f69e580c364d4b51a2f36574ba3b7e83",
+        "entity_name": "Fiat monnaie",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "b4ebc0adb0204170ac44217265b54714",
+        "entity_name": "Stablecoin",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "5b6c1bb3fb734c53899662612f54242a",
+        "entity_name": "Bitfinex",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "bf886a7f94454c48829b2eb7989f6e53",
+        "entity_name": "Kraken",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6d8dd78da53d4f16933e63ad5b0dc48f",
+        "entity_name": "Sébastien Gouspillou",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "9a785a9901f24c89a5ed37c7d8830177",
+        "entity_name": "Alex Van de Sande",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "efc23cf4c63b4a18921efc1b3b9703e7",
+        "entity_name": "Antoine Le Calvez",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "ae354acce5c244c894e63ac8c6140df6",
+        "entity_name": "Decentralisation",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "7620d78dcf0c489582b5305b7d797303",
+        "entity_name": "Blockchain.info",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
+        "entity_name": "Infrastructure",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "548ff3dd6ad548cbb34ee9ed853273ab",
+        "entity_name": "Matt Corallo",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "4d76a2feec394612976423c178b00a53",
+        "entity_name": "Vlad Zamfir",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "2f2ef90756ca4cc4b5c6135dd684c9f5",
+        "entity_name": "Jimmy Song",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "e1891c0de0654e0697d722f8421f40f7",
+        "entity_name": "Paymium",
         "occurrence_count": 1
       }
     ]
