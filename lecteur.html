@@ -763,7 +763,7 @@ body::before {
 const BASE            = './assets/MD/';
 const GRAPH_FILE      = './grc20-these-mael-rolland-v79.json';
 const SECTION_MAP_FILE= './section_entities_map.json';
-const MAX_GRAPH_NODES = 50;   // top N entities by occurrence_count
+const MAX_GRAPH_NODES = 12;   // max nodes in graph (paragraph-level scrollytelling)
 const MAX_HIGHLIGHT   = 150;  // max entity names for DOM highlighting
 
 const CHAPTERS_DEF = [
@@ -796,6 +796,7 @@ let state = {
   activeFilters:     new Set(),
   cy:                null,
   observer:          null,
+  headingObserver:   null,
   currentSectionKey: null,
 };
 
@@ -1080,34 +1081,46 @@ function smoothUpdateGraph(newNodes, newEdges) {
   // Remove elements absent from new subgraph
   cy.elements().filter(el => !newNodeIds.has(el.id()) && !newEdgeIds.has(el.id())).remove();
 
-  // Add genuinely new elements and fade them in
+  // Add genuinely new elements — hide until layout positions them
   const existingIds = new Set(cy.elements().map(el => el.id()));
   const toAdd = [
     ...newNodes.filter(n => !existingIds.has(n.data.id)),
     ...newEdges.filter(e => !existingIds.has(e.data.id)),
   ];
+  let addedNodes = null;
   if (toAdd.length) {
-    const added = cy.add(toAdd);
-    added.nodes().style('opacity', 0).animate({ style: { opacity: 1 } }, { duration: 350 });
+    addedNodes = cy.add(toAdd).nodes();
+    addedNodes.style('opacity', 0);  // invisible until layout stops
   }
 
   applyFilters();
 
   if (cy.nodes(':visible').length > 0) {
-    cy.layout({
+    const layout = cy.layout({
       name:              'cose',
       animate:           true,
-      animationDuration: 500,
+      animationDuration: 450,
       animationEasing:   'ease-out',
-      randomize:         false,
-      nodeRepulsion:     8000,
-      edgeElasticity:    100,
-      gravity:           0.6,
-      numIter:           250,
-      initialTemp:       200,
+      randomize:         true,   // disperse nodes — prevents stacking at (0,0)
+      nodeRepulsion:     14000,  // stronger repulsion → more spread
+      edgeElasticity:    80,
+      gravity:           0.5,
+      numIter:           200,
+      initialTemp:       300,
       coolingFactor:     0.95,
       minTemp:           1.0,
-    }).run();
+      fit:               true,
+      padding:           24,
+    });
+
+    // Reveal new nodes only AFTER layout has computed their positions
+    if (addedNodes) {
+      layout.one('layoutstop', () => {
+        addedNodes.animate({ style: { opacity: 1 } }, { duration: 280 });
+      });
+    }
+
+    layout.run();
   }
 }
 
@@ -1117,6 +1130,8 @@ function smoothUpdateGraph(newNodes, newEdges) {
 async function loadChapter(chapterId) {
   state.currentChapter    = chapterId;
   state.currentSectionKey = null;
+  if (state.observer)        state.observer.disconnect();
+  if (state.headingObserver) state.headingObserver.disconnect();
   updateChapterNav();
 
   const def  = CHAPTERS_DEF.find(c => c.id === chapterId);
@@ -1328,31 +1343,162 @@ function buildHighlightFragment(text, names, nameToId) {
 }
 
 // ═══════════════════════════════════════════════════════
-//  INTERSECTION OBSERVER — scrollytelling sync
+//  PARAGRAPH-LEVEL GRAPH UPDATE
+//
+//  Takes entity IDs found in the visible text blocks, expands with
+//  1-hop neighbors (excluding structural types), caps at MAX_GRAPH_NODES.
+//  Falls back to section top-N if the paragraph has too few entities.
+// ═══════════════════════════════════════════════════════
+let _paraTimer = null;
+function debouncedUpdateGraphFromEntityIds(entityIds) {
+  clearTimeout(_paraTimer);
+  _paraTimer = setTimeout(() => updateGraphFromEntityIds(entityIds), 200);
+}
+
+const GRAPH_SKIP_TYPES = new Set(['Chapter','ThesisSection','SourceQuote','Reference','DoctoralThesis']);
+
+function updateGraphFromEntityIds(entityIds) {
+  if (!state.cy || !state.graphData) return;
+
+  const seed = new Set(entityIds);
+
+  // Expand with 1-hop neighbors up to MAX_GRAPH_NODES
+  const expanded = new Set(seed);
+  if (expanded.size < MAX_GRAPH_NODES) {
+    // Collect candidate neighbors, deduplicated
+    const seen = new Set(expanded);
+    outer: for (const eid of seed) {
+      for (const { nid } of (state.adjacency[eid] || [])) {
+        if (seen.has(nid)) continue;
+        seen.add(nid);
+        const e = state.entityMap[nid];
+        if (!e) continue;
+        const types = (e.types || []).map(t => state.typeMap[t]);
+        if (types.some(t => GRAPH_SKIP_TYPES.has(t))) continue;
+        expanded.add(nid);
+        if (expanded.size >= MAX_GRAPH_NODES) break outer;
+      }
+    }
+  }
+
+  // If still too few (paragraph had no/few entity mentions), supplement from section
+  if (expanded.size < 4 && state.currentSectionKey && state.sectionEntitiesMap?.[state.currentSectionKey]) {
+    const sorted = [...state.sectionEntitiesMap[state.currentSectionKey].entities]
+      .sort((a, b) => b.occurrence_count - a.occurrence_count);
+    for (const { entity_id } of sorted) {
+      if (expanded.size >= MAX_GRAPH_NODES) break;
+      expanded.add(entity_id);
+    }
+  }
+
+  // Build nodes — seed entities are visually larger (they're in the current text)
+  const maxSize = 28, minSize = 14;
+  const newNodes = [];
+  for (const eid of expanded) {
+    const entity = state.entityMap[eid];
+    if (!entity) continue;
+    const typeName = (entity.types || []).map(t => state.typeMap[t]).find(t => t) || 'Unknown';
+    newNodes.push({
+      data: {
+        id:    eid,
+        label: truncate(entity.name, 18),
+        color: TYPE_COLORS[typeName] || '#6b5000',
+        type:  typeName,
+        size:  seed.has(eid) ? maxSize : minSize,
+      }
+    });
+  }
+
+  // Build edges only between nodes in the subgraph
+  const newEdges = [];
+  const edgeSet  = new Set();
+  for (const r of state.graphData.relations) {
+    if (expanded.has(r.from) && expanded.has(r.to)) {
+      const key = `${r.from}|${r.to}|${r.type}`;
+      if (!edgeSet.has(key)) {
+        edgeSet.add(key);
+        newEdges.push({ data: { id: key, source: r.from, target: r.to, label: state.relTypeMap[r.type] || '' } });
+      }
+    }
+  }
+
+  smoothUpdateGraph(newNodes, newEdges);
+
+  document.getElementById('stat-nodes').textContent = `${newNodes.length} nœuds`;
+  document.getElementById('stat-edges').textContent = `${newEdges.length} liens`;
+  document.getElementById('graph-section-total').textContent =
+    seed.size > 0 ? `${seed.size} entit${seed.size > 1 ? 'és' : 'é'} dans le passage` : '';
+}
+
+// ═══════════════════════════════════════════════════════
+//  INTERSECTION OBSERVER — paragraph-level scrollytelling
+//
+//  Two observers:
+//  1. headingObserver — tracks section key + TOC active state (coarse)
+//  2. observer        — watches p/blockquote/li in a 40% central strip,
+//     collects .entity-mention spans from visible blocks → paragraph-level
+//     graph. Falls back to section top entities if the paragraph has none.
 // ═══════════════════════════════════════════════════════
 function setupIntersectionObserver() {
-  if (state.observer) state.observer.disconnect();
+  if (state.observer)       state.observer.disconnect();
+  if (state.headingObserver) state.headingObserver.disconnect();
 
-  // Only observe headings that have a mapped section key
+  const readerCol = document.getElementById('reader-col');
+
+  // ── 1. Heading observer: section key + TOC ──────────────────────────
   const headings = document.querySelectorAll('.reader-content [data-section-key]');
-  if (!headings.length) return;
+  if (headings.length) {
+    state.headingObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const key = entry.target.dataset.sectionKey;
+          if (key) {
+            state.currentSectionKey = key;
+            document.getElementById('graph-section-name').textContent = key;
+          }
+          if (entry.target.dataset.section) updateTOCActive(entry.target.dataset.section);
+        }
+      }
+    }, {
+      root:       readerCol,
+      rootMargin: '-5% 0px -85% 0px',
+      threshold:  0,
+    });
+    for (const h of headings) state.headingObserver.observe(h);
+  }
+
+  // ── 2. Paragraph observer: entity-based graph ────────────────────────
+  // We observe p, blockquote, li — each is a natural "thought unit"
+  const blocks = document.querySelectorAll('.reader-content p, .reader-content blockquote, .reader-content li');
+  if (!blocks.length) return;
+
+  // Track which blocks are currently in the reading zone (closure-local Set)
+  const visibleBlocks = new Set();
 
   state.observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
-      if (entry.isIntersecting) {
-        const sectionKey  = entry.target.dataset.sectionKey;
-        const sectionName = entry.target.dataset.section;
-        if (sectionKey) debouncedUpdateGraph(sectionKey);
-        if (sectionName) updateTOCActive(sectionName);
-      }
+      if (entry.isIntersecting) visibleBlocks.add(entry.target);
+      else                       visibleBlocks.delete(entry.target);
     }
+
+    // Gather entity IDs from all .entity-mention spans in visible blocks
+    const entityIds = new Set();
+    for (const block of visibleBlocks) {
+      block.querySelectorAll('.entity-mention[data-entity-id]')
+        .forEach(s => entityIds.add(s.dataset.entityId));
+    }
+
+    if (entityIds.size > 0) {
+      debouncedUpdateGraphFromEntityIds([...entityIds]);
+    }
+    // If 0 entities visible (text zone without mentions), keep current graph
   }, {
-    root:       document.getElementById('reader-col'),
-    rootMargin: '-15% 0px -55% 0px',
+    root:       readerCol,
+    rootMargin: '-30% 0px -30% 0px',  // central 40% strip = "reading zone"
     threshold:  0,
   });
 
-  for (const h of headings) state.observer.observe(h);
+  for (const b of blocks) state.observer.observe(b);
 }
 
 // ═══════════════════════════════════════════════════════
