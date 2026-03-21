@@ -963,7 +963,7 @@ body::before {
 //  CONFIGURATION
 // ═══════════════════════════════════════════════════════
 const BASE            = './assets/MD/';
-const GRAPH_FILE      = './grc20-these-mael-rolland-v81.json';
+const GRAPH_FILE      = './grc20-these-mael-rolland-v82.json';
 const SECTION_MAP_FILE= './section_entities_map.json';
 const MAX_GRAPH_NODES = 12;   // max nodes in graph (paragraph-level scrollytelling)
 const MAX_HIGHLIGHT   = 150;  // max entity names for DOM highlighting
@@ -1147,7 +1147,7 @@ async function loadGraph() {
 //  Maps heading text → key in section_entities_map.json
 //  Keys: 'intro_A'…'intro_E', 'I.1', 'I.1.1', 'II.3', …
 // ═══════════════════════════════════════════════════════
-function headingToSectionKey(text, chapterId) {
+function headingToSectionKey(text, chapterId, tagName) {
   const clean = text.replace(/<[^>]+>/g, '').trim();
 
   // Roman numeral + digits: "I.1", "I.1.1", "II.3.2", "III.4"
@@ -1158,6 +1158,26 @@ function headingToSectionKey(text, chapterId) {
   if (chapterId === 'intro') {
     const letter = clean.match(/^([A-E])(?:[.\s\u2014\-]|$)/);
     if (letter) return 'intro_' + letter[1];
+  }
+
+  // Conclusion sub-sections: match heading text keywords (h2/h3 level)
+  if (chapterId === 'ccl') {
+    const lc = clean.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (/resum/.test(lc))                                            return 'conclu_resume';
+    if (/infrastructur/.test(lc))                                    return 'conclu_infra';
+    if (/acephal|apolitiqu/.test(lc))                                return 'conclu_aceph';
+    if (/theori.*monet|monetaire/.test(lc))                          return 'conclu_theo_mon';
+    if (/traduction/.test(lc))                                       return 'conclu_traduction';
+    if (/boucs?[\s-]*emissaire/.test(lc))                            return 'conclu_boucs';
+    // Top-level h1 chapter heading (conclusion preamble)
+    if (tagName === 'h1') return 'ccl_preamble';
+  }
+
+  // Chapter preambles: only h1-level headings before the first Roman numeral section
+  if (tagName === 'h1') {
+    if (chapterId === 'ch1') return 'ch1_preamble';
+    if (chapterId === 'ch2') return 'ch2_preamble';
+    if (chapterId === 'ch3') return 'ch3_preamble';
   }
 
   return null;
@@ -1435,7 +1455,7 @@ function renderMarkdown(md) {
   html = html.replace(/<(h[12])(.*?)>(.*?)<\/h[12]>/gs, (m, tag, attrs, content) => {
     const text       = content.replace(/<[^>]+>/g, '');
     const slug       = slugify(text);
-    const sectionKey = headingToSectionKey(text, state.currentChapter) || '';
+    const sectionKey = headingToSectionKey(text, state.currentChapter, tag) || '';
     const keyAttr    = sectionKey ? ` data-section-key="${sectionKey}"` : '';
     return `<${tag}${attrs}${keyAttr} data-section="${text}" id="section-${slug}">${content}</${tag}>`;
   });
