@@ -1263,25 +1263,51 @@ function renderMarkdown(md) {
 //  Why TreeWalker and not innerHTML regex?
 //  ─ Operates on text nodes AFTER the DOM is built → zero risk of breaking HTML
 //  ─ Skips headings, code, footnotes, and already-wrapped spans automatically
-//  ─ Section-aware: uses section_entities_map for contextual accuracy
+//  ─ Sources ALL graph entities (not just section map) so absent entities are still found
+//  ─ Matching is accent/case/hyphen-insensitive via fold(); positions map 1:1 to original
+//  ─ "X / Y" compound names: also tries the primary (French) part alone
 //  ─ Anti-overlap via Uint8Array bitmap → no double-wrapping
 // ═══════════════════════════════════════════════════════
+
+// Normalise for matching: remove combining diacritics, lowercase, hyphen → space.
+// Preserves string length for NFC-encoded input (each accented char stays 1 char).
+const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/-/g, ' ');
+
 function highlightEntitiesInDOM(container, sectionKey) {
   if (!state.graphData || !container) return;
 
   const sectionData = sectionKey ? state.sectionEntitiesMap?.[sectionKey] : null;
 
-  // Build name→id map. Section entities are already sorted by occurrence_count.
-  const nameToId = new Map();
-  const sources  = sectionData?.entities
-    || state.graphData.entities.map(e => ({ entity_id: e.id, entity_name: e.name }));
+  // Build fold(name)→id map. Keys are accent/case/hyphen-normalised.
+  // Source pool: section entities first (priority), then ALL graph entities.
+  // This ensures entities absent from section_entities_map are still candidates.
+  const nameToId  = new Map();
+  const sectionIds = new Set(sectionData?.entities?.map(e => e.entity_id) || []);
+  const sources = [
+    ...(sectionData?.entities || []),
+    ...state.graphData.entities
+      .filter(e => !sectionIds.has(e.id))
+      .map(e => ({ entity_id: e.id, entity_name: e.name })),
+  ];
 
-  for (const { entity_id, entity_name } of sources.slice(0, MAX_HIGHLIGHT)) {
+  for (const { entity_id, entity_name } of sources) {
     if (!entity_name || entity_name.length <= 3) continue;
     const entity = state.entityMap[entity_id];
     if (!entity) continue;
     const types = (entity.types || []).map(t => state.typeMap[t]);
-    if (types.some(t => HIGHLIGHT_TYPES.has(t))) nameToId.set(entity_name, entity_id);
+    if (!types.some(t => HIGHLIGHT_TYPES.has(t))) continue;
+
+    // Register full fold()'d name (first mapping wins — section entities have priority)
+    const key = fold(entity_name);
+    if (key.length > 3 && !nameToId.has(key)) nameToId.set(key, entity_id);
+
+    // For "X / Y" compound names, also register the primary part alone
+    // e.g. "Horodatage / Timestamp" → also matches "horodatage" in text
+    const slash = entity_name.indexOf(' / ');
+    if (slash > 3) {
+      const k1 = fold(entity_name.slice(0, slash));
+      if (k1.length > 3 && !nameToId.has(k1)) nameToId.set(k1, entity_id);
+    }
   }
   if (!nameToId.size) return;
 
@@ -1322,30 +1348,32 @@ function highlightEntitiesInDOM(container, sectionKey) {
  * checks unicode-aware word boundaries, returns a DocumentFragment or null.
  */
 function buildHighlightFragment(text, names, nameToId) {
-  const occupied = new Uint8Array(text.length);
+  // fold() both text and names: positions in fText map 1:1 to positions in text
+  // because fold() is length-preserving for NFC input (each accented char → 1 ASCII char)
+  const fText    = fold(text);
+  const occupied = new Uint8Array(fText.length);
   const matches  = [];
 
-  for (const name of names) {
+  for (const name of names) {           // name is already fold()'d from nameToId keys
     let idx = 0;
-    while (idx <= text.length - name.length) {
-      const pos = text.indexOf(name, idx);
+    while (idx <= fText.length - name.length) {
+      const pos = fText.indexOf(name, idx);
       if (pos === -1) break;
 
-      // Unicode word-boundary: char before/after must not be a word character
-      const before = pos > 0                  ? text[pos - 1]              : ' ';
-      const after  = pos + name.length < text.length ? text[pos + name.length] : ' ';
-      const ok     = !/[\wÀ-öø-ÿ]/.test(before) && !/[\wÀ-öø-ÿ]/.test(after);
+      // Word boundary on folded text (fold() output is lowercase ASCII + spaces)
+      const before = pos > 0                   ? fText[pos - 1]               : ' ';
+      const after  = pos + name.length < fText.length ? fText[pos + name.length] : ' ';
+      const ok     = !/[a-z0-9]/.test(before) && !/[a-z0-9]/.test(after);
 
       if (ok) {
-        // Check no byte already claimed by a longer match
         let free = true;
         for (let i = pos; i < pos + name.length; i++) { if (occupied[i]) { free = false; break; } }
         if (free) {
           for (let i = pos; i < pos + name.length; i++) occupied[i] = 1;
-          matches.push({ start: pos, end: pos + name.length, name, id: nameToId.get(name) });
+          matches.push({ start: pos, end: pos + name.length, id: nameToId.get(name) });
         }
       }
-      idx = pos + name.length;
+      idx = pos + 1;
     }
   }
 
@@ -1357,9 +1385,9 @@ function buildHighlightFragment(text, names, nameToId) {
   for (const m of matches) {
     if (m.start > pos) frag.appendChild(document.createTextNode(text.slice(pos, m.start)));
     const span = document.createElement('span');
-    span.className       = 'entity-mention';
+    span.className        = 'entity-mention';
     span.dataset.entityId = m.id;
-    span.textContent      = m.name;
+    span.textContent      = text.slice(m.start, m.end);  // original casing/accents from the text
     span.addEventListener('click', () => openEntityPanel(m.id));
     frag.appendChild(span);
     pos = m.end;
