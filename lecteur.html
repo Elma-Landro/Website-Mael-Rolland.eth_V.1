@@ -798,6 +798,8 @@ let state = {
   observer:          null,
   headingObserver:   null,
   currentSectionKey: null,
+  tfidfScores:       {},     // [sectionKey][entity_id] → TF-IDF score
+  sectionOverrides:  {},     // section_overrides.json  [sectionKey] → [entity_id, …]
 };
 
 // ═══════════════════════════════════════════════════════
@@ -865,17 +867,42 @@ async function init() {
 // ═══════════════════════════════════════════════════════
 async function loadGraph() {
   try {
-    const [graphRes, sectionRes] = await Promise.all([
+    const [graphRes, sectionRes, overrideRes] = await Promise.all([
       fetch(GRAPH_FILE),
       fetch(SECTION_MAP_FILE),
+      fetch('./section_overrides.json').catch(() => null),
     ]);
     const [data, sectionMap] = await Promise.all([
       graphRes.json(),
       sectionRes.json(),
     ]);
+    if (overrideRes?.ok) state.sectionOverrides = await overrideRes.json();
 
     state.graphData          = data;
     state.sectionEntitiesMap = sectionMap;
+
+    // ── Compute TF-IDF scores ──────────────────────────────────────────
+    // tf(e, s)  = raw occurrence_count of entity e in section s
+    // idf(e)    = log(total_sections / df(e))  — penalises ubiquitous entities
+    // tfidf     = tf × idf  (stored once, used at every graph update)
+    const allSections    = Object.keys(sectionMap);
+    const totalSections  = allSections.length || 1;
+    const df = {};   // entity_id → number of sections that mention it
+    for (const secData of Object.values(sectionMap)) {
+      for (const { entity_id } of (secData.entities || [])) {
+        df[entity_id] = (df[entity_id] || 0) + 1;
+      }
+    }
+    const tfidf = {};
+    for (const [secKey, secData] of Object.entries(sectionMap)) {
+      tfidf[secKey] = {};
+      for (const { entity_id, occurrence_count } of (secData.entities || [])) {
+        const idf = Math.log(totalSections / (df[entity_id] || 1));
+        tfidf[secKey][entity_id] = occurrence_count * idf;
+      }
+    }
+    state.tfidfScores = tfidf;
+    // ──────────────────────────────────────────────────────────────────
     state.typeMap    = Object.fromEntries(data.types.map(t => [t.id, t.name]));
     state.relTypeMap = Object.fromEntries(data.relation_types.map(r => [r.id, r.name]));
     state.entityMap  = Object.fromEntries(data.entities.map(e => [e.id, e]));
@@ -1025,28 +1052,37 @@ function updateGraph(sectionKey) {
     return;
   }
 
-  // Sort by occurrence_count DESC, keep top N
-  const sorted = [...sectionData.entities]
-    .sort((a, b) => b.occurrence_count - a.occurrence_count)
-    .slice(0, MAX_GRAPH_NODES);
+  // ── Select entities: overrides first, then TF-IDF top-N ──────────────
+  const scores      = state.tfidfScores?.[sectionKey] || {};
+  const overrideIds = state.sectionOverrides?.[sectionKey] || [];
+  const overrideSet = new Set(overrideIds);
 
-  const entityIdSet = new Set(sorted.map(e => e.entity_id));
-  const maxOcc = sorted[0]?.occurrence_count || 1;
+  const byScore = [...sectionData.entities]
+    .filter(e => !overrideSet.has(e.entity_id))
+    .sort((a, b) => (scores[b.entity_id] || 0) - (scores[a.entity_id] || 0))
+    .slice(0, MAX_GRAPH_NODES - overrideIds.length)
+    .map(e => e.entity_id);
 
-  // Build nodes — size proportional to occurrence_count [12, 36]
+  const finalIds  = [...overrideIds, ...byScore];
+  const entityIdSet = new Set(finalIds);
+  const maxScore  = Math.max(...finalIds.map(id => scores[id] || 0), 1);
+
+  // Build nodes — size proportional to TF-IDF score; overrides always largest
   const newNodes = [];
-  for (const { entity_id, occurrence_count } of sorted) {
+  for (const entity_id of finalIds) {
     const entity = state.entityMap[entity_id];
     if (!entity) continue;
     const typeName = (entity.types || []).map(t => state.typeMap[t]).find(t => t) || 'Unknown';
+    const score    = scores[entity_id] || 0;
+    const isPin    = overrideSet.has(entity_id);
     newNodes.push({
       data: {
         id:     entity_id,
         label:  truncate(entity.name, 18),
         color:  TYPE_COLORS[typeName] || '#6b5000',
         type:   typeName,
-        size:   12 + (occurrence_count / maxOcc) * 24,
-        weight: occurrence_count,
+        size:   isPin ? 36 : 12 + (score / maxScore) * 24,
+        weight: score,
       }
     });
   }
@@ -1371,8 +1407,15 @@ function updateGraphFromEntityIds(entityIds) {
 
   // If still too few (paragraph had no/few entity mentions), supplement from section
   if (expanded.size < 4 && state.currentSectionKey && state.sectionEntitiesMap?.[state.currentSectionKey]) {
-    const sorted = [...state.sectionEntitiesMap[state.currentSectionKey].entities]
-      .sort((a, b) => b.occurrence_count - a.occurrence_count);
+    // Add overrides first (pinned entities for this section)
+    for (const eid of (state.sectionOverrides?.[state.currentSectionKey] || [])) {
+      if (expanded.size >= MAX_GRAPH_NODES) break;
+      expanded.add(eid);
+    }
+    // Then TF-IDF top entities
+    const secScores = state.tfidfScores?.[state.currentSectionKey] || {};
+    const sorted    = [...state.sectionEntitiesMap[state.currentSectionKey].entities]
+      .sort((a, b) => (secScores[b.entity_id] || 0) - (secScores[a.entity_id] || 0));
     for (const { entity_id } of sorted) {
       if (expanded.size >= MAX_GRAPH_NODES) break;
       expanded.add(entity_id);

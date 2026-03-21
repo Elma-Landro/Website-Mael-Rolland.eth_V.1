@@ -1,0 +1,6 @@
+{
+  "_comment": "Pinned entities per section. Keys = section keys from section_entities_map.json (e.g. 'intro_A', 'I.1', 'II.3.1'). Values = ordered list of entity_id strings (shown first in the graph, regardless of TF-IDF score). Entity IDs are the hex IDs from grc20-these-mael-rolland-v79.json.",
+  "_example": {
+    "intro_A": ["d35d720e1fa24d9fbe665a90ac0abc73"]
+  }
+}
