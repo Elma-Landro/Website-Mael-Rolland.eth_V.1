@@ -901,7 +901,9 @@ async function loadGraph() {
         tfidf[secKey][entity_id] = occurrence_count * idf;
       }
     }
-    state.tfidfScores = tfidf;
+    state.tfidfScores   = tfidf;
+    state.entityDf      = df;           // document frequency — used for IDF-ranked neighbor expansion
+    state.totalSections = totalSections;
     // ──────────────────────────────────────────────────────────────────
     state.typeMap    = Object.fromEntries(data.types.map(t => [t.id, t.name]));
     state.relTypeMap = Object.fromEntries(data.relation_types.map(r => [r.id, r.name]));
@@ -1386,12 +1388,18 @@ function updateGraphFromEntityIds(entityIds) {
 
   const seed = new Set(entityIds);
 
-  // Expand with 1-hop neighbors up to MAX_GRAPH_NODES
+  // Expand with 1-hop neighbors — ranked by IDF so contextually *specific*
+  // entities come before ubiquitous ones (e.g. Satoshi Nakamoto before Bitcoin Core)
   const expanded = new Set(seed);
   if (expanded.size < MAX_GRAPH_NODES) {
-    // Collect candidate neighbors, deduplicated
-    const seen = new Set(expanded);
-    outer: for (const eid of seed) {
+    const df            = state.entityDf      || {};
+    const N             = state.totalSections || 1;
+    const idf           = id => Math.log(N / (df[id] || 1));
+
+    // Collect all unique candidate neighbors first, then sort by IDF desc
+    const seen       = new Set(expanded);
+    const candidates = [];
+    for (const eid of seed) {
       for (const { nid } of (state.adjacency[eid] || [])) {
         if (seen.has(nid)) continue;
         seen.add(nid);
@@ -1399,14 +1407,19 @@ function updateGraphFromEntityIds(entityIds) {
         if (!e) continue;
         const types = (e.types || []).map(t => state.typeMap[t]);
         if (types.some(t => GRAPH_SKIP_TYPES.has(t))) continue;
-        expanded.add(nid);
-        if (expanded.size >= MAX_GRAPH_NODES) break outer;
+        candidates.push(nid);
       }
+    }
+    // Prefer rare / section-specific entities over thesis-wide generic ones
+    candidates.sort((a, b) => idf(b) - idf(a));
+    for (const nid of candidates) {
+      expanded.add(nid);
+      if (expanded.size >= MAX_GRAPH_NODES) break;
     }
   }
 
-  // If still too few (paragraph had no/few entity mentions), supplement from section
-  if (expanded.size < 4 && state.currentSectionKey && state.sectionEntitiesMap?.[state.currentSectionKey]) {
+  // Fall back to section entities ONLY when the paragraph has no entity mentions at all
+  if (expanded.size === 0 && state.currentSectionKey && state.sectionEntitiesMap?.[state.currentSectionKey]) {
     // Add overrides first (pinned entities for this section)
     for (const eid of (state.sectionOverrides?.[state.currentSectionKey] || [])) {
       if (expanded.size >= MAX_GRAPH_NODES) break;
