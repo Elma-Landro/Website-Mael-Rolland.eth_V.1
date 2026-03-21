@@ -619,6 +619,155 @@ body::before {
   letter-spacing: 0.06em;
 }
 
+/* ═══ ANNOTATION MODE ════════════════════════════════════ */
+/* Mode toggle button in graph header */
+#annot-mode-btn {
+  display: block;
+  margin-top: 5px;
+  padding: 3px 7px;
+  font-family: var(--pixel); font-size: 0.36em;
+  border: 1px solid var(--gold-dim);
+  background: transparent; color: var(--gold-dim);
+  cursor: pointer; border-radius: 2px;
+  transition: all .15s;
+}
+#annot-mode-btn.active {
+  border-color: #33ff33; color: #33ff33;
+  box-shadow: 0 0 6px rgba(51,255,51,.3);
+}
+/* Reader visual indicator when annotation mode is on */
+.annotation-mode .reader-content { border-left: 2px solid rgba(51,255,51,.35); }
+
+/* Manual annotation spans (vs .entity-mention which is auto-detected) */
+.manual-annot {
+  background: rgba(51,255,51,.13);
+  border-bottom: 2px solid #33ff33;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.manual-annot:hover { background: rgba(51,255,51,.25); }
+
+/* Floating annotation bar (appears on text selection) */
+#annot-bar {
+  position: fixed;
+  display: none;
+  z-index: 350;
+  background: var(--bg2);
+  border: 1px solid #33ff33;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-family: var(--pixel); font-size: 0.38em;
+  color: #33ff33;
+  cursor: pointer;
+  box-shadow: 0 3px 14px rgba(0,0,0,.6);
+  white-space: nowrap;
+  user-select: none;
+}
+#annot-bar:hover { background: rgba(51,255,51,.1); }
+
+/* Annotation panel — right drawer, same shape as entity-panel */
+#annot-panel {
+  position: fixed;
+  top: var(--header-h);
+  right: 0;
+  width: 380px;
+  height: calc(100vh - var(--header-h));
+  background: var(--bg2);
+  border-left: 2px solid #33ff33;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 210;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+#annot-panel.open { transform: translateX(0); }
+
+.annot-panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 8px; flex-shrink: 0;
+}
+.annot-panel-title {
+  font-family: var(--pixel); font-size: 0.42em;
+  color: #33ff33; margin-bottom: 5px;
+}
+.annot-selected-text {
+  font-family: var(--mono); font-size: 0.42em;
+  color: var(--gold); font-style: italic;
+  max-height: 56px; overflow-y: auto; line-height: 1.4;
+  flex: 1;
+}
+.annot-panel-body {
+  flex: 1; overflow-y: auto; padding: 12px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.annot-field-label {
+  font-family: var(--pixel); font-size: 0.36em;
+  color: var(--gold-dim); margin-bottom: 3px;
+}
+.annot-search-input,
+.annot-new-input,
+.annot-new-select {
+  width: 100%; box-sizing: border-box;
+  background: var(--bg-primary);
+  border: 1px solid var(--gold-dim);
+  color: var(--gold); font-family: var(--pixel); font-size: 0.4em;
+  padding: 6px 8px; border-radius: 2px;
+}
+.annot-search-input:focus,
+.annot-new-input:focus,
+.annot-new-select:focus { outline: none; border-color: #33ff33; }
+.annot-new-select option { background: var(--bg-primary); }
+.annot-results {
+  max-height: 180px; overflow-y: auto;
+  border: 1px solid var(--border); border-radius: 2px;
+}
+.annot-result-item {
+  padding: 6px 10px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background .1s;
+}
+.annot-result-item:hover { background: rgba(255,204,102,.08); }
+.annot-result-item.selected { background: rgba(51,255,51,.12); border-left: 3px solid #33ff33; }
+.annot-result-name { font-family: var(--pixel); font-size: 0.4em; color: var(--gold); }
+.annot-result-type { font-family: var(--mono); font-size: 0.36em; color: var(--gold-dim); margin-top: 2px; }
+.annot-or {
+  font-family: var(--pixel); font-size: 0.34em; color: var(--gold-dim);
+  text-align: center; padding: 4px 0;
+  border-top: 1px solid var(--border);
+}
+.annot-confirm-btn {
+  padding: 8px; font-family: var(--pixel); font-size: 0.4em;
+  background: rgba(51,255,51,.1); border: 1px solid #33ff33;
+  color: #33ff33; cursor: pointer; border-radius: 2px;
+  transition: background .15s; width: 100%;
+}
+.annot-confirm-btn:hover { background: rgba(51,255,51,.2); }
+.annot-confirm-btn:disabled { opacity: .4; cursor: default; }
+.annot-saved-header {
+  font-family: var(--pixel); font-size: 0.36em; color: var(--gold-dim);
+  border-top: 1px solid var(--border); padding-top: 8px; margin-top: 4px;
+}
+.annot-saved-item {
+  padding: 6px 8px; border: 1px solid var(--border);
+  border-radius: 2px; margin-top: 5px;
+}
+.annot-saved-text { font-family: var(--mono); font-size: 0.38em; color: var(--gold); }
+.annot-saved-entity { font-family: var(--pixel); font-size: 0.36em; color: #33ff33; margin-top: 2px; }
+.annot-saved-del {
+  float: right; cursor: pointer;
+  color: var(--gold-dim); font-size: 0.9em; margin-left: 6px;
+}
+.annot-saved-del:hover { color: #ef4444; }
+.annot-export-btn {
+  margin-top: 6px; padding: 6px; font-family: var(--pixel); font-size: 0.36em;
+  background: transparent; border: 1px solid var(--gold-dim);
+  color: var(--gold-dim); cursor: pointer; border-radius: 2px; width: 100%;
+  transition: all .15s;
+}
+.annot-export-btn:hover { border-color: var(--gold); color: var(--gold); }
+
 /* ═══ SCROLLBAR ═════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -728,6 +877,7 @@ body::before {
       <div class="graph-header-title">◈ GRAPHE CONTEXTUEL</div>
       <div class="graph-section-name" id="graph-section-name">—</div>
       <div class="graph-section-total" id="graph-section-total"></div>
+      <button id="annot-mode-btn" onclick="toggleAnnotMode()" title="Mode annotation : sélectionnez du texte pour le lier à une entité">✎ ANNOTER</button>
     </div>
     <div class="graph-filters" id="graph-filters"><!-- populated --></div>
     <div id="cy-reader"></div>
@@ -737,6 +887,58 @@ body::before {
     </div>
   </aside>
 
+</div>
+
+<!-- ══ ANNOTATION BAR (floating, appears on text selection) ══ -->
+<div id="annot-bar" onclick="openAnnotPanel()">✎ Annoter ce passage</div>
+
+<!-- ══ ANNOTATION PANEL ══════════════════════════════════ -->
+<div id="annot-panel">
+  <div class="annot-panel-header">
+    <div style="flex:1;min-width:0">
+      <div class="annot-panel-title">✎ ANNOTATION</div>
+      <div class="annot-selected-text" id="annot-selected-text">—</div>
+    </div>
+    <button class="panel-close" onclick="closeAnnotPanel()">✕</button>
+  </div>
+  <div class="annot-panel-body">
+
+    <!-- Search existing entity -->
+    <div class="annot-field-label">ENTITÉ EXISTANTE</div>
+    <input class="annot-search-input" id="annot-search" type="text"
+           placeholder="Chercher dans le graphe…" oninput="filterAnnotEntities(this.value)">
+    <div class="annot-results" id="annot-results"></div>
+
+    <!-- Create new entity -->
+    <div class="annot-or">— ou créer une entité —</div>
+    <div class="annot-field-label">NOM</div>
+    <input class="annot-new-input" id="annot-new-name" type="text"
+           placeholder="Nom de la nouvelle entité" oninput="onAnnotNewInput()">
+    <div class="annot-field-label">TYPE</div>
+    <select class="annot-new-select" id="annot-new-type" onchange="onAnnotNewInput()">
+      <option value="">— type —</option>
+      <option>Concept</option>
+      <option>Argument</option>
+      <option>Person</option>
+      <option>Institution</option>
+      <option>Protocol</option>
+      <option>TheoreticFramework</option>
+      <option>ActorGroup</option>
+      <option>ActorNonHuman</option>
+      <option>GovernanceArena</option>
+      <option>GovernanceConflict</option>
+      <option>GovernanceProcess</option>
+      <option>CrisisEvent</option>
+      <option>CrisisPhase</option>
+    </select>
+
+    <button class="annot-confirm-btn" id="annot-confirm"
+            onclick="confirmAnnotation()" disabled>◈ Confirmer</button>
+
+    <!-- Saved annotations for current section -->
+    <div id="annot-saved"></div>
+    <button class="annot-export-btn" onclick="exportAnnotations()">⬇ Exporter annotations.json</button>
+  </div>
 </div>
 
 <!-- ══ ENTITY PANEL ═══════════════════════════════════════ -->
@@ -800,6 +1002,9 @@ let state = {
   currentSectionKey: null,
   tfidfScores:       {},     // [sectionKey][entity_id] → TF-IDF score
   sectionOverrides:  {},     // section_overrides.json  [sectionKey] → [entity_id, …]
+  annotations:       [],     // manual passage→entity links (localStorage + export)
+  annotMode:         false,  // annotation mode toggle
+  pendingAnnotation: null,   // { text, section_key, chapter } of current selection
 };
 
 // ═══════════════════════════════════════════════════════
@@ -859,6 +1064,8 @@ async function init() {
   await loadGraph();
   initCytoscape();
   initReadingProgress();
+  loadAnnotations();
+  document.getElementById('reader-col').addEventListener('mouseup', handleReaderMouseUp);
   await loadChapter('intro');
 }
 
@@ -1255,6 +1462,9 @@ function renderMarkdown(md) {
   // Highlight entities using the first section's entity list
   const firstKey = container.querySelector('[data-section-key]')?.dataset.sectionKey;
   highlightEntitiesInDOM(container, firstKey);
+
+  // Re-apply manual annotations saved in localStorage
+  applyAllAnnotations();
 }
 
 // ═══════════════════════════════════════════════════════
@@ -1553,15 +1763,15 @@ function setupIntersectionObserver() {
       else                       visibleBlocks.delete(entry.target);
     }
 
-    // Gather entity IDs from all .entity-mention spans in visible blocks
+    // Gather entity IDs from visible blocks:
+    // .entity-mention  = auto-detected via name matching
+    // .manual-annot    = manually annotated passages (higher confidence)
     const entityIds = new Set();
     for (const block of visibleBlocks) {
-      block.querySelectorAll('.entity-mention[data-entity-id]')
-        .forEach(s => entityIds.add(s.dataset.entityId));
+      block.querySelectorAll('.entity-mention[data-entity-id], .manual-annot[data-entity-id]')
+        .forEach(s => { if (s.dataset.entityId) entityIds.add(s.dataset.entityId); });
     }
 
-    // Always update: if 0 entity spans in zone, updateGraphFromEntityIds
-    // falls back to section top entities (never leaves graph empty)
     debouncedUpdateGraphFromEntityIds([...entityIds]);
   }, {
     root:       readerCol,
@@ -1802,8 +2012,273 @@ function truncate(str, n) {
 //  KEYBOARD
 // ═══════════════════════════════════════════════════════
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closePanel();
+  if (e.key === 'Escape') { closePanel(); closeAnnotPanel(); }
 });
+
+// ═══════════════════════════════════════════════════════
+//  ANNOTATION MODE
+//  Allows manually linking text passages to graph entities.
+//  Covers passages where automated name-matching fails
+//  (argumentative structure, implicit references, etc.)
+//
+//  Flow: toggle mode → select text → floating bar → panel
+//        → pick existing entity OR name a new one → confirm
+//        → saved to localStorage, re-applied on chapter load
+//        → exported as annotations.json for offline curation
+// ═══════════════════════════════════════════════════════
+
+const LS_ANNOT_KEY = 'lecteur_annotations_v1';
+let   _annotSelectedId = null;   // entity id chosen in the picker
+
+function loadAnnotations() {
+  try {
+    const raw = localStorage.getItem(LS_ANNOT_KEY);
+    state.annotations = raw ? JSON.parse(raw) : [];
+  } catch { state.annotations = []; }
+}
+
+function _saveAnnotations() {
+  try { localStorage.setItem(LS_ANNOT_KEY, JSON.stringify(state.annotations)); } catch {}
+}
+
+// ── Mode toggle ──────────────────────────────────────────
+function toggleAnnotMode() {
+  state.annotMode = !state.annotMode;
+  document.getElementById('annot-mode-btn').classList.toggle('active', state.annotMode);
+  document.getElementById('reader-col').classList.toggle('annotation-mode', state.annotMode);
+  document.getElementById('annot-bar').style.display = 'none';
+  if (!state.annotMode) closeAnnotPanel();
+}
+
+// ── Text selection → floating bar ────────────────────────
+function handleReaderMouseUp(e) {
+  if (!state.annotMode) return;
+  // Small delay so the selection is finalised
+  setTimeout(() => {
+    const sel = window.getSelection();
+    const txt = sel?.toString().trim() || '';
+    if (txt.length < 4) { document.getElementById('annot-bar').style.display = 'none'; return; }
+    const range = sel.getRangeAt(0);
+    if (!document.getElementById('reader-col').contains(range.commonAncestorContainer)) return;
+
+    const rect = range.getBoundingClientRect();
+    const bar  = document.getElementById('annot-bar');
+    bar.style.top  = `${rect.top + window.scrollY - 36}px`;
+    bar.style.left = `${Math.min(rect.left + window.scrollX, window.innerWidth - 230)}px`;
+    bar.style.display = 'block';
+
+    state.pendingAnnotation = {
+      text:        txt,
+      section_key: state.currentSectionKey || '',
+      chapter:     state.currentChapter    || '',
+    };
+  }, 10);
+}
+
+// ── Annotation panel ──────────────────────────────────────
+function openAnnotPanel() {
+  document.getElementById('annot-bar').style.display = 'none';
+  const txt = state.pendingAnnotation?.text || '';
+  document.getElementById('annot-selected-text').textContent = txt ? `« ${txt} »` : '—';
+  _annotSelectedId = null;
+  document.getElementById('annot-search').value    = '';
+  document.getElementById('annot-new-name').value  = '';
+  document.getElementById('annot-new-type').value  = '';
+  document.getElementById('annot-confirm').disabled = true;
+  filterAnnotEntities('');
+  _renderSavedAnnotations();
+  document.getElementById('annot-panel').classList.add('open');
+  document.getElementById('annot-search').focus();
+}
+
+function closeAnnotPanel() {
+  document.getElementById('annot-panel').classList.remove('open');
+}
+
+// ── Entity search ─────────────────────────────────────────
+function filterAnnotEntities(query) {
+  const q   = fold(query.trim());
+  const idf = id => Math.log((state.totalSections || 1) / ((state.entityDf || {})[id] || 1));
+
+  const entries = Object.values(state.entityMap)
+    .filter(e => {
+      if (!e.name || e.name.length < 2) return false;
+      const types = (e.types || []).map(t => state.typeMap[t]);
+      if (!types.some(t => HIGHLIGHT_TYPES.has(t))) return false;
+      return !q || fold(e.name).includes(q);
+    })
+    .sort((a, b) => {
+      const startA = fold(a.name).startsWith(q) ? 0 : 1;
+      const startB = fold(b.name).startsWith(q) ? 0 : 1;
+      if (startA !== startB) return startA - startB;
+      return idf(b.id) - idf(a.id);  // prefer specific (high-IDF) entities
+    })
+    .slice(0, 50);
+
+  const container = document.getElementById('annot-results');
+  container.innerHTML = '';
+  for (const e of entries) {
+    const types = (e.types || []).map(t => state.typeMap[t]).filter(Boolean);
+    const div   = document.createElement('div');
+    div.className = 'annot-result-item' + (e.id === _annotSelectedId ? ' selected' : '');
+    div.innerHTML =
+      `<div class="annot-result-name">${e.name}</div>` +
+      `<div class="annot-result-type">${types[0] || ''}</div>`;
+    div.addEventListener('click', () => _selectAnnotEntity(e.id, div));
+    container.appendChild(div);
+  }
+}
+
+function _selectAnnotEntity(id, el) {
+  _annotSelectedId = id;
+  document.querySelectorAll('.annot-result-item').forEach(d => d.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('annot-new-name').value = '';
+  document.getElementById('annot-new-type').value = '';
+  document.getElementById('annot-confirm').disabled = false;
+}
+
+function onAnnotNewInput() {
+  const name = document.getElementById('annot-new-name').value.trim();
+  const type = document.getElementById('annot-new-type').value;
+  if (name && type) {
+    _annotSelectedId = null;
+    document.querySelectorAll('.annot-result-item').forEach(d => d.classList.remove('selected'));
+    document.getElementById('annot-confirm').disabled = false;
+  } else if (!_annotSelectedId) {
+    document.getElementById('annot-confirm').disabled = true;
+  }
+}
+
+// ── Save annotation ───────────────────────────────────────
+function confirmAnnotation() {
+  if (!state.pendingAnnotation) return;
+  const newName = document.getElementById('annot-new-name').value.trim();
+  const newType = document.getElementById('annot-new-type').value;
+
+  const ann = {
+    id:          String(Date.now()),
+    text:        state.pendingAnnotation.text,
+    section_key: state.pendingAnnotation.section_key,
+    chapter:     state.pendingAnnotation.chapter,
+    created_at:  new Date().toISOString(),
+  };
+
+  if (_annotSelectedId) {
+    const e = state.entityMap[_annotSelectedId];
+    ann.entity_id   = _annotSelectedId;
+    ann.entity_name = e?.name || _annotSelectedId;
+  } else if (newName && newType) {
+    ann.entity_id   = null;                   // no graph id yet — new entity
+    ann.entity_name = newName;
+    ann.new_entity  = { name: newName, type: newType };
+  } else { return; }
+
+  state.annotations.push(ann);
+  _saveAnnotations();
+  _applyAnnotationInDOM(ann);
+  _renderSavedAnnotations();
+
+  // Reset form
+  _annotSelectedId = null;
+  document.getElementById('annot-search').value    = '';
+  document.getElementById('annot-new-name').value  = '';
+  document.getElementById('annot-new-type').value  = '';
+  document.getElementById('annot-confirm').disabled = true;
+  filterAnnotEntities('');
+}
+
+// ── Apply annotations to DOM ──────────────────────────────
+function applyAllAnnotations() {
+  for (const ann of (state.annotations || [])) _applyAnnotationInDOM(ann);
+}
+
+function _applyAnnotationInDOM(ann) {
+  const readerContent = document.getElementById('reader-content');
+  if (!readerContent) return;
+  const fSearch = fold(ann.text);
+
+  const walker = document.createTreeWalker(readerContent, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const p = node.parentElement;
+      if (!p) return NodeFilter.FILTER_REJECT;
+      if (p.classList?.contains('entity-mention') ||
+          p.classList?.contains('manual-annot'))   return NodeFilter.FILTER_REJECT;
+      if (p.closest?.('.footnotes-section'))        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const textNodes = [];
+  let n;
+  while ((n = walker.nextNode())) textNodes.push(n);
+
+  for (const node of textNodes) {
+    const fNode = fold(node.textContent);
+    const idx   = fNode.indexOf(fSearch);
+    if (idx === -1) continue;
+
+    const span = document.createElement('span');
+    span.className          = 'manual-annot';
+    span.dataset.annotId    = ann.id;
+    span.dataset.entityId   = ann.entity_id || '';
+    span.dataset.entityName = ann.entity_name || '';
+    span.title              = `[${ann.entity_name}]`;
+    span.textContent        = node.textContent.slice(idx, idx + ann.text.length);
+    if (ann.entity_id) span.addEventListener('click', () => openEntityPanel(ann.entity_id));
+
+    const before = document.createTextNode(node.textContent.slice(0, idx));
+    const after  = document.createTextNode(node.textContent.slice(idx + ann.text.length));
+    node.parentNode.insertBefore(before, node);
+    node.parentNode.insertBefore(span,   node);
+    node.parentNode.insertBefore(after,  node);
+    node.parentNode.removeChild(node);
+    break;  // first occurrence only
+  }
+}
+
+// ── Saved annotations display ─────────────────────────────
+function _renderSavedAnnotations() {
+  const sec       = state.currentSectionKey;
+  const container = document.getElementById('annot-saved');
+  const relevant  = (state.annotations || []).filter(a => a.section_key === sec);
+
+  if (!relevant.length) { container.innerHTML = ''; return; }
+
+  let html = `<div class="annot-saved-header">ANNOTATIONS — ${sec} (${relevant.length})</div>`;
+  for (const ann of relevant) {
+    const preview = ann.text.length > 55 ? ann.text.slice(0, 55) + '…' : ann.text;
+    const badge   = ann.new_entity ? '✦ ' : '';
+    html += `<div class="annot-saved-item">
+      <span class="annot-saved-del" data-id="${ann.id}" title="Supprimer">✕</span>
+      <div class="annot-saved-text">« ${preview} »</div>
+      <div class="annot-saved-entity">${badge}→ ${ann.entity_name}</div>
+    </div>`;
+  }
+  container.innerHTML = html;
+  container.querySelectorAll('.annot-saved-del').forEach(btn => {
+    btn.addEventListener('click', () => deleteAnnotation(btn.dataset.id));
+  });
+}
+
+function deleteAnnotation(id) {
+  state.annotations = state.annotations.filter(a => a.id !== id);
+  _saveAnnotations();
+  document.querySelectorAll(`.manual-annot[data-annot-id="${id}"]`).forEach(s => {
+    s.parentNode.replaceChild(document.createTextNode(s.textContent), s);
+  });
+  _renderSavedAnnotations();
+}
+
+// ── Export ────────────────────────────────────────────────
+function exportAnnotations() {
+  const json = JSON.stringify(state.annotations, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'annotations.json'; a.click();
+  URL.revokeObjectURL(url);
+}
 
 // ═══════════════════════════════════════════════════════
 //  START
