@@ -2622,7 +2622,7 @@
     },
     {
       "id": "6baa805952d145bc9c4b1b14eede3c33",
-      "name": "Infrastructure transparente (Seamless)",
+      "name": "Infrastructure",
       "description": {
         "type": "TEXT",
         "value": "Infrastructure sans couture : un protocole ne devient CM qu'en tant qu'infrastructure confrontee a des usages, des arrangements, une maintenance -- irreductible a son code.",
@@ -7402,7 +7402,7 @@
     },
     {
       "id": "c62889928b77413e90da0175aa1f5830",
-      "name": "Jean-Baptiste Cartelier",
+      "name": "Jean Cartelier",
       "description": {
         "type": "TEXT",
         "value": "Economiste francais (Univ. Paris-Nanterre), IMF. Theorie du systeme de paiement : unite de compte, monnayage, cadre de resolution des soldes (1996).",
