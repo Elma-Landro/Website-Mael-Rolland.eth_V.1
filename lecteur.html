@@ -1230,19 +1230,28 @@ function initCytoscape() {
       {
         selector: 'edge',
         style: {
-          'width':               1,
-          'line-color':          '#5a2000',
-          'target-arrow-color':  '#8b6000',
+          'width':               1.5,
+          'line-color':          '#c87000',
+          'target-arrow-color':  '#ffaa33',
           'target-arrow-shape':  'triangle',
           'curve-style':         'bezier',
-          'arrow-scale':         0.6,
-          'opacity':             0.45,
+          'arrow-scale':         0.7,
+          'opacity':             0.72,
+          'label':               'data(label)',
+          'font-size':           '5px',
+          'font-family':         'Courier Prime, monospace',
+          'color':               '#ffcc66',
+          'text-rotation':       'autorotate',
+          'text-background-color': '#1a0000',
+          'text-background-opacity': 0.75,
+          'text-background-padding': '1px',
           'transition-property': 'opacity',
           'transition-duration': '0.25s',
         }
       },
       { selector: 'edge.highlighted',
-        style: { 'line-color': '#ffd700', 'target-arrow-color': '#ffd700', 'opacity': 1, 'width': 2 } },
+        style: { 'line-color': '#ffd700', 'target-arrow-color': '#ffd700', 'opacity': 1, 'width': 2.5,
+                 'color': '#ffd700', 'font-size': '6px' } },
       { selector: 'edge.faded',
         style: { 'opacity': 0.05 } },
     ],
@@ -1346,14 +1355,17 @@ function smoothUpdateGraph(newNodes, newEdges) {
   // Remove elements absent from new subgraph
   cy.elements().filter(el => !newNodeIds.has(el.id()) && !newEdgeIds.has(el.id())).remove();
 
-  // Add genuinely new elements — hide until layout positions them
+  // Add genuinely new elements — fade them in via opacity transition
   const existingIds = new Set(cy.elements().map(el => el.id()));
   const toAdd = [
     ...newNodes.filter(n => !existingIds.has(n.data.id)),
     ...newEdges.filter(e => !existingIds.has(e.data.id)),
   ];
-  // Add at full opacity — no layoutstop race condition
-  if (toAdd.length) cy.add(toAdd);
+  if (toAdd.length) {
+    const added = cy.add(toAdd);
+    added.style('opacity', 0);
+    requestAnimationFrame(() => added.style('opacity', ''));
+  }
 
   applyFilters();
 
