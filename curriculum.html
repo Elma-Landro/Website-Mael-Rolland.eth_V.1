@@ -221,14 +221,17 @@
       background: rgba(0, 0, 0, 0.9);
       z-index: 1000;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 12px;
+      overflow-x: auto;
     }
 
     .cv-modal-inner {
       position: relative;
-      width: min(794px, 100%);
+      width: 794px;
+      min-width: 794px;
       height: 90vh;
+      margin: auto;
       display: flex;
       flex-direction: column;
     }
