@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Maël Rolland | PhD in Economics and Social Sciences</title>
+  <meta name="description" content="Full academic CV of Maël Rolland: PhD (EHESS), researcher in socio-economics of cryptocurrencies, Bitcoin and Ethereum governance, publications and teaching.">
+  <meta name="keywords" content="Maël Rolland CV, PhD Economics, EHESS, Bitcoin research, cryptocurrency academic, socio-economics">
+  <meta name="author" content="Maël Rolland">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mael-rolland.eth.limo/cv.html">
+  <meta property="og:title" content="CV — Maël Rolland | PhD in Economics and Social Sciences">
+  <meta property="og:description" content="Full academic CV: research, teaching, publications and scientific communications on cryptocurrency governance.">
+  <meta property="og:image" content="https://mael-rolland.eth.limo/assets/img/avatar-closky-mael-rolland.eth.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mael-rolland.eth.limo/cv.html">
+  <meta property="twitter:title" content="CV — Maël Rolland | PhD in Economics and Social Sciences">
+  <meta property="twitter:description" content="Full academic CV: research, teaching, publications and scientific communications on cryptocurrency governance.">
+  <meta property="twitter:image" content="https://mael-rolland.eth.limo/assets/img/avatar-closky-mael-rolland.eth.jpg">
+  <meta property="twitter:site" content="@elmalandr0">
+
+  <link rel="canonical" href="https://mael-rolland.eth.limo/cv.html">
+  <link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/cv.html">
+  <link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/cv-fr.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="preload" href="style.css" as="style">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .cv-wrapper {
+      max-width: 980px;
+      margin: 30px auto 60px;
+      padding: 0 16px;
+    }
+
+    .cv-page-title {
+      text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.6em;
+      color: var(--text-primary, #ffcc66);
+      margin-bottom: 18px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .cv-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .cv-frame-container {
+      width: 100%;
+      border: 3px solid var(--text-primary, #ffcc66);
+      box-shadow: 0 0 24px rgba(255, 204, 102, 0.25);
+      background: #f5f2ed;
+    }
+
+    .cv-frame-container iframe {
+      display: block;
+      width: 100%;
+      height: 2400px;
+      border: none;
+    }
+
+    @media (max-width: 700px) {
+      .cv-page-title { font-size: 1.1em; }
+      .cv-frame-container iframe { height: 4200px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+    <img id="theme-icon" src="assets/icons/Sun.jpg" alt="Sun"> <span id="theme-text">Light</span>
+  </button>
+
+  <div class="language-switcher">
+    <a href="cv.html">🇬🇧 English</a> | <a href="cv-fr.html">🇫🇷 Français</a>
+  </div>
+
+  <div class="cv-wrapper">
+    <h1 class="cv-page-title">Curriculum Vitae</h1>
+
+    <div class="cv-actions">
+      <a href="assets/pdf/CV_Mael_Rolland.pdf" class="pixel-button large" download>
+        ⬇ Download PDF
+        <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+      </a>
+      <a href="curriculum.html" class="pixel-button">
+        Academic Profile
+      </a>
+    </div>
+
+    <div class="cv-frame-container">
+      <iframe
+        src="assets/cv_MaelRolland_v8.html"
+        title="Maël Rolland — Full CV"
+        loading="lazy"
+        scrolling="no"
+        onload="autoResize(this)"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- Social Icons -->
+  <div class="social-links" style="text-align:center; padding: 20px 0 40px;">
+    <a href="https://www.linkedin.com/in/mael-rolland-60a638b3" target="_blank" rel="noopener">
+      <img src="assets/icons/linkedin.png" alt="LinkedIn" class="social-icon">
+    </a>
+    <a href="https://twitter.com/elmalandr0" target="_blank" rel="noopener">
+      <img src="assets/icons/twitter.png" alt="Twitter" class="social-icon">
+    </a>
+    <a href="https://github.com/Elma-Landro" target="_blank" rel="noopener">
+      <img src="assets/icons/github.png" alt="GitHub" class="social-icon">
+    </a>
+  </div>
+
+  <script>
+    // Auto-resize iframe to content height
+    function autoResize(iframe) {
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        iframe.style.height = doc.documentElement.scrollHeight + 'px';
+      } catch(e) {
+        // cross-origin fallback: keep default height
+      }
+    }
+
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? '' : 'dark');
+      document.getElementById('theme-icon').src = isDark
+        ? 'assets/icons/Sun.jpg'
+        : 'assets/icons/Moon.jpg';
+      document.getElementById('theme-text').textContent = isDark ? 'Light' : 'Dark';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+
+    // Restore saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-icon').src = 'assets/icons/Moon.jpg';
+        document.getElementById('theme-text').textContent = 'Dark';
+      }
+    })();
+  </script>
+</body>
+</html>
