@@ -159,10 +159,19 @@
       margin: 20px auto 4px;
     }
 
+    .cv-thumb-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+      color: #ffcc66;
+      text-align: center;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
     .cv-thumb-card {
       position: relative;
-      width: 160px;
-      height: 226px;
+      width: 260px;
+      height: 368px;
       border: 3px solid #ffcc66;
       cursor: pointer;
       overflow: hidden;
@@ -180,7 +189,7 @@
       width: 794px;
       height: 1123px;
       border: none;
-      transform: scale(0.2016);
+      transform: scale(0.327);
       transform-origin: top left;
       pointer-events: none;
     }
@@ -316,20 +325,40 @@
           <img src="assets/img/avatar-closky-mael-rolland.eth.jpg" alt="Maël Rolland Avatar" class="avatar-icon">
       <!-- CV Mini Reader -->
       <div class="cv-preview-wrap">
-        <div class="cv-thumb-card"
-             onclick="document.getElementById('cv-modal').style.display='flex'"
-             onkeydown="if(event.key==='Enter'||event.key===' ')document.getElementById('cv-modal').style.display='flex'"
-             role="button" tabindex="0" title="Open CV — Maël Rolland">
-          <iframe
-            src="assets/cv_MaelRolland_v8.html"
-            class="cv-thumb-iframe"
-            scrolling="no"
-            tabindex="-1"
-            aria-hidden="true">
-          </iframe>
-          <div class="cv-thumb-overlay">
-            <img src="assets/icons/eye-pixel.svg" alt="" style="height:1.4em;vertical-align:middle;image-rendering:pixelated;margin-right:4px;">Open CV
+        <div>
+          <div class="cv-thumb-label">
+            <img src="assets/icons/eye-pixel.svg" alt="" style="height:1.2em;vertical-align:middle;image-rendering:pixelated;margin-right:5px;">View CV online
           </div>
+          <div class="cv-thumb-card"
+               onclick="document.getElementById('cv-modal').style.display='flex'"
+               onkeydown="if(event.key==='Enter'||event.key===' ')document.getElementById('cv-modal').style.display='flex'"
+               role="button" tabindex="0" title="Open CV — Maël Rolland">
+            <iframe
+              src="assets/cv_MaelRolland_v8.html"
+              class="cv-thumb-iframe"
+              scrolling="no"
+              tabindex="-1"
+              aria-hidden="true">
+            </iframe>
+            <div class="cv-thumb-overlay">
+              <img src="assets/icons/eye-pixel.svg" alt="" style="height:1.4em;vertical-align:middle;image-rendering:pixelated;margin-right:4px;">Open
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download + checksum -->
+      <div class="download-item" style="text-align:center; margin-top:12px;">
+        <div class="tooltip-container" style="display:inline-block;">
+          <a href="assets/pdf/CV_Mael_Rolland.pdf" class="pixel-button large" download>
+            ⬇ Download CV
+            <img src="assets/icons/pdf-icon.png" class="pixel-icon" alt="PDF">
+          </a>
+          <div class="tooltip-text">Complete curriculum vitae with academic &amp; Web3 experience</div>
+        </div>
+        <div class="checksum-container" style="max-width:340px; margin:4px auto 0;">
+          <button class="checksum-toggle" onclick="toggleChecksum('checksum-cv')">Checksum (SHA-256)</button>
+          <div id="checksum-cv" class="checksum-content">c43fca07373671a0c08004d1025758a633862b3d5895cda355455bf94909f593</div>
         </div>
       </div>
 
