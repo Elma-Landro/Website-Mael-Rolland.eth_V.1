@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 44" shape-rendering="crispEdges">
+  <g fill="#ffcc66">
+    <!-- 7 rays above -->
+    <rect x="22" y="0" width="4" height="9"/>
+    <rect x="15" y="1" width="3" height="8"/>
+    <rect x="30" y="1" width="3" height="8"/>
+    <rect x="8"  y="4" width="3" height="7"/>
+    <rect x="37" y="4" width="3" height="7"/>
+    <rect x="2"  y="7" width="3" height="5"/>
+    <rect x="43" y="7" width="3" height="5"/>
+    <!-- Eye outer border (almond/lens shape, hollow) -->
+    <!-- top arc -->
+    <rect x="18" y="12" width="12" height="3"/>
+    <rect x="12" y="15" width="6"  height="3"/>
+    <rect x="30" y="15" width="6"  height="3"/>
+    <rect x="8"  y="18" width="5"  height="3"/>
+    <rect x="35" y="18" width="5"  height="3"/>
+    <rect x="5"  y="21" width="4"  height="3"/>
+    <rect x="39" y="21" width="4"  height="3"/>
+    <!-- pointed tips -->
+    <rect x="2"  y="24" width="4" height="6"/>
+    <rect x="42" y="24" width="4" height="6"/>
+    <!-- bottom arc -->
+    <rect x="5"  y="30" width="4"  height="3"/>
+    <rect x="39" y="30" width="4"  height="3"/>
+    <rect x="8"  y="33" width="5"  height="3"/>
+    <rect x="35" y="33" width="5"  height="3"/>
+    <rect x="12" y="36" width="6"  height="3"/>
+    <rect x="30" y="36" width="6"  height="3"/>
+    <rect x="18" y="39" width="12" height="3"/>
+    <!-- Iris ring -->
+    <rect x="17" y="19" width="14" height="3"/>
+    <rect x="13" y="22" width="4"  height="10"/>
+    <rect x="31" y="22" width="4"  height="10"/>
+    <rect x="17" y="32" width="14" height="3"/>
+  </g>
+  <!-- Highlight (white) -->
+  <rect x="20" y="22" width="4" height="4" fill="white" shape-rendering="crispEdges"/>
+  <!-- Pupil center -->
+  <rect x="23" y="27" width="3" height="3" fill="#cc6600" shape-rendering="crispEdges"/>
+</svg>
