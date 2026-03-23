@@ -1445,6 +1445,11 @@ const Graph = (() => {
           'background-opacity': 0.92,
         }
       },
+      // ── Edges hidden in matrix, revealed on node click ────────
+      {
+        selector: 'edge.in-matrix',
+        style: { 'opacity': 0 }
+      },
       {
         selector: 'node.faded',
         style: { 'opacity': 0.20 }
@@ -1612,7 +1617,8 @@ const Graph = (() => {
 
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
-    cy.nodes().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
+    cy.nodes().removeClass('in-matrix');
+    cy.edges().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
 
     // ── Reset archipelago state ───────────────────────────
     _nebulaActive = true;
@@ -1739,15 +1745,44 @@ const Graph = (() => {
       n.removeClass('chapter-faded');
     });
 
-    // ── Compute type columns (sorted by total count) ─────
+    // ── Compute type columns (semantic priority order) ────
+    // Priority: structure → actors → concepts → events → infra → misc → sources → refs
+    const MATRICE_TYPE_PRIORITY = {
+      // 0 – Structural skeleton
+      'Chapter': 0, 'ThesisSection': 1,
+      // 1 – Argumentative structure
+      'Argument': 10, 'NarrativeCluster': 11, 'CrisisPhase': 12,
+      // 2 – Actors
+      'Person': 20, 'Institution': 21, 'ActorGroup': 22,
+      'ActorNonHuman': 23, 'StakeholderCategory': 24,
+      // 3 – Concepts & theory
+      'Concept': 30, 'TheoreticFramework': 31, 'Method': 32,
+      // 4 – Events & governance
+      'CrisisEvent': 40, 'GovernanceConflict': 41,
+      'GovernanceProcess': 42, 'GovernanceArena': 43,
+      // 5 – Infrastructure & protocol
+      'Protocol': 50, 'ProtocolChange': 51, 'ProtocolProposal': 52,
+      'InfrastructureDomain': 53, 'InfrastructureEvent': 54,
+      'InfrastructureSegment': 55, 'DevelopmentPhase': 56, 'Capability': 57,
+      // 6 – Quantitative / misc
+      'Corpus': 60, 'MonetaryObject': 61,
+      'PriceSeries': 62, 'PriceWindow': 63,
+      // 7 – Secondary sources (right zone)
+      'AcademicWork': 70, 'DoctoralThesis': 71,
+      'PrimarySource': 72, 'GreyLiterature': 73, 'IndigenousLiterature': 74,
+      // 8 – Raw source material (rightmost)
+      'SourceQuote': 80, 'Reference': 81,
+    };
     const typeCounts = {};
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const t = n.data('typeName');
       if (t) typeCounts[t] = (typeCounts[t] || 0) + 1;
     });
-    const sortedTypes = Object.entries(typeCounts)
-      .sort((a, b) => b[1] - a[1])
-      .map(([t]) => t);
+    const sortedTypes = Object.keys(typeCounts).sort((a, b) => {
+      const pa = MATRICE_TYPE_PRIORITY[a] ?? 45; // unknown → middle zone
+      const pb = MATRICE_TYPE_PRIORITY[b] ?? 45;
+      return pa !== pb ? pa - pb : typeCounts[b] - typeCounts[a]; // tie-break by count
+    });
     const typeColIdx = {};
     sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
 
@@ -1798,8 +1833,9 @@ const Graph = (() => {
       }
     });
 
-    // ── Apply in-matrix class: tiny dots, no glow ────────
+    // ── Apply in-matrix class: tiny dots, no glow, edges hidden ──
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
+    cy.edges().addClass('in-matrix');
 
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
@@ -1840,6 +1876,7 @@ const Graph = (() => {
     document.getElementById('btn-archipel-back').style.display = 'none';
     cy.$('.chapter-label, .type-label').remove();
     cy.nodes().removeClass('chapter-faded in-matrix');
+    cy.edges().removeClass('in-matrix');
     // Restore type colors
     cy.nodes().forEach(n => {
       const entity = State.maps.entities[n.data('id')];
@@ -1854,7 +1891,8 @@ const Graph = (() => {
   // ── Arbre argumentatif (left=chapters → right=refs) ─────────
   function applyArbreLayout() {
     if (!cy || !State.data) return;
-    cy.nodes().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
+    cy.nodes().removeClass('in-matrix');
+    cy.edges().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
 
     _nebulaActive = true;
     _matrixMode = true; // disables archipelago-zoom on node click
