@@ -493,6 +493,13 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   /* Barre de recherche plus étroite */
   .search-input { width: 130px; }
 
+  /* Overlay guidé mobile : masquer les cartes sémantiques, garder les boutons */
+  .guided-entries { display: none !important; }
+  .guided-search-wrap { display: none !important; }
+  .guided-mode-btn-matrice { font-size: 0.9em; padding: 16px 20px; }
+  .guided-modes-secondary { flex-direction: column; }
+  .guided-modes-secondary .guided-mode-btn { font-size: 0.75em; }
+
   /* Bouton fermeture panneau visible sur mobile */
   #btn-close-panel { display: flex !important; }
 
@@ -555,6 +562,12 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   flex: 1; padding: 10px 14px; font-size: 0.6em;
   display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
+.guided-mode-btn-matrice {
+  width: 100%; flex: none;
+  padding: 14px 20px; font-size: 0.72em;
+  letter-spacing: .06em;
+}
+.guided-modes-secondary { margin-top: 0; }
 .guided-mode-sub { font-size: 0.82em; font-weight: normal; opacity: .75; }
 
 </style>
@@ -622,6 +635,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <span class="version-label" id="version-label">–</span>
   <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
   <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
+  <button class="btn-primary btn-sm" id="btn-carte" title="Vue Matrice — structure de la thèse">◫ Carte</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
@@ -2634,7 +2648,7 @@ function showGuidedOverlay() {
 
   overlay.innerHTML = `
     <div class="guided-wrap">
-      <div class="guided-title">◈ Par où commencer ?</div>
+      <div class="guided-title">◈ Graphe de la thèse — 2 285 entités</div>
       <div class="guided-entries">
         ${SEMANTIC_ENTRIES.map(entry => `
           <button class="guided-card guided-card-semantic" data-types="${entry.types.join(',')}" style="border-color:${entry.color}66">
@@ -2649,13 +2663,19 @@ function showGuidedOverlay() {
         <div class="guided-suggestions" id="guided-suggestions"></div>
       </div>
       <div class="guided-modes">
-        <button class="btn-primary guided-mode-btn" id="guided-btn-full">
-          ⚡ Très fort
-          <span class="guided-mode-sub">Tout le graphe</span>
+        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-matrice">
+          ◫ Structure de la thèse
+          <span class="guided-mode-sub">Matrice chapitres × types</span>
+        </button>
+      </div>
+      <div class="guided-modes guided-modes-secondary">
+        <button class="btn-secondary guided-mode-btn" id="guided-btn-full">
+          ⚡ Tout le graphe
+          <span class="guided-mode-sub">Vue archipel</span>
         </button>
         <button class="btn-secondary guided-mode-btn" id="guided-btn-medium">
-          → Moyen, on y va
-          <span class="guided-mode-sub">Vue essentielle</span>
+          → Essentiel
+          <span class="guided-mode-sub">Types principaux</span>
         </button>
       </div>
     </div>
@@ -2706,7 +2726,17 @@ function showGuidedOverlay() {
     suggestDiv.style.display = 'block';
   });
 
-  // Très fort : tout afficher en vue Archipel
+  // Matrice : vue structurée par défaut (CTA principal)
+  document.getElementById('guided-btn-matrice').addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    State.hiddenTypes.clear();
+    UI.renderTypeFilters();
+    Graph.applyFilters();
+    Graph.applyMatriceLayout();
+    document.getElementById('layout-select').value = 'matrice';
+  });
+
+  // Archipel : tout afficher en vue chapitres
   document.getElementById('guided-btn-full').addEventListener('click', () => {
     overlay.classList.add('hidden');
     State.hiddenTypes.clear();
@@ -2815,6 +2845,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
   document.getElementById('btn-archipel-back').addEventListener('click', () => Graph.zoomToArchipelago());
+
+  // ── Bouton "Carte" : raccourci Matrice toujours visible ──
+  document.getElementById('btn-carte').addEventListener('click', () => {
+    if (!State.data) return;
+    document.getElementById('canvas-overlay').classList.add('hidden');
+    State.hiddenTypes.clear();
+    Graph.applyFilters();
+    UI.renderTypeFilters();
+    Graph.applyMatriceLayout();
+    document.getElementById('layout-select').value = 'matrice';
+  });
 
   // ── Search ───────────────────────────────────────────
   document.getElementById('search-input').addEventListener('input', e => {
