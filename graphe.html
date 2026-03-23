@@ -1071,7 +1071,52 @@ const CHAPTER_CENTERS = [
 let _chapterMap = {}; // entityId → chapter index (0-4)
 
 function buildChapterMap(data) {
-  // Build undirected adjacency list
+  // ── Index relation types by name ────────────────────────
+  const rtByName = {};
+  for (const rt of (data.relation_types || [])) rtByName[rt.name] = rt.id;
+
+  const result = {};
+
+  // Step 1 — Chapter nodes themselves
+  CHAPTER_IDS.forEach((id, i) => { result[id] = i; });
+
+  // Step 2 — ThesisSection → chapter via has_section / section_of (2 passes)
+  const STRUCT = new Set([rtByName['has section'], rtByName['section of']].filter(Boolean));
+  for (let p = 0; p < 2; p++) {
+    for (const rel of data.relations) {
+      if (!STRUCT.has(rel.type)) continue;
+      const fi = result[rel.from], ti = result[rel.to];
+      if (fi !== undefined && ti === undefined) result[rel.to]   = fi;
+      if (ti !== undefined && fi === undefined) result[rel.from] = ti;
+    }
+  }
+
+  // Step 3 — appears_in_section : entity cited IN a section inherits its chapter
+  const APP_ID = rtByName['appears in section'];
+  if (APP_ID) {
+    for (const rel of data.relations) {
+      if (rel.type !== APP_ID) continue;
+      const secIdx = result[rel.to]; // rel.to = the section
+      if (secIdx !== undefined && result[rel.from] === undefined)
+        result[rel.from] = secIdx;
+    }
+  }
+
+  // Step 4 — Propagate along semantic edge types (3 passes)
+  const PROP = new Set([
+    rtByName['cited in'], rtByName['quote supports'], rtByName['source of'],
+    rtByName['part of'],  rtByName['authored'],       rtByName['created'],
+  ].filter(Boolean));
+  for (let p = 0; p < 3; p++) {
+    for (const rel of data.relations) {
+      if (!PROP.has(rel.type)) continue;
+      const fi = result[rel.from], ti = result[rel.to];
+      if (fi !== undefined && ti === undefined) result[rel.to]   = fi;
+      if (ti !== undefined && fi === undefined) result[rel.from] = ti;
+    }
+  }
+
+  // Step 5 — BFS fallback (max 2 hops) for still-unassigned entities
   const adj = {};
   for (const rel of data.relations) {
     if (!adj[rel.from]) adj[rel.from] = [];
@@ -1079,27 +1124,19 @@ function buildChapterMap(data) {
     adj[rel.from].push(rel.to);
     adj[rel.to].push(rel.from);
   }
-
-  // Multi-source BFS from all 5 chapter nodes simultaneously.
-  // Each entity is assigned to the chapter whose BFS frontier reaches it first.
-  const result = {};
-  const visited = new Set();
-  const queue = []; // { id, chapterIdx }
-
-  CHAPTER_IDS.forEach((id, i) => {
-    result[id] = i;
-    visited.add(id);
-    queue.push({ id, chapterIdx: i });
-  });
-
+  const visited = new Set(Object.keys(result));
+  const queue   = [];
+  for (const [id, ci] of Object.entries(result))
+    queue.push({ id, chapterIdx: ci, hops: 0 });
   let head = 0;
   while (head < queue.length) {
-    const { id, chapterIdx } = queue[head++];
+    const { id, chapterIdx, hops } = queue[head++];
+    if (hops >= 2) continue;
     for (const nb of (adj[id] || [])) {
       if (!visited.has(nb)) {
         visited.add(nb);
         result[nb] = chapterIdx;
-        queue.push({ id: nb, chapterIdx });
+        queue.push({ id: nb, chapterIdx, hops: hops + 1 });
       }
     }
   }
@@ -1379,12 +1416,12 @@ const Graph = (() => {
           'shadow-offset-y': 0,
         }
       },
-      // ── Chapter glow halos (always visible) ──────────────
-      { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
-      { selector: 'node.chapter-1', style: { 'shadow-color': '#ff8800', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
-      { selector: 'node.chapter-2', style: { 'shadow-color': '#33ff33', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
-      { selector: 'node.chapter-3', style: { 'shadow-color': '#aa44ff', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
-      { selector: 'node.chapter-4', style: { 'shadow-color': '#ff44aa', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
+      // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
+      { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
+      { selector: 'node.chapter-1', style: { 'shadow-color': '#ff8800', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
+      { selector: 'node.chapter-2', style: { 'shadow-color': '#33ff33', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
+      { selector: 'node.chapter-3', style: { 'shadow-color': '#aa44ff', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
+      { selector: 'node.chapter-4', style: { 'shadow-color': '#ff44aa', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
       // ── Archipelago: other islands fade when zoomed ───────
       { selector: 'node.chapter-faded', style: { 'opacity': 0.05 } },
       // ── Chapter label ghost nodes (floating title above each island) ──
@@ -1501,10 +1538,22 @@ const Graph = (() => {
         selector: 'edge.faded',
         style: { 'opacity': 0.06 }
       },
-      // ── Nebula archipelago : arêtes masquées à l'échelle île ──
+      // ── Nébuleuse : glow fort sur chaque nœud → effet nuage ──
+      // Le shadow-blur crée la traîne lumineuse visible même à faible zoom.
+      {
+        selector: 'node.in-nebula',
+        style: {
+          'shadow-blur':     55,
+          'shadow-color':    'data(color)',
+          'shadow-opacity':  0.80,
+          'shadow-offset-x': 0,
+          'shadow-offset-y': 0,
+        }
+      },
+      // ── Nebula archipelago : arêtes complètement supprimées du rendu ──
       {
         selector: 'edge.nebula-arch',
-        style: { 'opacity': 0 }
+        style: { 'display': 'none' }
       },
     ];
   }
@@ -1639,11 +1688,16 @@ const Graph = (() => {
     document.getElementById('stat-visible').textContent = visible;
   }
 
+  // Types masqués automatiquement lors de l'entrée en mode nébuleuse
+  // (matière première source — mieux visualisée en vue Matrice)
+  const NEBULA_AUTO_HIDE = new Set(['Reference', 'SourceQuote', 'IndigenousLiterature', 'GreyLiterature']);
+  let _nebulaWasHidden = new Set(); // types cachés avant l'entrée en nébuleuse
+
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
-    cy.nodes().removeClass('in-matrix');
+    cy.nodes().removeClass('in-matrix in-nebula');
     cy.edges().removeClass('in-matrix');
-    cy.$('.col-halo').remove(); // clear matrix-mode styles if switching from matrice
+    cy.$('.col-halo').remove();
 
     // ── Reset archipelago state ───────────────────────────
     _nebulaActive = true;
@@ -1652,36 +1706,58 @@ const Graph = (() => {
     document.querySelector('.grc-root').classList.add('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
 
-    // ── 1. Switch node body color to chapter color ────────
+    // ── 1. Auto-masque des types "matière première" ────────
+    // Ces 4 types (~1200 nœuds) parasitent la vue nébuleuse ;
+    // l'utilisateur peut les réactiver via Filtres.
+    _nebulaWasHidden = new Set(State.hiddenTypes);
+    NEBULA_AUTO_HIDE.forEach(t => State.hiddenTypes.add(t));
+    applyFilters();
+
+    // ── 2. Couleur des nœuds = couleur du chapitre ────────
     cy.nodes(':not(.chapter-label)').forEach(n => {
       const idx = n.data('chapterIdx');
-      n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#2a2a2a');
+      n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#888888');
       n.removeClass('chapter-faded');
+      n.addClass('in-nebula');
     });
 
-    // ── 2. Group visible nodes by chapter ────────────────
-    const groups = [[], [], [], [], [], []]; // 0-4 = chapters, 5 = unassigned
+    // ── 3. Grouper les nœuds visibles par chapitre ────────
+    const groups = [[], [], [], [], [], []]; // 0-4 = chapitres, 5 = non-assignés
     cy.nodes(':visible').not('.chapter-label').forEach(n => {
       const idx = n.data('chapterIdx');
       groups[idx >= 0 ? idx : 5].push(n);
     });
 
-    // ── 3. Pentagon centers (virtual canvas 2800×2400) ────
-    const W = 2800, H = 2400, R_pent = 920;
+    // ── 4. Canvas responsive + positionnement en pentagone ─
+    const VW = cy.width()  || window.innerWidth  || 800;
+    const VH = cy.height() || window.innerHeight || 600;
+    const isMobile = VW < 600;
+
+    // Rayon de la spirale de Fibonacci pour n nœuds
+    const SPIRAL_K = isMobile ? 20 : 26;
+    const spiralR  = n => n <= 1 ? 0 : SPIRAL_K * Math.sqrt(n - 1);
+
+    // Rayon du pentagone = 1.6× le rayon max d'une île
+    const maxIsleR = Math.max(...groups.map(g => spiralR(g.length)), 60);
+    const R_pent   = Math.max(maxIsleR * 1.6, isMobile ? 320 : 560);
+    const MARGIN   = maxIsleR + 80;
+    const W = 2 * (R_pent + MARGIN), H = W;
     const cx = W / 2, cy_c = H / 2;
+
     const centerPts = CHAPTER_IDS.map((_, i) => {
       const a = -Math.PI / 2 + (2 * Math.PI * i / 5);
       return { x: cx + R_pent * Math.cos(a), y: cy_c + R_pent * Math.sin(a) };
     });
-    centerPts.push({ x: cx, y: cy_c }); // unassigned → center
+    centerPts.push({ x: cx, y: cy_c }); // non-assignés → centre
 
-    // ── 4. Position each group in concentric rings ────────
-    const RING_GAP = 36, NODE_SPACING = 32, MIN_RING_CAP = 6;
-    const clusterMaxR = []; // store max ring radius per chapter
+    // ── 5. Spirale de Fibonacci par groupe ────────────────
+    // Forme organique en nuage (vs anneaux concentriques)
+    const GOLDEN = 2.39996322972865332; // angle doré en radians
+    const clusterMaxR = [];
     groups.forEach((nodes, gi) => {
       if (!nodes.length) { clusterMaxR.push(0); return; }
       const center = centerPts[gi];
-      // Sort: most-connected nodes at the center
+      // Nœuds les plus connectés au centre
       nodes.sort((a, b) => {
         const da = (State.maps.outgoing[a.data('id')] || []).length
                  + (State.maps.incoming[a.data('id')] || []).length;
@@ -1689,30 +1765,23 @@ const Graph = (() => {
                  + (State.maps.incoming[b.data('id')] || []).length;
         return db - da;
       });
-      let placed = 0, ring = 0, maxR = 0;
-      while (placed < nodes.length) {
-        const ringR    = ring === 0 ? 0 : RING_GAP + ring * RING_GAP;
-        const capacity = ring === 0 ? 1
-                       : Math.max(MIN_RING_CAP, Math.round(2 * Math.PI * ringR / NODE_SPACING));
-        const count    = Math.min(capacity, nodes.length - placed);
-        if (ringR > maxR) maxR = ringR;
-        for (let j = 0; j < count; j++, placed++) {
-          const a = (2 * Math.PI * j / count) - Math.PI / 2 + ring * 0.25;
-          nodes[placed].position({
-            x: center.x + (ring === 0 ? 0 : ringR * Math.cos(a)),
-            y: center.y + (ring === 0 ? 0 : ringR * Math.sin(a)),
-          });
-        }
-        ring++;
-      }
+      let maxR = 0;
+      nodes.forEach((n, i) => {
+        const r = i === 0 ? 0 : SPIRAL_K * Math.sqrt(i);
+        if (r > maxR) maxR = r;
+        n.position({
+          x: center.x + r * Math.cos(i * GOLDEN),
+          y: center.y + r * Math.sin(i * GOLDEN),
+        });
+      });
       clusterMaxR.push(maxR);
     });
 
-    // ── 5. Floating chapter labels (ghost nodes above each island) ──
+    // ── 6. Labels flottants au-dessus de chaque île ────────
     cy.$('.chapter-label').remove();
     CHAPTER_IDS.forEach((_, i) => {
       const center = centerPts[i];
-      const offsetY = (clusterMaxR[i] || 300) + 90;
+      const offsetY = (clusterMaxR[i] || 80) + 65;
       cy.add({
         data: {
           id: '__chap_lbl_' + i,
@@ -1724,12 +1793,9 @@ const Graph = (() => {
       });
     });
 
-    // ── 6. Preset layout (no simulation — exact positions) ─
-    cy.layout({ name: 'preset', fit: true, padding: 100 }).run();
+    cy.layout({ name: 'preset', fit: true, padding: 80 }).run();
 
     // ── 7. Masquer les arêtes à l'échelle archipel ────────
-    // À cette distance les arêtes ne font que du bruit ; elles
-    // réapparaissent quand on zoome dans un chapitre.
     cy.edges().addClass('nebula-arch');
   }
 
@@ -1934,8 +2000,13 @@ const Graph = (() => {
     document.querySelector('.grc-root').classList.remove('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
     cy.$('.chapter-label, .type-label, .col-halo').remove();
-    cy.nodes().removeClass('chapter-faded in-matrix');
-    cy.edges().removeClass('in-matrix');
+    cy.nodes().removeClass('chapter-faded in-matrix in-nebula');
+    cy.edges().removeClass('in-matrix nebula-arch');
+    // Restaurer les types auto-masqués par la nébuleuse
+    NEBULA_AUTO_HIDE.forEach(t => {
+      if (!_nebulaWasHidden.has(t)) State.hiddenTypes.delete(t);
+    });
+    applyFilters();
     // Restore type colors
     cy.nodes().forEach(n => {
       const entity = State.maps.entities[n.data('id')];
@@ -2837,10 +2908,9 @@ function showGuidedOverlay() {
   // Archipel : tout afficher en vue chapitres
   document.getElementById('guided-btn-full').addEventListener('click', () => {
     overlay.classList.add('hidden');
-    State.hiddenTypes.clear();
-    UI.renderTypeFilters();
-    Graph.applyFilters();
-    Graph.applyNebulaLayout();
+    State.hiddenTypes.clear(); // reset avant l'entrée en nébuleuse (auto-hide gère le reste)
+    Graph.applyNebulaLayout(); // auto-masque Reference/SourceQuote/IL/GL + applique les filtres
+    UI.renderTypeFilters();    // mise à jour du panneau Filtres pour refléter l'état réel
     document.getElementById('layout-select').value = 'nebulae';
   });
 
@@ -2930,16 +3000,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!State.data) return;
     const v = document.getElementById('layout-select').value;
     if (v === 'nebulae') Graph.applyNebulaLayout();
-    else if (v === 'matrice') Graph.applyMatriceLayout();
-    else if (v === 'arbre') Graph.applyArbreLayout();
-    else { Graph.restoreTypeColors(); Graph.applyLayout(v); }
+    else { Graph.restoreTypeColors(); UI.renderTypeFilters();
+      if (v === 'matrice') Graph.applyMatriceLayout();
+      else if (v === 'arbre') Graph.applyArbreLayout();
+      else Graph.applyLayout(v); }
   });
   document.getElementById('layout-select').addEventListener('change', e => {
     if (!State.data) return;
-    if (e.target.value === 'nebulae') Graph.applyNebulaLayout();
-    else if (e.target.value === 'matrice') Graph.applyMatriceLayout();
-    else if (e.target.value === 'arbre') Graph.applyArbreLayout();
-    else { Graph.restoreTypeColors(); Graph.applyLayout(e.target.value); }
+    const v = e.target.value;
+    if (v === 'nebulae') Graph.applyNebulaLayout();
+    else { Graph.restoreTypeColors(); UI.renderTypeFilters();
+      if (v === 'matrice') Graph.applyMatriceLayout();
+      else if (v === 'arbre') Graph.applyArbreLayout();
+      else Graph.applyLayout(v); }
   });
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
   document.getElementById('btn-archipel-back').addEventListener('click', () => Graph.zoomToArchipelago());
