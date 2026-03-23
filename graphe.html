@@ -571,6 +571,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
         <div class="tools-row">
           <select id="layout-select" title="Changer le layout">
             <option value="cose">Force-directed</option>
+            <option value="nebulae">⬡ Nébuleuses / chapitres</option>
             <option value="dagre">Hiérarchique</option>
             <option value="circle">Cercle</option>
             <option value="concentric">Concentrique</option>
@@ -1014,6 +1015,51 @@ const TYPE_SHAPES = {
 };
 
 // ─────────────────────────────────────────────────────────
+//  CHAPTER NEBULA CONFIG
+// ─────────────────────────────────────────────────────────
+const CHAPTER_IDS = [
+  'df405dcd975b406486a260da72f1ad4a', // Introduction
+  'a2c452a77b394a9d836eed0e16ed5851', // Chapitre I
+  '5b5935bc3ede49028b7dfbdaa4f34b6d', // Chapitre II
+  '444d654ce38c41c7a277d883c77ba41b', // Chapitre III
+  '6b64e26836434471917262334655952c', // Conclusion
+];
+const CHAPTER_COLORS = ['#00ccff', '#ff8800', '#33ff33', '#aa44ff', '#ff44aa'];
+// Pentagon layout — virtual canvas ~2000×1400
+const CHAPTER_CENTERS = [
+  { x: 1000, y: 150  }, // Intro — haut centre
+  { x: 200,  y: 620  }, // Ch. I — gauche
+  { x: 450,  y: 1280 }, // Ch. II — bas gauche
+  { x: 1550, y: 1280 }, // Ch. III — bas droite
+  { x: 1800, y: 620  }, // Conclusion — droite
+];
+
+let _chapterMap = {}; // entityId → chapter index (0-4)
+
+function buildChapterMap(data) {
+  const map = {};
+  for (const rel of data.relations) {
+    const fi = CHAPTER_IDS.indexOf(rel.from);
+    const ti = CHAPTER_IDS.indexOf(rel.to);
+    if (fi >= 0) {
+      if (!map[rel.to]) map[rel.to] = [0,0,0,0,0];
+      map[rel.to][fi]++;
+    }
+    if (ti >= 0) {
+      if (!map[rel.from]) map[rel.from] = [0,0,0,0,0];
+      map[rel.from][ti]++;
+    }
+  }
+  const result = {};
+  for (const [id, sc] of Object.entries(map)) {
+    const max = Math.max(...sc);
+    if (max > 0) result[id] = sc.indexOf(max);
+  }
+  CHAPTER_IDS.forEach((id, i) => { result[id] = i; });
+  return result;
+}
+
+// ─────────────────────────────────────────────────────────
 //  STATE
 // ─────────────────────────────────────────────────────────
 const State = (() => {
@@ -1148,11 +1194,14 @@ const Graph = (() => {
     const degree = (State.maps.outgoing[entity.id] || []).length
                  + (State.maps.incoming[entity.id] || []).length;
     const size = Math.max(22, Math.min(90, 22 + Math.sqrt(degree) * 9));
+    const chapterIdx   = _chapterMap[entity.id] !== undefined ? _chapterMap[entity.id] : -1;
+    const chapterColor = chapterIdx >= 0 ? CHAPTER_COLORS[chapterIdx] : '#555555';
     return {
       data: {
         id: entity.id, label: getNodeLabel(entity),
         typeName, color, shape, size,
         fullName: entity.name,
+        chapterIdx, chapterColor,
       }
     };
   }
@@ -1262,8 +1311,8 @@ const Graph = (() => {
           'border-width': 0,
           'overlay-padding': 6,
           'shadow-blur':     28,
-          'shadow-color':    'data(color)',
-          'shadow-opacity':  0.80,
+          'shadow-color':    'data(chapterColor)',
+          'shadow-opacity':  0.85,
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
         }
@@ -1299,8 +1348,8 @@ const Graph = (() => {
         selector: 'edge',
         style: {
           'width': 0.8,
-          'line-color': '#aa4400',
-          'target-arrow-color': '#cc6600',
+          'line-color': '#33ff33',
+          'target-arrow-color': '#33ff33',
           'target-arrow-shape': 'triangle',
           'curve-style': 'bezier',
           'arrow-scale': 0.5,
@@ -1444,7 +1493,44 @@ const Graph = (() => {
     document.getElementById('stat-visible').textContent = visible;
   }
 
-  return { init, render, applyLayout, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
+  function applyNebulaLayout() {
+    if (!cy || !State.data) return;
+    // Switch node body color to chapter color
+    cy.nodes().forEach(n => {
+      const idx = n.data('chapterIdx');
+      n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#444444');
+    });
+    // Pre-position nodes in pentagon clusters with random scatter
+    cy.nodes().forEach(n => {
+      const idx = n.data('chapterIdx');
+      const center = idx >= 0 ? CHAPTER_CENTERS[idx] : { x: 1000, y: 715 };
+      const angle  = Math.random() * 2 * Math.PI;
+      const r      = 60 + Math.random() * 220;
+      n.position({ x: center.x + Math.cos(angle) * r, y: center.y + Math.sin(angle) * r });
+    });
+    cy.layout({
+      name: 'cose', animate: true, animationDuration: 1500, animationEasing: 'ease-out',
+      randomize: false,       // respect our pre-positions
+      nodeRepulsion: 22000,
+      edgeElasticity: 12,     // weak pull between clusters
+      gravity: 0.01,          // almost no central pull
+      numIter: 250, initialTemp: 55, coolingFactor: 0.97, minTemp: 0.5,
+      fit: true, padding: 80,
+    }).run();
+  }
+
+  function restoreTypeColors() {
+    if (!cy || !State.data) return;
+    cy.nodes().forEach(n => {
+      const entity = State.maps.entities[n.data('id')];
+      if (entity) {
+        const typeName = State.getEntityTypeName(entity);
+        n.data('color', TYPE_COLORS[typeName] || '#64748b');
+      }
+    });
+  }
+
+  return { init, render, applyLayout, applyNebulaLayout, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
 })();
 
 // ─────────────────────────────────────────────────────────
@@ -2225,6 +2311,7 @@ function onDataLoaded(data) {
     return;
   }
   State.load(data);
+  _chapterMap = buildChapterMap(data);
   document.getElementById('version-label').textContent = `GRC-20 v${data.space && data.space.version || '?'} · ${data.entities.length} entités · ${data.relations.length} rel.`;
 
   // Enable buttons
@@ -2285,11 +2372,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Layout ───────────────────────────────────────────
   document.getElementById('btn-relayout').addEventListener('click', () => {
     if (!State.data) return;
-    Graph.applyLayout(document.getElementById('layout-select').value);
+    const v = document.getElementById('layout-select').value;
+    if (v === 'nebulae') Graph.applyNebulaLayout();
+    else { Graph.restoreTypeColors(); Graph.applyLayout(v); }
   });
   document.getElementById('layout-select').addEventListener('change', e => {
     if (!State.data) return;
-    Graph.applyLayout(e.target.value);
+    if (e.target.value === 'nebulae') Graph.applyNebulaLayout();
+    else { Graph.restoreTypeColors(); Graph.applyLayout(e.target.value); }
   });
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
 
