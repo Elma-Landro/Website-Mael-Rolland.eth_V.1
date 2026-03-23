@@ -1476,9 +1476,11 @@ const Graph = (() => {
       {
         selector: 'node.in-matrix',
         style: {
-          'width': 7, 'height': 7,
+          'width': 14, 'height': 14,
           'label': '',
-          'shadow-blur': 10, 'shadow-opacity': 0.40,
+          'shadow-blur': 18, 'shadow-opacity': 0.55,
+          'shadow-color': 'data(color)',
+          'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.95,
           'z-index': 2,
         }
@@ -1743,7 +1745,7 @@ const Graph = (() => {
     const isMobile = VW < 600;
 
     // Rayon de la spirale de Fibonacci pour n nœuds
-    const SPIRAL_K = isMobile ? 20 : 26;
+    const SPIRAL_K = isMobile ? 6 : 18;  // compact sur mobile → canvas ~1100px → zoom ~0.33
     const spiralR  = n => n <= 1 ? 0 : SPIRAL_K * Math.sqrt(n - 1);
 
     // Rayon du pentagone = 1.6× le rayon max d'une île
@@ -1900,7 +1902,7 @@ const Graph = (() => {
     // ── Grid geometry ────────────────────────────────────
     const COL_W = 280, ROW_H = 500;
     const OX = 380, OY = 340; // origin offset (space for labels)
-    const NODE_H = 9;          // vertical pitch between stacked nodes
+    const NODE_H = 15;         // vertical pitch between stacked nodes (matches node size 14px)
     const CELL_W_FRAC = 0.78;  // fraction of COL_W used by sub-columns
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
