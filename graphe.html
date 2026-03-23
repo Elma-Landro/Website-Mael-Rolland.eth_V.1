@@ -1539,7 +1539,6 @@ const Graph = (() => {
         style: { 'opacity': 0.06 }
       },
       // ── Nébuleuse : glow fort sur chaque nœud → effet nuage ──
-      // Le shadow-blur crée la traîne lumineuse visible même à faible zoom.
       {
         selector: 'node.in-nebula',
         style: {
@@ -1548,6 +1547,20 @@ const Graph = (() => {
           'shadow-opacity':  0.80,
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
+        }
+      },
+      // ── Nœuds "feuille" : petits points en périphérie des îles ──
+      // Pyramide argumentative : Reference/SourceQuote/etc. = rang inférieur,
+      // visibles mais discrets. Spirale de Fibonacci les place naturellement
+      // en bordure (les moins connectés = les plus éloignés du centre).
+      {
+        selector: 'node.nebula-leaf',
+        style: {
+          'width': 5, 'height': 5,
+          'label': '',
+          'shadow-blur':    20,
+          'shadow-opacity': 0.50,
+          'background-opacity': 0.65,
         }
       },
       // ── Nebula archipelago : arêtes complètement supprimées du rendu ──
@@ -1688,14 +1701,14 @@ const Graph = (() => {
     document.getElementById('stat-visible').textContent = visible;
   }
 
-  // Types masqués automatiquement lors de l'entrée en mode nébuleuse
-  // (matière première source — mieux visualisée en vue Matrice)
-  const NEBULA_AUTO_HIDE = new Set(['Reference', 'SourceQuote', 'IndigenousLiterature', 'GreyLiterature']);
-  let _nebulaWasHidden = new Set(); // types cachés avant l'entrée en nébuleuse
+  // Types "feuille" de la pyramide argumentative :
+  // visibles en nébuleuse mais rendus en tout petits points en périphérie.
+  // La spirale de Fibonacci les place naturellement en bordure (degré < central).
+  const NEBULA_LEAF_TYPES = new Set(['Reference', 'SourceQuote', 'IndigenousLiterature', 'GreyLiterature', 'AcademicWork']);
 
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
-    cy.nodes().removeClass('in-matrix in-nebula');
+    cy.nodes().removeClass('in-matrix in-nebula nebula-leaf');
     cy.edges().removeClass('in-matrix');
     cy.$('.col-halo').remove();
 
@@ -1706,19 +1719,15 @@ const Graph = (() => {
     document.querySelector('.grc-root').classList.add('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
 
-    // ── 1. Auto-masque des types "matière première" ────────
-    // Ces 4 types (~1200 nœuds) parasitent la vue nébuleuse ;
-    // l'utilisateur peut les réactiver via Filtres.
-    _nebulaWasHidden = new Set(State.hiddenTypes);
-    NEBULA_AUTO_HIDE.forEach(t => State.hiddenTypes.add(t));
-    applyFilters();
-
-    // ── 2. Couleur des nœuds = couleur du chapitre ────────
+    // ── 1. Couleur des nœuds = couleur du chapitre ────────
+    // Les types "feuille" reçoivent la classe nebula-leaf → petits points
+    // en périphérie des îles, dénotant leur rang inférieur dans la pyramide.
     cy.nodes(':not(.chapter-label)').forEach(n => {
       const idx = n.data('chapterIdx');
       n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#888888');
       n.removeClass('chapter-faded');
       n.addClass('in-nebula');
+      if (NEBULA_LEAF_TYPES.has(n.data('typeName'))) n.addClass('nebula-leaf');
     });
 
     // ── 3. Grouper les nœuds visibles par chapitre ────────
@@ -2000,12 +2009,8 @@ const Graph = (() => {
     document.querySelector('.grc-root').classList.remove('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
     cy.$('.chapter-label, .type-label, .col-halo').remove();
-    cy.nodes().removeClass('chapter-faded in-matrix in-nebula');
+    cy.nodes().removeClass('chapter-faded in-matrix in-nebula nebula-leaf');
     cy.edges().removeClass('in-matrix nebula-arch');
-    // Restaurer les types auto-masqués par la nébuleuse
-    NEBULA_AUTO_HIDE.forEach(t => {
-      if (!_nebulaWasHidden.has(t)) State.hiddenTypes.delete(t);
-    });
     applyFilters();
     // Restore type colors
     cy.nodes().forEach(n => {
@@ -2908,9 +2913,9 @@ function showGuidedOverlay() {
   // Archipel : tout afficher en vue chapitres
   document.getElementById('guided-btn-full').addEventListener('click', () => {
     overlay.classList.add('hidden');
-    State.hiddenTypes.clear(); // reset avant l'entrée en nébuleuse (auto-hide gère le reste)
-    Graph.applyNebulaLayout(); // auto-masque Reference/SourceQuote/IL/GL + applique les filtres
-    UI.renderTypeFilters();    // mise à jour du panneau Filtres pour refléter l'état réel
+    State.hiddenTypes.clear();
+    Graph.applyNebulaLayout();
+    UI.renderTypeFilters();
     document.getElementById('layout-select').value = 'nebulae';
   });
 
