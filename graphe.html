@@ -1435,20 +1435,35 @@ const Graph = (() => {
         selector: 'node.hop2',
         style: { 'border-width': 2, 'border-color': '#ff8800', 'border-opacity': 0.75, 'opacity': 0.70 }
       },
-      // ── Matrix grid mode: tiny dots, no glow, no labels ──────
+      // ── Matrix grid mode: tiny dots, subtle glow, no labels ──────
       {
         selector: 'node.in-matrix',
         style: {
           'width': 7, 'height': 7,
           'label': '',
-          'shadow-blur': 0, 'shadow-opacity': 0,
-          'background-opacity': 0.92,
+          'shadow-blur': 10, 'shadow-opacity': 0.40,
+          'background-opacity': 0.95,
+          'z-index': 2,
         }
       },
       // ── Edges hidden in matrix, revealed on node click ────────
       {
         selector: 'edge.in-matrix',
         style: { 'opacity': 0 }
+      },
+      // ── Column halos: transparent color band per type column ──
+      {
+        selector: 'node.col-halo',
+        style: {
+          'shape': 'rectangle',
+          'background-color': 'data(color)',
+          'background-opacity': 0.055,
+          'border-opacity': 0,
+          'label': '',
+          'events': 'no',
+          'shadow-blur': 30, 'shadow-color': 'data(color)', 'shadow-opacity': 0.08,
+          'z-index': 0,
+        }
       },
       {
         selector: 'node.faded',
@@ -1618,7 +1633,8 @@ const Graph = (() => {
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
     cy.nodes().removeClass('in-matrix');
-    cy.edges().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
+    cy.edges().removeClass('in-matrix');
+    cy.$('.col-halo').remove(); // clear matrix-mode styles if switching from matrice
 
     // ── Reset archipelago state ───────────────────────────
     _nebulaActive = true;
@@ -1746,31 +1762,33 @@ const Graph = (() => {
     });
 
     // ── Compute type columns (semantic priority order) ────
-    // Priority: structure → actors → concepts → events → infra → misc → sources → refs
+    // Left = structural / analytical cores  →  right = source material
     const MATRICE_TYPE_PRIORITY = {
       // 0 – Structural skeleton
       'Chapter': 0, 'ThesisSection': 1,
-      // 1 – Argumentative structure
+      // 1 – Main objects of study (quasi-structural for this thesis)
+      'Protocol': 2, 'InfrastructureDomain': 3,
+      // 2 – Argumentative structure
       'Argument': 10, 'NarrativeCluster': 11, 'CrisisPhase': 12,
-      // 2 – Actors
+      // 3 – Actors
       'Person': 20, 'Institution': 21, 'ActorGroup': 22,
       'ActorNonHuman': 23, 'StakeholderCategory': 24,
-      // 3 – Concepts & theory
+      // 4 – Concepts & theory
       'Concept': 30, 'TheoreticFramework': 31, 'Method': 32,
-      // 4 – Events & governance
+      // 5 – Events & governance
       'CrisisEvent': 40, 'GovernanceConflict': 41,
       'GovernanceProcess': 42, 'GovernanceArena': 43,
-      // 5 – Infrastructure & protocol
-      'Protocol': 50, 'ProtocolChange': 51, 'ProtocolProposal': 52,
-      'InfrastructureDomain': 53, 'InfrastructureEvent': 54,
-      'InfrastructureSegment': 55, 'DevelopmentPhase': 56, 'Capability': 57,
-      // 6 – Quantitative / misc
+      // 6 – Sub-protocol / infrastructure detail
+      'ProtocolChange': 50, 'ProtocolProposal': 51,
+      'InfrastructureEvent': 52, 'InfrastructureSegment': 53,
+      'DevelopmentPhase': 54, 'Capability': 55,
+      // 7 – Quantitative / misc
       'Corpus': 60, 'MonetaryObject': 61,
       'PriceSeries': 62, 'PriceWindow': 63,
-      // 7 – Secondary sources (right zone)
+      // 8 – Secondary sources (right zone)
       'AcademicWork': 70, 'DoctoralThesis': 71,
       'PrimarySource': 72, 'GreyLiterature': 73, 'IndigenousLiterature': 74,
-      // 8 – Raw source material (rightmost)
+      // 9 – Raw source material (rightmost)
       'SourceQuote': 80, 'Reference': 81,
     };
     const typeCounts = {};
@@ -1787,9 +1805,10 @@ const Graph = (() => {
     sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
 
     // ── Grid geometry ────────────────────────────────────
-    const COL_W = 300, ROW_H = 520;
+    const COL_W = 280, ROW_H = 500;
     const OX = 380, OY = 340; // origin offset (space for labels)
-    const RING_GAP = 15, NODE_SP = 11, MIN_CAP = 5;
+    const NODE_H = 9;          // vertical pitch between stacked nodes
+    const CELL_W_FRAC = 0.78;  // fraction of COL_W used by sub-columns
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
     const cells = {}; // key = `${row}_${col}`
@@ -1804,12 +1823,15 @@ const Graph = (() => {
       cells[key].push(n);
     });
 
-    // ── Position each cell as concentric rings ───────────
+    // ── Vertical stacking per cell (hubs at top) ─────────
+    const maxPerSubcol = Math.max(1, Math.floor(ROW_H * 0.88 / NODE_H));
     Object.entries(cells).forEach(([key, nodes]) => {
       const [rStr, cStr] = key.split('_');
       const row = parseInt(rStr), col = parseInt(cStr);
-      const cx = OX + col * COL_W;
+      const cx   = OX + col * COL_W;
       const cy_c = OY + row * ROW_H;
+
+      // Hubs first (most-connected at top of each sub-column)
       nodes.sort((a, b) => {
         const da = (State.maps.outgoing[a.data('id')]||[]).length
                  + (State.maps.incoming[a.data('id')]||[]).length;
@@ -1817,25 +1839,38 @@ const Graph = (() => {
                  + (State.maps.incoming[b.data('id')]||[]).length;
         return db - da;
       });
-      let placed = 0, ring = 0;
-      while (placed < nodes.length) {
-        const ringR = ring === 0 ? 0 : RING_GAP + ring * RING_GAP;
-        const cap   = ring === 0 ? 1 : Math.max(MIN_CAP, Math.round(2*Math.PI*ringR/NODE_SP));
-        const count = Math.min(cap, nodes.length - placed);
-        for (let j = 0; j < count; j++, placed++) {
-          const a = (2*Math.PI*j/count) - Math.PI/2 + ring*0.3;
-          nodes[placed].position({
-            x: cx + (ring === 0 ? 0 : ringR * Math.cos(a)),
-            y: cy_c + (ring === 0 ? 0 : ringR * Math.sin(a)),
-          });
-        }
-        ring++;
-      }
+
+      const numSubcols = Math.ceil(nodes.length / maxPerSubcol);
+      const cellW      = COL_W * CELL_W_FRAC;
+      const subColW    = numSubcols > 1 ? cellW / numSubcols : 0;
+
+      nodes.forEach((n, i) => {
+        const sc    = Math.floor(i / maxPerSubcol);
+        const ri    = i % maxPerSubcol;
+        const count = Math.min(nodes.length - sc * maxPerSubcol, maxPerSubcol);
+        const startX = numSubcols > 1
+          ? cx - cellW / 2 + subColW * (sc + 0.5)
+          : cx;
+        const startY = cy_c - (count * NODE_H) / 2;
+        n.position({ x: startX, y: startY + ri * NODE_H });
+      });
     });
 
-    // ── Apply in-matrix class: tiny dots, no glow, edges hidden ──
+    // ── Apply in-matrix class: tiny dots, glow, edges hidden ──
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
+
+    // ── Column halos: transparent color band per type ─────
+    cy.$('.col-halo').remove();
+    const haloH      = ROW_H * 5 + 100;
+    const haloCenterY = OY + 2 * ROW_H;
+    sortedTypes.forEach((typeName, j) => {
+      cy.add({
+        data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
+        position: { x: OX + j * COL_W, y: haloCenterY },
+        classes: 'col-halo',
+      });
+    });
 
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
@@ -1862,6 +1897,12 @@ const Graph = (() => {
       });
     });
 
+    // Pass halo dimensions via layout so Cytoscape can render them
+    cy.style().selector('node.col-halo').style({
+      'width':  COL_W * 0.82,
+      'height': haloH,
+    }).update();
+
     cy.layout({ name: 'preset', fit: true, padding: 80 }).run();
   }
 
@@ -1874,7 +1915,7 @@ const Graph = (() => {
     _nebulaZoomedIdx = -1;
     document.querySelector('.grc-root').classList.remove('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
-    cy.$('.chapter-label, .type-label').remove();
+    cy.$('.chapter-label, .type-label, .col-halo').remove();
     cy.nodes().removeClass('chapter-faded in-matrix');
     cy.edges().removeClass('in-matrix');
     // Restore type colors
@@ -1892,7 +1933,8 @@ const Graph = (() => {
   function applyArbreLayout() {
     if (!cy || !State.data) return;
     cy.nodes().removeClass('in-matrix');
-    cy.edges().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
+    cy.edges().removeClass('in-matrix');
+    cy.$('.col-halo').remove(); // clear matrix-mode styles if switching from matrice
 
     _nebulaActive = true;
     _matrixMode = true; // disables archipelago-zoom on node click
