@@ -1397,11 +1397,12 @@ const Graph = (() => {
           'width': 2, 'height': 2,
           'label': 'data(label)',
           'font-family': "'VT323', monospace",
-          'font-size': '22px',
+          'font-size': '28px',
           'color': 'data(labelColor)',
           'text-valign': 'center', 'text-halign': 'center',
           'text-outline-color': '#000', 'text-outline-width': 2,
           'text-wrap': 'wrap',
+          'text-max-width': '260px',
           'events': 'no',
         }
       },
@@ -1419,6 +1420,16 @@ const Graph = (() => {
       {
         selector: 'node.hop2',
         style: { 'border-width': 2, 'border-color': '#ff8800', 'border-opacity': 0.75, 'opacity': 0.70 }
+      },
+      // ── Matrix grid mode: tiny dots, no glow, no labels ──────
+      {
+        selector: 'node.in-matrix',
+        style: {
+          'width': 7, 'height': 7,
+          'label': '',
+          'shadow-blur': 0, 'shadow-opacity': 0,
+          'background-opacity': 0.92,
+        }
       },
       {
         selector: 'node.faded',
@@ -1587,6 +1598,7 @@ const Graph = (() => {
 
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
+    cy.nodes().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
 
     // ── Reset archipelago state ───────────────────────────
     _nebulaActive = true;
@@ -1726,9 +1738,9 @@ const Graph = (() => {
     sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
 
     // ── Grid geometry ────────────────────────────────────
-    const COL_W = 360, ROW_H = 480;
-    const OX = 300, OY = 280; // origin offset (space for labels)
-    const RING_GAP = 26, NODE_SP = 22, MIN_CAP = 5;
+    const COL_W = 300, ROW_H = 520;
+    const OX = 380, OY = 340; // origin offset (space for labels)
+    const RING_GAP = 15, NODE_SP = 11, MIN_CAP = 5;
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
     const cells = {}; // key = `${row}_${col}`
@@ -1772,27 +1784,30 @@ const Graph = (() => {
       }
     });
 
+    // ── Apply in-matrix class: tiny dots, no glow ────────
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
+
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    // Row labels: chapter names on the left
+    // Row labels: chapter names on the left (Press Start 2P)
     CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
         data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i] },
-        position: { x: OX - 180, y: OY + i * ROW_H },
+        position: { x: OX - 230, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
     });
 
-    // Column labels: type names at the top
+    // Column labels: type name + count at top (VT323)
     sortedTypes.forEach((typeName, j) => {
       cy.add({
         data: {
           id: '__mat_col_' + j,
-          label: typeName + '\n' + typeCounts[typeName],
+          label: typeName + '\n× ' + typeCounts[typeName],
           labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
         },
-        position: { x: OX + j * COL_W, y: OY - 170 },
+        position: { x: OX + j * COL_W, y: OY - 220 },
         classes: 'type-label',
       });
     });
@@ -1810,7 +1825,7 @@ const Graph = (() => {
     document.querySelector('.grc-root').classList.remove('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
     cy.$('.chapter-label, .type-label').remove();
-    cy.nodes().removeClass('chapter-faded');
+    cy.nodes().removeClass('chapter-faded in-matrix');
     // Restore type colors
     cy.nodes().forEach(n => {
       const entity = State.maps.entities[n.data('id')];
@@ -1825,6 +1840,7 @@ const Graph = (() => {
   // ── Arbre argumentatif (left=chapters → right=refs) ─────────
   function applyArbreLayout() {
     if (!cy || !State.data) return;
+    cy.nodes().removeClass('in-matrix'); // clear matrix-mode styles if switching from matrice
 
     _nebulaActive = true;
     _matrixMode = true; // disables archipelago-zoom on node click
