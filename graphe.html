@@ -1055,25 +1055,39 @@ const CHAPTER_CENTERS = [
 let _chapterMap = {}; // entityId → chapter index (0-4)
 
 function buildChapterMap(data) {
-  const map = {};
+  // Build undirected adjacency list
+  const adj = {};
   for (const rel of data.relations) {
-    const fi = CHAPTER_IDS.indexOf(rel.from);
-    const ti = CHAPTER_IDS.indexOf(rel.to);
-    if (fi >= 0) {
-      if (!map[rel.to]) map[rel.to] = [0,0,0,0,0];
-      map[rel.to][fi]++;
-    }
-    if (ti >= 0) {
-      if (!map[rel.from]) map[rel.from] = [0,0,0,0,0];
-      map[rel.from][ti]++;
-    }
+    if (!adj[rel.from]) adj[rel.from] = [];
+    if (!adj[rel.to])   adj[rel.to]   = [];
+    adj[rel.from].push(rel.to);
+    adj[rel.to].push(rel.from);
   }
+
+  // Multi-source BFS from all 5 chapter nodes simultaneously.
+  // Each entity is assigned to the chapter whose BFS frontier reaches it first.
   const result = {};
-  for (const [id, sc] of Object.entries(map)) {
-    const max = Math.max(...sc);
-    if (max > 0) result[id] = sc.indexOf(max);
+  const visited = new Set();
+  const queue = []; // { id, chapterIdx }
+
+  CHAPTER_IDS.forEach((id, i) => {
+    result[id] = i;
+    visited.add(id);
+    queue.push({ id, chapterIdx: i });
+  });
+
+  let head = 0;
+  while (head < queue.length) {
+    const { id, chapterIdx } = queue[head++];
+    for (const nb of (adj[id] || [])) {
+      if (!visited.has(nb)) {
+        visited.add(nb);
+        result[nb] = chapterIdx;
+        queue.push({ id: nb, chapterIdx });
+      }
+    }
   }
-  CHAPTER_IDS.forEach((id, i) => { result[id] = i; });
+
   return result;
 }
 
@@ -1431,7 +1445,9 @@ const Graph = (() => {
     const els = buildElements();
     cy.elements().remove();
     cy.add(els);
-    applyLayout(document.getElementById('layout-select').value || 'cose');
+    const lv = document.getElementById('layout-select').value || 'cose';
+    if (lv === 'nebulae') applyNebulaLayout();
+    else applyLayout(lv);
     applyFilters();
   }
 
@@ -2430,12 +2446,14 @@ function showGuidedOverlay() {
     suggestDiv.style.display = 'block';
   });
 
-  // Très fort : tout afficher
+  // Très fort : tout afficher en vue Archipel
   document.getElementById('guided-btn-full').addEventListener('click', () => {
     overlay.classList.add('hidden');
     State.hiddenTypes.clear();
-    Graph.applyFilters();
     UI.renderTypeFilters();
+    Graph.applyFilters();
+    Graph.applyNebulaLayout();
+    document.getElementById('layout-select').value = 'nebulae';
   });
 
   // Moyen : masquer les types secondaires
