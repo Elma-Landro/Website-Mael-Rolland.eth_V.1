@@ -81,8 +81,26 @@ html, body {
 .stat-row { display: flex; justify-content: space-between; }
 .stat-val { color: var(--text); font-weight: 600; }
 /* ─── Canvas ────────────────────────────────────────────────────── */
-.grc-canvas-wrap { flex: 1; position: relative; background: var(--bg); min-width: 0; }
-#cy { width: 100%; height: 100%; display: block; }
+.grc-canvas-wrap { flex: 1; position: relative; background: #06000d; min-width: 0; }
+#cy { width: 100%; height: 100%; display: block; background: radial-gradient(ellipse at 40% 50%, #120020 0%, #06000d 60%, #000000 100%); }
+
+/* ─── Hover Tooltip ─────────────────────────────────────────────── */
+#cy-tooltip {
+  position: fixed;
+  display: none;
+  pointer-events: none;
+  z-index: 9999;
+  background: rgba(6, 0, 13, 0.92);
+  border: 1px solid #ffaa33;
+  padding: 8px 12px;
+  max-width: 220px;
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  line-height: 1.4;
+}
+#cy-tooltip .tt-type  { font-size: 10px; color: #ffaa33; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 3px; font-family: 'Press Start 2P', monospace; }
+#cy-tooltip .tt-name  { color: #ffdd99; font-size: 16px; }
+#cy-tooltip .tt-stats { color: #33ff33; font-size: 13px; margin-top: 4px; }
 .canvas-overlay {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -613,6 +631,11 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 <!-- ── Canvas ── -->
 <div class="grc-canvas-wrap">
   <div id="cy"></div>
+  <div id="cy-tooltip">
+    <div class="tt-type" id="tt-type"></div>
+    <div class="tt-name" id="tt-name"></div>
+    <div class="tt-stats" id="tt-stats"></div>
+  </div>
   <div class="canvas-overlay" id="canvas-overlay">
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
@@ -1124,7 +1147,7 @@ const Graph = (() => {
     const shape = TYPE_SHAPES[typeName] || 'ellipse';
     const degree = (State.maps.outgoing[entity.id] || []).length
                  + (State.maps.incoming[entity.id] || []).length;
-    const size = Math.max(18, Math.min(52, 18 + Math.sqrt(degree) * 5));
+    const size = Math.max(22, Math.min(90, 22 + Math.sqrt(degree) * 9));
     return {
       data: {
         id: entity.id, label: getNodeLabel(entity),
@@ -1186,6 +1209,24 @@ const Graph = (() => {
     cy.on('tap', 'node', handleNodeSelect);
     cy.on('click', 'node', handleNodeSelect); // fallback desktop
 
+    // ── Floating tooltip on hover ──
+    const tooltip = document.getElementById('cy-tooltip');
+    cy.on('mouseover', 'node', e => {
+      const node = e.target;
+      const d = node.data();
+      const deg = (State.maps.outgoing[d.id] || []).length
+                + (State.maps.incoming[d.id] || []).length;
+      document.getElementById('tt-type').textContent = d.typeName || '';
+      document.getElementById('tt-name').textContent = d.fullName || d.label;
+      document.getElementById('tt-stats').textContent = `${deg} connexion${deg !== 1 ? 's' : ''}`;
+      tooltip.style.display = 'block';
+    });
+    cy.on('mousemove', 'node', e => {
+      tooltip.style.left = (e.originalEvent.clientX + 14) + 'px';
+      tooltip.style.top  = (e.originalEvent.clientY - 10) + 'px';
+    });
+    cy.on('mouseout', 'node', () => { tooltip.style.display = 'none'; });
+
     cy.on('tap', e => {
       if (e.target === cy) {
         State.selectedId = null;
@@ -1208,6 +1249,7 @@ const Graph = (() => {
         selector: 'node',
         style: {
           'background-color': 'data(color)',
+          'background-opacity': 0.85,
           'shape': 'data(shape)',
           'width': 'data(size)', 'height': 'data(size)',
           'label': 'data(label)',
@@ -1215,11 +1257,15 @@ const Graph = (() => {
           'font-size': '13px',
           'color': '#ffdd99',
           'text-valign': 'bottom', 'text-halign': 'center',
-          'text-margin-y': 5,
-          'text-outline-color': '#1a0000', 'text-outline-width': 2,
-          'border-width': 1,
-          'border-color': '#ffaa33',
-          'overlay-padding': 4,
+          'text-margin-y': 6,
+          'text-outline-color': '#000000', 'text-outline-width': 2,
+          'border-width': 0,
+          'overlay-padding': 6,
+          'shadow-blur':     28,
+          'shadow-color':    'data(color)',
+          'shadow-opacity':  0.80,
+          'shadow-offset-x': 0,
+          'shadow-offset-y': 0,
         }
       },
       {
@@ -1252,13 +1298,13 @@ const Graph = (() => {
       {
         selector: 'edge',
         style: {
-          'width': 1,
-          'line-color': '#7a3000',
-          'target-arrow-color': '#ffaa33',
+          'width': 0.8,
+          'line-color': '#aa4400',
+          'target-arrow-color': '#cc6600',
           'target-arrow-shape': 'triangle',
           'curve-style': 'bezier',
-          'arrow-scale': 0.7,
-          'opacity': 0.70,
+          'arrow-scale': 0.5,
+          'opacity': 0.35,
         }
       },
       {
