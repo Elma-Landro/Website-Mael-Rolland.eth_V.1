@@ -602,7 +602,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
           <select id="layout-select" title="Changer le layout">
             <option value="cose">Force-directed</option>
             <option value="nebulae">Archipel / chapitres</option>
-            <option value="matrice">Matrice chapitres × types</option>
+            <option value="matrice" selected>Matrice chapitres × types</option>
             <option value="arbre">Arbre argumentatif ↦</option>
             <option value="dagre">Hiérarchique</option>
             <option value="circle">Cercle</option>
@@ -1576,7 +1576,7 @@ const Graph = (() => {
     const els = buildElements();
     cy.elements().remove();
     cy.add(els);
-    const lv = document.getElementById('layout-select').value || 'cose';
+    const lv = document.getElementById('layout-select').value || 'matrice';
     if (lv === 'nebulae') applyNebulaLayout();
     else if (lv === 'matrice') applyMatriceLayout();
     else if (lv === 'arbre') applyArbreLayout();
