@@ -1194,15 +1194,15 @@ const Graph = (() => {
     const degree = (State.maps.outgoing[entity.id] || []).length
                  + (State.maps.incoming[entity.id] || []).length;
     const size = Math.max(22, Math.min(90, 22 + Math.sqrt(degree) * 9));
-    const chapterIdx   = _chapterMap[entity.id] !== undefined ? _chapterMap[entity.id] : -1;
-    const chapterColor = chapterIdx >= 0 ? CHAPTER_COLORS[chapterIdx] : '#555555';
+    const chapterIdx = _chapterMap[entity.id] !== undefined ? _chapterMap[entity.id] : -1;
     return {
       data: {
         id: entity.id, label: getNodeLabel(entity),
         typeName, color, shape, size,
         fullName: entity.name,
-        chapterIdx, chapterColor,
-      }
+        chapterIdx,
+      },
+      classes: chapterIdx >= 0 ? 'chapter-' + chapterIdx : '',
     };
   }
 
@@ -1310,13 +1310,18 @@ const Graph = (() => {
           'text-outline-color': '#000000', 'text-outline-width': 2,
           'border-width': 0,
           'overlay-padding': 6,
-          'shadow-blur':     28,
-          'shadow-color':    'data(chapterColor)',
-          'shadow-opacity':  0.85,
+          'shadow-blur':     0,
+          'shadow-opacity':  0,
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
         }
       },
+      // ── Chapter glow halos (always visible) ──────────────
+      { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
+      { selector: 'node.chapter-1', style: { 'shadow-color': '#ff8800', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
+      { selector: 'node.chapter-2', style: { 'shadow-color': '#33ff33', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
+      { selector: 'node.chapter-3', style: { 'shadow-color': '#aa44ff', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
+      { selector: 'node.chapter-4', style: { 'shadow-color': '#ff44aa', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
       {
         selector: 'node:selected',
         style: {
@@ -1495,28 +1500,61 @@ const Graph = (() => {
 
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
-    // Switch node body color to chapter color
+
+    // ── 1. Switch node body color to chapter color ────────
     cy.nodes().forEach(n => {
       const idx = n.data('chapterIdx');
-      n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#444444');
+      n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#2a2a2a');
     });
-    // Pre-position nodes in pentagon clusters with random scatter
-    cy.nodes().forEach(n => {
+
+    // ── 2. Group visible nodes by chapter ────────────────
+    const groups = [[], [], [], [], [], []]; // 0-4 = chapters, 5 = unassigned
+    cy.nodes(':visible').forEach(n => {
       const idx = n.data('chapterIdx');
-      const center = idx >= 0 ? CHAPTER_CENTERS[idx] : { x: 1000, y: 715 };
-      const angle  = Math.random() * 2 * Math.PI;
-      const r      = 60 + Math.random() * 220;
-      n.position({ x: center.x + Math.cos(angle) * r, y: center.y + Math.sin(angle) * r });
+      groups[idx >= 0 ? idx : 5].push(n);
     });
-    cy.layout({
-      name: 'cose', animate: true, animationDuration: 1500, animationEasing: 'ease-out',
-      randomize: false,       // respect our pre-positions
-      nodeRepulsion: 22000,
-      edgeElasticity: 12,     // weak pull between clusters
-      gravity: 0.01,          // almost no central pull
-      numIter: 250, initialTemp: 55, coolingFactor: 0.97, minTemp: 0.5,
-      fit: true, padding: 80,
-    }).run();
+
+    // ── 3. Pentagon centers (virtual canvas 3200×2800) ────
+    const W = 3200, H = 2800, R_pent = 1000;
+    const cx = W / 2, cy_c = H / 2;
+    const centerPts = CHAPTER_IDS.map((_, i) => {
+      const a = -Math.PI / 2 + (2 * Math.PI * i / 5);
+      return { x: cx + R_pent * Math.cos(a), y: cy_c + R_pent * Math.sin(a) };
+    });
+    centerPts.push({ x: cx, y: cy_c }); // unassigned → center
+
+    // ── 4. Position each group in concentric rings ────────
+    const RING_GAP = 54, NODE_SPACING = 46, MIN_RING_CAP = 6;
+    groups.forEach((nodes, gi) => {
+      if (!nodes.length) return;
+      const center = centerPts[gi];
+      // Sort: most-connected nodes at the center
+      nodes.sort((a, b) => {
+        const da = (State.maps.outgoing[a.data('id')] || []).length
+                 + (State.maps.incoming[a.data('id')] || []).length;
+        const db = (State.maps.outgoing[b.data('id')] || []).length
+                 + (State.maps.incoming[b.data('id')] || []).length;
+        return db - da;
+      });
+      let placed = 0, ring = 0;
+      while (placed < nodes.length) {
+        const ringR    = ring === 0 ? 0 : RING_GAP + ring * RING_GAP;
+        const capacity = ring === 0 ? 1
+                       : Math.max(MIN_RING_CAP, Math.round(2 * Math.PI * ringR / NODE_SPACING));
+        const count    = Math.min(capacity, nodes.length - placed);
+        for (let j = 0; j < count; j++, placed++) {
+          const a = (2 * Math.PI * j / count) - Math.PI / 2 + ring * 0.25;
+          nodes[placed].position({
+            x: center.x + (ring === 0 ? 0 : ringR * Math.cos(a)),
+            y: center.y + (ring === 0 ? 0 : ringR * Math.sin(a)),
+          });
+        }
+        ring++;
+      }
+    });
+
+    // ── 5. Preset layout (no simulation — exact positions) ─
+    cy.layout({ name: 'preset', fit: true, padding: 90 }).run();
   }
 
   function restoreTypeColors() {
@@ -1529,6 +1567,7 @@ const Graph = (() => {
       }
     });
   }
+  // chapter glow classes are set at build time and never removed — shadow persists across layouts
 
   return { init, render, applyLayout, applyNebulaLayout, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
 })();
