@@ -84,6 +84,23 @@ html, body {
 .grc-canvas-wrap { flex: 1; position: relative; background: #0d0000; min-width: 0; }
 #cy { width: 100%; height: 100%; display: block; background: radial-gradient(ellipse at 40% 50%, #1a0000 0%, #0d0000 60%, #050000 100%); }
 
+/* Nebula / Archipelago mode — deep space black */
+.grc-root.nebula-mode .grc-canvas-wrap { background: #060608; }
+.grc-root.nebula-mode #cy {
+  background: radial-gradient(ellipse at 50% 45%, #0e101e 0%, #07080f 55%, #030307 100%);
+}
+
+/* Archipelago back button */
+#btn-archipel-back {
+  display: none;
+  position: absolute; top: 10px; left: 10px; z-index: 30;
+  font-family: 'Press Start 2P', monospace; font-size: 0.55em;
+  background: rgba(6,7,15,0.85); color: #ffcc66;
+  border: 1px solid #ffcc66; padding: 5px 10px; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+#btn-archipel-back:hover { background: #ffcc66; color: #000; }
+
 /* ─── Hover Tooltip ─────────────────────────────────────────────── */
 #cy-tooltip {
   position: fixed;
@@ -632,6 +649,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 <!-- ── Canvas ── -->
 <div class="grc-canvas-wrap">
   <div id="cy"></div>
+  <button id="btn-archipel-back" title="Vue d'ensemble">← Archipel</button>
   <div id="cy-tooltip">
     <div class="tt-type" id="tt-type"></div>
     <div class="tt-name" id="tt-name"></div>
@@ -1179,8 +1197,14 @@ function generateId() {
 // ─────────────────────────────────────────────────────────
 //  CYTOSCAPE GRAPH
 // ─────────────────────────────────────────────────────────
+const CHAPTER_LABELS = ['Introduction', 'Chapitre I', 'Chapitre II', 'Chapitre III', 'Conclusion'];
+
 const Graph = (() => {
   let cy = null;
+  // Nebula / Archipelago state
+  let _nebulaActive = false;
+  let _nebulaZoomDepth = 'archipelago'; // 'archipelago' | 'chapter'
+  let _nebulaZoomedIdx = -1;
 
   function getNodeLabel(entity) {
     const name = entity.name || '?';
@@ -1244,8 +1268,14 @@ const Graph = (() => {
     });
 
     function handleNodeSelect(e) {
+      if (e.target.hasClass('chapter-label')) return; // ghost node — ignore
       const id = e.target.data('id');
       if (!id) return;
+      // ── Archipelago zoom: first click on an island zooms into it ──
+      if (_nebulaActive && _nebulaZoomDepth === 'archipelago') {
+        const idx = e.target.data('chapterIdx');
+        if (idx >= 0) { zoomToChapter(idx); return; } // zoom, don't open panel yet
+      }
       State.selectedId = id;
       UI.renderPanel(id);
       highlightNeighbors(id);
@@ -1278,6 +1308,7 @@ const Graph = (() => {
 
     cy.on('tap', e => {
       if (e.target === cy) {
+        if (_nebulaActive && _nebulaZoomDepth === 'chapter') { zoomToArchipelago(); return; }
         State.selectedId = null;
         resetHighlight();
         UI.clearPanel();
@@ -1285,6 +1316,7 @@ const Graph = (() => {
     });
     cy.on('click', e => {
       if (e.target === cy) {
+        if (_nebulaActive && _nebulaZoomDepth === 'chapter') { zoomToArchipelago(); return; }
         State.selectedId = null;
         resetHighlight();
         UI.clearPanel();
@@ -1322,6 +1354,24 @@ const Graph = (() => {
       { selector: 'node.chapter-2', style: { 'shadow-color': '#33ff33', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
       { selector: 'node.chapter-3', style: { 'shadow-color': '#aa44ff', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
       { selector: 'node.chapter-4', style: { 'shadow-color': '#ff44aa', 'shadow-blur': 38, 'shadow-opacity': 0.90 } },
+      // ── Archipelago: other islands fade when zoomed ───────
+      { selector: 'node.chapter-faded', style: { 'opacity': 0.05 } },
+      // ── Chapter label ghost nodes (floating title above each island) ──
+      {
+        selector: 'node.chapter-label',
+        style: {
+          'background-opacity': 0, 'border-opacity': 0,
+          'width': 2, 'height': 2,
+          'label': 'data(label)',
+          'font-family': "'Press Start 2P', monospace",
+          'font-size': '18px',
+          'color': 'data(labelColor)',
+          'text-valign': 'center', 'text-halign': 'center',
+          'text-outline-color': '#000', 'text-outline-width': 3,
+          'text-wrap': 'wrap',
+          'events': 'no',
+        }
+      },
       {
         selector: 'node:selected',
         style: {
@@ -1501,21 +1551,29 @@ const Graph = (() => {
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
 
+    // ── Reset archipelago state ───────────────────────────
+    _nebulaActive = true;
+    _nebulaZoomDepth = 'archipelago';
+    _nebulaZoomedIdx = -1;
+    document.querySelector('.grc-root').classList.add('nebula-mode');
+    document.getElementById('btn-archipel-back').style.display = 'none';
+
     // ── 1. Switch node body color to chapter color ────────
-    cy.nodes().forEach(n => {
+    cy.nodes(':not(.chapter-label)').forEach(n => {
       const idx = n.data('chapterIdx');
       n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#2a2a2a');
+      n.removeClass('chapter-faded');
     });
 
     // ── 2. Group visible nodes by chapter ────────────────
     const groups = [[], [], [], [], [], []]; // 0-4 = chapters, 5 = unassigned
-    cy.nodes(':visible').forEach(n => {
+    cy.nodes(':visible').not('.chapter-label').forEach(n => {
       const idx = n.data('chapterIdx');
       groups[idx >= 0 ? idx : 5].push(n);
     });
 
-    // ── 3. Pentagon centers (virtual canvas 3200×2800) ────
-    const W = 3200, H = 2800, R_pent = 1000;
+    // ── 3. Pentagon centers (virtual canvas 4400×3800) ────
+    const W = 4400, H = 3800, R_pent = 1500;
     const cx = W / 2, cy_c = H / 2;
     const centerPts = CHAPTER_IDS.map((_, i) => {
       const a = -Math.PI / 2 + (2 * Math.PI * i / 5);
@@ -1524,9 +1582,10 @@ const Graph = (() => {
     centerPts.push({ x: cx, y: cy_c }); // unassigned → center
 
     // ── 4. Position each group in concentric rings ────────
-    const RING_GAP = 54, NODE_SPACING = 46, MIN_RING_CAP = 6;
+    const RING_GAP = 46, NODE_SPACING = 40, MIN_RING_CAP = 6;
+    const clusterMaxR = []; // store max ring radius per chapter
     groups.forEach((nodes, gi) => {
-      if (!nodes.length) return;
+      if (!nodes.length) { clusterMaxR.push(0); return; }
       const center = centerPts[gi];
       // Sort: most-connected nodes at the center
       nodes.sort((a, b) => {
@@ -1536,12 +1595,13 @@ const Graph = (() => {
                  + (State.maps.incoming[b.data('id')] || []).length;
         return db - da;
       });
-      let placed = 0, ring = 0;
+      let placed = 0, ring = 0, maxR = 0;
       while (placed < nodes.length) {
         const ringR    = ring === 0 ? 0 : RING_GAP + ring * RING_GAP;
         const capacity = ring === 0 ? 1
                        : Math.max(MIN_RING_CAP, Math.round(2 * Math.PI * ringR / NODE_SPACING));
         const count    = Math.min(capacity, nodes.length - placed);
+        if (ringR > maxR) maxR = ringR;
         for (let j = 0; j < count; j++, placed++) {
           const a = (2 * Math.PI * j / count) - Math.PI / 2 + ring * 0.25;
           nodes[placed].position({
@@ -1551,14 +1611,65 @@ const Graph = (() => {
         }
         ring++;
       }
+      clusterMaxR.push(maxR);
     });
 
-    // ── 5. Preset layout (no simulation — exact positions) ─
-    cy.layout({ name: 'preset', fit: true, padding: 90 }).run();
+    // ── 5. Floating chapter labels (ghost nodes above each island) ──
+    cy.$('.chapter-label').remove();
+    CHAPTER_IDS.forEach((_, i) => {
+      const center = centerPts[i];
+      const offsetY = (clusterMaxR[i] || 300) + 90;
+      cy.add({
+        data: {
+          id: '__chap_lbl_' + i,
+          label: CHAPTER_LABELS[i] + '\n' + groups[i].length + ' entités',
+          labelColor: CHAPTER_COLORS[i],
+        },
+        position: { x: center.x, y: center.y - offsetY },
+        classes: 'chapter-label',
+      });
+    });
+
+    // ── 6. Preset layout (no simulation — exact positions) ─
+    cy.layout({ name: 'preset', fit: true, padding: 100 }).run();
+  }
+
+  function zoomToChapter(chapterIdx) {
+    if (!cy) return;
+    _nebulaZoomDepth = 'chapter';
+    _nebulaZoomedIdx = chapterIdx;
+    // Fade other islands
+    cy.nodes(':not(.chapter-label)').forEach(n => {
+      n.data('chapterIdx') === chapterIdx
+        ? n.removeClass('chapter-faded')
+        : n.addClass('chapter-faded');
+    });
+    // Fit to this chapter's nodes
+    const island = cy.nodes(':not(.chapter-label)').filter(n => n.data('chapterIdx') === chapterIdx);
+    if (island.length) cy.fit(island, 80);
+    document.getElementById('btn-archipel-back').style.display = 'block';
+  }
+
+  function zoomToArchipelago() {
+    if (!cy) return;
+    _nebulaZoomDepth = 'archipelago';
+    _nebulaZoomedIdx = -1;
+    cy.nodes(':not(.chapter-label)').removeClass('chapter-faded');
+    cy.fit(100);
+    document.getElementById('btn-archipel-back').style.display = 'none';
   }
 
   function restoreTypeColors() {
     if (!cy || !State.data) return;
+    // Reset nebula state
+    _nebulaActive = false;
+    _nebulaZoomDepth = 'archipelago';
+    _nebulaZoomedIdx = -1;
+    document.querySelector('.grc-root').classList.remove('nebula-mode');
+    document.getElementById('btn-archipel-back').style.display = 'none';
+    cy.$('.chapter-label').remove();
+    cy.nodes().removeClass('chapter-faded');
+    // Restore type colors
     cy.nodes().forEach(n => {
       const entity = State.maps.entities[n.data('id')];
       if (entity) {
@@ -1569,7 +1680,7 @@ const Graph = (() => {
   }
   // chapter glow classes are set at build time and never removed — shadow persists across layouts
 
-  return { init, render, applyLayout, applyNebulaLayout, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
+  return { init, render, applyLayout, applyNebulaLayout, zoomToChapter, zoomToArchipelago, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
 })();
 
 // ─────────────────────────────────────────────────────────
@@ -2421,6 +2532,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else { Graph.restoreTypeColors(); Graph.applyLayout(e.target.value); }
   });
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
+  document.getElementById('btn-archipel-back').addEventListener('click', () => Graph.zoomToArchipelago());
 
   // ── Search ───────────────────────────────────────────
   document.getElementById('search-input').addEventListener('input', e => {
