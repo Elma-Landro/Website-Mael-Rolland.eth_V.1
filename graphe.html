@@ -448,12 +448,14 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   #btn-theme,
   .undo-count { display: none !important; }
 
-  /* Dropdown outils : plein écran sur mobile */
+  /* Dropdown outils : plein écran sur mobile — hauteur réduite */
   .tools-menu {
     position: fixed; top: var(--header-h); left: 0; right: 0;
     min-width: unset; border-radius: 0;
-    max-height: 60vh; overflow-y: auto;
+    max-height: 50vh; overflow-y: auto;  /* réduit de 60vh */
+    padding: 8px;
   }
+  .tools-section-label { font-size: 0.6em; }
 
   /* Sidebar masquée, canvas plein écran */
   .grc-sidebar { display: none !important; }
@@ -490,18 +492,35 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     box-shadow: -4px 0 16px rgba(0,0,0,0.6);
   }
 
-  /* Barre de recherche plus étroite */
-  .search-input { width: 130px; }
+  /* Barre de recherche élargie pour meilleure ergonomie mobile */
+  .search-input { width: 180px; }
 
-  /* Overlay guidé mobile : masquer les cartes sémantiques, garder les boutons */
-  .guided-entries { display: none !important; }
+  /* Overlay guidé mobile : colonne unique au lieu de masquer complètement */
+  .guided-entries {
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .guided-card { padding: 8px; }
   .guided-search-wrap { display: none !important; }
   .guided-mode-btn-matrice { font-size: 0.9em; padding: 16px 20px; }
   .guided-modes-secondary { flex-direction: column; }
   .guided-modes-secondary .guided-mode-btn { font-size: 0.75em; }
 
-  /* Bouton fermeture panneau visible sur mobile */
-  #btn-close-panel { display: flex !important; }
+  /* Bouton fermeture panneau : sticky en haut du panneau détail */
+  #btn-close-panel {
+    display: flex !important;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    margin: 0;
+    align-self: unset;
+  }
 
   /* Scrolly text panel adapté */
   .grc-root.scrolly-mode .grc-canvas-wrap { width: 100%; }
@@ -1476,21 +1495,35 @@ const Graph = (() => {
       {
         selector: 'node.in-matrix',
         style: {
-          'width': 14, 'height': 14,
+          'width': 'data(size)', 'height': 'data(size)', // proportionnel au degré
           'label': '',
-          'shadow-blur': 18, 'shadow-opacity': 0.55,
+          'shadow-blur': 30, 'shadow-opacity': 0.80,     // glow plus prononcé
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.95,
           'z-index': 2,
         }
       },
-      // ── Edges hidden in matrix/arbre (display:none pas opacity:0) ─────────
-      // IMPORTANT : opacity:0 serait écrasé par edge.highlighted (même spécificité,
-      // déclarée plus tard). display:none est une propriété distincte → invincible.
+      // ── Arêtes matrix : texture réseau très subtile ──────────────────────
+      // opacity 0.035 → texture "tissu" sans surcharge visuelle.
+      // Les overrides .highlighted/.faded ont spécificité 2 (deux classes) > 1 :
+      // ils gagnent sur edge.highlighted (spécif. 1) → pas de fan vert au clic.
       {
         selector: 'edge.in-matrix',
-        style: { 'display': 'none' }
+        style: { 'opacity': 0.035, 'line-color': '#aaaaaa', 'width': 0.4,
+                 'target-arrow-shape': 'none' }
+      },
+      {
+        selector: 'edge.in-matrix.highlighted',
+        style: { 'opacity': 0.08 }   // légèrement plus visible mais pas de fan
+      },
+      {
+        selector: 'edge.in-matrix.faded',
+        style: { 'opacity': 0.01 }
+      },
+      {
+        selector: 'edge.in-matrix.hop2',
+        style: { 'opacity': 0.02 }
       },
       // ── Column halos: transparent color band per type column ──
       {
@@ -1947,7 +1980,10 @@ const Graph = (() => {
           ? cx - cellW / 2 + subColW * (sc + 0.5)
           : cx;
         const startY = cy_c - (count * NODE_H) / 2;
-        n.position({ x: startX, y: startY + ri * NODE_H });
+        // Jitter organique : casse la rigidité de la grille sans perdre la structure
+        const jx = (Math.random() - 0.5) * 14;
+        const jy = (Math.random() - 0.5) * 8;
+        n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
     });
 
