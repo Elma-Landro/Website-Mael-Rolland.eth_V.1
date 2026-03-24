@@ -2146,16 +2146,26 @@ const Graph = (() => {
       });
     }
 
-    // Halo : ellipse légèrement > cellule → pas de bord dur, glows qui se chevauchent
-    // fond visible à faible opacité (couleur fusionnée) + shadow débordant = dégradé doux
-    cy.style().selector('node.col-halo').style({
-      'shape':              'ellipse',
-      'width':              isMobile ? COL_W * 1.15 : COL_W * 0.92,
-      'height':             isMobile ? ROW_H * 1.10 : haloH,
-      'background-opacity': isMobile ? 0.14 : 0.06,
-      'shadow-blur':        isMobile ? 44 : 70,
-      'shadow-opacity':     isMobile ? 0.48 : 0.12,
-    }).update();
+    // Halo : styles appliqués inline sur les éléments (priorité absolue, pas de conflit stylesheet)
+    // z-index 0 → halos derrière nœuds de données (z-index 1)
+    cy.$('.col-halo').forEach(n => {
+      n.style({
+        'shape':              'ellipse',
+        'width':              isMobile ? COL_W * 1.15 : COL_W * 0.92,
+        'height':             isMobile ? ROW_H * 1.10 : haloH,
+        'background-color':   n.data('color'),
+        'background-opacity': isMobile ? 0.20 : 0.07,
+        'shadow-color':       n.data('color'),
+        'shadow-blur':        isMobile ? 40 : 70,
+        'shadow-opacity':     isMobile ? 0.50 : 0.15,
+        'border-opacity':     0,
+        'z-index':            0,
+      });
+    });
+    // Nœuds de données au-dessus des halos
+    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
+      'z-index': 1,
+    });
 
     // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
