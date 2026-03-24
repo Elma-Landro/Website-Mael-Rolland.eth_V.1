@@ -1312,6 +1312,7 @@ const Graph = (() => {
         typeName, color, shape, size,
         fullName: entity.name,
         chapterIdx,
+        labelColor: chapterIdx >= 0 ? CHAPTER_COLORS[chapterIdx] : '#ffdd99',
       },
       classes: chapterIdx >= 0 ? 'chapter-' + chapterIdx : '',
     };
@@ -1411,7 +1412,7 @@ const Graph = (() => {
     });
 
     // ── Show node labels only when sufficiently zoomed in ──
-    const LABEL_ZOOM_THRESHOLD = 1.8;
+    const LABEL_ZOOM_THRESHOLD = 3.5;
     function syncLabels() {
       const z = cy.zoom();
       const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
@@ -1436,10 +1437,10 @@ const Graph = (() => {
           'label': '',
           'font-family': 'VT323, monospace',
           'font-size': '13px',
-          'color': '#ffdd99',
+          'color': 'data(labelColor)',
           'text-valign': 'bottom', 'text-halign': 'center',
           'text-margin-y': 6,
-          'text-outline-color': '#000000', 'text-outline-width': 2,
+          'text-outline-color': '#000000', 'text-outline-width': 3,
           'border-width': 0,
           'overlay-padding': 6,
           'shadow-blur':     0,
