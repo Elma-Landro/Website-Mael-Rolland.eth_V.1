@@ -620,8 +620,8 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
         <div class="tools-row">
           <select id="layout-select" title="Changer le layout">
             <option value="cose">Force-directed</option>
-            <option value="nebulae" selected>Archipel / chapitres</option>
-            <option value="matrice">Matrice chapitres × types</option>
+            <option value="nebulae">Archipel / chapitres</option>
+            <option value="matrice" selected>Matrice chapitres × types</option>
             <option value="arbre">Arbre argumentatif ↦</option>
             <option value="dagre">Hiérarchique</option>
             <option value="circle">Cercle</option>
@@ -1932,13 +1932,13 @@ const Graph = (() => {
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // Mobile : 6 macro-colonnes sémantiques → canvas ~390px → zoom ~0.9 → nœuds visibles
+    // Mobile : 6 macro-colonnes sémantiques — espacement généreux pour lisibilité
     // Desktop : 27 colonnes détaillées → vue "partition complète"
-    const COL_W      = isMobile ? 56   : 280;
-    const ROW_H      = isMobile ? 120  : 500;
-    const OX         = isMobile ? 110  : 380;  // 110px → laisse espace pour labels chapitres à gauche
-    const OY         = isMobile ? 80   : 340;
-    const NODE_H     = isMobile ? 7    : 15;
+    const COL_W      = isMobile ? 76   : 300;
+    const ROW_H      = isMobile ? 160  : 540;
+    const OX         = isMobile ? 120  : 400;  // marge gauche pour les labels chapitres
+    const OY         = isMobile ? 100  : 360;
+    const NODE_H     = isMobile ? 10   : 16;
     const CELL_W_FRAC = 0.78;
 
     // ── Macro-colonnes mobile (6 groupes sémantiques) ────
@@ -1999,17 +1999,17 @@ const Graph = (() => {
           : cx;
         const startY = cy_c - (count * NODE_H) / 2;
         // Jitter organique : casse la rigidité de la grille sans perdre la structure
-        const jx = (Math.random() - 0.5) * (isMobile ? 4 : 14);
-        const jy = (Math.random() - 0.5) * (isMobile ? 3 : 8);
+        const jx = (Math.random() - 0.5) * (isMobile ? 7 : 18);
+        const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
     });
 
     // ── Taille mobile-aware + classe in-matrix ────────────
-    // msize : 6px sur mobile (NODE_H=7 → nœuds séparés, pas de fusion de glow)
+    // msize : 8px sur mobile (NODE_H=10 → nœuds bien séparés, glow individuel visible)
     //         data(size) sur desktop (hiérarchie hub/périphérie visible)
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      n.data('msize', isMobile ? Math.min(n.data('size') || 22, 6) : (n.data('size') || 22));
+      n.data('msize', isMobile ? Math.min(n.data('size') || 22, 8) : (n.data('size') || 22));
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
@@ -2017,7 +2017,7 @@ const Graph = (() => {
     // Sur mobile : override inline des shadows pour éviter les blobs (blur stylesheet=30px → trop grand)
     if (isMobile) {
       cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 4, 'shadow-opacity': 0.55,
+        'shadow-blur': 6, 'shadow-opacity': 0.65,
       });
     }
 
@@ -2057,7 +2057,7 @@ const Graph = (() => {
 
     // Column labels: type names (desktop) ou macro-groupes mobile rotés à 90°
     // Rotation -90° = lecture bas→haut (convention matrice)
-    const colLabelY = isMobile ? OY - 46 : OY - 220;
+    const colLabelY = isMobile ? OY - 58 : OY - 240;
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         const cl = cy.add({
@@ -2930,15 +2930,15 @@ function showGuidedOverlay() {
         <div class="guided-suggestions" id="guided-suggestions"></div>
       </div>
       <div class="guided-modes">
-        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-full">
-          ◈ Galaxie de la thèse
-          <span class="guided-mode-sub">Îles par chapitre · spirale Fibonacci</span>
+        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-matrice">
+          ◫ Structure de la thèse
+          <span class="guided-mode-sub">Matrice chapitres × types</span>
         </button>
       </div>
       <div class="guided-modes guided-modes-secondary">
-        <button class="btn-secondary guided-mode-btn" id="guided-btn-matrice">
-          ◫ Matrice
-          <span class="guided-mode-sub">Chapitres × types</span>
+        <button class="btn-secondary guided-mode-btn" id="guided-btn-full">
+          ⚡ Tout le graphe
+          <span class="guided-mode-sub">Vue archipel</span>
         </button>
         <button class="btn-secondary guided-mode-btn" id="guided-btn-medium">
           → Essentiel
