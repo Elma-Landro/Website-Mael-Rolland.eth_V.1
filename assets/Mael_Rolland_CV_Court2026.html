@@ -319,10 +319,11 @@
       .tag { background-color: rgba(255,255,255,0.1) !important; }
       a { color: var(--texte); }
 
-      /* Page 1 = 2e enfant de body (après .print-btn) → :nth-child(2), PAS :first-child.
-         Économie : ~4px × 16 entrées + ~5px × 3 titres = ~79px → tout tient sur la page. */
-      .cv-page:nth-child(2) .entree { margin-bottom: 6px; }
-      .cv-page:nth-child(2) .m-titre { margin-top: 10px; }
+      /* Page 1 = 2e enfant de body (après .print-btn) → :nth-child(2).
+         Resserrement progressif jusqu'à ce que tout tienne sur la page. */
+      .cv-page:nth-child(2) .entree { margin-bottom: 4px; }
+      .cv-page:nth-child(2) .m-titre { margin-top: 8px; }
+      .cv-page:nth-child(2) .cv-main { padding-top: 10px; }
     }
 
     @media (max-width: 700px) {
