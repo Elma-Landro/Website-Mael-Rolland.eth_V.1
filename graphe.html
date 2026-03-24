@@ -2069,14 +2069,16 @@ const Graph = (() => {
         .map(v => v.toString(16).padStart(2,'0')).join('');
     };
 
+    // Extended chapter colors: row 5 (multi-chapter / unassigned) gets neutral gray
+    const CH_COLORS_EXT = [...CHAPTER_COLORS, '#666666'];
+
     if (isMobile) {
-      // Per-cell blended halos: each (chapter row × type col) cell gets a unique color
-      // = fusion 50/50 of chapter color and column semantic color
+      // Per-cell blended halos — ALL rows including row 5 (no node left behind)
       Object.keys(cells).forEach(key => {
         const [rStr, cStr] = key.split('_');
         const row = parseInt(rStr), col = parseInt(cStr);
-        if (row < 0 || row >= 5 || col < 0 || col >= 6) return;
-        const chCol   = CHAPTER_COLORS[row]      || '#888888';
+        if (col < 0 || col >= 6) return;
+        const chCol   = CH_COLORS_EXT[row]       || '#666666';
         const typeCol = MOBILE_HALO_COLORS[col]  || '#888888';
         cy.add({
           data: { id: '__halo_' + row + '_' + col, color: blendHex(chCol, typeCol) },
@@ -2097,16 +2099,18 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    // Row labels: chapter names
+    // Row labels: chapter names (+ optional row 5 "Multi." if unassigned nodes exist)
     const rowLabelX = isMobile ? OX - 28 : OX - 230;
-    const MAT_CHAPTER_LABELS = isMobile
-      ? ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.']
-      : CHAPTER_LABELS;
-    const rowSize  = isMobile ? '33px' : '18px';
+    const hasRow5   = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
+    const mobileRowLabels = ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.'];
+    if (hasRow5) mobileRowLabels.push('Multi.');
+    const MAT_CHAPTER_LABELS = isMobile ? mobileRowLabels : CHAPTER_LABELS;
+    const rowSize   = isMobile ? '33px' : '18px';
     const rowHalign = isMobile ? 'left'  : 'center';
     MAT_CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
-        data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i],
+        data: { id: '__mat_row_' + i, label: label,
+                labelColor: CH_COLORS_EXT[i] || '#666666',
                 labelSize: rowSize, labelHalign: rowHalign },
         position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
