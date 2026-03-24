@@ -318,6 +318,11 @@
       .cv-footer { background-color: #6e2020 !important; }
       .tag { background-color: rgba(255,255,255,0.1) !important; }
       a { color: var(--texte); }
+
+      /* Page 1 : resserrement léger des marges pour faire tenir tout le contenu.
+         Économie : ~3px × 12 entrées ≈ 36px → École Maigret + Chargé de TD visibles. */
+      .cv-page:first-child .entree { margin-bottom: 7px; }
+      .cv-page:first-child .m-titre { margin-top: 11px; }
     }
 
     @media (max-width: 700px) {
@@ -603,7 +608,15 @@
           </div>
         </div>
 
-        <div style="height: 14px;"></div>
+        <div class="entree">
+          <div class="entree__date">2010 – 2012</div>
+          <div class="entree__corps">
+            <div class="entree__titre">Chargé de TD — Université Paris I</div>
+            <div class="entree__org">UFR MASS &amp; UFR AES — Introduction à l'économie du travail, Méthodologie (L1)</div>
+            <div class="entree__desc">~136h (CM : N. Thévenot &amp; K. Azizi).</div>
+          </div>
+        </div>
+
       </main>
 
     </div><!-- /cv-corps page 1 -->
@@ -666,18 +679,7 @@
       <!-- MAIN PAGE 2 -->
       <main class="cv-main">
 
-        <div class="m-titre" style="margin-top:0">Enseignement <small style="font-weight:400;letter-spacing:0;font-variant:normal;text-transform:none;font-size:0.7em;color:var(--texte-leger)">(suite)</small></div>
-
-        <div class="entree">
-          <div class="entree__date">2010 – 2012</div>
-          <div class="entree__corps">
-            <div class="entree__titre">Chargé de TD — Université Paris I</div>
-            <div class="entree__org">UFR MASS &amp; UFR AES — Introduction à l'économie du travail, Méthodologie (L1)</div>
-            <div class="entree__desc">~136h (CM : N. Thévenot &amp; K. Azizi).</div>
-          </div>
-        </div>
-
-        <div class="m-titre">Communications scientifiques</div>
+        <div class="m-titre" style="margin-top:0">Communications scientifiques</div>
         <ul class="pub-liste">
           <li><span class="annee">2026</span>« Crisis as Political Experiment: Polycentric Governance and the Making of Cryptocurrency Infrastructures », <em>SASE Conference</em>, Sciences Po Bordeaux <span class="statut">(accepté)</span>.</li>
           <li><span class="annee">2025</span>« From Stateless Code to Networked Sovereignties », Symposium <em>New Governances</em>, Paris, 10–11 juin 2025.</li>
