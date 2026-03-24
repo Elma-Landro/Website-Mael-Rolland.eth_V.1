@@ -2045,7 +2045,24 @@ const Graph = (() => {
     const haloH       = ROW_H * 5 + 100;
     const haloCenterY = OY + 2 * ROW_H;
     const numCols     = isMobile ? 6 : sortedTypes.length;
-    if (!isMobile) {
+    if (isMobile) {
+      // Macro-column representative colors (one per group)
+      const MOBILE_HALO_COLORS = [
+        '#9b5fc4', // 0 Struct. — violet
+        '#3a9e5a', // 1 Objets  — vert
+        '#e09020', // 2 Acteurs — orange
+        '#7b8de8', // 3 Concepts — bleu
+        '#0f9688', // 4 Gouv.   — teal
+        '#b87de0', // 5 Sources — violet clair
+      ];
+      MOBILE_HALO_COLORS.forEach((color, j) => {
+        cy.add({
+          data: { id: '__halo_' + j, color },
+          position: { x: OX + j * COL_W, y: haloCenterY },
+          classes: 'col-halo',
+        });
+      });
+    } else {
       sortedTypes.forEach((typeName, j) => {
         cy.add({
           data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
@@ -2106,8 +2123,10 @@ const Graph = (() => {
 
     // Halo dimensions
     cy.style().selector('node.col-halo').style({
-      'width':  COL_W * 0.82,
+      'width':  isMobile ? COL_W * 0.95 : COL_W * 0.82,
       'height': haloH,
+      'background-opacity': isMobile ? 0.10 : 0.055,
+      'shadow-opacity':     isMobile ? 0.14 : 0.08,
     }).update();
 
     // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
