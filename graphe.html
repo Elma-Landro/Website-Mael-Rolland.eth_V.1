@@ -2146,14 +2146,15 @@ const Graph = (() => {
       });
     }
 
-    // Halo dimensions — fond invisible, tout passe par le glow (shadow)
-    // → évite l'effet "tableau brut", les halos se superposent en dégradé doux
+    // Halo : ellipse légèrement > cellule → pas de bord dur, glows qui se chevauchent
+    // fond visible à faible opacité (couleur fusionnée) + shadow débordant = dégradé doux
     cy.style().selector('node.col-halo').style({
-      'width':              isMobile ? COL_W * 1.05 : COL_W * 0.90,
-      'height':             isMobile ? ROW_H * 1.05 : haloH,
-      'background-opacity': 0,          // aucun remplissage solide
-      'shadow-blur':        isMobile ? 52 : 70,
-      'shadow-opacity':     isMobile ? 0.55 : 0.12,
+      'shape':              'ellipse',
+      'width':              isMobile ? COL_W * 1.15 : COL_W * 0.92,
+      'height':             isMobile ? ROW_H * 1.10 : haloH,
+      'background-opacity': isMobile ? 0.14 : 0.06,
+      'shadow-blur':        isMobile ? 44 : 70,
+      'shadow-opacity':     isMobile ? 0.48 : 0.12,
     }).update();
 
     // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
