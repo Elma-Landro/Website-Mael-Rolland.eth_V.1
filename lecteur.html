@@ -407,6 +407,12 @@ body::before {
   color: var(--text2);
   line-height: 1.3;
   min-height: 1.3em;
+  overflow-wrap: break-word;
+  max-height: 3.9em;   /* 3 lignes max avant ellipsis */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 /* Type filters */
@@ -1005,6 +1011,8 @@ let state = {
   annotations:       [],     // manual passage→entity links (localStorage + export)
   annotMode:         false,  // annotation mode toggle
   pendingAnnotation: null,   // { text, section_key, chapter } of current selection
+  sectionKeyLabel:   {},     // section_key → labelFr (built from ThesisSection entities)
+  _introCtx:         { letter: null, num: null }, // context for stateful intro heading parsing
 };
 
 // ═══════════════════════════════════════════════════════
@@ -1116,6 +1124,16 @@ async function loadGraph() {
     state.relTypeMap = Object.fromEntries(data.relation_types.map(r => [r.id, r.name]));
     state.entityMap  = Object.fromEntries(data.entities.map(e => [e.id, e]));
 
+    // Build section_key → labelFr map from ThesisSection entities
+    const TS_TYPE_ID = '4674ab9a271a425b9d5ba06504d32b9c';
+    state.sectionKeyLabel = {};
+    for (const e of data.entities) {
+      if (e.types?.includes(TS_TYPE_ID)) {
+        const sk = e.attributes?.section_key?.value;
+        if (sk) state.sectionKeyLabel[sk] = e.attributes?.labelFr?.value || e.name;
+      }
+    }
+
     // Adjacency list (needed for entity panel relations)
     const adj = {};
     for (const e of data.entities) adj[e.id] = [];
@@ -1149,15 +1167,80 @@ async function loadGraph() {
 // ═══════════════════════════════════════════════════════
 function headingToSectionKey(text, chapterId, tagName) {
   const clean = text.replace(/<[^>]+>/g, '').trim();
+  const lc    = clean.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   // Roman numeral + digits: "I.1", "I.1.1", "II.3.2", "III.4"
   const roman = clean.match(/^([IVX]{1,4}\.\d+(?:\.\d+)?(?:\.\d+)?)/);
-  if (roman) return roman[1];
+  if (roman) { state._introCtx = { letter: null, num: null }; return roman[1]; }
 
-  // Intro sub-sections: "A.", "A —", "A. Titre", lone "A"
   if (chapterId === 'intro') {
-    const letter = clean.match(/^([A-E])(?:[.\s\u2014\-]|$)/);
-    if (letter) return 'intro_' + letter[1];
+    // h1: top-level letter section "# A." … "# E."
+    if (tagName === 'h1') {
+      const letter = clean.match(/^([A-E])(?:[.\s\u2014\-]|$)/);
+      if (letter) {
+        state._introCtx = { letter: letter[1], num: null };
+        return 'intro_' + letter[1];
+      }
+    }
+
+    // h2: numbered subsection "## 1)" or "## 2)" or "## Enquêter…"
+    if (tagName === 'h2') {
+      const L = state._introCtx.letter;
+      if (!L) return null;
+      const numMatch = clean.match(/^(\d+)[).\s]/);
+      if (numMatch) {
+        const n = parseInt(numMatch[1]);
+        state._introCtx.num = n;
+        return `intro_${L}_${n}`;
+      }
+      // C.1 — "Enquêter sur la gouvernance" (no number prefix)
+      if (/enqueter|contraintes/.test(lc)) {
+        state._introCtx.num = 1;
+        return `intro_${L}_1`;
+      }
+      return null;
+    }
+
+    // h3 / h4: deep subsections — keyword matching per parent context
+    if (tagName === 'h3' || tagName === 'h4') {
+      const L = state._introCtx.letter;
+      const N = state._introCtx.num;
+      if (!L) return null;
+
+      // ── B.1 ─────────────────────────
+      if (L === 'B' && N === 1) {
+        if (/insatisfaction/.test(lc))               return 'intro_B_1a';
+        if (/amputer|institutionnalisme premier/.test(lc)) return 'intro_B_1b';
+      }
+      // ── B.2 ─────────────────────────
+      if (L === 'B' && N === 2) {
+        if (/anthropolog|ethnograph|empirie/.test(lc)) return 'intro_B_2a';
+        if (/boites? noires|sans coutures/.test(lc))   return 'intro_B_2b';
+      }
+      // ── B.3 ─────────────────────────
+      if (L === 'B' && N === 3) {
+        if (/heuristiq|hermeneutiq/.test(lc))          return 'intro_B_3a';
+        if (/perimetre|terrains/.test(lc))             return 'intro_B_3b';
+      }
+      // ── C.1 ─────────────────────────
+      if (L === 'C' && N === 1) {
+        if (/enjeux methodolog/.test(lc))              return 'intro_C_1a';
+        if (/enqueteur|relation.*enquete/.test(lc))    return 'intro_C_1b';
+      }
+      // ── C.2 h3 ──────────────────────
+      if (L === 'C' && N === 2 && tagName === 'h3') {
+        if (/face.*en ligne|documentaire.*saut|immersion participante/.test(lc)) return 'intro_C_2a';
+        if (/envers.*hors ligne|observations.*entretiens/.test(lc))              return 'intro_C_2d';
+      }
+      // ── C.2 h4 ──────────────────────
+      if (L === 'C' && N === 2 && tagName === 'h4') {
+        if (/creuser|terrier/.test(lc))                return 'intro_C_2b';
+        if (/approcher.*non.humain|immersions particip/.test(lc)) return 'intro_C_2c';
+        if (/observations.*evenement|evenement.*hors/.test(lc))   return 'intro_C_2e';
+        if (/^entretiens/.test(lc))                    return 'intro_C_2f';
+      }
+      return null;
+    }
   }
 
   // Conclusion sub-sections: match heading text keywords (h2/h3 level)
@@ -1280,7 +1363,8 @@ function updateGraph(sectionKey) {
   state.currentSectionKey = sectionKey;
 
   const sectionData = state.sectionEntitiesMap[sectionKey];
-  document.getElementById('graph-section-name').textContent = sectionKey;
+  const sectionLabel = state.sectionKeyLabel[sectionKey] || sectionKey;
+  document.getElementById('graph-section-name').textContent = sectionLabel;
 
   if (!sectionData?.entities?.length) {
     state.cy.elements().remove();
@@ -1395,6 +1479,7 @@ function smoothUpdateGraph(newNodes, newEdges) {
 async function loadChapter(chapterId) {
   state.currentChapter    = chapterId;
   state.currentSectionKey = null;
+  state._introCtx         = { letter: null, num: null };
   if (state.observer)        state.observer.disconnect();
   if (state.headingObserver) state.headingObserver.disconnect();
   updateChapterNav();
@@ -1463,13 +1548,17 @@ function renderMarkdown(md) {
   marked.setOptions({ breaks: true, gfm: true });
   let html = marked.parse(cleaned);
 
-  // Attach data-section and data-section-key to h1/h2 for IntersectionObserver
-  html = html.replace(/<(h[12])(.*?)>(.*?)<\/h[12]>/gs, (m, tag, attrs, content) => {
+  // Attach data-section and data-section-key to h1–h4 for IntersectionObserver
+  // h3/h4 only get data-section-key (no TOC entry), h1/h2 get both
+  state._introCtx = { letter: null, num: null };
+  html = html.replace(/<(h[1-4])(.*?)>(.*?)<\/h[1-4]>/gs, (m, tag, attrs, content) => {
     const text       = content.replace(/<[^>]+>/g, '');
     const slug       = slugify(text);
     const sectionKey = headingToSectionKey(text, state.currentChapter, tag) || '';
     const keyAttr    = sectionKey ? ` data-section-key="${sectionKey}"` : '';
-    return `<${tag}${attrs}${keyAttr} data-section="${text}" id="section-${slug}">${content}</${tag}>`;
+    const secAttr    = (tag === 'h1' || tag === 'h2') ? ` data-section="${text}"` : '';
+    const idAttr     = (tag === 'h1' || tag === 'h2') ? ` id="section-${slug}"` : '';
+    return `<${tag}${attrs}${keyAttr}${secAttr}${idAttr}>${content}</${tag}>`;
   });
 
   // Footnotes section
@@ -1768,7 +1857,8 @@ function setupIntersectionObserver() {
           const key = entry.target.dataset.sectionKey;
           if (key) {
             state.currentSectionKey = key;
-            document.getElementById('graph-section-name').textContent = key;
+            const label = state.sectionKeyLabel[key] || key;
+            document.getElementById('graph-section-name').textContent = label;
           }
           if (entry.target.dataset.section) updateTOCActive(entry.target.dataset.section);
         }
