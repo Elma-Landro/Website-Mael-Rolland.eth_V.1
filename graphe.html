@@ -1121,7 +1121,12 @@ function buildChapterMap(data) {
     }
   }
 
-  // Step 4 — Propagate along semantic edge types (3 passes)
+  // Snapshot of "definitive" assignments (Steps 1-3 = direct section citations).
+  // Steps 4-5 may only SPREAD from these seeds, never from propagated nodes,
+  // to prevent chains like Intro→Bitcoin→Peercoin mis-assigning Peercoin to Intro.
+  const definitive = new Set(Object.keys(result));
+
+  // Step 4 — Propagate along semantic edge types (3 passes, seeds only)
   const PROP = new Set([
     rtByName['cited in'], rtByName['quote supports'], rtByName['source of'],
     rtByName['part of'],  rtByName['authored'],       rtByName['created'],
@@ -1130,12 +1135,13 @@ function buildChapterMap(data) {
     for (const rel of data.relations) {
       if (!PROP.has(rel.type)) continue;
       const fi = result[rel.from], ti = result[rel.to];
-      if (fi !== undefined && ti === undefined) result[rel.to]   = fi;
-      if (ti !== undefined && fi === undefined) result[rel.from] = ti;
+      if (definitive.has(rel.from) && ti === undefined) result[rel.to]   = fi;
+      if (definitive.has(rel.to)   && fi === undefined) result[rel.from] = ti;
     }
   }
 
-  // Step 5 — BFS fallback (max 2 hops) for still-unassigned entities
+  // Step 5 — BFS fallback (max 1 hop) for still-unassigned entities, seeded ONLY
+  // from definitive nodes (Steps 1-3). Limiting to 1 hop avoids transitive mis-assignments.
   const adj = {};
   for (const rel of data.relations) {
     if (!adj[rel.from]) adj[rel.from] = [];
@@ -1145,12 +1151,12 @@ function buildChapterMap(data) {
   }
   const visited = new Set(Object.keys(result));
   const queue   = [];
-  for (const [id, ci] of Object.entries(result))
-    queue.push({ id, chapterIdx: ci, hops: 0 });
+  for (const id of definitive)
+    queue.push({ id, chapterIdx: result[id], hops: 0 });
   let head = 0;
   while (head < queue.length) {
     const { id, chapterIdx, hops } = queue[head++];
-    if (hops >= 2) continue;
+    if (hops >= 1) continue;
     for (const nb of (adj[id] || [])) {
       if (!visited.has(nb)) {
         visited.add(nb);
