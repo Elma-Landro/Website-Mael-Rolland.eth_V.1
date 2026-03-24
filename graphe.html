@@ -1436,7 +1436,7 @@ const Graph = (() => {
           'width': 'data(size)', 'height': 'data(size)',
           'label': '',
           'font-family': 'VT323, monospace',
-          'font-size': '13px',
+          'font-size': '11px',
           'color': 'data(labelColor)',
           'text-valign': 'bottom', 'text-halign': 'center',
           'text-margin-y': 6,
@@ -1927,14 +1927,14 @@ const Graph = (() => {
       'ProtocolChange': 50, 'ProtocolProposal': 51,
       'InfrastructureEvent': 52, 'InfrastructureSegment': 53,
       'DevelopmentPhase': 54, 'Capability': 55,
-      // 7 – Secondary sources (right zone)
-      'AcademicWork': 70, 'DoctoralThesis': 71,
-      'PrimarySource': 72, 'GreyLiterature': 73, 'IndigenousLiterature': 74,
-      // 7b – Methodological collections & quantitative datasets (after primary sources)
+      // 7 – Bibliographic references (secondary literature cited)
+      'AcademicWork': 70, 'DoctoralThesis': 71, 'Reference': 72,
+      // 7b – Methodological collections & quantitative datasets
       'Corpus': 75, 'MonetaryObject': 76,
       'PriceSeries': 77, 'PriceWindow': 78,
-      // 8 – Raw source material (rightmost)
-      'SourceQuote': 80, 'Reference': 81,
+      // 8 – Primary / raw sources (rightmost zone — very numerous, end of graph)
+      'PrimarySource': 82, 'GreyLiterature': 83, 'IndigenousLiterature': 84,
+      'SourceQuote': 85,
     };
     const typeCounts = {};
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
