@@ -1544,9 +1544,9 @@ const Graph = (() => {
       {
         selector: 'node.in-nebula',
         style: {
-          'shadow-blur':     55,
+          'shadow-blur':     80,   // plus grand → blobs qui se fondent en nuage
           'shadow-color':    'data(color)',
-          'shadow-opacity':  0.80,
+          'shadow-opacity':  0.90,
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
         }
@@ -1555,15 +1555,10 @@ const Graph = (() => {
       // Pyramide argumentative : Reference/SourceQuote/etc. = rang inférieur,
       // visibles mais discrets. Spirale de Fibonacci les place naturellement
       // en bordure (les moins connectés = les plus éloignés du centre).
+      // ── Nebula : nœuds feuilles complètement cachés pour réduire le canvas ──
       {
         selector: 'node.nebula-leaf',
-        style: {
-          'width': 5, 'height': 5,
-          'label': '',
-          'shadow-blur':    20,
-          'shadow-opacity': 0.50,
-          'background-opacity': 0.65,
-        }
+        style: { 'display': 'none' }  // exclut des bounds → zoom fit correct
       },
       // ── Nebula archipelago : arêtes complètement supprimées du rendu ──
       {
@@ -1732,9 +1727,12 @@ const Graph = (() => {
       if (NEBULA_LEAF_TYPES.has(n.data('typeName'))) n.addClass('nebula-leaf');
     });
 
-    // ── 3. Grouper les nœuds visibles par chapitre ────────
+    // ── 3. Grouper les nœuds CORE par chapitre (sans les feuilles) ────────
+    // Les feuilles (Reference, SourceQuote…) sont cachées (display:none) → exclues
+    // des bounds → canvas ~3× plus petit → zoom fit correct → clusters visibles
     const groups = [[], [], [], [], [], []]; // 0-4 = chapitres, 5 = non-assignés
     cy.nodes(':visible').not('.chapter-label').forEach(n => {
+      if (NEBULA_LEAF_TYPES.has(n.data('typeName'))) return; // feuilles exclues du spiral
       const idx = n.data('chapterIdx');
       groups[idx >= 0 ? idx : 5].push(n);
     });
@@ -2144,6 +2142,8 @@ const Graph = (() => {
     });
 
     cy.layout({ name: 'preset', fit: true, padding: 60 }).run();
+    // Arêtes cachées par défaut dans la vue arbre (19 k edges = masse verte illisible)
+    cy.edges().addClass('in-matrix');
   }
 
   return { init, render, applyLayout, applyNebulaLayout, applyMatriceLayout, applyArbreLayout, zoomToChapter, zoomToArchipelago, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, get cy() { return cy; } };
