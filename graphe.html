@@ -2050,21 +2050,37 @@ const Graph = (() => {
     cy.$('.col-halo').remove();
     const haloH       = ROW_H * 5 + 100;
     const haloCenterY = OY + 2 * ROW_H;
-    const numCols     = isMobile ? 6 : sortedTypes.length;
+
+    // Macro-column semantic colors (shared by halos + column labels)
+    const MOBILE_HALO_COLORS = [
+      '#9b5fc4', // 0 Struct.  — violet
+      '#3a9e5a', // 1 Objets   — vert
+      '#e09020', // 2 Acteurs  — orange
+      '#7b8de8', // 3 Concepts — bleu
+      '#0f9688', // 4 Gouv.    — teal
+      '#b87de0', // 5 Sources  — violet clair
+    ];
+
+    // Blend two hex colors (t=0 → pure h1, t=1 → pure h2)
+    const blendHex = (h1, h2, t = 0.50) => {
+      const p = h => [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
+      const [r1,g1,b1] = p(h1), [r2,g2,b2] = p(h2);
+      return '#' + [Math.round(r1*(1-t)+r2*t), Math.round(g1*(1-t)+g2*t), Math.round(b1*(1-t)+b2*t)]
+        .map(v => v.toString(16).padStart(2,'0')).join('');
+    };
+
     if (isMobile) {
-      // Macro-column representative colors (one per group)
-      const MOBILE_HALO_COLORS = [
-        '#9b5fc4', // 0 Struct. — violet
-        '#3a9e5a', // 1 Objets  — vert
-        '#e09020', // 2 Acteurs — orange
-        '#7b8de8', // 3 Concepts — bleu
-        '#0f9688', // 4 Gouv.   — teal
-        '#b87de0', // 5 Sources — violet clair
-      ];
-      MOBILE_HALO_COLORS.forEach((color, j) => {
+      // Per-cell blended halos: each (chapter row × type col) cell gets a unique color
+      // = fusion 50/50 of chapter color and column semantic color
+      Object.keys(cells).forEach(key => {
+        const [rStr, cStr] = key.split('_');
+        const row = parseInt(rStr), col = parseInt(cStr);
+        if (row < 0 || row >= 5 || col < 0 || col >= 6) return;
+        const chCol   = CHAPTER_COLORS[row]      || '#888888';
+        const typeCol = MOBILE_HALO_COLORS[col]  || '#888888';
         cy.add({
-          data: { id: '__halo_' + j, color },
-          position: { x: OX + j * COL_W, y: haloCenterY },
+          data: { id: '__halo_' + row + '_' + col, color: blendHex(chCol, typeCol) },
+          position: { x: OX + col * COL_W, y: OY + row * ROW_H },
           classes: 'col-halo',
         });
       });
@@ -2082,8 +2098,6 @@ const Graph = (() => {
     cy.$('.chapter-label, .type-label').remove();
 
     // Row labels: chapter names
-    // Mobile: text-halign 'left' → texte s'étend vers la GAUCHE depuis le label node
-    // → texte va de (rowLabelX - text_width) à rowLabelX, sans chevaucher les colonnes
     const rowLabelX = isMobile ? OX - 28 : OX - 230;
     const MAT_CHAPTER_LABELS = isMobile
       ? ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.']
@@ -2099,14 +2113,15 @@ const Graph = (() => {
       });
     });
 
-    // Column labels: angle oblique -45°, remontés, x centré sur la colonne
-    const colLabelY      = isMobile ? OY - 133 : OY - 240;
-    const colRotation    = isMobile ? -Math.PI / 4 : 0;
-    const colSize        = isMobile ? '33px' : '28px';
+    // Column labels: inherit the macro-column color (not neutral gray)
+    const colLabelY   = isMobile ? OY - 133 : OY - 240;
+    const colRotation = isMobile ? -Math.PI / 4 : 0;
+    const colSize     = isMobile ? '33px' : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
-          data: { id: '__mat_col_' + j, label: label, labelColor: '#dddddd',
+          data: { id: '__mat_col_' + j, label: label,
+                  labelColor: MOBILE_HALO_COLORS[j],
                   labelSize: colSize, labelRotation: colRotation },
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
@@ -2127,12 +2142,13 @@ const Graph = (() => {
       });
     }
 
-    // Halo dimensions
+    // Halo dimensions — mobile: per-cell size; desktop: full-height column
     cy.style().selector('node.col-halo').style({
       'width':  isMobile ? COL_W * 0.95 : COL_W * 0.82,
-      'height': haloH,
-      'background-opacity': isMobile ? 0.10 : 0.055,
-      'shadow-opacity':     isMobile ? 0.14 : 0.08,
+      'height': isMobile ? ROW_H * 0.88 : haloH,
+      'background-opacity': isMobile ? 0.22 : 0.055,
+      'shadow-blur':        isMobile ? 18   : 30,
+      'shadow-opacity':     isMobile ? 0.30 : 0.08,
     }).update();
 
     // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
