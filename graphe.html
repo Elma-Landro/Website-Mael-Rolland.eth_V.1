@@ -694,7 +694,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
     <h2 id="overlay-title">Chargement du graphe…</h2>
-    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v82.json</p>
+    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v83.json</p>
     <button class="btn-primary hidden" id="btn-load2">📂 Charger manuellement</button>
   </div>
 </div>
@@ -1427,6 +1427,7 @@ const Graph = (() => {
           'text-valign': 'bottom', 'text-halign': 'center',
           'text-margin-y': 6,
           'text-outline-color': '#000000', 'text-outline-width': 2,
+          'min-zoomed-font-size': 16,
           'border-width': 0,
           'overlay-padding': 6,
           'shadow-blur':     0,
@@ -1491,12 +1492,11 @@ const Graph = (() => {
         selector: 'node.hop2',
         style: { 'border-width': 2, 'border-color': '#ff8800', 'border-opacity': 0.75, 'opacity': 0.70 }
       },
-      // ── Matrix grid mode: tiny dots, subtle glow, no labels ──────
+      // ── Matrix grid mode: tiny dots, subtle glow, labels appear on zoom ──────
       {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'label': '',
           'shadow-blur': 30, 'shadow-opacity': 0.80,
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
@@ -3289,7 +3289,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Auto-fetch du graphe au chargement ──────────────────
   (async () => {
     try {
-      const resp = await fetch('grc20-these-mael-rolland-v82.json');
+      const resp = await fetch('grc20-these-mael-rolland-v83.json');
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       onDataLoaded(data);

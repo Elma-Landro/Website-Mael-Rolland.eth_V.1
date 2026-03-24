@@ -1,0 +1,2081 @@
+{
+  "description": "Patch 3a: add missing intro subsections (17 ThesisSection) + fix thesisLocation for intro A-E",
+  "graph_version": "v82→v83",
+  "new_entities": [
+    {
+      "id": "707ffa8647a7acc3f95f8af261c4c77e",
+      "name": "A.1. Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : A.1. Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "a-1-un-int-r-t-pour-la-monnaie-et-les-objets-mon-taires-non-identifi-s",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "A.1. Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Interest in money and 'Unidentified Monetary Objects'",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Genèse de l'intérêt de recherche pour les CM comme objets monétaires non identifiés, entre économie et sociologie.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 18",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_A_1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "a-1-un-int-r-t-pour-la-monnaie-et-les-objets-mon-taires-non-identifi-s",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "4c8427cf88d26487ceeb26dc51dddafc",
+      "name": "A.2. La controverse sur le caractère monétaire des cryptomonnaies",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : A.2. La controverse sur le caractère monétaire des cryptomonnaies",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "a-2-la-controverse-sur-le-caract-re-mon-taire-des-cryptomonnaies",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "A.2. La controverse sur le caractère monétaire des cryptomonnaies",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Controversy on the monetary nature of cryptocurrencies",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Recensement des débats académiques et institutionnels sur la qualification monétaire des CM.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 19",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_A_2",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "a-2-la-controverse-sur-le-caract-re-mon-taire-des-cryptomonnaies",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "29b2b4aff0e4ef2ae111f10d72a69dab",
+      "name": "A.3. Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : A.3. Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "a-3-r-v-ler-l-indicible-gouvernance-des-cm-contre-les-pr-tentions-lib-rales-tech",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 2,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "A.3. Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Revealing the 'unspeakable' governance of CM against liberal-technicist claims",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Construction de l'objet : dépasser l'idéologie apolitiste pour révéler la gouvernance discrète et polycentrique.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 21",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_A_3",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "a-3-r-v-ler-l-indicible-gouvernance-des-cm-contre-les-pr-tentions-lib-rales-tech",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "4a8d6940c30a34aada2553ed8febd6bb",
+      "name": "B.1. L'institutionnalisme monétaire pour caractériser les CM comme monnaies",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.1. L'institutionnalisme monétaire pour caractériser les CM comme monnaies",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-1-linstitutionnalisme-mon-taire-pour-caract-riser-les-cm-comme-monnaies",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.1. L'institutionnalisme monétaire pour caractériser les CM comme monnaies",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Monetary institutionalism to characterise CM as money",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Présentation du cadre institutionnaliste monétaire mobilisé pour analyser les CM.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 24",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-1-linstitutionnalisme-mon-taire-pour-caract-riser-les-cm-comme-monnaies",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "79a77b4aa63fd0cde00e4769b174455d",
+      "name": "B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-1-a-notre-insatisfaction-vis-vis-de-la-th-orie-mon-taire-dominante",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Dissatisfaction with dominant monetary theory",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Critique de la théorie quantitative de la monnaie et des approches mainstream pour saisir les CM.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 25",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_1a",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-1-a-notre-insatisfaction-vis-vis-de-la-th-orie-mon-taire-dominante",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "1ef9935001830b38166ebb62a144f513",
+      "name": "B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-1-b-analyser-le-ph-nom-ne-mon-taire-sans-lamputer-un-institutionnalisme-premie",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Analysing monetary phenomena without amputation: primary institutionalism",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Présentation de l'institutionnalisme monétaire comme cadre d'analyse privilégiant l'empirie des usages.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 27",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_1b",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-1-b-analyser-le-ph-nom-ne-mon-taire-sans-lamputer-un-institutionnalisme-premie",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "600a5e7b08126f881793ff6696c244a0",
+      "name": "B.2. Gouvernance des CM : perspectives sociologiques",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.2. Gouvernance des CM : perspectives sociologiques",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-2-gouvernance-des-cm-perspectives-sociologiques",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.2. Gouvernance des CM : perspectives sociologiques",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "CM governance: sociological perspectives",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Apports de la sociologie et de l'anthropologie pour saisir la gouvernance monétaire des CM.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 28",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_2",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-2-gouvernance-des-cm-perspectives-sociologiques",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "6359b66f7d234e7d159cf71f4667157d",
+      "name": "B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-2-a-anthropologie-ethnographie-et-sociologie-de-la-monnaie-lempirie-des-usages",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Anthropology, ethnography and sociology of money: the empirics of uses",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Revue des approches anthropologiques et ethnographiques de la monnaie mobilisées dans la thèse.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 29",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_2a",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-2-a-anthropologie-ethnographie-et-sociologie-de-la-monnaie-lempirie-des-usages",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "d4807871cddce677c374549b5f3dc98e",
+      "name": "B.2.b. Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures »",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.2.b. Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures »",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-2-b-au-del-des-bo-tes-noires-les-cm-des-infrastructures-sans-coutures",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.2.b. Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures »",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Beyond 'black boxes': CM as 'seamless' infrastructures",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Mobilisation du concept STS d'infrastructure sans coutures pour analyser les CM comme objets sociotechniques.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 30",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_2b",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-2-b-au-del-des-bo-tes-noires-les-cm-des-infrastructures-sans-coutures",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "11892ab65226a8fde71e11d23dff672c",
+      "name": "B.3. La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.3. La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-3-la-gouvernance-de-bitcoin-et-dethereum-d-voil-e-par-leurs-crises",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 2,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.3. La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Bitcoin and Ethereum governance revealed by their crises",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Les crises comme révélateurs de la gouvernance ordinairement invisible des protocoles.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 32",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_3",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-3-la-gouvernance-de-bitcoin-et-dethereum-d-voil-e-par-leurs-crises",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "985d5ee38de80ff547c153939f00c294",
+      "name": "B.3.a. Les fonctions heuristiques et herméneutiques des « crises »",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.3.a. Les fonctions heuristiques et herméneutiques des « crises »",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-3-a-les-fonctions-heuristiques-et-herm-neutiques-des-crises",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.3.a. Les fonctions heuristiques et herméneutiques des « crises »",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Heuristic and hermeneutic functions of 'crises'",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Définition opératoire du concept de crise comme outil heuristique et herméneutique pour la thèse.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 32",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_3a",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-3-a-les-fonctions-heuristiques-et-herm-neutiques-des-crises",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "92eccc1b5de0f983abd5f49cf462752e",
+      "name": "B.3.b. Du périmètre de nos terrains : deux crises différenciées touchant Bitcoin et Ethereum",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : B.3.b. Du périmètre de nos terrains : deux crises différenciées touchant Bitcoin et Ethereum",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "b-3-b-du-p-rim-tre-de-nos-terrains-deux-crises-diff-renci-es-touchant-bitcoin-et",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "B.3.b. Du périmètre de nos terrains : deux crises différenciées touchant Bitcoin et Ethereum",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Scope of our fieldwork: two differentiated crises affecting Bitcoin and Ethereum",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Présentation des deux cas empiriques : la CVE-2018-17144 (Bitcoin) et le hard fork DAO (Ethereum).",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 33",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_B_3b",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "b-3-b-du-p-rim-tre-de-nos-terrains-deux-crises-diff-renci-es-touchant-bitcoin-et",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "name": "C.1. Enquêter sur la gouvernance des CM : contraintes et enjeux",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.1. Enquêter sur la gouvernance des CM : contraintes et enjeux",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-1-enqu-ter-sur-la-gouvernance-des-cm-contraintes-et-enjeux",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.1. Enquêter sur la gouvernance des CM : contraintes et enjeux",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Investigating CM governance: constraints and challenges",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Réflexivité méthodologique sur les contraintes d'accès et les enjeux éthiques du terrain.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 34",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-1-enqu-ter-sur-la-gouvernance-des-cm-contraintes-et-enjeux",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "9a51476586060f9220b1f4977a5ddbde",
+      "name": "C.1.a. Enjeux méthodologiques",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.1.a. Enjeux méthodologiques",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-1-a-enjeux-m-thodologiques",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.1.a. Enjeux méthodologiques",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Methodological challenges",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Discussion des défis méthodologiques spécifiques à l'étude ethnographique des communautés crypto.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 34",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_1a",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-1-a-enjeux-m-thodologiques",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "0cf63080533e87d5bc747f09d72505a0",
+      "name": "C.1.b. La relation enquêteur-enquêtés",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.1.b. La relation enquêteur-enquêtés",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-1-b-la-relation-enqu-teur-enqu-t-s",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.1.b. La relation enquêteur-enquêtés",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Researcher-researched relationship",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Réflexion sur le positionnement du chercheur et la relation avec les enquêtés dans l'écosystème crypto.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 36",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_1b",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-1-b-la-relation-enqu-teur-enqu-t-s",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "4615956ddad16a1de0c360886fa0932f",
+      "name": "C.2. Stratégie d'accès et matériaux de terrain récoltés",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2. Stratégie d'accès et matériaux de terrain récoltés",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-strat-gie-dacc-s-et-mat-riaux-de-terrain-r-colt-s",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2. Stratégie d'accès et matériaux de terrain récoltés",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Access strategy and field materials collected",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Description de la stratégie multi-niveau combinant sources documentaires, immersions et entretiens.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 39",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-strat-gie-dacc-s-et-mat-riaux-de-terrain-r-colt-s",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "533f166041015681506e5003366ba9d5",
+      "name": "C.2.a. La face « en ligne » des CM : de la recherche documentaire à l'immersion participante",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2.a. La face « en ligne » des CM : de la recherche documentaire à l'immersion participante",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-a-la-face-en-ligne-des-cm-de-la-recherche-documentaire-limmersion-participan",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 0,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2.a. La face « en ligne » des CM : de la recherche documentaire à l'immersion participante",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "The 'online' face of CM: from documentary research to participant immersion",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Présentation de la phase de netnographie et d'immersion participante en ligne.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 43",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2a",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-a-la-face-en-ligne-des-cm-de-la-recherche-documentaire-limmersion-participan",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "ce5164aaecea4aaec0f9d754ad8d84c4",
+      "name": "C.2.b. « Creuser au fond du terrier » : les recherches documentaires",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2.b. « Creuser au fond du terrier » : les recherches documentaires",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-b-creuser-au-fond-du-terrier-les-recherches-documentaires",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 1,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2.b. « Creuser au fond du terrier » : les recherches documentaires",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "'Digging to the bottom of the burrow': documentary research",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Les sources documentaires comme matériau central : archives, listes de diffusion, forums, GitHub.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 43",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2b",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-b-creuser-au-fond-du-terrier-les-recherches-documentaires",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "63b87660eedea4c59423d7f2537e5d78",
+      "name": "C.2.c. S'approcher des acteurs non humains : des immersions participantes fructueuses",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2.c. S'approcher des acteurs non humains : des immersions participantes fructueuses",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-c-sapprocher-des-acteurs-non-humains-des-immersions-participantes-fructueuse",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 2,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2.c. S'approcher des acteurs non humains : des immersions participantes fructueuses",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Approaching non-human actors: fruitful participant immersions",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Immersions dans les repositories GitHub, nodes Bitcoin/Ethereum et protocoles techniques.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 44",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2c",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-c-sapprocher-des-acteurs-non-humains-des-immersions-participantes-fructueuse",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "f99a9cb9e9ca7b29a73efdcae8212a77",
+      "name": "C.2.d. L'envers « hors ligne » : observations et entretiens",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2.d. L'envers « hors ligne » : observations et entretiens",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-d-lenvers-hors-ligne-observations-et-entretiens",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 3,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2.d. L'envers « hors ligne » : observations et entretiens",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "The 'offline' side: observations and interviews",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Observations participantes hors ligne (conférences, meetups) et entretiens semi-directifs.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 46",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2d",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-d-lenvers-hors-ligne-observations-et-entretiens",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "ee02c5c55eac9cd1fe26d13e8427cc50",
+      "name": "C.2.e. Observations participantes hors ligne",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2.e. Observations participantes hors ligne",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-e-observations-participantes-hors-ligne",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 4,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2.e. Observations participantes hors ligne",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Offline participant observations",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Premiers contacts en présence d'acteurs humains lors d'événements hors ligne.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 46",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2e",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-e-observations-participantes-hors-ligne",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "c55b4bb54aa5817904f907248c78ce8a",
+      "name": "C.2.f. Entretiens",
+      "description": {
+        "type": "TEXT",
+        "value": "Sous-section de l'introduction générale : C.2.f. Entretiens",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "4674ab9a271a425b9d5ba06504d32b9c"
+      ],
+      "attributes": {
+        "slug": {
+          "type": "TEXT",
+          "value": "c-2-f-entretiens",
+          "options": {
+            "language": "en"
+          }
+        },
+        "order": {
+          "type": "NUMBER",
+          "value": 5,
+          "options": {
+            "language": "en"
+          }
+        },
+        "labelFr": {
+          "type": "TEXT",
+          "value": "C.2.f. Entretiens",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "labelEn": {
+          "type": "TEXT",
+          "value": "Interviews",
+          "options": {
+            "language": "en"
+          }
+        },
+        "summary": {
+          "type": "TEXT",
+          "value": "Corpus d'entretiens semi-directifs avec développeurs, mineurs et acteurs de l'écosystème.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "evidenceStatus": {
+          "type": "TEXT",
+          "value": "thesis section",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "thesisLocation": {
+          "type": "TEXT",
+          "value": "p. 46",
+          "options": {
+            "language": "en"
+          }
+        },
+        "section_key": {
+          "type": "TEXT",
+          "value": "intro_C_2f",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "slugPreferred": {
+          "type": "TEXT",
+          "value": "c-2-f-entretiens",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    }
+  ],
+  "new_relations": [
+    {
+      "id": "a13a41c9da5aa75b61ccbe5049c73300",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "0fcc7028560c47cc9b82309f469b700c",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "attributes": []
+    },
+    {
+      "id": "0de410f318b54b1aa0729717636becc8",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "707ffa8647a7acc3f95f8af261c4c77e",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "attributes": []
+    },
+    {
+      "id": "dbf25b98597d470af7094ed0aca38e8c",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "0fcc7028560c47cc9b82309f469b700c",
+      "to": "4c8427cf88d26487ceeb26dc51dddafc",
+      "attributes": []
+    },
+    {
+      "id": "bc11d8b73e71c66b320a577f23ba2f91",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "4c8427cf88d26487ceeb26dc51dddafc",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "attributes": []
+    },
+    {
+      "id": "723efef8099840ddfd8578a48245e071",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "0fcc7028560c47cc9b82309f469b700c",
+      "to": "29b2b4aff0e4ef2ae111f10d72a69dab",
+      "attributes": []
+    },
+    {
+      "id": "a95b993c5b246bdbc9b2d421f8e0cd5a",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "29b2b4aff0e4ef2ae111f10d72a69dab",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "attributes": []
+    },
+    {
+      "id": "b5204a414a259f34c63ad591e452d38e",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "to": "4a8d6940c30a34aada2553ed8febd6bb",
+      "attributes": []
+    },
+    {
+      "id": "443a37c4aa7ae3e0facc1e34eb3d4d57",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "4a8d6940c30a34aada2553ed8febd6bb",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attributes": []
+    },
+    {
+      "id": "ecf4fd9c07f8ea1d9b61dbd24dd914c8",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4a8d6940c30a34aada2553ed8febd6bb",
+      "to": "79a77b4aa63fd0cde00e4769b174455d",
+      "attributes": []
+    },
+    {
+      "id": "1afce040831529c309c7ca319f93f01e",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "79a77b4aa63fd0cde00e4769b174455d",
+      "to": "4a8d6940c30a34aada2553ed8febd6bb",
+      "attributes": []
+    },
+    {
+      "id": "454eadfbdddb7135f80572719497889c",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4a8d6940c30a34aada2553ed8febd6bb",
+      "to": "1ef9935001830b38166ebb62a144f513",
+      "attributes": []
+    },
+    {
+      "id": "a2a9e8f154e107d23b7a0c71282a2b23",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "1ef9935001830b38166ebb62a144f513",
+      "to": "4a8d6940c30a34aada2553ed8febd6bb",
+      "attributes": []
+    },
+    {
+      "id": "aafc5b3b2b754e33d55ead89c4890a30",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "attributes": []
+    },
+    {
+      "id": "3e2e7884d48f71bfa434a3f76fc4fd49",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "600a5e7b08126f881793ff6696c244a0",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attributes": []
+    },
+    {
+      "id": "8924f078dbad13172a23f1051e427cc1",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "600a5e7b08126f881793ff6696c244a0",
+      "to": "6359b66f7d234e7d159cf71f4667157d",
+      "attributes": []
+    },
+    {
+      "id": "02b3ba9bc2b30a2675cdd5604039e249",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "6359b66f7d234e7d159cf71f4667157d",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "attributes": []
+    },
+    {
+      "id": "0a670636f896b412d8a6e8960dfac53b",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "600a5e7b08126f881793ff6696c244a0",
+      "to": "d4807871cddce677c374549b5f3dc98e",
+      "attributes": []
+    },
+    {
+      "id": "bfe2942848a1a01ae3a78bcdb86cdbee",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "d4807871cddce677c374549b5f3dc98e",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "attributes": []
+    },
+    {
+      "id": "0e3a60dcb4cf13aa5dca75049283a652",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "to": "11892ab65226a8fde71e11d23dff672c",
+      "attributes": []
+    },
+    {
+      "id": "3f098170891da6709af44de0264b1035",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "11892ab65226a8fde71e11d23dff672c",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attributes": []
+    },
+    {
+      "id": "93ab75bd50cf7c3ba5ff0f47a8191576",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "11892ab65226a8fde71e11d23dff672c",
+      "to": "985d5ee38de80ff547c153939f00c294",
+      "attributes": []
+    },
+    {
+      "id": "1f4812f472cc7bde77f3b1beb111f20a",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "985d5ee38de80ff547c153939f00c294",
+      "to": "11892ab65226a8fde71e11d23dff672c",
+      "attributes": []
+    },
+    {
+      "id": "aac80195c95164a731e3ebf913d9ef15",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "11892ab65226a8fde71e11d23dff672c",
+      "to": "92eccc1b5de0f983abd5f49cf462752e",
+      "attributes": []
+    },
+    {
+      "id": "f2aeff50983aa51650ff3c4cdc682476",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "92eccc1b5de0f983abd5f49cf462752e",
+      "to": "11892ab65226a8fde71e11d23dff672c",
+      "attributes": []
+    },
+    {
+      "id": "a4788ab38e815f9566d592858c53e06a",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "018c87f7337246b99ab36add53a537e3",
+      "to": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "attributes": []
+    },
+    {
+      "id": "bf8dbb29f90b2ff9102f77be22a670c1",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "attributes": []
+    },
+    {
+      "id": "fe77adc3401e3eae63340ac689d1a284",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "to": "9a51476586060f9220b1f4977a5ddbde",
+      "attributes": []
+    },
+    {
+      "id": "9789fb88d0300d1e12d122b2fdd38e9d",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "9a51476586060f9220b1f4977a5ddbde",
+      "to": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "attributes": []
+    },
+    {
+      "id": "811d9b60f6928c701aa32ee1d0cc696c",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "to": "0cf63080533e87d5bc747f09d72505a0",
+      "attributes": []
+    },
+    {
+      "id": "0534ded0626a884e53a3ba8641324530",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "0cf63080533e87d5bc747f09d72505a0",
+      "to": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "attributes": []
+    },
+    {
+      "id": "e86c14487c7d741cf7a2964fbb679ddc",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "018c87f7337246b99ab36add53a537e3",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    },
+    {
+      "id": "35a7d793302d32babc7c6074b8eed760",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "attributes": []
+    },
+    {
+      "id": "289b0eec69edd72920f0362e42cf5191",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "533f166041015681506e5003366ba9d5",
+      "attributes": []
+    },
+    {
+      "id": "91dc2377b78c0388eb0ffba4f3af6cd7",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "533f166041015681506e5003366ba9d5",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    },
+    {
+      "id": "aa9ffcb246230cb59354f7cf4b8a8f67",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "ce5164aaecea4aaec0f9d754ad8d84c4",
+      "attributes": []
+    },
+    {
+      "id": "a23736dba4d3006b007fdf26bf3af2bb",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "ce5164aaecea4aaec0f9d754ad8d84c4",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    },
+    {
+      "id": "b7c474281751643e86fad99997ffc9aa",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "63b87660eedea4c59423d7f2537e5d78",
+      "attributes": []
+    },
+    {
+      "id": "89a066c861c856d9fd5c9b925ac89ff8",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "63b87660eedea4c59423d7f2537e5d78",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    },
+    {
+      "id": "981b3ef4db4aa203e31ebed276679efb",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "f99a9cb9e9ca7b29a73efdcae8212a77",
+      "attributes": []
+    },
+    {
+      "id": "0527724eb409f4618c536303b0de7490",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "f99a9cb9e9ca7b29a73efdcae8212a77",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    },
+    {
+      "id": "cbb5875f84b5cd81d31fbf95fc69aefa",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "ee02c5c55eac9cd1fe26d13e8427cc50",
+      "attributes": []
+    },
+    {
+      "id": "0b222729a56a32352dc8d3f390ec4fde",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "ee02c5c55eac9cd1fe26d13e8427cc50",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    },
+    {
+      "id": "47aa6b2c20c66ca7efabb1cec7e10bf5",
+      "type": "7398ebba05754ab0977d1bf8146786aa",
+      "from": "4615956ddad16a1de0c360886fa0932f",
+      "to": "c55b4bb54aa5817904f907248c78ce8a",
+      "attributes": []
+    },
+    {
+      "id": "d57ebe09c386b5994eb59d533138db7a",
+      "type": "c02699b7f7894133a4ba7572dc5e69c7",
+      "from": "c55b4bb54aa5817904f907248c78ce8a",
+      "to": "4615956ddad16a1de0c360886fa0932f",
+      "attributes": []
+    }
+  ],
+  "update_entities": [
+    {
+      "id": "0fcc7028560c47cc9b82309f469b700c",
+      "attribute": "thesisLocation",
+      "value": "p. 17"
+    },
+    {
+      "id": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attribute": "thesisLocation",
+      "value": "p. 24"
+    },
+    {
+      "id": "018c87f7337246b99ab36add53a537e3",
+      "attribute": "thesisLocation",
+      "value": "p. 34"
+    },
+    {
+      "id": "7a1965a429f1468180346e845d793eab",
+      "attribute": "thesisLocation",
+      "value": "p. 47"
+    },
+    {
+      "id": "280a842a11bd4101b743f6527821c04e",
+      "attribute": "thesisLocation",
+      "value": "p. 51"
+    }
+  ]
+}
