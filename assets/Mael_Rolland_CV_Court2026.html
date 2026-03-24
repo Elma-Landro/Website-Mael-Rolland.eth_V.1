@@ -319,10 +319,10 @@
       .tag { background-color: rgba(255,255,255,0.1) !important; }
       a { color: var(--texte); }
 
-      /* Page 1 : resserrement léger des marges pour faire tenir tout le contenu.
-         Économie : ~3px × 12 entrées ≈ 36px → École Maigret + Chargé de TD visibles. */
-      .cv-page:first-child .entree { margin-bottom: 7px; }
-      .cv-page:first-child .m-titre { margin-top: 11px; }
+      /* Page 1 = 2e enfant de body (après .print-btn) → :nth-child(2), PAS :first-child.
+         Économie : ~4px × 16 entrées + ~5px × 3 titres = ~79px → tout tient sur la page. */
+      .cv-page:nth-child(2) .entree { margin-bottom: 6px; }
+      .cv-page:nth-child(2) .m-titre { margin-top: 10px; }
     }
 
     @media (max-width: 700px) {
@@ -617,6 +617,7 @@
           </div>
         </div>
 
+        <div style="height: 8px;"></div>
       </main>
 
     </div><!-- /cv-corps page 1 -->
