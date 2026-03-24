@@ -2062,10 +2062,10 @@ const Graph = (() => {
       MOBILE_COL_LABELS.forEach((label, j) => {
         const cl = cy.add({
           data: { id: '__mat_col_' + j, label: label, labelColor: '#dddddd' },
-          position: { x: OX + j * COL_W - 38, y: colLabelY },
+          position: { x: OX + j * COL_W - 50, y: colLabelY },
           classes: 'type-label',
         });
-        cl.style({ 'text-rotation': -Math.PI / 2, 'text-valign': 'center', 'font-size': '31px' });
+        cl.style({ 'text-rotation': -Math.PI / 2, 'text-valign': 'center', 'font-size': '61px' });
       });
     } else {
       sortedTypes.forEach((typeName, j) => {
