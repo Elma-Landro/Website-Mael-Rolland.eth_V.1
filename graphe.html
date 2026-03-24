@@ -1999,20 +1999,27 @@ const Graph = (() => {
           : cx;
         const startY = cy_c - (count * NODE_H) / 2;
         // Jitter organique : casse la rigidité de la grille sans perdre la structure
-        const jx = (Math.random() - 0.5) * 14;
-        const jy = (Math.random() - 0.5) * 8;
+        const jx = (Math.random() - 0.5) * (isMobile ? 4 : 14);
+        const jy = (Math.random() - 0.5) * (isMobile ? 3 : 8);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
     });
 
     // ── Taille mobile-aware + classe in-matrix ────────────
-    // msize : cap à 14px sur mobile (densité → fusion des glows)
+    // msize : 6px sur mobile (NODE_H=7 → nœuds séparés, pas de fusion de glow)
     //         data(size) sur desktop (hiérarchie hub/périphérie visible)
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      n.data('msize', isMobile ? Math.min(n.data('size') || 22, 14) : (n.data('size') || 22));
+      n.data('msize', isMobile ? Math.min(n.data('size') || 22, 6) : (n.data('size') || 22));
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
+
+    // Sur mobile : override inline des shadows pour éviter les blobs (blur stylesheet=30px → trop grand)
+    if (isMobile) {
+      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
+        'shadow-blur': 4, 'shadow-opacity': 0.55,
+      });
+    }
 
     // ── Column halos ──────────────────────────────────────
     cy.$('.col-halo').remove();
