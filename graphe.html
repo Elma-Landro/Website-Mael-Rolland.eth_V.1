@@ -1485,10 +1485,12 @@ const Graph = (() => {
           'z-index': 2,
         }
       },
-      // ── Edges hidden in matrix, revealed on node click ────────
+      // ── Edges hidden in matrix/arbre (display:none pas opacity:0) ─────────
+      // IMPORTANT : opacity:0 serait écrasé par edge.highlighted (même spécificité,
+      // déclarée plus tard). display:none est une propriété distincte → invincible.
       {
         selector: 'edge.in-matrix',
-        style: { 'opacity': 0 }
+        style: { 'display': 'none' }
       },
       // ── Column halos: transparent color band per type column ──
       {
@@ -1737,19 +1739,16 @@ const Graph = (() => {
       groups[idx >= 0 ? idx : 5].push(n);
     });
 
-    // ── 4. Canvas responsive + positionnement en pentagone ─
-    const VW = cy.width()  || window.innerWidth  || 800;
-    const VH = cy.height() || window.innerHeight || 600;
+    // ── 4. Géométrie FIXE → canvas prévisible, zoom stable sur mobile ────────
+    // Vision renouvelée : le canvas NE DÉPEND PAS du nombre de nœuds.
+    // Rayon fixe → nœuds se SUPERPOSENT → leurs glows fusionnent → nuage solide.
+    // Mobile 360px : canvas ~570px → zoom 0.63 → shadow 80px → blob 50px ← cloud !
+    const VW = cy.width() || window.innerWidth || 800;
     const isMobile = VW < 600;
 
-    // Rayon de la spirale de Fibonacci pour n nœuds
-    const SPIRAL_K = isMobile ? 6 : 18;  // compact sur mobile → canvas ~1100px → zoom ~0.33
-    const spiralR  = n => n <= 1 ? 0 : SPIRAL_K * Math.sqrt(n - 1);
-
-    // Rayon du pentagone = 1.6× le rayon max d'une île
-    const maxIsleR = Math.max(...groups.map(g => spiralR(g.length)), 60);
-    const R_pent   = Math.max(maxIsleR * 1.6, isMobile ? 320 : 560);
-    const MARGIN   = maxIsleR + 80;
+    const R_pent     = isMobile ? 160 : 280;  // rayon fixe du pentagone (px canvas)
+    const MAX_ISLE_R = isMobile ? 65  : 110;  // cap dur sur le rayon de chaque île
+    const MARGIN     = MAX_ISLE_R + 60;
     const W = 2 * (R_pent + MARGIN), H = W;
     const cx = W / 2, cy_c = H / 2;
 
@@ -1759,14 +1758,16 @@ const Graph = (() => {
     });
     centerPts.push({ x: cx, y: cy_c }); // non-assignés → centre
 
-    // ── 5. Spirale de Fibonacci par groupe ────────────────
-    // Forme organique en nuage (vs anneaux concentriques)
-    const GOLDEN = 2.39996322972865332; // angle doré en radians
-    const clusterMaxR = [];
+    // ── 5. Spirale Fibonacci compressée dans MAX_ISLE_R ───────────────────
+    // Les nœuds se superposent au centre → glow 80px se fond en nuage coloré dense.
+    // Plus connectés = plus au centre (hub au cœur du cloud).
+    const GOLDEN        = 2.39996322972865332; // angle doré en radians
+    const SPIRAL_K_BASE = isMobile ? 8 : 14;
+    const isleRadii     = [];
+
     groups.forEach((nodes, gi) => {
-      if (!nodes.length) { clusterMaxR.push(0); return; }
+      if (!nodes.length) { isleRadii.push(30); return; }
       const center = centerPts[gi];
-      // Nœuds les plus connectés au centre
       nodes.sort((a, b) => {
         const da = (State.maps.outgoing[a.data('id')] || []).length
                  + (State.maps.incoming[a.data('id')] || []).length;
@@ -1774,23 +1775,24 @@ const Graph = (() => {
                  + (State.maps.incoming[b.data('id')] || []).length;
         return db - da;
       });
-      let maxR = 0;
+      // Facteur de compression : ajuste K pour tenir dans MAX_ISLE_R
+      const naturalR = nodes.length <= 1 ? 0 : SPIRAL_K_BASE * Math.sqrt(nodes.length - 1);
+      const scale    = naturalR > MAX_ISLE_R ? MAX_ISLE_R / naturalR : 1.0;
+      isleRadii.push(Math.min(naturalR, MAX_ISLE_R) || 30);
       nodes.forEach((n, i) => {
-        const r = i === 0 ? 0 : SPIRAL_K * Math.sqrt(i);
-        if (r > maxR) maxR = r;
+        const r = i === 0 ? 0 : scale * SPIRAL_K_BASE * Math.sqrt(i);
         n.position({
           x: center.x + r * Math.cos(i * GOLDEN),
           y: center.y + r * Math.sin(i * GOLDEN),
         });
       });
-      clusterMaxR.push(maxR);
     });
 
     // ── 6. Labels flottants au-dessus de chaque île ────────
     cy.$('.chapter-label').remove();
     CHAPTER_IDS.forEach((_, i) => {
       const center = centerPts[i];
-      const offsetY = (clusterMaxR[i] || 80) + 65;
+      const offsetY = (isleRadii[i] || 40) + 55;
       cy.add({
         data: {
           id: '__chap_lbl_' + i,
