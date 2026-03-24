@@ -1495,35 +1495,33 @@ const Graph = (() => {
       {
         selector: 'node.in-matrix',
         style: {
-          'width': 'data(size)', 'height': 'data(size)', // proportionnel au degré
+          'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
           'label': '',
-          'shadow-blur': 30, 'shadow-opacity': 0.80,     // glow plus prononcé
+          'shadow-blur': 30, 'shadow-opacity': 0.80,
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.95,
           'z-index': 2,
         }
       },
-      // ── Arêtes matrix : texture réseau très subtile ──────────────────────
-      // opacity 0.035 → texture "tissu" sans surcharge visuelle.
-      // Les overrides .highlighted/.faded ont spécificité 2 (deux classes) > 1 :
-      // ils gagnent sur edge.highlighted (spécif. 1) → pas de fan vert au clic.
+      // ── Arêtes matrix : cachées par défaut, révélées au clic ────────────
+      // 19436 arêtes × opacity > 0 = fond vert solide par cumul → display:none obligatoire.
+      // Au clic, edge.in-matrix.highlighted (spécificité 2 > 1) révèle les connexions
+      // directes avec la couleur du chapitre source.
       {
         selector: 'edge.in-matrix',
-        style: { 'opacity': 0.035, 'line-color': '#aaaaaa', 'width': 0.4,
-                 'target-arrow-shape': 'none' }
+        style: { 'display': 'none' }
       },
       {
         selector: 'edge.in-matrix.highlighted',
-        style: { 'opacity': 0.08 }   // légèrement plus visible mais pas de fan
-      },
-      {
-        selector: 'edge.in-matrix.faded',
-        style: { 'opacity': 0.01 }
-      },
-      {
-        selector: 'edge.in-matrix.hop2',
-        style: { 'opacity': 0.02 }
+        style: {
+          'display': 'element',
+          'opacity': 0.22,
+          'line-color': 'source-data(color)',
+          'target-arrow-color': 'source-data(color)',
+          'target-arrow-shape': 'triangle',
+          'width': 0.7,
+        }
       },
       // ── Column halos: transparent color band per type column ──
       {
@@ -1932,11 +1930,31 @@ const Graph = (() => {
     const typeColIdx = {};
     sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
 
-    // ── Grid geometry ────────────────────────────────────
-    const COL_W = 280, ROW_H = 500;
-    const OX = 380, OY = 340; // origin offset (space for labels)
-    const NODE_H = 15;         // vertical pitch between stacked nodes (matches node size 14px)
-    const CELL_W_FRAC = 0.78;  // fraction of COL_W used by sub-columns
+    // ── Géométrie responsive ─────────────────────────────
+    const isMobile = (cy.width() || window.innerWidth) < 600;
+    // Mobile : 6 macro-colonnes sémantiques → canvas ~390px → zoom ~0.9 → nœuds visibles
+    // Desktop : 27 colonnes détaillées → vue "partition complète"
+    const COL_W      = isMobile ? 52   : 280;
+    const ROW_H      = isMobile ? 120  : 500;  // 120px → canvas ~770px → zoom ~0.71
+    const OX         = isMobile ? 44   : 380;
+    const OY         = isMobile ? 80   : 340;
+    const NODE_H     = isMobile ? 7    : 15;
+    const CELL_W_FRAC = 0.78;
+
+    // ── Macro-colonnes mobile (6 groupes sémantiques) ────
+    const MOBILE_MACRO_COL = {
+      'Chapter': 0, 'ThesisSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'CrisisPhase': 0,
+      'Protocol': 1, 'InfrastructureDomain': 1, 'InfrastructureEvent': 1,
+      'InfrastructureSegment': 1, 'DevelopmentPhase': 1,
+      'Person': 2, 'Institution': 2, 'ActorGroup': 2, 'ActorNonHuman': 2, 'StakeholderCategory': 2,
+      'Concept': 3, 'TheoreticFramework': 3, 'Method': 3, 'Capability': 3,
+      'CrisisEvent': 4, 'GovernanceConflict': 4, 'GovernanceProcess': 4,
+      'GovernanceArena': 4, 'ProtocolChange': 4, 'ProtocolProposal': 4,
+      'AcademicWork': 5, 'DoctoralThesis': 5, 'PrimarySource': 5, 'GreyLiterature': 5,
+      'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
+      'PriceWindow': 5, 'SourceQuote': 5, 'Reference': 5,
+    };
+    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Gouv.', 'Sources'];
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
     const cells = {}; // key = `${row}_${col}`
@@ -1944,8 +1962,8 @@ const Graph = (() => {
       const ci  = n.data('chapterIdx');
       const row = ci >= 0 && ci < 5 ? ci : 5;
       const t   = n.data('typeName');
-      const col = typeColIdx[t] ?? -1;
-      if (col < 0) return;
+      const col = isMobile ? (MOBILE_MACRO_COL[t] ?? 5) : (typeColIdx[t] ?? -1);
+      if (!isMobile && col < 0) return;
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
@@ -1987,48 +2005,68 @@ const Graph = (() => {
       });
     });
 
-    // ── Apply in-matrix class: tiny dots, glow, edges hidden ──
+    // ── Taille mobile-aware + classe in-matrix ────────────
+    // msize : cap à 14px sur mobile (densité → fusion des glows)
+    //         data(size) sur desktop (hiérarchie hub/périphérie visible)
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+      n.data('msize', isMobile ? Math.min(n.data('size') || 22, 14) : (n.data('size') || 22));
+    });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
 
-    // ── Column halos: transparent color band per type ─────
+    // ── Column halos ──────────────────────────────────────
     cy.$('.col-halo').remove();
-    const haloH      = ROW_H * 5 + 100;
+    const haloH       = ROW_H * 5 + 100;
     const haloCenterY = OY + 2 * ROW_H;
-    sortedTypes.forEach((typeName, j) => {
-      cy.add({
-        data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
-        position: { x: OX + j * COL_W, y: haloCenterY },
-        classes: 'col-halo',
+    const numCols     = isMobile ? 6 : sortedTypes.length;
+    if (!isMobile) {
+      sortedTypes.forEach((typeName, j) => {
+        cy.add({
+          data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
+          position: { x: OX + j * COL_W, y: haloCenterY },
+          classes: 'col-halo',
+        });
       });
-    });
+    }
 
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    // Row labels: chapter names on the left (Press Start 2P)
+    // Row labels: chapter names on the left
+    const rowLabelX = isMobile ? OX - 32 : OX - 230;
     CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
         data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i] },
-        position: { x: OX - 230, y: OY + i * ROW_H },
+        position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
     });
 
-    // Column labels: type name + count at top (VT323)
-    sortedTypes.forEach((typeName, j) => {
-      cy.add({
-        data: {
-          id: '__mat_col_' + j,
-          label: typeName + '\n× ' + typeCounts[typeName],
-          labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
-        },
-        position: { x: OX + j * COL_W, y: OY - 220 },
-        classes: 'type-label',
+    // Column labels: type names (desktop) ou macro-groupes (mobile)
+    const colLabelY = isMobile ? OY - 65 : OY - 220;
+    if (isMobile) {
+      MOBILE_COL_LABELS.forEach((label, j) => {
+        cy.add({
+          data: { id: '__mat_col_' + j, label: label, labelColor: '#aaaaaa' },
+          position: { x: OX + j * COL_W, y: colLabelY },
+          classes: 'type-label',
+        });
       });
-    });
+    } else {
+      sortedTypes.forEach((typeName, j) => {
+        cy.add({
+          data: {
+            id: '__mat_col_' + j,
+            label: typeName + '\n× ' + typeCounts[typeName],
+            labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
+          },
+          position: { x: OX + j * COL_W, y: colLabelY },
+          classes: 'type-label',
+        });
+      });
+    }
 
-    // Pass halo dimensions via layout so Cytoscape can render them
+    // Halo dimensions
     cy.style().selector('node.col-halo').style({
       'width':  COL_W * 0.82,
       'height': haloH,
