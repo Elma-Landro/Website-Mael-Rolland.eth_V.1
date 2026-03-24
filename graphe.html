@@ -1934,9 +1934,9 @@ const Graph = (() => {
     const isMobile = (cy.width() || window.innerWidth) < 600;
     // Mobile : 6 macro-colonnes sémantiques → canvas ~390px → zoom ~0.9 → nœuds visibles
     // Desktop : 27 colonnes détaillées → vue "partition complète"
-    const COL_W      = isMobile ? 52   : 280;
-    const ROW_H      = isMobile ? 120  : 500;  // 120px → canvas ~770px → zoom ~0.71
-    const OX         = isMobile ? 44   : 380;
+    const COL_W      = isMobile ? 56   : 280;
+    const ROW_H      = isMobile ? 120  : 500;
+    const OX         = isMobile ? 72   : 380;  // 72px → marge suffisante pour labels lignes
     const OY         = isMobile ? 80   : 340;
     const NODE_H     = isMobile ? 7    : 15;
     const CELL_W_FRAC = 0.78;
@@ -2032,25 +2032,28 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    // Row labels: chapter names on the left
-    const rowLabelX = isMobile ? OX - 32 : OX - 230;
+    // Row labels: chapter names — right-aligned sur mobile (ne déborde pas sur les colonnes)
+    const rowLabelX = isMobile ? OX - 6 : OX - 230;
     CHAPTER_LABELS.forEach((label, i) => {
-      cy.add({
+      const rl = cy.add({
         data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i] },
         position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
+      if (isMobile) rl.style('text-halign', 'right');
     });
 
-    // Column labels: type names (desktop) ou macro-groupes (mobile)
-    const colLabelY = isMobile ? OY - 65 : OY - 220;
+    // Column labels: type names (desktop) ou macro-groupes mobile rotés à 90°
+    // Rotation -90° = lecture bas→haut (convention matrice)
+    const colLabelY = isMobile ? OY - 50 : OY - 220;
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
-        cy.add({
-          data: { id: '__mat_col_' + j, label: label, labelColor: '#aaaaaa' },
+        const cl = cy.add({
+          data: { id: '__mat_col_' + j, label: label, labelColor: '#dddddd' },
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
         });
+        cl.style({ 'text-rotation': -Math.PI / 2, 'text-valign': 'center' });
       });
     } else {
       sortedTypes.forEach((typeName, j) => {
