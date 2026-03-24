@@ -1972,9 +1972,10 @@ const Graph = (() => {
       'Protocol': 1, 'InfrastructureDomain': 1, 'InfrastructureEvent': 1,
       'InfrastructureSegment': 1, 'DevelopmentPhase': 1,
       'Person': 2, 'Institution': 2, 'ActorGroup': 2, 'ActorNonHuman': 2, 'StakeholderCategory': 2,
-      'Concept': 3, 'TheoreticFramework': 3, 'Method': 3, 'Capability': 3,
+      'Concept': 3, 'Method': 3, 'Capability': 3,
       'CrisisEvent': 4, 'GovernanceConflict': 4, 'GovernanceProcess': 4,
       'GovernanceArena': 4, 'ProtocolChange': 4, 'ProtocolProposal': 4,
+      'TheoreticFramework': 4,
       'AcademicWork': 5, 'DoctoralThesis': 5, 'PrimarySource': 5, 'GreyLiterature': 5,
       'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
       'PriceWindow': 5, 'SourceQuote': 5, 'Reference': 5,
@@ -2146,13 +2147,14 @@ const Graph = (() => {
       });
     }
 
-    // Halo dimensions — mobile: per-cell size; desktop: full-height column
+    // Halo dimensions — fond invisible, tout passe par le glow (shadow)
+    // → évite l'effet "tableau brut", les halos se superposent en dégradé doux
     cy.style().selector('node.col-halo').style({
-      'width':  isMobile ? COL_W * 0.95 : COL_W * 0.82,
-      'height': isMobile ? ROW_H * 0.88 : haloH,
-      'background-opacity': isMobile ? 0.22 : 0.055,
-      'shadow-blur':        isMobile ? 18   : 30,
-      'shadow-opacity':     isMobile ? 0.30 : 0.08,
+      'width':              isMobile ? COL_W * 1.05 : COL_W * 0.90,
+      'height':             isMobile ? ROW_H * 1.05 : haloH,
+      'background-opacity': 0,          // aucun remplissage solide
+      'shadow-blur':        isMobile ? 52 : 70,
+      'shadow-opacity':     isMobile ? 0.55 : 0.12,
     }).update();
 
     // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
