@@ -1409,6 +1409,19 @@ const Graph = (() => {
         UI.clearPanel();
       }
     });
+
+    // ── Show node labels only when sufficiently zoomed in ──
+    const LABEL_ZOOM_THRESHOLD = 1.8;
+    function syncLabels() {
+      const z = cy.zoom();
+      const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
+      if (z >= LABEL_ZOOM_THRESHOLD) {
+        nodes.addClass('show-label');
+      } else {
+        nodes.removeClass('show-label');
+      }
+    }
+    cy.on('zoom', syncLabels);
   }
 
   function getCyStyle() {
@@ -1420,14 +1433,13 @@ const Graph = (() => {
           'background-opacity': 0.85,
           'shape': 'data(shape)',
           'width': 'data(size)', 'height': 'data(size)',
-          'label': 'data(label)',
+          'label': '',
           'font-family': 'VT323, monospace',
           'font-size': '13px',
           'color': '#ffdd99',
           'text-valign': 'bottom', 'text-halign': 'center',
           'text-margin-y': 6,
           'text-outline-color': '#000000', 'text-outline-width': 2,
-          'min-zoomed-font-size': 16,
           'border-width': 0,
           'overlay-padding': 6,
           'shadow-blur':     0,
@@ -1435,6 +1447,11 @@ const Graph = (() => {
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
         }
+      },
+      // ── Labels only visible when zoomed in (class toggled by zoom handler) ──
+      {
+        selector: 'node.show-label',
+        style: { 'label': 'data(label)' }
       },
       // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
       { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
