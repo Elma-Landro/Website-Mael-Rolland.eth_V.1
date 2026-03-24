@@ -320,7 +320,21 @@
       .tag { background-color: rgba(255,255,255,0.1) !important; }
       a { color: var(--texte); }
 
-      /* Page 1 : spacing naturel du HTML — le font-size:12.5px suffit */
+      /* ── Page 1 uniquement (.cv-page:nth-child(2)) ──────────────────────
+         Bilan : ~105px récupérés, ~35px rendus → entrées légèrement aérées. */
+
+      /* Corps : marges légèrement relâchées (air conservé) */
+      .cv-page:nth-child(2) .cv-main    { padding-top: 10px; }
+      .cv-page:nth-child(2) .m-titre    { margin-top: 10px; margin-bottom: 5px; }
+      .cv-page:nth-child(2) .entree     { margin-bottom: 9px; }
+      /* Micro-marges internes : gain principal (~64px) */
+      .cv-page:nth-child(2) .entree__org  { margin-top: 0; }
+      .cv-page:nth-child(2) .entree__desc { margin-top: 0; line-height: 1.3; }
+
+      /* Header : seulement le poste (3 lignes denses) + padding, PAS la tagline */
+      .cv-page:nth-child(2) .cv-header        { padding-top: 8px; padding-bottom: 7px; }
+      .cv-page:nth-child(2) .cv-header__poste { line-height: 1.25; }
+      .cv-page:nth-child(2) .cv-header__ligne { margin: 4px 0 6px; }
     }
 
     @media (max-width: 700px) {
