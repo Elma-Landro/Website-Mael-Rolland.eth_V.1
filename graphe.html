@@ -620,8 +620,8 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
         <div class="tools-row">
           <select id="layout-select" title="Changer le layout">
             <option value="cose">Force-directed</option>
-            <option value="nebulae">Archipel / chapitres</option>
-            <option value="matrice" selected>Matrice chapitres × types</option>
+            <option value="nebulae" selected>Archipel / chapitres</option>
+            <option value="matrice">Matrice chapitres × types</option>
             <option value="arbre">Arbre argumentatif ↦</option>
             <option value="dagre">Hiérarchique</option>
             <option value="circle">Cercle</option>
@@ -1936,7 +1936,7 @@ const Graph = (() => {
     // Desktop : 27 colonnes détaillées → vue "partition complète"
     const COL_W      = isMobile ? 56   : 280;
     const ROW_H      = isMobile ? 120  : 500;
-    const OX         = isMobile ? 72   : 380;  // 72px → marge suffisante pour labels lignes
+    const OX         = isMobile ? 110  : 380;  // 110px → laisse espace pour labels chapitres à gauche
     const OY         = isMobile ? 80   : 340;
     const NODE_H     = isMobile ? 7    : 15;
     const CELL_W_FRAC = 0.78;
@@ -2039,20 +2039,25 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    // Row labels: chapter names — right-aligned sur mobile (ne déborde pas sur les colonnes)
-    const rowLabelX = isMobile ? OX - 6 : OX - 230;
-    CHAPTER_LABELS.forEach((label, i) => {
+    // Row labels: chapter names
+    // Mobile: text-halign 'left' → texte s'étend vers la GAUCHE depuis le label node
+    // → texte va de (rowLabelX - text_width) à rowLabelX, sans chevaucher les colonnes
+    const rowLabelX = isMobile ? OX - 8 : OX - 230;
+    const MAT_CHAPTER_LABELS = isMobile
+      ? ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.']
+      : CHAPTER_LABELS;
+    MAT_CHAPTER_LABELS.forEach((label, i) => {
       const rl = cy.add({
         data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i] },
         position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
-      if (isMobile) rl.style('text-halign', 'right');
+      if (isMobile) rl.style({ 'text-halign': 'left', 'font-size': '13px' });
     });
 
     // Column labels: type names (desktop) ou macro-groupes mobile rotés à 90°
     // Rotation -90° = lecture bas→haut (convention matrice)
-    const colLabelY = isMobile ? OY - 50 : OY - 220;
+    const colLabelY = isMobile ? OY - 46 : OY - 220;
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         const cl = cy.add({
@@ -2060,7 +2065,7 @@ const Graph = (() => {
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
         });
-        cl.style({ 'text-rotation': -Math.PI / 2, 'text-valign': 'center' });
+        cl.style({ 'text-rotation': -Math.PI / 2, 'text-valign': 'center', 'font-size': '26px' });
       });
     } else {
       sortedTypes.forEach((typeName, j) => {
@@ -2925,15 +2930,15 @@ function showGuidedOverlay() {
         <div class="guided-suggestions" id="guided-suggestions"></div>
       </div>
       <div class="guided-modes">
-        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-matrice">
-          ◫ Structure de la thèse
-          <span class="guided-mode-sub">Matrice chapitres × types</span>
+        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-full">
+          ◈ Galaxie de la thèse
+          <span class="guided-mode-sub">Îles par chapitre · spirale Fibonacci</span>
         </button>
       </div>
       <div class="guided-modes guided-modes-secondary">
-        <button class="btn-secondary guided-mode-btn" id="guided-btn-full">
-          ⚡ Tout le graphe
-          <span class="guided-mode-sub">Vue archipel</span>
+        <button class="btn-secondary guided-mode-btn" id="guided-btn-matrice">
+          ◫ Matrice
+          <span class="guided-mode-sub">Chapitres × types</span>
         </button>
         <button class="btn-secondary guided-mode-btn" id="guided-btn-medium">
           → Essentiel
