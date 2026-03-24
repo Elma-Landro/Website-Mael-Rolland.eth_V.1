@@ -2042,7 +2042,7 @@ const Graph = (() => {
     // Row labels: chapter names
     // Mobile: text-halign 'left' → texte s'étend vers la GAUCHE depuis le label node
     // → texte va de (rowLabelX - text_width) à rowLabelX, sans chevaucher les colonnes
-    const rowLabelX = isMobile ? OX - 8 : OX - 230;
+    const rowLabelX = isMobile ? OX - 28 : OX - 230;
     const MAT_CHAPTER_LABELS = isMobile
       ? ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.']
       : CHAPTER_LABELS;
@@ -2052,20 +2052,19 @@ const Graph = (() => {
         position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
-      if (isMobile) rl.style({ 'text-halign': 'left', 'font-size': '13px' });
+      if (isMobile) rl.style({ 'text-halign': 'left', 'font-size': '61px' });
     });
 
-    // Column labels: type names (desktop) ou macro-groupes mobile rotés à 90°
-    // Rotation -90° = lecture bas→haut (convention matrice)
-    const colLabelY = isMobile ? OY - 58 : OY - 240;
+    // Column labels: angle oblique 45°, remontés de 20px, x recentré sur la colonne
+    const colLabelY = isMobile ? OY - 78 : OY - 240;
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         const cl = cy.add({
           data: { id: '__mat_col_' + j, label: label, labelColor: '#dddddd' },
-          position: { x: OX + j * COL_W - 50, y: colLabelY },
+          position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
         });
-        cl.style({ 'text-rotation': -Math.PI / 2, 'text-valign': 'center', 'font-size': '61px' });
+        cl.style({ 'text-rotation': -Math.PI / 4, 'text-valign': 'center', 'font-size': '61px' });
       });
     } else {
       sortedTypes.forEach((typeName, j) => {
