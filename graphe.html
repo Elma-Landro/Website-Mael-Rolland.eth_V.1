@@ -1450,10 +1450,10 @@ const Graph = (() => {
           'background-opacity': 0, 'border-opacity': 0,
           'width': 2, 'height': 2,
           'label': 'data(label)',
-          'font-family': "'Press Start 2P', monospace",
-          'font-size': '18px',
+          'font-family': "'VT323', monospace",
+          'font-size': 'data(labelSize)',
           'color': 'data(labelColor)',
-          'text-valign': 'center', 'text-halign': 'center',
+          'text-valign': 'center', 'text-halign': 'data(labelHalign)',
           'text-outline-color': '#000', 'text-outline-width': 3,
           'text-wrap': 'wrap',
           'events': 'no',
@@ -1467,12 +1467,12 @@ const Graph = (() => {
           'width': 2, 'height': 2,
           'label': 'data(label)',
           'font-family': "'VT323', monospace",
-          'font-size': '28px',
+          'font-size': 'data(labelSize)',
           'color': 'data(labelColor)',
+          'text-rotation': 'data(labelRotation)',
           'text-valign': 'center', 'text-halign': 'center',
           'text-outline-color': '#000', 'text-outline-width': 2,
-          'text-wrap': 'wrap',
-          'text-max-width': '260px',
+          'text-wrap': 'nowrap',
           'events': 'no',
         }
       },
@@ -1829,6 +1829,7 @@ const Graph = (() => {
           id: '__chap_lbl_' + i,
           label: CHAPTER_LABELS[i] + '\n' + groups[i].length + ' entités',
           labelColor: CHAPTER_COLORS[i],
+          labelSize: '18px', labelHalign: 'center',
         },
         position: { x: center.x, y: center.y - offsetY },
         classes: 'chapter-label',
@@ -2046,25 +2047,29 @@ const Graph = (() => {
     const MAT_CHAPTER_LABELS = isMobile
       ? ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.']
       : CHAPTER_LABELS;
+    const rowSize  = isMobile ? '61px' : '18px';
+    const rowHalign = isMobile ? 'left'  : 'center';
     MAT_CHAPTER_LABELS.forEach((label, i) => {
-      const rl = cy.add({
-        data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i] },
+      cy.add({
+        data: { id: '__mat_row_' + i, label: label, labelColor: CHAPTER_COLORS[i],
+                labelSize: rowSize, labelHalign: rowHalign },
         position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
-      if (isMobile) rl.style({ 'text-halign': 'left', 'font-size': '61px' });
     });
 
-    // Column labels: angle oblique 45°, remontés de 20px, x recentré sur la colonne
-    const colLabelY = isMobile ? OY - 78 : OY - 240;
+    // Column labels: angle oblique -45°, remontés, x centré sur la colonne
+    const colLabelY      = isMobile ? OY - 78 : OY - 240;
+    const colRotation    = isMobile ? -Math.PI / 4 : 0;
+    const colSize        = isMobile ? '61px' : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
-        const cl = cy.add({
-          data: { id: '__mat_col_' + j, label: label, labelColor: '#dddddd' },
+        cy.add({
+          data: { id: '__mat_col_' + j, label: label, labelColor: '#dddddd',
+                  labelSize: colSize, labelRotation: colRotation },
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
         });
-        cl.style({ 'text-rotation': -Math.PI / 4, 'text-valign': 'center', 'font-size': '61px' });
       });
     } else {
       sortedTypes.forEach((typeName, j) => {
@@ -2073,6 +2078,7 @@ const Graph = (() => {
             id: '__mat_col_' + j,
             label: typeName + '\n× ' + typeCounts[typeName],
             labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
+            labelSize: colSize, labelRotation: colRotation,
           },
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
@@ -2216,7 +2222,8 @@ const Graph = (() => {
     // Row labels (chapter names) — left of depth-1 zone
     CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
-        data: { id: '__arbre_row_' + i, label: label, labelColor: CHAPTER_COLORS[i] },
+        data: { id: '__arbre_row_' + i, label: label, labelColor: CHAPTER_COLORS[i],
+                labelSize: '18px', labelHalign: 'center' },
         position: { x: 100, y: bandY[i] },
         classes: 'chapter-label',
       });
@@ -2225,7 +2232,8 @@ const Graph = (() => {
     // Column header labels at top
     [['Sections', 1], ['Entités', 2], ['Références', 3]].forEach(([lbl, d]) => {
       cy.add({
-        data: { id: '__arbre_col_' + d, label: lbl, labelColor: '#ffcc66' },
+        data: { id: '__arbre_col_' + d, label: lbl, labelColor: '#ffcc66',
+                labelSize: '28px', labelRotation: 0 },
         position: { x: ZONES[d].cx, y: 80 },
         classes: 'type-label',
       });
