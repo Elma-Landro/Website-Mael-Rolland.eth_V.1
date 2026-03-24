@@ -301,6 +301,8 @@
         overflow: hidden;
         page-break-after: always;
         break-after: page;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
         background: linear-gradient(
           to right,
           var(--rouge-soft) var(--sidebar-w),
@@ -314,7 +316,7 @@
       }
 
       .cv-corps { align-items: stretch; }
-      .cv-sidebar { min-height: 100%; background-color: #984a48 !important; }
+      .cv-sidebar { min-height: 100%; background-color: transparent !important; }
       .cv-main { background-color: #f5f2ed !important; }
       .cv-footer { background-color: #6e2020 !important; }
       .tag { background-color: rgba(255,255,255,0.1) !important; }
