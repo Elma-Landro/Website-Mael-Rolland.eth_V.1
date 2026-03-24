@@ -2047,7 +2047,7 @@ const Graph = (() => {
     const MAT_CHAPTER_LABELS = isMobile
       ? ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.']
       : CHAPTER_LABELS;
-    const rowSize  = isMobile ? '40px' : '18px';
+    const rowSize  = isMobile ? '33px' : '18px';
     const rowHalign = isMobile ? 'left'  : 'center';
     MAT_CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
@@ -2059,9 +2059,9 @@ const Graph = (() => {
     });
 
     // Column labels: angle oblique -45°, remontés, x centré sur la colonne
-    const colLabelY      = isMobile ? OY - 118 : OY - 240;
+    const colLabelY      = isMobile ? OY - 133 : OY - 240;
     const colRotation    = isMobile ? -Math.PI / 4 : 0;
-    const colSize        = isMobile ? '40px' : '28px';
+    const colSize        = isMobile ? '33px' : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
