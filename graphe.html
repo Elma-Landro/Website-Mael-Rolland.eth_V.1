@@ -1115,14 +1115,28 @@ function buildChapterMap(data) {
     }
   }
 
-  // Step 3 — appears_in_section : entity inherits its EARLIEST chapter (intro wins over chap1, etc.)
+  // Step 3 — appears_in_section : assign entity to its MAJORITY chapter
+  // (chapter with most section appearances wins; tie-break = earliest chapter index)
   const APP_ID = rtByName['appears in section'];
   if (APP_ID) {
+    const chapterCounts = {}; // entityId → { chapterIdx: count }
     for (const rel of data.relations) {
       if (rel.type !== APP_ID) continue;
-      const secIdx = result[rel.to]; // rel.to = the section
-      if (secIdx !== undefined && (result[rel.from] === undefined || secIdx < result[rel.from]))
-        result[rel.from] = secIdx;
+      const secIdx = result[rel.to];
+      if (secIdx === undefined) continue;
+      if (!chapterCounts[rel.from]) chapterCounts[rel.from] = {};
+      chapterCounts[rel.from][secIdx] = (chapterCounts[rel.from][secIdx] || 0) + 1;
+    }
+    for (const [eid, counts] of Object.entries(chapterCounts)) {
+      let bestChap = null, bestCount = 0;
+      for (const [chapStr, count] of Object.entries(counts)) {
+        const chapIdx = parseInt(chapStr);
+        if (count > bestCount || (count === bestCount && (bestChap === null || chapIdx < bestChap))) {
+          bestCount = count;
+          bestChap = chapIdx;
+        }
+      }
+      if (bestChap !== null) result[eid] = bestChap;
     }
   }
 
@@ -1994,9 +2008,9 @@ const Graph = (() => {
       'GovernanceArena': 4, 'ProtocolChange': 4, 'ProtocolProposal': 4,
       'AcademicWork': 5, 'DoctoralThesis': 5, 'PrimarySource': 5, 'GreyLiterature': 5,
       'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
-      'PriceWindow': 5, 'SourceQuote': 5, 'Reference': 5,
+      'PriceWindow': 5, 'SourceQuote': 6, 'Reference': 5,
     };
-    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Évén.', 'Sources'];
+    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Évén.', 'Réf.', 'Extraits'];
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
     const cells = {}; // key = `${row}_${col}`
