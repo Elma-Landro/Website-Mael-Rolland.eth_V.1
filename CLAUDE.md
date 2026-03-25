@@ -22,32 +22,53 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
 
 ```
 /
-├── index.html / index-fr.html          # Landing page (EN/FR)
-├── these.html / these-fr.html          # Thesis showcase + downloads
+├── index.html / index-fr.html                  # Landing page (EN/FR)
+├── these.html / these-fr.html                  # Thesis showcase + downloads
 ├── curriculum.html / curriculum-fr.html
+├── cv.html / cv-fr.html                        # Detailed CV (EN/FR)
 ├── contact.html / contact-fr.html
 ├── collaborate.html / collaborate-fr.html
 ├── talks.html / talks-fr.html
-├── crisis.html / crisis-fr.html        # Bitcoin CVE 2018 + DAO hard fork case studies
-├── soutenance.html / soutenance-edition.html
+├── crisis.html / crisis-fr.html                # Bitcoin CVE 2018 + DAO hard fork case studies
+├── soutenance.html / soutenance-fr.html        # Defense presentation (EN/FR)
+├── soutenance-edition.html / soutenance-edition-fr.html
 ├── atelier.html / workshop.html
 ├── rare-pepe.html / rare-pepe-fr.html
-├── graphe.html                         # Interactive GRC-20 knowledge graph viewer
-├── lecteur.html                        # Markdown thesis reader
+├── graphe.html                                 # Interactive GRC-20 knowledge graph (matrix viz)
+├── lecteur.html                                # Markdown thesis reader
 ├── 404.html / 404-fr.html
 ├── sitemap.html / plan-du-site.html
-├── style.css                           # Main stylesheet (1,515 lines)
-├── grc20-publish.mjs                   # GRC-20 publication pipeline (Node.js ES module)
-├── graph-worker.mjs                    # Cloudflare Worker API (Node.js ES module)
-├── grc20-these-mael-rolland-v70.json   # GRC-20 knowledge graph snapshot (3.2 MB)
-├── package.json                        # Node.js dependencies + npm scripts
-├── update-swarm-urls.sh                # Swarm/IPFS deployment helper
+│
+├── style.css                                   # Main stylesheet (1,515 lines)
+├── grc20-publish.mjs                           # GRC-20 publication pipeline (Node.js ES module)
+├── graph-worker.mjs                            # Cloudflare Worker API (Node.js ES module)
+│
+├── grc20-these-mael-rolland-v87.json           # Current authoritative knowledge graph (9.7 MB)
+├── grc20-these-mael-rolland-v71..v86.json      # Historical versions (kept for reference)
+│
+├── entity_section_map.json                     # Entity ID → thesis subsection mapping
+├── section_entities_map.json                   # Thesis section → entity list mapping
+├── section_overrides.json                      # Manual overrides for section assignments
+├── new_relations_patch.json                    # Batch of new relations to inject
+├── patch_1a_fix_cited_in.json                  # Fix cited_in chapter assignments
+├── patch_1b_missing_cited_in.json              # Add missing cited_in relations
+├── patch_2a_sourcequote_subsections.json       # SourceQuote → subsection relations
+├── patch_2b_central_arguments.json             # Central argument node relations
+├── patch_2c_definitions.json                   # Definition node patches
+├── patch_3a_intro_subsections.json             # Introduction subsection relations
+│
+├── anomalies_report.md                         # Entity/section mapping QA report (v71 base)
+├── package.json                                # Node.js dependencies + npm scripts
+├── update-swarm-urls.sh                        # Swarm/IPFS deployment helper
 ├── sitemap.xml
+├── LICENSE                                     # Apache-2.0
+├── README.md
 ├── favicon_32x32.png / favicon_16x16.png
 ├── placeholder.svg
 └── assets/
-    ├── MD/                             # Thesis chapters in Markdown (bilingual FR/EN)
-    │   ├── INDEX.md                    # Agent-readable entry point for thesis content
+    ├── MD/                                     # Thesis chapters in Markdown (bilingual FR/EN)
+    │   ├── INDEX.md                            # Agent-readable entry point for thesis content
+    │   ├── style.css                           # Stylesheet for lecteur.html reader
     │   ├── 00_introduction.md / 00_introduction_EN.md
     │   ├── 01_chapitre_I.md / 01_chapitre_I_EN.md
     │   ├── 02_chapitre_II.md / 02_chapitre_II_EN.md
@@ -55,10 +76,11 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
     │   ├── 04_conclusion.md / 04_conclusion_EN.md
     │   ├── 05_glossaire_annexes.md / 05_glossary_appendix_en.md
     │   └── 06_resume.md
-    ├── img/                            # Photos and images
-    ├── figures/                        # Research diagrams and visualizations
-    ├── icons/                          # Social media and UI icons (17 files)
-    └── pdf/                            # Thesis PDFs and related documents
+    ├── Mael_Rolland_CV_Court2026.html          # Standalone HTML CV for print/PDF export
+    ├── img/                                    # Photos and images
+    ├── figures/                                # Research diagrams and visualizations
+    ├── icons/                                  # Social media and UI icons (20 files)
+    └── pdf/                                    # Thesis PDFs and related documents
 ```
 
 ---
@@ -97,13 +119,15 @@ npm run worker-dev       # Local dev server for Cloudflare Worker
 npm run worker-deploy    # Deploy Worker to Cloudflare
 ```
 
+> **Note**: `package.json` scripts currently reference `v5.json` as a placeholder path. Always pass the correct version explicitly via `--input ./grc20-these-mael-rolland-v87.json` or by updating the scripts.
+
 ---
 
 ## Key Source Files
 
 ### `grc20-publish.mjs` — Knowledge Graph Pipeline
 
-Converts the JSON snapshot (`grc20-these-mael-rolland-v70.json`) to GRC-20 wire format and publishes it on-chain.
+Converts the JSON snapshot to GRC-20 wire format and publishes it on-chain.
 
 **CLI flags:**
 | Flag | Description |
@@ -170,13 +194,25 @@ CSS custom properties define the design tokens:
 
 Image rendering uses `image-rendering: pixelated` for the retro aesthetic.
 
+### `graphe.html` — Interactive Knowledge Graph Viewer
+
+A fully client-side force-directed + matrix visualization of the GRC-20 knowledge graph. Significant features:
+
+- **Matrix layout**: Entities arranged in a chapter×type grid with canvas-based halos per cell
+- **Vertical column halos**: Type-colored glowing backgrounds for each entity category column
+- **Chapter-row halos**: Canvas overlays for each thesis chapter row
+- **Node sizing**: Proportional on mobile, adaptive zoom-based label reveal (threshold ≥ 1.8×)
+- **Label coloring**: By entity type, matching column halo colors
+- Fetches graph data from the Cloudflare Worker API or local JSON fallback
+
 ---
 
 ## GRC-20 Knowledge Graph
 
-The file `grc20-these-mael-rolland-v70.json` is the current authoritative knowledge graph (v70). It contains:
+The file `grc20-these-mael-rolland-v87.json` is the current authoritative knowledge graph (v87, 9.7 MB, 2,300 entities). Versions v71–v86 remain in the repo as historical snapshots.
 
-**Entity Types:**
+### Entity Types (v87 — expanded)
+
 | Type | Description |
 |------|-------------|
 | `AcademicWork` | Thesis, papers, books |
@@ -187,10 +223,62 @@ The file `grc20-these-mael-rolland-v70.json` is the current authoritative knowle
 | `CrisisEvent` | Bitcoin CVE 2018, Ethereum DAO hard fork |
 | `Protocol` | Bitcoin, Ethereum, and related protocols |
 | `ActorNonHuman` | Software, repositories, smart contracts |
+| `ActorGroup` | Mining pools, exchanges, collectives |
 | `GreyLiterature` | Non-academic sources |
 | `IndigenousLiterature` | Community-originated sources |
+| `ThesisSection` | Navigable subsections (I.1.1–III.3.4) |
+| `Reference` | Bibliographic references (deduplicated) |
+| `SourceQuote` | Verbatim PDF quotations with pagination |
+| `GovernanceArena` | Forums, GitHub repos, governance venues |
+| `GovernanceConflict` | Documented governance disputes |
+| `GovernanceProcess` | Decision-making processes |
+| `InfrastructureEvent` | Key infrastructure milestones |
+| `InfrastructureDomain` | Infrastructure domains (layer 1/2, etc.) |
+| `InfrastructureSegment` | Sub-segments within infrastructure |
+| `Method` | Research methods used |
+| `Corpus` | Data corpora (on-chain, quantitative) |
+| `DoctoralThesis` | The thesis itself as an entity |
+| `StakeholderCategory` | Categories of actors |
+| `Argument` | Central arguments of the thesis |
+| `Capability` | Protocol capabilities |
+| `Chapter` | Thesis chapters as entities |
+| `CrisisPhase` | Sub-phases of crisis events |
+| `DevelopmentPhase` | Development history phases |
+| `MonetaryObject` | Monetary instruments |
+| `NarrativeCluster` | Narrative groupings |
+| `PriceSeries` / `PriceWindow` | Quantitative price data |
+| `PrimarySource` | Primary source documents |
+| `ProtocolChange` / `ProtocolProposal` | Protocol evolution events |
 
-The v70 snapshot includes exact PDF quotations and confirmed pagination for evidence traceability.
+### Knowledge Graph Versioning
+
+The graph has evolved significantly. v87 note (inherited from v72): `ThesisSection` layer added — 23 subsection nodes (I.1.1–III.3.4, conclu_boucs, conclu_resume) with 11,884 `appears_in_section` relations injected.
+
+### Patch Files
+
+Several JSON patch files in the root apply corrections and enrichments to the base graph:
+
+| File | Purpose |
+|------|---------|
+| `patch_1a_fix_cited_in.json` | Fix incorrect chapter assignments in `cited_in` |
+| `patch_1b_missing_cited_in.json` | Add missing `cited_in` relations |
+| `patch_2a_sourcequote_subsections.json` | Link `SourceQuote` nodes to subsections |
+| `patch_2b_central_arguments.json` | Argument node relations |
+| `patch_2c_definitions.json` | Definition node enrichment |
+| `patch_3a_intro_subsections.json` | Introduction subsection links |
+| `new_relations_patch.json` | Batch of new graph relations |
+
+### Mapping Files
+
+| File | Purpose |
+|------|---------|
+| `entity_section_map.json` | Maps entity IDs to their thesis subsections |
+| `section_entities_map.json` | Maps section IDs to their entity lists |
+| `section_overrides.json` | Manual overrides for ambiguous assignments |
+
+### Anomalies Report
+
+`anomalies_report.md` (generated 2026-03-15, based on v71): documents 1,026 entities without MD occurrences, entities cited in wrong chapters, and multi-chapter entities with incomplete `cited_in` relations. Use as a QA reference when updating the graph.
 
 ---
 
@@ -258,11 +346,15 @@ Do not "modernize" the design unless explicitly asked.
 5. Link it from the navigation (usually `index.html` and `index-fr.html`)
 
 ### Updating the knowledge graph
-1. Edit `grc20-these-mael-rolland-v70.json` (increment version in the filename/metadata)
-2. Run `npm run dry-run` to validate
+1. Edit the latest `grc20-these-mael-rolland-vN.json` (increment version in the filename/metadata)
+2. Run `npm run dry-run` (update the script path or pass `--input` explicitly)
 3. Run `npm run testnet` to test on-chain
 4. Run `npm run mainnet` to publish (requires `GEO_PRIVATE_KEY`)
 5. Update `IPFS_CID` in the Cloudflare Worker environment after publishing
+6. Update `entity_section_map.json` / `section_entities_map.json` if section structure changed
+
+### Applying patch files
+Patch files are applied by merging their entity/relation data into the base graph JSON. They are not auto-applied — the publishing pipeline must be run after merging.
 
 ### Deploying the Worker
 ```bash
@@ -282,7 +374,8 @@ The Markdown files in `assets/MD/` are the full text of the PhD thesis. When wor
 - `INDEX.md` is the authoritative entry point — read it first for context
 - French originals: `01_chapitre_I.md`, etc.
 - English translations: `01_chapitre_I_EN.md`, etc.
-- The knowledge graph JSON (`grc20-these-mael-rolland-v70.json`) is derived from these texts
+- `style.css` in this directory styles the `lecteur.html` reader
+- The knowledge graph JSON (`grc20-these-mael-rolland-v87.json`) is derived from these texts
 
 Do not modify thesis text content unless explicitly asked — these are archival academic documents.
 
