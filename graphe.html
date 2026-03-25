@@ -2146,18 +2146,17 @@ const Graph = (() => {
       });
     }
 
-    // Halo : styles appliqués inline sur les éléments (priorité absolue, pas de conflit stylesheet)
-    // z-index 0 → halos derrière nœuds de données (z-index 1)
+    // Halo : corps quasi invisible, glow pur via shadow
+    // shadow-blur très grand = lumière diffuse nébuleuse sans contour visible
     cy.$('.col-halo').forEach(n => {
       n.style({
         'shape':              'ellipse',
-        'width':              isMobile ? COL_W * 1.15 : COL_W * 0.92,
-        'height':             isMobile ? ROW_H * 1.10 : haloH,
-        'background-color':   n.data('color'),
-        'background-opacity': isMobile ? 0.20 : 0.07,
+        'width':              isMobile ? COL_W * 1.20 : COL_W * 0.92,
+        'height':             isMobile ? ROW_H * 1.25 : haloH,
+        'background-opacity': 0.01,
         'shadow-color':       n.data('color'),
-        'shadow-blur':        isMobile ? 40 : 70,
-        'shadow-opacity':     isMobile ? 0.50 : 0.15,
+        'shadow-blur':        isMobile ? 90 : 110,
+        'shadow-opacity':     isMobile ? 0.72 : 0.20,
         'border-opacity':     0,
         'z-index':            0,
       });
