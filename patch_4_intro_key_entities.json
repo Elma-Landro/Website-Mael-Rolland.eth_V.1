@@ -1,0 +1,796 @@
+{
+  "_meta": {
+    "patch": "patch_4_intro_key_entities",
+    "description": "Add appears_in_section relations for TheoreticFramework, Argument, key Concepts to intro ThesisSection nodes",
+    "relation_type_id": "f004d0e68f0964e8787d19b350e3ca24",
+    "relation_type_name": "appears in section",
+    "intro_sections": {
+      "0fcc7028560c47cc9b82309f469b700c": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "21ff5747290e4951a3b0b601ddbbe9d6": "B. La gouvernance des CM dévoilée par leurs crises",
+      "018c87f7337246b99ab36add53a537e3": "C. Une démarche ethnographique",
+      "7a1965a429f1468180346e845d793eab": "D. Objectifs, apports et organisation générale",
+      "707ffa8647a7acc3f95f8af261c4c77e": "A.1. Un intérêt pour la monnaie et les OMNI",
+      "29b2b4aff0e4ef2ae111f10d72a69dab": "A.3. Révéler l indicible gouvernance des CM",
+      "600a5e7b08126f881793ff6696c244a0": "B.2. Gouvernance des CM : perspectives sociologiques"
+    }
+  },
+  "new_relations": [
+    {
+      "id": "7a3a6082f10d4c5eadd96b0d1f3b9824",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "306375305f4d4ee7b8002de35823f5ce",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework IAD (Institutional Analysis and Development) Frame → intro section"
+    },
+    {
+      "id": "1cd9148cc9f14e45bde60e9f9c18b716",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "af85409fa95f43adb9fc7ece46ed4b15",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Sociology of Science & Technology (STS) → intro section"
+    },
+    {
+      "id": "e64c5112b535427ca3f29382952b935b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6baa805952d145bc9c4b1b14eede3c33",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Infrastructure → intro section"
+    },
+    {
+      "id": "4a32220023cf46f080bddd8c933a5da8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a22f20aea49d4f86ab927e9c71d0a850",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance de huis clos → intro section"
+    },
+    {
+      "id": "59605a0b579f4cea9b65ded9e6b2e3a7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "73b638dd42ef432fbc15fe98026e65e3",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance publique et ouverte → intro section"
+    },
+    {
+      "id": "b90b771313084f029662a0315c2366a6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f5fb37b1a7344ee588bc8740bf038e7a",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Développement infrastructurel par phases → intro section"
+    },
+    {
+      "id": "b903f84b4b244085a1dc5d2cbff1605b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0893301ee5634aada72fa1aabc72fca7",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Guerre des métaprotocoles / OP_RETURN War → intro section"
+    },
+    {
+      "id": "1ca6be21c94f4802a3957a98e14b4091",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "11bfff4d60b642658dcaf8ad9f38a9b6",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept DApp / Application decentralisee → intro section"
+    },
+    {
+      "id": "ccb0bcd3ceb6461395e1ef8843378e60",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e4b95e6a7ec94ac18025381781bb547e",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Protocole GHOST → intro section"
+    },
+    {
+      "id": "81aa1197ea1f43e7876656533adab4e9",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "20c77c9003ab4d61b84a82579ecd26aa",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Approche instrumentale / substantielle de la monna → intro section"
+    },
+    {
+      "id": "9cf15136cbbb42d2aeec47a819666878",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "03628033cab749e0a5b2872b77cb1aee",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Chartalisme / Approche nominaliste etatiste → intro section"
+    },
+    {
+      "id": "535cb4141cd6494990c7f8622035e5f4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "2e24bde03cad4d56b1c0c012d7cf1e57",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Institutionnalisme Monetaire Francophone (IMF) → intro section"
+    },
+    {
+      "id": "387551120f9545fa8e305b0c19fab7d6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f47469e28b2643ed8644122475d1fb95",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Théorie du free banking → intro section"
+    },
+    {
+      "id": "d68a9d56cf8647fca342e2f3077ced32",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d99b2ede54c54c7aa7aad3ece55629fd",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Theorie quantitative de la monnaie (TQM) → intro section"
+    },
+    {
+      "id": "1825b727d8e94958a1de7cf08aa792ce",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e2634d16231e44e4a8ad587190621f83",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Nouveau Management Public (NMP) → intro section"
+    },
+    {
+      "id": "1e427428e0b9497c8ae04b07378a5d96",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e84089eb533445f6981db78c87085a56",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Consensus de Washington → intro section"
+    },
+    {
+      "id": "e7a01a5a89b343749e293a8ec060302d",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b0cdc054ef7e48d0ae2526a555fb2cc3",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie de compte / Unite de compte nominale → intro section"
+    },
+    {
+      "id": "1705b5c0b62640818385a031f511d03c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "92b00fd0ab9049cea901c66a63c8fc1f",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Communaute de paiement / Groupe monetaire → intro section"
+    },
+    {
+      "id": "07fe19dea1ce4e7e86d288e2204d5679",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "12a350af254945d3a1342c43e53961fc",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Trois etats de la monnaie → intro section"
+    },
+    {
+      "id": "dcd973b06c944eee90d570411331dbaf",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d4ad72fbd8704bc59ed788fbe32bb7ad",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie parallele → intro section"
+    },
+    {
+      "id": "31c4212779814be89a87da0cda11af0a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c7299000a92b4630a6542320c021fa13",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie imaginaire / Monnaie fantome → intro section"
+    },
+    {
+      "id": "3c7d95a0ddd842e1b01522cd4023ccb6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a4a3cedd64464712aea243607d1641d5",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie marchandise synthetique → intro section"
+    },
+    {
+      "id": "902bd1ea82604ddabac4c6f380119f08",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "dafa7054bc5a450ca3f248090113e732",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Son Money / Monnaie saine → intro section"
+    },
+    {
+      "id": "94c77e8c6bfc4a4eaee6caf6318ecf59",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "33779ee2b6b848258b8f724c225714f0",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie electronique (e-money) → intro section"
+    },
+    {
+      "id": "54c6b47771964cb0acb75c02c5165958",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "197253674a064412ba65528117c61d3d",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept CBDC / Monnaie numerique de banque centrale → intro section"
+    },
+    {
+      "id": "83bae34e62b7430c88c3aae0c6524450",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c622e5a68f014acaaad86e7cb080ec1b",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Archetypal monetary functions → intro section"
+    },
+    {
+      "id": "397dd9f9742f4ca0ad4432ba032f467a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "76c4e686d40345f2bc695052929482b8",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Regle contre discretion (monetary policy) → intro section"
+    },
+    {
+      "id": "78c22386834e4297aba33864a6d53ccd",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "8b02dc202f9841acb6b3213cfc65c5c8",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monstre monetaire → intro section"
+    },
+    {
+      "id": "80ba8a693ccc4268b3f2df0d865c9eab",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f018e4490ac24705a1017203d60a97d1",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Souverainete monetaire → intro section"
+    },
+    {
+      "id": "dc0c5e2a9b1047eea60a098174a94355",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b4c3838e9ede4dbeb736f1572f6eb2d8",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Espace monetaire / Espace juridictionnel → intro section"
+    },
+    {
+      "id": "b99b7ae483894f1cbe2e5dd96e4cc9a8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "9e63b6e996b3416dbcc1a94f8ff0ae50",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Confiance monetaire → intro section"
+    },
+    {
+      "id": "33347390dcf04fbc976fa75981c99c51",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d187580f08144ab3bdf495c351f7b322",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Heterogeneite des monnaies → intro section"
+    },
+    {
+      "id": "f7c45aec432f49fdb6706ab470e32cab",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "22d52249dba84e33a0f4488cb81747ba",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance par le protocole → intro section"
+    },
+    {
+      "id": "2a112af75c974ccc8c6c3183ae36b7fa",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "604158d5bab84e82821d53e75070899a",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance sur le protocole → intro section"
+    },
+    {
+      "id": "bc7d25e39e92489596d74990eacd7a9a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "119915486da7457e8d6c841d419ac8e6",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance publique d'exception → intro section"
+    },
+    {
+      "id": "4c7ef7a37e334a47b47464641a77da04",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "cbf51f368ab14bc09d7c9501abcb7d41",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Crise de faux monnayage → intro section"
+    },
+    {
+      "id": "b8bbacc205a047b887c33080b6419a61",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7c6a36aeea924f209742c220507917e2",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Crise de DOS (denial-of-service) → intro section"
+    },
+    {
+      "id": "e5a352ecf6e4429b9b33ebacb0952e0b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e03397b2a1b9443bb4be6a9f5aa836b4",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Crise de Theft → intro section"
+    },
+    {
+      "id": "e0e5884de961435c900204feffb20ccb",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "189314da7afb44978724c7d538a7c6dd",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Post-mortem de crise → intro section"
+    },
+    {
+      "id": "3b75b724b57748d8bc147bc889d3d4f8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "cd2b195ab9af4c6b95ff01cda696a074",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Politique de crises → intro section"
+    },
+    {
+      "id": "a124857e682a43188bd2580212cf8a53",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "504644ee3f7a4253b88b6139f239693a",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Etudes infrastructurelles → intro section"
+    },
+    {
+      "id": "36857ef7963c4d4aa8756100d5cdfae5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3f52b7ed99254e2580568e118cf701a2",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Theorie de l'acteur-reseau (ANT) → intro section"
+    },
+    {
+      "id": "465776955c1b4956a8a0f37ff4993364",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "83f9ceb540d04f3b9aab986cf6436035",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Sociologie de la traduction → intro section"
+    },
+    {
+      "id": "77553b17ef4542a784ee740bcbf65ac7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "85451768515f4d70a241a5b7a2607557",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Invisibilite des infrastructures → intro section"
+    },
+    {
+      "id": "82b514f9a6a2470d888db6b51c9a003e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "eb2ccbd73d8d439f8bb38d2f4b456b99",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Visibilisation de la gouvernance → intro section"
+    },
+    {
+      "id": "15b1151c0d134908bf120cbd57339756",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6271402f630148c7b1a6a758dbaafc2e",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Neuf proprietes infrastructurelles → intro section"
+    },
+    {
+      "id": "42e2d63f151649e7a9d0bf9064c23814",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0a6054a2aafd4476a516e829a4e39703",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept On-Chain / Au sein du protocole → intro section"
+    },
+    {
+      "id": "2ef04af259304779b62018b9ea1fb719",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "81ccd09814a44463a40014171ac92ee7",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Off-Chain / Hors-protocole → intro section"
+    },
+    {
+      "id": "dcc07902c50a496294b7c1be2469d3a3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "5534cbaa12bb4044b86f25fc453072df",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Cryptographie → intro section"
+    },
+    {
+      "id": "e1aa062205284342b5c30921730d614c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "49d5a9f279014202aa1426ae010e3f14",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Signature cryptographique → intro section"
+    },
+    {
+      "id": "1110a87e20524e81b5525cd479e9cb85",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "abba1eed18834c889c6c7f94b641a957",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Systeme de protocole de registre distribue / DLT → intro section"
+    },
+    {
+      "id": "6bca99ced8324fd3951303dd61f2613f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "868007499c1a4246946e4535cacc6418",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Systeme de protocole de registre ferme / Permissio → intro section"
+    },
+    {
+      "id": "8f2836cb509141578990931a81967c13",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ba43520a111548a097cb04adfd18de31",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Systeme de protocole de registre ouvert / Permissi → intro section"
+    },
+    {
+      "id": "5b149aae6db24ad3953f13249f5148ba",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d622d318825741cda43212d7831a88c7",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept II.3 Au‑delà de la revendication d’une absence de  → intro section"
+    },
+    {
+      "id": "44643bcd44c24cd5a22c883ccf19d8e8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "586e00d1ca15450ca9b25fe4595bc662",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Mise en crise / Remise en ordre → intro section"
+    },
+    {
+      "id": "b6c56eddf5dd410baacc86274b6d05c2",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c4ff6f8bb34a4bc4acf61ebb16943bde",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Nominalisme monetaire non etatiste → intro section"
+    },
+    {
+      "id": "38b0e65aeb83432690f7d934db46fcc2",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f71ee316f413448c8b9823c2799aba30",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie communautaire → intro section"
+    },
+    {
+      "id": "4bd142fd3a6f4a71a28897041d5b2e8f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ac80b824dedc47419211e4393dfcd681",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance par l'infrastructure → intro section"
+    },
+    {
+      "id": "e0fa099df7fc4473bbd06152913eff2e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a4bbdf3c65394e31bcbb33cc00c64303",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Argument Thèse centrale (infrastructures, crises, gouvernan → intro section"
+    },
+    {
+      "id": "a0f8934b07d6427e8434b41ab819193f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "615f6147214c43ab830a98ca866779c3",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Argument Règle comme cristallisation normative située → intro section"
+    },
+    {
+      "id": "7451f7aa640549f5bd6e1a6d3b8f53d4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6ba73da9cdff4ca0bd94e11b314f2b4b",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Argument Crises comme épreuves d’explicitation (non téléolo → intro section"
+    },
+    {
+      "id": "7ecf66296b5c461da01632af0c3240bc",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4a05617467244587823b1aad93f05e11",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Argument Polycentricité comme dynamique d’arènes et de légi → intro section"
+    },
+    {
+      "id": "2680d2c69a574097863504d7f83cdbc0",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7c752c3cc7be4528baddec7660f39c1a",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Argument Critique symétrique des essentialismes monétaires → intro section"
+    },
+    {
+      "id": "cbfaf933073743d89a29fd6b087dd38a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4ab7376c307f4268a02ee135b023001a",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Argument Carnavalesque comme lecture analytique → intro section"
+    },
+    {
+      "id": "b942b8bd73e341b6a17cc4f73024a35b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4e1ab5fc2fa342bca2cfc734f5c36424",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Modes de déclenchement des crises (vulnérabilités) → intro section"
+    },
+    {
+      "id": "f2f862f6c1dc43649b982e2a325a4db8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3efade56eb0c450a8d1f3060bca119ff",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Immunité à la gouvernance humaine (prétention coin → intro section"
+    },
+    {
+      "id": "34109b8247f24cfcb423f3becf8a63f7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "881dd0f54e0747f2b3737ba34fc30693",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept CM comme « meilleures » monnaies (prétention coine → intro section"
+    },
+    {
+      "id": "472b9f5ed6674fb3a239e1afbcbc771b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f36a2cc8e26542cf990b587e13d4f178",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Dilemme de la poule et de l'œuf (bootstrapping mon → intro section"
+    },
+    {
+      "id": "aaad5924e2e24d5fbf083445036ac8bd",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b8fbacf5839546a59b1d15bf1b574b51",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Prophétie auto-réalisatrice (monétaire) → intro section"
+    },
+    {
+      "id": "0f3b35af6fd84db588ee0cb42ea5870b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7b563a52de7f4beba9992a0d59e9092a",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Bootstrapping monétaire → intro section"
+    },
+    {
+      "id": "c7b8c6c40d0f46baacce2e662376f5bf",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "9ae9e177f05f4f93ac2fd735d8f67ae2",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Meta-protocole (meta-protocol) → intro section"
+    },
+    {
+      "id": "91219daa752c4d2d8913c4c6caa94d79",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ea99bd4bf7954ae8b2965aa575fb0a4f",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept IOU / reconnaissance de dette (crypto) → intro section"
+    },
+    {
+      "id": "56e19b835ab34f619e2a65252c1b4535",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c5e86cf5eb2c468e9991b9f7e3604094",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Protocole de surcouche / Layer 2 → intro section"
+    },
+    {
+      "id": "1cdbc5d003eb45199e8feef753d55777",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ae354acce5c244c894e63ac8c6140df6",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Decentralisation → intro section"
+    },
+    {
+      "id": "eb58549fbfa74eed86b463829f429d67",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "38560b44059a45bb8fd3a46cae2ff34c",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Récompense d'émission monétaire (block reward) → intro section"
+    },
+    {
+      "id": "b5800d3f29b0443abf79a6c95f154b26",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d7c6d27fa6d94a239037409847db50f9",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Galaxie d'Altcoins (constellation de protocoles) → intro section"
+    },
+    {
+      "id": "b09ba1f92fa7412da1f7712ed876aaf4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "2bc86138ffe94ffebe818f257334bc9a",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Décentralisation du DNS → intro section"
+    },
+    {
+      "id": "8f3ec4bf09c94b6ab222217ba070129d",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ee582934056343ae884c5c842aba2840",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Premine (pré-émission monétaire) → intro section"
+    },
+    {
+      "id": "0343b997daac4083b3e74c7c044c1570",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "8bf52a3e00d24a2b96aa4c511163df45",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Métaprotocole / protocole en surcouche → intro section"
+    },
+    {
+      "id": "db9a29c51bef42a7b6412e51ff381426",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "094caf2b65fe4f7f80d813df0f960ebd",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept DEX (bourse décentralisée) → intro section"
+    },
+    {
+      "id": "112e2012782f4975a02b63da21553067",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "8db86c8e880e4e6a96bfc5d05fb1fd50",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Passager clandestin (free rider) dans les métaprot → intro section"
+    },
+    {
+      "id": "5284548aad134cc882f9df50a0ea977a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "499e99e5d8cb4148a5d7a4dfef842c58",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Loi crypto / Crypto Law (Zamfir) → intro section"
+    },
+    {
+      "id": "6e34d73b4f58423e9cd69b0c84de7592",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "1d1b45041cca495ba26776849494903e",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaies électroniques de 2e génération → intro section"
+    },
+    {
+      "id": "541b515e992e41fdb88c8f21adf35bee",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6f6b4ab6f46a460797b9a489ff13c9a1",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaie numérique → intro section"
+    },
+    {
+      "id": "ef8fa3c131eb4fd8a8d31421a2cda97b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "87aee3c6c4e546ba825fc940fe964b41",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Hyper-cryptomonétisation → intro section"
+    },
+    {
+      "id": "2b7c612b8418485bae91a0b4baa8653e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e1a7b06839404dbdacba7f00782a5450",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Infrastructure sociotechnique → intro section"
+    },
+    {
+      "id": "04b0f9980fe34bbe9c961724a0ac12d8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "dc4d30d9136b4d0ea66df5d6628fc73f",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept wallet.dat (gestion des clés cryptographiques) → intro section"
+    },
+    {
+      "id": "68ea54ea3cef49de87ad898d08bd8400",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b7fe31dae5034877822bae63092f4a38",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: Concept Investisseurs institutionnels (acteurs financiers  → intro section"
+    },
+    {
+      "id": "157196fef3f04fbb9db09d17aeafb571",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "00a5790b48414546ab2ef8f585e0b4b5",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Tipping numérique (pourboire crypto — Dogecoin) → intro section"
+    },
+    {
+      "id": "9336f8d52b554f89945d083d940a02b3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0386bd526a04481d9ce4501f8c41374f",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance on-chain (budget et vote) → intro section"
+    },
+    {
+      "id": "0a8a8ab692c0403b99051f7f859fe05d",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "8d578d2f715f4cd19b995be543776414",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Légitimité par l'intention des développeurs (au-de → intro section"
+    },
+    {
+      "id": "c451ae8097eb4e6ba3ec1809e7a4b344",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f6c7446fa0fe4f318142a09f4848f84f",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Infrastructure monétaire crypto-monétaire → intro section"
+    },
+    {
+      "id": "5600112055044670b967dc3068bff10a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a7bec8b7df704a9599e46628baf2f8c1",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Financiarisation crypto sans fiat bancaire → intro section"
+    },
+    {
+      "id": "083c080daf534b4398a0a11d2727b69a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "dbaa2fa2fe86491990df355f8996bc03",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Volume de trading crypto (explosion 2017-2021) → intro section"
+    },
+    {
+      "id": "c1c3f03786044355aa16bbe7bf63ed93",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bed4df005c7ce36030703bd68cb521d1",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept cryptomonnaie → intro section"
+    },
+    {
+      "id": "74f38df2d0b240879cf9c9f0341ded38",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "15e514aa2f965ee5fc25ac5a6ba7b0ef",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept monnaies locales et complémentaires → intro section"
+    },
+    {
+      "id": "cdc46422386340278346ed935dfa6499",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4efa61674cbd5af26dd57b8a8618180e",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Règle contre la discrétion (politique monétaire) → intro section"
+    },
+    {
+      "id": "be0b11fe23624111b992ada34cf27836",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "1357a6a731125ab4c62e401564cad652",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance duale (CM) → intro section"
+    },
+    {
+      "id": "f9b00162a41c406999f83e87dacc44ef",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "79a6188852c21b87bf22e8c9c28e719d",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Infrastructure sociotechnique (CM) → intro section"
+    },
+    {
+      "id": "92ee93a2604c441c831b84f1fb9da278",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "25b9562f132d329e49abd53406021dea",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Dynamique carnavalesque du développement infrastru → intro section"
+    },
+    {
+      "id": "0512852cbc63499eb6a330dcc7f22907",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "805879ef12780478a182ee9ce35257f9",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Statut monétaire des cryptomonnaies → intro section"
+    },
+    {
+      "id": "cd7821bbe4424e3ba078659585b5f25f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "21107fb980daa17e698237df5d7daa2f",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: Concept Institutionnalisme intéressé aux usages → intro section"
+    },
+    {
+      "id": "a447e099eead418b9a08b1496a68f0f1",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0be32c5d6649a5962af80206844aa324",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Approche institutionnaliste de la monnaie → intro section"
+    },
+    {
+      "id": "9377a6eb13e740feab28709f9986ec56",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bed2df7ff94f6ded0c32dc33d530571a",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Triptyque fonctionnel de la monnaie → intro section"
+    },
+    {
+      "id": "922d0fa814e14ed3bca28a84d60451a3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "758e9ca93d00591b0a077b2d4f0125eb",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Controverse statut monétaire des cryptomonnaies → intro section"
+    },
+    {
+      "id": "4c7b40df21c14c21b672a8ff7579949c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "538e905c19fcb164558cc35c08c88112",
+      "to": "600a5e7b08126f881793ff6696c244a0",
+      "_note": "patch_4: Concept Gouvernance discrète des cryptomonnaies → intro section"
+    },
+    {
+      "id": "a0a7783ccd3144bb89805a645569f48e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ef3943810af1439d8380f4986b125303",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Neutralité de la monnaie → intro section"
+    },
+    {
+      "id": "817be4c436604937b716509a19760900",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "65e0280932914b8493008c7751fb7ba9",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework IAD Framework → intro section"
+    },
+    {
+      "id": "496887f997594d41b4caca52a990199e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b65112a317f04c26be2c38a84625998d",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_4: TheoreticFramework Social Ecological System (SES) → intro section"
+    },
+    {
+      "id": "1962eb16a5b9473da4cf91b4b46975d6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c98f23ad2a1b48b9b4d1a046e75259d0",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_4: Concept Authentification cryptographique → intro section"
+    },
+    {
+      "id": "aa35e9b01621482699a06a81948d1540",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "1ebbb9b8ce4b48179e92e640cc161393",
+      "to": "707ffa8647a7acc3f95f8af261c4c77e",
+      "_note": "patch_4: Concept Monnaies digitales → intro section"
+    }
+  ]
+}

@@ -1115,13 +1115,13 @@ function buildChapterMap(data) {
     }
   }
 
-  // Step 3 — appears_in_section : entity cited IN a section inherits its chapter
+  // Step 3 — appears_in_section : entity inherits its EARLIEST chapter (intro wins over chap1, etc.)
   const APP_ID = rtByName['appears in section'];
   if (APP_ID) {
     for (const rel of data.relations) {
       if (rel.type !== APP_ID) continue;
       const secIdx = result[rel.to]; // rel.to = the section
-      if (secIdx !== undefined && result[rel.from] === undefined)
+      if (secIdx !== undefined && (result[rel.from] === undefined || secIdx < result[rel.from]))
         result[rel.from] = secIdx;
     }
   }
@@ -1147,6 +1147,16 @@ function buildChapterMap(data) {
 
   // Step 5 — BFS fallback (max 1 hop) for still-unassigned entities, seeded ONLY
   // from definitive nodes (Steps 1-3). Limiting to 1 hop avoids transitive mis-assignments.
+
+  // Build entity type lookup for BFS exclusions
+  const entityTypeMap = {};
+  for (const e of (data.entities || [])) entityTypeMap[e.id] = e.type;
+  // Types that should NOT propagate via BFS — only assigned via direct appears_in_section
+  const BFS_EXCLUDED = new Set([
+    'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureSegment',
+    'SourceQuote', 'PriceSeries', 'PriceWindow'
+  ]);
+
   const adj = {};
   for (const rel of data.relations) {
     if (!adj[rel.from]) adj[rel.from] = [];
@@ -1164,6 +1174,7 @@ function buildChapterMap(data) {
     if (hops >= 1) continue;
     for (const nb of (adj[id] || [])) {
       if (!visited.has(nb)) {
+        if (BFS_EXCLUDED.has(entityTypeMap[nb])) continue;
         visited.add(nb);
         result[nb] = chapterIdx;
         queue.push({ id: nb, chapterIdx, hops: hops + 1 });
@@ -1975,8 +1986,8 @@ const Graph = (() => {
     // ── Macro-colonnes mobile (6 groupes sémantiques) ────
     const MOBILE_MACRO_COL = {
       'Chapter': 0, 'ThesisSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'CrisisPhase': 0,
-      'Protocol': 1, 'InfrastructureDomain': 1, 'InfrastructureEvent': 1,
-      'InfrastructureSegment': 1, 'DevelopmentPhase': 1,
+      'Protocol': 1, 'InfrastructureDomain': 1,
+      'InfrastructureEvent': 4, 'InfrastructureSegment': 4, 'DevelopmentPhase': 4,
       'Person': 2, 'Institution': 2, 'ActorGroup': 2, 'ActorNonHuman': 2, 'StakeholderCategory': 2,
       'Concept': 3, 'TheoreticFramework': 3, 'Method': 3, 'Capability': 3,
       'CrisisEvent': 4, 'GovernanceConflict': 4, 'GovernanceProcess': 4,
@@ -1985,7 +1996,7 @@ const Graph = (() => {
       'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
       'PriceWindow': 5, 'SourceQuote': 5, 'Reference': 5,
     };
-    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Gouv.', 'Sources'];
+    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Évén.', 'Sources'];
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
     const cells = {}; // key = `${row}_${col}`
