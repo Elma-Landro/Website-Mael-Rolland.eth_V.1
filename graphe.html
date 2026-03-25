@@ -2036,10 +2036,12 @@ const Graph = (() => {
     });
 
     // ── Taille mobile-aware + classe in-matrix ────────────
-    // msize : 8px sur mobile (NODE_H=10 → nœuds bien séparés, glow individuel visible)
-    //         data(size) sur desktop (hiérarchie hub/périphérie visible)
+    // Desktop : data(size) = 22..90 → hiérarchie hub/périphérie pleine
+    // Mobile  : remapping proportionnel [22,90] → [4,16] (hub 4× plus grand qu'une feuille)
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      n.data('msize', isMobile ? Math.min(n.data('size') || 22, 8) : (n.data('size') || 22));
+      const raw = n.data('size') || 22;
+      const mobileSize = 4 + (raw - 22) / 68 * 12; // 22→4px · 55→10px · 90→16px
+      n.data('msize', isMobile ? mobileSize : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
