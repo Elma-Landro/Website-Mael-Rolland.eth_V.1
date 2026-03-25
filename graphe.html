@@ -1421,7 +1421,7 @@ const Graph = (() => {
     const LABEL_ZOOM_THRESHOLD = 3.5;
     function syncLabels() {
       const z = cy.zoom();
-      const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo):not(.row-halo)');
+      const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
       if (z >= LABEL_ZOOM_THRESHOLD) {
         nodes.addClass('show-label');
       } else {
@@ -1521,20 +1521,20 @@ const Graph = (() => {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'shadow-blur': 40, 'shadow-opacity': 0.80,
+          'shadow-blur': 30, 'shadow-opacity': 0.80,
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.95,
           'z-index': 2,
         }
       },
-      // ── Arêtes matrix : texture réseau subtile + révélation au clic ────
-      // opacity 0.02 = texture de réseau en arrière-plan sans saturer la vue.
+      // ── Arêtes matrix : cachées par défaut, révélées au clic ────────────
+      // 19436 arêtes × opacity > 0 = fond vert solide par cumul → display:none obligatoire.
       // Au clic, edge.in-matrix.highlighted (spécificité 2 > 1) révèle les connexions
       // directes avec la couleur du chapitre source.
       {
         selector: 'edge.in-matrix',
-        style: { 'opacity': 0.02, 'display': 'element' }
+        style: { 'display': 'none' }
       },
       {
         selector: 'edge.in-matrix.highlighted',
@@ -1558,20 +1558,6 @@ const Graph = (() => {
           'label': '',
           'events': 'no',
           'shadow-blur': 30, 'shadow-color': 'data(color)', 'shadow-opacity': 0.08,
-          'z-index': 0,
-        }
-      },
-      // ── Row halos: horizontal color band per chapter row ──
-      {
-        selector: 'node.row-halo',
-        style: {
-          'shape': 'rectangle',
-          'background-color': 'data(color)',
-          'background-opacity': 0.03,
-          'border-opacity': 0,
-          'label': '',
-          'events': 'no',
-          'shadow-blur': 80, 'shadow-color': 'data(color)', 'shadow-opacity': 0.12,
           'z-index': 0,
         }
       },
@@ -1778,7 +1764,7 @@ const Graph = (() => {
     if (!cy || !State.data) return;
     cy.nodes().removeClass('in-matrix in-nebula nebula-leaf');
     cy.edges().removeClass('in-matrix');
-    cy.$('.col-halo, .row-halo').remove();
+    cy.$('.col-halo').remove();
 
     // ── Reset archipelago state ───────────────────────────
     _nebulaActive = true;
@@ -2060,8 +2046,8 @@ const Graph = (() => {
       });
     }
 
-    // ── Column halos + Row halos ──────────────────────────
-    cy.$('.col-halo, .row-halo').remove();
+    // ── Column halos ──────────────────────────────────────
+    cy.$('.col-halo').remove();
     const haloH       = ROW_H * 5 + 100;
     const haloCenterY = OY + 2 * ROW_H;
 
@@ -2108,38 +2094,6 @@ const Graph = (() => {
           classes: 'col-halo',
         });
       });
-    }
-
-    // ── Row halos (horizontal chapter bands) ─────────────
-    // Creates a horizontal glow band per chapter row — crosses col-halos to produce
-    // the blended "matrix lumineux" effect (dégradé croisé vertical × horizontal).
-    {
-      const numCols     = isMobile ? 6 : sortedTypes.length;
-      const gridW       = numCols * COL_W;
-      const rowHaloCx   = OX + (numCols - 1) * COL_W / 2; // centre horizontal de la grille
-      const rowHaloW    = gridW + COL_W;                   // légèrement plus large que la grille
-      const rowHaloH    = isMobile ? ROW_H * 1.10 : ROW_H * 0.85;
-      const _hasRow5    = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
-      const numRows     = _hasRow5 ? 6 : 5;
-      for (let r = 0; r < numRows; r++) {
-        const chColor = CH_COLORS_EXT[r] || '#666666';
-        cy.add({
-          data: { id: '__row_halo_' + r, color: chColor },
-          position: { x: rowHaloCx, y: OY + r * ROW_H },
-          classes: 'row-halo',
-        });
-        cy.$('#__row_halo_' + r).style({
-          'shape':              'rectangle',
-          'width':              rowHaloW,
-          'height':             rowHaloH,
-          'background-opacity': 0.03,
-          'shadow-color':       chColor,
-          'shadow-blur':        isMobile ? 60 : 120,
-          'shadow-opacity':     isMobile ? 0.55 : 0.18,
-          'border-opacity':     0,
-          'z-index':            0,
-        });
-      }
     }
 
     // ── Labels ───────────────────────────────────────────
@@ -2208,12 +2162,12 @@ const Graph = (() => {
       });
     });
     // Nœuds de données au-dessus des halos
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').not('.row-halo').style({
+    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
       'z-index': 1,
     });
 
     // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
-    const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo').not('.row-halo');
+    const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
     if (dataNodes.length) cy.fit(dataNodes, 60);
   }
@@ -2227,7 +2181,7 @@ const Graph = (() => {
     _nebulaZoomedIdx = -1;
     document.querySelector('.grc-root').classList.remove('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
-    cy.$('.chapter-label, .type-label, .col-halo, .row-halo').remove();
+    cy.$('.chapter-label, .type-label, .col-halo').remove();
     cy.nodes().removeClass('chapter-faded in-matrix in-nebula nebula-leaf');
     cy.edges().removeClass('in-matrix nebula-arch');
     applyFilters();
@@ -2247,7 +2201,7 @@ const Graph = (() => {
     if (!cy || !State.data) return;
     cy.nodes().removeClass('in-matrix');
     cy.edges().removeClass('in-matrix');
-    cy.$('.col-halo, .row-halo').remove(); // clear matrix-mode styles if switching from matrice
+    cy.$('.col-halo').remove(); // clear matrix-mode styles if switching from matrice
 
     _nebulaActive = true;
     _matrixMode = true; // disables archipelago-zoom on node click
