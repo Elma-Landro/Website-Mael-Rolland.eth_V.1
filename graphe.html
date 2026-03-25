@@ -123,6 +123,7 @@ html, body {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 14px; background: var(--bg);
   pointer-events: none;
+  z-index: 10; /* above #matrix-halo-canvas (z-index:1) */
 }
 .canvas-overlay:not(.hidden) { pointer-events: auto; }
 .canvas-overlay h2 { font-size: 1.1em; color: var(--text2); margin: 0; }
