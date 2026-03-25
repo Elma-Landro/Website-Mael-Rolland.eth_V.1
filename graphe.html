@@ -2405,9 +2405,9 @@ const Graph = (() => {
       const [r,g,b] = rgb(color);
       const grad = ctx.createLinearGradient(sx - sw * 0.6, 0, sx + sw * 0.6, 0);
       grad.addColorStop(0,    `rgba(${r},${g},${b},0)`);
-      grad.addColorStop(0.25, `rgba(${r},${g},${b},0.04)`);
-      grad.addColorStop(0.5,  `rgba(${r},${g},${b},0.07)`);
-      grad.addColorStop(0.75, `rgba(${r},${g},${b},0.04)`);
+      grad.addColorStop(0.25, `rgba(${r},${g},${b},0.015)`);
+      grad.addColorStop(0.5,  `rgba(${r},${g},${b},0.028)`);
+      grad.addColorStop(0.75, `rgba(${r},${g},${b},0.015)`);
       grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
       ctx.fillStyle = grad;
       ctx.fillRect(sx - sw * 0.6, 0, sw * 1.2, H);
