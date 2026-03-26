@@ -1,0 +1,1045 @@
+{
+  "_meta": {
+    "patch": "patch_5_missing_sections",
+    "description": "Add appears_in_section for zero-section semantic entities: DLT concepts→ChapI, crisis events→ChapIII, methods→IntroC, governance theory→Intro",
+    "relation_type_id": "f004d0e68f0964e8787d19b350e3ca24",
+    "groups": {
+      "DLT_fundamentals": "ChapI sections (I.1.x Bitcoin/Ethereum fundamentals)",
+      "crisis_events": "ChapIII sections",
+      "methods": "Intro section C (ethnographic approach)",
+      "governance_theory": "Intro section A/B",
+      "orphan_protocols": "ChapI or ChapII"
+    }
+  },
+  "new_relations": [
+    {
+      "id": "5ba9115967d14b83b1f0e21b42f56cb5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "fba623af07644327b873a59e0a9b2f97",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Space of Rule / Space of Discretion"
+    },
+    {
+      "id": "37968ad742fa4c969f190d9aab5932f5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "cae0d43b5b874e0da5b3d0ab2295675c",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Distributed Consensus Fiduciary Logic"
+    },
+    {
+      "id": "2fb55db970b74615bc4cd580ab25d38f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "018cb3c562674948be30d910d68359c3",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Responsible Disclosure"
+    },
+    {
+      "id": "27b5e7da376c4a0794644678642a9f26",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "51399bac6c09439e861d937b86f662e3",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Pretentions Liberales Technicistes"
+    },
+    {
+      "id": "2e9b006a54d54ec4b247895368541956",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "17d7b62a00584fc19e04420bd3227672",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Immersion participante (en ligne)"
+    },
+    {
+      "id": "b6e4b4bb93604fb99605e4753978c8d0",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "5fd4d8dcdc404c1998aa8015ff944ecb",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: Peercoin"
+    },
+    {
+      "id": "fdb700b37ee7428d91a985392099c6d6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "1537366704fb42f1ad70f57b0f95d6f0",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: Mastercoin / Omni"
+    },
+    {
+      "id": "309f017480b444c1bb7903c5a1d91d3b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "af60b8192fab44bbb3aa8d9dec4035c6",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: eCash / DigiCash"
+    },
+    {
+      "id": "f7019f19697d4d98a740ea3bc093a23f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d2920ac9d599485c8ec06bcfb91dba1c",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 precursor→ChapI: b-money (Dai 1998)"
+    },
+    {
+      "id": "d7e6259a56e449518a4ecabe4b0fe181",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b6a238b0216640afac0397b8250e00fc",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 precursor→ChapI: Bit Gold (Szabo 1998-2005)"
+    },
+    {
+      "id": "60d0bc9e860b4116bcc90c12b48fe9c6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "8867c0f4c1554fe59fa4c2017e72ac68",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 precursor→ChapI: Hashcash (Back 1997)"
+    },
+    {
+      "id": "9056b608115c4385b0199f82e037e863",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "1a50a87823c94fcfb797b748f46fa494",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Modèle UTXO"
+    },
+    {
+      "id": "1e8ce32720c2453a938915211509f0e6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6bd7f14c58034f0b9e0df1bd7482fda8",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Halving / Monnayage programmatique"
+    },
+    {
+      "id": "7ceb133fe7154f79a9778b35ffea4898",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "9784ca2f71354c4f86e70e540ce64ea3",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: Dash / Darkcoin"
+    },
+    {
+      "id": "fe4612e968e44179a485e22d80051606",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4322f9923b8442358e0b8e700cd613dc",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: Primecoin"
+    },
+    {
+      "id": "7c73cdd435ad4ba38ceda887aff34357",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "5e4c337b84714fb086d36f65b4805fe6",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: Colored Coins"
+    },
+    {
+      "id": "f013d88243f645528199d9e72e385074",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f1481a194f6047f8977b8a8c7a15b27e",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 protocol→ChapI: Stratum V2"
+    },
+    {
+      "id": "23a355d9ea104051a5c302ef838d3f2a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7460bdc7054a4dfa9d484ace685c9f11",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Probleme des generaux byzantins"
+    },
+    {
+      "id": "150c7f705440422a91a6ef56c50a522a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f871e99e439541438291d12e78b9b5a5",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Attaque des 51%"
+    },
+    {
+      "id": "c6d111b8c2574086b245c63a24dda72e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "acd16826920c47f4afc5e6ea59a3c56a",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Double depense"
+    },
+    {
+      "id": "5dea45a63271486aaac9f72fa619acee",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3854197ebf514c738a62a673913fe8dd",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Theoreme CAP"
+    },
+    {
+      "id": "86bd396fa8154620b6bb61e552ae70f7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bbb341041f074852a96fa9c1ab014954",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "_note": "patch_5 ETH-DLT→ChapI: Difficulty Bomb / Ice Age"
+    },
+    {
+      "id": "104883b7ba58437bb41573b9c4a1f9bb",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "dc7d9845171b4f4285ac2ffae1e412ef",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "_note": "patch_5 ETH-DLT→ChapI: MEV - Maximum Extractable Value"
+    },
+    {
+      "id": "423654fde1554bc593f241e4abd87c2f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "33438ea6d80d49b2bbf2a515934781b3",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: ICO / Initial Coin Offering"
+    },
+    {
+      "id": "a9be5da449494dd79756c820e0158643",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a2cb828bde51457685cea55f1236284a",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Merge Mining / AuxPoW"
+    },
+    {
+      "id": "9fad0cd158514f7b92ba1b18e11e12e5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e555921942e74d19b6d14881d57d7be5",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: ASIC (matériel de minage)"
+    },
+    {
+      "id": "0737c87973e6470594094a11fd56f986",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "413742a37c1c4575b69643f37a4dd82d",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Preuve de brulage / Proof of Burn"
+    },
+    {
+      "id": "170de3d814d04d23b41e57fb76589f53",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a791eb6ba90f46f5a736a2abbba10f45",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "_note": "patch_5 ETH-DLT→ChapI: EthHash / Dagger-Hashimoto"
+    },
+    {
+      "id": "0d4272cf3a99430b8813135ed5a59625",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a83983180c55495fbf01d46c94d10362",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Monnetisation"
+    },
+    {
+      "id": "8ffc7bdcfc1b4af4bb670fcb79d71106",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "202442f070694e70a001e5cdb1b03fe0",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Systeme de paiement"
+    },
+    {
+      "id": "12f227df1bb9429281c82526eb14220c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d8a44f54a23f498390c0a9c9cefd0a97",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: All Purpose Money (APM) vs Special Purpose Money (SPM)"
+    },
+    {
+      "id": "d6fb5f8d9f8d4088bc7ef60ef6256e56",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "992df364d6d64036af1cccea08c8c33e",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Loi de Zamfir"
+    },
+    {
+      "id": "277602e109914d88ac2ea8bd95da992a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "afc0d50c564647839eaf83ccbae5a463",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Discretion contrainte"
+    },
+    {
+      "id": "5b8d8516e363428b9df294bbe2060f3c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bec2386f4e3f4eb2a6932ffb1afc2756",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Anarchie categorielle"
+    },
+    {
+      "id": "515c4e38f062466c85e21066144408f3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7489dce9688a43df9843144626811dae",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Epreuve d'explicitation"
+    },
+    {
+      "id": "98b76a4ae90e45eabf8b3a15a6978516",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4c09d3bbb80846aead4052636ce2869e",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Greenbacking / National Banking Act 1863"
+    },
+    {
+      "id": "259da7a765dd45b9938ca40181aead84",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "eedacf072b7c40f6b39e9ec2fb6f213c",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Valeur intrinseque"
+    },
+    {
+      "id": "6cf5a70d8018405894480e1acb583acc",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "2f54deb5da1440c8bdd5ca16dbc8c647",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Divulgation responsable"
+    },
+    {
+      "id": "aba4cb0d7c334b10990733afb26900d5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "9e9eac4d98ca4d27892e19d17415a7b7",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 upgrade→ChapI: Pull Request (PR)"
+    },
+    {
+      "id": "4618bd3a93a34450a842f93b1124a9a7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "df9265f551724ef2bff38c73f591f24f",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 upgrade→ChapI: Scission de chaine (Chain Split)"
+    },
+    {
+      "id": "52980e7ee7b644d9b0dbb4f7da6f0033",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "850f081c506a4833b4fb7824bd9192a8",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "_note": "patch_5 ETH-DLT→ChapI: Faille de reentrancy"
+    },
+    {
+      "id": "abf0517f240e469d95f4bc9201cae957",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0da46d5bf0d8461caf763b6ba26a9961",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "_note": "patch_5 ETH-DLT→ChapI: Organisation Autonome Distribuee (DAO)"
+    },
+    {
+      "id": "a172a07ee1f94e58990d903efd16042c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "26edc95bf98c4de399f95486dcd3ceb4",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Esprit du code vs Lettre du code"
+    },
+    {
+      "id": "865470830e7547b8a24ea14fe4537bee",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "2f8fdd85e00b4da5b88d33702b48e266",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Deference au code"
+    },
+    {
+      "id": "3b695008d2cc4b5ea0ba7512820565e9",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b1bb006e31bc4a8d8fe471dae3436c7f",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 upgrade→ChapI: Forge logicielle / GitHub"
+    },
+    {
+      "id": "e31b9e0b353440b193aef1e5a1606549",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "2e2583ea54b54efd85855ad949dc4753",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Principe du moindre privilege"
+    },
+    {
+      "id": "5dcf1912e8214abf953d7a9f5160e902",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3bfc96e54e6b4cd693cc69ef73faa524",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Carbonvote"
+    },
+    {
+      "id": "788c2d68c7e4410eb1d233f64bd6235e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d49e7a2de4a641309874f94206294270",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 upgrade→ChapI: Flotteur de bloc (Block Signaling)"
+    },
+    {
+      "id": "5e195303da17400080c6bc20d9a9983f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bdff81b9431b4a8990912e7447e60426",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Diversite des implementations clientes"
+    },
+    {
+      "id": "da121585e27d4a70890186bea07a0108",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a4d612b858fb481fb373ccea31aee98a",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Souverainete communautaire"
+    },
+    {
+      "id": "0a23af17e60a4aebb1c3029b226218d8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6725a3ba6cb94d3ca477e914dab4784f",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Langage etic / langage emic"
+    },
+    {
+      "id": "59dacd30e62044be97764573016c9fdb",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e277c6d62d8a4e52ba9ec127099bea7d",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Effort de traduction chercheur"
+    },
+    {
+      "id": "49963e6cbac44d828c1e7253f86ac71b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ccc4ed32a02a4d0e9d9d69bce522cbf5",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Motif arlequin / Tissu sans couture"
+    },
+    {
+      "id": "767e06cd5b3b400b8161894a4482312c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "769095ae0a16408eaeebe9cfffb5110e",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Approche encyclopedique"
+    },
+    {
+      "id": "def6a0cb45e04105ada82a76287d6752",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0193495c40754614a45ba35786738ec3",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Actif digital"
+    },
+    {
+      "id": "3d62cd965a624f1cb4b2b52a56863c24",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "084ad32c4b554d038d8209f2725ec5e3",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Archivage partagé"
+    },
+    {
+      "id": "64dca46084ee4b34b2942f3e62615d3b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7483cc3501de49d1a0cf36516b7f2209",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Blockchain / Chaine de bloc"
+    },
+    {
+      "id": "fddf24d0339e46a49f37736ea81e960a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7bb996780189451097667409f6274038",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Cible de difficulté"
+    },
+    {
+      "id": "b2308802bebb4ae18e8d21745065feb4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0d3dbc3df0f940339cc2556eed9c8710",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Coherence (propriete DLT)"
+    },
+    {
+      "id": "93ae0653046441abaeb3619a99898222",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "90ad9ef75f4442c884ac4f74ff5c79c6",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Consensus multi-parties"
+    },
+    {
+      "id": "f7381c26af0d4d1bbdf3eb1969b9aa1f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a928f23acc214cdf9f8aa094c68231f1",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Debit / Throughput"
+    },
+    {
+      "id": "d86a4d29f3dc4654a9b8811adc4126ac",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "572f2cb24b674424977cb1ab65afaa65",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Disponibilite (propriete DLT)"
+    },
+    {
+      "id": "d389c3918e5d40b0b443f99ce621841a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7c36969bde1d485eb3a4a942a216789f",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Données endogènes"
+    },
+    {
+      "id": "e834216573f340c68b3f9a1e06a09079",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d2e781ec1f9643e0b70762ddec120147",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Donnees exogenes / Exogenous references"
+    },
+    {
+      "id": "e6d94debe9fe4cf1af7f58691bec1dd6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3ba20dcf685d4e708cd990cb721e409b",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Empreinte numerique / Hash"
+    },
+    {
+      "id": "e903b8383b8a4257879f4e03fa439b1f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "06a9fe756f7341e98970fc2347a147e7",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Enregistrement canonique / Bloc"
+    },
+    {
+      "id": "234af70448df49f29d33cbfbca3613fb",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "00983765d6a24a51b35f79d212579a43",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Evolutivite / Scalabilite"
+    },
+    {
+      "id": "cc6baa2ca69d4718816b8d8150b0321f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0fd27bcb9f3b488bb5ac3fa8668659e3",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Explorateur de registre"
+    },
+    {
+      "id": "7c932a871ac4455eb1c1135043a3227a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c639a09d769445cd88963e70ef9c418c",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Finalite de la transaction"
+    },
+    {
+      "id": "b1a9a9f845164be4882cf6fb40548b30",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "41863390d2124a54ad4eda535a43fdc7",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Fonction de hachage"
+    },
+    {
+      "id": "c2e8f7cb73b24555ad178f2984d563f8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0d0cfe1493904a4daf20e6cbeb1eafdd",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Fork (general)"
+    },
+    {
+      "id": "75413c6b7ea2433c9d0da137e2fd3bef",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "36f8da3ba8e6493280ae29896dfa39f3",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Horodatage / Timestamp"
+    },
+    {
+      "id": "b35c4768bf6c4830889ea2f6d4c63ed3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ba76e677525f4d22bd2a30999ebce68f",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: UCN / Unite de compte native"
+    },
+    {
+      "id": "71ca9a9585a64b81979a6498a8d22ba6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "78e6158cfaa8480dba1a27ecaf36eaa9",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Livre Blanc / White Paper"
+    },
+    {
+      "id": "051dc4ce767b40a9811bceb43ff35225",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "99194988975047098af0f3e215ccdd2f",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Nœud / Node"
+    },
+    {
+      "id": "22258d435c0c4c798b1af58a1759abbf",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c9c3add85b2d40e2afd5194688e12fb3",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Passerelle / Gateway"
+    },
+    {
+      "id": "a540d1dc88a24a5a8da228767b947a20",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6a54cc9ad211488e94e759e08686d88e",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Portefeuille / Wallet"
+    },
+    {
+      "id": "202dd054fcc04e3ebf62e5cc033385db",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "eb707c05941d4b2384d9d65d324c6003",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Recompense d'enregistrement / Block Reward"
+    },
+    {
+      "id": "ef357cb2e455411287fa1fa2cd9c56b4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ef99069ebd094162b7567e810a4ed888",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Registre / Ledger"
+    },
+    {
+      "id": "f4988ba180d24475b1007dee08d98e2f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "1ec862d0f0e646f8bc6aa139e3e8e750",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Reorganisation d'enregistrement"
+    },
+    {
+      "id": "dc63c80535794b4aa3d5c4d7c3586de8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "8c6c711d89e24630bbff13c8d28b5174",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Réseau pair-à-pair"
+    },
+    {
+      "id": "057cb465f17b412295401d3ad1befa82",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "747ac07dc8f8433ca4638f1b30998576",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Resistance a la censure"
+    },
+    {
+      "id": "7683e87b19b34fa594f4e40c3d8f20a9",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e504524108584e36bbddc1bda68d1d17",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Modele base sur compte / Account-based Model"
+    },
+    {
+      "id": "08d4291937ea490a90c5b9f6fe2b3fed",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b62f35ac648f4254a73547c8c76f06f4",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Temps d'enregistrement / Block Time"
+    },
+    {
+      "id": "421923c38f69471da0e1f02e7394d387",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "07bc5ee6ef6b4f429496848d000e303f",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Validation independante"
+    },
+    {
+      "id": "61148192f06948ccad8d66d234d3e80b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "47fbf3a04816446f93ba8ef03ecd4307",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Recherche archivistique"
+    },
+    {
+      "id": "16e76b3f232444dcbe787d670a9f0a1e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f5d93ab12e8f4accb9280b030089f048",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Trace GitHub"
+    },
+    {
+      "id": "05b06f801a204ed9a1aa04592edebd09",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b6646b9dd5fe4ddbb3adafb32a7ba57a",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Analyse de forum"
+    },
+    {
+      "id": "59b32cdbc66f4343a57e03f79c7e94ac",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a4f6516331764bd9ab2978f55c3da78b",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Analyse de médias"
+    },
+    {
+      "id": "6ca2bb3bee0c4e7789f862d294a094ba",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "fcf8ab0bf3a3400c825a3f8b8c7ea93c",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Discussion de forum"
+    },
+    {
+      "id": "d6b4e7751f594e7e9c2434ca8a2f7c9f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "585b02994af1455082e2f7933ac2a73b",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Texte réglementaire"
+    },
+    {
+      "id": "f75372a0a2d44bcfb61bdebe202ab2d3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b2ece1a6cb5f424da69f2111c20d32dc",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Article de presse"
+    },
+    {
+      "id": "7a29feda39c34eb487c2c4dd56510d72",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c2ff5cd25ad54dfc94da9a01f67d0bf8",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 upgrade→ChapI: UASF (User Activated Soft Fork)"
+    },
+    {
+      "id": "a884bb6dab3f420e9a9a5c13d149d455",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ca0f8cf0b9d541ba8eb4c99fa2875c18",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Noeuds complets (full nodes)"
+    },
+    {
+      "id": "cf9b2e538286403490b9b70b4fe1a32c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4977f6c788964274956bb1078d81f2c3",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Noeuds legers (SPV)"
+    },
+    {
+      "id": "79afc9b867d14982bd12411fc9844414",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e1ca84f824a94bf8bb9c021a127f34f5",
+      "to": "596826c3187e4f8cb9034357477eb14c",
+      "_note": "patch_5 scaling→ChapI: Noeuds mineurs (mining nodes)"
+    },
+    {
+      "id": "30712c286ea64978a281d579a260c1db",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3ca250e00efd44f4bdc187a39c6e3c10",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_5 STS→IntroB: Confiance ethique"
+    },
+    {
+      "id": "38f42dbb8a6744feb00f08c53af2ad14",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c6bc54c40ebc4229a5309b679079b6fe",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_5 STS→IntroB: Confiance hierarchique"
+    },
+    {
+      "id": "f291d000fb4240328ea5ac37d7e67a2b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a2e5e59b69a74679a582dd186d77659d",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_5 STS→IntroB: Confiance methodique"
+    },
+    {
+      "id": "a92347d0874247fb97f73b586e1390cc",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "40bace4b96224d138b3f198e18ffa173",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Attaque 51%"
+    },
+    {
+      "id": "16ad294d951f4ee6a91e7e4a417cbebb",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e3b561607c3844ec9755ee97cdc16b11",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "_note": "patch_5 STS→IntroB: Objets-frontieres (Boundary Objects)"
+    },
+    {
+      "id": "95784eed82b449d4ad29e00cc047aea1",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0423dfbdf0904305b1d7e48c3df78ae2",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2010-5141 (Vol de clés privées)"
+    },
+    {
+      "id": "7be24ce4718d4fc0b430cc38dc69921b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "6159fc6febc14b1fa512e41f7a6308b6",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2017-9230 (ASICboost)"
+    },
+    {
+      "id": "aa7de6c0181344afb13a5799576110b5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c6389ffe8f7a48668883b4845808c388",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2018-20587 (Vol, Luke Dashjr)"
+    },
+    {
+      "id": "51c5812fc99c43e08f4489fb64b62506",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "19907a993e6c4b2392f503ec1863df9e",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2018-20586 (Tromperie, injection journal)"
+    },
+    {
+      "id": "33f4d710e93b4b6c8a04d95c3f99476a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4e1a794249594b368e13e558174dea38",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Attaque DDoS MtGox (mai 2013)"
+    },
+    {
+      "id": "ade649cffc994bd1ab6c36c23e2366ea",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "272f2d17b89d4912aca1c4f7b77b7332",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Fermeture Silk Road par le FBI (octobre 2013)"
+    },
+    {
+      "id": "f5536e8e359c4813bdb3393372a5301d",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "63ef4f3d8f584d9b90e351ab7c7c4b39",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Hack et faillite MtGox (février 2014)"
+    },
+    {
+      "id": "b1116707912a42ac9596c53b80d09e6b",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "86b6f7211dc94792b7efa288317a811e",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Séries China BAN (2013-2021)"
+    },
+    {
+      "id": "ec91d4b6556142f48ea132263698eaf4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b3af43b837664bd2946d6b783742ac5b",
+      "to": "018c87f7337246b99ab36add53a537e3",
+      "_note": "patch_5 method→IntroC: Observation participante (hors ligne)"
+    },
+    {
+      "id": "a853ae1df62b45228f613e3542cf7c18",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "dddeabcb23464ee48e9524a6ac71c6eb",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2010-5137 — OP_LSHIFT crash"
+    },
+    {
+      "id": "745e949f724b4b319440bd834a1824d5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "d6af94403c654e33a826339a6d612463",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2010-5138 — Unlimited SigOp DoS via OP_CHECKSIG"
+    },
+    {
+      "id": "f398c7f09cfa4a20bac6480d9a7ae11c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7246b452d71d4416b146f62f42a2bb64",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2010-5140 — Never confirming transactions"
+    },
+    {
+      "id": "0202b384d52a48498d521aa1165de42d",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "3c57e750960e4e97bf6cb2ba79e9f2cd",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2011-4447 — Wallet non-encryption"
+    },
+    {
+      "id": "9df72f02c75345afb10060c297422652",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "a9f76f92c83143479499d10b87c6fe77",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2012-1909 — Transaction overwriting"
+    },
+    {
+      "id": "ffb204e27c3b465788d0ce2241ad81cd",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "522baf7957ec403bb149dd90adb1ba6e",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2012-3789 — (Lack of) orphan txn resource limits"
+    },
+    {
+      "id": "d1b9022bb6694156a3c44d052bee807c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "69b8894ae6764333a270770b1fd661f3",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2012-2459 — Block hash collision (via merkle root)"
+    },
+    {
+      "id": "d8ef5c44e2784d238de5db7a4cc253f7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "07328e2856b1462d882bd1a6a7dfdafa",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2012-4683 — Targeted DoS by CPU exhaustion using alerts"
+    },
+    {
+      "id": "36d4bf649b7247eb98e00cc2bcdc6314",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f5fd3b0f03fa4e11af9b54455a81cdd7",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2012-4684 — Network-wide DoS using malleable signatures in alerts"
+    },
+    {
+      "id": "1b72bfa32d544bde95b4b5ebe1b61e51",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "65b41c49b2244a85ab136ed849d95b6b",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2012-4682 — DOS (manque d'informations)"
+    },
+    {
+      "id": "c13e8fdb35bf43b69535873796335689",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ce0f6a5e811447c8ba4674075a6cf057",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-2293 — Continuous hard disk seek"
+    },
+    {
+      "id": "daeab852df634d0a9d4f6154a2cf5eac",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ee9911c3aa4c435582ccca09979c5000",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-2272 — Remote discovery of node's wallet addresses"
+    },
+    {
+      "id": "e0115afe36604fd890a71095760ff0a7",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "896936e6d50b46f89947a60e01aa584a",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-2292 — A transaction that takes at least 3 minutes to verify"
+    },
+    {
+      "id": "0b24eb20b252434b967c5ed510f0f182",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "580caacd80b14170b0d6dc071106071b",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-2273 — Predictable change output"
+    },
+    {
+      "id": "5d106d785ed84e16a402df4b31cb7c3f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "0d3e806ee1f94421b7ff458eedc65ffa",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-3219 — Unenforced block protocol rule"
+    },
+    {
+      "id": "423faa9f2e9a4607991959c5c2e75c29",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "eb0766a0711945a08d6e4c526615bfd7",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-4627 — Memory exhaustion with excess tx message data"
+    },
+    {
+      "id": "4b4522a2144b4eecb874470c878f6648",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "78dcb8a0af094eb0a1cea842f7f97212",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-4165 — Timing leak in RPC authentication"
+    },
+    {
+      "id": "f1326a9f605e4a11b717857663c5bce3",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "00586d082e964abab5d9f45c73948400",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2013-5700 — Remote p2p crash via bloom filters"
+    },
+    {
+      "id": "81e0a3e4ac0541c8b177a5463e17e6ab",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "ca278d213d804294a2c5a672d52808e4",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2014-0160 — Remote memory leak via payment protocol (Heartbleed)"
+    },
+    {
+      "id": "d4917fef08a7458380620dd7ed851e84",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "5062acdef7964498a764823149c32127",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2015-3641 — OOM via p2p — Unspecified yet"
+    },
+    {
+      "id": "c694bc7609a241e58ed7babf60b5b9fe",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "5656bd5a2f974bbdb8d82530cdf936f3",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2016-8889 — Debug console history storing sensitive info"
+    },
+    {
+      "id": "20331e8d42ab46779af95d978548a19c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "232fdda1778043d9b168884c0caad3a5",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2017-12842 — No commitment to block merkle tree depth"
+    },
+    {
+      "id": "74026902f14040b4bf5c8f43f14db53f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "cfdb999d9b1c4989b7424a931fef16c4",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2016-10724 & CVE-2016-10725 — Alert system — Memory exhaustion & Final alert cancellation"
+    },
+    {
+      "id": "fd7233c6c37b4fe496aee7dbbc488ce4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "fc33fb06d95b42a09a1e08dae5fe8c87",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2017-18350 — Buffer overflow from SOCKS proxy"
+    },
+    {
+      "id": "d05504af1c1f405eacb18908f9e7b4e4",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "170ed4f7fcfb4531b7c872cb84cc8f80",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: CVE-2015-6031 — MiniUPnPc buffer overflow (LAN)"
+    },
+    {
+      "id": "b7992f78b75d4ee1ba229f76ac3b1940",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "9d27a27ff2be40d9a6e12e269279b7d1",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Finalité de paiement (payment finality)"
+    },
+    {
+      "id": "2bf361e0c4554ff88156129d60c79a05",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "549cf2afd2e74368877890e28eb6625d",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Double dépense (double spend)"
+    },
+    {
+      "id": "c43beb43a92a40d79c8c51d989fcbf1f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "b3cd4013f11c4ca4af3c4e8076142d31",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 govtheory→Intro: Discrétion contrainte (Constrained Discretion)"
+    },
+    {
+      "id": "9e8e37ab1b1e4d5bad7b5c217bef83d6",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "124438f6ba3749adbe7e6caa86aabf99",
+      "to": "0fcc7028560c47cc9b82309f469b700c",
+      "_note": "patch_5 monetary→Intro: Actif numérique"
+    },
+    {
+      "id": "2453fcfbca5f463eae0b43173cf406be",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "fc5ad50cc59d417c9afd05b437a42366",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Parity Multisig Freeze (novembre 2017)"
+    },
+    {
+      "id": "b8b17409656f4785b276b9b1e43485ea",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bc083765c6c20c4840d5eef4873c9814",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Crise bancaire et financière de 2008"
+    },
+    {
+      "id": "4ecfbef5c09c43d4bfc114412619b952",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f87e9246cf2b407bb996bf5632733b88",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Consensus distribué"
+    },
+    {
+      "id": "6b466dd66d3a4524a5f2cee6ae5ddc11",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "22c507bdaa874229b5a4a145e23d123c",
+      "to": "5a5684979bf84b37af3771f915f677e2",
+      "_note": "patch_5 crisis→ChapIII: Scaling Debate"
+    },
+    {
+      "id": "232977f066794091a073b99bc3469b34",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "c98f23ad2a1b48b9b4d1a046e75259d0",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Authentification cryptographique"
+    },
+    {
+      "id": "18156beb25f64297a9224dcde1b9a9a5",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "288fbc98cb6b424ea3598bbaa5957b6f",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Cohérence"
+    },
+    {
+      "id": "fb04f0a583924f7db2eefa926977af6d",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "7ee960755783430c9db0bb016e87b78b",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Disponibilité"
+    },
+    {
+      "id": "82c8732321c441378329b69c46794b1a",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "168adf802d18403f85862b8db5469118",
+      "to": "179eaeedc85c47a09b7a4ada23fc825b",
+      "_note": "patch_5 DLT→ChapI: Enregistrement de genèse"
+    }
+  ]
+}
