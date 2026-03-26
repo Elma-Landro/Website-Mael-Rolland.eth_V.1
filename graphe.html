@@ -1196,6 +1196,17 @@ function buildChapterMap(data) {
     }
   }
 
+  // Step 6 — Hard overrides: primary thesis objects forced to specific chapters
+  const CHAPTER_OVERRIDES = {
+    'd35d720e1fa24d9fbe665a90ac0abc73': 1, // Bitcoin → Chap. I
+    '2956b3b87db1448f8a2ddde82d39e9c9': 1, // Ethereum → Chap. I
+    '10960c9c308b4a3dad7ff86a20a1d2b5': 1, // Satoshi Nakamoto → Chap. I
+    'a444085b9b2d4ea1aa734f7e25db6a6c': 2, // Gouvernance polycentrique → Chap. II
+  };
+  for (const [eid, chidx] of Object.entries(CHAPTER_OVERRIDES)) {
+    result[eid] = chidx;
+  }
+
   return result;
 }
 
@@ -2010,7 +2021,7 @@ const Graph = (() => {
       'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
       'PriceWindow': 5, 'SourceQuote': 6, 'Reference': 5,
     };
-    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Évén.', 'Réf.', 'Extraits'];
+    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Gouv.+', 'Réf.', 'Extraits'];
 
     // ── Group nodes by (chapterRow, typeCol) ────────────
     const cells = {}; // key = `${row}_${col}`
