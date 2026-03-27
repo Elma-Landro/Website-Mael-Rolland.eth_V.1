@@ -2730,92 +2730,178 @@ const Graph = (() => {
     cy.edges().addClass('in-matrix');
   }
 
-  // ── Vue Monétisation : layout par strates analytiques ───────────
+  // ── Vue Monétisation : matrice processuelle 6×6 ─────────────────
   function applyMonetisationLayout() {
     if (!cy || !State.data) return;
 
-    // ── Cleanup residual classes from other layouts ───────
+    // ── Cleanup ───────────────────────────────────────────
     cy.nodes().removeClass('in-matrix in-nebula');
     cy.edges().removeClass('in-matrix nebula-arch');
     cy.$('.chapter-label, .type-label, .col-halo').remove();
     _stopHaloOverlay();
 
-    // ── State ────────────────────────────────────────────
     _nebulaActive = true;
     _matrixMode = true;
     _nebulaZoomDepth = 'chapter';
     document.querySelector('.grc-root').classList.add('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
 
-    // ── Build stratum map if empty ────────────────────
+    // ── Ensure stratum map ────────────────────────────────
     if (!Object.keys(_stratumMap).length) {
       _stratumMap = buildStratumMap(State.data);
     }
 
-    // ── Color nodes by stratum ────────────────────────
-    cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
-      const s = _stratumMap[n.data('id')] || 3;
-      const c = STRATUM_COLORS[s] || '#666666';
-      n.data('color', c);
-      n.data('stratumIdx', s);
-      n.data('labelColor', c);
-      n.removeClass('chapter-faded always-label');
-    });
+    // ── Constants ─────────────────────────────────────────
+    const MON_COL_LABELS = ['Émission', 'Circulation', 'Accès', 'Usages', 'Valorisation', 'Stabilisation'];
+    const MON_ROW_LABELS = ['Thèse', 'Mécanismes', 'Infra.', 'Acteurs', 'Cas', 'Figures'];
+    const MON_COL_COLORS = ['#f2b84b', '#ffd166', '#21d4fd', '#45d483', '#b56cff', '#ff7b54'];
+    const MON_ROW_TINT   = ['#ffe8aa', '#d0d0d0', '#9bbcd4', '#88cc88', '#e8a870', '#cc99cc'];
 
-    // ── Geometry ─────────────────────────────────────
-    const VW = cy.width() || window.innerWidth || 800;
-    const isMobile = VW < 600;
-    const BAND_H  = isMobile ? 110  : 260;
-    const OX      = isMobile ? 200  : 700;   // canvas center X
-    const OY      = isMobile ? 80   : 140;   // top band center Y
-    const HALF_W  = isMobile ? 180  : 860;   // half usable width per band
+    // Named overrides from spec (entity name → {row, col})
+    const MON_PLACEMENTS = {
+      'Monétisation': { row: 0, col: 3 },
+      'Infrastructure sociotechnique': { row: 0, col: 1 },
+      'Développement carnavalesque': { row: 0, col: 2 },
+      'Gouvernance polycentrique': { row: 0, col: 5 },
+      'Nominalisme monétaire non étatiste': { row: 0, col: 3 },
+      'UCN BTC': { row: 4, col: 0 },
+      'UCN ETH': { row: 4, col: 0 },
+      'Block reward': { row: 1, col: 0 },
+      'Halving / monnayage programmatique': { row: 1, col: 0 },
+      'Passerelle fiat': { row: 2, col: 2 },
+      'Services de portefeuille et paiement': { row: 2, col: 2 },
+      'Usages réels de Bitcoin': { row: 4, col: 3 },
+      'Découverte du prix': { row: 1, col: 4 },
+      'Liquidité du marché': { row: 1, col: 4 },
+      'BIP': { row: 2, col: 5 },
+      'EIP': { row: 2, col: 5 },
+      'CVE-2018-17144': { row: 4, col: 5 },
+      'The DAO': { row: 4, col: 5 },
+      'Peter Wuille': { row: 5, col: 5 },
+      'Greg Maxwell': { row: 5, col: 5 },
+      'Gregory Maxwell': { row: 5, col: 5 },
+      'W.J. van der Laan': { row: 5, col: 5 },
+      'Adam Back': { row: 5, col: 0 },
+      'Jihan Wu': { row: 5, col: 4 },
+      'Vitalik Buterin': { row: 5, col: 5 },
+      'Gavin Wood': { row: 5, col: 5 },
+      'Vlad Zamfir': { row: 5, col: 5 },
+      'Roger Ver': { row: 5, col: 3 },
+      'Susan Leigh Star': { row: 5, col: 1 },
+      'Geoffrey Bowker': { row: 5, col: 1 },
+      'André Orléan': { row: 5, col: 3 },
+      'Bruno Théret': { row: 5, col: 3 },
+      'Michel Aglietta': { row: 5, col: 3 },
+      'Viviana Zelizer': { row: 5, col: 3 },
+      'Thomas Hughes': { row: 5, col: 2 },
+      'Keith Hart': { row: 5, col: 4 },
+    };
 
-    // ── Group nodes by stratum ────────────────────────
-    const groups = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const s = n.data('stratumIdx') || 3;
-      if (groups[s]) groups[s].push(n);
-    });
+    // Type → default row fallback
+    const TYPE_ROW_MON = {
+      'DoctoralThesis': 0, 'Chapter': 0, 'Argument': 0, 'NarrativeCluster': 0, 'AnalyticClaim': 0,
+      'Concept': 1, 'CoreConcept': 1, 'ConceptCore': 1, 'ConceptSecondary': 1,
+      'ConceptTechnical': 1, 'TheoreticFramework': 1, 'Method': 1, 'NativeFormula': 1,
+      'Protocol': 2, 'ActorNonHuman': 2, 'InfrastructureDomain': 2, 'InfrastructureSegment': 2,
+      'GovernanceArena': 2, 'SoftwareClient': 2, 'CodeRepository': 2,
+      'PlatformService': 2, 'Marketplace': 2, 'InfrastructureService': 2,
+      'StakeholderCategory': 3, 'Institution': 3, 'Organization': 3,
+      'ActorGroup': 3, 'StakeholderGroup': 3,
+      'CrisisEvent': 4, 'CrisisPhase': 4, 'GovernanceConflict': 4,
+      'ProtocolChange': 4, 'ProtocolProposal': 4, 'InfrastructureEvent': 4,
+      'MonetaryObject': 4, 'DevelopmentPhase': 4,
+      'AcademicWork': 5, 'Reference': 5, 'Corpus': 5, 'SourceQuote': 5,
+      'PrimarySource': 5, 'GreyLiterature': 5, 'IndigenousLiterature': 5,
+      'PriceSeries': 5, 'PriceWindow': 5,
+    };
 
-    // ── Build cluster map for this layout ────────────
-    const entityClusterMap = {};
+    // Chapter → column range [lo, hi] for automatic assignment
+    const CHAP_COL_RANGE = [
+      [1, 3],  // Intro
+      [0, 2],  // Chap. I  (émission / circulation / accès)
+      [1, 4],  // Chap. II (circulation → valorisation)
+      [3, 5],  // Chap. III (usages → stabilisation)
+      [2, 4],  // Concl.
+    ];
+
+    // ── Geometry ──────────────────────────────────────────
+    const isMobile = (cy.width() || window.innerWidth) < 600;
+    const COL_W  = isMobile ? 72  : 280;
+    const ROW_H  = isMobile ? 130 : 420;
+    const OX     = isMobile ? 72  : 350;
+    const OY     = isMobile ? 100 : 280;
+    const NODE_H = isMobile ? 10  : 14;
+    const CELL_W_FRAC = 0.82;
+
+    // ── Build name→id + id→placement ─────────────────────
     const nameToId = {};
     for (const e of State.data.entities) nameToId[e.name] = e.id;
-    for (const [name, ov] of Object.entries(STRATUM_OVERRIDES_BY_NAME)) {
+    const idPlacement = {};
+    for (const [name, pl] of Object.entries(MON_PLACEMENTS)) {
       const id = nameToId[name];
-      if (id) entityClusterMap[id] = ov.cluster;
+      if (id) idPlacement[id] = pl;
     }
 
-    // ── Position nodes with cluster bias + jitter ────
-    for (let s = 1; s <= 6; s++) {
-      const nodes = groups[s] || [];
-      if (!nodes.length) continue;
-      const bandY = OY + (s - 1) * BAND_H;
+    // ── Assign cells ─────────────────────────────────────
+    const cells = {};
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+      const id = n.data('id');
+      const override = idPlacement[id];
+      let row, col;
 
-      // Sort by degree descending (hubs → center)
+      if (override) {
+        row = override.row;
+        col = override.col;
+      } else {
+        const s = _stratumMap[id] || 0;
+        row = (s >= 1 && s <= 6) ? s - 1 : (TYPE_ROW_MON[n.data('typeName')] ?? 2);
+        const ci = n.data('chapterIdx');
+        const [lo, hi] = (ci >= 0 && ci < CHAP_COL_RANGE.length) ? CHAP_COL_RANGE[ci] : [1, 4];
+        const hash = id ? [...id].reduce((a, c) => ((a * 31) + c.charCodeAt(0)) & 0xffffff, 0) : 0;
+        col = lo + (hash % (hi - lo + 1));
+      }
+
+      n.data('color', MON_COL_COLORS[col] || '#888888');
+      n.data('labelColor', MON_COL_COLORS[col] || '#888888');
+      n.removeClass('chapter-faded always-label');
+
+      const key = `${row}_${col}`;
+      if (!cells[key]) cells[key] = [];
+      cells[key].push(n);
+    });
+
+    // ── Position nodes in cells ───────────────────────────
+    const maxPerSubcol = Math.max(1, Math.floor(ROW_H * 0.85 / NODE_H));
+    Object.entries(cells).forEach(([key, nodes]) => {
+      const [rStr, cStr] = key.split('_');
+      const row = parseInt(rStr), col = parseInt(cStr);
+      const cx   = OX + col * COL_W;
+      const cy_c = OY + row * ROW_H;
       nodes.sort((a, b) => {
-        const da = (State.maps.outgoing[a.data('id')] || []).length
-                 + (State.maps.incoming[a.data('id')] || []).length;
-        const db = (State.maps.outgoing[b.data('id')] || []).length
-                 + (State.maps.incoming[b.data('id')] || []).length;
+        const da = (State.maps.outgoing[a.data('id')]||[]).length
+                 + (State.maps.incoming[a.data('id')]||[]).length;
+        const db = (State.maps.outgoing[b.data('id')]||[]).length
+                 + (State.maps.incoming[b.data('id')]||[]).length;
         return db - da;
       });
-
-      const count = nodes.length;
-      const spacing = Math.min((HALF_W * 2) / Math.max(count, 1), isMobile ? 12 : 30);
-      const totalW  = spacing * (count - 1);
-      const startX  = OX - totalW / 2;
-
+      const numSubcols = Math.ceil(nodes.length / maxPerSubcol);
+      const cellW      = COL_W * CELL_W_FRAC;
+      const subColW    = numSubcols > 1 ? cellW / numSubcols : 0;
       nodes.forEach((n, i) => {
-        const cluster = entityClusterMap[n.data('id')];
-        const cx = cluster ? ((STRATUM_CLUSTER_X[cluster] || 0) * HALF_W * 0.6) : 0;
-        const jx = (Math.random() - 0.5) * spacing * 0.8;
-        const jy = (Math.random() - 0.5) * BAND_H * 0.72;
-        n.position({ x: startX + i * spacing + cx + jx, y: bandY + jy });
+        const sc    = Math.floor(i / maxPerSubcol);
+        const ri    = i % maxPerSubcol;
+        const count = Math.min(nodes.length - sc * maxPerSubcol, maxPerSubcol);
+        const startX = numSubcols > 1
+          ? cx - cellW / 2 + subColW * (sc + 0.5)
+          : cx;
+        const startY = cy_c - (count * NODE_H) / 2;
+        const jx = (Math.random() - 0.5) * (isMobile ? 7 : 16);
+        const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
+        n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
-    }
+    });
 
-    // ── Node sizing + classes ────────────────────────
+    // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
       n.data('msize', isMobile ? 4 + (raw - 22) / 68 * 12 : raw);
@@ -2828,48 +2914,111 @@ const Graph = (() => {
       });
     }
 
-    // ── Always-visible labels ─────────────────────────
+    // ── Always-visible labels ─────────────────────────────
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
       if (STRATUM_ALWAYS_VISIBLE_NAMES.has(n.data('fullName'))) {
         n.addClass('always-label');
       }
     });
 
-    // ── Stratum band labels ───────────────────────────
+    // ── Column halos ──────────────────────────────────────
     cy.$('.col-halo').remove();
-    cy.$('.chapter-label, .type-label').remove();
     _stopHaloOverlay();
+    const haloH       = ROW_H * 6 + 80;
+    const haloCenterY = OY + 2.5 * ROW_H;
+    MON_COL_COLORS.forEach((color, j) => {
+      cy.add({
+        data: { id: '__halo_' + j, color },
+        position: { x: OX + j * COL_W, y: haloCenterY },
+        classes: 'col-halo',
+      });
+    });
 
-    const labelX = OX - HALF_W * 0.92;
-    for (let s = 1; s <= 6; s++) {
+    // ── Labels ────────────────────────────────────────────
+    cy.$('.chapter-label, .type-label').remove();
+
+    // Row labels (left)
+    const rowLabelX = isMobile ? OX - 55 : OX - 210;
+    MON_ROW_LABELS.forEach((label, i) => {
       cy.add({
         data: {
-          id: '__strat_lbl_' + s,
-          label: STRATUM_LABELS[s],
-          labelColor: STRATUM_COLORS[s],
-          labelSize: isMobile ? '28px' : '22px',
+          id: '__mon_row_' + i,
+          label,
+          labelColor: MON_ROW_TINT[i] || '#aaaaaa',
+          labelSize: isMobile ? '30px' : '22px',
           labelHalign: 'center',
         },
-        position: { x: labelX, y: OY + (s - 1) * BAND_H },
+        position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
-    }
+    });
 
-    // ── Fit and run ───────────────────────────────────
-    cy.layout({ name: 'preset', fit: false }).run();
+    // Column labels (top) — large, readable, near-horizontal
+    const colLabelY   = isMobile ? OY - 100 : OY - 200;
+    const colRotation = isMobile ? -Math.PI / 8 : 0;
+    const colSize     = isMobile ? '28px' : '26px';
+    MON_COL_LABELS.forEach((label, j) => {
+      cy.add({
+        data: {
+          id: '__mon_col_' + j,
+          label,
+          labelColor: MON_COL_COLORS[j],
+          labelSize: colSize,
+          labelRotation: colRotation,
+        },
+        position: { x: OX + j * COL_W, y: colLabelY },
+        classes: 'type-label',
+      });
+    });
+
+    // ── Halo styles ───────────────────────────────────────
+    cy.$('.col-halo').forEach(n => {
+      n.style({
+        'shape':              'ellipse',
+        'width':              isMobile ? COL_W * 1.2 : COL_W * 0.90,
+        'height':             haloH,
+        'background-opacity': 0.01,
+        'shadow-color':       n.data('color'),
+        'shadow-blur':        isMobile ? 90 : 120,
+        'shadow-opacity':     isMobile ? 0.70 : 0.22,
+        'border-opacity':     0,
+        'z-index':            0,
+      });
+    });
+    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
+      'z-index': 1,
+    });
+
+    // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
+    cy.layout({ name: 'preset', fit: false }).run();
     if (dataNodes.length) cy.fit(dataNodes, 60);
 
-    // ── Halo overlay: horizontal stratum bands ────────
-    _startHaloOverlay({
-      rows: Array.from({ length: 6 }, (_, i) => ({
-        modelY: OY + i * BAND_H,
-        color:  STRATUM_COLORS[i + 1] || '#666666',
-      })),
-      cols:      [],
-      modelH:    BAND_H * 1.3,
-      modelColW: 0,
-    });
+    // ── Canvas overlay: per-cell radial gradient halos ────
+    _stopHaloOverlay();
+    {
+      const blendHex = (h1, h2, t = 0.50) => {
+        const p = h => [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
+        const [r1,g1,b1] = p(h1), [r2,g2,b2] = p(h2);
+        return '#' + [Math.round(r1*(1-t)+r2*t), Math.round(g1*(1-t)+g2*t), Math.round(b1*(1-t)+b2*t)]
+          .map(v => v.toString(16).padStart(2,'0')).join('');
+      };
+      const overlayCells = [];
+      Object.keys(cells).forEach(key => {
+        const [rStr, cStr] = key.split('_');
+        const row = parseInt(rStr), col = parseInt(cStr);
+        overlayCells.push({
+          modelX: OX + col * COL_W,
+          modelY: OY + row * ROW_H,
+          color:  blendHex(MON_ROW_TINT[row] || '#666666', MON_COL_COLORS[col] || '#888888'),
+        });
+      });
+      _startHaloOverlay({
+        cells: overlayCells,
+        cellW:  COL_W * 2.8,
+        cellH:  ROW_H * 2.0,
+      });
+    }
   }
 
   // ── Canvas Overlay: horizontal chapter-row halos ─────────────
