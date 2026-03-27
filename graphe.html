@@ -628,7 +628,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
             <option value="nebulae">Archipel / chapitres</option>
             <option value="matrice" selected>Matrice chapitres × types</option>
             <option value="arbre">Arbre argumentatif ↦</option>
-            <option value="monetisation">Vue Monétisation</option>
             <option value="dagre">Hiérarchique</option>
             <option value="circle">Cercle</option>
             <option value="concentric">Concentrique</option>
@@ -660,8 +659,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <span class="version-label" id="version-label">–</span>
   <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
   <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
-  <button class="btn-primary btn-sm" id="btn-carte" title="Vue Matrice — structure de la thèse">◫ Carte</button>
-  <button class="btn-secondary btn-sm" id="btn-monetisation" title="Vue analytique — Monétisation des cryptomonnaies">◆ Monétisation</button>
+  <button class="btn-primary btn-sm" id="btn-carte" title="Vue Structure de la thèse">◫ Carte</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
@@ -1135,8 +1133,9 @@ const CHAPTER_CENTERS = [
   { x: 1800, y: 620  }, // Conclusion — droite
 ];
 
-let _chapterMap = {}; // entityId → chapter index (0-4)
-let _stratumMap = {}; // entityId → stratum index (1-6, vue Monétisation)
+let _chapterMap       = {}; // entityId → chapter index (0-4)
+let _stratumMap       = {}; // entityId → stratum index (1-6, vue Monétisation)
+let _displayStratumMap = {}; // entityId → displayStratum string (vue Structure V2)
 
 function buildChapterMap(data) {
   // ── Index relation types by name ────────────────────────
@@ -1362,6 +1361,145 @@ function buildStratumMap(data) {
     result[e.id] = TYPE_DEFAULT_STRATUM[typeName] || 3;
   }
 
+  return result;
+}
+
+// ─────────────────────────────────────────────────────────
+//  STRUCTURE V2 CONFIG — chapitres × strates analytiques
+// ─────────────────────────────────────────────────────────
+const V2_STRATA_ORDER = [
+  'core_concepts', 'analytic_frameworks', 'protocol_infra_objects',
+  'collective_structures', 'empirical_cases', 'embedded_persons', 'reference_authors',
+];
+const V2_STRATA_LABELS = {
+  'core_concepts':          'Concepts centraux',
+  'analytic_frameworks':    'Cadres & catégories',
+  'protocol_infra_objects': 'Protocoles & objets',
+  'collective_structures':  'Collectifs & institutions',
+  'empirical_cases':        'Cas & séquences',
+  'embedded_persons':       'Personnes incarnées',
+  'reference_authors':      'Références & auteurs',
+};
+const V2_STRATA_COLORS = {
+  'core_concepts':          '#f5b54d',  // amber
+  'analytic_frameworks':    '#7b8de8',  // bleu-indigo
+  'protocol_infra_objects': '#3a9e5a',  // vert
+  'collective_structures':  '#0f9688',  // teal
+  'empirical_cases':        '#e03030',  // rouge
+  'embedded_persons':       '#e8943a',  // orange
+  'reference_authors':      '#7888aa',  // ardoise
+};
+
+// Type → displayStratum (V2) — null = bifurcation dynamique (Person)
+const TYPE_DISPLAY_STRATUM_V2 = {
+  'CoreConcept': 'core_concepts', 'ConceptCore': 'core_concepts',
+  'Argument': 'core_concepts', 'NarrativeCluster': 'core_concepts',
+  'AnalyticClaim': 'core_concepts', 'Chapter': 'core_concepts',
+  'ThesisSection': 'core_concepts', 'ChapterSection': 'core_concepts',
+  'DoctoralThesis': 'core_concepts',
+  'TheoreticFramework': 'analytic_frameworks',
+  'StakeholderCategory': 'analytic_frameworks', 'StakeholderGroup': 'analytic_frameworks',
+  'SecondaryConcept': 'analytic_frameworks', 'ConceptSecondary': 'analytic_frameworks',
+  'TechnicalConcept': 'analytic_frameworks', 'ConceptTechnical': 'analytic_frameworks',
+  'Concept': 'analytic_frameworks', 'Method': 'analytic_frameworks',
+  'Capability': 'analytic_frameworks',
+  'Protocol': 'protocol_infra_objects', 'InfrastructureDomain': 'protocol_infra_objects',
+  'InfrastructureSegment': 'protocol_infra_objects', 'InfrastructureService': 'protocol_infra_objects',
+  'MonetaryObject': 'protocol_infra_objects', 'ProtocolChange': 'protocol_infra_objects',
+  'ProtocolProposal': 'protocol_infra_objects', 'NativeFormula': 'protocol_infra_objects',
+  'SoftwareClient': 'protocol_infra_objects', 'CodeRepository': 'protocol_infra_objects',
+  'SmartContract': 'protocol_infra_objects', 'HardwareDevice': 'protocol_infra_objects',
+  'ActorNonHuman': 'protocol_infra_objects',
+  'Institution': 'collective_structures', 'Organization': 'collective_structures',
+  'ActorGroup': 'collective_structures', 'GovernanceArena': 'collective_structures',
+  'GovernanceProcess': 'collective_structures', 'PlatformService': 'collective_structures',
+  'Marketplace': 'collective_structures', 'MediaOutlet': 'collective_structures',
+  'CrisisEvent': 'empirical_cases', 'CrisisPhase': 'empirical_cases',
+  'GovernanceConflict': 'empirical_cases', 'InfrastructureEvent': 'empirical_cases',
+  'DevelopmentPhase': 'empirical_cases',
+  'Reference': 'reference_authors', 'AcademicWork': 'reference_authors',
+  'SourceQuote': 'reference_authors', 'GreyLiterature': 'reference_authors',
+  'IndigenousLiterature': 'reference_authors', 'Corpus': 'reference_authors',
+  'PrimarySource': 'reference_authors', 'PriceSeries': 'reference_authors',
+  'PriceWindow': 'reference_authors',
+  'Person': null, 'Actor': null, // → bifurcation dynamique ci-dessous
+};
+
+// Types qui signalent un ancrage empirique pour une Person
+const EMPIRICAL_PERSON_CONN_TYPES_V2 = new Set([
+  'Protocol', 'ActorGroup', 'StakeholderGroup', 'Institution', 'Organization',
+  'GovernanceArena', 'GovernanceProcess', 'GovernanceConflict',
+  'CrisisEvent', 'ProtocolProposal', 'InfrastructureEvent',
+]);
+
+// Overrides manuels pour les personnes (depuis seed.json)
+const V2_PERSON_OVERRIDES = {
+  'Peter Wuille': 'embedded_persons', 'Greg Maxwell': 'embedded_persons',
+  'Gregory Maxwell': 'embedded_persons', 'W.J. van der Laan': 'embedded_persons',
+  'Adam Back': 'embedded_persons', 'Jihan Wu': 'embedded_persons',
+  'Vitalik Buterin': 'embedded_persons', 'Gavin Wood': 'embedded_persons',
+  'Vlad Zamfir': 'embedded_persons', 'Roger Ver': 'embedded_persons',
+  'Susan Leigh Star': 'reference_authors', 'Geoffrey Bowker': 'reference_authors',
+  'André Orléan': 'reference_authors', 'Bruno Théret': 'reference_authors',
+  'Michel Aglietta': 'reference_authors',
+};
+
+// Overrides manuels pour les entités non-Person
+const V2_MANUAL_STRATA = {
+  'Bitcoin':                   'protocol_infra_objects',
+  'Ethereum':                  'protocol_infra_objects',
+  'The DAO':                   'empirical_cases',
+  'CVE-2018-17144':            'empirical_cases',
+  'Core Developers (Bitcoin)': 'collective_structures',
+  'Core Developers (Ethereum)':'collective_structures',
+  'Développeurs Core':         'analytic_frameworks',
+  'Mineurs':                   'analytic_frameworks',
+  'Bourses d\'échange':        'analytic_frameworks',
+  'Fournisseurs de portefeuilles': 'analytic_frameworks',
+};
+
+function buildDisplayStratumMap(data) {
+  const typeById = {};
+  for (const t of data.types) typeById[t.id] = t.name;
+
+  const entityTypeMap = {};
+  for (const e of data.entities) {
+    const tid = e.types && e.types[0];
+    entityTypeMap[e.id] = tid ? (typeById[tid] || 'Unknown') : 'Unknown';
+  }
+
+  // Voisins par type (pour la bifurcation Person)
+  const neighborTypes = {};
+  for (const e of data.entities) neighborTypes[e.id] = new Set();
+  for (const rel of data.relations) {
+    if (neighborTypes[rel.from] && entityTypeMap[rel.to])
+      neighborTypes[rel.from].add(entityTypeMap[rel.to]);
+    if (neighborTypes[rel.to] && entityTypeMap[rel.from])
+      neighborTypes[rel.to].add(entityTypeMap[rel.from]);
+  }
+
+  const result = {};
+  for (const e of data.entities) {
+    const typeName = entityTypeMap[e.id];
+
+    // 1 — Override manuel non-Person
+    if (V2_MANUAL_STRATA[e.name]) { result[e.id] = V2_MANUAL_STRATA[e.name]; continue; }
+
+    // 2 — Bifurcation Person / Actor
+    if (typeName === 'Person' || typeName === 'Actor') {
+      if (V2_PERSON_OVERRIDES[e.name]) {
+        result[e.id] = V2_PERSON_OVERRIDES[e.name];
+      } else {
+        const nbTypes = neighborTypes[e.id] || new Set();
+        result[e.id] = [...EMPIRICAL_PERSON_CONN_TYPES_V2].some(t => nbTypes.has(t))
+          ? 'embedded_persons' : 'reference_authors';
+      }
+      continue;
+    }
+
+    // 3 — Type-based default
+    result[e.id] = TYPE_DISPLAY_STRATUM_V2[typeName] || 'analytic_frameworks';
+  }
   return result;
 }
 
@@ -2115,83 +2253,44 @@ const Graph = (() => {
       n.removeClass('chapter-faded');
     });
 
-    // ── Compute type columns (semantic priority order) ────
-    // Left = structural / analytical cores  →  right = source material
-    const MATRICE_TYPE_PRIORITY = {
-      // 0 – Structural skeleton
-      'Chapter': 0, 'ThesisSection': 1,
-      // 1 – Main objects of study (quasi-structural for this thesis)
-      'Protocol': 2, 'InfrastructureDomain': 3,
-      // 2 – Argumentative structure
-      'Argument': 10, 'NarrativeCluster': 11, 'CrisisPhase': 12,
-      // 3 – Actors
-      'Person': 20, 'Institution': 21, 'ActorGroup': 22,
-      'ActorNonHuman': 23, 'StakeholderCategory': 24,
-      // 4 – Concepts & theory
-      'Concept': 30, 'TheoreticFramework': 31, 'Method': 32,
-      // 5 – Events & governance
-      'CrisisEvent': 40, 'GovernanceConflict': 41,
-      'GovernanceProcess': 42, 'GovernanceArena': 43,
-      // 6 – Sub-protocol / infrastructure detail
-      'ProtocolChange': 50, 'ProtocolProposal': 51,
-      'InfrastructureEvent': 52, 'InfrastructureSegment': 53,
-      'DevelopmentPhase': 54, 'Capability': 55,
-      // 7 – Bibliographic references (secondary literature cited)
-      'AcademicWork': 70, 'DoctoralThesis': 71, 'Reference': 72,
-      // 7b – Methodological collections & quantitative datasets
-      'Corpus': 75, 'MonetaryObject': 76,
-      'PriceSeries': 77, 'PriceWindow': 78,
-      // 8 – Primary / raw sources (rightmost zone — very numerous, end of graph)
-      'PrimarySource': 82, 'GreyLiterature': 83, 'IndigenousLiterature': 84,
-      'SourceQuote': 85,
-    };
-    const typeCounts = {};
+    // ── Strates analytiques V2 — 7 colonnes sémantiques fixes ──
+    // gauche : concepts/théorie  →  droite : personnes incarnées / références
+    const strataColIdx = {};
+    V2_STRATA_ORDER.forEach((s, i) => { strataColIdx[s] = i; });
+    const strataCounts = {};
+    V2_STRATA_ORDER.forEach(s => { strataCounts[s] = 0; });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const t = n.data('typeName');
-      if (t) typeCounts[t] = (typeCounts[t] || 0) + 1;
+      const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
+      if (strataCounts[s] !== undefined) strataCounts[s]++;
     });
-    const sortedTypes = Object.keys(typeCounts).sort((a, b) => {
-      const pa = MATRICE_TYPE_PRIORITY[a] ?? 45; // unknown → middle zone
-      const pb = MATRICE_TYPE_PRIORITY[b] ?? 45;
-      return pa !== pb ? pa - pb : typeCounts[b] - typeCounts[a]; // tie-break by count
-    });
-    const typeColIdx = {};
-    sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // Mobile : 6 macro-colonnes sémantiques — espacement généreux pour lisibilité
-    // Desktop : 27 colonnes détaillées → vue "partition complète"
-    const COL_W      = isMobile ? 76   : 300;
+    // Mobile : 4 macro-colonnes strates V2 — espacement généreux pour lisibilité
+    // Desktop : 7 colonnes strates analytiques — vue sémantiquement structurée
+    const COL_W      = isMobile ? 90   : 280;
     const ROW_H      = isMobile ? 160  : 540;
-    const OX         = isMobile ? 120  : 400;  // marge gauche pour les labels chapitres
+    const OX         = isMobile ? 120  : 400;
     const OY         = isMobile ? 100  : 360;
     const NODE_H     = isMobile ? 10   : 16;
     const CELL_W_FRAC = 0.78;
 
-    // ── Macro-colonnes mobile (6 groupes sémantiques) ────
-    const MOBILE_MACRO_COL = {
-      'Chapter': 0, 'ThesisSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'CrisisPhase': 0,
-      'Protocol': 1, 'InfrastructureDomain': 1,
-      'InfrastructureEvent': 4, 'InfrastructureSegment': 4, 'DevelopmentPhase': 4,
-      'Person': 2, 'Institution': 2, 'ActorGroup': 2, 'ActorNonHuman': 2, 'StakeholderCategory': 2,
-      'Concept': 3, 'TheoreticFramework': 3, 'Method': 3, 'Capability': 3,
-      'CrisisEvent': 4, 'GovernanceConflict': 4, 'GovernanceProcess': 4,
-      'GovernanceArena': 4, 'ProtocolChange': 4, 'ProtocolProposal': 4,
-      'AcademicWork': 5, 'DoctoralThesis': 5, 'PrimarySource': 5, 'GreyLiterature': 5,
-      'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
-      'PriceWindow': 5, 'SourceQuote': 6, 'Reference': 5,
+    // ── Macro-colonnes mobile : 4 regroupements strates V2 ──
+    const MOBILE_STRATA_COL = {
+      'core_concepts': 0, 'analytic_frameworks': 0,
+      'protocol_infra_objects': 1, 'collective_structures': 1,
+      'empirical_cases': 2, 'embedded_persons': 2,
+      'reference_authors': 3,
     };
-    const MOBILE_COL_LABELS = ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Gouv.+', 'Réf.', 'Extraits'];
+    const MOBILE_STRATA_LABELS = ['Concepts', 'Protocoles', 'Cas & Acteurs', 'Références'];
 
-    // ── Group nodes by (chapterRow, typeCol) ────────────
+    // ── Grouper les nœuds par (chapitreRow, strateCol V2) ──
     const cells = {}; // key = `${row}_${col}`
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const ci  = n.data('chapterIdx');
       const row = ci >= 0 && ci < 5 ? ci : 5;
-      const t   = n.data('typeName');
-      const col = isMobile ? (MOBILE_MACRO_COL[t] ?? 5) : (typeColIdx[t] ?? -1);
-      if (!isMobile && col < 0) return;
+      const s   = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
+      const col = isMobile ? (MOBILE_STRATA_COL[s] ?? 3) : (strataColIdx[s] ?? 0);
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
@@ -2257,15 +2356,13 @@ const Graph = (() => {
     const haloH       = ROW_H * 5 + 100;
     const haloCenterY = OY + 2 * ROW_H;
 
-    // Macro-column semantic colors — hues chosen to be distinct from all 5 chapter colors
+    // Couleurs des 4 macro-colonnes mobile (V2 strates regroupées)
     // Chapter palette: cyan #00ccff · orange #ff8800 · green #33ff33 · purple #aa44ff · pink #ff44aa
-    const MOBILE_HALO_COLORS = [
-      '#ffee00', // 0 Struct.  — yellow       (60°,  far from all chapters)
-      '#00ffaa', // 1 Objets   — spring teal  (160°, between cyan & green)
-      '#ff2200', // 2 Acteurs  — red          (5°,   far from orange & pink)
-      '#0088ff', // 3 Concepts — cobalt blue  (210°, far from cyan & purple)
-      '#ccff00', // 4 Gouv.    — chartreuse   (78°,  far from green & orange)
-      '#ee00ff', // 5 Sources  — violet-magenta (290°, distinct from purple & pink)
+    const MOBILE_STRATA_HALO = [
+      '#f5b54d', // 0 Concepts  — amber       (core_concepts + analytic_frameworks)
+      '#3a9e5a', // 1 Protocoles — green      (protocol_infra_objects + collective_structures)
+      '#e03030', // 2 Cas & Acteurs — red     (empirical_cases + embedded_persons)
+      '#7888aa', // 3 Références — slate blue (reference_authors)
     ];
 
     // Blend two hex colors (t=0 → pure h1, t=1 → pure h2)
@@ -2284,9 +2381,9 @@ const Graph = (() => {
       Object.keys(cells).forEach(key => {
         const [rStr, cStr] = key.split('_');
         const row = parseInt(rStr), col = parseInt(cStr);
-        if (col < 0 || col >= 6) return;
-        const chCol   = CH_COLORS_EXT[row]       || '#666666';
-        const typeCol = MOBILE_HALO_COLORS[col]  || '#888888';
+        if (col < 0 || col >= 4) return;
+        const chCol   = CH_COLORS_EXT[row]        || '#666666';
+        const typeCol = MOBILE_STRATA_HALO[col]   || '#888888';
         cy.add({
           data: { id: '__halo_' + row + '_' + col, color: blendHex(chCol, typeCol) },
           position: { x: OX + col * COL_W, y: OY + row * ROW_H },
@@ -2294,9 +2391,9 @@ const Graph = (() => {
         });
       });
     } else {
-      sortedTypes.forEach((typeName, j) => {
+      V2_STRATA_ORDER.forEach((stratum, j) => {
         cy.add({
-          data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
+          data: { id: '__halo_' + j, color: V2_STRATA_COLORS[stratum] || '#334455' },
           position: { x: OX + j * COL_W, y: haloCenterY },
           classes: 'col-halo',
         });
@@ -2329,22 +2426,22 @@ const Graph = (() => {
     const colRotation = isMobile ? -Math.PI / 4 : 0;
     const colSize     = isMobile ? '33px' : '28px';
     if (isMobile) {
-      MOBILE_COL_LABELS.forEach((label, j) => {
+      MOBILE_STRATA_LABELS.forEach((label, j) => {
         cy.add({
           data: { id: '__mat_col_' + j, label: label,
-                  labelColor: MOBILE_HALO_COLORS[j],
+                  labelColor: MOBILE_STRATA_HALO[j],
                   labelSize: colSize, labelRotation: colRotation },
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
         });
       });
     } else {
-      sortedTypes.forEach((typeName, j) => {
+      V2_STRATA_ORDER.forEach((stratum, j) => {
         cy.add({
           data: {
             id: '__mat_col_' + j,
-            label: typeName + '\n× ' + typeCounts[typeName],
-            labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
+            label: V2_STRATA_LABELS[stratum] + '\n× ' + (strataCounts[stratum] || 0),
+            labelColor: V2_STRATA_COLORS[stratum] || '#aaaaaa',
             labelSize: colSize, labelRotation: colRotation,
           },
           position: { x: OX + j * COL_W, y: colLabelY },
@@ -2384,10 +2481,10 @@ const Graph = (() => {
     {
       const _hr5  = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
       const _nR   = _hr5 ? 6 : 5;
-      // Column positions + colors (mobile = 6 macro-cols, desktop = per-type)
+      // Column positions + colors (mobile = 4 macro-strates, desktop = 7 strates V2)
       const _cols = isMobile
-        ? MOBILE_HALO_COLORS.map((color, j) => ({ modelX: OX + j * COL_W, color }))
-        : sortedTypes.map((t, j)            => ({ modelX: OX + j * COL_W, color: TYPE_COLORS[t] || '#334455' }));
+        ? MOBILE_STRATA_HALO.map((color, j) => ({ modelX: OX + j * COL_W, color }))
+        : V2_STRATA_ORDER.map((s, j)         => ({ modelX: OX + j * COL_W, color: V2_STRATA_COLORS[s] || '#334455' }));
       _startHaloOverlay({
         rows: Array.from({ length: _nR }, (_, r) => ({
           modelY: OY + r * ROW_H,
@@ -2554,6 +2651,12 @@ const Graph = (() => {
   // ── Vue Monétisation : layout par strates analytiques ───────────
   function applyMonetisationLayout() {
     if (!cy || !State.data) return;
+
+    // ── Cleanup residual classes from other layouts ───────
+    cy.nodes().removeClass('in-matrix in-nebula');
+    cy.edges().removeClass('in-matrix nebula-arch');
+    cy.$('.chapter-label, .type-label, .col-halo').remove();
+    _stopHaloOverlay();
 
     // ── State ────────────────────────────────────────────
     _nebulaActive = true;
@@ -3541,18 +3644,17 @@ function showGuidedOverlay() {
     Graph.applyMatriceLayout();
     document.getElementById('layout-select').value = 'matrice';
     document.getElementById('btn-carte').className = 'btn-primary btn-sm';
-    document.getElementById('btn-monetisation').className = 'btn-secondary btn-sm';
   });
 
-  // Monétisation : vue analytique par strates
+  // Monétisation : vue analytique par strates (accessible depuis le guided overlay uniquement)
   document.getElementById('guided-btn-monetisation').addEventListener('click', () => {
     overlay.classList.add('hidden');
     State.hiddenTypes.clear();
     UI.renderTypeFilters();
     Graph.applyFilters();
+    Graph.restoreTypeColors();
     Graph.applyMonetisationLayout();
-    document.getElementById('layout-select').value = 'monetisation';
-    document.getElementById('btn-monetisation').className = 'btn-primary btn-sm';
+    document.getElementById('layout-select').value = 'cose';
     document.getElementById('btn-carte').className = 'btn-secondary btn-sm';
   });
 
@@ -3590,6 +3692,7 @@ function onDataLoaded(data) {
   State.load(data);
   _chapterMap = buildChapterMap(data);
   _stratumMap = buildStratumMap(data);
+  _displayStratumMap = buildDisplayStratumMap(data);
   document.getElementById('version-label').textContent = `GRC-20 v${data.space && data.space.version || '?'} · ${data.entities.length} entités · ${data.relations.length} rel.`;
 
   // Enable buttons
@@ -3652,16 +3755,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (v === 'nebulae') { Graph.applyNebulaLayout(); }
     else {
       Graph.restoreTypeColors(); UI.renderTypeFilters();
-      if (v === 'matrice')       Graph.applyMatriceLayout();
-      else if (v === 'arbre')    Graph.applyArbreLayout();
-      else if (v === 'monetisation') Graph.applyMonetisationLayout();
-      else                       Graph.applyLayout(v);
+      if (v === 'matrice') Graph.applyMatriceLayout();
+      else if (v === 'arbre') Graph.applyArbreLayout();
+      else Graph.applyLayout(v);
     }
     // Sync header button states
     document.getElementById('btn-carte').className =
       (v === 'matrice') ? 'btn-primary btn-sm' : 'btn-secondary btn-sm';
-    document.getElementById('btn-monetisation').className =
-      (v === 'monetisation') ? 'btn-primary btn-sm' : 'btn-secondary btn-sm';
   }
 
   document.getElementById('btn-relayout').addEventListener('click', () => {
@@ -3685,20 +3785,6 @@ document.addEventListener('DOMContentLoaded', () => {
     Graph.applyMatriceLayout();
     document.getElementById('layout-select').value = 'matrice';
     document.getElementById('btn-carte').classList.replace('btn-secondary', 'btn-primary');
-    document.getElementById('btn-monetisation').classList.replace('btn-primary', 'btn-secondary');
-  });
-
-  // ── Bouton "Monétisation" : vue analytique par strates ───
-  document.getElementById('btn-monetisation').addEventListener('click', () => {
-    if (!State.data) return;
-    document.getElementById('canvas-overlay').classList.add('hidden');
-    State.hiddenTypes.clear();
-    Graph.restoreTypeColors();
-    UI.renderTypeFilters();
-    Graph.applyMonetisationLayout();
-    document.getElementById('layout-select').value = 'monetisation';
-    document.getElementById('btn-monetisation').classList.replace('btn-secondary', 'btn-primary');
-    document.getElementById('btn-carte').classList.replace('btn-primary', 'btn-secondary');
   });
 
   // ── Search ───────────────────────────────────────────
