@@ -660,6 +660,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
   <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
   <button class="btn-primary btn-sm" id="btn-carte" title="Vue Structure de la thèse">◫ Carte</button>
+  <button class="btn-secondary btn-sm" id="btn-strata-toggle" title="Basculer vers les strates analytiques" style="display:none">⊟ Strates V2</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
@@ -1133,9 +1134,10 @@ const CHAPTER_CENTERS = [
   { x: 1800, y: 620  }, // Conclusion — droite
 ];
 
-let _chapterMap       = {}; // entityId → chapter index (0-4)
-let _stratumMap       = {}; // entityId → stratum index (1-6, vue Monétisation)
+let _chapterMap        = {}; // entityId → chapter index (0-4)
+let _stratumMap        = {}; // entityId → stratum index (1-6, vue Monétisation)
 let _displayStratumMap = {}; // entityId → displayStratum string (vue Structure V2)
+let _matrixStrataMode  = false; // toggle: false = types bruts, true = strates analytiques V2
 
 function buildChapterMap(data) {
   // ── Index relation types by name ────────────────────────
@@ -2236,61 +2238,129 @@ const Graph = (() => {
     document.getElementById('btn-archipel-back').style.display = 'none';
   }
 
-  function applyMatriceLayout() {
+  function applyMatriceLayout(useStrata) {
     if (!cy || !State.data) return;
+    if (useStrata === undefined) useStrata = _matrixStrataMode;
 
     // ── State ────────────────────────────────────────────
     _nebulaActive = true;
     _matrixMode = true;
-    _nebulaZoomDepth = 'chapter'; // skip archipelago-zoom on click
+    _nebulaZoomDepth = 'chapter';
     document.querySelector('.grc-root').classList.add('nebula-mode');
     document.getElementById('btn-archipel-back').style.display = 'none';
 
-    // ── Color nodes by chapter (rows share a color) ──────
+    // Sync toggle button
+    const strataToggle = document.getElementById('btn-strata-toggle');
+    if (strataToggle) {
+      strataToggle.style.display = '';
+      strataToggle.textContent   = useStrata ? '⊞ Types bruts' : '⊟ Strates V2';
+      strataToggle.title         = useStrata ? 'Revenir à la vue types bruts' : 'Basculer vers les strates analytiques';
+      strataToggle.className     = useStrata ? 'btn-primary btn-sm' : 'btn-secondary btn-sm';
+    }
+
+    // ── Color nodes by chapter ────────────────────────────
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
       const idx = n.data('chapterIdx');
       n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#333333');
       n.removeClass('chapter-faded');
     });
 
-    // ── Strates analytiques V2 — 7 colonnes sémantiques fixes ──
-    // gauche : concepts/théorie  →  droite : personnes incarnées / références
-    const strataColIdx = {};
-    V2_STRATA_ORDER.forEach((s, i) => { strataColIdx[s] = i; });
-    const strataCounts = {};
-    V2_STRATA_ORDER.forEach(s => { strataCounts[s] = 0; });
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
-      if (strataCounts[s] !== undefined) strataCounts[s]++;
-    });
+    // ── Column setup (branche: strates V2 vs types bruts) ────
+    let strataColIdx, strataCounts, typeColIdx, typeCounts, sortedTypes;
+
+    if (useStrata) {
+      strataColIdx = {};
+      V2_STRATA_ORDER.forEach((s, i) => { strataColIdx[s] = i; });
+      strataCounts = {};
+      V2_STRATA_ORDER.forEach(s => { strataCounts[s] = 0; });
+      cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+        const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
+        if (strataCounts[s] !== undefined) strataCounts[s]++;
+      });
+    } else {
+      // Original : tri sémantique par priorité de type
+      // Left = structural / analytical cores  →  right = source material
+      const MATRICE_TYPE_PRIORITY = {
+        'Chapter': 0, 'ThesisSection': 1,
+        'Protocol': 2, 'InfrastructureDomain': 3,
+        'Argument': 10, 'NarrativeCluster': 11, 'CrisisPhase': 12,
+        'Person': 20, 'Institution': 21, 'ActorGroup': 22,
+        'ActorNonHuman': 23, 'StakeholderCategory': 24,
+        'Concept': 30, 'TheoreticFramework': 31, 'Method': 32,
+        'CrisisEvent': 40, 'GovernanceConflict': 41,
+        'GovernanceProcess': 42, 'GovernanceArena': 43,
+        'ProtocolChange': 50, 'ProtocolProposal': 51,
+        'InfrastructureEvent': 52, 'InfrastructureSegment': 53,
+        'DevelopmentPhase': 54, 'Capability': 55,
+        'AcademicWork': 70, 'DoctoralThesis': 71, 'Reference': 72,
+        'Corpus': 75, 'MonetaryObject': 76,
+        'PriceSeries': 77, 'PriceWindow': 78,
+        'PrimarySource': 82, 'GreyLiterature': 83, 'IndigenousLiterature': 84,
+        'SourceQuote': 85,
+      };
+      typeCounts = {};
+      cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+        const t = n.data('typeName');
+        if (t) typeCounts[t] = (typeCounts[t] || 0) + 1;
+      });
+      sortedTypes = Object.keys(typeCounts).sort((a, b) => {
+        const pa = MATRICE_TYPE_PRIORITY[a] ?? 45;
+        const pb = MATRICE_TYPE_PRIORITY[b] ?? 45;
+        return pa !== pb ? pa - pb : typeCounts[b] - typeCounts[a];
+      });
+      typeColIdx = {};
+      sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
+    }
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // Mobile : 4 macro-colonnes strates V2 — espacement généreux pour lisibilité
-    // Desktop : 7 colonnes strates analytiques — vue sémantiquement structurée
-    const COL_W      = isMobile ? 90   : 280;
+    const COL_W      = isMobile ? (useStrata ? 90 : 76)   : (useStrata ? 280 : 300);
     const ROW_H      = isMobile ? 160  : 540;
     const OX         = isMobile ? 120  : 400;
     const OY         = isMobile ? 100  : 360;
     const NODE_H     = isMobile ? 10   : 16;
     const CELL_W_FRAC = 0.78;
 
-    // ── Macro-colonnes mobile : 4 regroupements strates V2 ──
-    const MOBILE_STRATA_COL = {
-      'core_concepts': 0, 'analytic_frameworks': 0,
+    // ── Mobile col map / labels / halo colors ────────────
+    const MOBILE_COL_MAP = useStrata ? {
+      'core_concepts': 0,      'analytic_frameworks': 0,
       'protocol_infra_objects': 1, 'collective_structures': 1,
-      'empirical_cases': 2, 'embedded_persons': 2,
+      'empirical_cases': 2,    'embedded_persons': 2,
       'reference_authors': 3,
+    } : {
+      'Chapter': 0, 'ThesisSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'CrisisPhase': 0,
+      'Protocol': 1, 'InfrastructureDomain': 1,
+      'InfrastructureEvent': 4, 'InfrastructureSegment': 4, 'DevelopmentPhase': 4,
+      'Person': 2, 'Institution': 2, 'ActorGroup': 2, 'ActorNonHuman': 2, 'StakeholderCategory': 2,
+      'Concept': 3, 'TheoreticFramework': 3, 'Method': 3, 'Capability': 3,
+      'CrisisEvent': 4, 'GovernanceConflict': 4, 'GovernanceProcess': 4,
+      'GovernanceArena': 4, 'ProtocolChange': 4, 'ProtocolProposal': 4,
+      'AcademicWork': 5, 'DoctoralThesis': 5, 'PrimarySource': 5, 'GreyLiterature': 5,
+      'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
+      'PriceWindow': 5, 'SourceQuote': 6, 'Reference': 5,
     };
-    const MOBILE_STRATA_LABELS = ['Concepts', 'Protocoles', 'Cas & Acteurs', 'Références'];
+    const MOBILE_COL_LABELS = useStrata
+      ? ['Concepts', 'Protocoles', 'Cas & Acteurs', 'Références']
+      : ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Gouv.+', 'Réf.', 'Extraits'];
+    const MOBILE_HALO_COLS  = useStrata
+      ? ['#f5b54d', '#3a9e5a', '#e03030', '#7888aa']
+      : ['#ffee00', '#00ffaa', '#ff2200', '#0088ff', '#ccff00', '#ee00ff'];
+    const mobileMaxCol = MOBILE_HALO_COLS.length;
 
-    // ── Grouper les nœuds par (chapitreRow, strateCol V2) ──
-    const cells = {}; // key = `${row}_${col}`
+    // ── Grouper les nœuds par (chapitreRow, col) ─────────
+    const cells = {};
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const ci  = n.data('chapterIdx');
       const row = ci >= 0 && ci < 5 ? ci : 5;
-      const s   = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
-      const col = isMobile ? (MOBILE_STRATA_COL[s] ?? 3) : (strataColIdx[s] ?? 0);
+      let col;
+      if (useStrata) {
+        const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
+        col = isMobile ? (MOBILE_COL_MAP[s] ?? (mobileMaxCol - 1)) : (strataColIdx[s] ?? 0);
+      } else {
+        const t = n.data('typeName');
+        col = isMobile ? (MOBILE_COL_MAP[t] ?? 5) : (typeColIdx[t] ?? -1);
+        if (!isMobile && col < 0) return;
+      }
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
@@ -2303,8 +2373,6 @@ const Graph = (() => {
       const row = parseInt(rStr), col = parseInt(cStr);
       const cx   = OX + col * COL_W;
       const cy_c = OY + row * ROW_H;
-
-      // Hubs first (most-connected at top of each sub-column)
       nodes.sort((a, b) => {
         const da = (State.maps.outgoing[a.data('id')]||[]).length
                  + (State.maps.incoming[a.data('id')]||[]).length;
@@ -2312,11 +2380,9 @@ const Graph = (() => {
                  + (State.maps.incoming[b.data('id')]||[]).length;
         return db - da;
       });
-
       const numSubcols = Math.ceil(nodes.length / maxPerSubcol);
       const cellW      = COL_W * CELL_W_FRAC;
       const subColW    = numSubcols > 1 ? cellW / numSubcols : 0;
-
       nodes.forEach((n, i) => {
         const sc    = Math.floor(i / maxPerSubcol);
         const ri    = i % maxPerSubcol;
@@ -2325,7 +2391,6 @@ const Graph = (() => {
           ? cx - cellW / 2 + subColW * (sc + 0.5)
           : cx;
         const startY = cy_c - (count * NODE_H) / 2;
-        // Jitter organique : casse la rigidité de la grille sans perdre la structure
         const jx = (Math.random() - 0.5) * (isMobile ? 7 : 18);
         const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
@@ -2333,17 +2398,14 @@ const Graph = (() => {
     });
 
     // ── Taille mobile-aware + classe in-matrix ────────────
-    // Desktop : data(size) = 22..90 → hiérarchie hub/périphérie pleine
-    // Mobile  : remapping proportionnel [22,90] → [4,16] (hub 4× plus grand qu'une feuille)
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      const mobileSize = 4 + (raw - 22) / 68 * 12; // 22→4px · 55→10px · 90→16px
+      const mobileSize = 4 + (raw - 22) / 68 * 12;
       n.data('msize', isMobile ? mobileSize : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
 
-    // Sur mobile : override inline des shadows pour éviter les blobs (blur stylesheet=30px → trop grand)
     if (isMobile) {
       cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
         'shadow-blur': 6, 'shadow-opacity': 0.65,
@@ -2356,16 +2418,6 @@ const Graph = (() => {
     const haloH       = ROW_H * 5 + 100;
     const haloCenterY = OY + 2 * ROW_H;
 
-    // Couleurs des 4 macro-colonnes mobile (V2 strates regroupées)
-    // Chapter palette: cyan #00ccff · orange #ff8800 · green #33ff33 · purple #aa44ff · pink #ff44aa
-    const MOBILE_STRATA_HALO = [
-      '#f5b54d', // 0 Concepts  — amber       (core_concepts + analytic_frameworks)
-      '#3a9e5a', // 1 Protocoles — green      (protocol_infra_objects + collective_structures)
-      '#e03030', // 2 Cas & Acteurs — red     (empirical_cases + embedded_persons)
-      '#7888aa', // 3 Références — slate blue (reference_authors)
-    ];
-
-    // Blend two hex colors (t=0 → pure h1, t=1 → pure h2)
     const blendHex = (h1, h2, t = 0.50) => {
       const p = h => [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
       const [r1,g1,b1] = p(h1), [r2,g2,b2] = p(h2);
@@ -2373,27 +2425,32 @@ const Graph = (() => {
         .map(v => v.toString(16).padStart(2,'0')).join('');
     };
 
-    // Extended chapter colors: row 5 (multi-chapter / unassigned) gets neutral gray
     const CH_COLORS_EXT = [...CHAPTER_COLORS, '#666666'];
 
     if (isMobile) {
-      // Per-cell blended halos — ALL rows including row 5 (no node left behind)
       Object.keys(cells).forEach(key => {
         const [rStr, cStr] = key.split('_');
         const row = parseInt(rStr), col = parseInt(cStr);
-        if (col < 0 || col >= 4) return;
-        const chCol   = CH_COLORS_EXT[row]        || '#666666';
-        const typeCol = MOBILE_STRATA_HALO[col]   || '#888888';
+        if (col < 0 || col >= mobileMaxCol) return;
         cy.add({
-          data: { id: '__halo_' + row + '_' + col, color: blendHex(chCol, typeCol) },
+          data: { id: '__halo_' + row + '_' + col,
+                  color: blendHex(CH_COLORS_EXT[row] || '#666666', MOBILE_HALO_COLS[col] || '#888888') },
           position: { x: OX + col * COL_W, y: OY + row * ROW_H },
           classes: 'col-halo',
         });
       });
-    } else {
+    } else if (useStrata) {
       V2_STRATA_ORDER.forEach((stratum, j) => {
         cy.add({
           data: { id: '__halo_' + j, color: V2_STRATA_COLORS[stratum] || '#334455' },
+          position: { x: OX + j * COL_W, y: haloCenterY },
+          classes: 'col-halo',
+        });
+      });
+    } else {
+      sortedTypes.forEach((typeName, j) => {
+        cy.add({
+          data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
           position: { x: OX + j * COL_W, y: haloCenterY },
           classes: 'col-halo',
         });
@@ -2403,7 +2460,6 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    // Row labels: chapter names (+ optional row 5 "Multi." if unassigned nodes exist)
     const rowLabelX = isMobile ? OX - 28 : OX - 230;
     const hasRow5   = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
     const mobileRowLabels = ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.'];
@@ -2413,7 +2469,7 @@ const Graph = (() => {
     const rowHalign = isMobile ? 'left'  : 'center';
     MAT_CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
-        data: { id: '__mat_row_' + i, label: label,
+        data: { id: '__mat_row_' + i, label,
                 labelColor: CH_COLORS_EXT[i] || '#666666',
                 labelSize: rowSize, labelHalign: rowHalign },
         position: { x: rowLabelX, y: OY + i * ROW_H },
@@ -2421,21 +2477,20 @@ const Graph = (() => {
       });
     });
 
-    // Column labels: inherit the macro-column color (not neutral gray)
     const colLabelY   = isMobile ? OY - 133 : OY - 240;
     const colRotation = isMobile ? -Math.PI / 4 : 0;
     const colSize     = isMobile ? '33px' : '28px';
     if (isMobile) {
-      MOBILE_STRATA_LABELS.forEach((label, j) => {
+      MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
-          data: { id: '__mat_col_' + j, label: label,
-                  labelColor: MOBILE_STRATA_HALO[j],
+          data: { id: '__mat_col_' + j, label,
+                  labelColor: MOBILE_HALO_COLS[j],
                   labelSize: colSize, labelRotation: colRotation },
           position: { x: OX + j * COL_W, y: colLabelY },
           classes: 'type-label',
         });
       });
-    } else {
+    } else if (useStrata) {
       V2_STRATA_ORDER.forEach((stratum, j) => {
         cy.add({
           data: {
@@ -2448,10 +2503,22 @@ const Graph = (() => {
           classes: 'type-label',
         });
       });
+    } else {
+      sortedTypes.forEach((typeName, j) => {
+        cy.add({
+          data: {
+            id: '__mat_col_' + j,
+            label: typeName + '\n× ' + typeCounts[typeName],
+            labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
+            labelSize: colSize, labelRotation: colRotation,
+          },
+          position: { x: OX + j * COL_W, y: colLabelY },
+          classes: 'type-label',
+        });
+      });
     }
 
-    // Halo : corps quasi invisible, glow pur via shadow
-    // shadow-blur très grand = lumière diffuse nébuleuse sans contour visible
+    // ── Halo styles ──────────────────────────────────────
     cy.$('.col-halo').forEach(n => {
       n.style({
         'shape':              'ellipse',
@@ -2465,34 +2532,32 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    // Nœuds de données au-dessus des halos
     cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
       'z-index': 1,
     });
 
-    // Fit uniquement sur les nœuds de données (exclut labels fantômes qui faussent le zoom)
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
     if (dataNodes.length) cy.fit(dataNodes, 60);
 
-    // ── Canvas overlay: horizontal (chapters) + vertical (types) halos ──
-    // Pan/zoom are now set by cy.fit() — draw immediately then sync on viewport events.
+    // ── Canvas overlay ────────────────────────────────────
     _stopHaloOverlay();
     {
       const _hr5  = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
       const _nR   = _hr5 ? 6 : 5;
-      // Column positions + colors (mobile = 4 macro-strates, desktop = 7 strates V2)
       const _cols = isMobile
-        ? MOBILE_STRATA_HALO.map((color, j) => ({ modelX: OX + j * COL_W, color }))
-        : V2_STRATA_ORDER.map((s, j)         => ({ modelX: OX + j * COL_W, color: V2_STRATA_COLORS[s] || '#334455' }));
+        ? MOBILE_HALO_COLS.map((color, j) => ({ modelX: OX + j * COL_W, color }))
+        : useStrata
+          ? V2_STRATA_ORDER.map((s, j) => ({ modelX: OX + j * COL_W, color: V2_STRATA_COLORS[s] || '#334455' }))
+          : sortedTypes.map((t, j) => ({ modelX: OX + j * COL_W, color: TYPE_COLORS[t] || '#334455' }));
       _startHaloOverlay({
         rows: Array.from({ length: _nR }, (_, r) => ({
           modelY: OY + r * ROW_H,
           color:  CH_COLORS_EXT[r] || '#666666',
         })),
         cols:      _cols,
-        modelH:    ROW_H * 1.35,   // row band height (blends into neighbours)
-        modelColW: COL_W * 1.35,   // col band width  (blends into neighbours)
+        modelH:    ROW_H * 1.35,
+        modelColW: COL_W * 1.35,
       });
     }
   }
@@ -2508,6 +2573,8 @@ const Graph = (() => {
     document.getElementById('btn-archipel-back').style.display = 'none';
     cy.$('.chapter-label, .type-label, .col-halo').remove();
     _stopHaloOverlay();
+    const _st = document.getElementById('btn-strata-toggle');
+    if (_st) _st.style.display = 'none';
     cy.nodes().removeClass('chapter-faded in-matrix in-nebula nebula-leaf always-label');
     cy.edges().removeClass('in-matrix nebula-arch');
     applyFilters();
@@ -3785,6 +3852,13 @@ document.addEventListener('DOMContentLoaded', () => {
     Graph.applyMatriceLayout();
     document.getElementById('layout-select').value = 'matrice';
     document.getElementById('btn-carte').classList.replace('btn-secondary', 'btn-primary');
+  });
+
+  // ── Toggle Types bruts / Strates analytiques V2 ──────
+  document.getElementById('btn-strata-toggle').addEventListener('click', () => {
+    if (!State.data) return;
+    _matrixStrataMode = !_matrixStrataMode;
+    Graph.applyMatriceLayout(_matrixStrataMode);
   });
 
   // ── Search ───────────────────────────────────────────
