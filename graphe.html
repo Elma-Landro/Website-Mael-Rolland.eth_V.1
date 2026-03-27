@@ -628,6 +628,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
             <option value="nebulae">Archipel / chapitres</option>
             <option value="matrice" selected>Matrice chapitres × types</option>
             <option value="arbre">Arbre argumentatif ↦</option>
+            <option value="monetisation">Vue Monétisation</option>
             <option value="dagre">Hiérarchique</option>
             <option value="circle">Cercle</option>
             <option value="concentric">Concentrique</option>
@@ -660,6 +661,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
   <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
   <button class="btn-primary btn-sm" id="btn-carte" title="Vue Matrice — structure de la thèse">◫ Carte</button>
+  <button class="btn-secondary btn-sm" id="btn-monetisation" title="Vue analytique — Monétisation des cryptomonnaies">◆ Monétisation</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
@@ -1036,6 +1038,27 @@ const TYPE_COLORS = {
   'StakeholderCategory': '#b07040',  // brun-ambre (variante Acteurs)
   'InfrastructureSegment':'#4a8870', // vert-teal intermédiaire
   'DoctoralThesis':      '#c060c0',  // violet distinctif
+
+  // ── V91 — Nouveaux types ──────────────────────────────────────────
+  'Organization':        '#d4882a',  // ambre-orange (acteur organisé)
+  'SoftwareClient':      '#2ab8cc',  // cyan-teal (logiciel-client)
+  'CodeRepository':      '#4aaa60',  // vert-code (dépôt)
+  'SmartContract':       '#7060d8',  // bleu-violet (contrat)
+  'PlatformService':     '#3a80cc',  // bleu (plateforme)
+  'MediaOutlet':         '#a07848',  // brun-chaud (média)
+  'Marketplace':         '#c0a030',  // or (marché)
+  'HardwareDevice':      '#888888',  // gris (matériel)
+  'CoreConcept':         '#ffaa00',  // ambre vif (concept central — le plus important)
+  'SecondaryConcept':    '#cc9040',  // ambre moyen
+  'TechnicalConcept':    '#5080aa',  // bleu acier
+  'NativeFormula':       '#e8c870',  // crème/tan (formule native)
+  'ChapterSection':      '#7a45a3',  // violet (même gamme que ThesisSection)
+  'AnalyticClaim':       '#6880e8',  // bleu-indigo (argument analytique)
+  'StakeholderGroup':    '#b87840',  // brun-ambre (groupe d'acteurs)
+  'ConceptCore':         '#ffaa00',  // = CoreConcept
+  'ConceptSecondary':    '#cc9040',  // = SecondaryConcept
+  'ConceptTechnical':    '#5080aa',  // = TechnicalConcept
+  'InfrastructureService':'#3a7058', // vert-teal foncé
 };
 const TYPE_SHAPES = {
   'AcademicWork':        'round-rectangle',
@@ -1070,6 +1093,26 @@ const TYPE_SHAPES = {
   'GovernanceConflict':  'star',
   'GovernanceProcess':   'hexagon',
   'ProtocolProposal':    'diamond',
+  // V91
+  'Organization':        'round-rectangle',
+  'SoftwareClient':      'barrel',
+  'CodeRepository':      'round-rectangle',
+  'SmartContract':       'hexagon',
+  'PlatformService':     'rectangle',
+  'MediaOutlet':         'ellipse',
+  'Marketplace':         'pentagon',
+  'HardwareDevice':      'rectangle',
+  'CoreConcept':         'hexagon',
+  'SecondaryConcept':    'hexagon',
+  'TechnicalConcept':    'hexagon',
+  'NativeFormula':       'round-rectangle',
+  'ChapterSection':      'round-rectangle',
+  'AnalyticClaim':       'diamond',
+  'StakeholderGroup':    'pentagon',
+  'ConceptCore':         'hexagon',
+  'ConceptSecondary':    'hexagon',
+  'ConceptTechnical':    'hexagon',
+  'InfrastructureService': 'barrel',
 };
 
 // ─────────────────────────────────────────────────────────
@@ -1093,6 +1136,7 @@ const CHAPTER_CENTERS = [
 ];
 
 let _chapterMap = {}; // entityId → chapter index (0-4)
+let _stratumMap = {}; // entityId → stratum index (1-6, vue Monétisation)
 
 function buildChapterMap(data) {
   // ── Index relation types by name ────────────────────────
@@ -1205,6 +1249,117 @@ function buildChapterMap(data) {
   };
   for (const [eid, chidx] of Object.entries(CHAPTER_OVERRIDES)) {
     result[eid] = chidx;
+  }
+
+  return result;
+}
+
+// ─────────────────────────────────────────────────────────
+//  STRATUM CONFIG — Vue Monétisation
+// ─────────────────────────────────────────────────────────
+const STRATUM_COLORS = [
+  null,         // 0 – unused
+  '#f5b54d',    // 1 – Noyau analytique          — amber
+  '#c07832',    // 2 – Mécanismes de monétisation — copper
+  '#00c8e0',    // 3 – Arènes / infrastructures   — cyan
+  '#22aa55',    // 4 – Catégories analytiques      — green
+  '#9c4ddc',    // 5 – Cas empiriques / protocoles — violet
+  '#7888aa',    // 6 – Personnes / références      — slate
+];
+const STRATUM_LABELS = [
+  '',
+  'Noyau analytique',
+  'Mécanismes de monétisation',
+  'Arènes / médiations / infrastructures',
+  'Catégories analytiques d\'acteurs',
+  'Cas empiriques / protocoles / crises',
+  'Personnes / références / sources',
+];
+
+// Manual overrides (seed JSON)
+const STRATUM_OVERRIDES_BY_NAME = {
+  'Monétisation':                                  { stratum: 1, cluster: 'core' },
+  'Monétisation des cryptomonnaies':               { stratum: 1, cluster: 'core' },
+  'Développement carnavalesque':                   { stratum: 1, cluster: 'core' },
+  'Gouvernance polycentrique':                     { stratum: 1, cluster: 'core' },
+  'Gouvernance duale':                             { stratum: 1, cluster: 'core' },
+  'Infrastructure sociotechnique':                 { stratum: 1, cluster: 'core' },
+  'Mise en crise':                                 { stratum: 1, cluster: 'core' },
+  'Remise en ordre':                               { stratum: 1, cluster: 'core' },
+  'Logique de consensus distribué':                { stratum: 1, cluster: 'core' },
+  'UCN BTC':                                       { stratum: 2, cluster: 'btc' },
+  'UCN ETH':                                       { stratum: 2, cluster: 'eth' },
+  'Passerelle / Gateway':                          { stratum: 2, cluster: 'inter' },
+  'Processus de monétisation progressive de Bitcoin': { stratum: 2, cluster: 'btc' },
+  'Bitcoin':                                       { stratum: 5, cluster: 'bitcoin' },
+  'Ethereum':                                      { stratum: 5, cluster: 'ethereum' },
+  'The DAO':                                       { stratum: 5, cluster: 'ethereum' },
+  'CVE-2018-17144':                                { stratum: 5, cluster: 'bitcoin' },
+  'Développeurs Core':                             { stratum: 4, cluster: 'actors' },
+  'Mineurs':                                       { stratum: 4, cluster: 'actors' },
+  'Bourses d\'échange':                            { stratum: 4, cluster: 'actors' },
+  'Fournisseurs de portefeuilles':                 { stratum: 4, cluster: 'actors' },
+};
+
+// Always-visible labels (regardless of zoom)
+const STRATUM_ALWAYS_VISIBLE_NAMES = new Set([
+  'Monétisation', 'Monétisation des cryptomonnaies', 'Bitcoin', 'Ethereum',
+  'Gouvernance polycentrique', 'Développement carnavalesque',
+  'Infrastructure sociotechnique', 'Mise en crise', 'Remise en ordre',
+]);
+
+// Cluster X-axis bias: BTC left / ETH right (fraction of half-width)
+const STRATUM_CLUSTER_X = {
+  'core':    0.0,
+  'btc':    -0.22,
+  'eth':     0.22,
+  'inter':   0.05,
+  'actors':  0.0,
+  'bitcoin': -0.38,
+  'ethereum': 0.38,
+};
+
+// Default stratum by entity type
+const TYPE_DEFAULT_STRATUM = {
+  'CoreConcept': 1, 'ConceptCore': 1, 'Argument': 1,
+  'NarrativeCluster': 1, 'AnalyticClaim': 1, 'TheoreticFramework': 1, 'Concept': 1,
+  'MonetaryObject': 2, 'NativeFormula': 2, 'Capability': 2,
+  'SecondaryConcept': 2, 'ConceptSecondary': 2,
+  'GovernanceArena': 3, 'GovernanceProcess': 3,
+  'InfrastructureDomain': 3, 'InfrastructureSegment': 3, 'InfrastructureService': 3,
+  'SoftwareClient': 3, 'CodeRepository': 3, 'SmartContract': 3,
+  'PlatformService': 3, 'MediaOutlet': 3, 'Marketplace': 3, 'HardwareDevice': 3,
+  'TechnicalConcept': 3, 'ConceptTechnical': 3, 'ActorNonHuman': 3,
+  'StakeholderCategory': 4, 'StakeholderGroup': 4, 'ActorGroup': 4,
+  'Organization': 4, 'Institution': 4,
+  'Protocol': 5, 'CrisisEvent': 5, 'CrisisPhase': 5,
+  'GovernanceConflict': 5, 'InfrastructureEvent': 5, 'DevelopmentPhase': 5,
+  'ProtocolChange': 5, 'ProtocolProposal': 5,
+  'Person': 6, 'Actor': 6, 'Reference': 6, 'AcademicWork': 6, 'SourceQuote': 6,
+  'GreyLiterature': 6, 'IndigenousLiterature': 6, 'Corpus': 6, 'Method': 6,
+  'PrimarySource': 6, 'Chapter': 6, 'ThesisSection': 6, 'ChapterSection': 6,
+  'DoctoralThesis': 6, 'PriceSeries': 6, 'PriceWindow': 6,
+};
+
+function buildStratumMap(data) {
+  const nameIndex = {};
+  for (const e of data.entities) nameIndex[e.name] = e.id;
+  const typeById = {};
+  for (const t of data.types) typeById[t.id] = t.name;
+  const result = {};
+
+  // Step 1 — named overrides
+  for (const [name, ov] of Object.entries(STRATUM_OVERRIDES_BY_NAME)) {
+    const id = nameIndex[name];
+    if (id) result[id] = ov.stratum;
+  }
+
+  // Step 2 — type-based defaults
+  for (const e of data.entities) {
+    if (result[e.id] !== undefined) continue;
+    const tid = e.types && e.types[0];
+    const typeName = tid ? (typeById[tid] || 'Unknown') : 'Unknown';
+    result[e.id] = TYPE_DEFAULT_STRATUM[typeName] || 3;
   }
 
   return result;
@@ -1501,6 +1656,11 @@ const Graph = (() => {
         selector: 'node.show-label',
         style: { 'label': 'data(label)' }
       },
+      // ── Always-visible labels (Vue Monétisation — key nodes) ──────────────
+      {
+        selector: 'node.always-label',
+        style: { 'label': 'data(label)', 'font-size': '13px', 'font-family': 'VT323, monospace', 'text-outline-width': 3 }
+      },
       // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
       { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
       { selector: 'node.chapter-1', style: { 'shadow-color': '#ff8800', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
@@ -1675,6 +1835,7 @@ const Graph = (() => {
     if (lv === 'nebulae') applyNebulaLayout();
     else if (lv === 'matrice') applyMatriceLayout();
     else if (lv === 'arbre') applyArbreLayout();
+    else if (lv === 'monetisation') applyMonetisationLayout();
     else applyLayout(lv);
     applyFilters();
   }
@@ -1803,7 +1964,7 @@ const Graph = (() => {
 
   function applyNebulaLayout() {
     if (!cy || !State.data) return;
-    cy.nodes().removeClass('in-matrix in-nebula nebula-leaf');
+    cy.nodes().removeClass('in-matrix in-nebula nebula-leaf always-label');
     cy.edges().removeClass('in-matrix');
     cy.$('.col-halo').remove();
     _stopHaloOverlay();
@@ -2250,7 +2411,7 @@ const Graph = (() => {
     document.getElementById('btn-archipel-back').style.display = 'none';
     cy.$('.chapter-label, .type-label, .col-halo').remove();
     _stopHaloOverlay();
-    cy.nodes().removeClass('chapter-faded in-matrix in-nebula nebula-leaf');
+    cy.nodes().removeClass('chapter-faded in-matrix in-nebula nebula-leaf always-label');
     cy.edges().removeClass('in-matrix nebula-arch');
     applyFilters();
     // Restore type colors
@@ -2390,6 +2551,142 @@ const Graph = (() => {
     cy.edges().addClass('in-matrix');
   }
 
+  // ── Vue Monétisation : layout par strates analytiques ───────────
+  function applyMonetisationLayout() {
+    if (!cy || !State.data) return;
+
+    // ── State ────────────────────────────────────────────
+    _nebulaActive = true;
+    _matrixMode = true;
+    _nebulaZoomDepth = 'chapter';
+    document.querySelector('.grc-root').classList.add('nebula-mode');
+    document.getElementById('btn-archipel-back').style.display = 'none';
+
+    // ── Build stratum map if empty ────────────────────
+    if (!Object.keys(_stratumMap).length) {
+      _stratumMap = buildStratumMap(State.data);
+    }
+
+    // ── Color nodes by stratum ────────────────────────
+    cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
+      const s = _stratumMap[n.data('id')] || 3;
+      const c = STRATUM_COLORS[s] || '#666666';
+      n.data('color', c);
+      n.data('stratumIdx', s);
+      n.data('labelColor', c);
+      n.removeClass('chapter-faded always-label');
+    });
+
+    // ── Geometry ─────────────────────────────────────
+    const VW = cy.width() || window.innerWidth || 800;
+    const isMobile = VW < 600;
+    const BAND_H  = isMobile ? 110  : 260;
+    const OX      = isMobile ? 200  : 700;   // canvas center X
+    const OY      = isMobile ? 80   : 140;   // top band center Y
+    const HALF_W  = isMobile ? 180  : 860;   // half usable width per band
+
+    // ── Group nodes by stratum ────────────────────────
+    const groups = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+      const s = n.data('stratumIdx') || 3;
+      if (groups[s]) groups[s].push(n);
+    });
+
+    // ── Build cluster map for this layout ────────────
+    const entityClusterMap = {};
+    const nameToId = {};
+    for (const e of State.data.entities) nameToId[e.name] = e.id;
+    for (const [name, ov] of Object.entries(STRATUM_OVERRIDES_BY_NAME)) {
+      const id = nameToId[name];
+      if (id) entityClusterMap[id] = ov.cluster;
+    }
+
+    // ── Position nodes with cluster bias + jitter ────
+    for (let s = 1; s <= 6; s++) {
+      const nodes = groups[s] || [];
+      if (!nodes.length) continue;
+      const bandY = OY + (s - 1) * BAND_H;
+
+      // Sort by degree descending (hubs → center)
+      nodes.sort((a, b) => {
+        const da = (State.maps.outgoing[a.data('id')] || []).length
+                 + (State.maps.incoming[a.data('id')] || []).length;
+        const db = (State.maps.outgoing[b.data('id')] || []).length
+                 + (State.maps.incoming[b.data('id')] || []).length;
+        return db - da;
+      });
+
+      const count = nodes.length;
+      const spacing = Math.min((HALF_W * 2) / Math.max(count, 1), isMobile ? 12 : 30);
+      const totalW  = spacing * (count - 1);
+      const startX  = OX - totalW / 2;
+
+      nodes.forEach((n, i) => {
+        const cluster = entityClusterMap[n.data('id')];
+        const cx = cluster ? ((STRATUM_CLUSTER_X[cluster] || 0) * HALF_W * 0.6) : 0;
+        const jx = (Math.random() - 0.5) * spacing * 0.8;
+        const jy = (Math.random() - 0.5) * BAND_H * 0.72;
+        n.position({ x: startX + i * spacing + cx + jx, y: bandY + jy });
+      });
+    }
+
+    // ── Node sizing + classes ────────────────────────
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+      const raw = n.data('size') || 22;
+      n.data('msize', isMobile ? 4 + (raw - 22) / 68 * 12 : raw);
+    });
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
+    cy.edges().addClass('in-matrix');
+    if (isMobile) {
+      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
+        'shadow-blur': 6, 'shadow-opacity': 0.65,
+      });
+    }
+
+    // ── Always-visible labels ─────────────────────────
+    cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
+      if (STRATUM_ALWAYS_VISIBLE_NAMES.has(n.data('fullName'))) {
+        n.addClass('always-label');
+      }
+    });
+
+    // ── Stratum band labels ───────────────────────────
+    cy.$('.col-halo').remove();
+    cy.$('.chapter-label, .type-label').remove();
+    _stopHaloOverlay();
+
+    const labelX = OX - HALF_W * 0.92;
+    for (let s = 1; s <= 6; s++) {
+      cy.add({
+        data: {
+          id: '__strat_lbl_' + s,
+          label: STRATUM_LABELS[s],
+          labelColor: STRATUM_COLORS[s],
+          labelSize: isMobile ? '20px' : '15px',
+          labelHalign: 'center',
+        },
+        position: { x: labelX, y: OY + (s - 1) * BAND_H },
+        classes: 'chapter-label',
+      });
+    }
+
+    // ── Fit and run ───────────────────────────────────
+    cy.layout({ name: 'preset', fit: false }).run();
+    const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
+    if (dataNodes.length) cy.fit(dataNodes, 60);
+
+    // ── Halo overlay: horizontal stratum bands ────────
+    _startHaloOverlay({
+      rows: Array.from({ length: 6 }, (_, i) => ({
+        modelY: OY + i * BAND_H,
+        color:  STRATUM_COLORS[i + 1] || '#666666',
+      })),
+      cols:      [],
+      modelH:    BAND_H * 1.3,
+      modelColW: 0,
+    });
+  }
+
   // ── Canvas Overlay: horizontal chapter-row halos ─────────────
   // Drawn on a dedicated <canvas> element synced to cy pan/zoom.
   // Zero Cytoscape node overhead — pure 2D canvas gradients.
@@ -2473,7 +2770,7 @@ const Graph = (() => {
     if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
   }
 
-  return { init, render, applyLayout, applyNebulaLayout, applyMatriceLayout, applyArbreLayout, zoomToChapter, zoomToArchipelago, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, stopHaloOverlay: _stopHaloOverlay, get cy() { return cy; } };
+  return { init, render, applyLayout, applyNebulaLayout, applyMatriceLayout, applyArbreLayout, applyMonetisationLayout, zoomToChapter, zoomToArchipelago, restoreTypeColors, applyFilters, addNode, removeNode, updateNode, addEdge, removeEdge, fit, highlightNeighbors, resetHighlight, stopHaloOverlay: _stopHaloOverlay, get cy() { return cy; } };
 })();
 
 // ─────────────────────────────────────────────────────────
@@ -3171,6 +3468,12 @@ function showGuidedOverlay() {
           <span class="guided-mode-sub">Matrice chapitres × types</span>
         </button>
       </div>
+      <div class="guided-modes">
+        <button class="btn-secondary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-monetisation" style="border-color:#f5b54d66;color:#f5b54d">
+          ◆ Monétisation des CM
+          <span class="guided-mode-sub">Vue analytique par strates</span>
+        </button>
+      </div>
       <div class="guided-modes guided-modes-secondary">
         <button class="btn-secondary guided-mode-btn" id="guided-btn-full">
           ⚡ Tout le graphe
@@ -3237,6 +3540,20 @@ function showGuidedOverlay() {
     Graph.applyFilters();
     Graph.applyMatriceLayout();
     document.getElementById('layout-select').value = 'matrice';
+    document.getElementById('btn-carte').className = 'btn-primary btn-sm';
+    document.getElementById('btn-monetisation').className = 'btn-secondary btn-sm';
+  });
+
+  // Monétisation : vue analytique par strates
+  document.getElementById('guided-btn-monetisation').addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    State.hiddenTypes.clear();
+    UI.renderTypeFilters();
+    Graph.applyFilters();
+    Graph.applyMonetisationLayout();
+    document.getElementById('layout-select').value = 'monetisation';
+    document.getElementById('btn-monetisation').className = 'btn-primary btn-sm';
+    document.getElementById('btn-carte').className = 'btn-secondary btn-sm';
   });
 
   // Archipel : tout afficher en vue chapitres
@@ -3272,6 +3589,7 @@ function onDataLoaded(data) {
   }
   State.load(data);
   _chapterMap = buildChapterMap(data);
+  _stratumMap = buildStratumMap(data);
   document.getElementById('version-label').textContent = `GRC-20 v${data.space && data.space.version || '?'} · ${data.entities.length} entités · ${data.relations.length} rel.`;
 
   // Enable buttons
@@ -3330,23 +3648,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Layout ───────────────────────────────────────────
+  function applySelectedLayout(v) {
+    if (v === 'nebulae') { Graph.applyNebulaLayout(); }
+    else {
+      Graph.restoreTypeColors(); UI.renderTypeFilters();
+      if (v === 'matrice')       Graph.applyMatriceLayout();
+      else if (v === 'arbre')    Graph.applyArbreLayout();
+      else if (v === 'monetisation') Graph.applyMonetisationLayout();
+      else                       Graph.applyLayout(v);
+    }
+    // Sync header button states
+    document.getElementById('btn-carte').className =
+      (v === 'matrice') ? 'btn-primary btn-sm' : 'btn-secondary btn-sm';
+    document.getElementById('btn-monetisation').className =
+      (v === 'monetisation') ? 'btn-primary btn-sm' : 'btn-secondary btn-sm';
+  }
+
   document.getElementById('btn-relayout').addEventListener('click', () => {
     if (!State.data) return;
-    const v = document.getElementById('layout-select').value;
-    if (v === 'nebulae') Graph.applyNebulaLayout();
-    else { Graph.restoreTypeColors(); UI.renderTypeFilters();
-      if (v === 'matrice') Graph.applyMatriceLayout();
-      else if (v === 'arbre') Graph.applyArbreLayout();
-      else Graph.applyLayout(v); }
+    applySelectedLayout(document.getElementById('layout-select').value);
   });
   document.getElementById('layout-select').addEventListener('change', e => {
     if (!State.data) return;
-    const v = e.target.value;
-    if (v === 'nebulae') Graph.applyNebulaLayout();
-    else { Graph.restoreTypeColors(); UI.renderTypeFilters();
-      if (v === 'matrice') Graph.applyMatriceLayout();
-      else if (v === 'arbre') Graph.applyArbreLayout();
-      else Graph.applyLayout(v); }
+    applySelectedLayout(e.target.value);
   });
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
   document.getElementById('btn-archipel-back').addEventListener('click', () => Graph.zoomToArchipelago());
@@ -3360,6 +3684,21 @@ document.addEventListener('DOMContentLoaded', () => {
     UI.renderTypeFilters();
     Graph.applyMatriceLayout();
     document.getElementById('layout-select').value = 'matrice';
+    document.getElementById('btn-carte').classList.replace('btn-secondary', 'btn-primary');
+    document.getElementById('btn-monetisation').classList.replace('btn-primary', 'btn-secondary');
+  });
+
+  // ── Bouton "Monétisation" : vue analytique par strates ───
+  document.getElementById('btn-monetisation').addEventListener('click', () => {
+    if (!State.data) return;
+    document.getElementById('canvas-overlay').classList.add('hidden');
+    State.hiddenTypes.clear();
+    Graph.restoreTypeColors();
+    UI.renderTypeFilters();
+    Graph.applyMonetisationLayout();
+    document.getElementById('layout-select').value = 'monetisation';
+    document.getElementById('btn-monetisation').classList.replace('btn-secondary', 'btn-primary');
+    document.getElementById('btn-carte').classList.replace('btn-primary', 'btn-secondary');
   });
 
   // ── Search ───────────────────────────────────────────
