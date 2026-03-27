@@ -1,0 +1,45 @@
+{
+  "viewId": "monetisation",
+  "label": "Monétisation",
+  "subtitle": "Vue thématique",
+  "strata": [
+    {"id": 1, "name": "Noyau analytique", "colorHint": "amber"},
+    {"id": 2, "name": "Mécanismes de monétisation", "colorHint": "copper"},
+    {"id": 3, "name": "Arènes / médiations / infrastructures", "colorHint": "cyan"},
+    {"id": 4, "name": "Catégories analytiques d’acteurs", "colorHint": "green"},
+    {"id": 5, "name": "Cas empiriques / protocoles / crises", "colorHint": "violet"},
+    {"id": 6, "name": "Personnes / références / sources", "colorHint": "desaturated"}
+  ],
+  "manualOverrides": [
+    {"entity": "Monétisation", "stratum": 1, "priority": 1.0, "cluster": "core"},
+    {"entity": "Développement carnavalesque", "stratum": 1, "priority": 0.98, "cluster": "core"},
+    {"entity": "Gouvernance polycentrique", "stratum": 1, "priority": 0.98, "cluster": "core"},
+    {"entity": "Gouvernance duale", "stratum": 1, "priority": 0.97, "cluster": "core"},
+    {"entity": "Infrastructure sociotechnique", "stratum": 1, "priority": 0.97, "cluster": "core"},
+    {"entity": "Mise en crise", "stratum": 1, "priority": 0.96, "cluster": "core"},
+    {"entity": "Remise en ordre", "stratum": 1, "priority": 0.96, "cluster": "core"},
+    {"entity": "Logique de consensus distribué", "stratum": 1, "priority": 0.95, "cluster": "core"},
+    {"entity": "UCN BTC", "stratum": 2, "priority": 0.95, "cluster": "btc-monetization"},
+    {"entity": "UCN ETH", "stratum": 2, "priority": 0.95, "cluster": "eth-monetization"},
+    {"entity": "Passerelle / Gateway", "stratum": 2, "priority": 0.93, "cluster": "intermediation"},
+    {"entity": "Processus de monétisation progressive de Bitcoin", "stratum": 2, "priority": 0.93, "cluster": "btc-monetization"},
+    {"entity": "Bitcoin", "stratum": 5, "priority": 1.0, "cluster": "bitcoin-case"},
+    {"entity": "Ethereum", "stratum": 5, "priority": 1.0, "cluster": "ethereum-case"},
+    {"entity": "The DAO", "stratum": 5, "priority": 0.94, "cluster": "ethereum-crisis"},
+    {"entity": "CVE-2018-17144", "stratum": 5, "priority": 0.94, "cluster": "bitcoin-crisis"},
+    {"entity": "Développeurs Core", "stratum": 4, "priority": 0.92, "cluster": "actor-categories"},
+    {"entity": "Mineurs", "stratum": 4, "priority": 0.92, "cluster": "actor-categories"},
+    {"entity": "Bourses d’échange", "stratum": 4, "priority": 0.91, "cluster": "actor-categories"},
+    {"entity": "Fournisseurs de portefeuilles", "stratum": 4, "priority": 0.9, "cluster": "actor-categories"}
+  ],
+  "alwaysVisibleLabels": [
+    "Monétisation",
+    "Bitcoin",
+    "Ethereum",
+    "Gouvernance polycentrique",
+    "Développement carnavalesque",
+    "Infrastructure sociotechnique",
+    "Mise en crise",
+    "Remise en ordre"
+  ]
+}
