@@ -1270,12 +1270,12 @@ const STRATUM_COLORS = [
 ];
 const STRATUM_LABELS = [
   '',
-  'Noyau analytique',
-  'Mécanismes de monétisation',
-  'Arènes / médiations / infrastructures',
-  'Catégories analytiques d\'acteurs',
-  'Cas empiriques / protocoles / crises',
-  'Personnes / références / sources',
+  'Noyau',
+  'Mécanismes',
+  'Médiations',
+  'Acteurs',
+  'Cas',
+  'Réf.',
 ];
 
 // Manual overrides (seed JSON)
@@ -2267,7 +2267,9 @@ const Graph = (() => {
     });
 
     // ── Column setup (branche: strates V2 vs types bruts) ────
-    let strataColIdx, strataCounts, typeColIdx, typeCounts, sortedTypes;
+    let strataColIdx, strataCounts;
+    // V3 column constants — assigned in else branch, read in all subsequent else branches
+    let TYPE_COL_V3, COL_V3_LABELS, COL_V3_COLORS, V3_PERSON_COL;
 
     if (useStrata) {
       strataColIdx = {};
@@ -2279,38 +2281,40 @@ const Graph = (() => {
         if (strataCounts[s] !== undefined) strataCounts[s]++;
       });
     } else {
-      // Original : tri sémantique par priorité de type
-      // Left = structural / analytical cores  →  right = source material
-      const MATRICE_TYPE_PRIORITY = {
-        'Chapter': 0, 'ThesisSection': 1,
-        'Protocol': 2, 'InfrastructureDomain': 3,
-        'Argument': 10, 'NarrativeCluster': 11, 'CrisisPhase': 12,
-        'Person': 20, 'Institution': 21, 'ActorGroup': 22,
-        'ActorNonHuman': 23, 'StakeholderCategory': 24,
-        'Concept': 30, 'TheoreticFramework': 31, 'Method': 32,
-        'CrisisEvent': 40, 'GovernanceConflict': 41,
-        'GovernanceProcess': 42, 'GovernanceArena': 43,
-        'ProtocolChange': 50, 'ProtocolProposal': 51,
-        'InfrastructureEvent': 52, 'InfrastructureSegment': 53,
-        'DevelopmentPhase': 54, 'Capability': 55,
-        'AcademicWork': 70, 'DoctoralThesis': 71, 'Reference': 72,
-        'Corpus': 75, 'MonetaryObject': 76,
-        'PriceSeries': 77, 'PriceWindow': 78,
-        'PrimarySource': 82, 'GreyLiterature': 83, 'IndigenousLiterature': 84,
-        'SourceQuote': 85,
+      // V3 : 7 colonnes semantiques fixes
+      // 0 Chap. | 1 Struct. | 2 Objets | 3 Acteurs | 4 Concepts | 5 Even. | 6 Ref.
+      TYPE_COL_V3 = {
+        'Chapter': 0, 'DoctoralThesis': 0, 'ChapterSection': 0,
+        'ThesisSection': 1, 'Argument': 1, 'NarrativeCluster': 1, 'AnalyticClaim': 1,
+        'Protocol': 2, 'MonetaryObject': 2, 'InfrastructureDomain': 2,
+        'InfrastructureSegment': 2, 'ActorNonHuman': 2, 'SoftwareClient': 2,
+        'CodeRepository': 2, 'SmartContract': 2, 'PlatformService': 2,
+        'InfrastructureService': 2, 'HardwareDevice': 2, 'Marketplace': 2,
+        'MediaOutlet': 2, 'Capability': 2,
+        'StakeholderCategory': 3, 'Institution': 3, 'Organization': 3,
+        'StakeholderGroup': 3, 'ActorGroup': 3,
+        'Concept': 4, 'TheoreticFramework': 4, 'CoreConcept': 4,
+        'ConceptCore': 4, 'ConceptSecondary': 4, 'ConceptTechnical': 4,
+        'NativeFormula': 4, 'Method': 4,
+        'CrisisEvent': 5, 'CrisisPhase': 5, 'GovernanceConflict': 5,
+        'GovernanceArena': 5, 'GovernanceProcess': 5, 'ProtocolProposal': 5,
+        'ProtocolChange': 5, 'InfrastructureEvent': 5, 'DevelopmentPhase': 5,
+        'AcademicWork': 6, 'Reference': 6, 'Corpus': 6, 'SourceQuote': 6,
+        'PrimarySource': 6, 'GreyLiterature': 6, 'IndigenousLiterature': 6,
+        'PriceSeries': 6, 'PriceWindow': 6,
       };
-      typeCounts = {};
-      cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-        const t = n.data('typeName');
-        if (t) typeCounts[t] = (typeCounts[t] || 0) + 1;
-      });
-      sortedTypes = Object.keys(typeCounts).sort((a, b) => {
-        const pa = MATRICE_TYPE_PRIORITY[a] ?? 45;
-        const pb = MATRICE_TYPE_PRIORITY[b] ?? 45;
-        return pa !== pb ? pa - pb : typeCounts[b] - typeCounts[a];
-      });
-      typeColIdx = {};
-      sortedTypes.forEach((t, i) => { typeColIdx[t] = i; });
+      COL_V3_LABELS = ['Chap.', 'Struct.', 'Objets', 'Acteurs', 'Concepts', 'Even.', 'Ref.'];
+      COL_V3_COLORS = ['#aaaaaa', '#66ccff', '#00ffaa', '#ff8800', '#0088ff', '#ff2200', '#ee00ff'];
+      // Overrides nominatifs — personnes empiriques -> Acteurs (3), references -> Ref. (6)
+      V3_PERSON_COL = {
+        'Peter Wuille': 3, 'Greg Maxwell': 3, 'Gregory Maxwell': 3,
+        'Adam Back': 3, 'W.J. van der Laan': 3, 'Jihan Wu': 3,
+        'Vitalik Buterin': 3, 'Gavin Wood': 3, 'Vlad Zamfir': 3,
+        'Roger Ver': 3,
+        'Susan Leigh Star': 6, 'Geoffrey Bowker': 6, 'Thomas Hughes': 6,
+        'André Orléan': 6, 'Michel Aglietta': 6, 'Bruno Théret': 6,
+        'Viviana Zelizer': 6, 'Keith Hart': 6,
+      };
     }
 
     // ── Géométrie responsive ─────────────────────────────
@@ -2323,29 +2327,20 @@ const Graph = (() => {
     const CELL_W_FRAC = 0.78;
 
     // ── Mobile col map / labels / halo colors ────────────
-    const MOBILE_COL_MAP = useStrata ? {
+    // V2 strata: stratum-name → mobile col; V3: desktop col index (0-6) → 4 macro-cols
+    const MOBILE_COL_MAP_V2 = useStrata ? {
       'core_concepts': 0,      'analytic_frameworks': 0,
       'protocol_infra_objects': 1, 'collective_structures': 1,
       'empirical_cases': 2,    'embedded_persons': 2,
       'reference_authors': 3,
-    } : {
-      'Chapter': 0, 'ThesisSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'CrisisPhase': 0,
-      'Protocol': 1, 'InfrastructureDomain': 1,
-      'InfrastructureEvent': 4, 'InfrastructureSegment': 4, 'DevelopmentPhase': 4,
-      'Person': 2, 'Institution': 2, 'ActorGroup': 2, 'ActorNonHuman': 2, 'StakeholderCategory': 2,
-      'Concept': 3, 'TheoreticFramework': 3, 'Method': 3, 'Capability': 3,
-      'CrisisEvent': 4, 'GovernanceConflict': 4, 'GovernanceProcess': 4,
-      'GovernanceArena': 4, 'ProtocolChange': 4, 'ProtocolProposal': 4,
-      'AcademicWork': 5, 'DoctoralThesis': 5, 'PrimarySource': 5, 'GreyLiterature': 5,
-      'IndigenousLiterature': 5, 'Corpus': 5, 'MonetaryObject': 5, 'PriceSeries': 5,
-      'PriceWindow': 5, 'SourceQuote': 6, 'Reference': 5,
-    };
+    } : null;
+    const MOBILE_COL_MAP_V3 = { 0: 0, 1: 0, 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
     const MOBILE_COL_LABELS = useStrata
       ? ['Concepts', 'Protocoles', 'Cas & Acteurs', 'Références']
-      : ['Struct.', 'Objets', 'Acteurs', 'Concepts', 'Gouv.+', 'Réf.', 'Extraits'];
+      : ['Struct.', 'Objets', 'Act.+Cpt.', 'Réf.'];
     const MOBILE_HALO_COLS  = useStrata
       ? ['#f5b54d', '#3a9e5a', '#e03030', '#7888aa']
-      : ['#ffee00', '#00ffaa', '#ff2200', '#0088ff', '#ccff00', '#ee00ff'];
+      : ['#66ccff', '#00ffaa', '#ff8800', '#ee00ff'];
     const mobileMaxCol = MOBILE_HALO_COLS.length;
 
     // ── Grouper les nœuds par (chapitreRow, col) ─────────
@@ -2356,11 +2351,22 @@ const Graph = (() => {
       let col;
       if (useStrata) {
         const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
-        col = isMobile ? (MOBILE_COL_MAP[s] ?? (mobileMaxCol - 1)) : (strataColIdx[s] ?? 0);
+        col = isMobile ? (MOBILE_COL_MAP_V2[s] ?? (mobileMaxCol - 1)) : (strataColIdx[s] ?? 0);
       } else {
-        const t = n.data('typeName');
-        col = isMobile ? (MOBILE_COL_MAP[t] ?? 5) : (typeColIdx[t] ?? -1);
-        if (!isMobile && col < 0) return;
+        const typeName = n.data('typeName');
+        const fullName = n.data('fullName') || '';
+        let desktopCol;
+        if (typeName === 'Person' || typeName === 'Actor') {
+          if (V3_PERSON_COL[fullName] !== undefined) {
+            desktopCol = V3_PERSON_COL[fullName];
+          } else {
+            // embedded_persons (empirical actors) -> Acteurs; reference_authors -> Ref.
+            desktopCol = (_displayStratumMap[n.data('id')] === 'embedded_persons') ? 3 : 6;
+          }
+        } else {
+          desktopCol = TYPE_COL_V3[typeName] ?? 4; // unknown -> Concepts
+        }
+        col = isMobile ? (MOBILE_COL_MAP_V3[desktopCol] ?? 2) : desktopCol;
       }
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
@@ -2449,9 +2455,9 @@ const Graph = (() => {
         });
       });
     } else {
-      sortedTypes.forEach((typeName, j) => {
+      COL_V3_COLORS.forEach((color, j) => {
         cy.add({
-          data: { id: '__halo_' + j, color: TYPE_COLORS[typeName] || '#334455' },
+          data: { id: '__halo_' + j, color },
           position: { x: OX + j * COL_W, y: haloCenterY },
           classes: 'col-halo',
         });
@@ -2505,12 +2511,12 @@ const Graph = (() => {
         });
       });
     } else {
-      sortedTypes.forEach((typeName, j) => {
+      COL_V3_LABELS.forEach((label, j) => {
         cy.add({
           data: {
             id: '__mat_col_' + j,
-            label: typeName + '\n× ' + typeCounts[typeName],
-            labelColor: TYPE_COLORS[typeName] || '#aaaaaa',
+            label,
+            labelColor: COL_V3_COLORS[j] || '#aaaaaa',
             labelSize: colSize, labelRotation: colRotation,
           },
           position: { x: OX + j * COL_W, y: colLabelY },
@@ -2549,7 +2555,7 @@ const Graph = (() => {
         ? (col) => MOBILE_HALO_COLS[col] || '#888888'
         : useStrata
           ? (col) => V2_STRATA_COLORS[V2_STRATA_ORDER[col]] || '#334455'
-          : (col) => TYPE_COLORS[sortedTypes[col]] || '#334455';
+          : (col) => COL_V3_COLORS[col] || '#334455';
 
       const overlayCells = [];
       Object.keys(cells).forEach(key => {
@@ -2841,7 +2847,7 @@ const Graph = (() => {
           id: '__strat_lbl_' + s,
           label: STRATUM_LABELS[s],
           labelColor: STRATUM_COLORS[s],
-          labelSize: isMobile ? '20px' : '15px',
+          labelSize: isMobile ? '28px' : '22px',
           labelHalign: 'center',
         },
         position: { x: labelX, y: OY + (s - 1) * BAND_H },
