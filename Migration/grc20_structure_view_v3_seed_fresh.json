@@ -1,0 +1,42 @@
+{
+  "viewId": "structure_v3",
+  "viewTitle": "Structure de la thèse",
+  "columns": [
+    {"id":"chap","label":"Chap."},
+    {"id":"struct","label":"Struct."},
+    {"id":"objects","label":"Objets"},
+    {"id":"actors","label":"Acteurs"},
+    {"id":"concepts","label":"Concepts"},
+    {"id":"events","label":"Evén."},
+    {"id":"refs","label":"Réf."}
+  ],
+  "rows": [
+    {"id":"intro","label":"Intro"},
+    {"id":"ch1","label":"Chap. I"},
+    {"id":"ch2","label":"Chap. II"},
+    {"id":"ch3","label":"Chap. III"},
+    {"id":"concl","label":"Concl."},
+    {"id":"multi","label":"Multi."}
+  ],
+  "personOverrides": {
+    "Peter Wuille":{"column":"actors","role":"acting_figure"},
+    "Greg Maxwell":{"column":"actors","role":"acting_figure"},
+    "W.J. van der Laan":{"column":"actors","role":"acting_figure"},
+    "Adam Back":{"column":"actors","role":"acting_figure"},
+    "Jihan Wu":{"column":"actors","role":"acting_figure"},
+    "Vitalik Buterin":{"column":"actors","role":"acting_figure"},
+    "Gavin Wood":{"column":"actors","role":"acting_figure"},
+    "Vlad Zamfir":{"column":"actors","role":"acting_figure"},
+    "Susan Leigh Star":{"column":"refs","role":"theory_reference"},
+    "Geoffrey Bowker":{"column":"refs","role":"theory_reference"},
+    "Andre Orlean":{"column":"refs","role":"theory_reference"},
+    "Bruno Theret":{"column":"refs","role":"theory_reference"},
+    "Michel Aglietta":{"column":"refs","role":"theory_reference"}
+  },
+  "visualRules": {
+    "preserveHistoricHalos": true,
+    "preserveChapterColors": true,
+    "keepHistoricColumns": true,
+    "mobileFirstLabels": true
+  }
+}
