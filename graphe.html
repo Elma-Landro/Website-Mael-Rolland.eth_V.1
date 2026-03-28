@@ -3538,6 +3538,285 @@ const Graph = (() => {
 })();
 
 // ─────────────────────────────────────────────────────────
+//  FOCUS MODE
+// ─────────────────────────────────────────────────────────
+const FocusMode = (() => {
+  const VIEW_CONFIGS = {
+    'matrice': {
+      bands: ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.', 'Multi.'],
+      cols:  ['Chap.', 'Struct.', 'Objets', 'Gouvern.', 'Acteurs', 'Concepts', 'Réf./Sources'],
+      rows:  null,
+      colKey: 'focusCol', rowKey: 'focusBand',
+    },
+    'monetisation': {
+      bands: null,
+      cols:  ['Noyau', 'Émission', 'Circulation', 'Accès', 'Usages', 'Valorisation', 'Stabilisation'],
+      rows:  ['Thèse', 'Dispositifs', 'Arènes', 'Acteurs', 'Cas', 'Réf.'],
+      colKey: 'focusCol', rowKey: 'focusRow',
+    },
+    'qui-gouverne': {
+      bands: null,
+      cols:  ['Struct.', 'Gouvern.', 'Catégories', 'Organisations', 'Groupes', 'Arènes', 'Personnes', 'Cas / Réf.'],
+      rows:  ['Problématisation', 'Coordination', 'Décision', 'Conflit', 'Maintenance', 'Sources'],
+      colKey: 'focusCol', rowKey: 'focusRow',
+    },
+  };
+
+  const PRESETS = {
+    'matrice': [
+      { label: 'Acteurs Chap. I',    col: 4, band: 1 },
+      { label: 'Concepts Chap. II',  col: 5, band: 2 },
+      { label: 'Gouvern. Chap. III', col: 3, band: 3 },
+      { label: 'Réf. Concl.',        col: 6, band: 4 },
+    ],
+    'monetisation': [
+      { label: 'Usages',            col: 4 },
+      { label: 'Stabilisation',     col: 6 },
+      { label: 'Acteurs valoris.',  col: 5, row: 3 },
+      { label: 'Cas circulation',   col: 2, row: 4 },
+    ],
+    'qui-gouverne': [
+      { label: 'Personnes décision', col: 6, row: 2 },
+      { label: 'Arènes maintenance', col: 5, row: 4 },
+      { label: 'Groupes conflit',    col: 4, row: 3 },
+      { label: 'Catégories pouvoir', col: 2, row: 0 },
+    ],
+  };
+
+  let _st = {
+    open: false, active: false,
+    col: null, row: null, band: null,
+    displayMode: 'isoler',
+  };
+  let _savedPositions = {};
+  let _fpLabelIds = new Set();
+
+  function _cy() { return Graph.cy; }
+
+  function _view() {
+    return document.getElementById('layout-select')?.value || 'matrice';
+  }
+
+  function _cfg() {
+    return VIEW_CONFIGS[_view()] || VIEW_CONFIGS['matrice'];
+  }
+
+  function _matches(n) {
+    const cfg = _cfg();
+    if (_st.col  !== null && n.data(cfg.colKey) !== _st.col)  return false;
+    if (_st.row  !== null && n.data(cfg.rowKey) !== _st.row)  return false;
+    if (_st.band !== null && n.data('focusBand') !== _st.band) return false;
+    return true;
+  }
+
+  function apply() {
+    const cy = _cy(); if (!cy) return;
+    _fpLabelIds = new Set();
+
+    const selIds = new Set();
+    cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo').forEach(n => {
+      if (_matches(n)) selIds.add(n.id());
+    });
+
+    const sel  = cy.nodes(':visible').filter(n => selIds.has(n.id()));
+    const rest = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo')
+                    .filter(n => !selIds.has(n.id()));
+
+    if (_st.displayMode === 'isoler') {
+      rest.style({ opacity: 0.06 });
+      sel.style({ opacity: 1 });
+      cy.edges().forEach(e => {
+        const s = selIds.has(e.source().id()), t = selIds.has(e.target().id());
+        e.style({ opacity: s && t ? 0.9 : 0.02 });
+      });
+    } else if (_st.displayMode === 'eclater') {
+      rest.style({ opacity: 0.12 });
+      sel.style({ opacity: 1 });
+      // Save positions & spread
+      _savedPositions = {};
+      cy.nodes().forEach(n => { _savedPositions[n.id()] = { ...n.position() }; });
+      // Group selected by cell
+      const cfg = _cfg();
+      const cellMap = {};
+      sel.forEach(n => {
+        const c = n.data(cfg.colKey) ?? 0;
+        const r = n.data(cfg.rowKey) ?? 0;
+        const k = `${r}_${c}`;
+        if (!cellMap[k]) cellMap[k] = [];
+        cellMap[k].push(n);
+      });
+      Object.values(cellMap).forEach(nodes => {
+        if (nodes.length <= 1) return;
+        const cx = nodes.reduce((s, n) => s + n.position().x, 0) / nodes.length;
+        const cy0 = nodes.reduce((s, n) => s + n.position().y, 0) / nodes.length;
+        nodes.forEach((n, i) => {
+          const angle = (2 * Math.PI * i) / nodes.length;
+          const r = Math.min(55 + nodes.length * 6, 200);
+          n.animate({ position: { x: cx + Math.cos(angle) * r, y: cy0 + Math.sin(angle) * r } }, { duration: 380 });
+        });
+      });
+      // Show labels
+      sel.forEach(n => {
+        n.addClass('always-label');
+        _fpLabelIds.add(n.id());
+      });
+      cy.edges().forEach(e => {
+        const s = selIds.has(e.source().id()), t = selIds.has(e.target().id());
+        e.style({ opacity: s && t ? 0.8 : 0.03 });
+      });
+    } else { // contexte
+      rest.style({ opacity: 0.22 });
+      sel.style({ opacity: 1 });
+      cy.edges().forEach(e => {
+        const s = selIds.has(e.source().id()), t = selIds.has(e.target().id());
+        e.style({ opacity: s || t ? 0.65 : 0.06 });
+      });
+    }
+
+    _st.active = true;
+    if (sel.length) cy.fit(sel, 40);
+    _updateChips();
+  }
+
+  function reset() {
+    const cy = _cy(); if (!cy) return;
+    // Restore positions if explode was used
+    if (Object.keys(_savedPositions).length > 0) {
+      cy.nodes().forEach(n => {
+        const p = _savedPositions[n.id()];
+        if (p) n.position(p);
+      });
+      _savedPositions = {};
+    }
+    cy.nodes().style({ opacity: null });
+    cy.edges().style({ opacity: null });
+    // Remove labels added by focus mode
+    _fpLabelIds.forEach(id => {
+      const n = cy.getElementById(id);
+      if (n) n.removeClass('always-label');
+    });
+    _fpLabelIds = new Set();
+    _st.active = false; _st.col = null; _st.row = null; _st.band = null;
+    _st.displayMode = 'isoler';
+    _updateChips();
+    _syncUI();
+  }
+
+  function _updateChips() {
+    const el = document.getElementById('focus-active-chips');
+    if (!el) return;
+    if (!_st.active) { el.innerHTML = ''; return; }
+    const cfg = _cfg();
+    const parts = [];
+    if (_st.col  !== null) parts.push(cfg.cols[_st.col] || `Col.${_st.col}`);
+    if (_st.row  !== null && cfg.rows) parts.push(cfg.rows[_st.row] || `L.${_st.row}`);
+    if (_st.band !== null && cfg.bands) parts.push(cfg.bands[_st.band] || `B.${_st.band}`);
+    parts.push({ isoler: 'Isoler', eclater: 'Éclater', contexte: 'Contexte' }[_st.displayMode] || _st.displayMode);
+    el.innerHTML = `<span class="focus-chip-summary">Focus : ${parts.join(' · ')}</span><button id="btn-fcc">×</button>`;
+    document.getElementById('btn-fcc')?.addEventListener('click', reset);
+  }
+
+  function _syncUI() {
+    const colSel  = document.getElementById('fp-col-sel');
+    const rowSel  = document.getElementById('fp-row-sel');
+    const bandSel = document.getElementById('fp-band-sel');
+    if (colSel)  colSel.value  = _st.col  !== null ? String(_st.col)  : '';
+    if (rowSel)  rowSel.value  = _st.row  !== null ? String(_st.row)  : '';
+    if (bandSel) bandSel.value = _st.band !== null ? String(_st.band) : '';
+    document.querySelectorAll('.fp-chip[data-mode]').forEach(c =>
+      c.classList.toggle('active', c.dataset.mode === _st.displayMode)
+    );
+  }
+
+  function _populate() {
+    const v = _view(), cfg = _cfg();
+    // Cols
+    const colSel = document.getElementById('fp-col-sel');
+    colSel.innerHTML = '<option value="">— Toutes —</option>'
+      + cfg.cols.map((l, i) => `<option value="${i}">${l}</option>`).join('');
+    // Rows
+    const rowField = document.getElementById('fp-row-field');
+    const rowSel   = document.getElementById('fp-row-sel');
+    if (cfg.rows) {
+      rowField.style.display = '';
+      rowSel.innerHTML = '<option value="">— Toutes —</option>'
+        + cfg.rows.map((l, i) => `<option value="${i}">${l}</option>`).join('');
+    } else {
+      rowField.style.display = 'none';
+    }
+    // Bands
+    const bandField = document.getElementById('fp-band-field');
+    const bandSel   = document.getElementById('fp-band-sel');
+    if (cfg.bands) {
+      bandField.style.display = '';
+      bandSel.innerHTML = '<option value="">— Toutes —</option>'
+        + cfg.bands.map((l, i) => `<option value="${i}">${l}</option>`).join('');
+    } else {
+      bandField.style.display = 'none';
+    }
+    // Presets
+    const list = document.getElementById('fp-presets-list');
+    const presets = PRESETS[v] || [];
+    list.innerHTML = presets.map((p, i) =>
+      `<button class="fp-preset-btn" data-pi="${i}">${p.label}</button>`
+    ).join('');
+    list.querySelectorAll('.fp-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = presets[parseInt(btn.dataset.pi)];
+        _st.col  = p.col  !== undefined ? p.col  : null;
+        _st.row  = p.row  !== undefined ? p.row  : null;
+        _st.band = p.band !== undefined ? p.band : null;
+        _syncUI();
+        apply();
+        _close();
+      });
+    });
+    _syncUI();
+  }
+
+  function _open() {
+    _st.open = true;
+    _populate();
+    document.getElementById('focus-panel').classList.add('open');
+    document.getElementById('btn-focus').classList.add('active');
+  }
+
+  function _close() {
+    _st.open = false;
+    document.getElementById('focus-panel').classList.remove('open');
+    document.getElementById('btn-focus').classList.remove('active');
+  }
+
+  function init() {
+    document.getElementById('btn-focus').addEventListener('click', () => _st.open ? _close() : _open());
+    document.getElementById('btn-focus-close').addEventListener('click', _close);
+    document.getElementById('btn-focus-apply').addEventListener('click', () => {
+      const cv = document.getElementById('fp-col-sel').value;
+      const rv = document.getElementById('fp-row-sel').value;
+      const bv = document.getElementById('fp-band-sel').value;
+      _st.col  = cv !== '' ? parseInt(cv) : null;
+      _st.row  = rv !== '' ? parseInt(rv) : null;
+      _st.band = bv !== '' ? parseInt(bv) : null;
+      apply();
+      _close();
+    });
+    document.getElementById('btn-focus-reset').addEventListener('click', reset);
+    document.querySelectorAll('.fp-chip[data-mode]').forEach(c =>
+      c.addEventListener('click', () => {
+        _st.displayMode = c.dataset.mode;
+        _syncUI();
+      })
+    );
+    document.getElementById('layout-select').addEventListener('change', () => {
+      if (_st.active) reset();
+      if (_st.open)   _populate();
+    });
+  }
+
+  return { init, apply, reset };
+})();
+
+// ─────────────────────────────────────────────────────────
 //  EDITOR
 // ─────────────────────────────────────────────────────────
 const Editor = (() => {
@@ -4362,6 +4641,7 @@ function onDataLoaded(data) {
   });
 
   Graph.render();
+  FocusMode.init();
   UI.renderTypeFilters();
   Editor.refreshUI();
 
