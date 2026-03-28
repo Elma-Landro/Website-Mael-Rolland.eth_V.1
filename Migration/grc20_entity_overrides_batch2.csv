@@ -1,0 +1,76 @@
+entity,current_type,current_chapter,proposed_type,proposed_primaryChapter,proposed_primarySection_hint,proposed_column,action,status,rationale
+Monétisation,Concept,Intro / variant unclear,CoreConcept,Chap.II,II.*,Concepts,REANCHOR_OR_CREATE_CANONICAL,REVIEW,Central analytic concept mainly elaborated in chapter II.
+Monnetisation,Concept,Intro,CoreConcept,Chap.II,II.*,Concepts,MERGE_INTO: Monétisation,MERGE_REVIEW,Typographic variant / duplicate.
+Monnayage,Concept,Chap.II,SecondaryConcept,Chap.II,II.*,Concepts,KEEP_BUT_RELATE_TO: Monétisation,KEEP_CONFIRM,Distinct but related concept.
+Développement carnavalesque,Concept,Chap.I,CoreConcept,Chap.I,I.2,Concepts,ELEVATE_CORE,KEEP_CONFIRM,One of the key concepts of the thesis.
+Dynamique carnavalesque du développement infrastructurel,Concept,Intro,CoreConcept,Chap.I,I.2 (secondary Intro),Concepts,MERGE_OR_LINK_TO: Développement carnavalesque,MERGE_REVIEW,Likely variant or extended phrasing of the same core concept.
+Développement infrastructurel par phases,Concept,Intro,SecondaryConcept,Chap.I,I.2,Concepts,REANCHOR,SAFE_FIX,Analytic schema mainly tied to chapter I developmental sequence.
+Infrastructure sociotechnique,Concept,Intro / unclear,CoreConcept,Chap.I,I.*,Concepts,ELEVATE_CORE,REVIEW,Master concept for chapter I and the whole thesis.
+Nominalisme monetaire non etatiste,Concept,Intro,CoreConcept,Chap.II,II.*,Concepts,REANCHOR,SAFE_FIX,Substantively developed in chapter II.
+Mise en crise / Remise en ordre,Concept,Intro,CoreConcept,Chap.III,III.*,Gouvern.,REANCHOR,SAFE_FIX,Main elaboration belongs to chapter III.
+Epreuve d'explicitation,Concept,Intro,CoreConcept,Intro,Introduction générale,Concepts,KEEP_CONFIRM,KEEP_CONFIRM,Introductory master analytic device.
+Crises comme épreuves d’explicitation (non téléologiques),Argument,Intro,Argument,Intro,Introduction générale,Struct.,KEEP_CONFIRM,KEEP_CONFIRM,"Properly modeled as argument, not concept."
+Esprit du code vs Lettre du code,Concept,Intro,CoreConcept,Chap.III,III.3,Gouvern.,REANCHOR_SECONDARY_INTRO,REVIEW,Introduced in intro but substantially mobilized in crisis/governance chapter.
+Logique de consensus distribué,Concept,Chap.I,SecondaryConcept,Chap.I,I.1,Concepts,KEEP_CONFIRM,KEEP_CONFIRM,Core infrastructural concept in chapter I.
+Gouvernance polycentrique,Concept,Chap.II,CoreConcept,Chap.II,II.3,Concepts,ELEVATE_CORE,KEEP_CONFIRM,Key concept introduced in chapter II.
+Politique de crise,Concept,Intro,CoreConcept,Chap.III,III.2,Gouvern.,MERGE_OR_LINK_TO: Politique de crises,MERGE_REVIEW,Core chapter III concept; intro placement is secondary.
+Politique de crises,Concept,Intro,CoreConcept,Chap.III,III.2,Gouvern.,MERGE_OR_LINK_TO: Politique de crise,MERGE_REVIEW,Plural/singular duplicate.
+Discretion contrainte,Concept,Intro,SecondaryConcept,Intro,Introduction générale,Concepts,MERGE_OR_LINK_TO: Discrétion contrainte (Constrained Discretion),MERGE_REVIEW,Duplicate without accents.
+Discrétion contrainte (Constrained Discretion),Concept,Intro,SecondaryConcept,Intro,Introduction générale,Concepts,CANONICAL,KEEP_CONFIRM,Preferred canonical form.
+Objet-frontière (boundary object),Concept,Intro,SecondaryConcept,Intro,Introduction générale,Concepts,MERGE_OR_LINK_TO: Objets-frontieres (Boundary Objects),MERGE_REVIEW,Singular/plural duplicate.
+Objets-frontieres (Boundary Objects),Concept,Intro,SecondaryConcept,Intro,Introduction générale,Concepts,CANONICAL,KEEP_CONFIRM,Preferred canonical family label.
+Double depense,Concept,Chap.I,TechnicalConcept,Chap.I,I.1,Concepts,MERGE_OR_LINK_TO: Double dépense (double spend),MERGE_REVIEW,Duplicate without accents.
+Double dépense (double spend),Concept,Chap.I,TechnicalConcept,Chap.I,I.1,Concepts,CANONICAL,KEEP_CONFIRM,Preferred canonical technical concept.
+Empreinte numerique / Hash,Concept,Chap.I,TechnicalConcept,Chap.I,I.1,Concepts,MERGE_OR_LINK_TO: Empreinte numérique,MERGE_REVIEW,Duplicate / phrasing variant.
+Empreinte numérique,Concept,Chap.I,TechnicalConcept,Chap.I,I.1,Concepts,CANONICAL,KEEP_CONFIRM,Preferred canonical term.
+Disponibilite (propriete DLT),Concept,Chap.I,TechnicalConcept,Chap.I,I.1,Concepts,MERGE_OR_LINK_TO: Disponibilité,MERGE_REVIEW,Duplicate without accents / parenthetical variant.
+Disponibilité,Concept,Chap.I,TechnicalConcept,Chap.I,I.1,Concepts,CANONICAL,KEEP_CONFIRM,Preferred canonical term.
+Passerelle (gateway / on-off ramp),Concept,—,SecondaryConcept,Chap.II,II.*,Concepts,MERGE_OR_LINK_TO: Passerelle / Gateway,MERGE_REVIEW,"Variant of same concept, substantively relevant to monetization."
+Passerelle / Gateway,Concept,—,SecondaryConcept,Chap.II,II.*,Concepts,CANONICAL,REVIEW,Preferred canonical term likely belongs to monetization chapter.
+"Limitation de taille des blocs (1 Mo, Bitcoin)",Concept,Chap.II,TechnicalConcept,Chap.II,II.3,Concepts,MERGE_OR_LINK_TO: Limite de taille des blocs Bitcoin (1 Mo),MERGE_REVIEW,Duplicate phrasings of same concept.
+Limite de taille des blocs Bitcoin (1 Mo),Concept,Chap.II,TechnicalConcept,Chap.II,II.3,Concepts,CANONICAL,KEEP_CONFIRM,Preferred canonical phrasing.
+Bitcoin Classic,Concept,Chap.II,ProtocolProposal,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,RETYPE_REVIEW,Better modeled as fork proposal / governance artifact than pure concept.
+Bitcoin XT,Concept,Chap.II,ProtocolProposal,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,RETYPE_REVIEW,Better modeled as fork proposal / governance artifact than pure concept.
+BIP (Bitcoin Improvement Proposal),Concept,Chap.II,ProtocolProposal,Chap.II,II.3,Gouvern.,LINK_TO_BIP-0001_AND_FAMILY,RETYPE_REVIEW,Conceptual label should be connected to proposal/process family.
+EIP (Ethereum Improvement Proposal),Concept,Chap.III,ProtocolProposal,Chap.III,III.3,Gouvern.,LINK_TO_EIP_FAMILY,RETYPE_REVIEW,Conceptual label should be connected to proposal/process family.
+Code is Law,Concept,Chap.III,NativeFormula,Chap.III,III.3,Concepts,RETYPE_REVIEW,RETYPE_REVIEW,Normative/native formula more than generic concept.
+"""Not your keys, not your coins""",Concept,—,NativeFormula,Chap.II,II.* or glossary,Concepts,RETYPE_REVIEW,RETYPE_REVIEW,Should likely be modeled as native formula/slogan.
+Fiatsplaining,Concept,Chap.II,NativeFormula,Chap.II,II.*,Concepts,RETYPE_REVIEW,RETYPE_REVIEW,Polemic native expression more than formal concept.
+Bitcoiners maximalistes,Concept,Chap.II,StakeholderGroup,Chap.II,II.*,Acteurs,RETYPE_REVIEW,RETYPE_REVIEW,"Collective of actors, not pure concept."
+Maximaliste Bitcoiner,Concept,Chap.II,StakeholderCategory,Chap.II,II.*,Acteurs,RETYPE_REVIEW,RETYPE_REVIEW,"Actor category, not pure concept."
+EHESS,ActorGroup,Intro,Institution,Intro,Meta / research context,Acteurs,RETYPE,SAFE_FIX,Academic institution mis-typed as actor group.
+CEMI,ActorGroup,Intro,Institution,Intro,Meta / research context,Acteurs,RETYPE,SAFE_FIX,Research center mis-typed as actor group.
+CEMS,ActorGroup,—,Institution,Intro,Meta / research context,Acteurs,RETYPE,SAFE_FIX,Research center mis-typed as actor group.
+CNRS,ActorGroup,—,Institution,Intro,Meta / research context,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+Banque centrale européenne (BCE),ActorGroup,—,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+European Central Bank,ActorGroup,Chap.II,Institution,Chap.II,II.*,Acteurs,MERGE_OR_ALIAS_WITH: Banque centrale européenne (BCE),MERGE_REVIEW,Language duplicate of same institution.
+Banque de France,ActorGroup,Chap.II,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+Banque mondiale,ActorGroup,Chap.II,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+Banque des règlements internationaux (BRI),ActorGroup,—,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+Fonds Monetaire International (FMI),ActorGroup,—,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+Université de Münster,ActorGroup,—,Institution,Chap.III,III.3,Acteurs,RETYPE,SAFE_FIX,University mis-typed as actor group.
+Mines Paris / Centre de Sociologie de l'Innovation,ActorGroup,—,Institution,Intro,Meta / theory context,Acteurs,RETYPE,SAFE_FIX,Academic institution mis-typed as actor group.
+Paris 1 Pantheon-Sorbonne,ActorGroup,—,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,University mis-typed as actor group.
+Paris School of Economics,ActorGroup,—,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+Sciences Po Lyon,ActorGroup,—,Institution,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Institution mis-typed as actor group.
+BitPay,ActorGroup,Chap.I,Organization,Chap.I,I.2,Acteurs,RETYPE,SAFE_FIX,Company/service provider rather than generic actor group.
+Coinbase,ActorGroup,Chap.I,Organization,Chap.I,I.2,Acteurs,RETYPE,SAFE_FIX,Exchange/company rather than generic actor group.
+MtGox,ActorGroup,Chap.I,Organization,Chap.I,I.2,Acteurs,RETYPE,SAFE_FIX,Exchange/company rather than generic actor group.
+Blockstream,ActorGroup,Chap.III,Organization,Chap.II,II.3 (secondary Chap.III),Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,Organization central to governance debates beginning in chapter II.
+Ethereum Foundation,ActorGroup,Chap.III,Organization,Chap.I,I.3 (secondary Chap.III),Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,"Organization emerges with Ethereum in chapter I, though later central to chapter III governance."
+Kraken,ActorGroup,Chap.III,Organization,Chap.I,I.2 (secondary Chap.III),Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,Exchange likely belongs earlier as infrastructure/intermediation but may recur later.
+Ledger,ActorGroup,Chap.III,Organization,Chap.I,I.2 / II.*,Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,Organization/provider likely not primarily chapter III.
+Tether Limited,ActorGroup,Chap.II,Organization,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Company mis-typed as actor group.
+Slock.it,ActorGroup,Chap.III,Organization,Chap.III,III.3,Acteurs,RETYPE,SAFE_FIX,Organization mis-typed as actor group.
+EthCore (entreprise de Gavin Wood),ActorGroup,—,Organization,Chap.I,I.3 (secondary Chap.III),Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,Organization around Ethereum emergence.
+Bitmain (Jihan Wu),ActorGroup,—,Organization,Chap.II,II.3,Acteurs,RETYPE_AND_ALIAS_WITH: Bitmain,MERGE_REVIEW,Organization already separately present / implied.
+BTC-e,ActorGroup,—,Organization,Chap.I,I.2,Acteurs,RETYPE,SAFE_FIX,Exchange mis-typed as actor group.
+Robinhood (plateforme de trading),ActorGroup,—,Organization,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Trading platform mis-typed as actor group.
+Dell,ActorGroup,Chap.II,Organization,Chap.II,II.*,Acteurs,RETYPE,SAFE_FIX,Company/merchant mis-typed as actor group.
+Whitehat Group (DAO crisis),ActorGroup,—,StakeholderGroup,Chap.III,III.3,Acteurs,RETYPE_AND_REANCHOR,SAFE_FIX,"Empirical actor coalition, not generic institution/group bucket."
+Core Developers (Bitcoin),ActorGroup,Chap.II,StakeholderGroup,Chap.II,II.3,Acteurs,RETYPE,SAFE_FIX,Empirical governance group.
+Core Developers (Ethereum),ActorGroup,Chap.III,StakeholderGroup,Chap.III,III.3,Acteurs,RETYPE,SAFE_FIX,Empirical governance group.
+Mineurs Bitcoin,ActorGroup,Conclu.,StakeholderGroup,Chap.II,II.3 (secondary Conclu.),Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,Core governance category/group appears much earlier than conclusion.
+Pools de minage,ActorGroup,Chap.III,StakeholderGroup,Chap.II,II.3 (secondary Chap.III),Acteurs,RETYPE_AND_REANCHOR_REVIEW,REVIEW,Group relevant in governance conflicts before chapter III.
+Partisans Ethereum Classic,ActorGroup,Conclu.,StakeholderGroup,Chap.III,III.3,Acteurs,RETYPE_AND_REANCHOR,SAFE_FIX,"Group tied to DAO crisis, not conclusion."
+Détenteurs de jetons DAO,ActorGroup,Chap.III,StakeholderGroup,Chap.III,III.3,Acteurs,RETYPE,SAFE_FIX,Empirical actor group in DAO case.
