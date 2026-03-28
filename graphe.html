@@ -595,6 +595,79 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 .guided-modes-secondary { margin-top: 0; }
 .guided-mode-sub { font-size: 0.82em; font-weight: normal; opacity: .75; }
 
+/* ── Focus Mode ─────────────────────────────────────── */
+#focus-bar {
+  position: absolute; bottom: 52px; left: 50%; transform: translateX(-50%);
+  z-index: 20; display: flex; align-items: center; gap: 8px; pointer-events: none;
+  white-space: nowrap;
+}
+#btn-focus {
+  pointer-events: auto;
+  background: rgba(0,0,0,0.85); color: #ffcc66;
+  border: 1px solid #ffcc66;
+  font-family: 'Press Start 2P', monospace; font-size: 9px;
+  padding: 6px 11px; cursor: pointer; letter-spacing: 0.05em;
+}
+#btn-focus:hover, #btn-focus.active { background: #3a0000; border-color: #ff9900; color: #ff9900; }
+#focus-active-chips { pointer-events: auto; display: flex; align-items: center; gap: 6px; }
+.focus-chip-summary {
+  background: rgba(0,0,0,0.85); color: #33ff33;
+  border: 1px solid #33ff33;
+  font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 4px 8px;
+}
+#btn-focus-chip-reset {
+  background: rgba(0,0,0,0.80); color: #ff5555; border: 1px solid #ff5555;
+  font-size: 13px; cursor: pointer; padding: 1px 6px; line-height: 1;
+}
+#focus-panel {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  z-index: 25; background: rgba(6,0,0,0.96);
+  border-top: 1px solid #ffcc6666;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.22s ease;
+}
+#focus-panel.open { max-height: 42vh; overflow-y: auto; }
+.fp-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px 5px; border-bottom: 1px solid #33333355;
+}
+.fp-header span { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #ffcc66; }
+#btn-focus-close { background: none; border: none; color: #ff6666; font-size: 18px; cursor: pointer; padding: 0 4px; }
+.fp-body { padding: 8px 12px 12px; }
+.fp-row {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 7px; flex-wrap: wrap;
+}
+.fp-field { display: flex; align-items: center; gap: 5px; }
+.fp-field label, .fp-row > label {
+  font-family: 'Press Start 2P', monospace; font-size: 7px; color: #ffaa33; white-space: nowrap;
+}
+.fp-field select {
+  background: #1a0000; color: #ffcc66; border: 1px solid #ffcc6655;
+  font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 3px 5px; max-width: 120px;
+}
+.fp-chips { display: flex; gap: 5px; flex-wrap: wrap; }
+.fp-chip {
+  background: #1a0000; color: #888888; border: 1px solid #444444;
+  font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 3px 8px; cursor: pointer;
+}
+.fp-chip.active { background: #0a1a0a; color: #33ff33; border-color: #33ff33; }
+.fp-presets { margin-top: 4px; }
+.fp-presets summary {
+  font-family: 'Press Start 2P', monospace; font-size: 7px; color: #777777; cursor: pointer; margin-bottom: 4px;
+}
+#fp-presets-list { display: flex; gap: 5px; flex-wrap: wrap; padding-top: 5px; }
+.fp-preset-btn {
+  background: #0a0a1a; color: #99aaff; border: 1px solid #334477;
+  font-family: 'Press Start 2P', monospace; font-size: 6px; padding: 4px 7px; cursor: pointer;
+}
+.fp-preset-btn:hover { background: #141428; border-color: #6688cc; }
+.fp-actions { margin-top: 6px; display: flex; gap: 8px; }
+@media (max-width: 600px) {
+  #focus-bar { bottom: 44px; }
+  #focus-panel.open { max-height: 50vh; }
+  .fp-field select { max-width: 90px; font-size: 6px; }
+}
+
 </style>
 </head>
 <body>
@@ -697,6 +770,49 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="tt-type" id="tt-type"></div>
     <div class="tt-name" id="tt-name"></div>
     <div class="tt-stats" id="tt-stats"></div>
+  </div>
+  <!-- ── Focus Mode ── -->
+  <div id="focus-bar">
+    <button id="btn-focus">&#9635; Focus</button>
+    <div id="focus-active-chips"></div>
+  </div>
+  <div id="focus-panel">
+    <div class="fp-header">
+      <span>Filtre &amp; &#201;clatement</span>
+      <button id="btn-focus-close">&#215;</button>
+    </div>
+    <div class="fp-body">
+      <div class="fp-row">
+        <div class="fp-field">
+          <label>Colonne</label>
+          <select id="fp-col-sel"><option value="">&#8212; Toutes &#8212;</option></select>
+        </div>
+        <div class="fp-field" id="fp-row-field">
+          <label>Ligne</label>
+          <select id="fp-row-sel"><option value="">&#8212; Toutes &#8212;</option></select>
+        </div>
+        <div class="fp-field" id="fp-band-field" style="display:none">
+          <label>Bande</label>
+          <select id="fp-band-sel"><option value="">&#8212; Toutes &#8212;</option></select>
+        </div>
+      </div>
+      <div class="fp-row">
+        <label>Mode</label>
+        <div class="fp-chips">
+          <button class="fp-chip active" data-mode="isoler">Isoler</button>
+          <button class="fp-chip" data-mode="eclater">&#201;clater</button>
+          <button class="fp-chip" data-mode="contexte">Contexte</button>
+        </div>
+      </div>
+      <details class="fp-presets">
+        <summary>Presets rapides &#9658;</summary>
+        <div id="fp-presets-list"></div>
+      </details>
+      <div class="fp-actions">
+        <button class="btn-primary btn-sm" id="btn-focus-apply">Appliquer</button>
+        <button class="btn-secondary btn-sm" id="btn-focus-reset">R&#233;initialiser</button>
+      </div>
+    </div>
   </div>
   <div class="canvas-overlay" id="canvas-overlay">
     <div class="scrolly-spinner" id="auto-spinner"></div>
@@ -2375,6 +2491,7 @@ const Graph = (() => {
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
+      n.data('focusCol', isMobile ? desktopCol ?? col : col); n.data('focusBand', row);
     });
 
     // ── Vertical stacking per cell (hubs at top) ─────────
@@ -2877,6 +2994,7 @@ const Graph = (() => {
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
+      n.data('focusCol', col); n.data('focusRow', row);
     });
 
     // ── Position nodes in cells ───────────────────────────
@@ -3182,6 +3300,7 @@ const Graph = (() => {
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
+      n.data('focusCol', col); n.data('focusRow', row);
     });
 
     // ── Position nodes in cells ───────────────────────────
