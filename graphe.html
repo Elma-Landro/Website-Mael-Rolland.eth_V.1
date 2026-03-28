@@ -1899,6 +1899,21 @@ const Graph = (() => {
   let _nebulaZoomedIdx = -1;
   let _matrixMode = false; // true = Matrice layout active
 
+  function applyDegreeGlow(nodes, isMobile = false) {
+    if (!nodes || !nodes.length) return;
+    nodes.style({
+      'z-index': 1,
+      'shadow-color': 'data(color)',
+      // Degree-aware glow via node size (size already derived from degree in entityToNode)
+      'shadow-blur': isMobile
+        ? 'mapData(size, 22, 90, 12, 30)'
+        : 'mapData(size, 22, 90, 10, 24)',
+      'shadow-opacity': isMobile
+        ? 'mapData(size, 22, 90, 0.18, 0.52)'
+        : 'mapData(size, 22, 90, 0.14, 0.42)',
+    });
+  }
+
   function getNodeLabel(entity) {
     const name = entity.name || '?';
     return name.length > 40 ? name.slice(0, 38) + '…' : name;
@@ -2781,7 +2796,7 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    const rowLabelX = isMobile ? OX - 28 : OX - 230;
+    const rowLabelX = isMobile ? OX - 38 : OX - 230;
     const hasRow5   = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
     const mobileRowLabels = ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.'];
     if (hasRow5) mobileRowLabels.push('Multi.');
@@ -2798,7 +2813,7 @@ const Graph = (() => {
       });
     });
 
-    const colLabelY   = isMobile ? OY - 133 : OY - 240;
+    const colLabelY   = isMobile ? OY - 152 : OY - 240;
     // V3 mobile: rotation douce (15°) pour lisibilité; V2 mobile: 45° (labels longs)
     const colRotation = isMobile ? (useStrata ? -Math.PI / 4 : -Math.PI / 12) : 0;
     const colSize     = isMobile ? (useStrata ? '33px' : '20px') : '28px';
@@ -2854,9 +2869,7 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
-      'z-index': 1,
-    });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
@@ -3300,9 +3313,7 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
-      'z-index': 1,
-    });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
@@ -3583,7 +3594,7 @@ const Graph = (() => {
         'z-index': 0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({ 'z-index': 1 });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
