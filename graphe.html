@@ -2047,10 +2047,11 @@ const Graph = (() => {
         }
       },
       // ── Arêtes matrix : cachées par défaut, révélées au clic ────────────
-      // Arêtes matrix : opacité infime pour la texture réseau, révélées au clic via .highlighted.
+      // 19 000+ arêtes × opacity > 0 = fond solide par cumul → display:none obligatoire.
+      // Au clic, edge.in-matrix.highlighted révèle les connexions directes.
       {
         selector: 'edge.in-matrix',
-        style: { 'display': 'element', 'opacity': 0.018, 'line-color': '#cccccc', 'width': 0.4, 'curve-style': 'straight' }
+        style: { 'display': 'none' }
       },
       {
         selector: 'edge.in-matrix.highlighted',
