@@ -2601,13 +2601,13 @@ const Graph = (() => {
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // V3 mobile: 7 colonnes à 52px chacune (≈364px total) — pas de collapse
+    // V3 mobile: 8 colonnes à 52px chacune (≈416px total) — rendu plus aéré
     // V2 mobile: 4 macro-colonnes à 90px (strates conservées)
-    const COL_W      = isMobile ? (useStrata ? 90 : 44)   : (useStrata ? 280 : 280);
-    const ROW_H      = isMobile ? 160  : 540;
-    const OX         = isMobile ? (useStrata ? 120 : 40)  : 400;
+    const COL_W      = isMobile ? (useStrata ? 90 : 52)   : (useStrata ? 280 : 280);
+    const ROW_H      = isMobile ? 174  : 540;
+    const OX         = isMobile ? (useStrata ? 120 : 64)  : 400;
     const OY         = isMobile ? 100  : 360;
-    const NODE_H     = isMobile ? 10   : 16;
+    const NODE_H     = isMobile ? 9    : 16;
     const CELL_W_FRAC = 0.78;
 
     // ── Mobile col map / labels / halo colors ────────────
@@ -2816,7 +2816,7 @@ const Graph = (() => {
     const colLabelY   = isMobile ? OY - 152 : OY - 240;
     // V3 mobile: rotation douce (15°) pour lisibilité; V2 mobile: 45° (labels longs)
     const colRotation = isMobile ? (useStrata ? -Math.PI / 4 : -Math.PI / 12) : 0;
-    const colSize     = isMobile ? (useStrata ? '33px' : '20px') : '28px';
+    const colSize     = isMobile ? (useStrata ? '34px' : '24px') : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
@@ -3159,11 +3159,11 @@ const Graph = (() => {
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
     // 7 cols: mobile 60px → 420px total; desktop 260px
-    const COL_W  = isMobile ? 60  : 260;
-    const ROW_H  = isMobile ? 130 : 420;
-    const OX     = isMobile ? 60  : 320;
+    const COL_W  = isMobile ? 64  : 260;
+    const ROW_H  = isMobile ? 148 : 420;
+    const OX     = isMobile ? 70  : 320;
     const OY     = isMobile ? 100 : 280;
-    const NODE_H = isMobile ? 10  : 14;
+    const NODE_H = isMobile ? 9   : 14;
     const CELL_W_FRAC = 0.82;
 
     // ── Build name→id + id→placement ─────────────────────
@@ -3444,9 +3444,9 @@ const Graph = (() => {
 
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    const COL_W  = isMobile ? 44  : 240;
-    const ROW_H  = isMobile ? 120 : 420;
-    const OX     = isMobile ? 44  : 300;
+    const COL_W  = isMobile ? 52  : 240;
+    const ROW_H  = isMobile ? 138 : 420;
+    const OX     = isMobile ? 58  : 300;
     const OY     = isMobile ? 90  : 260;
     const NODE_H = isMobile ? 9   : 14;
     const CELL_W_FRAC = 0.82;
@@ -3662,9 +3662,9 @@ const Graph = (() => {
         const sh = cellH  * zoom;
         const [r,g,b] = rgb(color);
         const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
-        grad.addColorStop(0,    `rgba(${r},${g},${b},0.70)`);
-        grad.addColorStop(0.40, `rgba(${r},${g},${b},0.35)`);
-        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.10)`);
+        grad.addColorStop(0,    `rgba(${r},${g},${b},0.56)`);
+        grad.addColorStop(0.35, `rgba(${r},${g},${b},0.30)`);
+        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.12)`);
         grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
         ctx.save();
         ctx.translate(sx, sy);
