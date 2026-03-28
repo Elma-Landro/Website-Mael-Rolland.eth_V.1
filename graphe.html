@@ -838,7 +838,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
     <h2 id="overlay-title">Chargement du graphe…</h2>
-    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v94.json</p>
+    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v95.json</p>
     <button class="btn-primary hidden" id="btn-load2">📂 Charger manuellement</button>
   </div>
 </div>
@@ -1484,6 +1484,31 @@ function buildChapterMap(data) {
     { m: n => n === 'Guerre des blocs',                                          chap: 2 },
     { m: n => n === 'Big Blockers',                                              chap: 2 },
     { m: n => n.includes('Small Blockers'),                                      chap: 2 },
+    // ── batch2 SAFE_FIX — concepts mal ancrés → Chap. I ─────────────────────
+    { m: n => n === 'Développement infrastructurel par phases',                  chap: 1 },
+    // ── batch2 SAFE_FIX — concepts / institutions mal ancrés → Chap. II ─────
+    { m: n => n === 'Nominalisme monetaire non etatiste',                        chap: 2 },
+    { m: n => n.includes('Banque centrale européenne'),                          chap: 2 },
+    { m: n => n === 'Banque de France',                                          chap: 2 },
+    { m: n => n === 'Banque mondiale',                                           chap: 2 },
+    { m: n => n.includes('Banque des règlements internationaux'),                chap: 2 },
+    { m: n => n.includes('Fonds Monetaire International'),                       chap: 2 },
+    { m: n => n === 'Tether Limited',                                            chap: 2 },
+    { m: n => n === 'Robinhood (plateforme de trading)',                         chap: 2 },
+    { m: n => n === 'Dell',                                                      chap: 2 },
+    { m: n => n === 'Core Developers (Bitcoin)',                                 chap: 2 },
+    // ── batch2 SAFE_FIX — acteurs infrastructurels → Chap. I ─────────────────
+    { m: n => n === 'BitPay',                                                    chap: 1 },
+    { m: n => n === 'Coinbase',                                                  chap: 1 },
+    { m: n => n === 'MtGox',                                                     chap: 1 },
+    { m: n => n === 'BTC-e',                                                     chap: 1 },
+    // ── batch2 SAFE_FIX — acteurs de crises → Chap. III ──────────────────────
+    { m: n => n === 'Partisans Ethereum Classic',                                chap: 3 },
+    { m: n => n === 'Whitehat Group (DAO crisis)',                               chap: 3 },
+    { m: n => n === 'Core Developers (Ethereum)',                                chap: 3 },
+    { m: n => n === 'Détenteurs de jetons DAO',                                  chap: 3 },
+    { m: n => n === 'Slock.it',                                                  chap: 3 },
+    { m: n => n === 'Université de Münster',                                     chap: 3 },
   ];
   for (const e of (data.entities || [])) {
     const name = e.name || '';
@@ -5169,7 +5194,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Auto-fetch du graphe au chargement ──────────────────
   (async () => {
     try {
-      const resp = await fetch('grc20-these-mael-rolland-v94.json');
+      const resp = await fetch('grc20-these-mael-rolland-v95.json');
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       onDataLoaded(data);
