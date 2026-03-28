@@ -2284,6 +2284,7 @@ const Graph = (() => {
     cy.edges().removeClass('in-matrix');
     cy.$('.col-halo').remove();
     _stopHaloOverlay();
+    cy.nodes().style('background-color', ''); // clear inline fill from matrix
 
     // ── Reset archipelago state ───────────────────────────
     _nebulaActive = true;
@@ -2434,7 +2435,8 @@ const Graph = (() => {
       strataToggle.className     = useStrata ? 'btn-primary btn-sm' : 'btn-secondary btn-sm';
     }
 
-    // ── Color nodes by chapter ────────────────────────────
+    // ── Color nodes by chapter (reset inline fill from previous matrix run) ──
+    cy.nodes(':not(.chapter-label):not(.type-label)').style('background-color', '');
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
       const idx = n.data('chapterIdx');
       n.data('color', idx >= 0 ? CHAPTER_COLORS[idx] : '#333333');
@@ -2593,11 +2595,13 @@ const Graph = (() => {
     });
 
     // ── Fill par colonne (type), glow chapitre conservé via .chapter-N ──
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const col = n.data('focusCol');
-      if (col !== undefined && col >= 0 && col < COL_V3_COLORS.length)
-        n.data('color', COL_V3_COLORS[col]);
-    });
+    if (!useStrata && COL_V3_COLORS) {
+      cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+        const col = n.data('focusCol');
+        if (col !== undefined && col >= 0 && col < COL_V3_COLORS.length)
+          n.style('background-color', COL_V3_COLORS[col]);
+      });
+    }
 
     // ── Taille mobile-aware + classe in-matrix ────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
@@ -2807,6 +2811,7 @@ const Graph = (() => {
     cy.edges().removeClass('in-matrix');
     cy.$('.col-halo').remove(); // clear matrix-mode styles if switching from matrice
     _stopHaloOverlay();
+    cy.nodes().style('background-color', ''); // clear inline fill from matrix
 
     _nebulaActive = true;
     _matrixMode = true; // disables archipelago-zoom on node click
@@ -3100,13 +3105,6 @@ const Graph = (() => {
         const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
-    });
-
-    // ── Fill par colonne (type), glow chapitre conservé via .chapter-N ──
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const col = n.data('focusCol');
-      if (col !== undefined && col >= 0 && col < COL_V3_COLORS.length)
-        n.data('color', COL_V3_COLORS[col]);
     });
 
     // ── Node sizing + classes ─────────────────────────────
@@ -3409,13 +3407,6 @@ const Graph = (() => {
         const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
-    });
-
-    // ── Fill par colonne (type), glow chapitre conservé via .chapter-N ──
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const col = n.data('focusCol');
-      if (col !== undefined && col >= 0 && col < COL_V3_COLORS.length)
-        n.data('color', COL_V3_COLORS[col]);
     });
 
     // ── Node sizing + classes ─────────────────────────────
