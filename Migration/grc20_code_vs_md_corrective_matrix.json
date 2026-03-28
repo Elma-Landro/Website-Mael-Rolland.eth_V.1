@@ -1,0 +1,178 @@
+{
+  "version": "narrative-matrix-v1",
+  "principle": "primary textual anchoring overrides relational propagation",
+  "structure_these": {
+    "bands": [
+      "Intro.",
+      "Chap. I",
+      "Chap. II",
+      "Chap. III",
+      "Concl.",
+      "Multi."
+    ],
+    "columns": [
+      "Chap.",
+      "Struct.",
+      "Objets",
+      "Gouvern.",
+      "Crises",
+      "Acteurs",
+      "Concepts",
+      "Réf./Sources"
+    ],
+    "row_like_notes": {
+      "Chap. I": "émergence, infrastructures sociotechniques, développement infrastructural, altcoins, Ethereum émergent",
+      "Chap. II": "controverse monétaire, usages, nominalisme non étatiste, gouvernance polycentrique, stakeholders/shareholders, scaling debate",
+      "Chap. III": "gouvernance dévoilée par les crises, CVE-2018-17144, DAO, politique de crises, maintenance, huis clos, remise en ordre"
+    }
+  },
+  "corrections": [
+    {
+      "scope": "chapter_anchor",
+      "match": [
+        "Bitcoin CVE 2018-17144",
+        "GovernanceProcess — CVE-2018-17144 résolution",
+        "CVE-2018-17144 — *"
+      ],
+      "action": {
+        "primaryChapter": "Chap. III",
+        "primarySection_hint": "III.1-III.2",
+        "column": "Crises"
+      },
+      "reason": "CVE crisis is centrally treated in chapter III, not chapter II"
+    },
+    {
+      "scope": "chapter_anchor",
+      "match": [
+        "Scaling Debate",
+        "GovernanceProcess — Bitcoin Scaling Debate (2015-2017)",
+        "Guerre des blocs",
+        "Big Blockers",
+        "Small Blockers / Bitcoin Core"
+      ],
+      "action": {
+        "primaryChapter": "Chap. II",
+        "primarySection_hint": "II.3",
+        "column": "Gouvern."
+      },
+      "reason": "Scaling Debate is mainly a chapter II governance clarification scene"
+    },
+    {
+      "scope": "chapter_anchor",
+      "match": [
+        "Ether Genesis Sale*",
+        "Frontier*",
+        "Lancement d'Ethereum*",
+        "Levee de fonds Ethereum*"
+      ],
+      "action": {
+        "primaryChapter": "Chap. I",
+        "primarySection_hint": "I.3",
+        "column": "Objets"
+      },
+      "reason": "Ethereum emergence belongs primarily to chapter I.3"
+    },
+    {
+      "scope": "chapter_anchor",
+      "match": [
+        "BitcoinMarket exchange launch",
+        "Bitcoin Foundation creation",
+        "Migration du code Bitcoin vers GitHub (2011)",
+        "Bitcoin Improvement Proposals standardization",
+        "WordPress accepte les paiements en Bitcoin (2012)",
+        "eBay / PayPal intègre Bitcoin (2014-2015)",
+        "Lancement Casascius Physical Bitcoins*",
+        "Innovations de métaprotocole Bitcoin (2012-2014)"
+      ],
+      "action": {
+        "primaryChapter": "Chap. I",
+        "primarySection_hint": "I.2",
+        "column": "Objets"
+      },
+      "reason": "These events mainly instantiate infrastructural development beyond the protocol"
+    },
+    {
+      "scope": "filter_rule",
+      "match": [
+        "Focus -> Chap. II -> Gouvern."
+      ],
+      "action": {
+        "include_types": [
+          "GovernanceProcess",
+          "GovernanceConflict",
+          "ProtocolProposal",
+          "GovernanceArena",
+          "StakeholderCategory",
+          "StakeholderGroup",
+          "Organization",
+          "Institution",
+          "Person"
+        ],
+        "exclude_types": [
+          "InfrastructureEvent",
+          "InfrastructureDomain",
+          "Capability",
+          "CrisisEvent",
+          "CrisisPhase"
+        ],
+        "allow_secondary_context": true,
+        "secondary_context_opacity": 0.18
+      },
+      "reason": "Chapter II governance focus should not be invaded by crises and infrastructure events"
+    },
+    {
+      "scope": "filter_rule",
+      "match": [
+        "Focus -> Chap. III -> Gouvern."
+      ],
+      "action": {
+        "include_types": [
+          "GovernanceProcess",
+          "GovernanceConflict",
+          "ProtocolProposal",
+          "GovernanceArena",
+          "StakeholderGroup",
+          "Person",
+          "Concept"
+        ],
+        "exclude_types": [
+          "InfrastructureEvent",
+          "InfrastructureDomain",
+          "Capability",
+          "CrisisEvent",
+          "CrisisPhase"
+        ],
+        "allow_secondary_context": true,
+        "secondary_context_opacity": 0.15
+      },
+      "reason": "Governance must remain distinguishable from crisis encyclopedic detail"
+    },
+    {
+      "scope": "filter_rule",
+      "match": [
+        "Focus -> Chap. III -> Crises"
+      ],
+      "action": {
+        "include_types": [
+          "CrisisEvent",
+          "CrisisPhase",
+          "ProtocolProposal",
+          "Reference",
+          "SourceQuote",
+          "PrimarySource",
+          "Person",
+          "StakeholderGroup",
+          "GovernanceArena"
+        ],
+        "aggregate_dense_subfamilies": true,
+        "aggregation_labels": [
+          "CVE techniques",
+          "Phases de crise",
+          "Réponses / forks",
+          "Sources"
+        ]
+      },
+      "reason": "Crisis focus should be structured and not circularly cluttered"
+    }
+  ]
+}
