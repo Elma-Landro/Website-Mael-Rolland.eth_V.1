@@ -4641,7 +4641,6 @@ function onDataLoaded(data) {
   });
 
   Graph.render();
-  FocusMode.init();
   UI.renderTypeFilters();
   Editor.refreshUI();
 
@@ -5189,6 +5188,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  FocusMode.init();
 
 });
 </script>
