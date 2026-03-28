@@ -528,9 +528,21 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     align-self: unset;
   }
 
-  /* Scrolly text panel adapté */
-  .grc-root.scrolly-mode .grc-canvas-wrap { width: 100%; }
-  .grc-root.scrolly-mode .scrolly-text-panel { display: none; }
+  /* Scrolly text panel mobile — bottom sheet, laisse 68vh au graphe */
+  .grc-root.scrolly-mode .grc-canvas-wrap { width: 100%; height: 68vh; }
+  .grc-root.scrolly-mode .scrolly-text-panel {
+    display: block;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 32vh;
+    overflow-y: auto;
+    z-index: 800;
+    background: var(--bg-primary, #1a0000);
+    border-top: 1px solid var(--text-secondary, #ffaa33);
+    padding: 8px 12px;
+    font-size: 0.72em;
+    box-sizing: border-box;
+  }
 }
 
 /* ─── Sidebar collapsed (desktop toggle) ─────────────────────────── */
@@ -1388,7 +1400,7 @@ function buildChapterMap(data) {
   let head = 0;
   while (head < queue.length) {
     const { id, chapterIdx, hops } = queue[head++];
-    if (hops >= 1) continue;
+    if (hops >= 2) continue;
     for (const nb of (adj[id] || [])) {
       if (!visited.has(nb)) {
         if (BFS_EXCLUDED.has(entityTypeMap[nb])) continue;
@@ -2035,12 +2047,10 @@ const Graph = (() => {
         }
       },
       // ── Arêtes matrix : cachées par défaut, révélées au clic ────────────
-      // 19436 arêtes × opacity > 0 = fond vert solide par cumul → display:none obligatoire.
-      // Au clic, edge.in-matrix.highlighted (spécificité 2 > 1) révèle les connexions
-      // directes avec la couleur du chapitre source.
+      // Arêtes matrix : opacité infime pour la texture réseau, révélées au clic via .highlighted.
       {
         selector: 'edge.in-matrix',
-        style: { 'display': 'none' }
+        style: { 'display': 'element', 'opacity': 0.018, 'line-color': '#cccccc', 'width': 0.4, 'curve-style': 'straight' }
       },
       {
         selector: 'edge.in-matrix.highlighted',
@@ -2584,7 +2594,7 @@ const Graph = (() => {
     // ── Taille mobile-aware + classe in-matrix ────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      const mobileSize = 4 + (raw - 22) / 68 * 12;
+      const mobileSize = Math.max(8, Math.min(raw, 22));
       n.data('msize', isMobile ? mobileSize : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
@@ -2592,7 +2602,7 @@ const Graph = (() => {
 
     if (isMobile) {
       cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 6, 'shadow-opacity': 0.65,
+        'shadow-blur': 14, 'shadow-opacity': 0.80,
       });
     }
 
@@ -3087,13 +3097,13 @@ const Graph = (() => {
     // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? 4 + (raw - 22) / 68 * 12 : raw);
+      n.data('msize', isMobile ? Math.max(8, Math.min(raw, 22)) : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
     if (isMobile) {
       cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 6, 'shadow-opacity': 0.65,
+        'shadow-blur': 14, 'shadow-opacity': 0.80,
       });
     }
 
@@ -3389,12 +3399,12 @@ const Graph = (() => {
     // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? 4 + (raw - 22) / 68 * 10 : raw);
+      n.data('msize', isMobile ? Math.max(8, Math.min(raw, 22)) : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
     if (isMobile) {
-      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({ 'shadow-blur': 6, 'shadow-opacity': 0.65 });
+      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({ 'shadow-blur': 14, 'shadow-opacity': 0.80 });
     }
 
     // ── Always-visible labels ─────────────────────────────
