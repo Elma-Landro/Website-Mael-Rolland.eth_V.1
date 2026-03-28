@@ -2491,7 +2491,7 @@ const Graph = (() => {
       const key = `${row}_${col}`;
       if (!cells[key]) cells[key] = [];
       cells[key].push(n);
-      n.data('focusCol', isMobile ? desktopCol ?? col : col); n.data('focusBand', row);
+      n.data('focusCol', col); n.data('focusBand', row);
     });
 
     // ── Vertical stacking per cell (hubs at top) ─────────
