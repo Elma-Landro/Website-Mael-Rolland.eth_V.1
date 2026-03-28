@@ -4588,44 +4588,53 @@ const MEDIUM_TYPES = new Set([
 function showGuidedOverlay() {
   const overlay = document.getElementById('canvas-overlay');
 
-  // Entrées sémantiques fixes par famille de types
+  // Entrées sémantiques — 4 familles analytiques de la thèse
   const SEMANTIC_ENTRIES = [
+    // ── Carte gouvernance : acteurs, groupes, arènes, personnes clés ──────
     {
       icon: '⚡',
-      label: 'Qui gouverne réellement ?',
-      sub: 'Acteurs, institutions, groupes',
-      types: ['Person', 'Institution', 'ActorGroup', 'Actor', 'ActorNonHuman'],
+      label: 'Qui gouverne réellement les cryptomonnaies ?',
+      sub: 'Catégories, groupes, arènes de décision et conflits',
+      title: 'Voir comment la gouvernance se distribue entre catégories d\'acteurs, organisations, groupes, arènes de décision, personnes clés et conflits — stakeholders vs shareholders, huis clos vs gouvernance publique',
+      types: ['Person', 'Institution', 'ActorGroup', 'StakeholderCategory', 'GovernanceArena', 'GovernanceProcess', 'GovernanceConflict'],
       color: '#e8943a',
     },
+    // ── Carte concepts / architecture analytique ──────────────────────────
     {
       icon: '◈',
-      label: 'Comprendre les concepts clés',
-      sub: 'Théorie, arguments, cadres',
-      types: ['Concept', 'TheoreticFramework', 'Argument', 'NarrativeCluster'],
+      label: 'L\'architecture analytique de la thèse',
+      sub: 'Des infrastructures sociotechniques à la gouvernance polycentrique',
+      title: 'Concepts centraux, cadres théoriques, arguments et distinctions qui structurent l\'analyse — institutionnalisme monétaire, STS, gouvernance polycentrique, infrastructures sans coutures',
+      types: ['Concept', 'TheoreticFramework', 'Argument', 'NarrativeCluster', 'Method'],
       color: '#5b6fd6',
     },
+    // ── Carte crises : révélateurs de gouvernance ─────────────────────────
     {
       icon: '✶',
-      label: 'Revivre les crises',
-      sub: 'Événements, phases, conflits',
-      types: ['CrisisEvent', 'CrisisPhase', 'GovernanceConflict'],
+      label: 'Les crises comme révélateurs de gouvernance',
+      sub: 'CVE 2018-17144, DAO, bifurcations et remises en ordre',
+      title: 'Épisodes, phases, vulnérabilités, controverses et remises en ordre — Bitcoin CVE 2018, The DAO hack, hard fork Ethereum Classic : quand la gouvernance invisible devient visible',
+      types: ['CrisisEvent', 'CrisisPhase', 'GovernanceConflict', 'ProtocolChange'],
       color: '#e03030',
     },
+    // ── Carte protocoles / infrastructures ───────────────────────────────
     {
       icon: '⊞',
-      label: 'Décrypter les protocoles',
-      sub: 'Infrastructure, propositions, changements',
-      types: ['Protocol', 'ProtocolChange', 'ProtocolProposal', 'InfrastructureDomain', 'GovernanceArena'],
+      label: 'Du protocole à son monde : infrastructures et médiations',
+      sub: 'Objets monétaires, clients, passerelles et couches techniques',
+      title: 'Cartographier les protocoles et leurs médiations — objets monétaires, clients logiciels, services, passerelles, propositions d\'amélioration et couches infrastructurelles qui redéfinissent Bitcoin',
+      types: ['Protocol', 'ProtocolProposal', 'InfrastructureDomain', 'InfrastructureEvent', 'InfrastructureSegment', 'Capability', 'MonetaryObject'],
       color: '#3a9e5a',
     },
   ];
 
   overlay.innerHTML = `
     <div class="guided-wrap">
-      <div class="guided-title">◈ Graphe de la thèse — 2 285 entités</div>
+      <div class="guided-title">◈ Concepts, acteurs, crises et infrastructures — 2 285 entités</div>
       <div class="guided-entries">
         ${SEMANTIC_ENTRIES.map(entry => `
-          <button class="guided-card guided-card-semantic" data-types="${entry.types.join(',')}" style="border-color:${entry.color}66">
+          <button class="guided-card guided-card-semantic" data-types="${entry.types.join(',')}"
+                  style="border-color:${entry.color}66" title="${entry.title}">
             <span class="guided-card-icon" style="color:${entry.color}">${entry.icon}</span>
             <span class="guided-card-name">${entry.label}</span>
             <span class="guided-card-deg">${entry.sub}</span>
@@ -4637,25 +4646,30 @@ function showGuidedOverlay() {
         <div class="guided-suggestions" id="guided-suggestions"></div>
       </div>
       <div class="guided-modes">
-        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-matrice">
+        <button class="btn-primary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-matrice"
+                title="Matrice chapitres × types : lire la thèse comme une carte">
           ◫ Structure de la thèse
           <span class="guided-mode-sub">Matrice chapitres × types</span>
         </button>
       </div>
       <div class="guided-modes">
-        <button class="btn-secondary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-monetisation" style="border-color:#f5b54d66;color:#f5b54d">
-          ◆ Monétisation des CM
-          <span class="guided-mode-sub">Vue analytique par strates</span>
+        <button class="btn-secondary guided-mode-btn guided-mode-btn-matrice" id="guided-btn-monetisation"
+                style="border-color:#f5b54d66;color:#f5b54d"
+                title="Vue analytique par strates : noyau, mécanismes, arènes, acteurs, cas et références">
+          ◆ Monétisation des cryptomonnaies
+          <span class="guided-mode-sub">Strates analytiques : émission, circulation, usages</span>
         </button>
       </div>
       <div class="guided-modes guided-modes-secondary">
-        <button class="btn-secondary guided-mode-btn" id="guided-btn-full">
+        <button class="btn-secondary guided-mode-btn" id="guided-btn-full"
+                title="Vue archipel — toutes les entités, groupées par chapitre">
           ⚡ Tout le graphe
-          <span class="guided-mode-sub">Vue archipel</span>
+          <span class="guided-mode-sub">Archipel chapitres</span>
         </button>
-        <button class="btn-secondary guided-mode-btn" id="guided-btn-medium">
-          → Essentiel
-          <span class="guided-mode-sub">Types principaux</span>
+        <button class="btn-secondary guided-mode-btn" id="guided-btn-medium"
+                title="Filtrage sur les types analytiques principaux (sans références et citations)">
+          → Nœuds essentiels
+          <span class="guided-mode-sub">Sans réf. ni citations</span>
         </button>
       </div>
     </div>
