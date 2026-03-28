@@ -1379,7 +1379,10 @@ function buildChapterMap(data) {
 
   // Build entity type lookup for BFS exclusions
   const entityTypeMap = {};
-  for (const e of (data.entities || [])) entityTypeMap[e.id] = e.type;
+  for (const e of (data.entities || [])) {
+    const names = (e.types || []).map(tid => typeIdToName[tid]).filter(Boolean);
+    entityTypeMap[e.id] = names;
+  }
   // Types that should NOT propagate via BFS — only assigned via direct appears_in_section
   const BFS_EXCLUDED = new Set([
     'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureSegment',
@@ -1403,7 +1406,8 @@ function buildChapterMap(data) {
     if (hops >= 2) continue;
     for (const nb of (adj[id] || [])) {
       if (!visited.has(nb)) {
-        if (BFS_EXCLUDED.has(entityTypeMap[nb])) continue;
+        const nbTypes = entityTypeMap[nb] || [];
+        if (nbTypes.some(tn => BFS_EXCLUDED.has(tn))) continue;
         visited.add(nb);
         result[nb] = chapterIdx;
         queue.push({ id: nb, chapterIdx, hops: hops + 1 });
@@ -1846,9 +1850,24 @@ const Graph = (() => {
   let _nebulaZoomedIdx = -1;
   let _matrixMode = false; // true = Matrice layout active
 
+  function applyDegreeGlow(nodes, isMobile = false) {
+    if (!nodes || !nodes.length) return;
+    nodes.style({
+      'z-index': 1,
+      'shadow-color': 'data(color)',
+      // Degree-aware glow via node size (size already derived from degree in entityToNode)
+      'shadow-blur': isMobile
+        ? 'mapData(size, 22, 90, 12, 30)'
+        : 'mapData(size, 22, 90, 10, 24)',
+      'shadow-opacity': isMobile
+        ? 'mapData(size, 22, 90, 0.18, 0.52)'
+        : 'mapData(size, 22, 90, 0.14, 0.42)',
+    });
+  }
+
   function getNodeLabel(entity) {
     const name = entity.name || '?';
-    return name.length > 28 ? name.slice(0, 26) + '…' : name;
+    return name.length > 40 ? name.slice(0, 38) + '…' : name;
   }
 
   function entityToNode(entity) {
@@ -2565,12 +2584,29 @@ const Graph = (() => {
       'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureDomain',
       'InfrastructureSegment', 'Capability', 'PriceWindow',
     ]);
+    const CRISIS_LINK_RT = new Set([
+      'reveals', 'revealed by', 'triggers', 'triggered by', 'part of',
+      'resolves', 'resolved by', 'participates in', 'documents', 'documented by'
+    ]);
+    const crisisLinked = new Set();
+    const idToTypeName = {};
+    for (const e of (State.data.entities || [])) idToTypeName[e.id] = State.getEntityTypeName(e);
+    for (const rel of (State.data.relations || [])) {
+      const rt = State.maps.relTypes[rel.type]?.name;
+      const fromType = idToTypeName[rel.from];
+      const toType = idToTypeName[rel.to];
+      if (!rt || !CRISIS_LINK_RT.has(rt)) continue;
+      if (fromType === 'CrisisEvent' || fromType === 'CrisisPhase' || toType === 'CrisisEvent' || toType === 'CrisisPhase') {
+        crisisLinked.add(rel.from);
+        crisisLinked.add(rel.to);
+      }
+    }
     const cells = {};
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const ci  = n.data('chapterIdx');
       let row = ci >= 0 && ci < 5 ? ci : 5;
       // Infrastructure objects belong to Chap. I (index 1) unless explicitly anchored earlier
-      if (!useStrata && INFRA_CHAP_I_TYPES.has(n.data('typeName')) && row >= 3) row = 1;
+      if (!useStrata && INFRA_CHAP_I_TYPES.has(n.data('typeName')) && row >= 3 && !crisisLinked.has(n.data('id'))) row = 1;
       let col;
       if (useStrata) {
         const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
@@ -2710,7 +2746,7 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    const rowLabelX = isMobile ? OX - 28 : OX - 230;
+    const rowLabelX = isMobile ? OX - 38 : OX - 230;
     const hasRow5   = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
     const mobileRowLabels = ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.'];
     if (hasRow5) mobileRowLabels.push('Multi.');
@@ -2727,7 +2763,7 @@ const Graph = (() => {
       });
     });
 
-    const colLabelY   = isMobile ? OY - 133 : OY - 240;
+    const colLabelY   = isMobile ? OY - 152 : OY - 240;
     // V3 mobile: rotation douce (15°) pour lisibilité; V2 mobile: 45° (labels longs)
     const colRotation = isMobile ? (useStrata ? -Math.PI / 4 : -Math.PI / 12) : 0;
     const colSize     = isMobile ? (useStrata ? '33px' : '20px') : '28px';
@@ -2783,9 +2819,7 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
-      'z-index': 1,
-    });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
@@ -3235,9 +3269,7 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
-      'z-index': 1,
-    });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
@@ -3301,7 +3333,7 @@ const Graph = (() => {
     // Type → column
     const TYPE_COL_QG = {
       'ThesisSection': 0, 'ChapterSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'AnalyticClaim': 0,
-      'GovernanceProcess': 1, 'GovernanceConflict': 1, 'ProtocolProposal': 1, 'CrisisPhase': 1,
+      'GovernanceProcess': 1, 'GovernanceConflict': 1, 'ProtocolProposal': 1,
       'StakeholderCategory': 2,
       'Institution': 3, 'Organization': 3,
       'StakeholderGroup': 4, 'ActorGroup': 4,
@@ -3521,7 +3553,7 @@ const Graph = (() => {
         'z-index': 0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({ 'z-index': 1 });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
