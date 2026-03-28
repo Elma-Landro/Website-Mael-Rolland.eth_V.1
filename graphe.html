@@ -2281,7 +2281,7 @@ const Graph = (() => {
       });
     } else {
       // V3 : 7 colonnes semantiques fixes
-      // 0 Chap. | 1 Struct. | 2 Objets | 3 Acteurs | 4 Concepts | 5 Even. | 6 Ref.
+      // 0 Chap. | 1 Struct. | 2 Objets | 3 Gouvern. | 4 Acteurs | 5 Concepts | 6 Réf./Sources
       TYPE_COL_V3 = {
         'Chapter': 0, 'DoctoralThesis': 0, 'ChapterSection': 0,
         'ThesisSection': 1, 'Argument': 1, 'NarrativeCluster': 1, 'AnalyticClaim': 1,
@@ -2290,27 +2290,27 @@ const Graph = (() => {
         'CodeRepository': 2, 'SmartContract': 2, 'PlatformService': 2,
         'InfrastructureService': 2, 'HardwareDevice': 2, 'Marketplace': 2,
         'MediaOutlet': 2, 'Capability': 2,
-        'StakeholderCategory': 3, 'Institution': 3, 'Organization': 3,
-        'StakeholderGroup': 3, 'ActorGroup': 3,
-        'Concept': 4, 'TheoreticFramework': 4, 'CoreConcept': 4,
-        'ConceptCore': 4, 'ConceptSecondary': 4, 'ConceptTechnical': 4,
-        'NativeFormula': 4, 'Method': 4,
-        'CrisisEvent': 5, 'CrisisPhase': 5, 'GovernanceConflict': 5,
-        'GovernanceArena': 5, 'GovernanceProcess': 5, 'ProtocolProposal': 5,
-        'ProtocolChange': 5, 'InfrastructureEvent': 5, 'DevelopmentPhase': 5,
+        'CrisisEvent': 3, 'CrisisPhase': 3, 'GovernanceConflict': 3,
+        'GovernanceArena': 3, 'GovernanceProcess': 3, 'ProtocolProposal': 3,
+        'ProtocolChange': 3, 'InfrastructureEvent': 3, 'DevelopmentPhase': 3,
+        'StakeholderCategory': 4, 'Institution': 4, 'Organization': 4,
+        'StakeholderGroup': 4, 'ActorGroup': 4,
+        'Concept': 5, 'TheoreticFramework': 5, 'CoreConcept': 5,
+        'ConceptCore': 5, 'ConceptSecondary': 5, 'ConceptTechnical': 5,
+        'NativeFormula': 5, 'Method': 5,
         'AcademicWork': 6, 'Reference': 6, 'Corpus': 6, 'SourceQuote': 6,
         'PrimarySource': 6, 'GreyLiterature': 6, 'IndigenousLiterature': 6,
         'PriceSeries': 6, 'PriceWindow': 6,
       };
-      COL_V3_LABELS = ['Chap.', 'Struct.', 'Objets', 'Acteurs', 'Concepts', 'Even.', 'Ref.'];
-      COL_V3_COLORS = ['#aaaaaa', '#66ccff', '#00ffaa', '#ff8800', '#0088ff', '#ff2200', '#ee00ff'];
-      // Overrides nominatifs — personnes empiriques -> Acteurs (3), references -> Ref. (6)
+      COL_V3_LABELS = ['Chap.', 'Struct.', 'Objets', 'Gouvern.', 'Acteurs', 'Concepts', 'Réf./Sources'];
+      COL_V3_COLORS = ['#aaaaaa', '#66ccff', '#00ffaa', '#ff2200', '#ff8800', '#0088ff', '#ee00ff'];
+      // Overrides nominatifs — personnes empiriques -> Acteurs (4), références -> Réf./Sources (6)
       V3_PERSON_COL = {
-        // Acteurs empiriques (col 3)
-        'Pieter Wuille': 3, 'Greg Maxwell': 3, 'Gregory Maxwell': 3,
-        'Adam Back': 3, 'Wladimir van der Laan': 3, 'Bitmain (Jihan Wu)': 3,
-        'Vitalik Buterin': 3, 'Gavin Wood': 3, 'Vlad Zamfir': 3,
-        'Roger Ver': 3,
+        // Acteurs empiriques (col 4)
+        'Pieter Wuille': 4, 'Greg Maxwell': 4, 'Gregory Maxwell': 4,
+        'Adam Back': 4, 'Wladimir van der Laan': 4, 'Bitmain (Jihan Wu)': 4,
+        'Vitalik Buterin': 4, 'Gavin Wood': 4, 'Vlad Zamfir': 4,
+        'Roger Ver': 4,
         // Références théoriques (col 6)
         'Leigh Star': 6, 'Geoffrey Bowker': 6,
         'André Orléan': 6, 'Bruno Theret': 6,
@@ -2363,11 +2363,11 @@ const Graph = (() => {
           if (V3_PERSON_COL[fullName] !== undefined) {
             desktopCol = V3_PERSON_COL[fullName];
           } else {
-            // embedded_persons (empirical actors) -> Acteurs; reference_authors -> Ref.
-            desktopCol = (_displayStratumMap[n.data('id')] === 'embedded_persons') ? 3 : 6;
+            // embedded_persons (empirical actors) -> Acteurs (4); reference_authors -> Réf./Sources (6)
+            desktopCol = (_displayStratumMap[n.data('id')] === 'embedded_persons') ? 4 : 6;
           }
         } else {
-          desktopCol = TYPE_COL_V3[typeName] ?? 4; // unknown -> Concepts
+          desktopCol = TYPE_COL_V3[typeName] ?? 5; // unknown -> Concepts
         }
         col = isMobile ? (MOBILE_COL_MAP_V3[desktopCol] ?? 2) : desktopCol;
       }
@@ -2756,49 +2756,55 @@ const Graph = (() => {
     }
 
     // ── Constants ─────────────────────────────────────────
-    const MON_COL_LABELS = ['Émission', 'Circulation', 'Accès', 'Usages', 'Valorisation', 'Stabilisation'];
-    const MON_ROW_LABELS = ['Thèse', 'Mécanismes', 'Infra.', 'Acteurs', 'Cas', 'Figures'];
-    const MON_COL_COLORS = ['#f2b84b', '#ffd166', '#21d4fd', '#45d483', '#b56cff', '#ff7b54'];
-    const MON_ROW_TINT   = ['#ffe8aa', '#d0d0d0', '#9bbcd4', '#88cc88', '#e8a870', '#cc99cc'];
+    // 7 colonnes : Noyau (0) + 6 étapes du processus
+    const MON_COL_LABELS = ['Noyau', 'Émission', 'Circulation', 'Accès', 'Usages', 'Valorisation', 'Stabilisation'];
+    // 6 lignes : Thèse / Dispositifs / Arènes / Acteurs / Cas / Réf.
+    const MON_ROW_LABELS = ['Thèse', 'Dispositifs', 'Arènes', 'Acteurs', 'Cas', 'Réf.'];
+    const MON_COL_COLORS = ['#e8e8ff', '#f2b84b', '#ffd166', '#21d4fd', '#45d483', '#b56cff', '#ff7b54'];
+    const MON_ROW_TINT   = ['#ffe8aa', '#ccddee', '#9bbcd4', '#88cc88', '#e8a870', '#cc99cc'];
 
-    // Named overrides from spec (entity name → {row, col})
+    // Named overrides (entity name → {row, col})
+    // Cols: 0=Noyau 1=Émission 2=Circulation 3=Accès 4=Usages 5=Valorisation 6=Stabilisation
+    // Rows: 0=Thèse 1=Dispositifs 2=Arènes 3=Acteurs 4=Cas 5=Réf.
     const MON_PLACEMENTS = {
-      'Monétisation': { row: 0, col: 3 },
-      'Infrastructure sociotechnique': { row: 0, col: 1 },
-      'Développement carnavalesque': { row: 0, col: 2 },
-      'Gouvernance polycentrique': { row: 0, col: 5 },
-      'Nominalisme monétaire non étatiste': { row: 0, col: 3 },
-      'UCN BTC': { row: 4, col: 0 },
-      'UCN ETH': { row: 4, col: 0 },
-      'Block reward': { row: 1, col: 0 },
-      'Halving / monnayage programmatique': { row: 1, col: 0 },
-      'Passerelle fiat': { row: 2, col: 2 },
-      'Services de portefeuille et paiement': { row: 2, col: 2 },
-      'Usages réels de Bitcoin': { row: 4, col: 3 },
-      'Découverte du prix': { row: 1, col: 4 },
-      'Liquidité du marché': { row: 1, col: 4 },
-      'BIP': { row: 2, col: 5 },
-      'EIP': { row: 2, col: 5 },
-      'CVE-2018-17144': { row: 4, col: 5 },
-      'The DAO': { row: 4, col: 5 },
-      'Pieter Wuille': { row: 5, col: 5 },
-      'Greg Maxwell': { row: 5, col: 5 },
-      'Gregory Maxwell': { row: 5, col: 5 },
-      'Wladimir van der Laan': { row: 5, col: 5 },
-      'Adam Back': { row: 5, col: 0 },
-      'Bitmain (Jihan Wu)': { row: 5, col: 4 },
-      'Vitalik Buterin': { row: 5, col: 5 },
-      'Gavin Wood': { row: 5, col: 5 },
-      'Vlad Zamfir': { row: 5, col: 5 },
-      'Roger Ver': { row: 5, col: 3 },
-      'Leigh Star': { row: 5, col: 1 },
-      'Geoffrey Bowker': { row: 5, col: 1 },
-      'André Orléan': { row: 5, col: 3 },
-      'Bruno Theret': { row: 5, col: 3 },
-      'Viviana Zelizer': { row: 5, col: 3 },
+      'Monétisation': { row: 0, col: 0 },
+      'Infrastructure sociotechnique': { row: 0, col: 2 },
+      'Développement carnavalesque': { row: 0, col: 3 },
+      'Gouvernance polycentrique': { row: 0, col: 6 },
+      'Nominalisme monétaire non étatiste': { row: 0, col: 0 },
+      'UCN BTC': { row: 4, col: 1 },
+      'UCN ETH': { row: 4, col: 1 },
+      'Block reward': { row: 1, col: 1 },
+      'Halving / monnayage programmatique': { row: 1, col: 1 },
+      'Passerelle fiat': { row: 2, col: 3 },
+      'Services de portefeuille et paiement': { row: 2, col: 3 },
+      'Usages réels de Bitcoin': { row: 4, col: 4 },
+      'WikiLeaks': { row: 4, col: 4 },
+      'Découverte du prix': { row: 1, col: 5 },
+      'Liquidité du marché': { row: 1, col: 5 },
+      'BIP': { row: 2, col: 6 },
+      'EIP': { row: 2, col: 6 },
+      'CVE-2018-17144': { row: 4, col: 6 },
+      'The DAO': { row: 4, col: 6 },
+      'Pieter Wuille': { row: 3, col: 6 },
+      'Greg Maxwell': { row: 3, col: 6 },
+      'Gregory Maxwell': { row: 3, col: 6 },
+      'Wladimir van der Laan': { row: 3, col: 6 },
+      'Adam Back': { row: 3, col: 1 },
+      'Bitmain (Jihan Wu)': { row: 3, col: 5 },
+      'Vitalik Buterin': { row: 3, col: 6 },
+      'Gavin Wood': { row: 3, col: 6 },
+      'Vlad Zamfir': { row: 3, col: 6 },
+      'Roger Ver': { row: 3, col: 4 },
+      'Leigh Star': { row: 5, col: 2 },
+      'Geoffrey Bowker': { row: 5, col: 2 },
+      'André Orléan': { row: 5, col: 4 },
+      'Bruno Theret': { row: 5, col: 4 },
+      'Viviana Zelizer': { row: 5, col: 4 },
     };
 
     // Type → default row fallback
+    // Rows: 0=Thèse 1=Dispositifs 2=Arènes 3=Acteurs 4=Cas 5=Réf.
     const TYPE_ROW_MON = {
       'DoctoralThesis': 0, 'Chapter': 0, 'Argument': 0, 'NarrativeCluster': 0, 'AnalyticClaim': 0,
       'Concept': 1, 'CoreConcept': 1, 'ConceptCore': 1, 'ConceptSecondary': 1,
@@ -2816,20 +2822,21 @@ const Graph = (() => {
       'PriceSeries': 5, 'PriceWindow': 5,
     };
 
-    // Chapter → column range [lo, hi] for automatic assignment
+    // Chapter → column range [lo, hi] pour placement automatique (7 cols)
     const CHAP_COL_RANGE = [
-      [1, 3],  // Intro
-      [0, 2],  // Chap. I  (émission / circulation / accès)
-      [1, 4],  // Chap. II (circulation → valorisation)
-      [3, 5],  // Chap. III (usages → stabilisation)
-      [2, 4],  // Concl.
+      [0, 4],  // Intro
+      [1, 3],  // Chap. I  (Noyau/Émission/Circulation/Accès)
+      [2, 5],  // Chap. II (Circulation → Valorisation)
+      [4, 6],  // Chap. III (Usages → Stabilisation)
+      [3, 5],  // Concl.
     ];
 
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    const COL_W  = isMobile ? 72  : 280;
+    // 7 cols: mobile 60px → 420px total; desktop 260px
+    const COL_W  = isMobile ? 60  : 260;
     const ROW_H  = isMobile ? 130 : 420;
-    const OX     = isMobile ? 72  : 350;
+    const OX     = isMobile ? 60  : 320;
     const OY     = isMobile ? 100 : 280;
     const NODE_H = isMobile ? 10  : 14;
     const CELL_W_FRAC = 0.82;
