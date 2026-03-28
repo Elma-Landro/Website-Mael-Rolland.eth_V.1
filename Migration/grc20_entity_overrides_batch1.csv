@@ -1,0 +1,76 @@
+entity,current_type,current_chapter,proposed_type,proposed_primaryChapter,proposed_primarySection_hint,proposed_column,status,rationale
+Bitcoin CVE 2018-17144,CrisisEvent,Chap.II,CrisisEvent,Chap.III,III.1 / III.2,Crises,SAFE_FIX,Crisis centrally treated in chapter III as governance-revealing case.
+GovernanceProcess — CVE-2018-17144 résolution (septembre 2018),GovernanceProcess,—,GovernanceProcess,Chap.III,III.1 / III.2,Gouvern.,SAFE_FIX,Resolution process belongs to chapter III crisis-governance sequence.
+CVE-2018-17144 — Signalement et divulgation responsable,CrisisPhase,Chap.III,CrisisPhase,Chap.III,III.1,Crises,KEEP_CONFIRM,Phase already correctly anchored in chapter III.
+CVE-2018-17144 — Évaluation en huis clos,CrisisPhase,Chap.III,CrisisPhase,Chap.III,III.1,Crises,KEEP_CONFIRM,Phase already correctly anchored in chapter III.
+CVE-2018-17144 — Révélation publique et consensus ex post,CrisisPhase,Chap.III,CrisisPhase,Chap.III,III.1 / III.2,Crises,KEEP_CONFIRM,Phase already correctly anchored in chapter III.
+CVE-2018-17144 — Remise en ordre par patch,CrisisPhase,Chap.III,CrisisPhase,Chap.III,III.2,Crises,KEEP_CONFIRM,Phase already correctly anchored in chapter III.
+GovernanceProcess — Bitcoin Scaling Debate (2015-2017),GovernanceProcess,Chap.II,GovernanceProcess,Chap.II,II.3,Gouvern.,KEEP_CONFIRM,Governance clarification scene in chapter II.
+Scaling Debate (2015-2017),GovernanceConflict,—,GovernanceConflict,Chap.II,II.3,Gouvern.,SAFE_FIX,Should not float unassigned; central governance conflict for chapter II.
+Bitcoin Scaling Debate,CrisisEvent,Chap.II,GovernanceConflict,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,Better modeled as governance conflict/process than crisis event for primary placement.
+Scaling Debate,CrisisEvent,Chap.III,GovernanceConflict,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,Current chapter III placement blurs governance clarification and crisis logic.
+Guerre des blocs (Blocksize War),GovernanceConflict,—,GovernanceConflict,Chap.II,II.3,Gouvern.,SAFE_FIX,Same governance clarification family as Scaling Debate.
+Big Blockers,Concept,Chap.II,StakeholderGroup,Chap.II,II.3,Acteurs,RETYPE_REVIEW,Empirical camp rather than pure concept.
+Small Blockers,Concept,Chap.II,StakeholderGroup,Chap.II,II.3,Acteurs,RETYPE_REVIEW,Empirical camp rather than pure concept.
+Bitcoin-dev Mailing List,GovernanceArena,Chap.II,GovernanceArena,Chap.II,II.3,Gouvern.,KEEP_CONFIRM,Arena of governance clarification and discussion in chapter II.
+GitHub Bitcoin Core,GovernanceArena,Chap.II,GovernanceArena,Chap.II,II.3,Gouvern.,KEEP_CONFIRM,Arena central to chapter II governance discussion.
+Bitcointalk Forum,GovernanceArena,Chap.II,GovernanceArena,Chap.II,II.3,Gouvern.,KEEP_CONFIRM,Arena of debate tied to chapter II governance clarification.
+Conférences Bitcoin / Crypto Summit,GovernanceArena,Chap.II,GovernanceArena,Chap.II,II.3,Gouvern.,KEEP_CONFIRM,Arena of public coordination tied to chapter II.
+Reddit r/Bitcoin,GovernanceArena,Chap.II,GovernanceArena,Chap.II,II.3,Gouvern.,KEEP_CONFIRM,Arena of contention around governance and camps.
+BitcoinMarket exchange launch,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Early infrastructural development beyond protocol.
+InfrastructureEvent — Première plateforme d’échange BTC (BitcoinMarket.com),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Same family as exchange-launch infrastructural development.
+InfrastructureEvent — Bitcoin Foundation creation,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Belongs to historical infrastructural development of Bitcoin world.
+InfrastructureEvent — Fondation Bitcoin (fin 2012),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Duplicate family; infrastructural development chapter I.
+InfrastructureEvent — Migration du code Bitcoin vers GitHub (2011),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,"Core infrastructural-development event, not chapter II monetization debate."
+InfrastructureEvent — Bitcoin Improvement Proposals standardization,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,REVIEW,Institutionalisation of development process likely starts in chapter I; keep governance links secondarily.
+InfrastructureEvent — BIP-0001 : institutionnalisation du processus de développement Bitcoin,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,REVIEW,Infrastructural institution-building begins in chapter I even if reused in governance discussion.
+InfrastructureEvent — Bitcoin Faucet,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Early infrastructural-use bootstrapping device.
+InfrastructureEvent — MyBitcoin (custodial wallet),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Wallet/intermediation infrastructure of Bitcoin development.
+InfrastructureEvent — Nakamoto crée le forum Bitcointalk,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Early infrastructural community-building event.
+InfrastructureEvent — Nakamoto réserve le nom de domaine bitcoin.org,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Foundational infrastructural event of Bitcoin emergence.
+InfrastructureEvent — Publication du WP Bitcoin (mailing list),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.1 / I.2,Objets,SAFE_FIX,Foundational emergence event should sit in chapter I.
+InfrastructureEvent — Publication du code Bitcoin v0.1,InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.1 / I.2,Objets,SAFE_FIX,Foundational emergence event should sit in chapter I.
+InfrastructureEvent — Bitcoin-QT 0.1 client lourd (9 janvier 2009),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.1 / I.2,Objets,SAFE_FIX,Foundational software client belongs to chapter I.
+InfrastructureEvent — WordPress accepte les paiements en Bitcoin (2012),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Infrastructural expansion of uses and payment mediation.
+InfrastructureEvent — eBay / PayPal intègre Bitcoin (2014-2015),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Expansion of infrastructural/payment mediation beyond protocol.
+"InfrastructureEvent — Lancement Casascius Physical Bitcoins (Mike Caldwell, 2011)",InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Material/off-chain mediation in early infrastructural development.
+InfrastructureEvent — Innovations de métaprotocole Bitcoin (2012-2014),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Belongs to development beyond protocol.
+"InfrastructureEvent — Colored Coins (protocole méta-token sur Bitcoin, 2012)",InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,SAFE_FIX,Meta-protocol innovation in chapter I infrastructural development.
+InfrastructureEvent — BTCC : plateforme d'échange Bitcoin chinoise (Bobby Lee),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,REVIEW,Likely infrastructural development; may have chapter II reuse for monetization.
+InfrastructureEvent — Capital-risque dans l ecosysteme Bitcoin (2012-2015),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.I,I.2,Objets,REVIEW,Infrastructural expansion / financial intermediation likely chapter I.2.
+InfrastructureEvent — Bitcoin Classic : fork Big Blockers (2016),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,Better treated as governance conflict/process artifact than generic infrastructure event.
+InfrastructureEvent — Bitcoin XT : fork Big Blockers (2015),InfrastructureEvent,Chap.II,InfrastructureEvent,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,Better treated as governance conflict/process artifact than generic infrastructure event.
+InfrastructureEvent — Op_Return War (conflit sur les usages non-monétaires de Bitcoin),InfrastructureEvent,Chap.II,GovernanceConflict,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,Conflict over uses/governance rather than plain infrastructure event.
+Op_Return War,CrisisEvent,Chap.I,GovernanceConflict,Chap.II,II.3,Gouvern.,RETYPE_REVIEW,"Should likely be normalized with OP_RETURN governance conflict, not duplicated as chapter I crisis."
+Campagne de financement Ethereum (ICO 2014),InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.I,I.3,Objets,SAFE_FIX,"Ethereum emergence, not chapter III crisis governance."
+Ether Genesis Sale (ICO Ethereum 2014),InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.I,I.3,Objets,SAFE_FIX,Ethereum emergence in chapter I.3.
+"Frontier (lancement mainnet Ethereum, juillet 2015)",InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.I,I.3,Objets,SAFE_FIX,Ethereum launch belongs to chapter I.3.
+"InfrastructureEvent — Lancement d'Ethereum (Frontier, 30 juillet 2015)",InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.I,I.3,Objets,SAFE_FIX,Ethereum launch belongs to chapter I.3.
+InfrastructureEvent — Levee de fonds Ethereum en BTC (2014),InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.I,I.3,Objets,SAFE_FIX,Ethereum emergence belongs to chapter I.3.
+Migration DApps Counterparty vers Ethereum (2014-2015),InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.I,I.3,Objets,REVIEW,Likely part of Ethereum emergence/recomposition rather than chapter III.
+"The Merge (transition Ethereum PoW → PoS, septembre 2022)",InfrastructureEvent,Chap.III,InfrastructureEvent,Chap.III,III.* or later conclusion,Objets,KEEP_REVIEW,Late Ethereum governance/infrastructure event may stay chapter III if used there.
+Phase de preuve de concept,DevelopmentPhase,Chap.III,DevelopmentPhase,Chap.I,I.1,Objets,SAFE_FIX,"Phase sequence belongs to developmental chapter, not crisis chapter."
+Phase de péché,DevelopmentPhase,Conclu.,DevelopmentPhase,Chap.I,I.2,Objets,SAFE_FIX,"Phase sequence belongs to developmental chapter, not conclusion."
+Phase de maturation,DevelopmentPhase,Chap.I,DevelopmentPhase,Chap.I,I.3 or late chapter I,Objets,KEEP_REVIEW,"Likely already in correct developmental chapter, but section hint should be checked."
+Gouvernance polycentrique,Concept,Chap.II ★,CoreConcept,Chap.II,II.3,Concepts,KEEP_CONFIRM,Anchor is correct; elevate to core concept.
+Gouvernance duale,Concept,Intro,CoreConcept,Chap.II,II.3 (secondary Chap.III),Concepts,REVIEW,Introduced conceptually in intro but substantively developed with De Filippi/Loveluck and later crises.
+Gouvernance duale (CM),Concept,Intro,CoreConcept,Chap.II,II.3 (secondary Chap.III),Concepts,MERGE_REVIEW,Merge with Gouvernance duale and re-anchor.
+Politique de crise,Concept,Intro,CoreConcept,Chap.III,III.2,Gouvern.,SAFE_FIX,Main elaboration belongs to chapter III.
+Politique de crises,Concept,Intro,CoreConcept,Chap.III,III.2,Gouvern.,MERGE_REVIEW,Merge with Politique de crise and re-anchor.
+Gouvernance de huis clos,Concept,Chap.III,CoreConcept,Chap.III,III.1 / III.2,Gouvern.,KEEP_CONFIRM,Correctly tied to chapter III.
+II.3 Au‑delà de la revendication d’une absence de gouvernance !,Concept,Intro,ChapterSection,Chap.II,II.3,Struct.,RETYPE_REVIEW,Section title mis-modeled as concept.
+III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”,Concept,Intro,ChapterSection,Chap.III,III.3,Struct.,RETYPE_REVIEW,Section title mis-modeled as concept.
+Mise en crise / Remise en ordre,Concept,Intro,CoreConcept,Chap.III,III.1-III.3,Gouvern.,SAFE_FIX,Main elaboration belongs to crisis-governance chapter III.
+Crises comme épreuves d’explicitation (non téléologiques),Argument,Intro,Argument,Intro,Introduction générale,Struct.,KEEP_CONFIRM,Introductory master argument is correctly intro-anchored.
+Bitmain,Person,Chap.II,Organization,Chap.II,II.3,Acteurs,SAFE_FIX,Organization mis-typed as person.
+CEX.io,Person,Chap.I,Organization,Chap.I,I.2,Acteurs,SAFE_FIX,Platform mis-typed as person.
+Desmedt et Lakomski-Laguerre,Person,Chap.II,Reference,Chap.II,II.*,Réf./Sources,SAFE_FIX,Co-authored bibliographic reference mis-typed as person.
+Theymos,Person,Chap.I,Person,Chap.II,II.3,Acteurs,MERGE_REVIEW,Merge with 'Theymos (administrateur BitcoinTalk)' and place near governance arenas.
+Theymos (administrateur BitcoinTalk),Person,Chap.II,Person,Chap.II,II.3,Acteurs,MERGE_REVIEW,Canonical actor label should merge with Theymos.
+Pieter Wuille,Person,Chap.III,Person,Chap.III,III.1 / III.2,Acteurs,CANONICAL_RENAME_REVIEW,Should be canonicalized to Peter Wuille if project standard prefers common form.
+Luke-Jr (Luke Dashjr),Person,—,Person,Chap.III,III.*,Acteurs,MERGE_REVIEW,Merge with Luke Dashjr and place as acting person.
+De la sphère d'usage (financière & réelle),InfrastructureDomain,Chap.II,InfrastructureDomain,Chap.II,II.*,Objets,KEEP_CONFIRM,This domain fits monetization and usages chapter II.
+Du protocole Bitcoin (couche 1 et 2),InfrastructureDomain,Chap.II,InfrastructureDomain,Chap.I,I.1 / I.2,Objets,REVIEW,Protocol layer as object likely belongs earlier than chapter II.
+Développement protocolaire et logiciel (Bitcoin Core),InfrastructureSegment,Chap.II,InfrastructureSegment,Chap.I,I.2,Objets,REVIEW,May belong to infrastructural development chapter I rather than chapter II.
+Marchands acceptant le Bitcoin,InfrastructureSegment,Chap.II,InfrastructureSegment,Chap.I,I.2,Objets,REVIEW,Could sit in chapter I.2 development of uses; chapter II secondary for monetization.
+Minage,InfrastructureSegment,Chap.III,InfrastructureSegment,Chap.I,I.1 / I.2,Objets,REVIEW,Mining as infrastructural segment likely belongs earlier; chapter III may address crisis/governance aspects secondarily.
