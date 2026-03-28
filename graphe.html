@@ -597,32 +597,39 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
 /* ── Focus Mode ─────────────────────────────────────── */
 #focus-bar {
-  position: absolute; bottom: 52px; left: 50%; transform: translateX(-50%);
-  z-index: 20; display: flex; align-items: center; gap: 8px; pointer-events: none;
-  white-space: nowrap;
+  position: fixed; bottom: 72px; right: 14px;
+  z-index: 9990; display: flex; flex-direction: column; align-items: flex-end;
+  gap: 6px; pointer-events: none;
 }
 #btn-focus {
   pointer-events: auto;
-  background: rgba(0,0,0,0.85); color: #ffcc66;
+  background: rgba(10,0,0,0.92); color: #ffcc66;
   border: 1px solid #ffcc66;
-  font-family: 'Press Start 2P', monospace; font-size: 9px;
-  padding: 6px 11px; cursor: pointer; letter-spacing: 0.05em;
+  font-family: 'Press Start 2P', monospace; font-size: 8px;
+  padding: 8px 12px; cursor: pointer; letter-spacing: 0.04em;
+  box-shadow: 0 0 12px #ffcc6644;
+  min-width: 44px; min-height: 44px;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
 }
-#btn-focus:hover, #btn-focus.active { background: #3a0000; border-color: #ff9900; color: #ff9900; }
-#focus-active-chips { pointer-events: auto; display: flex; align-items: center; gap: 6px; }
+#btn-focus:hover, #btn-focus.active {
+  background: #2a0000; border-color: #ff9900; color: #ff9900;
+  box-shadow: 0 0 18px #ff990066;
+}
+#focus-active-chips { pointer-events: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
 .focus-chip-summary {
-  background: rgba(0,0,0,0.85); color: #33ff33;
+  background: rgba(0,0,0,0.92); color: #33ff33;
   border: 1px solid #33ff33;
-  font-family: 'Press Start 2P', monospace; font-size: 7px; padding: 4px 8px;
+  font-family: 'Press Start 2P', monospace; font-size: 6px; padding: 4px 8px;
+  box-shadow: 0 0 8px #33ff3344;
 }
 #btn-focus-chip-reset {
   background: rgba(0,0,0,0.80); color: #ff5555; border: 1px solid #ff5555;
-  font-size: 13px; cursor: pointer; padding: 1px 6px; line-height: 1;
+  font-size: 13px; cursor: pointer; padding: 1px 6px; line-height: 1; pointer-events: auto;
 }
 #focus-panel {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  z-index: 25; background: rgba(6,0,0,0.96);
-  border-top: 1px solid #ffcc6666;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 9995; background: rgba(6,0,0,0.97);
+  border-top: 1px solid #ffcc6688;
   max-height: 0; overflow: hidden;
   transition: max-height 0.22s ease;
 }
