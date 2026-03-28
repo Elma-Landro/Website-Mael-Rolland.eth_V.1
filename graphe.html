@@ -3678,6 +3678,14 @@ const FocusMode = (() => {
 
   function apply() {
     const cy = _cy(); if (!cy) return;
+
+    // Si on quitte le mode Éclater (positions sauvegardées) vers Isoler/Contexte,
+    // restaurer les positions d'origine avant d'appliquer le nouveau mode.
+    if (_st.displayMode !== 'eclater' && Object.keys(_savedPositions).length > 0) {
+      cy.nodes().forEach(n => { const p = _savedPositions[n.id()]; if (p) n.position(p); });
+      _savedPositions = {};
+    }
+
     _fpLabelIds = new Set();
 
     const selIds = new Set();
