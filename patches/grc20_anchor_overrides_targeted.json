@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "name": "grc20_anchor_overrides_targeted",
+    "base_graph": "grc20-these-mael-rolland-v93.json",
+    "policy": "Primary textual anchoring overrides relational propagation",
+    "note": "Patch documentaire pour prochaine injection contrôlée (pas d'invention d'entité/relation)."
+  },
+  "safe_fix": [
+    {
+      "entity_id": "db9a125c4c7a4d03bd19d3dc8c474a9e",
+      "entity_name": "Bitcoin CVE 2018-17144",
+      "primaryChapter": "Chapitre III",
+      "rationale": "Cas central du chapitre III"
+    },
+    {
+      "entity_id": "9c3c6d955246441db0c5c860610ddcc6",
+      "entity_name": "CVE-2018-17144 — Signalement et divulgation responsable",
+      "primaryChapter": "Chapitre III",
+      "rationale": "Phase de crise III.1"
+    },
+    {
+      "entity_id": "143db183ec7546c08334461b0625e9d8",
+      "entity_name": "CVE-2018-17144 — Évaluation en huis clos",
+      "primaryChapter": "Chapitre III",
+      "rationale": "Phase de crise III.2"
+    },
+    {
+      "entity_id": "73712fc1060c48fc8bcc52b1dee2137c",
+      "entity_name": "CVE-2018-17144 — Remise en ordre par patch",
+      "primaryChapter": "Chapitre III",
+      "rationale": "Phase de crise III.2"
+    },
+    {
+      "entity_id": "896a139f04884630842b8c848ebdca94",
+      "entity_name": "CVE-2018-17144 — Révélation publique et consensus ex post",
+      "primaryChapter": "Chapitre III",
+      "rationale": "Phase de crise III.2"
+    },
+    {
+      "entity_id": "238900a65cec44bcad171c31850bc611",
+      "entity_name": "Scaling Debate (2015-2017)",
+      "primaryChapter": "Chapitre II",
+      "secondaryChapters": ["Chapitre III"],
+      "isReusedLater": true,
+      "rationale": "Clarification de gouvernance en II.3"
+    },
+    {
+      "entity_id": "0c6543e3c0a74af5b0f004d4e44833e7",
+      "entity_name": "GovernanceProcess — Bitcoin Scaling Debate (2015-2017)",
+      "primaryChapter": "Chapitre II",
+      "rationale": "Processus de gouvernance traité en II.3"
+    },
+    {
+      "entity_id": "d0f3f4e1a1796c486a136d142127c321",
+      "entity_name": "Ether Genesis Sale (ICO Ethereum 2014)",
+      "primaryChapter": "Chapitre I",
+      "primarySection": "I.3",
+      "rationale": "Émergence Ethereum"
+    },
+    {
+      "entity_id": "3c3d4fec977c4e788b850a0ea5cbebfa",
+      "entity_name": "InfrastructureEvent — Lancement d'Ethereum (Frontier, 30 juillet 2015)",
+      "primaryChapter": "Chapitre I",
+      "primarySection": "I.3",
+      "rationale": "Émergence Ethereum"
+    }
+  ],
+  "proposed_review": [
+    {
+      "entity_id": "f535babd17f4456bae93f6e02cb93337",
+      "entity_name": "InfrastructureEvent — New York Agreement : tentative de conciliation Scaling Debate (mai 2017)",
+      "primaryChapter": "Chapitre II",
+      "secondaryChapters": ["Chapitre III"],
+      "status": "PROPOSED_NOT_COMMITTED",
+      "rationale": "Événement frontière gouvernance/crise, validation textuelle fine requise"
+    }
+  ]
+}
