@@ -2320,28 +2320,30 @@ const Graph = (() => {
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    const COL_W      = isMobile ? (useStrata ? 90 : 76)   : (useStrata ? 280 : 300);
+    // V3 mobile: 7 colonnes à 52px chacune (≈364px total) — pas de collapse
+    // V2 mobile: 4 macro-colonnes à 90px (strates conservées)
+    const COL_W      = isMobile ? (useStrata ? 90 : 52)   : (useStrata ? 280 : 300);
     const ROW_H      = isMobile ? 160  : 540;
-    const OX         = isMobile ? 120  : 400;
+    const OX         = isMobile ? (useStrata ? 120 : 40)  : 400;
     const OY         = isMobile ? 100  : 360;
     const NODE_H     = isMobile ? 10   : 16;
     const CELL_W_FRAC = 0.78;
 
     // ── Mobile col map / labels / halo colors ────────────
-    // V2 strata: stratum-name → mobile col; V3: desktop col index (0-6) → 4 macro-cols
+    // V2 strata: stratum-name → 4 macro-cols; V3: identité (7 colonnes conservées)
     const MOBILE_COL_MAP_V2 = useStrata ? {
       'core_concepts': 0,      'analytic_frameworks': 0,
       'protocol_infra_objects': 1, 'collective_structures': 1,
       'empirical_cases': 2,    'embedded_persons': 2,
       'reference_authors': 3,
     } : null;
-    const MOBILE_COL_MAP_V3 = { 0: 0, 1: 0, 2: 1, 3: 2, 4: 2, 5: 2, 6: 3 };
+    const MOBILE_COL_MAP_V3 = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
     const MOBILE_COL_LABELS = useStrata
       ? ['Concepts', 'Protocoles', 'Cas & Acteurs', 'Références']
-      : ['Struct.', 'Objets', 'Act.+Cpt.', 'Réf.'];
+      : COL_V3_LABELS;
     const MOBILE_HALO_COLS  = useStrata
       ? ['#f5b54d', '#3a9e5a', '#e03030', '#7888aa']
-      : ['#66ccff', '#00ffaa', '#ff8800', '#ee00ff'];
+      : COL_V3_COLORS;
     const mobileMaxCol = MOBILE_HALO_COLS.length;
 
     // ── Grouper les nœuds par (chapitreRow, col) ─────────
@@ -2486,8 +2488,9 @@ const Graph = (() => {
     });
 
     const colLabelY   = isMobile ? OY - 133 : OY - 240;
-    const colRotation = isMobile ? -Math.PI / 4 : 0;
-    const colSize     = isMobile ? '33px' : '28px';
+    // V3 mobile: rotation douce (15°) pour lisibilité; V2 mobile: 45° (labels longs)
+    const colRotation = isMobile ? (useStrata ? -Math.PI / 4 : -Math.PI / 12) : 0;
+    const colSize     = isMobile ? (useStrata ? '33px' : '20px') : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
