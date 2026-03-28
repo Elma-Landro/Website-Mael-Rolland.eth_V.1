@@ -2405,41 +2405,42 @@ const Graph = (() => {
         if (strataCounts[s] !== undefined) strataCounts[s]++;
       });
     } else {
-      // V3 : 7 colonnes semantiques fixes
-      // 0 Chap. | 1 Struct. | 2 Objets | 3 Gouvern. | 4 Acteurs | 5 Concepts | 6 Réf./Sources
+      // V3 : 8 colonnes semantiques fixes
+      // 0 Chap. | 1 Struct. | 2 Objets | 3 Gouvern. | 4 Crises | 5 Acteurs | 6 Concepts | 7 Réf./Sources
       TYPE_COL_V3 = {
         'Chapter': 0, 'DoctoralThesis': 0, 'ChapterSection': 0,
         'ThesisSection': 1, 'Argument': 1, 'NarrativeCluster': 1, 'AnalyticClaim': 1,
         'Protocol': 2, 'MonetaryObject': 2, 'InfrastructureDomain': 2,
-        'InfrastructureSegment': 2, 'ActorNonHuman': 2, 'SoftwareClient': 2,
+        'InfrastructureSegment': 2, 'InfrastructureEvent': 2, 'DevelopmentPhase': 2,
+        'ActorNonHuman': 2, 'SoftwareClient': 2,
         'CodeRepository': 2, 'SmartContract': 2, 'PlatformService': 2,
         'InfrastructureService': 2, 'HardwareDevice': 2, 'Marketplace': 2,
         'MediaOutlet': 2, 'Capability': 2,
-        'CrisisEvent': 3, 'CrisisPhase': 3, 'GovernanceConflict': 3,
-        'GovernanceArena': 3, 'GovernanceProcess': 3, 'ProtocolProposal': 3,
-        'ProtocolChange': 3, 'InfrastructureEvent': 3, 'DevelopmentPhase': 3,
-        'StakeholderCategory': 4, 'Institution': 4, 'Organization': 4,
-        'StakeholderGroup': 4, 'ActorGroup': 4,
-        'Concept': 5, 'TheoreticFramework': 5, 'CoreConcept': 5,
-        'ConceptCore': 5, 'ConceptSecondary': 5, 'ConceptTechnical': 5,
-        'NativeFormula': 5, 'Method': 5,
-        'AcademicWork': 6, 'Reference': 6, 'Corpus': 6, 'SourceQuote': 6,
-        'PrimarySource': 6, 'GreyLiterature': 6, 'IndigenousLiterature': 6,
-        'PriceSeries': 6, 'PriceWindow': 6,
+        'GovernanceConflict': 3, 'GovernanceArena': 3, 'GovernanceProcess': 3,
+        'ProtocolProposal': 3,
+        'CrisisEvent': 4, 'CrisisPhase': 4, 'ProtocolChange': 4,
+        'StakeholderCategory': 5, 'Institution': 5, 'Organization': 5,
+        'StakeholderGroup': 5, 'ActorGroup': 5,
+        'Concept': 6, 'TheoreticFramework': 6, 'CoreConcept': 6,
+        'ConceptCore': 6, 'ConceptSecondary': 6, 'ConceptTechnical': 6,
+        'NativeFormula': 6, 'Method': 6,
+        'AcademicWork': 7, 'Reference': 7, 'Corpus': 7, 'SourceQuote': 7,
+        'PrimarySource': 7, 'GreyLiterature': 7, 'IndigenousLiterature': 7,
+        'PriceSeries': 7, 'PriceWindow': 7,
       };
-      COL_V3_LABELS = ['Chap.', 'Struct.', 'Objets', 'Gouvern.', 'Acteurs', 'Concepts', 'Réf./Sources'];
-      COL_V3_COLORS = ['#aaaaaa', '#66ccff', '#00ffaa', '#ff2200', '#ff8800', '#0088ff', '#ee00ff'];
-      // Overrides nominatifs — personnes empiriques -> Acteurs (4), références -> Réf./Sources (6)
+      COL_V3_LABELS = ['Chap.', 'Struct.', 'Objets', 'Gouvern.', 'Crises', 'Acteurs', 'Concepts', 'Réf./Sources'];
+      COL_V3_COLORS = ['#aaaaaa', '#66ccff', '#00ffaa', '#ff2200', '#ff6644', '#ff8800', '#0088ff', '#ee00ff'];
+      // Overrides nominatifs — personnes empiriques -> Acteurs (5), références -> Réf./Sources (7)
       V3_PERSON_COL = {
-        // Acteurs empiriques (col 4)
-        'Pieter Wuille': 4, 'Greg Maxwell': 4, 'Gregory Maxwell': 4,
-        'Adam Back': 4, 'Wladimir van der Laan': 4, 'Bitmain (Jihan Wu)': 4,
-        'Vitalik Buterin': 4, 'Gavin Wood': 4, 'Vlad Zamfir': 4,
-        'Roger Ver': 4,
-        // Références théoriques (col 6)
-        'Leigh Star': 6, 'Geoffrey Bowker': 6,
-        'André Orléan': 6, 'Bruno Theret': 6,
-        'Viviana Zelizer': 6,
+        // Acteurs empiriques (col 5)
+        'Pieter Wuille': 5, 'Greg Maxwell': 5, 'Gregory Maxwell': 5,
+        'Adam Back': 5, 'Wladimir van der Laan': 5, 'Bitmain (Jihan Wu)': 5,
+        'Vitalik Buterin': 5, 'Gavin Wood': 5, 'Vlad Zamfir': 5,
+        'Roger Ver': 5,
+        // Références théoriques (col 7)
+        'Leigh Star': 7, 'Geoffrey Bowker': 7,
+        'André Orléan': 7, 'Bruno Theret': 7,
+        'Viviana Zelizer': 7,
       };
     }
 
@@ -2447,7 +2448,7 @@ const Graph = (() => {
     const isMobile = (cy.width() || window.innerWidth) < 600;
     // V3 mobile: 7 colonnes à 52px chacune (≈364px total) — pas de collapse
     // V2 mobile: 4 macro-colonnes à 90px (strates conservées)
-    const COL_W      = isMobile ? (useStrata ? 90 : 52)   : (useStrata ? 280 : 300);
+    const COL_W      = isMobile ? (useStrata ? 90 : 44)   : (useStrata ? 280 : 280);
     const ROW_H      = isMobile ? 160  : 540;
     const OX         = isMobile ? (useStrata ? 120 : 40)  : 400;
     const OY         = isMobile ? 100  : 360;
@@ -2462,7 +2463,7 @@ const Graph = (() => {
       'empirical_cases': 2,    'embedded_persons': 2,
       'reference_authors': 3,
     } : null;
-    const MOBILE_COL_MAP_V3 = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6 };
+    const MOBILE_COL_MAP_V3 = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7 };
     const MOBILE_COL_LABELS = useStrata
       ? ['Concepts', 'Protocoles', 'Cas & Acteurs', 'Références']
       : COL_V3_LABELS;
@@ -2472,10 +2473,17 @@ const Graph = (() => {
     const mobileMaxCol = MOBILE_HALO_COLS.length;
 
     // ── Grouper les nœuds par (chapitreRow, col) ─────────
+    // Types infrastructure qui doivent être ancrés Chap. I par défaut
+    const INFRA_CHAP_I_TYPES = new Set([
+      'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureDomain',
+      'InfrastructureSegment', 'Capability', 'PriceWindow',
+    ]);
     const cells = {};
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const ci  = n.data('chapterIdx');
-      const row = ci >= 0 && ci < 5 ? ci : 5;
+      let row = ci >= 0 && ci < 5 ? ci : 5;
+      // Infrastructure objects belong to Chap. I (index 1) unless explicitly anchored earlier
+      if (!useStrata && INFRA_CHAP_I_TYPES.has(n.data('typeName')) && row >= 3) row = 1;
       let col;
       if (useStrata) {
         const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
@@ -2488,11 +2496,11 @@ const Graph = (() => {
           if (V3_PERSON_COL[fullName] !== undefined) {
             desktopCol = V3_PERSON_COL[fullName];
           } else {
-            // embedded_persons (empirical actors) -> Acteurs (4); reference_authors -> Réf./Sources (6)
-            desktopCol = (_displayStratumMap[n.data('id')] === 'embedded_persons') ? 4 : 6;
+            // embedded_persons (empirical actors) -> Acteurs (5); reference_authors -> Réf./Sources (7)
+            desktopCol = (_displayStratumMap[n.data('id')] === 'embedded_persons') ? 5 : 7;
           }
         } else {
-          desktopCol = TYPE_COL_V3[typeName] ?? 5; // unknown -> Concepts
+          desktopCol = TYPE_COL_V3[typeName] ?? 6; // unknown -> Concepts
         }
         col = isMobile ? (MOBILE_COL_MAP_V3[desktopCol] ?? 2) : desktopCol;
       }
@@ -3552,7 +3560,7 @@ const FocusMode = (() => {
   const VIEW_CONFIGS = {
     'matrice': {
       bands: ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.', 'Multi.'],
-      cols:  ['Chap.', 'Struct.', 'Objets', 'Gouvern.', 'Acteurs', 'Concepts', 'Réf./Sources'],
+      cols:  ['Chap.', 'Struct.', 'Objets', 'Gouvern.', 'Crises', 'Acteurs', 'Concepts', 'Réf./Sources'],
       rows:  null,
       colKey: 'focusCol', rowKey: 'focusBand',
     },
@@ -3572,10 +3580,10 @@ const FocusMode = (() => {
 
   const PRESETS = {
     'matrice': [
-      { label: 'Acteurs Chap. I',    col: 4, band: 1 },
-      { label: 'Concepts Chap. II',  col: 5, band: 2 },
       { label: 'Gouvern. Chap. III', col: 3, band: 3 },
-      { label: 'Réf. Concl.',        col: 6, band: 4 },
+      { label: 'Crises Chap. III',   col: 4, band: 3 },
+      { label: 'Acteurs Chap. I',    col: 5, band: 1 },
+      { label: 'Concepts Chap. II',  col: 6, band: 2 },
     ],
     'monetisation': [
       { label: 'Usages',            col: 4 },
