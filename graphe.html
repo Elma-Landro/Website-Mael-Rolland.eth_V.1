@@ -735,6 +735,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
   <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
   <button class="btn-primary btn-sm" id="btn-carte" title="Vue Structure de la thèse">◫ Carte</button>
+  <button class="btn-secondary btn-sm" id="btn-focus-header" title="Filtrer / Éclater une sélection">▣ Focus</button>
   <button class="btn-secondary btn-sm" id="btn-strata-toggle" title="Basculer vers les strates analytiques" style="display:none">⊟ Strates V2</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
@@ -3779,16 +3780,20 @@ const FocusMode = (() => {
     _populate();
     document.getElementById('focus-panel').classList.add('open');
     document.getElementById('btn-focus').classList.add('active');
+    document.getElementById('btn-focus-header').classList.replace('btn-secondary', 'btn-primary');
   }
 
   function _close() {
     _st.open = false;
     document.getElementById('focus-panel').classList.remove('open');
     document.getElementById('btn-focus').classList.remove('active');
+    document.getElementById('btn-focus-header').classList.replace('btn-primary', 'btn-secondary');
   }
 
   function init() {
-    document.getElementById('btn-focus').addEventListener('click', () => _st.open ? _close() : _open());
+    const _toggleFocus = () => _st.open ? _close() : _open();
+    document.getElementById('btn-focus').addEventListener('click', _toggleFocus);
+    document.getElementById('btn-focus-header').addEventListener('click', _toggleFocus);
     document.getElementById('btn-focus-close').addEventListener('click', _close);
     document.getElementById('btn-focus-apply').addEventListener('click', () => {
       const cv = document.getElementById('fp-col-sel').value;
