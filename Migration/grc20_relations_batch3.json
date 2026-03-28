@@ -1,0 +1,659 @@
+[
+  {
+    "source_entity":"Monétisation",
+    "proposed_relation":"isElaboratedIn",
+    "target_entity":"Chap. II",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Monetization is a central analytic axis of chapter II."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isElaboratedIn",
+    "target_entity":"Chap. I",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Carnivalesque development is a core analytic frame for chapter I."
+  },
+  {
+    "source_entity":"Infrastructure sociotechnique",
+    "proposed_relation":"structures",
+    "target_entity":"Chap. I",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Chapter I frames Bitcoin and Ethereum as sociotechnical infrastructures."
+  },
+  {
+    "source_entity":"Gouvernance polycentrique",
+    "proposed_relation":"isElaboratedIn",
+    "target_entity":"Chap. II",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Polycentric governance is introduced and clarified in chapter II."
+  },
+  {
+    "source_entity":"Mise en crise \/ Remise en ordre",
+    "proposed_relation":"isElaboratedIn",
+    "target_entity":"Chap. III",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"This concept pair structures chapter III."
+  },
+  {
+    "source_entity":"Nominalisme monétaire non étatiste",
+    "proposed_relation":"isElaboratedIn",
+    "target_entity":"Chap. II",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Nominalist non-statist monetary stance is a chapter II core frame."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"reveals",
+    "target_entity":"Gouvernance polycentrique",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Scaling Debate is treated as a governance clarification scene."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"takesPlaceIn",
+    "target_entity":"Bitcoin-dev Mailing List",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Mailing list is one of the key arenas of the debate."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"takesPlaceIn",
+    "target_entity":"GitHub Bitcoin Core",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"GitHub is central to code\/development governance around the debate."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"takesPlaceIn",
+    "target_entity":"Bitcointalk Forum",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Bitcointalk is a public discussion arena for Bitcoin conflicts."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"involves",
+    "target_entity":"Core Developers (Bitcoin)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Core developers are a key governance group in the debate."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"involves",
+    "target_entity":"Big Blockers",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Big Blockers form a central camp in the blocksize conflict."
+  },
+  {
+    "source_entity":"Scaling Debate (2015-2017)",
+    "proposed_relation":"involves",
+    "target_entity":"Small Blockers",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Small Blockers form the opposing governance camp."
+  },
+  {
+    "source_entity":"Big Blockers",
+    "proposed_relation":"opposes",
+    "target_entity":"Small Blockers",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The camps are defined in opposition within the blocksize governance conflict."
+  },
+  {
+    "source_entity":"Core Developers (Bitcoin)",
+    "proposed_relation":"participatesIn",
+    "target_entity":"Scaling Debate (2015-2017)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Core developers participate directly in the debate."
+  },
+  {
+    "source_entity":"Développeurs core",
+    "proposed_relation":"isInstantiatedBy",
+    "target_entity":"Core Developers (Bitcoin)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Empirical group instantiates the analytic stakeholder category."
+  },
+  {
+    "source_entity":"Mineurs",
+    "proposed_relation":"isRepresentedBy",
+    "target_entity":"Pools de minage",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Mining pools concretize the mining category in governance struggles."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"reveals",
+    "target_entity":"Gouvernance de huis clos",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The CVE case reveals closed-door governance routines."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"reveals",
+    "target_entity":"Politique de crises",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The CVE episode exemplifies crisis politics."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"isAnalysedThrough",
+    "target_entity":"Mise en crise \/ Remise en ordre",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The CVE sequence is read through crisis and re-ordering."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"takesPlaceIn",
+    "target_entity":"GitHub Bitcoin Core",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"GitHub is a key maintenance arena of the resolution sequence."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"involves",
+    "target_entity":"Core Developers (Bitcoin)",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The CVE is handled by the core development group."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"involves",
+    "target_entity":"Peter Wuille",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Peter Wuille is one of the key acting persons around Bitcoin Core maintenance."
+  },
+  {
+    "source_entity":"Bitcoin CVE 2018-17144",
+    "proposed_relation":"involves",
+    "target_entity":"Greg Maxwell",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Greg Maxwell is a core acting person in Bitcoin governance\/maintenance."
+  },
+  {
+    "source_entity":"CVE-2018-17144 — Signalement et divulgation responsable",
+    "proposed_relation":"isPhaseOf",
+    "target_entity":"Bitcoin CVE 2018-17144",
+    "chapter_hint":"Chap.III",
+    "status":"SAFE_ADD",
+    "priority":"high",
+    "rationale":"Signalement phase is part of the CVE sequence."
+  },
+  {
+    "source_entity":"CVE-2018-17144 — Évaluation en huis clos",
+    "proposed_relation":"isPhaseOf",
+    "target_entity":"Bitcoin CVE 2018-17144",
+    "chapter_hint":"Chap.III",
+    "status":"SAFE_ADD",
+    "priority":"high",
+    "rationale":"Closed-door evaluation is part of the CVE sequence."
+  },
+  {
+    "source_entity":"CVE-2018-17144 — Révélation publique et consensus ex post",
+    "proposed_relation":"isPhaseOf",
+    "target_entity":"Bitcoin CVE 2018-17144",
+    "chapter_hint":"Chap.III",
+    "status":"SAFE_ADD",
+    "priority":"high",
+    "rationale":"Public revelation is part of the CVE sequence."
+  },
+  {
+    "source_entity":"CVE-2018-17144 — Remise en ordre par patch",
+    "proposed_relation":"isPhaseOf",
+    "target_entity":"Bitcoin CVE 2018-17144",
+    "chapter_hint":"Chap.III",
+    "status":"SAFE_ADD",
+    "priority":"high",
+    "rationale":"Patch restoration is part of the CVE sequence."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"reveals",
+    "target_entity":"Gouvernance publique d’exception",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"DAO crisis is analyzed as a public governance of exception."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"reveals",
+    "target_entity":"Code is Law",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The DAO makes Code is Law conflict visible."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"reveals",
+    "target_entity":"Esprit du code vs Lettre du code",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"The DAO crisis is read through spirit vs letter of the code."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"involves",
+    "target_entity":"Core Developers (Ethereum)",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Ethereum core developers are central to the crisis management."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"involves",
+    "target_entity":"Ethereum Foundation",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Ethereum Foundation is central in the Ethereum governance ecosystem."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"involves",
+    "target_entity":"Whitehat Group (DAO crisis)",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"White hats are a salient empirical coalition in the DAO crisis."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"involves",
+    "target_entity":"Vitalik Buterin",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Vitalik is an acting person in DAO crisis governance."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"involves",
+    "target_entity":"Gavin Wood",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Gavin Wood belongs to the Ethereum governance constellation."
+  },
+  {
+    "source_entity":"The DAO",
+    "proposed_relation":"leadsTo",
+    "target_entity":"Ethereum Hard Fork",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"DAO crisis leads to the hard fork sequence."
+  },
+  {
+    "source_entity":"Partisans Ethereum Classic",
+    "proposed_relation":"emergeFrom",
+    "target_entity":"The DAO",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"ETC supporters emerge in the aftermath of the DAO fork conflict."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"BitcoinMarket exchange launch",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Early exchange emergence illustrates development beyond protocol."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"Bitcoin Foundation creation",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Foundation creation illustrates infrastructural extension."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"WordPress accepte les paiements en Bitcoin (2012)",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Merchant\/payment integration illustrates expansion of the Bitcoin world."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"eBay \/ PayPal intègre Bitcoin (2014-2015)",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Expansion of payment mediation illustrates carnival-like infrastructural growth."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"Lancement Casascius Physical Bitcoins (Mike Caldwell, 2011)",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"low",
+    "rationale":"Physical bitcoin mediation is part of infrastructural improvisation."
+  },
+  {
+    "source_entity":"Développement carnavalesque",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"Innovations de métaprotocole Bitcoin (2012-2014)",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Meta-protocol innovations are key examples of infrastructural extension."
+  },
+  {
+    "source_entity":"Innovations de métaprotocole Bitcoin (2012-2014)",
+    "proposed_relation":"includes",
+    "target_entity":"Colored Coins (protocole méta-token sur Bitcoin, 2012)",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Colored Coins are one illustration of the metaprotocol family."
+  },
+  {
+    "source_entity":"BitcoinMarket exchange launch",
+    "proposed_relation":"supports",
+    "target_entity":"Monétisation",
+    "chapter_hint":"Chap.I -> Chap.II bridge",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Exchange infrastructure supports later monetization."
+  },
+  {
+    "source_entity":"WordPress accepte les paiements en Bitcoin (2012)",
+    "proposed_relation":"supports",
+    "target_entity":"Monétisation",
+    "chapter_hint":"Chap.I -> Chap.II bridge",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Merchant acceptance supports monetary uses."
+  },
+  {
+    "source_entity":"Passerelle \/ Gateway",
+    "proposed_relation":"isIllustratedBy",
+    "target_entity":"BitcoinMarket exchange launch",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Exchanges instantiate the gateway concept."
+  },
+  {
+    "source_entity":"Ether Genesis Sale (ICO Ethereum 2014)",
+    "proposed_relation":"supports",
+    "target_entity":"Émergence d’Ethereum",
+    "chapter_hint":"Chap.I",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Genesis sale supports the emergence of Ethereum; canonical target may need adaptation."
+  },
+  {
+    "source_entity":"Frontier (lancement mainnet Ethereum, juillet 2015)",
+    "proposed_relation":"supports",
+    "target_entity":"Émergence d’Ethereum",
+    "chapter_hint":"Chap.I",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Frontier is a launch milestone in Ethereum emergence."
+  },
+  {
+    "source_entity":"Ether Genesis Sale (ICO Ethereum 2014)",
+    "proposed_relation":"precedes",
+    "target_entity":"Frontier (lancement mainnet Ethereum, juillet 2015)",
+    "chapter_hint":"Chap.I",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Genesis sale precedes mainnet launch."
+  },
+  {
+    "source_entity":"Ethereum Foundation",
+    "proposed_relation":"emergesWith",
+    "target_entity":"Émergence d’Ethereum",
+    "chapter_hint":"Chap.I",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Foundation belongs to Ethereum emergence constellation."
+  },
+  {
+    "source_entity":"Vitalik Buterin",
+    "proposed_relation":"participatesIn",
+    "target_entity":"Émergence d’Ethereum",
+    "chapter_hint":"Chap.I",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Vitalik is central in Ethereum emergence."
+  },
+  {
+    "source_entity":"Core Developers (Bitcoin)",
+    "proposed_relation":"takesPartIn",
+    "target_entity":"GitHub Bitcoin Core",
+    "chapter_hint":"Chap.II \/ Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Core developers act in the GitHub arena."
+  },
+  {
+    "source_entity":"Core Developers (Bitcoin)",
+    "proposed_relation":"takesPartIn",
+    "target_entity":"Bitcoin-dev Mailing List",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Core developers act in the mailing list arena."
+  },
+  {
+    "source_entity":"Core Developers (Ethereum)",
+    "proposed_relation":"takesPartIn",
+    "target_entity":"All Core Dev Meetings",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Ethereum core developers act in All Core Dev Meetings."
+  },
+  {
+    "source_entity":"Développeurs core",
+    "proposed_relation":"isInstantiatedBy",
+    "target_entity":"Core Developers (Ethereum)",
+    "chapter_hint":"Chap.III",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Ethereum core dev group instantiates the same stakeholder category."
+  },
+  {
+    "source_entity":"Stakeholders \/ Shareholders",
+    "proposed_relation":"isClarifiedBy",
+    "target_entity":"Scaling Debate (2015-2017)",
+    "chapter_hint":"Chap.II",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Chapter II uses the debate to clarify governance categories; exact label may vary."
+  },
+  {
+    "source_entity":"Blockstream",
+    "proposed_relation":"participatesIn",
+    "target_entity":"Scaling Debate (2015-2017)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Blockstream is part of the governance constellation around the blocksize conflict."
+  },
+  {
+    "source_entity":"Bitmain",
+    "proposed_relation":"participatesIn",
+    "target_entity":"Scaling Debate (2015-2017)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Bitmain belongs to the governance conflict constellation."
+  },
+  {
+    "source_entity":"Jihan Wu",
+    "proposed_relation":"participatesIn",
+    "target_entity":"Scaling Debate (2015-2017)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Jihan Wu is an acting person in blocksize governance conflict."
+  },
+  {
+    "source_entity":"Adam Back",
+    "proposed_relation":"participatesIn",
+    "target_entity":"Scaling Debate (2015-2017)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Adam Back is an acting person in Bitcoin governance conflict."
+  },
+  {
+    "source_entity":"Susan Leigh Star",
+    "proposed_relation":"supportsConcept",
+    "target_entity":"Infrastructure sociotechnique",
+    "chapter_hint":"Chap.I \/ Intro",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Star supports the sociotechnical infrastructure frame."
+  },
+  {
+    "source_entity":"Geoffrey Bowker",
+    "proposed_relation":"supportsConcept",
+    "target_entity":"Infrastructure sociotechnique",
+    "chapter_hint":"Chap.I \/ Intro",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Bowker belongs to the infrastructure studies frame."
+  },
+  {
+    "source_entity":"De Filippi",
+    "proposed_relation":"supportsConcept",
+    "target_entity":"Gouvernance polycentrique",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"De Filippi is explicitly mobilized for chapter II governance framing."
+  },
+  {
+    "source_entity":"Loveluck",
+    "proposed_relation":"supportsConcept",
+    "target_entity":"Gouvernance polycentrique",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"high",
+    "rationale":"Loveluck is explicitly mobilized for chapter II governance framing."
+  },
+  {
+    "source_entity":"André Orléan",
+    "proposed_relation":"supportsConcept",
+    "target_entity":"Nominalisme monétaire non étatiste",
+    "chapter_hint":"Chap.II",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Orléan is part of the monetary theory context; exact relation should be verified."
+  },
+  {
+    "source_entity":"Bruno Théret",
+    "proposed_relation":"supportsConcept",
+    "target_entity":"Nominalisme monétaire non étatiste",
+    "chapter_hint":"Chap.II",
+    "status":"PROPOSED_REVIEW",
+    "priority":"medium",
+    "rationale":"Theoretical support likely, but exact linkage should be checked."
+  },
+  {
+    "source_entity":"Monétisation",
+    "proposed_relation":"requires",
+    "target_entity":"Passerelle \/ Gateway",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Gateways are key mediations of monetization."
+  },
+  {
+    "source_entity":"Monétisation",
+    "proposed_relation":"requires",
+    "target_entity":"Découverte du prix",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Price discovery is a core mechanism of monetization."
+  },
+  {
+    "source_entity":"Monétisation",
+    "proposed_relation":"requires",
+    "target_entity":"Liquidité du marché",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Liquidity is a core mechanism of monetization."
+  },
+  {
+    "source_entity":"Monétisation",
+    "proposed_relation":"isSupportedBy",
+    "target_entity":"De la sphère d'usage (financière & réelle)",
+    "chapter_hint":"Chap.II",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Uses support monetization."
+  },
+  {
+    "source_entity":"Monétisation",
+    "proposed_relation":"isSupportedBy",
+    "target_entity":"Marchands acceptant le Bitcoin",
+    "chapter_hint":"Chap.I \/ Chap.II bridge",
+    "status":"STRONGLY_SUPPORTED_ADD",
+    "priority":"medium",
+    "rationale":"Merchant use supports monetization."
+  }
+]
