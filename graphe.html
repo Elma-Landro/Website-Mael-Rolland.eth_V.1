@@ -838,7 +838,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
     <h2 id="overlay-title">Chargement du graphe…</h2>
-    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v93.json</p>
+    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v94.json</p>
     <button class="btn-primary hidden" id="btn-load2">📂 Charger manuellement</button>
   </div>
 </div>
@@ -1439,27 +1439,51 @@ function buildChapterMap(data) {
   // Entities listed here are forced to their analytically correct chapter
   // regardless of relational propagation from Steps 3–5.
   const NAME_OVERRIDES = [
-    // CVE-2018-17144 cluster → Chap. III (III.1-III.2)
-    { m: n => n.includes('CVE-2018-17144'),                              chap: 3 },
-    // Ethereum emergence → Chap. I (I.3)
-    { m: n => n.includes('Ether Genesis Sale'),                          chap: 1 },
-    { m: n => n.includes('Frontier') && n.toLowerCase().includes('ethereum'), chap: 1 },
-    { m: n => n.includes('Lancement') && n.toLowerCase().includes('ethereum'), chap: 1 },
+    // ── CVE-2018-17144 cluster → Chap. III (batch1 SAFE_FIX) ──────────────
+    { m: n => n.includes('CVE-2018-17144'),                                      chap: 3 },
+    { m: n => n === 'Bitcoin CVE 2018-17144',                                    chap: 3 },
+    // ── Crises / gouvernance concepts → Chap. III (batch1 SAFE_FIX) ─────────
+    { m: n => n === 'Politique de crise',                                        chap: 3 },
+    { m: n => n === 'Politique de crises',                                       chap: 3 },
+    { m: n => n === 'Mise en crise / Remise en ordre',                           chap: 3 },
+    { m: n => n === 'Gouvernance de huis clos',                                  chap: 3 },
+    // ── Ethereum emergence → Chap. I (I.3) (batch1 SAFE_FIX + prior) ────────
+    { m: n => n === 'Campagne de financement Ethereum (ICO 2014)',               chap: 1 },
+    { m: n => n.includes('Ether Genesis Sale'),                                  chap: 1 },
+    { m: n => n.includes('Frontier') && n.toLowerCase().includes('ethereum'),    chap: 1 },
+    { m: n => n.includes('Lancement') && n.toLowerCase().includes('ethereum'),   chap: 1 },
     { m: n => (n.includes('Levée de fonds') || n.includes('Levee de fonds')) && n.toLowerCase().includes('ethereum'), chap: 1 },
-    // Bitcoin infrastructural development → Chap. I (I.2)
-    { m: n => n === 'BitcoinMarket exchange launch',                     chap: 1 },
-    { m: n => n.includes('Bitcoin Foundation creation'),                 chap: 1 },
-    { m: n => n.includes('Migration du code Bitcoin vers GitHub'),        chap: 1 },
-    { m: n => n.includes('Bitcoin Improvement Proposals standardization'), chap: 1 },
-    { m: n => n.includes('WordPress accepte les paiements en Bitcoin'),  chap: 1 },
+    { m: n => n === 'Migration DApps Counterparty vers Ethereum (2014-2015)',    chap: 1 },
+    // ── Bitcoin foundational events → Chap. I (I.1/I.2) (batch1 SAFE_FIX) ──
+    { m: n => n.includes('Publication du WP Bitcoin'),                           chap: 1 },
+    { m: n => n.includes('Publication du code Bitcoin'),                         chap: 1 },
+    { m: n => n.includes('Bitcoin-QT') && n.includes('2009'),                    chap: 1 },
+    // ── Bitcoin infrastructural development → Chap. I (I.2) (batch1 SAFE_FIX)
+    { m: n => n === 'BitcoinMarket exchange launch',                             chap: 1 },
+    { m: n => n.includes('BitcoinMarket') && n.toLowerCase().includes('plateforme'), chap: 1 },
+    { m: n => n.includes('Bitcoin Foundation creation'),                         chap: 1 },
+    { m: n => n.includes('Fondation Bitcoin') && n.includes('2012'),             chap: 1 },
+    { m: n => n.includes('Migration du code Bitcoin vers GitHub'),               chap: 1 },
+    { m: n => n.includes('Bitcoin Improvement Proposals standardization'),        chap: 1 },
+    { m: n => n.includes('BIP-0001'),                                            chap: 1 },
+    { m: n => n.includes('Bitcoin Faucet'),                                      chap: 1 },
+    { m: n => n.includes('MyBitcoin'),                                           chap: 1 },
+    { m: n => n.includes('Nakamoto crée le forum Bitcointalk'),                  chap: 1 },
+    { m: n => n.includes('Nakamoto réserve le nom de domaine'),                  chap: 1 },
+    { m: n => n.includes('WordPress accepte les paiements en Bitcoin'),          chap: 1 },
     { m: n => n.includes('eBay') && n.includes('PayPal') && n.includes('Bitcoin'), chap: 1 },
-    { m: n => n.includes('Casascius'),                                   chap: 1 },
-    { m: n => n.includes('métaprotocole Bitcoin'),                       chap: 1 },
-    // Scaling Debate cluster → Chap. II (II.3)
-    { m: n => n.includes('Scaling Debate'),                              chap: 2 },
-    { m: n => n === 'Guerre des blocs',                                  chap: 2 },
-    { m: n => n === 'Big Blockers',                                      chap: 2 },
-    { m: n => n.includes('Small Blockers'),                              chap: 2 },
+    { m: n => n.includes('Casascius'),                                           chap: 1 },
+    { m: n => n.includes('métaprotocole Bitcoin'),                               chap: 1 },
+    { m: n => n.includes('Colored Coins') && n.includes('Bitcoin'),              chap: 1 },
+    // ── DevelopmentPhase → Chap. I (batch1 SAFE_FIX) ─────────────────────────
+    { m: n => n === 'Phase de preuve de concept',                                chap: 1 },
+    { m: n => n === 'Phase de péché',                                            chap: 1 },
+    // ── Scaling Debate cluster → Chap. II (II.3) (batch1 SAFE_FIX + prior) ──
+    { m: n => n.includes('Scaling Debate'),                                      chap: 2 },
+    { m: n => n === 'Guerre des blocs (Blocksize War)',                          chap: 2 },
+    { m: n => n === 'Guerre des blocs',                                          chap: 2 },
+    { m: n => n === 'Big Blockers',                                              chap: 2 },
+    { m: n => n.includes('Small Blockers'),                                      chap: 2 },
   ];
   for (const e of (data.entities || [])) {
     const name = e.name || '';
@@ -5145,7 +5169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Auto-fetch du graphe au chargement ──────────────────
   (async () => {
     try {
-      const resp = await fetch('grc20-these-mael-rolland-v93.json');
+      const resp = await fetch('grc20-these-mael-rolland-v94.json');
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       onDataLoaded(data);
