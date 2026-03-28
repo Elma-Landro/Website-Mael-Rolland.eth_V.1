@@ -3648,34 +3648,86 @@ const FocusMode = (() => {
     } else if (_st.displayMode === 'eclater') {
       rest.style({ opacity: 0.12 });
       sel.style({ opacity: 1 });
-      // Save positions & spread
+      // Save positions
       _savedPositions = {};
       cy.nodes().forEach(n => { _savedPositions[n.id()] = { ...n.position() }; });
-      // Group selected by cell
-      const cfg = _cfg();
-      const cellMap = {};
-      sel.forEach(n => {
-        const c = n.data(cfg.colKey) ?? 0;
-        const r = n.data(cfg.rowKey) ?? 0;
-        const k = `${r}_${c}`;
-        if (!cellMap[k]) cellMap[k] = [];
-        cellMap[k].push(n);
-      });
-      Object.values(cellMap).forEach(nodes => {
-        if (nodes.length <= 1) return;
-        const cx = nodes.reduce((s, n) => s + n.position().x, 0) / nodes.length;
-        const cy0 = nodes.reduce((s, n) => s + n.position().y, 0) / nodes.length;
-        nodes.forEach((n, i) => {
-          const angle = (2 * Math.PI * i) / nodes.length;
-          const r = Math.min(55 + nodes.length * 6, 200);
-          n.animate({ position: { x: cx + Math.cos(angle) * r, y: cy0 + Math.sin(angle) * r } }, { duration: 380 });
+
+      const selArr = sel.toArray();
+      const DENSITY_THRESHOLD = 12;
+
+      if (selArr.length <= DENSITY_THRESHOLD) {
+        // Simple circular spread per cell — original behaviour, works fine for small sets
+        const cfg2 = _cfg();
+        const cellMap = {};
+        selArr.forEach(n => {
+          const c = n.data(cfg2.colKey) ?? 0;
+          const r = n.data(cfg2.rowKey) ?? 0;
+          const k = `${r}_${c}`;
+          if (!cellMap[k]) cellMap[k] = [];
+          cellMap[k].push(n);
         });
-      });
-      // Show labels
-      sel.forEach(n => {
-        n.addClass('always-label');
-        _fpLabelIds.add(n.id());
-      });
+        Object.values(cellMap).forEach(nodes => {
+          const cx  = nodes.reduce((s, n) => s + n.position().x, 0) / nodes.length;
+          const cy0 = nodes.reduce((s, n) => s + n.position().y, 0) / nodes.length;
+          nodes.forEach((n, i) => {
+            const angle = (2 * Math.PI * i) / Math.max(nodes.length, 1);
+            const radius = Math.min(55 + nodes.length * 6, 200);
+            n.animate({ position: { x: cx + Math.cos(angle) * radius, y: cy0 + Math.sin(angle) * radius } }, { duration: 380 });
+          });
+        });
+      } else {
+        // Structured sub-cluster layout — group by typeName, arrange as grid of clusters
+        const typeGroups = {};
+        selArr.forEach(n => {
+          const t = n.data('typeName') || 'Autre';
+          if (!typeGroups[t]) typeGroups[t] = [];
+          typeGroups[t].push(n);
+        });
+        const groups = Object.entries(typeGroups).sort((a, b) => b[1].length - a[1].length);
+        const numGroups = groups.length;
+
+        // Centroid of selected nodes as anchor
+        const centX = selArr.reduce((s, n) => s + n.position().x, 0) / selArr.length;
+        const centY = selArr.reduce((s, n) => s + n.position().y, 0) / selArr.length;
+
+        // Grid dimensions — max 4 cols, spacing adapted to density
+        const gridCols  = Math.min(numGroups, 4);
+        const gridRows  = Math.ceil(numGroups / gridCols);
+        const spacingX  = Math.min(320, Math.max(180, 800 / gridCols));
+        const spacingY  = Math.min(260, Math.max(160, 600 / gridRows));
+        const totalW    = (gridCols - 1) * spacingX;
+        const totalH    = (gridRows - 1) * spacingY;
+
+        // Max nodes to show per sub-cluster (excess nodes stack at centre)
+        const MAX_PER_CLUSTER = 10;
+
+        groups.forEach(([, nodes], gi) => {
+          const gcol = gi % gridCols;
+          const grow = Math.floor(gi / gridCols);
+          const gx   = centX - totalW / 2 + gcol * spacingX;
+          const gy   = centY - totalH / 2 + grow * spacingY;
+
+          const shown = nodes.slice(0, MAX_PER_CLUSTER);
+          shown.forEach((n, i) => {
+            const angle  = (2 * Math.PI * i) / Math.max(shown.length, 1);
+            const radius = shown.length <= 1 ? 0 : Math.min(28 + shown.length * 8, 88);
+            n.animate({ position: { x: gx + Math.cos(angle) * radius, y: gy + Math.sin(angle) * radius } }, { duration: 420 });
+          });
+          // Stack overflow nodes quietly at cluster centre
+          nodes.slice(MAX_PER_CLUSTER).forEach(n => {
+            n.animate({ position: { x: gx + (Math.random() - 0.5) * 12, y: gy + (Math.random() - 0.5) * 12 } }, { duration: 420 });
+          });
+        });
+      }
+
+      // Label priority: show labels for highest-degree nodes first, cap at 30 to avoid clutter
+      const MAX_LABELS = 30;
+      selArr
+        .slice()
+        .sort((a, b) => (b.connectedEdges ? b.connectedEdges(':visible').length : 0) - (a.connectedEdges ? a.connectedEdges(':visible').length : 0))
+        .slice(0, MAX_LABELS)
+        .forEach(n => { n.addClass('always-label'); _fpLabelIds.add(n.id()); });
+
       cy.edges().forEach(e => {
         const s = selIds.has(e.source().id()), t = selIds.has(e.target().id());
         e.style({ opacity: s && t ? 0.8 : 0.03 });
