@@ -838,7 +838,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
     <h2 id="overlay-title">Chargement du graphe…</h2>
-    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v92.json</p>
+    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v93.json</p>
     <button class="btn-primary hidden" id="btn-load2">📂 Charger manuellement</button>
   </div>
 </div>
@@ -1428,6 +1428,40 @@ function buildChapterMap(data) {
   };
   for (const [eid, chidx] of Object.entries(CHAPTER_OVERRIDES)) {
     result[eid] = chidx;
+  }
+
+  // Step 6d — Name-based textual anchoring overrides (corrective matrix v1)
+  // "Primary textual anchoring overrides relational propagation."
+  // Entities listed here are forced to their analytically correct chapter
+  // regardless of relational propagation from Steps 3–5.
+  const NAME_OVERRIDES = [
+    // CVE-2018-17144 cluster → Chap. III (III.1-III.2)
+    { m: n => n.includes('CVE-2018-17144'),                              chap: 3 },
+    // Ethereum emergence → Chap. I (I.3)
+    { m: n => n.includes('Ether Genesis Sale'),                          chap: 1 },
+    { m: n => n.includes('Frontier') && n.toLowerCase().includes('ethereum'), chap: 1 },
+    { m: n => n.includes('Lancement') && n.toLowerCase().includes('ethereum'), chap: 1 },
+    { m: n => (n.includes('Levée de fonds') || n.includes('Levee de fonds')) && n.toLowerCase().includes('ethereum'), chap: 1 },
+    // Bitcoin infrastructural development → Chap. I (I.2)
+    { m: n => n === 'BitcoinMarket exchange launch',                     chap: 1 },
+    { m: n => n.includes('Bitcoin Foundation creation'),                 chap: 1 },
+    { m: n => n.includes('Migration du code Bitcoin vers GitHub'),        chap: 1 },
+    { m: n => n.includes('Bitcoin Improvement Proposals standardization'), chap: 1 },
+    { m: n => n.includes('WordPress accepte les paiements en Bitcoin'),  chap: 1 },
+    { m: n => n.includes('eBay') && n.includes('PayPal') && n.includes('Bitcoin'), chap: 1 },
+    { m: n => n.includes('Casascius'),                                   chap: 1 },
+    { m: n => n.includes('métaprotocole Bitcoin'),                       chap: 1 },
+    // Scaling Debate cluster → Chap. II (II.3)
+    { m: n => n.includes('Scaling Debate'),                              chap: 2 },
+    { m: n => n === 'Guerre des blocs',                                  chap: 2 },
+    { m: n => n === 'Big Blockers',                                      chap: 2 },
+    { m: n => n.includes('Small Blockers'),                              chap: 2 },
+  ];
+  for (const e of (data.entities || [])) {
+    const name = e.name || '';
+    for (const ov of NAME_OVERRIDES) {
+      if (ov.m(name)) { result[e.id] = ov.chap; break; }
+    }
   }
 
   return result;
@@ -3670,6 +3704,32 @@ const FocusMode = (() => {
   let _savedPositions = {};
   let _fpLabelIds = new Set();
 
+  // Type-based focus filters (corrective matrix v1)
+  // Key: `${band}_${col}` for matrice view.
+  // include: Set of typeName values that get full focus opacity.
+  // exclude: Set that get secondaryOpacity (semi-ghost — still visible, not primary).
+  // If include is empty, all non-excluded types are primary.
+  const TYPE_FILTER_MAP = {
+    '2_3': { // Chap. II × Gouvern.
+      include: new Set(['GovernanceProcess','GovernanceConflict','ProtocolProposal','GovernanceArena',
+                        'StakeholderCategory','ActorGroup','Institution','Person']),
+      exclude: new Set(['InfrastructureEvent','InfrastructureDomain','Capability','CrisisEvent','CrisisPhase']),
+      secondaryOpacity: 0.18,
+    },
+    '3_3': { // Chap. III × Gouvern.
+      include: new Set(['GovernanceProcess','GovernanceConflict','ProtocolProposal','GovernanceArena',
+                        'ActorGroup','Person','Concept']),
+      exclude: new Set(['InfrastructureEvent','InfrastructureDomain','Capability','CrisisEvent','CrisisPhase']),
+      secondaryOpacity: 0.15,
+    },
+    '3_4': { // Chap. III × Crises
+      include: new Set(['CrisisEvent','CrisisPhase','ProtocolProposal','Reference','SourceQuote',
+                        'PrimarySource','Person','ActorGroup','GovernanceArena']),
+      exclude: new Set([]),
+      secondaryOpacity: 0.12,
+    },
+  };
+
   function _cy() { return Graph.cy; }
 
   function _view() {
@@ -3810,6 +3870,23 @@ const FocusMode = (() => {
         const s = selIds.has(e.source().id()), t = selIds.has(e.target().id());
         e.style({ opacity: s || t ? 0.65 : 0.06 });
       });
+    }
+
+    // ── Post-processing : type filter (corrective matrix — ancrage textuel prioritaire) ──
+    // Apply only in matrice view when a band+col combination has a filter rule.
+    // Excluded types within the selected cell are downgraded to secondary opacity.
+    if (_view() === 'matrice' && _st.band !== null && _st.col !== null) {
+      const tf = TYPE_FILTER_MAP[`${_st.band}_${_st.col}`];
+      if (tf) {
+        sel.forEach(n => {
+          const t = n.data('typeName');
+          const isExcluded = tf.exclude.has(t);
+          const isNotIncluded = tf.include.size > 0 && !tf.include.has(t);
+          if (isExcluded || isNotIncluded) {
+            n.style({ opacity: tf.secondaryOpacity });
+          }
+        });
+      }
     }
 
     _st.active = true;
@@ -5045,7 +5122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Auto-fetch du graphe au chargement ──────────────────
   (async () => {
     try {
-      const resp = await fetch('grc20-these-mael-rolland-v92.json');
+      const resp = await fetch('grc20-these-mael-rolland-v93.json');
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       onDataLoaded(data);
