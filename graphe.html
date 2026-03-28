@@ -1437,14 +1437,13 @@ const EMPIRICAL_PERSON_CONN_TYPES_V2 = new Set([
 
 // Overrides manuels pour les personnes (depuis seed.json)
 const V2_PERSON_OVERRIDES = {
-  'Peter Wuille': 'embedded_persons', 'Greg Maxwell': 'embedded_persons',
-  'Gregory Maxwell': 'embedded_persons', 'W.J. van der Laan': 'embedded_persons',
-  'Adam Back': 'embedded_persons', 'Jihan Wu': 'embedded_persons',
+  'Pieter Wuille': 'embedded_persons', 'Greg Maxwell': 'embedded_persons',
+  'Gregory Maxwell': 'embedded_persons', 'Wladimir van der Laan': 'embedded_persons',
+  'Adam Back': 'embedded_persons', 'Bitmain (Jihan Wu)': 'embedded_persons',
   'Vitalik Buterin': 'embedded_persons', 'Gavin Wood': 'embedded_persons',
   'Vlad Zamfir': 'embedded_persons', 'Roger Ver': 'embedded_persons',
-  'Susan Leigh Star': 'reference_authors', 'Geoffrey Bowker': 'reference_authors',
-  'André Orléan': 'reference_authors', 'Bruno Théret': 'reference_authors',
-  'Michel Aglietta': 'reference_authors',
+  'Leigh Star': 'reference_authors', 'Geoffrey Bowker': 'reference_authors',
+  'André Orléan': 'reference_authors', 'Bruno Theret': 'reference_authors',
 };
 
 // Overrides manuels pour les entités non-Person
@@ -2307,13 +2306,15 @@ const Graph = (() => {
       COL_V3_COLORS = ['#aaaaaa', '#66ccff', '#00ffaa', '#ff8800', '#0088ff', '#ff2200', '#ee00ff'];
       // Overrides nominatifs — personnes empiriques -> Acteurs (3), references -> Ref. (6)
       V3_PERSON_COL = {
-        'Peter Wuille': 3, 'Greg Maxwell': 3, 'Gregory Maxwell': 3,
-        'Adam Back': 3, 'W.J. van der Laan': 3, 'Jihan Wu': 3,
+        // Acteurs empiriques (col 3)
+        'Pieter Wuille': 3, 'Greg Maxwell': 3, 'Gregory Maxwell': 3,
+        'Adam Back': 3, 'Wladimir van der Laan': 3, 'Bitmain (Jihan Wu)': 3,
         'Vitalik Buterin': 3, 'Gavin Wood': 3, 'Vlad Zamfir': 3,
         'Roger Ver': 3,
-        'Susan Leigh Star': 6, 'Geoffrey Bowker': 6, 'Thomas Hughes': 6,
-        'André Orléan': 6, 'Michel Aglietta': 6, 'Bruno Théret': 6,
-        'Viviana Zelizer': 6, 'Keith Hart': 6,
+        // Références théoriques (col 6)
+        'Leigh Star': 6, 'Geoffrey Bowker': 6,
+        'André Orléan': 6, 'Bruno Theret': 6,
+        'Viviana Zelizer': 6,
       };
     }
 
@@ -2777,24 +2778,21 @@ const Graph = (() => {
       'EIP': { row: 2, col: 5 },
       'CVE-2018-17144': { row: 4, col: 5 },
       'The DAO': { row: 4, col: 5 },
-      'Peter Wuille': { row: 5, col: 5 },
+      'Pieter Wuille': { row: 5, col: 5 },
       'Greg Maxwell': { row: 5, col: 5 },
       'Gregory Maxwell': { row: 5, col: 5 },
-      'W.J. van der Laan': { row: 5, col: 5 },
+      'Wladimir van der Laan': { row: 5, col: 5 },
       'Adam Back': { row: 5, col: 0 },
-      'Jihan Wu': { row: 5, col: 4 },
+      'Bitmain (Jihan Wu)': { row: 5, col: 4 },
       'Vitalik Buterin': { row: 5, col: 5 },
       'Gavin Wood': { row: 5, col: 5 },
       'Vlad Zamfir': { row: 5, col: 5 },
       'Roger Ver': { row: 5, col: 3 },
-      'Susan Leigh Star': { row: 5, col: 1 },
+      'Leigh Star': { row: 5, col: 1 },
       'Geoffrey Bowker': { row: 5, col: 1 },
       'André Orléan': { row: 5, col: 3 },
-      'Bruno Théret': { row: 5, col: 3 },
-      'Michel Aglietta': { row: 5, col: 3 },
+      'Bruno Theret': { row: 5, col: 3 },
       'Viviana Zelizer': { row: 5, col: 3 },
-      'Thomas Hughes': { row: 5, col: 2 },
-      'Keith Hart': { row: 5, col: 4 },
     };
 
     // Type → default row fallback
