@@ -1286,8 +1286,30 @@ function buildChapterMap(data) {
     }
   }
 
-  // Step 3 — appears_in_section : assign entity to its MAJORITY chapter
-  // (chapter with most section appearances wins; tie-break = earliest chapter index)
+  // Type-based chapter preferences — used to break ties in Step 3 and as fallback in Step 6b.
+  // CrisisEvent / CrisisPhase → Chap. III (index 3)
+  // InfrastructureEvent / DevelopmentPhase → Chap. I (index 1)
+  const TYPE_CHAPTER_DEFAULTS = {
+    'CrisisEvent': 3, 'CrisisPhase': 3,
+    'InfrastructureEvent': 1, 'DevelopmentPhase': 1,
+  };
+  // Build a lightweight entityId → [typeNames] index (needed by Step 3 tie-break + Step 6b)
+  const typeIdToName = {};
+  for (const t of (data.types || [])) typeIdToName[t.id] = t.name;
+  const entityTypeNames = {}; // entityId → first matched target type name (or undefined)
+  for (const e of (data.entities || [])) {
+    for (const tid of (e.types || [])) {
+      const tn = typeIdToName[tid];
+      if (tn && TYPE_CHAPTER_DEFAULTS[tn] !== undefined) {
+        entityTypeNames[e.id] = tn;
+        break;
+      }
+    }
+  }
+
+  // Step 3 — appears_in_section : assign entity to its MAJORITY chapter.
+  // Tie-break: for entities with a preferred type (CrisisEvent → III, InfrastructureEvent → I)
+  // pick the preferred chapter rather than the lowest index.
   const APP_ID = rtByName['appears in section'];
   if (APP_ID) {
     const chapterCounts = {}; // entityId → { chapterIdx: count }
@@ -1299,12 +1321,22 @@ function buildChapterMap(data) {
       chapterCounts[rel.from][secIdx] = (chapterCounts[rel.from][secIdx] || 0) + 1;
     }
     for (const [eid, counts] of Object.entries(chapterCounts)) {
+      const preferredChap = entityTypeNames[eid] !== undefined
+        ? TYPE_CHAPTER_DEFAULTS[entityTypeNames[eid]]
+        : undefined;
       let bestChap = null, bestCount = 0;
       for (const [chapStr, count] of Object.entries(counts)) {
         const chapIdx = parseInt(chapStr);
-        if (count > bestCount || (count === bestCount && (bestChap === null || chapIdx < bestChap))) {
+        if (count > bestCount) {
           bestCount = count;
           bestChap = chapIdx;
+        } else if (count === bestCount) {
+          // Tie-break: prefer type-canonical chapter; fallback to lowest index
+          if (preferredChap !== undefined && chapIdx === preferredChap) {
+            bestChap = chapIdx;
+          } else if (preferredChap === undefined && (bestChap === null || chapIdx < bestChap)) {
+            bestChap = chapIdx;
+          }
         }
       }
       if (bestChap !== null) result[eid] = bestChap;
@@ -1367,7 +1399,15 @@ function buildChapterMap(data) {
     }
   }
 
-  // Step 6 — Hard overrides: primary thesis objects forced to specific chapters
+  // Step 6a — Type-based chapter fallback for entities still unassigned after BFS.
+  // Covers CVE entities and InfrastructureEvents with no appears_in_section relation at all.
+  for (const [eid, typeName] of Object.entries(entityTypeNames)) {
+    if (result[eid] === undefined) {
+      result[eid] = TYPE_CHAPTER_DEFAULTS[typeName];
+    }
+  }
+
+  // Step 6c — Hard overrides: primary thesis objects forced to specific chapters
   const CHAPTER_OVERRIDES = {
     'd35d720e1fa24d9fbe665a90ac0abc73': 1, // Bitcoin → Chap. I
     '2956b3b87db1448f8a2ddde82d39e9c9': 1, // Ethereum → Chap. I
