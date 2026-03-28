@@ -2628,9 +2628,9 @@ const Graph = (() => {
       });
     });
 
-    // ── Fill cellule = mélange aquarelle (couleur colonne × teinte chapitre) ──
-    // Chaque cellule (row × col) obtient une couleur unique : 55 % colonne + 45 % chapitre.
-    // Le halo shadow-color reste gouverné par .chapter-N → double encodage préservé.
+    // ── Fill cellule = chapitre dominant + teinte colonne légère ──
+    // Base : couleur chapitre (80 %) pour préserver les îlots.
+    // Tinte : couleur colonne (20 %) pour identifier le type sans écraser.
     if (!useStrata && COL_V3_COLORS) {
       const CH_EXT = [...CHAPTER_COLORS, '#666666']; // index 5 = Multi.
       const _mix = (h1, h2, t) => {
@@ -2643,7 +2643,7 @@ const Graph = (() => {
         const col = n.data('focusCol');
         const row = n.data('focusBand');
         if (col !== undefined && col >= 0 && col < COL_V3_COLORS.length)
-          n.style('background-color', _mix(COL_V3_COLORS[col], CH_EXT[row] || '#666666', 0.45));
+          n.style('background-color', _mix(CH_EXT[row] || '#666666', COL_V3_COLORS[col], 0.20));
       });
     }
 
