@@ -2077,7 +2077,7 @@ const Graph = (() => {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'shadow-blur': 30, 'shadow-opacity': 0.80,
+          'shadow-blur': 6, 'shadow-opacity': 0.55,
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.95,
@@ -2643,13 +2643,14 @@ const Graph = (() => {
           ? cx - cellW / 2 + subColW * (sc + 0.5)
           : cx;
         const startY = cy_c - (count * NODE_H) / 2;
-        const jx = (Math.random() - 0.5) * (isMobile ? 7 : 18);
-        const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
+        const jx = (Math.random() - 0.5) * (isMobile ? 28 : 42);
+        const jy = (Math.random() - 0.5) * (isMobile ? 18 : 28);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
     });
 
-    // ── Fill cellule = chapitre dominant + teinte colonne légère ──
+    // (fill par colonne supprimé — la couleur par cellule vient du canvas overlay)
+    // Les nœuds gardent la couleur de chapitre assignée avant ce bloc.
     // Base : couleur chapitre (80 %) pour préserver les îlots.
     // Tinte : couleur colonne (20 %) pour identifier le type sans écraser.
     if (!useStrata && COL_V3_COLORS) {
@@ -3166,8 +3167,8 @@ const Graph = (() => {
           ? cx - cellW / 2 + subColW * (sc + 0.5)
           : cx;
         const startY = cy_c - (count * NODE_H) / 2;
-        const jx = (Math.random() - 0.5) * (isMobile ? 7 : 16);
-        const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
+        const jx = (Math.random() - 0.5) * (isMobile ? 28 : 40);
+        const jy = (Math.random() - 0.5) * (isMobile ? 18 : 26);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
     });
@@ -3179,12 +3180,6 @@ const Graph = (() => {
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
-    if (isMobile) {
-      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 14, 'shadow-opacity': 0.80,
-      });
-    }
-
     // ── Always-visible labels ─────────────────────────────
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
       if (STRATUM_ALWAYS_VISIBLE_NAMES.has(n.data('fullName'))) {
@@ -3468,8 +3463,8 @@ const Graph = (() => {
         const count = Math.min(nodes.length - sc * maxPerSubcol, maxPerSubcol);
         const startX = numSubcols > 1 ? cx - cellW/2 + subColW*(sc+0.5) : cx;
         const startY = cy_c - (count * NODE_H) / 2;
-        const jx = (Math.random() - 0.5) * (isMobile ? 6 : 14);
-        const jy = (Math.random() - 0.5) * (isMobile ? 5 : 10);
+        const jx = (Math.random() - 0.5) * (isMobile ? 28 : 40);
+        const jy = (Math.random() - 0.5) * (isMobile ? 18 : 26);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
       });
     });
@@ -3481,9 +3476,6 @@ const Graph = (() => {
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
-    if (isMobile) {
-      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({ 'shadow-blur': 14, 'shadow-opacity': 0.80 });
-    }
 
     // ── Always-visible labels ─────────────────────────────
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
