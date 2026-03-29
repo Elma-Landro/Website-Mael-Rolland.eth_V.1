@@ -2667,10 +2667,9 @@ const Graph = (() => {
       'SourceQuote': 3, 'GreyLiterature': 3, 'IndigenousLiterature': 3,
       'PriceSeries': 4, 'PriceWindow': 4,
     };
-    // batch4: foreground density cap per cell (surplus → faint background cloud)
-    // batch4: foreground density cap per cell
-    // Mobile: 36 nodes max (distributed across ≤3 sub-cols of 12 each)
-    const DENSITY_CAP_FG = isMobile ? 36 : 38;
+    // batch4: foreground density cap — 3 sous-cols × 18 nœuds = 54 visibles au premier plan
+    // surplus → nuage de fond semi-visible (opacity 0.42) pour richesse visuelle
+    const DENSITY_CAP_FG = isMobile ? 54 : 42;
 
     // ── Mobile col map / labels / halo colors ────────────
     // V2 strata: stratum-name → 4 macro-cols; V3: identité (7 colonnes conservées)
@@ -2766,12 +2765,12 @@ const Graph = (() => {
       // batch4: foreground / background split — cap density to avoid brick walls
       const fgNodes = nodes.slice(0, DENSITY_CAP_FG);
       const bgNodes = nodes.slice(DENSITY_CAP_FG);
-      // Position background nodes as faint dispersed cloud (wider than fg)
+      // Position background nodes — nuage semi-visible (opacity 0.42) pour richesse visuelle
       bgNodes.forEach(n => {
-        const jx = (Math.random() - 0.5) * cwC * (isMobile ? 1.10 : 0.80);
-        const jy = (Math.random() - 0.5) * ROW_H * (isMobile ? 0.92 : 0.80);
+        const jx = (Math.random() - 0.5) * cwC * (isMobile ? 1.05 : 0.82);
+        const jy = (Math.random() - 0.5) * ROW_H * (isMobile ? 0.88 : 0.82);
         n.position({ x: cx_c + jx, y: cy_c + jy });
-        n.style({ opacity: 0.18 });
+        n.style({ opacity: 0.42 });
       });
       // Position foreground nodes — structured sub-columns (mobile ≤3, desktop unlimited)
       {
@@ -2822,8 +2821,8 @@ const Graph = (() => {
     // ── Taille mobile-aware + classe in-matrix ────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      // matrix mobile: nœuds plus petits pour permettre la dispersion interne
-      const mobileSize = isMobile ? Math.max(7, Math.min(raw * 0.48, 11)) : raw;
+      // matrix mobile: nœuds réduits pour dispersion interne — max 13px (vs 22px par défaut)
+      const mobileSize = isMobile ? Math.max(7, Math.min(raw * 0.55, 13)) : raw;
       n.data('msize', mobileSize);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
