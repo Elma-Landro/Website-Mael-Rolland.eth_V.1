@@ -1,0 +1,42 @@
+[
+  {
+    "view": "Structure de la thèse",
+    "cell": "Chap. I × Objets",
+    "action_type": "rerouter + backfill",
+    "why": "Le développement infrastructural de Bitcoin et l’émergence d’Ethereum sont sous-représentés dans cette cellule.",
+    "candidate_entities": "Bitcoin Faucet; BitcoinMarket; MyBitcoin; Bitcoin Foundation; Migration du code Bitcoin vers GitHub; WordPress accepte les paiements en Bitcoin; eBay/PayPal intègre Bitcoin; Casascius; Colored Coins; Mastercoin/Omni; Counterparty; Namecoin; Litecoin; Peercoin; BTCC; Kraken; Paymium; Ether Genesis Sale; Frontier; Lancement d’Ethereum",
+    "implementation_rule": "Réancrer en priorité vers Chap. I / Objets tout événement d’infrastructure, de service, d’accès, de métaprotocole ou d’émergence Ethereum actuellement absorbé par Chap. II ou III.",
+    "render_check": "La colonne Objets du Chap. I doit devenir l’un des gros pôles de la vue, sans ressembler à un mur compact.",
+    "priority": "P1"
+  },
+  {
+    "view": "Structure de la thèse",
+    "cell": "Chap. II × Gouvern.",
+    "action_type": "rerouter + nettoyage",
+    "why": "Cette cellule doit montrer la clarification de gouvernance, pas être polluée par les cas de crise.",
+    "candidate_entities": "Scaling Debate; Guerre des blocs; Gouvernance polycentrique; Gouvernance duale; stakeholders/shareholders; Bitcoin-dev Mailing List; GitHub Bitcoin Core; Bitcointalk; Conférences Scaling Bitcoin; BIP family; UASF; SegWit2X",
+    "implementation_rule": "Exclure par défaut les CVE et autres crises détaillées ; garder ici les conflits, processus, arènes et concepts de gouvernance du chapitre II.",
+    "render_check": "En focus Chap. II → Gouvern., on doit voir le bloc polycentric governance / scaling / arenas, pas la CVE.",
+    "priority": "P1"
+  },
+  {
+    "view": "Monétisation des CM",
+    "cell": "Infrastructures × Accès",
+    "action_type": "backfill massif",
+    "why": "L’accès est l’un des grands ressorts de la monétisation, mais il reste trop peu peuplé.",
+    "candidate_entities": "wallet custodial; wallet non-custodial; hardware wallet; Coinbase; Kraken; Paymium; BTCC; ATM; BitPay; passerelles fiat; Ledger; Trezor",
+    "implementation_rule": "Y concentrer les dispositifs d’accès, conversion, détention et dépense.",
+    "render_check": "Accès doit devenir l’un des plus gros pôles de la vue.",
+    "priority": "P1"
+  },
+  {
+    "view": "Qui gouverne réellement ?",
+    "cell": "Décision/Maintenance × Personnes",
+    "action_type": "backfill + rerouter",
+    "why": "Les personnes agissantes restent trop peu visibles alors qu’elles incarnent la gouvernance effective.",
+    "candidate_entities": "Peter Wuille; Greg Maxwell; Wladimir van der Laan; Matt Corallo; Cory Fields; Adam Back; Jihan Wu; Vitalik Buterin; Gavin Wood; Vlad Zamfir; Stephan Tual; Awemany",
+    "implementation_rule": "Maintenir les personnes près des groupes, arènes et processus auxquels elles participent ; ne pas les rejeter comme simple bruit terminal.",
+    "render_check": "La colonne Personnes doit enfin montrer qui gouverne effectivement.",
+    "priority": "P1"
+  }
+]
