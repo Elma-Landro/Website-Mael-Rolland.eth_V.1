@@ -1567,6 +1567,15 @@ function buildChapterMap(data) {
     { m: n => n.includes('Casascius'),                                           chap: 1 },
     { m: n => n.includes('métaprotocole Bitcoin'),                               chap: 1 },
     { m: n => n.includes('Colored Coins') && n.includes('Bitcoin'),              chap: 1 },
+    { m: n => n.includes('Mastercoin') || n.includes('Omni'),                       chap: 1 },
+    { m: n => n.includes('Counterparty'),                                            chap: 1 },
+    { m: n => n.includes('Namecoin'),                                                chap: 1 },
+    { m: n => n.includes('Litecoin'),                                                chap: 1 },
+    { m: n => n.includes('Peercoin'),                                                chap: 1 },
+    { m: n => n.includes('BTCC') && n.toLowerCase().includes('plateforme'),         chap: 1 },
+    { m: n => n === 'Kraken' || (n.includes('Kraken') && n.toLowerCase().includes('plateforme')), chap: 1 },
+    { m: n => n === 'Paymium' || n.includes('Première bourse BTC/EUR (Paymium)'),   chap: 1 },
+    // ── Batch6 phase 1 (Chap. I × Objets): altcoins + exchange infra backfill ──
     // ── DevelopmentPhase → Chap. I (batch1 SAFE_FIX) ─────────────────────────
     { m: n => n === 'Phase de preuve de concept',                                chap: 1 },
     { m: n => n === 'Phase de péché',                                            chap: 1 },
