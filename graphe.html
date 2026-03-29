@@ -1928,11 +1928,11 @@ const Graph = (() => {
       'shadow-color': 'data(color)',
       // Degree-aware glow via node size (size already derived from degree in entityToNode)
       'shadow-blur': isMobile
-        ? 'mapData(size, 22, 90, 12, 30)'
-        : 'mapData(size, 22, 90, 10, 24)',
+        ? 'mapData(size, 22, 90, 8, 20)'
+        : 'mapData(size, 22, 90, 6, 16)',
       'shadow-opacity': isMobile
-        ? 'mapData(size, 22, 90, 0.18, 0.52)'
-        : 'mapData(size, 22, 90, 0.14, 0.42)',
+        ? 'mapData(size, 22, 90, 0.10, 0.28)'
+        : 'mapData(size, 22, 90, 0.08, 0.24)',
     });
   }
 
@@ -2103,11 +2103,11 @@ const Graph = (() => {
         style: { 'label': 'data(label)', 'font-size': '13px', 'font-family': 'VT323, monospace', 'text-outline-width': 3 }
       },
       // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
-      { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
-      { selector: 'node.chapter-1', style: { 'shadow-color': '#ff8800', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
-      { selector: 'node.chapter-2', style: { 'shadow-color': '#33ff33', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
-      { selector: 'node.chapter-3', style: { 'shadow-color': '#aa44ff', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
-      { selector: 'node.chapter-4', style: { 'shadow-color': '#ff44aa', 'shadow-blur': 50, 'shadow-opacity': 0.92 } },
+      { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
+      { selector: 'node.chapter-1', style: { 'shadow-color': '#ff8800', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
+      { selector: 'node.chapter-2', style: { 'shadow-color': '#33ff33', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
+      { selector: 'node.chapter-3', style: { 'shadow-color': '#aa44ff', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
+      { selector: 'node.chapter-4', style: { 'shadow-color': '#ff44aa', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
       // ── Archipelago: other islands fade when zoomed ───────
       { selector: 'node.chapter-faded', style: { 'opacity': 0.05 } },
       // ── Chapter label ghost nodes (floating title above each island) ──
@@ -2163,10 +2163,10 @@ const Graph = (() => {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'shadow-blur': 6, 'shadow-opacity': 0.55,
+          'shadow-blur': 4, 'shadow-opacity': 0.34,
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
-          'background-opacity': 0.95,
+          'background-opacity': 0.88,
           'z-index': 2,
         }
       },
@@ -2194,11 +2194,11 @@ const Graph = (() => {
         style: {
           'shape': 'rectangle',
           'background-color': 'data(color)',
-          'background-opacity': 0.055,
+          'background-opacity': 0.028,
           'border-opacity': 0,
           'label': '',
           'events': 'no',
-          'shadow-blur': 30, 'shadow-color': 'data(color)', 'shadow-opacity': 0.08,
+          'shadow-blur': 16, 'shadow-color': 'data(color)', 'shadow-opacity': 0.05,
           'z-index': 0,
         }
       },
@@ -2242,9 +2242,9 @@ const Graph = (() => {
       {
         selector: 'node.in-nebula',
         style: {
-          'shadow-blur':     80,   // plus grand → blobs qui se fondent en nuage
+          'shadow-blur':     60,
           'shadow-color':    'data(color)',
-          'shadow-opacity':  0.90,
+          'shadow-opacity':  0.76,
           'shadow-offset-x': 0,
           'shadow-offset-y': 0,
         }
@@ -2885,8 +2885,8 @@ const Graph = (() => {
         'height':             isMobile ? ROW_H * 1.25 : haloH,
         'background-opacity': 0.01,
         'shadow-color':       n.data('color'),
-        'shadow-blur':        isMobile ? 90 : 110,
-        'shadow-opacity':     isMobile ? 0.72 : 0.20,
+        'shadow-blur':        isMobile ? 42 : 56,
+        'shadow-opacity':     isMobile ? 0.35 : 0.12,
         'border-opacity':     0,
         'z-index':            0,
       });
@@ -3329,8 +3329,8 @@ const Graph = (() => {
         'height':             haloH,
         'background-opacity': 0.01,
         'shadow-color':       n.data('color'),
-        'shadow-blur':        isMobile ? 90 : 120,
-        'shadow-opacity':     isMobile ? 0.70 : 0.22,
+        'shadow-blur':        isMobile ? 42 : 56,
+        'shadow-opacity':     isMobile ? 0.35 : 0.12,
         'border-opacity':     0,
         'z-index':            0,
       });
@@ -3610,8 +3610,8 @@ const Graph = (() => {
         'height': haloH,
         'background-opacity': 0.01,
         'shadow-color': n.data('color'),
-        'shadow-blur': isMobile ? 80 : 120,
-        'shadow-opacity': isMobile ? 0.68 : 0.22,
+        'shadow-blur': isMobile ? 40 : 56,
+        'shadow-opacity': isMobile ? 0.34 : 0.12,
         'border-opacity': 0,
         'z-index': 0,
       });
@@ -3684,9 +3684,9 @@ const Graph = (() => {
         const sh = cellH  * zoom;
         const [r,g,b] = rgb(color);
         const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
-        grad.addColorStop(0,    `rgba(${r},${g},${b},0.56)`);
-        grad.addColorStop(0.35, `rgba(${r},${g},${b},0.30)`);
-        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.12)`);
+        grad.addColorStop(0,    `rgba(${r},${g},${b},0.32)`);
+        grad.addColorStop(0.35, `rgba(${r},${g},${b},0.18)`);
+        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.07)`);
         grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
         ctx.save();
         ctx.translate(sx, sy);
@@ -3707,9 +3707,9 @@ const Graph = (() => {
         const [r,g,b] = rgb(color);
         const grad = ctx.createLinearGradient(0, sy - sh * 0.6, 0, sy + sh * 0.6);
         grad.addColorStop(0,    `rgba(${r},${g},${b},0)`);
-        grad.addColorStop(0.25, `rgba(${r},${g},${b},0.06)`);
-        grad.addColorStop(0.5,  `rgba(${r},${g},${b},0.14)`);
-        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.06)`);
+        grad.addColorStop(0.25, `rgba(${r},${g},${b},0.03)`);
+        grad.addColorStop(0.5,  `rgba(${r},${g},${b},0.08)`);
+        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.03)`);
         grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
         ctx.fillStyle = grad;
         ctx.fillRect(0, sy - sh * 0.6, W, sh * 1.2);
