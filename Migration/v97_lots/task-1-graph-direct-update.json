@@ -1,0 +1,32 @@
+{
+  "patch_series": "v97-direct-graph-update",
+  "source_graph": "grc20-these-mael-rolland-v96.json",
+  "task": "TASK-1",
+  "title": "ActorNonHuman split + StakeholderGroup completion (direct graph intent)",
+  "operations": [
+    {"action": "retype", "entity": "AntPool", "from_type": "ActorNonHuman", "to_type": "InfrastructureService"},
+    {"action": "retype", "entity": "F2Pool", "from_type": "ActorNonHuman", "to_type": "InfrastructureService"},
+    {"action": "retype", "entity": "GHash.io", "from_type": "ActorNonHuman", "to_type": "InfrastructureService"},
+    {"action": "retype", "entity": "Slush Pool", "from_type": "ActorNonHuman", "to_type": "InfrastructureService"},
+    {"action": "retype", "entity": "BTC Guild", "from_type": "ActorNonHuman", "to_type": "InfrastructureService"},
+    {"action": "retype", "entity": "Bitcoin ABC", "from_type": "ActorNonHuman", "to_type": "SoftwareClient"},
+    {"action": "retype", "entity": "Bitcoin Knots", "from_type": "ActorNonHuman", "to_type": "SoftwareClient"},
+    {"action": "retype", "entity": "Bitcoin Unlimited", "from_type": "ActorNonHuman", "to_type": "SoftwareClient"},
+
+    {"action": "retype", "entity": "Mineurs Bitcoin", "from_type": "ActorGroup", "to_type": "StakeholderGroup"},
+    {"action": "retype", "entity": "Pools de minage", "from_type": "ActorGroup", "to_type": "StakeholderGroup"},
+    {"action": "retype", "entity": "Fournisseurs de portefeuilles", "from_type": "ActorGroup", "to_type": "StakeholderGroup"},
+
+    {
+      "action": "create_if_missing",
+      "entity": "Opérateurs de nœuds complets",
+      "type": "StakeholderGroup",
+      "description_fr": "Acteurs opérant des full nodes et participant à la validation/propagation des règles du protocole."
+    },
+
+    {"action": "add_relation_if_missing", "subject": "Mineurs Bitcoin", "predicate": "instanceOfCategory", "object": "Mineurs et assimilés"},
+    {"action": "add_relation_if_missing", "subject": "Pools de minage", "predicate": "instanceOfCategory", "object": "Mineurs et assimilés"},
+    {"action": "add_relation_if_missing", "subject": "Opérateurs de nœuds complets", "predicate": "instanceOfCategory", "object": "Nœuds complets (Full Nodes)"},
+    {"action": "add_relation_if_missing", "subject": "Fournisseurs de portefeuilles", "predicate": "instanceOfCategory", "object": "Fournisseurs de portefeuilles"}
+  ]
+}

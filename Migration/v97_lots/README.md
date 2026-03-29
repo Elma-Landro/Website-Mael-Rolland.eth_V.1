@@ -20,3 +20,7 @@ Base: `grc20-these-mael-rolland-v96.json`.
 ## État restant (avant application)
 - Entités avec type `Concept` encore non hiérarchisé: **391**.
 - Les 3 lots sont conçus pour être mergés séparément afin d'éviter un diff massif.
+
+## Exécution directe (sans regénérer d'exports)
+- Fichier d'intention pour mise à jour directe du graphe: `Migration/v97_lots/task-1-graph-direct-update.json`.
+- Couvre en priorité: split `ActorNonHuman`, complétion `StakeholderGroup`, création manquante `Opérateurs de nœuds complets`, et relations `instanceOfCategory`.
