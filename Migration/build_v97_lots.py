@@ -1,225 +1,274 @@
 #!/usr/bin/env python3
-import csv, json, unicodedata
+"""Build a 6-lot rollout plan for v97 ontology patching.
+
+Goal: split changes into small, mergeable batches to avoid oversized diffs.
+"""
+
+import json
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MIG = ROOT / 'Migration'
-
-TABLE = MIG / 'grc20_v91_migration_table.csv'
-BASE_PATCH = MIG / 'grc20_v91_name_based_patch.json'
-GRAPH = ROOT / 'grc20-these-mael-rolland-v96.json'
-OUTDIR = MIG / 'v97_lots'
+GRAPH = ROOT / "grc20-these-mael-rolland-v96.json"
+OUTDIR = ROOT / "Migration" / "v97_lots"
 OUTDIR.mkdir(exist_ok=True)
 
 
 def norm(s: str) -> str:
-    s = (s or '').strip().lower()
-    s = ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
-    return ' '.join(s.split())
+    s = (s or "").strip().lower()
+    s = "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
+    return " ".join(s.split())
 
-with TABLE.open(newline='', encoding='utf-8') as f:
-    ops = list(csv.DictReader(f))
-with BASE_PATCH.open(encoding='utf-8') as f:
-    base = json.load(f)
-with GRAPH.open(encoding='utf-8') as f:
+
+with GRAPH.open(encoding="utf-8") as f:
     g = json.load(f)
 
-entities = [e['name'] for e in g['entities'] if 'name' in e]
+entities = [e.get("name", "") for e in g.get("entities", []) if e.get("name")]
 by_norm = {norm(n): n for n in entities}
-
-for op in ops:
-    if op.get('confidence'):
-        op['confidence'] = float(op['confidence'])
-
-concept_targets = {'CoreConcept','SecondaryConcept','TechnicalConcept','NativeFormula','ChapterSection','AnalyticClaim'}
-lot1 = []
-lot2 = []
-lot3 = []
-
-for op in ops:
-    old_type = op['old_type']
-    new_type = op['new_type']
-    action = op['action']
-
-    if old_type == 'Concept' or new_type in concept_targets:
-        lot1.append(op)
-        continue
-
-    if (
-        (old_type == 'ActorNonHuman' and new_type in {'InfrastructureService','SoftwareClient'})
-        or (new_type == 'StakeholderGroup')
-    ):
-        lot2.append(op)
-        continue
-
-# Add explicit remaining ActorNonHuman split from the user's gap list
-explicit_actor_ops = [
-    ('AntPool', 'InfrastructureService'),
-    ('F2Pool', 'InfrastructureService'),
-    ('GHash.io', 'InfrastructureService'),
-    ('Slush Pool', 'InfrastructureService'),
-    ('BTC Guild', 'InfrastructureService'),
-    ('Bitcoin ABC', 'SoftwareClient'),
-    ('Bitcoin Knots', 'SoftwareClient'),
-    ('Bitcoin Unlimited', 'SoftwareClient'),
-]
-existing_actor_keys = {(o['old_entity'], o['new_type']) for o in lot2}
-for name, target_type in explicit_actor_ops:
-    key = (name, target_type)
-    if key in existing_actor_keys:
-        continue
-    lot2.append({
-        'old_entity': name,
-        'old_type': 'ActorNonHuman',
-        'action': 'retype',
-        'new_entity': name,
-        'new_type': target_type,
-        'confidence': 0.99,
-        'rationale': 'explicit split from ActorNonHuman remaining backlog',
-    })
-
-# Add explicit unresolved alias fixes from user brief
-extra_lot1 = [
-    {
-        'old_entity': 'Nominalisme monétaire non étatiste',
-        'old_type': 'Concept',
-        'action': 'merge_into',
-        'new_entity': 'Nominalisme monetaire non etatiste',
-        'new_type': 'Concept',
-        'confidence': 0.99,
-        'rationale': 'accent canonicalization requested in remaining gaps list',
-    },
-    {
-        'old_entity': 'Politique de crises',
-        'old_type': 'Concept',
-        'action': 'merge_into',
-        'new_entity': 'Politique de crise',
-        'new_type': 'Concept',
-        'confidence': 0.93,
-        'rationale': 'plural/singular canonicalization requested in remaining gaps list',
-    },
-    {
-        'old_entity': 'Ethereum Virtual Machine',
-        'old_type': 'Concept',
-        'action': 'merge_into',
-        'new_entity': 'Ethereum Virtual Machine (EVM)',
-        'new_type': 'ConceptTechnical',
-        'confidence': 0.98,
-        'rationale': 'normalize to canonical labeled entity present in graph',
-    },
-]
-
-existing_keys = {(o['old_entity'], o['action'], o['new_entity']) for o in lot1}
-for op in extra_lot1:
-    k = (op['old_entity'], op['action'], op['new_entity'])
-    if k not in existing_keys:
-        lot1.append(op)
-
-# lot3 relations + infra domains
-relations = [r for r in base.get('new_relations', []) if r['predicate'] in {'instanceOfCategory','organizes','partOfMonetizationProcess'}]
-# Add missing stakeholder relation explicitly expected
-relations.extend([
-    {'subject': 'Mineurs Bitcoin', 'predicate': 'instanceOfCategory', 'object': 'Mineurs et assimilés'},
-    {'subject': 'Pools de minage', 'predicate': 'instanceOfCategory', 'object': 'Mineurs et assimilés'},
-    {'subject': 'Opérateurs de nœuds complets', 'predicate': 'instanceOfCategory', 'object': 'Nœuds complets (Full Nodes)'},
-    {'subject': 'Fournisseurs de portefeuilles', 'predicate': 'instanceOfCategory', 'object': 'Fournisseurs de portefeuilles'},
-])
-# dedupe
-seen = set(); dedup_rel=[]
-for r in relations:
-    k=(r['subject'],r['predicate'],r['object'])
-    if k in seen: continue
-    seen.add(k); dedup_rel.append(r)
-relations=dedup_rel
-
-lot3 = {
-    'canonical_infrastructure_domains_target': [
-        'Protocole et couche de base',
-        'Traitement des transactions',
-        'Altcoins, tokens et surcouches',
-        'Services de portefeuille et de paiement',
-        'Conformité réglementaire',
-        'Sphère d’usage',
-        'Information et connaissance',
-        'Monétisation',
-        'Gouvernance infrastructurelle'
-    ],
-    'relations_to_add': relations
-}
 
 
 def exists_name(name: str) -> bool:
     return norm(name) in by_norm
 
-# add resolution hints
-for op in lot1 + lot2:
-    op['old_entity_exists_v96'] = exists_name(op['old_entity'])
-    op['new_entity_exists_v96'] = exists_name(op['new_entity'])
-
-for r in lot3['relations_to_add']:
-    r['subject_exists_v96'] = exists_name(r['subject'])
-    r['object_exists_v96'] = exists_name(r['object'])
 
 payload_common = {
-    'patch_series': 'v97-rollout-split',
-    'source_graph': 'grc20-these-mael-rolland-v96.json',
+    "patch_series": "v97-rollout-split-6lots",
+    "source_graph": "grc20-these-mael-rolland-v96.json",
 }
 
-lot1_payload = {
+# LOT-1 — hierarchy moves only (core gap)
+lot1_ops = [
+    # ConceptTechnical (~15)
+    ("UTXO", "Concept", "ConceptTechnical"),
+    ("Nonce", "Concept", "ConceptTechnical"),
+    ("OP_RETURN", "Concept", "ConceptTechnical"),
+    ("SHA-256", "Concept", "ConceptTechnical"),
+    ("SegWit", "Concept", "ConceptTechnical"),
+    ("EVM", "Concept", "ConceptTechnical"),
+    ("Ethereum Virtual Machine (EVM)", "Concept", "ConceptTechnical"),
+    ("Gas (Ethereum)", "Concept", "ConceptTechnical"),
+    ("Proof of Work (PoW)", "Concept", "ConceptTechnical"),
+    ("Proof of Stake (PoS)", "Concept", "ConceptTechnical"),
+    ("Mempool", "Concept", "ConceptTechnical"),
+    ("Fork", "Concept", "ConceptTechnical"),
+    ("Hard Fork", "Concept", "ConceptTechnical"),
+    ("Soft Fork", "Concept", "ConceptTechnical"),
+    ("Double dépense (double spend)", "Concept", "ConceptTechnical"),
+    # ConceptSecondary (~10)
+    ("Ossification du protocole", "Concept", "ConceptSecondary"),
+    ("Délégation et recentralisation", "Concept", "ConceptSecondary"),
+    ("Gouvernance polycentrique", "Concept", "ConceptSecondary"),
+    ("Gouvernance duale", "Concept", "ConceptSecondary"),
+    ("Infrastructure sociotechnique", "Concept", "ConceptSecondary"),
+    ("Interopérabilité", "Concept", "ConceptSecondary"),
+    ("Capture réglementaire", "Concept", "ConceptSecondary"),
+    ("Effets de réseau", "Concept", "ConceptSecondary"),
+    ("Politique de crise", "Concept", "ConceptSecondary"),
+    ("Logique de consensus distribué", "Concept", "ConceptSecondary"),
+    # NativeFormula (~5)
+    ("Be your own bank", "Concept", "NativeFormula"),
+    ("Don’t trust, verify", "Concept", "NativeFormula"),
+    ("Code is law", "Concept", "NativeFormula"),
+    ("Not your keys, not your coins", "Concept", "NativeFormula"),
+    ("In code we trust", "Concept", "NativeFormula"),
+    # ChapterSection (~5)
+    ("Introduction", "Concept", "ChapterSection"),
+    ("Cadre théorique", "Concept", "ChapterSection"),
+    ("Méthodologie", "Concept", "ChapterSection"),
+    ("Analyse comparative BTC/ETH", "Concept", "ChapterSection"),
+    ("Conclusion", "Concept", "ChapterSection"),
+]
+
+lot1 = {
     **payload_common,
-    'lot': 'LOT-1',
-    'title': 'Concept hierarchy + unresolved concept merges',
-    'operations': lot1,
+    "lot": "LOT-1",
+    "title": "Hiérarchie des concepts (ConceptTechnical/ConceptSecondary/NativeFormula/ChapterSection)",
+    "operations": [
+        {
+            "old_entity": name,
+            "old_type": old_t,
+            "action": "rename_retype",
+            "new_entity": name,
+            "new_type": new_t,
+            "confidence": 0.75,
+            "rationale": "split hierarchy to reduce unclassified Concept backlog",
+            "old_entity_exists_v96": exists_name(name),
+            "new_entity_exists_v96": exists_name(name),
+        }
+        for (name, old_t, new_t) in lot1_ops
+    ],
 }
-lot2_payload = {
+
+# LOT-2 — remaining ActorNonHuman split
+lot2_ops = [
+    ("AntPool", "InfrastructureService"),
+    ("F2Pool", "InfrastructureService"),
+    ("GHash.io", "InfrastructureService"),
+    ("Slush Pool", "InfrastructureService"),
+    ("BTC Guild", "InfrastructureService"),
+    ("Bitcoin ABC", "SoftwareClient"),
+    ("Bitcoin Knots", "SoftwareClient"),
+    ("Bitcoin Unlimited", "SoftwareClient"),
+]
+
+lot2 = {
     **payload_common,
-    'lot': 'LOT-2',
-    'title': 'ActorNonHuman split + StakeholderGroup completion',
-    'operations': lot2,
+    "lot": "LOT-2",
+    "title": "ActorNonHuman → InfrastructureService / SoftwareClient",
+    "operations": [
+        {
+            "old_entity": name,
+            "old_type": "ActorNonHuman",
+            "action": "retype",
+            "new_entity": name,
+            "new_type": new_t,
+            "confidence": 0.99,
+            "rationale": "explicit remaining split requested",
+            "old_entity_exists_v96": exists_name(name),
+            "new_entity_exists_v96": exists_name(name),
+        }
+        for (name, new_t) in lot2_ops
+    ],
 }
-lot3_payload = {
+
+# LOT-3 — StakeholderGroup completion (6+)
+lot3_ops = [
+    "Mineurs Bitcoin",
+    "Pools de minage",
+    "Opérateurs de nœuds complets",
+    "Fournisseurs de portefeuilles",
+    "Core Developers (Bitcoin)",
+    "Core Developers (Ethereum)",
+]
+
+lot3 = {
     **payload_common,
-    'lot': 'LOT-3',
-    'title': 'InfrastructureDomain canonization + missing relation families',
-    **lot3,
+    "lot": "LOT-3",
+    "title": "Complétion StakeholderGroup (6 collectifs minimum)",
+    "operations": [
+        {
+            "old_entity": name,
+            "old_type": "ActorGroup",
+            "action": "rename_retype",
+            "new_entity": name,
+            "new_type": "StakeholderGroup",
+            "confidence": 0.9,
+            "rationale": "separate empirical collectives from analytical categories",
+            "old_entity_exists_v96": exists_name(name),
+            "new_entity_exists_v96": exists_name(name),
+        }
+        for name in lot3_ops
+    ],
 }
 
-(OUTDIR / 'lot-1-concepts.json').write_text(json.dumps(lot1_payload, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
-(OUTDIR / 'lot-2-actors-stakeholders.json').write_text(json.dumps(lot2_payload, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
-(OUTDIR / 'lot-3-infra-relations.json').write_text(json.dumps(lot3_payload, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
+# LOT-4 — canonical InfrastructureDomain target only
+lot4 = {
+    **payload_common,
+    "lot": "LOT-4",
+    "title": "Canonisation InfrastructureDomain (9 domaines cibles)",
+    "canonical_infrastructure_domains_target": [
+        "Protocole et couche de base",
+        "Traitement des transactions",
+        "Altcoins, tokens et surcouches",
+        "Services de portefeuille et de paiement",
+        "Conformité réglementaire",
+        "Sphère d’usage",
+        "Information et connaissance",
+        "Monétisation",
+        "Gouvernance infrastructurelle",
+    ],
+}
 
-# Planning doc
-concept_unclassified = 0
-# Concept type id
-type_map = {t['name']: t['id'] for t in g['types']}
-concept_id = type_map.get('Concept')
-if concept_id:
-    concept_unclassified = sum(1 for e in g['entities'] if concept_id in e.get('types', []))
+# LOT-5 — missing relation families
+relations = [
+    ("Core Developers (Bitcoin)", "instanceOfCategory", "Développeurs Core"),
+    ("Core Developers (Ethereum)", "instanceOfCategory", "Développeurs Core"),
+    ("Mineurs Bitcoin", "instanceOfCategory", "Mineurs et assimilés"),
+    ("Pools de minage", "instanceOfCategory", "Mineurs et assimilés"),
+    ("Opérateurs de nœuds complets", "instanceOfCategory", "Nœuds complets (Full Nodes)"),
+    ("Fournisseurs de portefeuilles", "instanceOfCategory", "Fournisseurs de portefeuilles"),
+    ("Monétisation", "organizes", "UCN BTC"),
+    ("Monétisation", "organizes", "UCN ETH"),
+    ("Monétisation", "partOfMonetizationProcess", "Passerelle (gateway / on-off ramp)"),
+    ("Monétisation", "partOfMonetizationProcess", "Services de portefeuille et de paiement"),
+]
 
-md = f"""# v97 rollout en lots (task-by-task)
+lot5 = {
+    **payload_common,
+    "lot": "LOT-5",
+    "title": "Ajout des nouvelles familles de relations",
+    "relations_to_add": [
+        {
+            "subject": s,
+            "predicate": p,
+            "object": o,
+            "subject_exists_v96": exists_name(s),
+            "object_exists_v96": exists_name(o),
+        }
+        for (s, p, o) in relations
+    ],
+}
+
+# LOT-6 — unresolved merges
+lot6_merges = [
+    ("Nominalisme monetaire non etatiste", "Nominalisme monétaire non étatiste"),
+    ("Ethereum Virtual Machine", "Ethereum Virtual Machine (EVM)"),
+    ("Politique de crises", "Politique de crise"),
+]
+
+lot6 = {
+    **payload_common,
+    "lot": "LOT-6",
+    "title": "Fusions manquées restantes (normalisation finale)",
+    "operations": [
+        {
+            "old_entity": old,
+            "old_type": "Concept",
+            "action": "merge_into",
+            "new_entity": new,
+            "new_type": "Concept",
+            "confidence": 0.95,
+            "rationale": "fix unresolved merge from the non-implemented checklist",
+            "old_entity_exists_v96": exists_name(old),
+            "new_entity_exists_v96": exists_name(new),
+        }
+        for (old, new) in lot6_merges
+    ],
+}
+
+outputs = {
+    "lot-1-concept-hierarchy.json": lot1,
+    "lot-2-actornonhuman-split.json": lot2,
+    "lot-3-stakeholder-groups.json": lot3,
+    "lot-4-infrastructure-domain-canon.json": lot4,
+    "lot-5-relations.json": lot5,
+    "lot-6-missing-merges.json": lot6,
+}
+
+for filename, payload in outputs.items():
+    (OUTDIR / filename).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+# README for merge sequencing
+md = """# v97 rollout en 6 lots (task-by-task)
 
 Base: `grc20-these-mael-rolland-v96.json`.
 
-## LOT-1 — Hiérarchie des concepts
-- Fichier: `Migration/v97_lots/lot-1-concepts.json`
-- Contenu: retypes `Concept` vers `CoreConcept`/`SecondaryConcept`/`TechnicalConcept`, slogans vers `NativeFormula`, titres de section vers `ChapterSection`, et fusions manquantes (Nominalisme, EVM, Politique de crise[s]).
-- Taille: **{len(lot1)} opérations**.
+Objectif: éviter le dépassement de taille de diff en poussant **lot par lot**.
 
-## LOT-2 — ActorNonHuman + StakeholderGroup
-- Fichier: `Migration/v97_lots/lot-2-actors-stakeholders.json`
-- Contenu: éclatement d'acteurs non humains vers `InfrastructureService` / `SoftwareClient`, + retypes des groupes attendus vers `StakeholderGroup`.
-- Taille: **{len(lot2)} opérations**.
+## Ordre de merge recommandé
+1. `lot-1-concept-hierarchy.json` — hiérarchie des concepts (gros backlog)
+2. `lot-2-actornonhuman-split.json` — ActorNonHuman résiduels
+3. `lot-3-stakeholder-groups.json` — compléter 6+ StakeholderGroup
+4. `lot-4-infrastructure-domain-canon.json` — 9 domaines canoniques
+5. `lot-5-relations.json` — nouvelles relations (`instanceOfCategory`, `organizes`, `partOfMonetizationProcess`)
+6. `lot-6-missing-merges.json` — fusions manquées finales
 
-## LOT-3 — InfrastructureDomain + nouvelles relations
-- Fichier: `Migration/v97_lots/lot-3-infra-relations.json`
-- Contenu: cible de 9 domaines canoniques + ajout des relations `instanceOfCategory`, `organizes`, `partOfMonetizationProcess`.
-- Taille: **{len(relations)} relations**.
-
-## État restant (avant application)
-- Entités avec type `Concept` encore non hiérarchisé: **{concept_unclassified}**.
-- Les 3 lots sont conçus pour être mergés séparément afin d'éviter un diff massif.
+## Notes
+- Chaque lot est indépendant et volontairement petit.
+- Les champs `*_exists_v96` servent à vérifier rapidement la présence des labels dans la base v96.
 """
-(OUTDIR / 'README.md').write_text(md, encoding='utf-8')
+(OUTDIR / "README.md").write_text(md, encoding="utf-8")
 
-print('Generated lots in', OUTDIR)
-print('lot1', len(lot1), 'lot2', len(lot2), 'lot3_relations', len(relations))
+print("Generated 6 lot files in", OUTDIR)
+for filename in outputs:
+    print("-", filename)
