@@ -2740,8 +2740,10 @@ const Graph = (() => {
       n.data('focusCol', col); n.data('focusBand', row);
     });
 
-    // ── Vertical stacking per cell — TOUS les nœuds visibles, grid adaptatif ──
-    // Pas de suppression / invisibilisation : la lisibilité vient de la structure.
+    // ── Vertical stacking — tous les nœuds visibles, algo original + tri typologique ──
+    // Principe: numSubcols croît librement → pour N grand, subColW → 0 → tous les nœuds
+    // convergent vers cx avec un jitter fixe ±14px → bande verticale étroite et aérée
+    const maxPerSubcol = Math.max(1, Math.floor(ROW_H * 0.88 / NODE_H));
     const cellFrac = CELL_W_FRAC;
     Object.entries(cells).forEach(([key, nodes]) => {
       const [rStr, cStr] = key.split('_');
@@ -2763,36 +2765,24 @@ const Graph = (() => {
         return db - da;
       });
 
-      // Grid adaptatif: calcul automatique des sous-colonnes et de l'espacement
-      // pour loger tous les N nœuds dans la cellule (accepte la superposition dense)
-      const cellW = cwC * cellFrac;
-      const minSubColW = isMobile ? 7 : 12; // largeur minimale par sous-col (px)
-      const maxSubcols = Math.max(1, Math.floor(cellW / minSubColW));
-      // Cible: remplir la hauteur ROW_H × 0.88 avec un espacement raisonnable
-      const targetNodeH = isMobile ? 5 : 9; // espacement cible initial
-      const targetPerSubcol = Math.max(1, Math.floor(ROW_H * 0.88 / targetNodeH));
-      // Nombre de sous-colonnes nécessaires pour loger tous les nœuds
-      const numSubcols = Math.min(maxSubcols, Math.max(1, Math.ceil(N / targetPerSubcol)));
-      const nodesPerSubcol = Math.ceil(N / numSubcols);
-      // Espacement vertical adapté à la densité réelle (peut être < targetNodeH)
-      const adaptedNodeH = Math.max(isMobile ? 3 : 5,
-        Math.floor(ROW_H * 0.88 / nodesPerSubcol));
+      // Algo original: numSubcols libre, grand N → subColW ≈ 0 → bande verticale étroite
+      const numSubcols = Math.ceil(N / maxPerSubcol);
+      const cellW  = cwC * cellFrac;
       const subColW = numSubcols > 1 ? cellW / numSubcols : 0;
-      // Jitter: inversement proportionnel à la densité
-      const densityRatio = Math.min(1, 30 / Math.max(N, 1));
-      const jxAmp = isMobile ? Math.max(3, 14 * densityRatio) : Math.max(8, 44 * densityRatio);
-      const jyAmp = isMobile ? Math.max(2, 10 * densityRatio) : Math.max(5, 24 * densityRatio);
+      // Jitter fixe et modeste → bandes lisibles avec texture organique
+      const jxAmp = isMobile ? 14 : 32;
+      const jyAmp = isMobile ?  9 : 20;
 
       nodes.forEach((n, i) => {
-        const sc     = Math.min(Math.floor(i / nodesPerSubcol), numSubcols - 1);
-        const ri     = i - sc * nodesPerSubcol;
-        const count  = Math.min(nodesPerSubcol, N - sc * nodesPerSubcol);
+        const sc    = Math.floor(i / maxPerSubcol);
+        const ri    = i % maxPerSubcol;
+        const count = Math.min(N - sc * maxPerSubcol, maxPerSubcol);
         const startX = numSubcols > 1 ? cx_c - cellW / 2 + subColW * (sc + 0.5) : cx_c;
-        const startY = cy_c - (count * adaptedNodeH) / 2;
+        const startY = cy_c - (count * NODE_H) / 2;
         const jx = (Math.random() - 0.5) * 2 * jxAmp;
         const jy = (Math.random() - 0.5) * 2 * jyAmp;
-        n.position({ x: startX + jx, y: startY + ri * adaptedNodeH + jy });
-        n.style({ opacity: 1.0 }); // TOUS les nœuds visibles
+        n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
+        n.style({ opacity: 1.0 });
       });
     });
 
