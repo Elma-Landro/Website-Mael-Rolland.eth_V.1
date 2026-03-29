@@ -2229,6 +2229,10 @@ const Graph = (() => {
         style: { 'display': 'none' }
       },
       {
+        selector: 'node.scrolly-hidden',
+        style: { 'display': 'none' }
+      },
+      {
         selector: 'node.search-hidden',
         style: { 'display': 'none' }
       },
@@ -2255,6 +2259,14 @@ const Graph = (() => {
       {
         selector: 'edge.faded',
         style: { 'opacity': 0.06 }
+      },
+      {
+        selector: 'edge.scrolly-hidden',
+        style: { 'display': 'none' }
+      },
+      {
+        selector: 'edge.scrolly-active',
+        style: { 'opacity': 0.95, 'width': 1.2, 'line-color': '#ffcc66', 'target-arrow-color': '#ffcc66' }
       },
       // ── Nébuleuse : glow fort sur chaque nœud → effet nuage ──
       {
@@ -5396,22 +5408,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Scrollytelling : highlight par types ─────────────────
+  function applyScrollyFocus(visibleNodeIds) {
+    const cy = Graph.cy;
+    if (!cy) return;
+    const visible = visibleNodeIds instanceof Set ? visibleNodeIds : new Set(visibleNodeIds || []);
+    cy.elements().removeClass('highlighted faded scrolly-hidden scrolly-active');
+    if (!visible.size) return;
+
+    cy.nodes().forEach(n => {
+      if (visible.has(n.data('id'))) n.addClass('highlighted');
+      else n.addClass('scrolly-hidden');
+    });
+    cy.edges().forEach(e => {
+      const src = e.source().data('id');
+      const tgt = e.target().data('id');
+      if (visible.has(src) && visible.has(tgt)) e.addClass('highlighted scrolly-active');
+      else e.addClass('scrolly-hidden');
+    });
+  }
+
   function highlightByTypes(types) {
     const cy = Graph.cy;
     if (!cy) return;
-    cy.elements().removeClass('highlighted faded');
-    if (!types || !types.length) return;
+    if (!types || !types.length) {
+      cy.elements().removeClass('highlighted faded scrolly-hidden scrolly-active');
+      return;
+    }
     const typeSet = new Set(types);
+    const visible = new Set();
     cy.nodes().forEach(n => {
-      if (typeSet.has(n.data('typeName'))) n.addClass('highlighted');
-      else n.addClass('faded');
+      if (typeSet.has(n.data('typeName'))) visible.add(n.data('id'));
     });
-    cy.edges().forEach(e => {
-      const src = e.source().data('typeName');
-      const tgt = e.target().data('typeName');
-      if (typeSet.has(src) || typeSet.has(tgt)) e.addClass('highlighted');
-      else e.addClass('faded');
-    });
+    applyScrollyFocus(visible);
     // Recadrer le canvas sur les nœuds mis en évidence
     const highlighted = cy.nodes('.highlighted');
     if (highlighted.length) {
@@ -5423,23 +5451,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function highlightByChapter(chapterId) {
     const cy = Graph.cy;
     if (!cy || !State.data) return;
-    cy.elements().removeClass('highlighted faded');
     const linked = new Set();
     State.data.relations.forEach(r => {
       if (r.from === chapterId) linked.add(r.to);
       if (r.to === chapterId) linked.add(r.from);
     });
     linked.delete(chapterId);
-    cy.nodes().forEach(n => {
-      if (linked.has(n.data('id'))) n.addClass('highlighted');
-      else n.addClass('faded');
-    });
-    cy.edges().forEach(e => {
-      const src = e.source().data('id');
-      const tgt = e.target().data('id');
-      if (linked.has(src) || linked.has(tgt)) e.addClass('highlighted');
-      else e.addClass('faded');
-    });
+    applyScrollyFocus(linked);
     const highlighted = cy.nodes('.highlighted');
     if (highlighted.length) {
       cy.animate({ fit: { eles: highlighted, padding: 60 } }, { duration: 500 });
@@ -5460,7 +5478,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!sectionNode) return;
 
     const sectionId = sectionNode.id;
-    cy.elements().removeClass('highlighted faded');
 
     // Collect all entities linked via appears_in_section to this section
     const appears_rt = State.data.relation_types &&
@@ -5472,17 +5489,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     linked.add(sectionId);
-
-    cy.nodes().forEach(n => {
-      if (linked.has(n.data('id'))) n.addClass('highlighted');
-      else n.addClass('faded');
-    });
-    cy.edges().forEach(e => {
-      const src = e.source().data('id');
-      const tgt = e.target().data('id');
-      if (linked.has(src) && linked.has(tgt)) e.addClass('highlighted');
-      else e.addClass('faded');
-    });
+    applyScrollyFocus(linked);
 
     const highlighted = cy.nodes('.highlighted');
     if (highlighted.length) {
@@ -5627,7 +5634,7 @@ document.addEventListener('DOMContentLoaded', () => {
       applyScrollyMobilePanelState();
       if (scrollyObserver) { scrollyObserver.disconnect(); scrollyObserver = null; }
       if (Graph.cy) {
-        Graph.cy.elements().removeClass('highlighted faded');
+        Graph.cy.elements().removeClass('highlighted faded scrolly-hidden scrolly-active');
         Graph.cy.resize();
         Graph.fit();
       }
