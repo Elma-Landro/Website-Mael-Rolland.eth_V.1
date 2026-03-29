@@ -28,3 +28,6 @@ Objectif: éviter un diff massif en poussant **lot par lot**.
   - `lot-2-actors-stakeholders.json`
   - `lot-3-infra-relations.json`
 - Ces fichiers legacy évitent les conflits lorsque d'autres branches modifient encore les anciens paths.
+
+## Vérification rapide
+- `python3 Migration/test_build_v97_lots.py`
