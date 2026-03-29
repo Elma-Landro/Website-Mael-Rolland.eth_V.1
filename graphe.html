@@ -2632,6 +2632,44 @@ const Graph = (() => {
     const NODE_H     = isMobile ? 9    : 16;
     const CELL_W_FRAC = 0.78;
 
+    // ── batch4: variable column widths (desktop V3 non-strata) ───────────
+    // Ratios: Chap.|Struct.|Objets|Gouvern.|Crises|Acteurs|Concepts|Réf./Sources
+    const COL_WIDTH_RATIOS = (!useStrata && !isMobile)
+      ? [0.6, 0.8, 1.0, 0.95, 0.9, 1.15, 1.15, 1.2]
+      : null;
+    const colWidths = COL_WIDTH_RATIOS ? COL_WIDTH_RATIOS.map(r => Math.round(COL_W * r)) : null;
+    const colXCenter = (() => {
+      if (!colWidths) return null;
+      const centers = []; let acc = OX;
+      for (let i = 0; i < colWidths.length; i++) { centers[i] = acc + colWidths[i] / 2; acc += colWidths[i]; }
+      return centers;
+    })();
+    const colCX = col => colXCenter ? (colXCenter[col] ?? OX + col * COL_W) : OX + col * COL_W;
+    const colCW = col => colWidths ? (colWidths[col] ?? COL_W) : COL_W;
+
+    // ── batch4: type-priority for internal cell ordering ─────────────────
+    const TYPE_SORT_PRIORITY = {
+      // Acteurs (col 5)
+      'StakeholderCategory': 0,
+      'Institution': 1, 'Organization': 1,
+      'StakeholderGroup': 2,
+      'Person': 3, 'Actor': 3,
+      'ActorGroup': 4,
+      // Concepts (col 6)
+      'CoreConcept': 0, 'ConceptCore': 0,
+      'Concept': 1, 'TheoreticFramework': 1, 'ConceptSecondary': 1,
+      'ConceptTechnical': 2, 'Method': 2,
+      'NativeFormula': 3,
+      // Réf./Sources (col 7)
+      'AcademicWork': 0, 'Corpus': 0,
+      'PrimarySource': 1,
+      'Reference': 2,
+      'SourceQuote': 3, 'GreyLiterature': 3, 'IndigenousLiterature': 3,
+      'PriceSeries': 4, 'PriceWindow': 4,
+    };
+    // batch4: foreground density cap per cell (surplus → faint background cloud)
+    const DENSITY_CAP_FG = isMobile ? 18 : 38;
+
     // ── Mobile col map / labels / halo colors ────────────
     // V2 strata: stratum-name → 4 macro-cols; V3: identité (7 colonnes conservées)
     const MOBILE_COL_MAP_V2 = useStrata ? {
@@ -2704,34 +2742,53 @@ const Graph = (() => {
       n.data('focusCol', col); n.data('focusBand', row);
     });
 
-    // ── Vertical stacking per cell (hubs at top) ─────────
+    // ── Vertical stacking per cell (batch4: type-priority + density cap) ─
     const maxPerSubcol = Math.max(1, Math.floor(ROW_H * 0.88 / NODE_H));
     Object.entries(cells).forEach(([key, nodes]) => {
       const [rStr, cStr] = key.split('_');
       const row = parseInt(rStr), col = parseInt(cStr);
-      const cx   = OX + col * COL_W;
+      const cx_c = colCX(col);
       const cy_c = OY + row * ROW_H;
+      const cwC  = colCW(col);
+      // batch4: sort by type hierarchy first, then degree
       nodes.sort((a, b) => {
+        const pa = TYPE_SORT_PRIORITY[a.data('typeName')] ?? 50;
+        const pb = TYPE_SORT_PRIORITY[b.data('typeName')] ?? 50;
+        if (pa !== pb) return pa - pb;
         const da = (State.maps.outgoing[a.data('id')]||[]).length
                  + (State.maps.incoming[a.data('id')]||[]).length;
         const db = (State.maps.outgoing[b.data('id')]||[]).length
                  + (State.maps.incoming[b.data('id')]||[]).length;
         return db - da;
       });
-      const numSubcols = Math.ceil(nodes.length / maxPerSubcol);
-      const cellW      = COL_W * CELL_W_FRAC;
-      const subColW    = numSubcols > 1 ? cellW / numSubcols : 0;
-      nodes.forEach((n, i) => {
+      // batch4: foreground / background split — cap density to avoid brick walls
+      const fgNodes = nodes.slice(0, DENSITY_CAP_FG);
+      const bgNodes = nodes.slice(DENSITY_CAP_FG);
+      // Position background nodes as faint dispersed cloud
+      bgNodes.forEach(n => {
+        const jx = (Math.random() - 0.5) * cwC * (isMobile ? 0.80 : 0.72);
+        const jy = (Math.random() - 0.5) * ROW_H * (isMobile ? 0.60 : 0.72);
+        n.position({ x: cx_c + jx, y: cy_c + jy });
+        n.style({ opacity: 0.20 });
+      });
+      // Position foreground nodes: single subcol on mobile for organic blob look
+      const numSubcols = isMobile ? 1 : Math.ceil(fgNodes.length / maxPerSubcol);
+      const cellW = cwC * CELL_W_FRAC;
+      const subColW = numSubcols > 1 ? cellW / numSubcols : 0;
+      fgNodes.forEach((n, i) => {
         const sc    = Math.floor(i / maxPerSubcol);
         const ri    = i % maxPerSubcol;
-        const count = Math.min(nodes.length - sc * maxPerSubcol, maxPerSubcol);
+        const count = Math.min(fgNodes.length - sc * maxPerSubcol, maxPerSubcol);
         const startX = numSubcols > 1
-          ? cx - cellW / 2 + subColW * (sc + 0.5)
-          : cx;
+          ? cx_c - cellW / 2 + subColW * (sc + 0.5)
+          : cx_c;
         const startY = cy_c - (count * NODE_H) / 2;
-        const jx = (Math.random() - 0.5) * (isMobile ? 28 : 42);
-        const jy = (Math.random() - 0.5) * (isMobile ? 18 : 28);
+        const jxMax = isMobile ? Math.min(cwC * 0.38, 20) : 32;
+        const jyMax = isMobile ? 13 : 20;
+        const jx = (Math.random() - 0.5) * 2 * jxMax;
+        const jy = (Math.random() - 0.5) * 2 * jyMax;
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
+        n.style({ opacity: 1.0 });
       });
     });
 
@@ -2809,7 +2866,7 @@ const Graph = (() => {
       COL_V3_COLORS.forEach((color, j) => {
         cy.add({
           data: { id: '__halo_' + j, color },
-          position: { x: OX + j * COL_W, y: haloCenterY },
+          position: { x: colCX(j), y: haloCenterY },
           classes: 'col-halo',
         });
       });
@@ -2871,17 +2928,21 @@ const Graph = (() => {
             labelColor: COL_V3_COLORS[j] || '#aaaaaa',
             labelSize: colSize, labelRotation: colRotation,
           },
-          position: { x: OX + j * COL_W, y: colLabelY },
+          position: { x: colCX(j), y: colLabelY },
           classes: 'type-label',
         });
       });
     }
 
-    // ── Halo styles ──────────────────────────────────────
+    // ── Halo styles (batch4: per-column width for desktop V3) ──────────
     cy.$('.col-halo').forEach(n => {
+      // Extract column index for variable width (desktop V3 halos: id = __halo_j)
+      const idParts = n.data('id').split('_');
+      const j = parseInt(idParts[idParts.length - 1]);
+      const haloW = isMobile ? COL_W * 1.20 : (colWidths && !isNaN(j) ? colCW(j) * 0.92 : COL_W * 0.92);
       n.style({
         'shape':              'ellipse',
-        'width':              isMobile ? COL_W * 1.20 : COL_W * 0.92,
+        'width':              haloW,
         'height':             isMobile ? ROW_H * 1.25 : haloH,
         'background-opacity': 0.01,
         'shadow-color':       n.data('color'),
@@ -3781,23 +3842,27 @@ const FocusMode = (() => {
   };
 
   const PRESETS = {
+    // batch4 presets — structure_these / structure de la thèse
     'matrice': [
-      { label: 'Gouvern. Chap. III', col: 3, band: 3 },
-      { label: 'Crises Chap. III',   col: 4, band: 3 },
-      { label: 'Acteurs Chap. I',    col: 5, band: 1 },
-      { label: 'Concepts Chap. II',  col: 6, band: 2 },
+      { label: 'Acteurs du Chap. I',      col: 5, band: 1 },
+      { label: 'Objets du Chap. I',        col: 2, band: 1 },
+      { label: 'Gouvernance du Chap. II',  col: 3, band: 2 },
+      { label: 'Crises du Chap. III',      col: 4, band: 3 },
+      { label: 'Concepts transversaux',    col: 6, band: 5 },
     ],
+    // batch4 presets — monetisation_cm
     'monetisation': [
-      { label: 'Usages',            col: 4 },
-      { label: 'Stabilisation',     col: 6 },
-      { label: 'Acteurs valoris.',  col: 5, row: 3 },
-      { label: 'Cas circulation',   col: 2, row: 4 },
+      { label: 'Noyau de la monétisation', col: 0, row: 0 },
+      { label: 'Usages',                   col: 4, row: 4 },
+      { label: 'Accès et passerelles',     col: 3, row: 1 },
+      { label: 'Stabilisation',            col: 6, row: 4 },
     ],
+    // batch4 presets — qui_gouverne
     'qui-gouverne': [
-      { label: 'Personnes décision', col: 6, row: 2 },
-      { label: 'Arènes maintenance', col: 5, row: 4 },
-      { label: 'Groupes conflit',    col: 4, row: 3 },
-      { label: 'Catégories pouvoir', col: 2, row: 0 },
+      { label: 'Arènes de décision',                      col: 5, row: 2 },
+      { label: 'Personnes de la maintenance',             col: 6, row: 4 },
+      { label: 'Groupes en conflit',                      col: 4, row: 3 },
+      { label: 'Catégories du pouvoir distribué',         col: 2, row: 0 },
     ],
   };
 
