@@ -103,7 +103,7 @@ for op in ops:
 
 # backfill if missing from table
 seen_lot2 = {(op["old_entity"], op["new_type"]) for op in lot2_ops}
-for entity, new_t in explicit_actor_split - seen_lot2:
+for entity, new_t in sorted(explicit_actor_split - seen_lot2):
     lot2_ops.append(
         {
             "old_entity": entity,
@@ -134,7 +134,7 @@ for op in ops:
         lot3_ops.append(op)
 
 seen_lot3 = {op["old_entity"] for op in lot3_ops}
-for entity in target_stakeholders - seen_lot3:
+for entity in sorted(target_stakeholders - seen_lot3):
     lot3_ops.append(
         {
             "old_entity": entity,
@@ -287,6 +287,21 @@ outputs = {
     "lot-4-infrastructure-domain-canon.json": lot4,
     "lot-5-relations.json": lot5,
     "lot-6-missing-merges.json": lot6,
+    # Legacy filenames kept to reduce merge conflicts with in-flight branches.
+    "lot-1-concepts.json": lot1,
+    "lot-2-actors-stakeholders.json": {
+        **payload_common,
+        "lot": "LOT-2-LEGACY",
+        "title": "Legacy compatibility bundle: ActorNonHuman + StakeholderGroup",
+        "operations": [*lot2_ops, *lot3_ops],
+    },
+    "lot-3-infra-relations.json": {
+        **payload_common,
+        "lot": "LOT-3-LEGACY",
+        "title": "Legacy compatibility bundle: InfrastructureDomain + relations",
+        "canonical_infrastructure_domains_target": lot4["canonical_infrastructure_domains_target"],
+        "relations_to_add": dedup_rel,
+    },
 }
 for filename, payload in outputs.items():
     (OUTDIR / filename).write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -321,6 +336,13 @@ Objectif: éviter un diff massif en poussant **lot par lot**.
 
 ## État restant (avant application)
 - Entités encore typées `Concept` en v96: **{concept_unclassified}**.
+
+## Compatibilité (anti-conflits de merge)
+- Les anciens noms de fichiers sont aussi générés:
+  - `lot-1-concepts.json`
+  - `lot-2-actors-stakeholders.json`
+  - `lot-3-infra-relations.json`
+- Ces fichiers legacy évitent les conflits lorsque d'autres branches modifient encore les anciens paths.
 """
 (OUTDIR / "README.md").write_text(md, encoding="utf-8")
 

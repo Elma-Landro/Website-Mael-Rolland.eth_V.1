@@ -21,3 +21,10 @@ Objectif: éviter un diff massif en poussant **lot par lot**.
 
 ## État restant (avant application)
 - Entités encore typées `Concept` en v96: **391**.
+
+## Compatibilité (anti-conflits de merge)
+- Les anciens noms de fichiers sont aussi générés:
+  - `lot-1-concepts.json`
+  - `lot-2-actors-stakeholders.json`
+  - `lot-3-infra-relations.json`
+- Ces fichiers legacy évitent les conflits lorsque d'autres branches modifient encore les anciens paths.
