@@ -723,6 +723,61 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   .fp-field select { max-width: 90px; font-size: 6px; }
 }
 
+/* ── Mobile floating windows (drag + resize) ───────────── */
+.mobile-panel-drag-handle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 16px;
+  margin: 4px auto 2px;
+  border: 1px solid #ffcc6677;
+  border-radius: 10px;
+  color: #ffcc66;
+  background: rgba(20, 0, 0, 0.6);
+  font-size: 9px;
+  line-height: 1;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+.mobile-panel-resize-handle {
+  display: none;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  right: 4px;
+  bottom: 4px;
+  border-right: 2px solid #ffcc66aa;
+  border-bottom: 2px solid #ffcc66aa;
+  touch-action: none;
+  user-select: none;
+  cursor: nwse-resize;
+}
+.mobile-float-toggle {
+  display: none;
+  font-size: 0.68em;
+  padding: 4px 8px;
+}
+@media (max-width: 900px) {
+  .mobile-float-toggle { display: inline-flex; }
+  .mobile-floating {
+    position: fixed !important;
+    margin: 0 !important;
+    max-width: 95vw;
+    max-height: 85vh;
+    overflow: auto;
+    z-index: 1200 !important;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.72);
+    border: 1px solid #ffb34788;
+    touch-action: none;
+  }
+  .mobile-floating .mobile-panel-drag-handle,
+  .mobile-floating .mobile-panel-resize-handle {
+    display: flex;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -5642,6 +5697,204 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('resize', applyScrollyMobilePanelState);
+
+  // ── Mobile windows: déplacement + redimensionnement ─────
+  (() => {
+    const mobileMq = window.matchMedia('(max-width: 900px)');
+    let zCounter = 1300;
+    const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+    const configs = [
+      {
+        panel: document.getElementById('detail-panel'),
+        toggleHost: document.getElementById('btn-close-panel'),
+        key: 'grc-floating-detail',
+        width: 320,
+        height: 460,
+        fallbackTop: 128,
+        fallbackLeft: 20
+      },
+      {
+        panel: document.getElementById('focus-panel'),
+        toggleHost: document.querySelector('#focus-panel .fp-header'),
+        key: 'grc-floating-focus',
+        width: 340,
+        height: 320,
+        fallbackTop: 220,
+        fallbackLeft: 18
+      },
+      {
+        panel: document.getElementById('scrolly-text'),
+        toggleHost: document.getElementById('btn-scrolly-resize')?.parentElement || document.getElementById('scrolly-text'),
+        key: 'grc-floating-scrolly',
+        width: 350,
+        height: 320,
+        fallbackTop: 240,
+        fallbackLeft: 12
+      }
+    ].filter(cfg => cfg.panel && cfg.toggleHost);
+
+    function attachFloating(cfg) {
+      const { panel, toggleHost, key, width, height, fallbackTop, fallbackLeft } = cfg;
+      if (panel.dataset.mobileFloatingReady) return;
+      panel.dataset.mobileFloatingReady = '1';
+      panel.style.touchAction = 'auto';
+
+      const dragHandle = document.createElement('div');
+      dragHandle.className = 'mobile-panel-drag-handle';
+      dragHandle.textContent = '⇕ Déplacer';
+      panel.insertBefore(dragHandle, panel.firstChild);
+
+      const resizeHandle = document.createElement('div');
+      resizeHandle.className = 'mobile-panel-resize-handle';
+      panel.appendChild(resizeHandle);
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'btn-secondary btn-sm mobile-float-toggle';
+      toggleBtn.textContent = '◱ Fenêtre';
+      toggleHost.appendChild(toggleBtn);
+
+      const saveState = () => {
+        if (!panel.classList.contains('mobile-floating')) {
+          localStorage.removeItem(key);
+          return;
+        }
+        const rect = panel.getBoundingClientRect();
+        localStorage.setItem(key, JSON.stringify({
+          left: rect.left, top: rect.top, width: rect.width, height: rect.height
+        }));
+      };
+
+      const applyBounds = (left, top, w, h) => {
+        const minW = 240;
+        const minH = 180;
+        const maxW = window.innerWidth - 8;
+        const maxH = window.innerHeight - 8;
+        const nextW = clamp(w, minW, maxW);
+        const nextH = clamp(h, minH, maxH);
+        const nextLeft = clamp(left, 4, window.innerWidth - nextW - 4);
+        const nextTop = clamp(top, 4, window.innerHeight - nextH - 4);
+        panel.style.left = `${nextLeft}px`;
+        panel.style.top = `${nextTop}px`;
+        panel.style.width = `${nextW}px`;
+        panel.style.height = `${nextH}px`;
+      };
+
+      const enableFloating = () => {
+        if (!mobileMq.matches) return;
+        panel.classList.add('mobile-floating');
+        panel.style.right = 'auto';
+        panel.style.bottom = 'auto';
+        panel.style.maxHeight = 'none';
+        panel.style.transform = 'none';
+        panel.style.zIndex = String(++zCounter);
+        let saved = null;
+        try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch {}
+        applyBounds(
+          saved?.left ?? fallbackLeft,
+          saved?.top ?? fallbackTop,
+          saved?.width ?? width,
+          saved?.height ?? height
+        );
+        saveState();
+      };
+
+      const disableFloating = () => {
+        panel.classList.remove('mobile-floating');
+        panel.style.left = '';
+        panel.style.top = '';
+        panel.style.width = '';
+        panel.style.height = '';
+        panel.style.right = '';
+        panel.style.bottom = '';
+        panel.style.maxHeight = '';
+        panel.style.transform = '';
+        localStorage.removeItem(key);
+      };
+
+      toggleBtn.addEventListener('click', () => {
+        if (panel.classList.contains('mobile-floating')) {
+          disableFloating();
+          toggleBtn.textContent = '◱ Fenêtre';
+        } else {
+          enableFloating();
+          toggleBtn.textContent = '⇱ Ancrer';
+        }
+      });
+
+      panel.addEventListener('pointerdown', () => {
+        if (panel.classList.contains('mobile-floating')) panel.style.zIndex = String(++zCounter);
+      });
+
+      let dragState = null;
+      dragHandle.addEventListener('pointerdown', e => {
+        if (!panel.classList.contains('mobile-floating')) return;
+        e.preventDefault();
+        dragState = {
+          pointerId: e.pointerId,
+          startX: e.clientX,
+          startY: e.clientY,
+          rect: panel.getBoundingClientRect()
+        };
+        dragHandle.setPointerCapture(e.pointerId);
+      });
+      dragHandle.addEventListener('pointermove', e => {
+        if (!dragState || e.pointerId !== dragState.pointerId) return;
+        const dx = e.clientX - dragState.startX;
+        const dy = e.clientY - dragState.startY;
+        applyBounds(dragState.rect.left + dx, dragState.rect.top + dy, dragState.rect.width, dragState.rect.height);
+      });
+      const stopDrag = e => {
+        if (!dragState || e.pointerId !== dragState.pointerId) return;
+        dragState = null;
+        saveState();
+      };
+      dragHandle.addEventListener('pointerup', stopDrag);
+      dragHandle.addEventListener('pointercancel', stopDrag);
+
+      let resizeState = null;
+      resizeHandle.addEventListener('pointerdown', e => {
+        if (!panel.classList.contains('mobile-floating')) return;
+        e.preventDefault();
+        resizeState = {
+          pointerId: e.pointerId,
+          startX: e.clientX,
+          startY: e.clientY,
+          rect: panel.getBoundingClientRect()
+        };
+        resizeHandle.setPointerCapture(e.pointerId);
+      });
+      resizeHandle.addEventListener('pointermove', e => {
+        if (!resizeState || e.pointerId !== resizeState.pointerId) return;
+        const dx = e.clientX - resizeState.startX;
+        const dy = e.clientY - resizeState.startY;
+        applyBounds(resizeState.rect.left, resizeState.rect.top, resizeState.rect.width + dx, resizeState.rect.height + dy);
+      });
+      const stopResize = e => {
+        if (!resizeState || e.pointerId !== resizeState.pointerId) return;
+        resizeState = null;
+        saveState();
+      };
+      resizeHandle.addEventListener('pointerup', stopResize);
+      resizeHandle.addEventListener('pointercancel', stopResize);
+
+      const syncMode = () => {
+        if (!mobileMq.matches && panel.classList.contains('mobile-floating')) {
+          disableFloating();
+          toggleBtn.textContent = '◱ Fenêtre';
+        }
+      };
+      mobileMq.addEventListener('change', syncMode);
+      window.addEventListener('resize', () => {
+        if (!panel.classList.contains('mobile-floating')) return;
+        const r = panel.getBoundingClientRect();
+        applyBounds(r.left, r.top, r.width, r.height);
+        saveState();
+      });
+    }
+
+    configs.forEach(attachFloating);
+  })();
 
   FocusMode.init();
 
