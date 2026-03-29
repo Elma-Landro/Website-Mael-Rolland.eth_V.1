@@ -2668,7 +2668,7 @@ const Graph = (() => {
       'PriceSeries': 4, 'PriceWindow': 4,
     };
     // batch4: foreground density cap per cell (surplus → faint background cloud)
-    const DENSITY_CAP_FG = isMobile ? 18 : 38;
+    const DENSITY_CAP_FG = isMobile ? 14 : 38;
 
     // ── Mobile col map / labels / halo colors ────────────
     // V2 strata: stratum-name → 4 macro-cols; V3: identité (7 colonnes conservées)
@@ -2764,32 +2764,39 @@ const Graph = (() => {
       // batch4: foreground / background split — cap density to avoid brick walls
       const fgNodes = nodes.slice(0, DENSITY_CAP_FG);
       const bgNodes = nodes.slice(DENSITY_CAP_FG);
-      // Position background nodes as faint dispersed cloud
+      // Position background nodes as faint dispersed cloud (wider than fg)
       bgNodes.forEach(n => {
-        const jx = (Math.random() - 0.5) * cwC * (isMobile ? 0.80 : 0.72);
-        const jy = (Math.random() - 0.5) * ROW_H * (isMobile ? 0.60 : 0.72);
+        const jx = (Math.random() - 0.5) * cwC * (isMobile ? 1.10 : 0.80);
+        const jy = (Math.random() - 0.5) * ROW_H * (isMobile ? 0.92 : 0.80);
         n.position({ x: cx_c + jx, y: cy_c + jy });
-        n.style({ opacity: 0.20 });
+        n.style({ opacity: 0.18 });
       });
-      // Position foreground nodes: single subcol on mobile for organic blob look
-      const numSubcols = isMobile ? 1 : Math.ceil(fgNodes.length / maxPerSubcol);
-      const cellW = cwC * CELL_W_FRAC;
-      const subColW = numSubcols > 1 ? cellW / numSubcols : 0;
-      fgNodes.forEach((n, i) => {
-        const sc    = Math.floor(i / maxPerSubcol);
-        const ri    = i % maxPerSubcol;
-        const count = Math.min(fgNodes.length - sc * maxPerSubcol, maxPerSubcol);
-        const startX = numSubcols > 1
-          ? cx_c - cellW / 2 + subColW * (sc + 0.5)
-          : cx_c;
-        const startY = cy_c - (count * NODE_H) / 2;
-        const jxMax = isMobile ? Math.min(cwC * 0.38, 20) : 32;
-        const jyMax = isMobile ? 13 : 20;
-        const jx = (Math.random() - 0.5) * 2 * jxMax;
-        const jy = (Math.random() - 0.5) * 2 * jyMax;
-        n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
-        n.style({ opacity: 1.0 });
-      });
+      // Position foreground nodes
+      if (isMobile) {
+        // Mobile: pure random scatter within cell bounds → organic blob, no grid artefacts
+        fgNodes.forEach(n => {
+          const jx = (Math.random() - 0.5) * cwC * 1.05;
+          const jy = (Math.random() - 0.5) * ROW_H * 0.88;
+          n.position({ x: cx_c + jx, y: cy_c + jy });
+          n.style({ opacity: 1.0 });
+        });
+      } else {
+        // Desktop: structured multi-subcol stacking with generous jitter
+        const numSubcols = Math.ceil(fgNodes.length / maxPerSubcol);
+        const cellW = cwC * CELL_W_FRAC;
+        const subColW = numSubcols > 1 ? cellW / numSubcols : 0;
+        fgNodes.forEach((n, i) => {
+          const sc    = Math.floor(i / maxPerSubcol);
+          const ri    = i % maxPerSubcol;
+          const count = Math.min(fgNodes.length - sc * maxPerSubcol, maxPerSubcol);
+          const startX = numSubcols > 1 ? cx_c - cellW / 2 + subColW * (sc + 0.5) : cx_c;
+          const startY = cy_c - (count * NODE_H) / 2;
+          const jx = (Math.random() - 0.5) * 64;
+          const jy = (Math.random() - 0.5) * 40;
+          n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
+          n.style({ opacity: 1.0 });
+        });
+      }
     });
 
     // (fill par colonne supprimé — la couleur par cellule vient du canvas overlay)
