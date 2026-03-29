@@ -347,6 +347,8 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   background: var(--bg2);
   border-left: 1px solid var(--border);
 }
+.floating-panel-grip,
+.floating-panel-resize { display: none; }
 .grc-root.scrolly-mode .grc-sidebar,
 .grc-root.scrolly-mode .grc-panel { display: none; }
 .grc-root.scrolly-mode .grc-main { overflow: visible; align-items: flex-start; }
@@ -554,15 +556,64 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   .grc-root.scrolly-mode .scrolly-text-panel {
     display: block;
     position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 32vh;
+    bottom: 8px; left: 8px; right: auto;
+    width: min(92vw, 420px);
+    height: min(36vh, 320px);
+    max-height: calc(100vh - var(--header-h) - 16px);
+    max-width: calc(100vw - 16px);
+    min-height: 96px;
     overflow-y: auto;
     z-index: 800;
     background: var(--bg-primary, #1a0000);
-    border-top: 1px solid var(--text-secondary, #ffaa33);
+    border: 1px solid var(--text-secondary, #ffaa33);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.45);
     padding: 8px 12px;
     font-size: 0.72em;
     box-sizing: border-box;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+  }
+  .floating-panel-grip {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 8px;
+    padding: 4px 8px;
+    border: 1px dashed var(--text-secondary, #ffaa33);
+    color: var(--text-secondary, #ffaa33);
+    font-size: 0.64em;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+  }
+  .floating-panel-resize {
+    display: block;
+    position: sticky;
+    bottom: 0;
+    left: 100%;
+    width: 22px;
+    height: 22px;
+    margin-left: auto;
+    margin-top: 6px;
+    border: 1px solid var(--text-secondary, #ffaa33);
+    background: rgba(0,0,0,0.35);
+    color: var(--text-secondary, #ffaa33);
+    font-size: 0.85em;
+    cursor: nwse-resize;
+    touch-action: none;
+  }
+  .grc-root.scrolly-mode .scrolly-text-panel.scrolly-collapsed { height: 10vh; }
+  .grc-root.scrolly-mode .grc-canvas-wrap.scrolly-collapsed { height: 90vh; }
+  #btn-scrolly-resize {
+    display: inline-flex;
+    position: sticky;
+    top: 0;
+    z-index: 11;
+    margin-left: auto;
+    margin-bottom: 6px;
+    font-size: 0.75em;
+    padding: 5px 8px;
+    align-items: center;
+    gap: 4px;
   }
 }
 
@@ -881,6 +932,8 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
 <!-- ── Scrollytelling narrative panel ── -->
 <div class="scrolly-text-panel" id="scrolly-text">
+  <div class="floating-panel-grip" id="scrolly-drag-handle" title="Déplacer la fenêtre récit">⠿ Déplacer</div>
+  <button class="btn-secondary btn-sm" id="btn-scrolly-resize" type="button" style="display:none">▾ Réduire</button>
 
   <section class="story-section" data-chapter-id="df405dcd975b406486a260da72f1ad4a">
     <span class="story-tag">Introduction générale · p. 15–51</span>
@@ -998,6 +1051,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     </details>
   </section>
 
+  <button class="floating-panel-resize" id="scrolly-size-handle" type="button" title="Redimensionner la fenêtre récit">◢</button>
 </div><!-- /scrolly-text -->
 
 </div><!-- /grc-main -->
@@ -2214,6 +2268,10 @@ const Graph = (() => {
         style: { 'display': 'none' }
       },
       {
+        selector: 'node.scrolly-hidden',
+        style: { 'display': 'none' }
+      },
+      {
         selector: 'node.search-hidden',
         style: { 'display': 'none' }
       },
@@ -2240,6 +2298,14 @@ const Graph = (() => {
       {
         selector: 'edge.faded',
         style: { 'opacity': 0.06 }
+      },
+      {
+        selector: 'edge.scrolly-hidden',
+        style: { 'display': 'none' }
+      },
+      {
+        selector: 'edge.scrolly-active',
+        style: { 'opacity': 0.95, 'width': 1.2, 'line-color': '#ffcc66', 'target-arrow-color': '#ffcc66' }
       },
       // ── Nébuleuse : glow fort sur chaque nœud → effet nuage ──
       {
@@ -5381,22 +5447,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Scrollytelling : highlight par types ─────────────────
+  function applyScrollyFocus(visibleNodeIds) {
+    const cy = Graph.cy;
+    if (!cy) return;
+    const visible = visibleNodeIds instanceof Set ? visibleNodeIds : new Set(visibleNodeIds || []);
+    cy.elements().removeClass('highlighted faded scrolly-hidden scrolly-active');
+    if (!visible.size) return;
+
+    cy.nodes().forEach(n => {
+      if (visible.has(n.data('id'))) n.addClass('highlighted');
+      else n.addClass('scrolly-hidden');
+    });
+    cy.edges().forEach(e => {
+      const src = e.source().data('id');
+      const tgt = e.target().data('id');
+      if (visible.has(src) && visible.has(tgt)) e.addClass('highlighted scrolly-active');
+      else e.addClass('scrolly-hidden');
+    });
+  }
+
   function highlightByTypes(types) {
     const cy = Graph.cy;
     if (!cy) return;
-    cy.elements().removeClass('highlighted faded');
-    if (!types || !types.length) return;
+    if (!types || !types.length) {
+      cy.elements().removeClass('highlighted faded scrolly-hidden scrolly-active');
+      return;
+    }
     const typeSet = new Set(types);
+    const visible = new Set();
     cy.nodes().forEach(n => {
-      if (typeSet.has(n.data('typeName'))) n.addClass('highlighted');
-      else n.addClass('faded');
+      if (typeSet.has(n.data('typeName'))) visible.add(n.data('id'));
     });
-    cy.edges().forEach(e => {
-      const src = e.source().data('typeName');
-      const tgt = e.target().data('typeName');
-      if (typeSet.has(src) || typeSet.has(tgt)) e.addClass('highlighted');
-      else e.addClass('faded');
-    });
+    applyScrollyFocus(visible);
     // Recadrer le canvas sur les nœuds mis en évidence
     const highlighted = cy.nodes('.highlighted');
     if (highlighted.length) {
@@ -5408,23 +5490,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function highlightByChapter(chapterId) {
     const cy = Graph.cy;
     if (!cy || !State.data) return;
-    cy.elements().removeClass('highlighted faded');
     const linked = new Set();
     State.data.relations.forEach(r => {
       if (r.from === chapterId) linked.add(r.to);
       if (r.to === chapterId) linked.add(r.from);
     });
     linked.delete(chapterId);
-    cy.nodes().forEach(n => {
-      if (linked.has(n.data('id'))) n.addClass('highlighted');
-      else n.addClass('faded');
-    });
-    cy.edges().forEach(e => {
-      const src = e.source().data('id');
-      const tgt = e.target().data('id');
-      if (linked.has(src) || linked.has(tgt)) e.addClass('highlighted');
-      else e.addClass('faded');
-    });
+    applyScrollyFocus(linked);
     const highlighted = cy.nodes('.highlighted');
     if (highlighted.length) {
       cy.animate({ fit: { eles: highlighted, padding: 60 } }, { duration: 500 });
@@ -5445,7 +5517,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!sectionNode) return;
 
     const sectionId = sectionNode.id;
-    cy.elements().removeClass('highlighted faded');
 
     // Collect all entities linked via appears_in_section to this section
     const appears_rt = State.data.relation_types &&
@@ -5457,17 +5528,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     linked.add(sectionId);
-
-    cy.nodes().forEach(n => {
-      if (linked.has(n.data('id'))) n.addClass('highlighted');
-      else n.addClass('faded');
-    });
-    cy.edges().forEach(e => {
-      const src = e.source().data('id');
-      const tgt = e.target().data('id');
-      if (linked.has(src) && linked.has(tgt)) e.addClass('highlighted');
-      else e.addClass('faded');
-    });
+    applyScrollyFocus(linked);
 
     const highlighted = cy.nodes('.highlighted');
     if (highlighted.length) {
@@ -5548,6 +5609,110 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Toggle mode scrolly / éditeur ────────────────────────
   let scrollyMode = false;
+  let scrollyCollapsedMobile = false;
+  const scrollyTextPanel = document.getElementById('scrolly-text');
+  const scrollyCanvasWrap = document.querySelector('.grc-canvas-wrap');
+  const scrollyResizeBtn = document.getElementById('btn-scrolly-resize');
+  const scrollyDragHandle = document.getElementById('scrolly-drag-handle');
+  const scrollySizeHandle = document.getElementById('scrolly-size-handle');
+  const scrollyWindowState = { x: 8, y: 8, w: null, h: null };
+
+  function clamp(v, min, max) { return Math.min(Math.max(v, min), max); }
+  function applyScrollyWindowGeometry() {
+    const margin = 8;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const minW = 260;
+    const minH = scrollyCollapsedMobile ? 72 : 96;
+    const maxW = Math.max(minW, vw - margin * 2);
+    const maxH = Math.max(minH, vh - 72);
+    const w = clamp(scrollyWindowState.w || scrollyTextPanel.offsetWidth || 320, minW, maxW);
+    const h = clamp(scrollyWindowState.h || scrollyTextPanel.offsetHeight || 220, minH, maxH);
+    const maxX = Math.max(margin, vw - w - margin);
+    const maxY = Math.max(margin, vh - h - margin);
+    const x = clamp(scrollyWindowState.x ?? 8, margin, maxX);
+    const y = clamp(scrollyWindowState.y ?? 8, margin, maxY);
+    scrollyWindowState.x = x; scrollyWindowState.y = y; scrollyWindowState.w = w; scrollyWindowState.h = h;
+    scrollyTextPanel.style.left = `${x}px`;
+    scrollyTextPanel.style.right = 'auto';
+    scrollyTextPanel.style.bottom = `${y}px`;
+    scrollyTextPanel.style.width = `${w}px`;
+    scrollyTextPanel.style.height = `${h}px`;
+  }
+
+  function applyScrollyMobilePanelState() {
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if (!scrollyMode || !isMobile) {
+      scrollyResizeBtn.style.display = 'none';
+      scrollyTextPanel.classList.remove('scrolly-collapsed');
+      scrollyCanvasWrap.classList.remove('scrolly-collapsed');
+      scrollyTextPanel.style.left = '';
+      scrollyTextPanel.style.right = '';
+      scrollyTextPanel.style.bottom = '';
+      scrollyTextPanel.style.width = '';
+      scrollyTextPanel.style.height = '';
+      return;
+    }
+    scrollyResizeBtn.style.display = 'inline-flex';
+    scrollyTextPanel.classList.toggle('scrolly-collapsed', scrollyCollapsedMobile);
+    scrollyCanvasWrap.classList.toggle('scrolly-collapsed', scrollyCollapsedMobile);
+    scrollyResizeBtn.textContent = scrollyCollapsedMobile ? '▴ Agrandir' : '▾ Réduire';
+    applyScrollyWindowGeometry();
+  }
+
+  scrollyResizeBtn.addEventListener('click', () => {
+    scrollyCollapsedMobile = !scrollyCollapsedMobile;
+    if (scrollyCollapsedMobile) scrollyWindowState.h = 100;
+    applyScrollyMobilePanelState();
+    setTimeout(() => { if (Graph.cy) Graph.cy.resize(); }, 50);
+  });
+
+  scrollyDragHandle.addEventListener('pointerdown', ev => {
+    if (!window.matchMedia('(max-width: 900px)').matches || !scrollyMode) return;
+    ev.preventDefault();
+    scrollyDragHandle.setPointerCapture(ev.pointerId);
+    const startX = ev.clientX;
+    const startY = ev.clientY;
+    const startLeft = scrollyTextPanel.offsetLeft;
+    const startBottom = parseFloat(scrollyTextPanel.style.bottom || '0');
+    const onMove = mv => {
+      scrollyWindowState.x = startLeft + (mv.clientX - startX);
+      scrollyWindowState.y = startBottom - (mv.clientY - startY);
+      applyScrollyWindowGeometry();
+    };
+    const onUp = () => {
+      scrollyDragHandle.removeEventListener('pointermove', onMove);
+      scrollyDragHandle.removeEventListener('pointerup', onUp);
+      scrollyDragHandle.removeEventListener('pointercancel', onUp);
+    };
+    scrollyDragHandle.addEventListener('pointermove', onMove);
+    scrollyDragHandle.addEventListener('pointerup', onUp);
+    scrollyDragHandle.addEventListener('pointercancel', onUp);
+  });
+
+  scrollySizeHandle.addEventListener('pointerdown', ev => {
+    if (!window.matchMedia('(max-width: 900px)').matches || !scrollyMode) return;
+    ev.preventDefault();
+    scrollySizeHandle.setPointerCapture(ev.pointerId);
+    const startX = ev.clientX;
+    const startY = ev.clientY;
+    const startW = scrollyTextPanel.offsetWidth;
+    const startH = scrollyTextPanel.offsetHeight;
+    const onMove = mv => {
+      scrollyWindowState.w = startW + (mv.clientX - startX);
+      scrollyWindowState.h = startH + (mv.clientY - startY);
+      applyScrollyWindowGeometry();
+    };
+    const onUp = () => {
+      scrollySizeHandle.removeEventListener('pointermove', onMove);
+      scrollySizeHandle.removeEventListener('pointerup', onUp);
+      scrollySizeHandle.removeEventListener('pointercancel', onUp);
+    };
+    scrollySizeHandle.addEventListener('pointermove', onMove);
+    scrollySizeHandle.addEventListener('pointerup', onUp);
+    scrollySizeHandle.addEventListener('pointercancel', onUp);
+  });
+
   document.getElementById('btn-scrolly').addEventListener('click', () => {
     scrollyMode = !scrollyMode;
     const root = document.querySelector('.grc-root');
@@ -5560,6 +5725,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.height = 'auto';
       btn.textContent = '⊞ Éditeur';
       btn.classList.replace('btn-secondary', 'btn-primary');
+      scrollyCollapsedMobile = false;
+      applyScrollyMobilePanelState();
       setTimeout(() => { if (Graph.cy) Graph.cy.resize(); }, 50);
       initScrollyObserver();
       // Activer la première section
@@ -5581,14 +5748,18 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.height = '100%';
       btn.textContent = '📖 Récit';
       btn.classList.replace('btn-primary', 'btn-secondary');
+      scrollyCollapsedMobile = false;
+      applyScrollyMobilePanelState();
       if (scrollyObserver) { scrollyObserver.disconnect(); scrollyObserver = null; }
       if (Graph.cy) {
-        Graph.cy.elements().removeClass('highlighted faded');
+        Graph.cy.elements().removeClass('highlighted faded scrolly-hidden scrolly-active');
         Graph.cy.resize();
         Graph.fit();
       }
     }
   });
+
+  window.addEventListener('resize', applyScrollyMobilePanelState);
 
   FocusMode.init();
 
