@@ -1,0 +1,110 @@
+{
+  "patch_series": "v97-rollout-split",
+  "source_graph": "grc20-these-mael-rolland-v96.json",
+  "lot": "LOT-3",
+  "title": "InfrastructureDomain canonization + missing relation families",
+  "canonical_infrastructure_domains_target": [
+    "Protocole et couche de base",
+    "Traitement des transactions",
+    "Altcoins, tokens et surcouches",
+    "Services de portefeuille et de paiement",
+    "Conformité réglementaire",
+    "Sphère d’usage",
+    "Information et connaissance",
+    "Monétisation",
+    "Gouvernance infrastructurelle"
+  ],
+  "relations_to_add": [
+    {
+      "subject": "Core Developers (Bitcoin)",
+      "predicate": "instanceOfCategory",
+      "object": "Développeurs Core",
+      "subject_exists_v96": true,
+      "object_exists_v96": false
+    },
+    {
+      "subject": "Core Developers (Ethereum)",
+      "predicate": "instanceOfCategory",
+      "object": "Développeurs Core",
+      "subject_exists_v96": true,
+      "object_exists_v96": false
+    },
+    {
+      "subject": "Mineurs Bitcoin",
+      "predicate": "instanceOfCategory",
+      "object": "Mineurs et assimilés",
+      "subject_exists_v96": true,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Pools de minage",
+      "predicate": "instanceOfCategory",
+      "object": "Mineurs et assimilés",
+      "subject_exists_v96": true,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Opérateurs de nœuds complets",
+      "predicate": "instanceOfCategory",
+      "object": "Nœuds complets",
+      "subject_exists_v96": false,
+      "object_exists_v96": false
+    },
+    {
+      "subject": "Fournisseurs de portefeuilles",
+      "predicate": "instanceOfCategory",
+      "object": "Fournisseurs de portefeuilles",
+      "subject_exists_v96": true,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Monétisation",
+      "predicate": "organizes",
+      "object": "UCN BTC",
+      "subject_exists_v96": false,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Monétisation",
+      "predicate": "organizes",
+      "object": "UCN ETH",
+      "subject_exists_v96": false,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Monétisation",
+      "predicate": "organizes",
+      "object": "Passerelle (gateway / on-off ramp)",
+      "subject_exists_v96": false,
+      "object_exists_v96": false
+    },
+    {
+      "subject": "Monétisation",
+      "predicate": "organizes",
+      "object": "Sphère d’usage",
+      "subject_exists_v96": false,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Monétisation",
+      "predicate": "organizes",
+      "object": "Services de portefeuille et paiement",
+      "subject_exists_v96": false,
+      "object_exists_v96": false
+    },
+    {
+      "subject": "Monétisation",
+      "predicate": "organizes",
+      "object": "Conformité réglementaire",
+      "subject_exists_v96": false,
+      "object_exists_v96": true
+    },
+    {
+      "subject": "Opérateurs de nœuds complets",
+      "predicate": "instanceOfCategory",
+      "object": "Nœuds complets (Full Nodes)",
+      "subject_exists_v96": false,
+      "object_exists_v96": true
+    }
+  ]
+}
