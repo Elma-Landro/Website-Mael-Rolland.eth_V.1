@@ -1,8 +1,8 @@
 {
-  "patch_series": "v97-rollout-split-6lots",
+  "patch_series": "v97-rollout-split",
   "source_graph": "grc20-these-mael-rolland-v96.json",
-  "lot": "LOT-3-LEGACY",
-  "title": "Legacy compatibility bundle: InfrastructureDomain + relations",
+  "lot": "LOT-3",
+  "title": "InfrastructureDomain canonization + missing relation families",
   "canonical_infrastructure_domains_target": [
     "Protocole et couche de base",
     "Traitement des transactions",

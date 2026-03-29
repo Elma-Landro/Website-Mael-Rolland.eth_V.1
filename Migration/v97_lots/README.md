@@ -1,33 +1,22 @@
-# v97 rollout en 6 lots (task-by-task)
+# v97 rollout en lots (task-by-task)
 
 Base: `grc20-these-mael-rolland-v96.json`.
 
-Objectif: éviter un diff massif en poussant **lot par lot**.
+## LOT-1 — Hiérarchie des concepts
+- Fichier: `Migration/v97_lots/lot-1-concepts.json`
+- Contenu: retypes `Concept` vers `CoreConcept`/`SecondaryConcept`/`TechnicalConcept`, slogans vers `NativeFormula`, titres de section vers `ChapterSection`, et fusions manquantes (Nominalisme, EVM, Politique de crise[s]).
+- Taille: **31 opérations**.
 
-## Ordre de merge recommandé
-1. `lot-1-concept-hierarchy.json` — hiérarchie de concepts (hors fusions reportées)
-2. `lot-2-actornonhuman-split.json` — split ActorNonHuman restant
-3. `lot-3-stakeholder-groups.json` — compléter 6+ StakeholderGroup
-4. `lot-4-infrastructure-domain-canon.json` — 9 domaines canoniques
-5. `lot-5-relations.json` — nouvelles relations (`instanceOfCategory`, `organizes`, `partOfMonetizationProcess`)
-6. `lot-6-missing-merges.json` — fusions manquées (Nominalisme, EVM, Politique de crise[s])
+## LOT-2 — ActorNonHuman + StakeholderGroup
+- Fichier: `Migration/v97_lots/lot-2-actors-stakeholders.json`
+- Contenu: éclatement d'acteurs non humains vers `InfrastructureService` / `SoftwareClient`, + retypes des groupes attendus vers `StakeholderGroup`.
+- Taille: **16 opérations**.
 
-## Tailles générées
-- LOT-1: **26 opérations**
-- LOT-2: **8 opérations**
-- LOT-3: **6 opérations**
-- LOT-5: **13 relations**
-- LOT-6: **3 opérations**
+## LOT-3 — InfrastructureDomain + nouvelles relations
+- Fichier: `Migration/v97_lots/lot-3-infra-relations.json`
+- Contenu: cible de 9 domaines canoniques + ajout des relations `instanceOfCategory`, `organizes`, `partOfMonetizationProcess`.
+- Taille: **13 relations**.
 
 ## État restant (avant application)
-- Entités encore typées `Concept` en v96: **391**.
-
-## Compatibilité (anti-conflits de merge)
-- Les anciens noms de fichiers sont aussi générés:
-  - `lot-1-concepts.json`
-  - `lot-2-actors-stakeholders.json`
-  - `lot-3-infra-relations.json`
-- Ces fichiers legacy évitent les conflits lorsque d'autres branches modifient encore les anciens paths.
-
-## Vérification rapide
-- `python3 Migration/test_build_v97_lots.py`
+- Entités avec type `Concept` encore non hiérarchisé: **391**.
+- Les 3 lots sont conçus pour être mergés séparément afin d'éviter un diff massif.

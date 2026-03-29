@@ -1,97 +1,9 @@
 {
-  "patch_series": "v97-rollout-split-6lots",
+  "patch_series": "v97-rollout-split",
   "source_graph": "grc20-these-mael-rolland-v96.json",
-  "lot": "LOT-2-LEGACY",
-  "title": "Legacy compatibility bundle: ActorNonHuman + StakeholderGroup",
+  "lot": "LOT-2",
+  "title": "ActorNonHuman split + StakeholderGroup completion",
   "operations": [
-    {
-      "old_entity": "AntPool",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "AntPool",
-      "new_type": "InfrastructureService",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "BTC Guild",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "BTC Guild",
-      "new_type": "InfrastructureService",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "Bitcoin ABC",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "Bitcoin ABC",
-      "new_type": "SoftwareClient",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "Bitcoin Knots",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "Bitcoin Knots",
-      "new_type": "SoftwareClient",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "Bitcoin Unlimited",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "Bitcoin Unlimited",
-      "new_type": "SoftwareClient",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "F2Pool",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "F2Pool",
-      "new_type": "InfrastructureService",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "GHash.io",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "GHash.io",
-      "new_type": "InfrastructureService",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
-    {
-      "old_entity": "Slush Pool",
-      "old_type": "ActorNonHuman",
-      "action": "retype",
-      "new_entity": "Slush Pool",
-      "new_type": "InfrastructureService",
-      "confidence": 0.99,
-      "rationale": "explicit split from remaining ActorNonHuman backlog",
-      "old_entity_exists_v96": true,
-      "new_entity_exists_v96": true
-    },
     {
       "old_entity": "Core Developers (Bitcoin)",
       "old_type": "ActorGroup",
@@ -155,6 +67,116 @@
       "new_type": "StakeholderGroup",
       "confidence": 0.88,
       "rationale": "empirical collective",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Bitcoin-QT / Bitcoin Core (client)",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "Bitcoin-QT / Bitcoin Core (client)",
+      "new_type": "SoftwareClient",
+      "confidence": 0.99,
+      "rationale": "software client",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Go-Ethereum",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "Go-Ethereum",
+      "new_type": "SoftwareClient",
+      "confidence": 0.99,
+      "rationale": "software client",
+      "old_entity_exists_v96": false,
+      "new_entity_exists_v96": false
+    },
+    {
+      "old_entity": "AntPool",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "AntPool",
+      "new_type": "InfrastructureService",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "F2Pool",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "F2Pool",
+      "new_type": "InfrastructureService",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "GHash.io",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "GHash.io",
+      "new_type": "InfrastructureService",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Slush Pool",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "Slush Pool",
+      "new_type": "InfrastructureService",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "BTC Guild",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "BTC Guild",
+      "new_type": "InfrastructureService",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Bitcoin ABC",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "Bitcoin ABC",
+      "new_type": "SoftwareClient",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Bitcoin Knots",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "Bitcoin Knots",
+      "new_type": "SoftwareClient",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Bitcoin Unlimited",
+      "old_type": "ActorNonHuman",
+      "action": "retype",
+      "new_entity": "Bitcoin Unlimited",
+      "new_type": "SoftwareClient",
+      "confidence": 0.99,
+      "rationale": "explicit split from ActorNonHuman remaining backlog",
       "old_entity_exists_v96": true,
       "new_entity_exists_v96": true
     }
