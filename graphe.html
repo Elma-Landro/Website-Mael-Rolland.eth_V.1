@@ -2668,7 +2668,9 @@ const Graph = (() => {
       'PriceSeries': 4, 'PriceWindow': 4,
     };
     // batch4: foreground density cap per cell (surplus → faint background cloud)
-    const DENSITY_CAP_FG = isMobile ? 14 : 38;
+    // batch4: foreground density cap per cell
+    // Mobile: 36 nodes max (distributed across ≤3 sub-cols of 12 each)
+    const DENSITY_CAP_FG = isMobile ? 36 : 38;
 
     // ── Mobile col map / labels / halo colors ────────────
     // V2 strata: stratum-name → 4 macro-cols; V3: identité (7 colonnes conservées)
@@ -2771,28 +2773,26 @@ const Graph = (() => {
         n.position({ x: cx_c + jx, y: cy_c + jy });
         n.style({ opacity: 0.18 });
       });
-      // Position foreground nodes
-      if (isMobile) {
-        // Mobile: pure random scatter within cell bounds → organic blob, no grid artefacts
-        fgNodes.forEach(n => {
-          const jx = (Math.random() - 0.5) * cwC * 1.05;
-          const jy = (Math.random() - 0.5) * ROW_H * 0.88;
-          n.position({ x: cx_c + jx, y: cy_c + jy });
-          n.style({ opacity: 1.0 });
-        });
-      } else {
-        // Desktop: structured multi-subcol stacking with generous jitter
-        const numSubcols = Math.ceil(fgNodes.length / maxPerSubcol);
-        const cellW = cwC * CELL_W_FRAC;
+      // Position foreground nodes — structured sub-columns (mobile ≤3, desktop unlimited)
+      {
+        const MAX_MOBILE_SUBCOLS = 3;
+        const numSubcols = isMobile
+          ? Math.min(MAX_MOBILE_SUBCOLS, Math.max(1, Math.ceil(fgNodes.length / maxPerSubcol)))
+          : Math.ceil(fgNodes.length / maxPerSubcol);
+        const nodesPerSubcol = Math.ceil(fgNodes.length / numSubcols); // even distribution
+        const cellW   = cwC * CELL_W_FRAC;
         const subColW = numSubcols > 1 ? cellW / numSubcols : 0;
+        // jitter: tighter on mobile (nœuds petits), generous on desktop
+        const jxAmp = isMobile ? 14 : 48;
+        const jyAmp = isMobile ? 10 : 28;
         fgNodes.forEach((n, i) => {
-          const sc    = Math.floor(i / maxPerSubcol);
-          const ri    = i % maxPerSubcol;
-          const count = Math.min(fgNodes.length - sc * maxPerSubcol, maxPerSubcol);
+          const sc     = Math.min(Math.floor(i / nodesPerSubcol), numSubcols - 1);
+          const ri     = i - sc * nodesPerSubcol;
+          const count  = Math.min(nodesPerSubcol, fgNodes.length - sc * nodesPerSubcol);
           const startX = numSubcols > 1 ? cx_c - cellW / 2 + subColW * (sc + 0.5) : cx_c;
           const startY = cy_c - (count * NODE_H) / 2;
-          const jx = (Math.random() - 0.5) * 64;
-          const jy = (Math.random() - 0.5) * 40;
+          const jx = (Math.random() - 0.5) * 2 * jxAmp;
+          const jy = (Math.random() - 0.5) * 2 * jyAmp;
           n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
           n.style({ opacity: 1.0 });
         });
@@ -2822,8 +2822,9 @@ const Graph = (() => {
     // ── Taille mobile-aware + classe in-matrix ────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      const mobileSize = Math.max(8, Math.min(raw, 22));
-      n.data('msize', isMobile ? mobileSize : raw);
+      // matrix mobile: nœuds plus petits pour permettre la dispersion interne
+      const mobileSize = isMobile ? Math.max(7, Math.min(raw * 0.48, 11)) : raw;
+      n.data('msize', mobileSize);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
