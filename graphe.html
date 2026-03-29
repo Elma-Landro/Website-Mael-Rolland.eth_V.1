@@ -2163,10 +2163,13 @@ const Graph = (() => {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'shadow-blur': 4, 'shadow-opacity': 0.34,
+          'shape': 'ellipse',   // formes douces en matrice (évite losanges/étoiles durs en petite taille)
+          // Glow dynamique proportionnel à la taille — les hubs irradient, les feuilles restent discrètes
+          'shadow-blur':    'mapData(size, 22, 90, 12, 110)',
+          'shadow-opacity': 'mapData(size, 22, 90, 0.55, 0.95)',
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
-          'background-opacity': 0.88,
+          'background-opacity': 0.85,
           'z-index': 2,
         }
       },
@@ -2779,8 +2782,11 @@ const Graph = (() => {
         const count = Math.min(N - sc * maxPerSubcol, maxPerSubcol);
         const startX = numSubcols > 1 ? cx_c - cellW / 2 + subColW * (sc + 0.5) : cx_c;
         const startY = cy_c - (count * NODE_H) / 2;
-        const jx = (Math.random() - 0.5) * 2 * jxAmp;
-        const jy = (Math.random() - 0.5) * 2 * jyAmp;
+        // Jitter organique proportionnel à la taille du nœud (hubs plus dispersés)
+        const raw = n.data('size') || 22;
+        const sizeScale = Math.max(0, Math.min(1, (raw - 22) / 68));
+        const jx = (Math.random() - 0.5) * (isMobile ? 26 + sizeScale * 52 : 20 + sizeScale * 40);
+        const jy = (Math.random() - 0.5) * (isMobile ? 18 + sizeScale * 32 : 12 + sizeScale * 24);
         n.position({ x: startX + jx, y: startY + ri * NODE_H + jy });
         n.style({ opacity: 1.0 });
       });
@@ -2816,11 +2822,7 @@ const Graph = (() => {
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
 
-    if (isMobile) {
-      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 14, 'shadow-opacity': 0.80,
-      });
-    }
+    // (glow mobile géré par mapData dans getCyStyle — pas de surcharge fixe ici)
 
     // ── Column halos + reset canvas overlay ──────────────
     cy.$('.col-halo').remove();
