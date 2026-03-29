@@ -564,6 +564,20 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     font-size: 0.72em;
     box-sizing: border-box;
   }
+  .grc-root.scrolly-mode .scrolly-text-panel.scrolly-collapsed { height: 10vh; }
+  .grc-root.scrolly-mode .grc-canvas-wrap.scrolly-collapsed { height: 90vh; }
+  #btn-scrolly-resize {
+    display: inline-flex;
+    position: sticky;
+    top: 0;
+    z-index: 11;
+    margin-left: auto;
+    margin-bottom: 6px;
+    font-size: 0.75em;
+    padding: 5px 8px;
+    align-items: center;
+    gap: 4px;
+  }
 }
 
 /* ─── Sidebar collapsed (desktop toggle) ─────────────────────────── */
@@ -881,6 +895,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
 <!-- ── Scrollytelling narrative panel ── -->
 <div class="scrolly-text-panel" id="scrolly-text">
+  <button class="btn-secondary btn-sm" id="btn-scrolly-resize" type="button" style="display:none">▾ Réduire</button>
 
   <section class="story-section" data-chapter-id="df405dcd975b406486a260da72f1ad4a">
     <span class="story-tag">Introduction générale · p. 15–51</span>
@@ -5548,6 +5563,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Toggle mode scrolly / éditeur ────────────────────────
   let scrollyMode = false;
+  let scrollyCollapsedMobile = false;
+  const scrollyTextPanel = document.getElementById('scrolly-text');
+  const scrollyCanvasWrap = document.querySelector('.grc-canvas-wrap');
+  const scrollyResizeBtn = document.getElementById('btn-scrolly-resize');
+
+  function applyScrollyMobilePanelState() {
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if (!scrollyMode || !isMobile) {
+      scrollyResizeBtn.style.display = 'none';
+      scrollyTextPanel.classList.remove('scrolly-collapsed');
+      scrollyCanvasWrap.classList.remove('scrolly-collapsed');
+      return;
+    }
+    scrollyResizeBtn.style.display = 'inline-flex';
+    scrollyTextPanel.classList.toggle('scrolly-collapsed', scrollyCollapsedMobile);
+    scrollyCanvasWrap.classList.toggle('scrolly-collapsed', scrollyCollapsedMobile);
+    scrollyResizeBtn.textContent = scrollyCollapsedMobile ? '▴ Agrandir' : '▾ Réduire';
+  }
+
+  scrollyResizeBtn.addEventListener('click', () => {
+    scrollyCollapsedMobile = !scrollyCollapsedMobile;
+    applyScrollyMobilePanelState();
+    setTimeout(() => { if (Graph.cy) Graph.cy.resize(); }, 50);
+  });
+
   document.getElementById('btn-scrolly').addEventListener('click', () => {
     scrollyMode = !scrollyMode;
     const root = document.querySelector('.grc-root');
@@ -5560,6 +5600,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.height = 'auto';
       btn.textContent = '⊞ Éditeur';
       btn.classList.replace('btn-secondary', 'btn-primary');
+      scrollyCollapsedMobile = false;
+      applyScrollyMobilePanelState();
       setTimeout(() => { if (Graph.cy) Graph.cy.resize(); }, 50);
       initScrollyObserver();
       // Activer la première section
@@ -5581,6 +5623,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.height = '100%';
       btn.textContent = '📖 Récit';
       btn.classList.replace('btn-primary', 'btn-secondary');
+      scrollyCollapsedMobile = false;
+      applyScrollyMobilePanelState();
       if (scrollyObserver) { scrollyObserver.disconnect(); scrollyObserver = null; }
       if (Graph.cy) {
         Graph.cy.elements().removeClass('highlighted faded');
@@ -5589,6 +5633,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  window.addEventListener('resize', applyScrollyMobilePanelState);
 
   FocusMode.init();
 
