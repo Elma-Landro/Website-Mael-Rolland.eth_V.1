@@ -1,0 +1,701 @@
+{
+  "meta": {
+    "from_version": "v90",
+    "to_version": "v91",
+    "intent": "ontology_cleanup_and_retyping",
+    "priority_order": [
+      "create_types_and_relations",
+      "canonicalize_names",
+      "merge_certain_duplicates",
+      "retype_manifest_errors",
+      "split_overloaded_types",
+      "reclassify_concepts",
+      "canonize_infrastructure_domains",
+      "normalize_crisis_model",
+      "center_graph_on_monetization"
+    ]
+  },
+  "create_types": [
+    "Organization",
+    "StakeholderCategory",
+    "SoftwareClient",
+    "CodeRepository",
+    "SmartContract",
+    "PlatformService",
+    "MediaOutlet",
+    "Marketplace",
+    "HardwareDevice",
+    "InfrastructureService",
+    "ConceptCore",
+    "ConceptSecondary",
+    "ConceptTechnical",
+    "NativeFormula",
+    "ChapterSection"
+  ],
+  "create_relations": [
+    "aliasOf",
+    "instanceOfCategory",
+    "belongsToCategory",
+    "operatesOnProtocol",
+    "implementsProtocol",
+    "repositoryFor",
+    "clientFor",
+    "serviceFor",
+    "participatesInArena",
+    "phaseOfCrisis",
+    "phaseOfDevelopment",
+    "instantiatedInProtocol",
+    "partOfMonetizationProcess",
+    "mediatesAccessTo",
+    "enablesCapability",
+    "sloganOf",
+    "derivedFromConcept"
+  ],
+  "merge_entities": [
+    {
+      "canonical": "Alex Mizrahi",
+      "aliases": [
+        "Alex Mizrahi (ChromaWay)"
+      ],
+      "type": "Person",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Greg Maxwell",
+      "aliases": [
+        "Gregory Maxwell"
+      ],
+      "type": "Person",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "J.R. Willett",
+      "aliases": [
+        "J.R. Willet"
+      ],
+      "type": "Person",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Jeffrey Wilcke",
+      "aliases": [
+        "Jeff Wilcke (Go Ethereum)"
+      ],
+      "type": "Person",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Erik Voorhees",
+      "aliases": [
+        "Eric Voorhees"
+      ],
+      "type": "Person",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Shaolin Fry",
+      "aliases": [
+        "Shaoling Fry"
+      ],
+      "type": "Person",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Theymos",
+      "aliases": [
+        "Theymos (administrateur BitcoinTalk)"
+      ],
+      "type": "Person",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Luke Dashjr",
+      "aliases": [
+        "Luke-Jr (Luke Dashjr)"
+      ],
+      "type": "Person",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Sunny King",
+      "aliases": [
+        "King Sunny / Scott Nadal",
+        "Sunny King (pseudonyme)"
+      ],
+      "type": "Person",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Omni Layer",
+      "aliases": [
+        "Mastercoin / Omni",
+        "Mastercoin / Omni Layer"
+      ],
+      "type": "Protocol",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "IAD Framework",
+      "aliases": [
+        "IAD (Institutional Analysis and Development) Framework"
+      ],
+      "type": "TheoreticFramework",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Discrétion contrainte",
+      "aliases": [
+        "Discretion contrainte",
+        "Discrétion contrainte (Constrained Discretion)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Disponibilité",
+      "aliases": [
+        "Disponibilite (propriete DLT)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Double dépense",
+      "aliases": [
+        "Double depense",
+        "Double dépense (double spend)",
+        "Problème de double dépense"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Gouvernance duale",
+      "aliases": [
+        "Gouvernance duale (CM)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Infrastructure sociotechnique",
+      "aliases": [
+        "Infrastructure sociotechnique (CM)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "OP_RETURN",
+      "aliases": [
+        "OP_RETURN (opcode Bitcoin)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Politique de crise",
+      "aliases": [
+        "Politique de crises"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Objet-frontière",
+      "aliases": [
+        "Objet-frontière (boundary object)",
+        "Objets-frontieres (Boundary Objects)"
+      ],
+      "type": "Concept",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Passerelle",
+      "aliases": [
+        "Passerelle (gateway / on-off ramp)",
+        "Passerelle / Gateway"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Empreinte numérique / hash",
+      "aliases": [
+        "Empreinte numerique / Hash",
+        "Empreinte numérique"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Limite de taille des blocs Bitcoin (1 Mo)",
+      "aliases": [
+        "Limitation de taille des blocs (1 Mo, Bitcoin)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Résistance à la censure",
+      "aliases": [
+        "Resistance a la censure",
+        "Résistance à la censure (censorship resistance)"
+      ],
+      "type": "Concept",
+      "confidence": "certain"
+    },
+    {
+      "canonical": "Règle contre discrétion",
+      "aliases": [
+        "Regle contre discretion (monetary policy)",
+        "Règle contre discrétion (Rules vs Discretion)",
+        "Règle contre la discrétion (politique monétaire)"
+      ],
+      "type": "Concept",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Common Pool Resources",
+      "aliases": [
+        "Common Pool Resource (CPR)",
+        "Common Pool Resources (CPR)"
+      ],
+      "type": "Concept",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Cadre IAD / SES",
+      "aliases": [
+        "Cadre IAD / SES (Ostrom)",
+        "Cadre IAD/SES"
+      ],
+      "type": "Concept",
+      "confidence": "strong"
+    },
+    {
+      "canonical": "Ethereum Hard Fork (juillet 2016)",
+      "aliases": [
+        "Ethereum DAO Hard Fork"
+      ],
+      "type": "CrisisEvent",
+      "confidence": "certain"
+    }
+  ],
+  "retype_entities": [
+    {
+      "entity": "Bitmain",
+      "from": "Person",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "CEX.io",
+      "from": "Person",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "De Boyer des Roches et Rosales",
+      "from": "Person",
+      "to": "Reference",
+      "confidence": "strong"
+    },
+    {
+      "entity": "Desmedt et Lakomski-Laguerre",
+      "from": "Person",
+      "to": "Reference",
+      "confidence": "strong"
+    },
+    {
+      "entity": "NewLibertyStandard",
+      "from": "Person",
+      "to": "PlatformService",
+      "confidence": "interpretive"
+    },
+    {
+      "entity": "Banque centrale européenne (BCE)",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "European Central Bank",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Banque d'Angleterre",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Banque de France",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Banque mondiale",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Banque des règlements internationaux (BRI)",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Fonds Monetaire International (FMI)",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "EHESS",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "CEMS",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "CEMI",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "CNRS",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Mines Paris / Centre de Sociologie de l'Innovation",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Paris 1 Pantheon-Sorbonne",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Paris School of Economics",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Sciences Po Lyon",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Université de Münster",
+      "from": "ActorGroup",
+      "to": "Institution",
+      "confidence": "certain"
+    },
+    {
+      "entity": "BTC-e",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "BitPay",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitcoin Foundation",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitfinex",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitmain (Jihan Wu)",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitsquare / Bisq",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "strong"
+    },
+    {
+      "entity": "Bitstamp",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Blockstream",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Butterfly Labs",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Chaincode Labs",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Coinbase",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Dell",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "EthCore (entreprise de Gavin Wood)",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Ethereum Foundation",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Kraken",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Ledger",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "MtGox",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Overstock.com",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Robinhood (plateforme de trading)",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Slock.it",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Tether Limited",
+      "from": "ActorGroup",
+      "to": "Organization",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bourses d'échange (exchanges)",
+      "from": "ActorGroup",
+      "to": "StakeholderCategory",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Fournisseurs de portefeuilles (wallet providers)",
+      "from": "ActorGroup",
+      "to": "StakeholderCategory",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Opérateurs de nœuds complets (full nodes)",
+      "from": "ActorGroup",
+      "to": "StakeholderCategory",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Processeurs de paiement (payment processors)",
+      "from": "ActorGroup",
+      "to": "StakeholderCategory",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Régulateurs nationaux et internationaux",
+      "from": "ActorGroup",
+      "to": "StakeholderCategory",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Médias crypto et grand public",
+      "from": "ActorGroup",
+      "to": "StakeholderCategory",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitcoin Core (repo)",
+      "from": "ActorNonHuman",
+      "to": "CodeRepository",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitcoin-QT / Bitcoin Core (client)",
+      "from": "ActorNonHuman",
+      "to": "SoftwareClient",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitcoin-Qt / Bitcoin Core Wallet",
+      "from": "ActorNonHuman",
+      "to": "SoftwareClient",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Go-Ethereum (Geth)",
+      "from": "ActorNonHuman",
+      "to": "SoftwareClient",
+      "confidence": "certain"
+    },
+    {
+      "entity": "OpenEthereum / Parity",
+      "from": "ActorNonHuman",
+      "to": "SoftwareClient",
+      "confidence": "certain"
+    },
+    {
+      "entity": "The DAO",
+      "from": "ActorNonHuman",
+      "to": "SmartContract",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Bitcoin Magazine",
+      "from": "ActorNonHuman",
+      "to": "MediaOutlet",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Silk Road",
+      "from": "ActorNonHuman",
+      "to": "Marketplace",
+      "confidence": "certain"
+    },
+    {
+      "entity": "SatoshiDice",
+      "from": "ActorNonHuman",
+      "to": "Marketplace",
+      "confidence": "strong"
+    },
+    {
+      "entity": "Trezor",
+      "from": "ActorNonHuman",
+      "to": "HardwareDevice",
+      "confidence": "certain"
+    },
+    {
+      "entity": "Preuve de Travail (PoW)",
+      "from": "ActorNonHuman",
+      "to": "ConceptTechnical",
+      "confidence": "certain"
+    },
+    {
+      "entity": "chaîne de blocs",
+      "from": "ActorNonHuman",
+      "to": "ConceptTechnical",
+      "confidence": "certain"
+    }
+  ],
+  "canonize_infrastructure_domains": [
+    {
+      "canonical": "Conformité réglementaire",
+      "replace": [
+        "De conformité aux réglementations nationales",
+        "De conformité aux réglementations nationales — Ethereum"
+      ]
+    },
+    {
+      "canonical": "Traitement des transactions",
+      "replace": [
+        "De l'activité de traitement des transactions",
+        "De l'activité de traitement des transactions Ethereum"
+      ]
+    },
+    {
+      "canonical": "Information et connaissance",
+      "replace": [
+        "De l'information et de la connaissance",
+        "De l'information et de la connaissance — Ethereum"
+      ]
+    },
+    {
+      "canonical": "Sphère d’usage",
+      "replace": [
+        "De la sphère d'usage (financière & réelle)",
+        "De la sphère d'usage Ethereum (financière & réelle)"
+      ]
+    },
+    {
+      "canonical": "Services de portefeuille et de paiement",
+      "replace": [
+        "Des services de portefeuille et de paiements",
+        "Des services de portefeuille et de paiements Ethereum"
+      ]
+    },
+    {
+      "canonical": "Protocole et couche de base",
+      "replace": [
+        "Du protocole Bitcoin (couche 1 et 2)",
+        "Du protocole Ethereum (couche 1 et 2)"
+      ]
+    },
+    {
+      "canonical": "Altcoins, tokens et surcouches",
+      "replace": [
+        "Des \"Altcoins\"",
+        "Des Altcoins et tokens — écosystème Ethereum"
+      ]
+    }
+  ],
+  "create_core_concepts": [
+    "Monétisation des cryptomonnaies"
+  ]
+}
