@@ -1,19 +1,8 @@
 {
-  "patch_series": "v97-rollout-split",
+  "patch_series": "v97-rollout-split-6lots",
   "source_graph": "grc20-these-mael-rolland-v96.json",
-  "lot": "LOT-3",
-  "title": "InfrastructureDomain canonization + missing relation families",
-  "canonical_infrastructure_domains_target": [
-    "Protocole et couche de base",
-    "Traitement des transactions",
-    "Altcoins, tokens et surcouches",
-    "Services de portefeuille et de paiement",
-    "Conformité réglementaire",
-    "Sphère d’usage",
-    "Information et connaissance",
-    "Monétisation",
-    "Gouvernance infrastructurelle"
-  ],
+  "lot": "LOT-5",
+  "title": "Ajout des nouvelles familles de relations",
   "relations_to_add": [
     {
       "subject": "Core Developers (Bitcoin)",
@@ -46,9 +35,9 @@
     {
       "subject": "Opérateurs de nœuds complets",
       "predicate": "instanceOfCategory",
-      "object": "Nœuds complets",
+      "object": "Nœuds complets (Full Nodes)",
       "subject_exists_v96": false,
-      "object_exists_v96": false
+      "object_exists_v96": true
     },
     {
       "subject": "Fournisseurs de portefeuilles",
@@ -73,36 +62,15 @@
     },
     {
       "subject": "Monétisation",
-      "predicate": "organizes",
+      "predicate": "partOfMonetizationProcess",
       "object": "Passerelle (gateway / on-off ramp)",
       "subject_exists_v96": false,
       "object_exists_v96": false
     },
     {
       "subject": "Monétisation",
-      "predicate": "organizes",
-      "object": "Sphère d’usage",
-      "subject_exists_v96": false,
-      "object_exists_v96": true
-    },
-    {
-      "subject": "Monétisation",
-      "predicate": "organizes",
-      "object": "Services de portefeuille et paiement",
-      "subject_exists_v96": false,
-      "object_exists_v96": false
-    },
-    {
-      "subject": "Monétisation",
-      "predicate": "organizes",
-      "object": "Conformité réglementaire",
-      "subject_exists_v96": false,
-      "object_exists_v96": true
-    },
-    {
-      "subject": "Opérateurs de nœuds complets",
-      "predicate": "instanceOfCategory",
-      "object": "Nœuds complets (Full Nodes)",
+      "predicate": "partOfMonetizationProcess",
+      "object": "Services de portefeuille et de paiement",
       "subject_exists_v96": false,
       "object_exists_v96": true
     }

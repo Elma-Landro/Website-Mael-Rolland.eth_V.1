@@ -1,0 +1,41 @@
+{
+  "patch_series": "v97-rollout-split-6lots",
+  "source_graph": "grc20-these-mael-rolland-v96.json",
+  "lot": "LOT-6",
+  "title": "Fusions manquées restantes (normalisation finale)",
+  "operations": [
+    {
+      "old_entity": "Nominalisme monetaire non etatiste",
+      "old_type": "Concept",
+      "action": "merge_into",
+      "new_entity": "Nominalisme monétaire non étatiste",
+      "new_type": "Concept",
+      "confidence": 0.95,
+      "rationale": "fix unresolved merge from the non-implemented checklist",
+      "old_entity_exists_v96": true,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Ethereum Virtual Machine",
+      "old_type": "Concept",
+      "action": "merge_into",
+      "new_entity": "Ethereum Virtual Machine (EVM)",
+      "new_type": "Concept",
+      "confidence": 0.95,
+      "rationale": "fix unresolved merge from the non-implemented checklist",
+      "old_entity_exists_v96": false,
+      "new_entity_exists_v96": true
+    },
+    {
+      "old_entity": "Politique de crises",
+      "old_type": "Concept",
+      "action": "merge_into",
+      "new_entity": "Politique de crise",
+      "new_type": "Concept",
+      "confidence": 0.95,
+      "rationale": "fix unresolved merge from the non-implemented checklist",
+      "old_entity_exists_v96": false,
+      "new_entity_exists_v96": true
+    }
+  ]
+}
