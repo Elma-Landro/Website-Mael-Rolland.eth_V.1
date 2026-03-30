@@ -698,6 +698,29 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   transition: max-height 0.22s ease;
 }
 #focus-panel.open { max-height: 42vh; overflow-y: auto; }
+.story-mode-panel {
+  position: absolute;
+  top: 74px;
+  right: 14px;
+  z-index: 185;
+  width: min(360px, calc(100vw - 28px));
+  max-height: 70vh;
+  overflow: auto;
+  background: rgba(10, 12, 26, 0.96);
+  border: 1px solid #ffcc6666;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+}
+.story-mode-panel.hidden { display: none; }
+.story-mode-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.story-mode-title { font-size: 0.92em; color: var(--accent2); font-weight: 700; }
+.story-mode-meta { font-size: 0.78em; color: var(--text2); margin: 2px 0 8px; }
+.story-mode-step-title { font-size: 1.02em; margin: 0 0 6px; color: var(--text1); }
+.story-mode-step-body { font-size: 0.9em; line-height: 1.45; color: var(--text2); margin: 0 0 8px; }
+.story-mode-controls { display:flex; gap:6px; flex-wrap:wrap; }
+.story-mode-controls button { flex: 1 1 30%; }
+.story-mode-select { width:100%; margin-bottom:8px; }
 .fp-header {
   display: flex; justify-content: space-between; align-items: center;
   padding: 8px 12px 5px; border-bottom: 1px solid #33333355;
@@ -737,6 +760,14 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   #focus-bar { bottom: 114px; right: 12px; }
   #focus-panel.open { max-height: 50vh; }
   .fp-field select { max-width: 90px; font-size: 6px; }
+  .story-mode-panel {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    top: auto;
+    bottom: 14px;
+    max-height: 45vh;
+  }
 }
 
 /* ── Mobile floating windows (drag + resize) ───────────── */
@@ -864,6 +895,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <button class="btn-secondary btn-sm" id="btn-focus-header" title="Filtrer / Éclater une sélection">▣ Focus</button>
   <button class="btn-secondary btn-sm" id="btn-strata-toggle" title="Basculer vers les strates analytiques" style="display:none">⊟ Strates V2</button>
   <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
+  <button class="btn-secondary btn-sm" id="btn-story-mode" title="Micro-récits guidés">🎬 Story mode</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
   <a href="index.html" class="btn-secondary btn-sm" style="text-decoration:none; display:inline-flex; align-items:center;">← Accueil</a>
@@ -939,6 +971,21 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
         <button class="btn-primary btn-sm" id="btn-focus-apply">Appliquer</button>
         <button class="btn-secondary btn-sm" id="btn-focus-reset">R&#233;initialiser</button>
       </div>
+    </div>
+  </div>
+  <div class="story-mode-panel hidden" id="story-mode-panel">
+    <div class="story-mode-head">
+      <div class="story-mode-title">Story mode</div>
+      <button class="btn-secondary btn-sm" id="btn-story-close">✕</button>
+    </div>
+    <select class="story-mode-select" id="story-select"></select>
+    <div class="story-mode-meta" id="story-meta">Choisissez un récit pour démarrer.</div>
+    <h3 class="story-mode-step-title" id="story-step-title">—</h3>
+    <p class="story-mode-step-body" id="story-step-body">—</p>
+    <div class="story-mode-controls">
+      <button class="btn-secondary btn-sm" id="btn-story-prev">◀ Précédent</button>
+      <button class="btn-primary btn-sm" id="btn-story-next">Suivant ▶</button>
+      <button class="btn-secondary btn-sm" id="btn-story-quit">Quitter</button>
     </div>
   </div>
   <div class="canvas-overlay" id="canvas-overlay">
@@ -5129,6 +5176,204 @@ function showGuidedOverlay() {
 }
 
 // ─────────────────────────────────────────────────────────
+//  STORY MODE (micro-récits guidés)
+// ─────────────────────────────────────────────────────────
+const StoryMode = (() => {
+  let storyRegistry = { stories: [], viewToStoryId: {} };
+  const storyState = {
+    activeStoryId: null,
+    activeStoryStepIndex: -1,
+    storyModeEnabled: false
+  };
+
+  const normalizeText = (s) => String(s || '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+
+  function getStoryPresetById(storyId) {
+    return (storyRegistry.stories || []).find(s => s.id === storyId) || null;
+  }
+
+  async function loadRegistry() {
+    try {
+      const mod = await import('./story-presets.mjs');
+      if (mod && mod.STORY_PRESETS) {
+        storyRegistry = mod.STORY_PRESETS;
+      }
+    } catch (err) {
+      console.warn('[story-mode] registre non chargé, fallback vide', err);
+    }
+  }
+
+  function resolveFocusNodes(focusNodes = []) {
+    if (!State.data || !Array.isArray(focusNodes)) return [];
+    const entities = State.data.entities || [];
+    const byId = new Map(entities.map(e => [e.id, e]));
+    const byName = new Map(entities.map(e => [e.name, e]));
+    const byNorm = new Map();
+    entities.forEach(e => {
+      const key = normalizeText(e.name);
+      if (!byNorm.has(key)) byNorm.set(key, []);
+      byNorm.get(key).push(e);
+    });
+    const resolved = [];
+    focusNodes.forEach(raw => {
+      let found = byId.get(raw) || byName.get(raw) || null;
+      if (!found) {
+        const candidates = byNorm.get(normalizeText(raw));
+        if (candidates && candidates.length) {
+          found = candidates[0];
+          if (candidates.length > 1) {
+            console.warn('[story-mode] ambiguïté focusNode:', raw, '→', candidates.map(c => c.name));
+          }
+        }
+      }
+      if (!found) {
+        console.warn('[story-mode] focusNode introuvable:', raw);
+        return;
+      }
+      resolved.push(found.id);
+    });
+    return [...new Set(resolved)];
+  }
+
+  function applyStoryFocus(targetIds = [], cameraPreset = 'cluster') {
+    const cy = Graph.cy;
+    if (!cy) return;
+    cy.elements().removeClass('highlighted faded');
+    if (!targetIds.length) return;
+    const targetSet = new Set(targetIds);
+    cy.nodes().forEach(n => {
+      if (targetSet.has(n.data('id'))) n.addClass('highlighted');
+      else n.addClass('faded');
+    });
+    cy.edges().forEach(e => {
+      const s = e.source().data('id');
+      const t = e.target().data('id');
+      if (targetSet.has(s) || targetSet.has(t)) e.addClass('highlighted');
+      else e.addClass('faded');
+    });
+    const eles = cy.nodes().filter(n => targetSet.has(n.data('id')));
+    const paddingByPreset = { tight: 42, cluster: 68, wide: 115 };
+    const padding = paddingByPreset[cameraPreset] || 68;
+    if (eles.length) cy.animate({ fit: { eles, padding } }, { duration: 430 });
+  }
+
+  function clearStoryFocus() {
+    const cy = Graph.cy;
+    if (!cy) return;
+    cy.elements().removeClass('highlighted faded');
+  }
+
+  function updateStoryPanel() {
+    const story = getStoryPresetById(storyState.activeStoryId);
+    const meta = document.getElementById('story-meta');
+    const t = document.getElementById('story-step-title');
+    const b = document.getElementById('story-step-body');
+    if (!story || storyState.activeStoryStepIndex < 0) {
+      meta.textContent = 'Choisissez un récit pour démarrer.';
+      t.textContent = '—';
+      b.textContent = '—';
+      return;
+    }
+    const step = story.steps[storyState.activeStoryStepIndex];
+    meta.textContent = `${story.label} · Étape ${storyState.activeStoryStepIndex + 1}/${story.steps.length}`;
+    t.textContent = step.title;
+    b.textContent = step.body;
+  }
+
+  function applyStoryStep(step) {
+    if (!step) return;
+    if (step.filters && step.filters.column) {
+      document.getElementById('fp-col-sel').value = step.filters.column;
+    }
+    const resolvedTargets = resolveFocusNodes(step.focusNodes || []);
+    applyStoryFocus(resolvedTargets, step.cameraPreset || 'cluster');
+  }
+
+  function goToStoryStep(index) {
+    const story = getStoryPresetById(storyState.activeStoryId);
+    if (!story) return;
+    storyState.activeStoryStepIndex = Math.max(0, Math.min(index, story.steps.length - 1));
+    updateStoryPanel();
+    applyStoryStep(story.steps[storyState.activeStoryStepIndex]);
+  }
+
+  function nextStoryStep() { goToStoryStep(storyState.activeStoryStepIndex + 1); }
+  function prevStoryStep() { goToStoryStep(storyState.activeStoryStepIndex - 1); }
+
+  function closeStory() {
+    storyState.activeStoryId = null;
+    storyState.activeStoryStepIndex = -1;
+    storyState.storyModeEnabled = false;
+    clearStoryFocus();
+    updateStoryPanel();
+  }
+
+  function maybeSwitchLayout(layoutTarget) {
+    const current = document.getElementById('layout-select').value;
+    if (!layoutTarget || current === layoutTarget) return;
+    if (layoutTarget === 'monetisation') Graph.applyMonetisationLayout();
+    else if (layoutTarget === 'qui-gouverne') Graph.applyQuiGouverneLayout();
+    else if (layoutTarget === 'matrice') Graph.applyMatriceLayout();
+    document.getElementById('layout-select').value = layoutTarget;
+  }
+
+  function openStory(storyId) {
+    const story = getStoryPresetById(storyId);
+    if (!story) return;
+    maybeSwitchLayout(story.layoutTarget);
+    storyState.activeStoryId = storyId;
+    storyState.activeStoryStepIndex = 0;
+    storyState.storyModeEnabled = true;
+    updateStoryPanel();
+    applyStoryStep(story.steps[0]);
+  }
+
+  function inferStoryIdFromView() {
+    const view = document.getElementById('layout-select')?.value;
+    return storyRegistry.viewToStoryId?.[view] || null;
+  }
+
+  function renderStorySelect() {
+    const select = document.getElementById('story-select');
+    if (!select) return;
+    const options = (storyRegistry.stories || []).map(s => `<option value="${s.id}">${escHtml(s.label)}</option>`).join('');
+    select.innerHTML = options || '<option value="">Aucun récit</option>';
+    const inferred = inferStoryIdFromView();
+    if (inferred && getStoryPresetById(inferred)) select.value = inferred;
+  }
+
+  async function init() {
+    await loadRegistry();
+    renderStorySelect();
+    const panel = document.getElementById('story-mode-panel');
+    const toggleBtn = document.getElementById('btn-story-mode');
+    toggleBtn.addEventListener('click', () => {
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        const inferred = inferStoryIdFromView();
+        if (inferred) document.getElementById('story-select').value = inferred;
+      }
+    });
+    document.getElementById('btn-story-close').addEventListener('click', () => panel.classList.add('hidden'));
+    document.getElementById('btn-story-quit').addEventListener('click', closeStory);
+    document.getElementById('btn-story-next').addEventListener('click', nextStoryStep);
+    document.getElementById('btn-story-prev').addEventListener('click', prevStoryStep);
+    document.getElementById('story-select').addEventListener('change', (e) => {
+      if (e.target.value) openStory(e.target.value);
+    });
+    document.getElementById('layout-select').addEventListener('change', () => {
+      if (!storyState.storyModeEnabled) {
+        const inferred = inferStoryIdFromView();
+        if (inferred) document.getElementById('story-select').value = inferred;
+      }
+    });
+  }
+
+  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus };
+})();
+
+// ─────────────────────────────────────────────────────────
 //  BOOT
 // ─────────────────────────────────────────────────────────
 function onDataLoaded(data) {
@@ -5922,6 +6167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   FocusMode.init();
+  StoryMode.init();
 
 });
 </script>
