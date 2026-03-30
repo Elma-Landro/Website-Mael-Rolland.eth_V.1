@@ -1,13 +1,14 @@
 # Apply with agent — minimal instructions
 
-Read `PATCH_SOURCEQUOTE_EFFECTIVE_PHASE1.json` and implement it directly.
+Read `PATCH_SOURCEQUOTE_EFFECTIVE_PHASE2.json` and implement it directly.
 
 ## Required behavior
 1. For each `ADD_SOURCEQUOTE_WITH_SECTION_LINKS` operation:
    - create one new `SourceQuote` entity
    - set its display name from `title`
-   - store the exact thesis quote in `quote_text`
-   - store the exact thesis page in `page_thesis`
+   - store the exact thesis quote in `quoteText`
+   - store the exact thesis page in `page`
+   - set `chapter` and `thesisLocation` consistently from the target section
 2. Link the new `SourceQuote` to each `target_section` via `appears in section`.
 3. Resolve each `quote_supports_entity_names` item against the current graph:
    - exact name first
