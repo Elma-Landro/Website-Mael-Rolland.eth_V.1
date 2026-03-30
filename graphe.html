@@ -2297,6 +2297,34 @@ const Graph = (() => {
         style: { 'border-width': 2, 'border-color': '#ffcc66', 'border-opacity': 1 }
       },
       {
+        selector: 'node.story-primary',
+        style: {
+          'opacity': 1,
+          'border-width': 3,
+          'border-color': '#ffcc66',
+          'border-opacity': 1,
+          'z-index': 30
+        }
+      },
+      {
+        selector: 'node.story-secondary',
+        style: {
+          'opacity': 0.5,
+          'border-width': 1.5,
+          'border-color': '#ffb347',
+          'border-opacity': 0.7,
+          'z-index': 18
+        }
+      },
+      {
+        selector: 'node.story-muted',
+        style: { 'opacity': 0.08, 'z-index': 1 }
+      },
+      {
+        selector: 'node.story-hidden',
+        style: { 'display': 'none' }
+      },
+      {
         selector: 'node.hop2',
         style: { 'border-width': 2, 'border-color': '#ff8800', 'border-opacity': 0.75, 'opacity': 0.70 }
       },
@@ -2378,6 +2406,40 @@ const Graph = (() => {
       {
         selector: 'edge.highlighted',
         style: { 'line-color': '#ffcc66', 'target-arrow-color': '#ffcc66', 'opacity': 0.90, 'width': 1 }
+      },
+      {
+        selector: 'edge.story-primary',
+        style: {
+          'line-color': '#ffcc66',
+          'target-arrow-color': '#ffcc66',
+          'opacity': 0.78,
+          'width': 1.2,
+          'z-index': 24
+        }
+      },
+      {
+        selector: 'edge.story-secondary',
+        style: {
+          'line-color': '#ffb347',
+          'target-arrow-color': '#ffb347',
+          'opacity': 0.18,
+          'width': 0.55,
+          'z-index': 12
+        }
+      },
+      {
+        selector: 'edge.story-backbone',
+        style: {
+          'line-color': '#ffe2a8',
+          'target-arrow-color': '#ffe2a8',
+          'opacity': 0.035,
+          'width': 0.24,
+          'z-index': 3
+        }
+      },
+      {
+        selector: 'edge.story-hidden',
+        style: { 'display': 'none' }
       },
       {
         selector: 'edge.hop2',
@@ -5236,32 +5298,150 @@ const StoryMode = (() => {
     return [...new Set(resolved)];
   }
 
-  function applyStoryFocus(targetIds = [], cameraPreset = 'cluster') {
+  function getEdgeType(edge) {
+    return (
+      edge.data('relation_type') ||
+      edge.data('relationType') ||
+      edge.data('type') ||
+      edge.data('label') ||
+      edge.data('name') ||
+      ''
+    ).toString();
+  }
+
+  function normalizeRelationName(v) {
+    return (v || '').toString().trim().toLowerCase();
+  }
+
+  function buildStoryFocusOptions(step = {}) {
+    return {
+      cameraPreset: step.cameraPreset || 'cluster',
+      edgeMode: step.edgeMode || 'strict',
+      includeNeighbors: Boolean(step.includeNeighbors),
+      secondaryDepth: Number.isFinite(step.secondaryDepth) ? step.secondaryDepth : 0,
+      maxSecondaryPerTarget: Number.isFinite(step.maxSecondaryPerTarget) ? step.maxSecondaryPerTarget : 10,
+      hideRelationTypes: Array.isArray(step.hideRelationTypes) ? step.hideRelationTypes.map(normalizeRelationName) : [],
+      showRelationTypes: Array.isArray(step.showRelationTypes) ? step.showRelationTypes.map(normalizeRelationName) : [],
+      hideBackbone: step.hideBackbone !== undefined ? Boolean(step.hideBackbone) : true,
+      backboneRelationTypes: Array.isArray(step.backboneRelationTypes)
+        ? step.backboneRelationTypes.map(normalizeRelationName)
+        : ['partof', 'source', 'citedin', 'relatedto'],
+      fitTargets: step.fitTargets || 'primary'
+    };
+  }
+
+  function clearStoryFocusClasses(cy) {
+    if (!cy) return;
+    cy.elements().removeClass(
+      'story-primary story-secondary story-muted story-hidden story-backbone highlighted faded'
+    );
+  }
+
+  function collectSecondaryNodes(cy, primaryNodes, opts) {
+    if (!cy || !primaryNodes || !primaryNodes.length) return cy.collection();
+    if (!(opts.includeNeighbors || opts.edgeMode !== 'strict' || opts.secondaryDepth > 0)) return cy.collection();
+
+    const secondary = cy.collection();
+    const visited = new Set(primaryNodes.map(n => n.id()));
+    const queue = primaryNodes.map(n => ({ node: n, depth: 0 }));
+
+    while (queue.length) {
+      const { node, depth } = queue.shift();
+      if (depth >= Math.max(1, opts.secondaryDepth || 1)) continue;
+
+      const connected = node.connectedEdges();
+      let taken = 0;
+      connected.forEach(edge => {
+        if (taken >= opts.maxSecondaryPerTarget) return;
+        const edgeType = normalizeRelationName(getEdgeType(edge));
+        if (opts.hideRelationTypes.includes(edgeType)) return;
+        if (opts.showRelationTypes.length && !opts.showRelationTypes.includes(edgeType)) return;
+        if (opts.hideBackbone && opts.backboneRelationTypes.includes(edgeType)) return;
+
+        const other = edge.source().id() === node.id() ? edge.target() : edge.source();
+        if (visited.has(other.id())) return;
+        visited.add(other.id());
+        secondary.merge(other);
+        queue.push({ node: other, depth: depth + 1 });
+        taken += 1;
+      });
+    }
+
+    return secondary;
+  }
+
+  function applyStoryFocus(targetIds = [], step = {}) {
     const cy = Graph.cy;
     if (!cy) return;
-    cy.elements().removeClass('highlighted faded');
+
+    const opts = buildStoryFocusOptions(step);
+    clearStoryFocusClasses(cy);
     if (!targetIds.length) return;
-    const targetSet = new Set(targetIds);
+
+    const primaryNodes = cy.nodes().filter(n => targetIds.includes(n.data('id')) || targetIds.includes(n.id()));
+    const primaryIdSet = new Set(primaryNodes.map(n => n.id()));
+    const secondaryNodes = collectSecondaryNodes(cy, primaryNodes, opts).filter(n => !primaryIdSet.has(n.id()));
+    const secondaryIdSet = new Set(secondaryNodes.map(n => n.id()));
+
     cy.nodes().forEach(n => {
-      if (targetSet.has(n.data('id'))) n.addClass('highlighted');
-      else n.addClass('faded');
+      const id = n.id();
+      if (primaryIdSet.has(id)) n.addClass('story-primary');
+      else if (secondaryIdSet.has(id)) n.addClass('story-secondary');
+      else n.addClass('story-muted');
     });
-    cy.edges().forEach(e => {
-      const s = e.source().data('id');
-      const t = e.target().data('id');
-      if (targetSet.has(s) || targetSet.has(t)) e.addClass('highlighted');
-      else e.addClass('faded');
+
+    cy.edges().forEach(edge => {
+      const s = edge.source().id();
+      const t = edge.target().id();
+      const edgeType = normalizeRelationName(getEdgeType(edge));
+      const sP = primaryIdSet.has(s);
+      const tP = primaryIdSet.has(t);
+      const sS = secondaryIdSet.has(s);
+      const tS = secondaryIdSet.has(t);
+
+      if (opts.hideRelationTypes.includes(edgeType)) {
+        edge.addClass('story-hidden');
+        return;
+      }
+      if (opts.showRelationTypes.length && !opts.showRelationTypes.includes(edgeType)) {
+        edge.addClass('story-hidden');
+        return;
+      }
+      if (opts.backboneRelationTypes.includes(edgeType)) {
+        edge.addClass(opts.hideBackbone ? 'story-hidden' : 'story-backbone');
+        return;
+      }
+
+      if (opts.edgeMode === 'strict') {
+        if (sP && tP) edge.addClass('story-primary');
+        else edge.addClass('story-hidden');
+        return;
+      }
+
+      if (opts.edgeMode === 'neighbors') {
+        if (sP && tP) edge.addClass('story-primary');
+        else if ((sP && tS) || (tP && sS)) edge.addClass('story-secondary');
+        else edge.addClass('story-hidden');
+        return;
+      }
+
+      if (sP && tP) edge.addClass('story-primary');
+      else if ((sP && tS) || (tP && sS) || (sS && tS)) edge.addClass('story-secondary');
+      else edge.addClass(opts.hideBackbone ? 'story-hidden' : 'story-backbone');
     });
-    const eles = cy.nodes().filter(n => targetSet.has(n.data('id')));
+
+    const eles = opts.fitTargets === 'primary+secondary'
+      ? primaryNodes.union(secondaryNodes)
+      : primaryNodes;
     const paddingByPreset = { tight: 42, cluster: 68, wide: 115 };
-    const padding = paddingByPreset[cameraPreset] || 68;
+    const padding = paddingByPreset[opts.cameraPreset] || 68;
     if (eles.length) cy.animate({ fit: { eles, padding } }, { duration: 430 });
   }
 
   function clearStoryFocus() {
     const cy = Graph.cy;
     if (!cy) return;
-    cy.elements().removeClass('highlighted faded');
+    clearStoryFocusClasses(cy);
   }
 
   function updateStoryPanel() {
@@ -5283,11 +5463,16 @@ const StoryMode = (() => {
 
   function applyStoryStep(step) {
     if (!step) return;
-    if (step.filters && step.filters.column) {
-      document.getElementById('fp-col-sel').value = step.filters.column;
+    const story = getStoryPresetById(storyState.activeStoryId);
+    const mergedStep = {
+      ...(story?.defaultStepOptions || {}),
+      ...step
+    };
+    if (mergedStep.filters && mergedStep.filters.column) {
+      document.getElementById('fp-col-sel').value = mergedStep.filters.column;
     }
-    const resolvedTargets = resolveFocusNodes(step.focusNodes || []);
-    applyStoryFocus(resolvedTargets, step.cameraPreset || 'cluster');
+    const resolvedTargets = resolveFocusNodes(mergedStep.focusNodes || []);
+    applyStoryFocus(resolvedTargets, mergedStep);
   }
 
   function goToStoryStep(index) {
