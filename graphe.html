@@ -363,6 +363,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 }
 .grc-root.scrolly-mode .grc-sidebar,
 .grc-root.scrolly-mode .grc-panel { display: none; }
+.grc-root.scrolly-mode .story-mode-panel { display: none !important; }
 .grc-root.scrolly-mode .grc-main { overflow: visible; align-items: flex-start; }
 .grc-root.scrolly-mode .grc-canvas-wrap {
   position: sticky;
@@ -663,6 +664,13 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   position: fixed; bottom: 86px; right: 16px;
   z-index: 9990; display: flex; flex-direction: column; align-items: flex-end;
   gap: 6px; pointer-events: none;
+}
+#focus-bar.mobile-floating {
+  right: auto;
+  bottom: auto;
+  left: 16px;
+  top: 140px;
+  z-index: 1405;
 }
 #btn-focus {
   pointer-events: auto;
@@ -4416,7 +4424,7 @@ const FocusMode = (() => {
     });
   }
 
-  return { init, apply, reset };
+  return { init, apply, reset, close: _close };
 })();
 
 // ─────────────────────────────────────────────────────────
@@ -5491,6 +5499,7 @@ const StoryMode = (() => {
     storyState.activeStoryStepIndex = -1;
     storyState.storyModeEnabled = false;
     clearStoryFocus();
+    document.getElementById('story-mode-panel')?.classList.add('hidden');
     updateStoryPanel();
   }
 
@@ -5519,6 +5528,13 @@ const StoryMode = (() => {
     return storyRegistry.viewToStoryId?.[view] || null;
   }
 
+  function leaveScrollyIfNeeded() {
+    const root = document.querySelector('.grc-root');
+    if (!root?.classList.contains('scrolly-mode')) return;
+    const scrollyBtn = document.getElementById('btn-scrolly');
+    if (scrollyBtn) scrollyBtn.click();
+  }
+
   function renderStorySelect() {
     const select = document.getElementById('story-select');
     if (!select) return;
@@ -5534,6 +5550,7 @@ const StoryMode = (() => {
     const panel = document.getElementById('story-mode-panel');
     const toggleBtn = document.getElementById('btn-story-mode');
     toggleBtn.addEventListener('click', () => {
+      if (panel.classList.contains('hidden')) leaveScrollyIfNeeded();
       panel.classList.toggle('hidden');
       if (!panel.classList.contains('hidden')) {
         const inferred = inferStoryIdFromView();
@@ -5545,7 +5562,10 @@ const StoryMode = (() => {
     document.getElementById('btn-story-next').addEventListener('click', nextStoryStep);
     document.getElementById('btn-story-prev').addEventListener('click', prevStoryStep);
     document.getElementById('story-select').addEventListener('change', (e) => {
-      if (e.target.value) openStory(e.target.value);
+      if (e.target.value) {
+        leaveScrollyIfNeeded();
+        openStory(e.target.value);
+      }
     });
     document.getElementById('layout-select').addEventListener('change', () => {
       if (!storyState.storyModeEnabled) {
@@ -6110,6 +6130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('.grc-root');
     const btn = document.getElementById('btn-scrolly');
     if (scrollyMode) {
+      FocusMode.close();
+      StoryMode.closeStory();
       root.classList.add('scrolly-mode');
       document.documentElement.style.height = 'auto';
       document.documentElement.style.overflow = 'auto';
@@ -6349,6 +6371,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     configs.forEach(attachFloating);
+  })();
+
+  // ── Focus button drag (mobile) ──────────────────────────
+  (() => {
+    const mobileMq = window.matchMedia('(max-width: 900px)');
+    const key = 'grc-floating-focusbar';
+    const focusBar = document.getElementById('focus-bar');
+    const focusBtn = document.getElementById('btn-focus');
+    if (!focusBar || !focusBtn) return;
+
+    const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+    const applyPos = (left, top) => {
+      const rect = focusBar.getBoundingClientRect();
+      const maxLeft = window.innerWidth - rect.width - 6;
+      const maxTop = window.innerHeight - rect.height - 6;
+      focusBar.classList.add('mobile-floating');
+      focusBar.style.left = `${clamp(left, 6, maxLeft)}px`;
+      focusBar.style.top = `${clamp(top, 6, maxTop)}px`;
+    };
+    const savePos = () => {
+      if (!focusBar.classList.contains('mobile-floating')) return;
+      const rect = focusBar.getBoundingClientRect();
+      localStorage.setItem(key, JSON.stringify({ left: rect.left, top: rect.top }));
+    };
+    const loadPos = () => {
+      if (!mobileMq.matches) return;
+      try {
+        const saved = JSON.parse(localStorage.getItem(key) || 'null');
+        if (saved) applyPos(saved.left, saved.top);
+      } catch {}
+    };
+    const resetPos = () => {
+      focusBar.classList.remove('mobile-floating');
+      focusBar.style.left = '';
+      focusBar.style.top = '';
+    };
+
+    let dragging = false;
+    let moved = false;
+    let startX = 0, startY = 0, originLeft = 0, originTop = 0;
+
+    const onMove = (clientX, clientY) => {
+      applyPos(originLeft + (clientX - startX), originTop + (clientY - startY));
+    };
+
+    focusBtn.addEventListener('touchstart', (e) => {
+      if (!mobileMq.matches || !e.touches?.length) return;
+      const rect = focusBar.getBoundingClientRect();
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      originLeft = rect.left;
+      originTop = rect.top;
+      dragging = true;
+      moved = false;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!dragging || !e.touches?.length) return;
+      if (Math.abs(e.touches[0].clientX - startX) > 6 || Math.abs(e.touches[0].clientY - startY) > 6) moved = true;
+      onMove(e.touches[0].clientX, e.touches[0].clientY);
+      e.preventDefault();
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      if (!dragging) return;
+      dragging = false;
+      savePos();
+    });
+
+    focusBtn.addEventListener('click', (e) => {
+      if (!moved) return;
+      e.preventDefault();
+      e.stopPropagation();
+      moved = false;
+    }, true);
+
+    window.addEventListener('resize', () => {
+      if (!mobileMq.matches) resetPos();
+      else loadPos();
+    });
+
+    loadPos();
   })();
 
   FocusMode.init();
