@@ -144,10 +144,19 @@ html, body {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 14px; background: var(--bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   pointer-events: none;
   z-index: 10; /* above #matrix-halo-canvas (z-index:1) */
 }
 .canvas-overlay:not(.hidden) { pointer-events: auto; }
+.canvas-overlay .guided-wrap {
+  min-height: 100%;
+  justify-content: flex-start;
+  padding-top: 14px;
+  padding-bottom: 120px;
+}
 .canvas-overlay h2 { font-size: 1.1em; color: var(--text2); margin: 0; }
 .canvas-overlay p { font-size: 0.9em; color: var(--text2); margin: 0; }
 .hidden { display: none !important; }
@@ -540,6 +549,11 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   }
 
   /* Overlay guidé mobile : colonne unique au lieu de masquer complètement */
+  .canvas-overlay {
+    align-items: stretch;
+    justify-content: flex-start;
+    padding-top: 8px;
+  }
   .guided-entries {
     display: flex !important;
     flex-direction: column;
@@ -5553,8 +5567,12 @@ const StoryMode = (() => {
       if (panel.classList.contains('hidden')) leaveScrollyIfNeeded();
       panel.classList.toggle('hidden');
       if (!panel.classList.contains('hidden')) {
+        const select = document.getElementById('story-select');
         const inferred = inferStoryIdFromView();
-        if (inferred) document.getElementById('story-select').value = inferred;
+        if (inferred && select) select.value = inferred;
+        if (!storyState.storyModeEnabled && select?.value) {
+          openStory(select.value);
+        }
       }
     });
     document.getElementById('btn-story-close').addEventListener('click', () => panel.classList.add('hidden'));
