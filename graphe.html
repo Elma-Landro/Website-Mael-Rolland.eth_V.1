@@ -788,7 +788,22 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     width: auto;
     top: auto;
     bottom: 14px;
-    max-height: 45vh;
+    max-height: 34vh;
+    padding: 8px;
+  }
+  .story-mode-title { font-size: 0.84em; }
+  .story-mode-meta { font-size: 0.68em; margin: 2px 0 6px; }
+  .story-mode-step-title { font-size: 0.9em; margin: 0 0 4px; }
+  .story-mode-step-body {
+    font-size: 0.78em;
+    line-height: 1.3;
+    margin: 0 0 6px;
+  }
+  .story-mode-controls { gap: 4px; }
+  .story-mode-controls button {
+    flex: 1 1 32%;
+    font-size: 0.72em;
+    padding: 5px 6px;
   }
 }
 
@@ -5452,12 +5467,32 @@ const StoryMode = (() => {
       else edge.addClass(opts.hideBackbone ? 'story-hidden' : 'story-backbone');
     });
 
-    const eles = opts.fitTargets === 'primary+secondary'
+    let fitEles = opts.fitTargets === 'primary+secondary'
       ? primaryNodes.union(secondaryNodes)
       : primaryNodes;
+    if (fitEles.length <= 1) {
+      fitEles = fitEles.union(primaryNodes.closedNeighborhood('node'));
+    }
+    if (!fitEles.length) fitEles = primaryNodes;
     const paddingByPreset = { tight: 42, cluster: 68, wide: 115 };
-    const padding = paddingByPreset[opts.cameraPreset] || 68;
-    if (eles.length) cy.animate({ fit: { eles, padding } }, { duration: 430 });
+    const basePadding = paddingByPreset[opts.cameraPreset] || 68;
+    const padding = window.innerWidth <= 768 ? Math.max(basePadding, 96) : basePadding;
+    if (fitEles.length) {
+      const maxZoom = step.maxZoom !== undefined
+        ? Number(step.maxZoom)
+        : (window.innerWidth <= 768 ? 1.15 : 1.75);
+      cy.animate(
+        { fit: { eles: fitEles, padding } },
+        {
+          duration: 430,
+          complete: () => {
+            if (Number.isFinite(maxZoom) && maxZoom > 0 && cy.zoom() > maxZoom) {
+              cy.animate({ center: { eles: fitEles }, zoom: maxZoom }, { duration: 220 });
+            }
+          }
+        }
+      );
+    }
   }
 
   function clearStoryFocus() {
