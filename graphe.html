@@ -31,8 +31,15 @@
   --sidebar-w:220px;
   --panel-w:  340px;
   --header-h: 54px;
+  --app-vh:   100vh;
   --font:     'Press Start 2P', monospace;
   --mono:     'Press Start 2P', monospace;
+}
+@supports (height: 100dvh) {
+  :root { --app-vh: 100dvh; }
+}
+@supports (height: 100svh) {
+  :root { --app-vh: 100svh; }
 }
 [data-theme="light"] {
   --bg:    #6a0000; --bg2: #4d0000; --bg3: #7a0000;
@@ -45,7 +52,14 @@ html, body {
   overflow: hidden; font-size: 14px;
 }
 /* ─── Layout ────────────────────────────────────────────────────── */
-.grc-root { display: flex; flex-direction: column; height: 100vh; }
+.grc-root {
+  display: flex;
+  flex-direction: column;
+  height: var(--app-vh);
+  min-height: var(--app-vh);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
 .grc-header {
   flex-shrink: 0; min-height: var(--header-h);
   background: linear-gradient(180deg, rgba(109, 0, 0, 0.96), rgba(74, 0, 0, 0.97));
@@ -354,7 +368,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   position: sticky;
   top: var(--header-h);
   width: 55%;
-  height: calc(100vh - var(--header-h));
+  height: calc(var(--app-vh) - var(--header-h));
   flex-shrink: 0;
   align-self: flex-start; /* crucial : sticky dans flex exige flex-start */
 }
@@ -373,7 +387,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   transition: opacity 0.4s;
 }
 .story-section.active { opacity: 1; }
-.story-section:last-child { border-bottom: none; min-height: 100vh; }
+.story-section:last-child { border-bottom: none; min-height: var(--app-vh); }
 .story-tag {
   display: inline-block;
   font-size: 0.55em; letter-spacing: .12em; text-transform: uppercase;
@@ -491,7 +505,9 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   .grc-sidebar { display: none !important; }
   .grc-panel   { display: none !important; }
   .grc-canvas-wrap { flex: 1; width: 100%; }
-  .grc-main { height: calc(100vh - 114px); }
+  .grc-main {
+    height: calc(var(--app-vh) - 114px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  }
 
   /* Bouton sidebar toggle sur mobile */
   #btn-mobile-sidebar {
@@ -504,7 +520,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     position: fixed;
     top: var(--header-h);
     left: 0;
-    height: calc(100vh - var(--header-h));
+    height: calc(var(--app-vh) - var(--header-h) - env(safe-area-inset-bottom, 0px));
     z-index: 500;
     width: 220px;
     box-shadow: 4px 0 16px rgba(0,0,0,0.6);
@@ -516,7 +532,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     position: fixed;
     top: var(--header-h);
     right: 0;
-    height: calc(100vh - var(--header-h));
+    height: calc(var(--app-vh) - var(--header-h) - env(safe-area-inset-bottom, 0px));
     z-index: 500;
     width: min(340px, 100vw);
     box-shadow: -4px 0 16px rgba(0,0,0,0.6);
@@ -1567,6 +1583,15 @@ function buildChapterMap(data) {
     { m: n => n.includes('Casascius'),                                           chap: 1 },
     { m: n => n.includes('métaprotocole Bitcoin'),                               chap: 1 },
     { m: n => n.includes('Colored Coins') && n.includes('Bitcoin'),              chap: 1 },
+    { m: n => n.includes('Mastercoin') || n.includes('Omni'),                       chap: 1 },
+    { m: n => n.includes('Counterparty'),                                            chap: 1 },
+    { m: n => n.includes('Namecoin'),                                                chap: 1 },
+    { m: n => n.includes('Litecoin'),                                                chap: 1 },
+    { m: n => n.includes('Peercoin'),                                                chap: 1 },
+    { m: n => n.includes('BTCC') && n.toLowerCase().includes('plateforme'),         chap: 1 },
+    { m: n => n === 'Kraken' || (n.includes('Kraken') && n.toLowerCase().includes('plateforme')), chap: 1 },
+    { m: n => n === 'Paymium' || n.includes('Première bourse BTC/EUR (Paymium)'),   chap: 1 },
+    // ── Batch6 phase 1 (Chap. I × Objets): altcoins + exchange infra backfill ──
     // ── DevelopmentPhase → Chap. I (batch1 SAFE_FIX) ─────────────────────────
     { m: n => n === 'Phase de preuve de concept',                                chap: 1 },
     { m: n => n === 'Phase de péché',                                            chap: 1 },
