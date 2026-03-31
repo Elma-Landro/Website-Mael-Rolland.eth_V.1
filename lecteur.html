@@ -1060,6 +1060,7 @@ const HIGHLIGHT_TYPES = new Set([
   'GovernanceArena','GovernanceConflict','GovernanceProcess',
   'ProtocolProposal','ProtocolChange','CrisisPhase',
   'DevelopmentPhase','InfrastructureDomain','Argument',
+  'StakeholderCategory',
 ]);
 
 // ═══════════════════════════════════════════════════════
@@ -1601,6 +1602,13 @@ function renderMarkdown(md) {
 // Normalise for matching: remove combining diacritics, lowercase, hyphen → space.
 // Preserves string length for NFC-encoded input (each accented char stays 1 char).
 const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/-/g, ' ');
+const ENTITY_HIGHLIGHT_ALIASES = {
+  // Intro (page 1) lexical variants to force expected graph mentions
+  'cryptomonnaies':             'cryptomonnaie',
+  'crypto monnaies':            'cryptomonnaie',
+  'codes sources':              'Code Source Ouvert',
+  "l'ouverture des codes sources": 'Code Source Ouvert',
+};
 
 function highlightEntitiesInDOM(container, sectionKey) {
   if (!state.graphData || !container) return;
@@ -1638,6 +1646,21 @@ function highlightEntitiesInDOM(container, sectionKey) {
       if (k1.length > 3 && !nameToId.has(k1)) nameToId.set(k1, entity_id);
     }
   }
+
+  // Explicit aliases for common in-text variants (plural/wording) in Intro.
+  // Map alias → canonical entity name, then resolve to the corresponding entity id.
+  if (Object.keys(ENTITY_HIGHLIGHT_ALIASES).length) {
+    const byName = new Map(
+      state.graphData.entities.map(e => [fold(e.name || ''), e.id]).filter(([k, v]) => k && v)
+    );
+    for (const [alias, canonical] of Object.entries(ENTITY_HIGHLIGHT_ALIASES)) {
+      const targetId = byName.get(fold(canonical));
+      if (!targetId) continue;
+      const a = fold(alias);
+      if (a.length > 3 && !nameToId.has(a)) nameToId.set(a, targetId);
+    }
+  }
+
   if (!nameToId.size) return;
 
   // Sort by length DESC so "Bitcoin Cash" is matched before "Bitcoin"
