@@ -260,6 +260,8 @@ body::before {
   color: var(--text);
   font-size: 0.95em;
   text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 
 .reader-content blockquote {
@@ -822,9 +824,11 @@ body::before {
   .reader-col {
     padding: 20px 16px 60px;
   }
-  /* Texte : pas de justify sur mobile (espacement catastrophique) */
+  /* Texte : justification conservée sur mobile */
   .reader-content p {
-    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
     font-size: 0.9em;
     line-height: 1.75;
   }
