@@ -5365,7 +5365,7 @@ const StoryMode = (() => {
       hideBackbone: step.hideBackbone !== undefined ? Boolean(step.hideBackbone) : true,
       backboneRelationTypes: Array.isArray(step.backboneRelationTypes)
         ? step.backboneRelationTypes.map(normalizeRelationName)
-        : ['partof', 'source', 'citedin', 'relatedto'],
+        : ['partof', 'source', 'citedin', 'relatedto'].map(normalizeRelationName),
       fitTargets: step.fitTargets || 'primary'
     };
   }
