@@ -822,9 +822,11 @@ body::before {
   .reader-col {
     padding: 20px 16px 60px;
   }
-  /* Texte : pas de justify sur mobile (espacement catastrophique) */
+  /* Texte : justify mobile + césure pour éviter les grands blancs */
   .reader-content p {
-    text-align: left;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
     font-size: 0.9em;
     line-height: 1.75;
   }
@@ -1602,13 +1604,26 @@ function renderMarkdown(md) {
 // Normalise for matching: remove combining diacritics, lowercase, hyphen → space.
 // Preserves string length for NFC-encoded input (each accented char stays 1 char).
 const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/-/g, ' ');
-const ENTITY_HIGHLIGHT_ALIASES = {
+const ENTITY_HIGHLIGHT_ALIASES_BY_SECTION = {
   // Intro (page 1) lexical variants to force expected graph mentions
-  'cryptomonnaies':             'cryptomonnaie',
-  'crypto monnaies':            'cryptomonnaie',
-  'codes sources':              'Code Source Ouvert',
-  "l'ouverture des codes sources": 'Code Source Ouvert',
+  intro: {
+    'cryptomonnaies':                'cryptomonnaie',
+    'crypto monnaies':               'cryptomonnaie',
+    'codes sources':                 'Code Source Ouvert',
+    "l'ouverture des codes sources": 'Code Source Ouvert',
+  },
 };
+const ENTITY_HIGHLIGHT_DEFAULT_ALIASES = {};
+const FOLDED_ENTITY_HIGHLIGHT_ALIASES_BY_SECTION = new Map(
+  Object.entries(ENTITY_HIGHLIGHT_ALIASES_BY_SECTION).map(([key, aliases]) => [
+    key,
+    new Map(Object.entries(aliases).map(([alias, canonical]) => [fold(alias), fold(canonical)])),
+  ])
+);
+const FOLDED_ENTITY_HIGHLIGHT_DEFAULT_ALIASES = new Map(
+  Object.entries(ENTITY_HIGHLIGHT_DEFAULT_ALIASES).map(([alias, canonical]) => [fold(alias), fold(canonical)])
+);
+const EMPTY_ALIASES_MAP = new Map();
 
 function highlightEntitiesInDOM(container, sectionKey) {
   if (!state.graphData || !container) return;
@@ -1647,17 +1662,14 @@ function highlightEntitiesInDOM(container, sectionKey) {
     }
   }
 
-  // Explicit aliases for common in-text variants (plural/wording) in Intro.
-  // Map alias → canonical entity name, then resolve to the corresponding entity id.
-  if (Object.keys(ENTITY_HIGHLIGHT_ALIASES).length) {
-    const byName = new Map(
-      state.graphData.entities.map(e => [fold(e.name || ''), e.id]).filter(([k, v]) => k && v)
-    );
-    for (const [alias, canonical] of Object.entries(ENTITY_HIGHLIGHT_ALIASES)) {
-      const targetId = byName.get(fold(canonical));
-      if (!targetId) continue;
-      const a = fold(alias);
-      if (a.length > 3 && !nameToId.has(a)) nameToId.set(a, targetId);
+  // Explicit aliases for common in-text variants.
+  // Aliases can be scoped by section key and resolve directly through nameToId.
+  const sectionAliases = FOLDED_ENTITY_HIGHLIGHT_ALIASES_BY_SECTION.get(sectionKey) || EMPTY_ALIASES_MAP;
+  for (const aliases of [FOLDED_ENTITY_HIGHLIGHT_DEFAULT_ALIASES, sectionAliases]) {
+    for (const [alias, canonical] of aliases) {
+      const targetId = nameToId.get(canonical);
+      if (!targetId || alias.length <= 3 || nameToId.has(alias)) continue;
+      nameToId.set(alias, targetId);
     }
   }
 
