@@ -1604,10 +1604,14 @@ function renderMarkdown(md) {
 const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/-/g, ' ');
 const ENTITY_HIGHLIGHT_ALIASES = {
   // Intro (page 1) lexical variants to force expected graph mentions
-  'cryptomonnaies':             'cryptomonnaie',
-  'crypto monnaies':            'cryptomonnaie',
-  'codes sources':              'Code Source Ouvert',
+  'cryptomonnaies':                 'cryptomonnaie',
+  'crypto monnaies':                'cryptomonnaie',
+  'crypto-monnaies':                'cryptomonnaie',
+  'codes sources':                  'Code Source Ouvert',
   "l'ouverture des codes sources": 'Code Source Ouvert',
+  'l’ouverture des codes sources':  'Code Source Ouvert',
+  "bourses d'échange":            "Bourses d'échange",
+  'bourses d’échange':              "Bourses d'échange",
 };
 
 function highlightEntitiesInDOM(container, sectionKey) {
