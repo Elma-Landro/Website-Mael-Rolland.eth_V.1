@@ -260,7 +260,9 @@ body::before {
   color: var(--text);
   font-size: 0.95em;
   text-align: justify;
-  text-justify: inter-word;
+  text-justify: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
   hyphens: auto;
 }
 
@@ -824,11 +826,13 @@ body::before {
   .reader-col {
     padding: 20px 16px 60px;
   }
-  /* Texte : justification conservée sur mobile */
+  /* Texte : éviter les espaces irréguliers sur écrans étroits */
   .reader-content p {
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
+    text-align: left;
+    text-justify: auto;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
     font-size: 0.9em;
     line-height: 1.75;
   }
@@ -1071,6 +1075,7 @@ const HIGHLIGHT_TYPES = new Set([
 //  INIT
 // ═══════════════════════════════════════════════════════
 async function init() {
+  applyLanguageAttributes(state.lang);
   renderChapterNav();
   await loadGraph();
   initCytoscape();
@@ -1987,11 +1992,18 @@ function updateChapterNav() {
 // ═══════════════════════════════════════════════════════
 //  LANGUAGE TOGGLE
 // ═══════════════════════════════════════════════════════
+function applyLanguageAttributes(lang) {
+  document.documentElement.lang = lang;
+  document.documentElement.dataset.lang = lang;
+  const readerContent = document.getElementById('reader-content');
+  if (readerContent) readerContent.setAttribute('lang', lang);
+}
+
 function setLang(lang) {
   state.lang = lang;
   document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.documentElement.dataset.lang = lang;
+  applyLanguageAttributes(lang);
   updateChapterNav();
   loadChapter(state.currentChapter);
 }
