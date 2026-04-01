@@ -538,14 +538,14 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     box-shadow: 4px 0 16px rgba(0,0,0,0.6);
   }
 
-  /* Panel détail mobile : bottom sheet compact (laisse ≥48vh de graphe visible) */
+  /* Panel détail mobile : bottom sheet compact — laisse ≥55vh de graphe visible */
   .grc-panel.mobile-open {
     display: flex !important;
     position: fixed;
     bottom: 0; left: 0; right: 0;
     top: auto;
-    height: 52vh;
-    max-height: calc(var(--app-vh) - 80px);
+    height: 40vh;
+    max-height: calc(var(--app-vh) - 120px);
     width: 100%;
     z-index: 500;
     border-radius: 12px 12px 0 0;
@@ -554,8 +554,8 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     overflow: hidden;
   }
   .grc-panel.mobile-open.panel-expanded {
-    height: 80vh;
-    max-height: calc(var(--app-vh) - 40px);
+    height: 72vh;
+    max-height: calc(var(--app-vh) - 60px);
   }
   /* Poignée mobile en haut du bottom sheet */
   .panel-mobile-handle {
@@ -2265,7 +2265,7 @@ const Graph = (() => {
       State.selectedId = id;
       UI.renderPanel(id);
       highlightNeighbors(id);
-      // Sur mobile : ouvrir le panneau en bottom sheet
+      // Sur mobile : ouvrir le panneau en bottom sheet et retailler le canvas
       if (window.innerWidth <= 768) {
         const panel = document.getElementById('detail-panel');
         panel.classList.add('mobile-open');
@@ -2274,6 +2274,19 @@ const Graph = (() => {
         if (handle) handle.style.display = 'flex';
         const expandBtn = document.getElementById('btn-panel-expand');
         if (expandBtn) expandBtn.textContent = '⤢';
+        // Retailler le canvas pour qu'il tienne au-dessus du panneau
+        const canvasWrap = document.querySelector('.grc-canvas-wrap');
+        if (canvasWrap) {
+          const headerH = document.querySelector('.grc-header')?.offsetHeight || 114;
+          const panelH = Math.round(window.innerHeight * 0.40);
+          canvasWrap.style.flex = 'none';
+          canvasWrap.style.height = `${Math.max(window.innerHeight - headerH - panelH, 80)}px`;
+          requestAnimationFrame(() => {
+            cy.resize();
+            const focusNode = cy.$id(id);
+            if (focusNode.length) cy.center(focusNode);
+          });
+        }
       }
     }
 
@@ -5810,14 +5823,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Mobile panel handle (bottom sheet) ──────────────
   const _detailPanel = document.getElementById('detail-panel');
   const _panelHandle = document.getElementById('panel-mobile-handle');
+  function _mobileCanvasResize(panelFraction) {
+    // Ajuste la hauteur du canvas pour correspondre à l'espace au-dessus du panneau.
+    // panelFraction=0 → restaure le canvas plein écran.
+    const canvasWrap = document.querySelector('.grc-canvas-wrap');
+    if (!canvasWrap || window.innerWidth > 768) return;
+    if (panelFraction <= 0) {
+      canvasWrap.style.flex = '';
+      canvasWrap.style.height = '';
+    } else {
+      const headerH = document.querySelector('.grc-header')?.offsetHeight || 114;
+      const panelH = Math.round(window.innerHeight * panelFraction);
+      canvasWrap.style.flex = 'none';
+      canvasWrap.style.height = `${Math.max(window.innerHeight - headerH - panelH, 80)}px`;
+    }
+    requestAnimationFrame(() => Graph.cy?.resize());
+  }
+
   document.getElementById('btn-panel-close')?.addEventListener('click', () => {
     _detailPanel.classList.remove('mobile-open', 'panel-expanded');
     if (_panelHandle) _panelHandle.style.display = 'none';
+    _mobileCanvasResize(0);
   });
   document.getElementById('btn-panel-expand')?.addEventListener('click', () => {
     const expanded = _detailPanel.classList.toggle('panel-expanded');
     const expandBtn = document.getElementById('btn-panel-expand');
     if (expandBtn) expandBtn.textContent = expanded ? '⤡' : '⤢';
+    _mobileCanvasResize(expanded ? 0.72 : 0.40);
   });
 
   // ── Layout ───────────────────────────────────────────
