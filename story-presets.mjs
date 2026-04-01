@@ -144,16 +144,17 @@ export const STORY_PRESETS = {
           cameraPreset: 'tight'
         },
         {
-          id: 'c2',
-          title: 'La CVE 2018',
-          body: 'Bitcoin CVE 2018-17144 illustre une gestion discrète, routinière, dans un petit cercle d’acteurs.',
-          focusNodes: ['Bitcoin CVE 2018-17144', 'Awemany', 'Responsible Disclosure', 'Bitcoin Core repo'],
-          cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
+          id: ‘c2’,
+          title: ‘La CVE 2018’,
+          body: ‘Bitcoin CVE 2018-17144 illustre une gestion discrète, routinière, dans un petit cercle d’acteurs.’,
+          focusNodes: [‘Bitcoin CVE 2018-17144’, ‘Awemany’, ‘Responsible Disclosure’, ‘Bitcoin Core repo’],
+          cameraPreset: ‘cluster’,
+          edgeMode: ‘neighbors’,
           includeNeighbors: true,
           secondaryDepth: 1,
           maxSecondaryPerTarget: 3,
-          fitTargets: 'primary+secondary'
+          fitTargets: ‘primary+secondary’,
+          sourceQuoteId: ‘anchor-0b39eeba’,   // Gouvernance de huis clos · p. 225
         },
         {
           id: 'c3',
@@ -194,12 +195,13 @@ export const STORY_PRESETS = {
       },
       steps: [
         {
-          id: 's1',
-          title: 'Le problème initial',
-          body: 'La thèse part d’un imaginaire libéral-techniciste supposant des cryptomonnaies immunisées contre la gouvernance humaine.',
-          focusNodes: ['Syllogisme libéral-techniciste', 'Règle', 'Discrétion'],
-          cameraPreset: 'tight',
-          hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
+          id: ‘s1’,
+          title: ‘Le problème initial’,
+          body: ‘La thèse part d’un imaginaire libéral-techniciste supposant des cryptomonnaies immunisées contre la gouvernance humaine.’,
+          focusNodes: [‘Syllogisme libéral-techniciste’, ‘Règle’, ‘Discrétion’],
+          cameraPreset: ‘tight’,
+          hideRelationTypes: [‘partOf’, ‘source’, ‘citedIn’, ‘relatedTo’],
+          sourceQuoteId: ‘anchor-4c007966’,   // Syllogisme libéral-techniciste · p. 53
         },
         {
           id: 's2',
@@ -228,7 +230,81 @@ export const STORY_PRESETS = {
           body: 'Les cryptomonnaies ne suppriment pas la politique monétaire : elles déplacent la souveraineté via des infrastructures et des formes polycentriques de gouvernance.',
           focusNodes: ['Conclusion générale', 'Gouvernance polycentrique', 'Règle', 'Discrétion'],
           cameraPreset: 'wide',
-          hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
+          hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo'],
+          sourceQuoteId: 'anchor-fb610652',   // Gouvernance polycentrique · p. 336
+        }
+      ]
+    },
+    {
+      // ── Histoire narrative ancrée sur SourceQuotes ────────────────────
+      // Chaque étape est liée à un NarrativeAnchor : la citation est la
+      // preuve primaire, l'entité est l'objet analytique, la scène de
+      // graphe est la traduction visuelle.
+      id: 'fil-de-preuves',
+      label: 'Fil de preuves',
+      layoutTarget: 'matrice',
+      intro: 'Suivre la démonstration de la thèse à travers ses citations clés — chaque étape est ancrée sur une SourceQuote.',
+      defaultStepOptions: {
+        edgeMode: 'neighbors',
+        includeNeighbors: true,
+        secondaryDepth: 1,
+        maxSecondaryPerTarget: 3,
+        hideBackbone: true,
+        fitTargets: 'primary+secondary'
+      },
+      steps: [
+        {
+          id: 'fp1',
+          title: 'La cryptomonnaie comme phénomène',
+          body: '« Avec lui commence le phénomène des cryptomonnaies, dont les codes sources sont ouverts. » — La thèse part du fait brut de l'existence des CM comme objets politiques et monétaires.',
+          focusNodes: ['cryptomonnaie', 'Code Source Ouvert', 'Communauté de paiement'],
+          cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-7c595e5b',   // cryptomonnaie · intro p. 15
+        },
+        {
+          id: 'fp2',
+          title: 'Le syllogisme libéral-techniciste',
+          body: '« Les ambitions technicistes des coiners qu'interroge cette thèse peuvent se traduire en un syllogisme. » — L'hypothèse réfutée : le code serait la loi, la gouvernance serait absente.',
+          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'Absence de gouvernance'],
+          cameraPreset: 'tight',
+          edgeMode: 'strict',
+          includeNeighbors: false,
+          sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · ch1 p. 53
+        },
+        {
+          id: 'fp3',
+          title: 'Les crises comme épreuve',
+          body: '« Les CM représentent une épreuve d'explicitation de la monnaie. » — Les crises révèlent ce que l'usage ordinaire laisse implicite.',
+          focusNodes: ['Crises comme épreuves d'explicitation', 'Bitcoin', 'Ethereum'],
+          cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-c6fadcf4',   // épreuves d'explicitation · ch2 p. 50
+        },
+        {
+          id: 'fp4',
+          title: 'Gouvernance de huis clos',
+          body: '« Le processus de découverte et de divulgation a permis une résolution silencieuse. » — La CVE 2018 exemplifie la gouvernance discrète : correction sans dissensus public.',
+          focusNodes: ['Gouvernance de huis clos', 'Bitcoin CVE 2018-17144', 'Divulgation responsable', 'Core Developers (Bitcoin)'],
+          cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-0b39eeba',   // Gouvernance de huis clos · ch3 p. 225
+        },
+        {
+          id: 'fp5',
+          title: 'La divulgation responsable',
+          body: '« Il s'engage dans une divulgation responsable : il limite l'accès à cette information. » — Pratique qui codifie la gestion discrète des crises.',
+          focusNodes: ['Divulgation responsable', 'Awemany', 'Bitcoin Core repo'],
+          cameraPreset: 'tight',
+          sourceQuoteId: 'anchor-acb5bee9',   // Divulgation responsable · ch3 p. 234
+        },
+        {
+          id: 'fp6',
+          title: 'La gouvernance polycentrique',
+          body: '« La gouvernance sur l'infrastructure des CM est conflictuelle et polycentrique. » — Conclusion générale : la thèse réfute l'acéphalisme et nomme la forme réelle de gouvernance.',
+          focusNodes: ['Gouvernance polycentrique', 'Gouvernance duale', 'Infrastructure sociotechnique'],
+          cameraPreset: 'wide',
+          edgeMode: 'strict',
+          includeNeighbors: false,
+          fitTargets: 'primary',
+          sourceQuoteId: 'anchor-fb610652',   // Gouvernance polycentrique · ccl p. 336
         }
       ]
     }

@@ -569,6 +569,56 @@ body::before {
   margin-bottom: 10px;
 }
 
+/* ── NarrativeAnchor quotes in entity panel ──────────────────────── */
+.panel-anchor-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.panel-anchor-title {
+  font-family: var(--pixel);
+  font-size: 0.42em;
+  color: var(--gold2);
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.panel-anchor-quote {
+  background: rgba(255,215,0,0.05);
+  border-left: 2px solid var(--gold2);
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 0 3px 3px 0;
+}
+.anchor-quote-text {
+  font-family: var(--body);
+  font-size: 0.85em;
+  color: var(--text);
+  line-height: 1.6;
+  margin: 4px 0 8px 0;
+  font-style: italic;
+}
+.anchor-page {
+  font-family: var(--pixel);
+  font-size: 0.38em;
+  color: var(--gold2);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 4px;
+}
+.anchor-graphe-link {
+  display: inline-block;
+  font-family: var(--pixel);
+  font-size: 0.38em;
+  color: #33ff33;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border: 1px solid #33ff33;
+  padding: 2px 7px;
+  margin-top: 2px;
+  transition: all .14s;
+}
+.anchor-graphe-link:hover { background: #33ff33; color: #000; }
+
 .panel-relation {
   display: flex; align-items: flex-start; gap: 8px;
   padding: 6px 0;
@@ -967,6 +1017,7 @@ body::before {
     <div id="panel-attrs"></div>
     <div class="panel-relations-title">RELATIONS</div>
     <div id="panel-relations">—</div>
+    <div id="panel-anchors" style="display:none"></div>
   </div>
 </div>
 
@@ -1018,6 +1069,7 @@ let state = {
   annotMode:         false,  // annotation mode toggle
   pendingAnnotation: null,   // { text, section_key, chapter } of current selection
   sectionKeyLabel:   {},     // section_key → labelFr (built from ThesisSection entities)
+  anchorsByEntityId: {},     // primaryEntityId → NarrativeAnchor[] (from narrative-anchors.json)
   _introCtx:         { letter: null, num: null }, // context for stateful intro heading parsing
 };
 
@@ -1089,16 +1141,29 @@ async function init() {
 // ═══════════════════════════════════════════════════════
 async function loadGraph() {
   try {
-    const [graphRes, sectionRes, overrideRes] = await Promise.all([
+    const [graphRes, sectionRes, overrideRes, anchorRes] = await Promise.all([
       fetch(GRAPH_FILE),
       fetch(SECTION_MAP_FILE),
       fetch('./section_overrides.json').catch(() => null),
+      fetch('./narrative-anchors.json').catch(() => null),
     ]);
     const [data, sectionMap] = await Promise.all([
       graphRes.json(),
       sectionRes.json(),
     ]);
     if (overrideRes?.ok) state.sectionOverrides = await overrideRes.json();
+
+    // ── Index NarrativeAnchors by primary entity ───────────────────────
+    if (anchorRes?.ok) {
+      const anchorData = await anchorRes.json();
+      state.anchorsByEntityId = {};
+      for (const a of (anchorData.anchors || [])) {
+        if (!state.anchorsByEntityId[a.primaryEntityId]) {
+          state.anchorsByEntityId[a.primaryEntityId] = [];
+        }
+        state.anchorsByEntityId[a.primaryEntityId].push(a);
+      }
+    }
 
     state.graphData          = data;
     state.sectionEntitiesMap = sectionMap;
@@ -1610,6 +1675,7 @@ function renderMarkdown(md) {
 // Normalise for matching: remove combining diacritics, lowercase, hyphen → space.
 // Preserves string length for NFC-encoded input (each accented char stays 1 char).
 const fold = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/-/g, ' ');
+const escHtml = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const ENTITY_HIGHLIGHT_ALIASES = {
   // Intro (page 1) lexical variants to force expected graph mentions
   'cryptomonnaies':                 'cryptomonnaie',
@@ -2121,6 +2187,33 @@ function openEntityPanel(entityId) {
     more.style.cssText  = 'font-size:0.75em;color:var(--text2);padding-top:8px;';
     more.textContent    = `+ ${neighbors.length - 30} autres relations`;
     relsEl.appendChild(more);
+  }
+
+  // ── NarrativeAnchor quotes ─────────────────────────────────────────
+  const anchorsEl     = document.getElementById('panel-anchors');
+  const entityAnchors = state.anchorsByEntityId?.[entityId] || [];
+  anchorsEl.innerHTML = '';
+  if (entityAnchors.length) {
+    anchorsEl.style.display = '';
+    const section = document.createElement('div');
+    section.className = 'panel-anchor-section';
+    section.innerHTML = `<div class="panel-anchor-title">CITATIONS (${entityAnchors.length})</div>`;
+    for (const anchor of entityAnchors.slice(0, 3)) {
+      const qt = anchor.quoteText.length > 260
+        ? anchor.quoteText.slice(0, 257) + '…'
+        : anchor.quoteText;
+      const div = document.createElement('div');
+      div.className = 'panel-anchor-quote';
+      div.innerHTML = `
+        <span class="anchor-page">p. ${anchor.page ?? '—'} · ${escHtml(anchor.chapter || '')}</span>
+        <p class="anchor-quote-text">${escHtml(qt)}</p>
+        <a class="anchor-graphe-link" href="graphe.html?anchor=${encodeURIComponent(anchor.id)}" target="_blank">↗ Scène du graphe</a>
+      `;
+      section.appendChild(div);
+    }
+    anchorsEl.appendChild(section);
+  } else {
+    anchorsEl.style.display = 'none';
   }
 
   document.getElementById('entity-panel').classList.add('open');

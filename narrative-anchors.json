@@ -1,0 +1,3918 @@
+{
+  "version": "1",
+  "generated_from": "grc20-these-mael-rolland-v96.json",
+  "generated_at": "2026-04-01T11:36:13.884Z",
+  "total": 115,
+  "featured_ids": [
+    "anchor-a5278302",
+    "anchor-7c595e5b",
+    "anchor-4c007966",
+    "anchor-45c0739a",
+    "anchor-f70acf9a",
+    "anchor-59789411",
+    "anchor-c8b6701b",
+    "anchor-c6fadcf4",
+    "anchor-5efd9565",
+    "anchor-0b39eeba",
+    "anchor-acb5bee9",
+    "anchor-fb610652"
+  ],
+  "anchors": [
+    {
+      "id": "anchor-f53402db",
+      "sourceQuoteId": "f53402db59184c11bb7a2e8ff43cc1f4",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": null,
+      "page": 5,
+      "chapter": "Résumé (front matter / abstract)",
+      "thesisLocation": "Résumé > Mots clés / thèse (règle vs discrétion)",
+      "quoteText": "le consensus social (espace de la discrétion) prime toujours face aux c odes irrespectueux de l’esprit communautaire (espace de la règle).",
+      "primaryEntityId": "fba623af07644327b873a59e0a9b2f97",
+      "primaryEntityName": "Space of Rule / Space of Discretion",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "a4bbdf3c65394e31bcbb33cc00c64303"
+      ],
+      "secondaryEntityNames": [
+        "Thèse centrale (infrastructures, crises, gouvernance polycentrique)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Space of Rule / Space of Discretion",
+      "storyTitle": "Space of Rule / Space of Discretion",
+      "storyBody": "le consensus social (espace de la discrétion) prime toujours face aux c odes irrespectueux de l’esprit communautaire (espace de la règle).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-f53402db",
+        "focusNodes": [
+          "Space of Rule / Space of Discretion",
+          "Thèse centrale (infrastructures, crises, gouvernance polycentrique)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-8b341a25",
+      "sourceQuoteId": "8b341a25361d4682b55d3dd8b4c68bcd",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": null,
+      "page": 5,
+      "chapter": "Résumé (front matter / abstract)",
+      "thesisLocation": "Résumé > Typologie des crises & gouvernance de crise",
+      "quoteText": "une gouvernance de crise à deux volets : de huis clos , routinièr e à consensus local , ou publique , conflictuelle et à consensus global .",
+      "primaryEntityId": "a432cc76f9ea4e949e374476082b89ab",
+      "primaryEntityName": "Gouvernance duale",
+      "primaryEntityType": "CoreConcept",
+      "secondaryEntityIds": [
+        "a22f20aea49d4f86ab927e9c71d0a850"
+      ],
+      "secondaryEntityNames": [
+        "Gouvernance de huis clos"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Gouvernance duale",
+      "storyTitle": "Gouvernance duale",
+      "storyBody": "une gouvernance de crise à deux volets : de huis clos , routinièr e à consensus local , ou publique , conflictuelle et à consensus global .",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-8b341a25",
+        "focusNodes": [
+          "Gouvernance duale",
+          "Gouvernance de huis clos"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-e3266e27",
+      "sourceQuoteId": "e3266e274829732433413179856ac582",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 15,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXIe siècle, une contestation monétaire radicale fut lancée : Bitcoin.",
+      "primaryEntityId": "bc083765c6c20c4840d5eef4873c9814",
+      "primaryEntityName": "Crise bancaire et financière de 2008",
+      "primaryEntityType": "CrisisEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Crise bancaire et financière de 2008",
+      "storyTitle": "Crise bancaire et financière de 2008",
+      "storyBody": "En 2008, sous pseudonyme et durant l'une des pires crises bancaires et financières du XXIe siècle, une contestation monétaire radicale fut lancée : Bitcoin.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-e3266e27",
+        "focusNodes": [
+          "Crise bancaire et financière de 2008"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-7c595e5b",
+      "sourceQuoteId": "7c595e5bc59c68d49e9aa19cc6c6458a",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 15,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "Avec lui commence le phénomène des cryptomonnaies* (CM), dont les codes sources ouverts* ont permis la création d'une diversité d'objets monétaires nouveaux.",
+      "primaryEntityId": "bed4df005c7ce36030703bd68cb521d1",
+      "primaryEntityName": "cryptomonnaie",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "cryptomonnaie",
+      "storyTitle": "cryptomonnaie",
+      "storyBody": "Avec lui commence le phénomène des cryptomonnaies* (CM), dont les codes sources ouverts* ont permis la création d'une diversité d'objets monétaires nouveaux.",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-7c595e5b",
+        "focusNodes": [
+          "cryptomonnaie"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a16f8f41",
+      "sourceQuoteId": "a16f8f41434e8fa40149fcd90c7027fe",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 15,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "Les monnaies parallèles, notamment les monnaies locales et complémentaires (MLC) avaient déjà produit une critique en actes (Blanc 1998a; Blanc 1998b).",
+      "primaryEntityId": "15e514aa2f965ee5fc25ac5a6ba7b0ef",
+      "primaryEntityName": "monnaies locales et complémentaires",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "monnaies locales et complémentaires",
+      "storyTitle": "monnaies locales et complémentaires",
+      "storyBody": "Les monnaies parallèles, notamment les monnaies locales et complémentaires (MLC) avaient déjà produit une critique en actes (Blanc 1998a; Blanc 1998b).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a16f8f41",
+        "focusNodes": [
+          "monnaies locales et complémentaires"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-1e58bf66",
+      "sourceQuoteId": "1e58bf66cb08d39fde0ae4ada3d0f6a9",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 16,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "convergeant collectivement en un mécanisme de chaîne de blocs* et un algorithme de consensus.",
+      "primaryEntityId": "22efd2a399180ddf6b43f2e7d5481547",
+      "primaryEntityName": "chaîne de blocs",
+      "primaryEntityType": "ConceptTechnical",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "chaîne de blocs",
+      "storyTitle": "chaîne de blocs",
+      "storyBody": "convergeant collectivement en un mécanisme de chaîne de blocs* et un algorithme de consensus.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-1e58bf66",
+        "focusNodes": [
+          "chaîne de blocs"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-bc9bd718",
+      "sourceQuoteId": "bc9bd718a6c737f8b5247d1a27e0a11d",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 19,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "le consensus de Nakamoto est une résolution probabiliste du problème des généraux byzantins.",
+      "primaryEntityId": "1e4e694fd7a39547c34d0899a0c1597f",
+      "primaryEntityName": "consensus de Nakamoto",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "consensus de Nakamoto",
+      "storyTitle": "consensus de Nakamoto",
+      "storyBody": "le consensus de Nakamoto est une résolution probabiliste du problème des généraux byzantins.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-bc9bd718",
+        "focusNodes": [
+          "consensus de Nakamoto"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-23f75ed7",
+      "sourceQuoteId": "23f75ed7b48222f6792c6eee09d6371d",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 20,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "des entreprises comme Facebook (avec le projet Libra, devenu Diem).",
+      "primaryEntityId": "ac087739c5a6543efdad8cf8dfb3218a",
+      "primaryEntityName": "Libra / Diem",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Libra / Diem",
+      "storyTitle": "Libra / Diem",
+      "storyBody": "des entreprises comme Facebook (avec le projet Libra, devenu Diem).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-23f75ed7",
+        "focusNodes": [
+          "Libra / Diem"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-da3fe7ac",
+      "sourceQuoteId": "da3fe7ace418a699cdd5643baaf2f51c",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 20,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "les « monnaies numériques de banques centrales » (MNBC, ou CBDC, Central Bank Digital Currency).",
+      "primaryEntityId": "6390dcaf87ea9c439228bdd2cff8d1c3",
+      "primaryEntityName": "Central Bank Digital Currency",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Central Bank Digital Currency",
+      "storyTitle": "Central Bank Digital Currency",
+      "storyBody": "les « monnaies numériques de banques centrales » (MNBC, ou CBDC, Central Bank Digital Currency).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-da3fe7ac",
+        "focusNodes": [
+          "Central Bank Digital Currency"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-2823a5ac",
+      "sourceQuoteId": "2823a5ac8bc059fb110a0326d3ca0dea",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 20,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "les « monnaies numériques de banques centrales » (MNBC)... Banque Centrale Européenne.",
+      "primaryEntityId": "77214f36adca11f76592932111ae3eb9",
+      "primaryEntityName": "European Central Bank",
+      "primaryEntityType": "Institution",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "European Central Bank",
+      "storyTitle": "European Central Bank",
+      "storyBody": "les « monnaies numériques de banques centrales » (MNBC)... Banque Centrale Européenne.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-2823a5ac",
+        "focusNodes": [
+          "European Central Bank"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-251c8c2b",
+      "sourceQuoteId": "251c8c2b237c984df2933d47a2230d32",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 24,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "L'institutionnalisme monétaire pour caractériser les CM comme monnaies.",
+      "primaryEntityId": "53983b5343c0ff0a8253aa23d5c3ad45",
+      "primaryEntityName": "Institutionnalisme Monétaire Francophone",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Institutionnalisme Monétaire Francophone",
+      "storyTitle": "Institutionnalisme Monétaire Francophone",
+      "storyBody": "L'institutionnalisme monétaire pour caractériser les CM comme monnaies.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-251c8c2b",
+        "focusNodes": [
+          "Institutionnalisme Monétaire Francophone"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-4934a3d8",
+      "sourceQuoteId": "4934a3d82e301437cef436aa053d9c90",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 25,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "un espace controversé entre la « Règle » (automaticité et discrétion nulle) et la « Discrétion ».",
+      "primaryEntityId": "0c0929e6ef0140ad855052b0dd078f00",
+      "primaryEntityName": "Règle contre discrétion (Rules vs Discretion)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Règle contre discrétion (Rules vs Discretion)",
+      "storyTitle": "Règle contre discrétion (Rules vs Discretion)",
+      "storyBody": "un espace controversé entre la « Règle » (automaticité et discrétion nulle) et la « Discrétion ».",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-4934a3d8",
+        "focusNodes": [
+          "Règle contre discrétion (Rules vs Discretion)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-8cb92688",
+      "sourceQuoteId": "8cb926887aa7a241c69310fb4571809b",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 26,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "la Currency School (qui défend la Règle) et la Banking School (qui défend la Discrétion).",
+      "primaryEntityId": "c595798ac80219f3250635684d5e3627",
+      "primaryEntityName": "Currency School",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Currency School",
+      "storyTitle": "Currency School",
+      "storyBody": "la Currency School (qui défend la Règle) et la Banking School (qui défend la Discrétion).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-8cb92688",
+        "focusNodes": [
+          "Currency School"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-e658f7ab",
+      "sourceQuoteId": "e658f7abe2b7510dd179b29f43bb3585",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 26,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "la Currency School (qui défend la Règle) et la Banking School (qui défend la Discrétion).",
+      "primaryEntityId": "39971c04ad2e63cc5d00c9e4f0ce5da1",
+      "primaryEntityName": "Banking School",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Banking School",
+      "storyTitle": "Banking School",
+      "storyBody": "la Currency School (qui défend la Règle) et la Banking School (qui défend la Discrétion).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-e658f7ab",
+        "focusNodes": [
+          "Banking School"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d851c55a",
+      "sourceQuoteId": "d851c55a3005de233c077ef23ef23184",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 26,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "le « Nouveau Consensus Monétaire » ou « Nouvelle Synthèse Néoclassique ».",
+      "primaryEntityId": "e415a12d8815bfe158d45eeea72d07eb",
+      "primaryEntityName": "Nouveau Consensus Monétaire",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Nouveau Consensus Monétaire",
+      "storyTitle": "Nouveau Consensus Monétaire",
+      "storyBody": "le « Nouveau Consensus Monétaire » ou « Nouvelle Synthèse Néoclassique ».",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d851c55a",
+        "focusNodes": [
+          "Nouveau Consensus Monétaire"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-8d39eb33",
+      "sourceQuoteId": "8d39eb33e072ef0a28a0fc07d6f24436",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 26,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "un « métallisme numérique » articulé à des innovations techniques permettant une politique monétaire « automatisée ».",
+      "primaryEntityId": "81b89cf559ebb5be57d4dba68dafae39",
+      "primaryEntityName": "Métallisme numérique",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Métallisme numérique",
+      "storyTitle": "Métallisme numérique",
+      "storyBody": "un « métallisme numérique » articulé à des innovations techniques permettant une politique monétaire « automatisée ».",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-8d39eb33",
+        "focusNodes": [
+          "Métallisme numérique"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-098a4dd0",
+      "sourceQuoteId": "098a4dd0dfd89307d41e5db61dd03545",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "A. La gouvernance des cryptomonnaies : construction de notre objet de recherche",
+      "page": 26,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "le « Free Banking » ou liberté d'émission (sans nécessairement de cours légal).",
+      "primaryEntityId": "80919108e22811bbe582df17f9bea512",
+      "primaryEntityName": "Free Banking",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Free Banking",
+      "storyTitle": "Free Banking",
+      "storyBody": "le « Free Banking » ou liberté d'émission (sans nécessairement de cours légal).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-098a4dd0",
+        "focusNodes": [
+          "Free Banking"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-73c2a0a3",
+      "sourceQuoteId": "73c2a0a3d541387d3599b99d2e074b85",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 27,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "une Sociologie des Sciences et Techniques (SST) pour analyser les dimensions techniques.",
+      "primaryEntityId": "02e716132dc58a584cc728791409bf60",
+      "primaryEntityName": "Sociologie des Sciences et Techniques",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Sociologie des Sciences et Techniques",
+      "storyTitle": "Sociologie des Sciences et Techniques",
+      "storyBody": "une Sociologie des Sciences et Techniques (SST) pour analyser les dimensions techniques.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-73c2a0a3",
+        "focusNodes": [
+          "Sociologie des Sciences et Techniques"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-1dfe7e2c",
+      "sourceQuoteId": "1dfe7e2c8de699f851885d7f5950192d",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 28,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "L'IMF adopte une approche nominaliste qui n'est pas « étatiste », contrairement aux théories chartalistes ou néo-chartalistes.",
+      "primaryEntityId": "fc76177e8cc9b4a6dff45672173edc07",
+      "primaryEntityName": "Théorie chartaliste",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Théorie chartaliste",
+      "storyTitle": "Théorie chartaliste",
+      "storyBody": "L'IMF adopte une approche nominaliste qui n'est pas « étatiste », contrairement aux théories chartalistes ou néo-chartalistes.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-1dfe7e2c",
+        "focusNodes": [
+          "Théorie chartaliste"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-52403c8c",
+      "sourceQuoteId": "52403c8c32615531142a28206ed67d0d",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 28,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "Ces universaux monétaires sont la dette, la confiance, et la souveraineté.",
+      "primaryEntityId": "8c869199825557872b51a5ca1745d4b8",
+      "primaryEntityName": "Universaux monétaires",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Universaux monétaires",
+      "storyTitle": "Universaux monétaires",
+      "storyBody": "Ces universaux monétaires sont la dette, la confiance, et la souveraineté.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-52403c8c",
+        "focusNodes": [
+          "Universaux monétaires"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-1e6d8598",
+      "sourceQuoteId": "1e6d8598862135de2d39307b07bff9c0",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 28,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "cadre d'analyse et de développement institutionnel (IAD/SES) développé dans les travaux d'Elinor Ostrom.",
+      "primaryEntityId": "92b63798d91b4c99bef87aea0e76f63c",
+      "primaryEntityName": "Cadre IAD / SES (Ostrom)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Cadre IAD / SES (Ostrom)",
+      "storyTitle": "Cadre IAD / SES (Ostrom)",
+      "storyBody": "cadre d'analyse et de développement institutionnel (IAD/SES) développé dans les travaux d'Elinor Ostrom.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-1e6d8598",
+        "focusNodes": [
+          "Cadre IAD / SES (Ostrom)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-26e470bc",
+      "sourceQuoteId": "26e470bc7db4c2160bc00f09fac47a2c",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 28,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "développé dans les travaux d'Elinor Ostrom et de l'école de Bloomington.",
+      "primaryEntityId": "37863a189d699cfd17f6b5a27f705c2a",
+      "primaryEntityName": "École de Bloomington",
+      "primaryEntityType": "Institution",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "École de Bloomington",
+      "storyTitle": "École de Bloomington",
+      "storyBody": "développé dans les travaux d'Elinor Ostrom et de l'école de Bloomington.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-26e470bc",
+        "focusNodes": [
+          "École de Bloomington"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-86f6569d",
+      "sourceQuoteId": "86f6569d885516f94fdc7db0a38ab3d9",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 29,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "des « ressources communes » (Common Pool Resources, CPR) gouvernées collectivement.",
+      "primaryEntityId": "61e8b86323f1e019d395d87e8f08e47f",
+      "primaryEntityName": "Common Pool Resources",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Common Pool Resources",
+      "storyTitle": "Common Pool Resources",
+      "storyBody": "des « ressources communes » (Common Pool Resources, CPR) gouvernées collectivement.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-86f6569d",
+        "focusNodes": [
+          "Common Pool Resources"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-1c7b8cd4",
+      "sourceQuoteId": "1c7b8cd493330ff40a0145f8954a199c",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 30,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "les « Special Purpose Money » (à usages spécifiques) opposées aux « All Purpose Money ».",
+      "primaryEntityId": "178d6109372d4ba3a22c41984f75b559",
+      "primaryEntityName": "Special Purpose Money",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Special Purpose Money",
+      "storyTitle": "Special Purpose Money",
+      "storyBody": "les « Special Purpose Money » (à usages spécifiques) opposées aux « All Purpose Money ».",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-1c7b8cd4",
+        "focusNodes": [
+          "Special Purpose Money"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d3411fed",
+      "sourceQuoteId": "d3411fed24d1702cddbdb707143cb1af",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 30,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "les « Special Purpose Money » (à usages spécifiques) opposées aux « All Purpose Money ».",
+      "primaryEntityId": "c825d237dc25b3e9af61dc7982f3da95",
+      "primaryEntityName": "All Purpose Money",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "All Purpose Money",
+      "storyTitle": "All Purpose Money",
+      "storyBody": "les « Special Purpose Money » (à usages spécifiques) opposées aux « All Purpose Money ».",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d3411fed",
+        "focusNodes": [
+          "All Purpose Money"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d6cb4dc1",
+      "sourceQuoteId": "d6cb4dc115f989f771758d00a600185b",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
+      "page": 31,
+      "chapter": "intro",
+      "thesisLocation": "intro",
+      "quoteText": "les CM sont des objets socio-techniques dont l'analyse requiert de ne séparer ni le technique du social.",
+      "primaryEntityId": "5828177699931e169966ce9e03ff4a6b",
+      "primaryEntityName": "Objet socio-technique",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Objet socio-technique",
+      "storyTitle": "Objet socio-technique",
+      "storyBody": "les CM sont des objets socio-techniques dont l'analyse requiert de ne séparer ni le technique du social.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d6cb4dc1",
+        "focusNodes": [
+          "Objet socio-technique"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a5278302",
+      "sourceQuoteId": "a5278302a3b54db891aa5d8b546b0459",
+      "chapterKey": "intro",
+      "chapterEntityId": "df405dcd975b406486a260da72f1ad4a",
+      "sectionKey": "III.2.1 — De la diversité des crises aux crises protocolaires des CM",
+      "page": 34,
+      "chapter": "Introduction générale",
+      "thesisLocation": "Introduction générale > Construction du terrain > Choix des crises étudiées",
+      "quoteText": "le bogue CVE 2018 #17144 pour Bitcoin et la crise ouverte par l'attaque de « The DAO »",
+      "primaryEntityId": "db9a125c4c7a4d03bd19d3dc8c474a9e",
+      "primaryEntityName": "Bitcoin CVE 2018-17144",
+      "primaryEntityType": "CrisisEvent",
+      "secondaryEntityIds": [
+        "e2cdb978bbdd4119aa946a271051a753"
+      ],
+      "secondaryEntityNames": [
+        "Ethereum Hard Fork (juillet 2016)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Bitcoin CVE 2018-17144",
+      "storyTitle": "Bitcoin CVE 2018-17144",
+      "storyBody": "le bogue CVE 2018 #17144 pour Bitcoin et la crise ouverte par l'attaque de « The DAO »",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-a5278302",
+        "focusNodes": [
+          "Bitcoin CVE 2018-17144",
+          "Ethereum Hard Fork (juillet 2016)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-c6fadcf4",
+      "sourceQuoteId": "c6fadcf486a54b64ad07f6652e49fb53",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "II.1.2 — La monnaie « créature de l'État » : critiques nominalistes et chartalistes",
+      "page": 50,
+      "chapter": "Chapitre II",
+      "thesisLocation": "Chapitre II > II.1.2 Les CM comme épreuve d’explicitation de l’argent",
+      "quoteText": "Les CM représentent une épreuve d’explicitation de la monnaie",
+      "primaryEntityId": "6ba73da9cdff4ca0bd94e11b314f2b4b",
+      "primaryEntityName": "Crises comme épreuves d’explicitation (non téléologiques)",
+      "primaryEntityType": "Argument",
+      "secondaryEntityIds": [
+        "923f4b0fd9894482a767e69a115b2799"
+      ],
+      "secondaryEntityNames": [
+        "Crises comme épreuves d’explicitation"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Crises comme épreuves d’explicitation (non téléologiques)",
+      "storyTitle": "Crises comme épreuves d’explicitation (non téléologiques)",
+      "storyBody": "Les CM représentent une épreuve d’explicitation de la monnaie",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-c6fadcf4",
+        "focusNodes": [
+          "Crises comme épreuves d’explicitation (non téléologiques)",
+          "Crises comme épreuves d’explicitation"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-4c007966",
+      "sourceQuoteId": "4c007966650f45708b5d6065a25d94bc",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "D. Objectifs, apports et organisation générale de la thèse",
+      "page": 53,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I — cadrage : syllogisme libéral-techniciste",
+      "quoteText": "Les ambitions technicistes des coiners* qu’interroge cette thèse peuvent se traduire sous la forme d’un syllogisme que nous qualifions de « libéral-techniciste » postulant que : puisque (i) la technique est autonome et neutre vis-à-vis du monde social, et que (ii) les CM sont des monnaies purement techniques, alors (iii) elles sont immunisées contre toute gouvernance humaine et ses intérêts politiques, ce qui en fait, naturellement, de (iv) « meilleures » monnaies que les monnaies nationales.",
+      "primaryEntityId": "c0e67b8798b946019cd324b2cce929ed",
+      "primaryEntityName": "Syllogisme libéral-techniciste",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "3efade56eb0c450a8d1f3060bca119ff",
+        "881dd0f54e0747f2b3737ba34fc30693"
+      ],
+      "secondaryEntityNames": [
+        "Immunité à la gouvernance humaine (prétention coiner)",
+        "CM comme « meilleures » monnaies (prétention coiner)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Syllogisme libéral-techniciste",
+      "storyTitle": "Syllogisme libéral-techniciste",
+      "storyBody": "Les ambitions technicistes des coiners* qu’interroge cette thèse peuvent se traduire sous la forme d’un syllogisme que nous qualifions de « libéral-techniciste » postulant que : puisque (i) la technique est autonome et neutre vis-à-vis du monde social, et que (ii) les CM sont des monnaies purement techniques, alors (iii) elles sont immunisées contre toute gouvernance humaine et ses intérêts politiques, ce qui en fait, naturellement, de (iv) « meilleures » monnaies que les monnaies nationales.",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-4c007966",
+        "focusNodes": [
+          "Syllogisme libéral-techniciste",
+          "Immunité à la gouvernance humaine (prétention coiner)",
+          "CM comme « meilleures » monnaies (prétention coiner)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-9bd259bd",
+      "sourceQuoteId": "9bd259bdb454c07ce33d107a5572b2aa",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "D. Objectifs, apports et organisation générale de la thèse",
+      "page": 54,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "les CM sont des infrastructures sociotechniques dont les formes et contenus incorporent des a priori sociaux et politiques.",
+      "primaryEntityId": "e1a7b06839404dbdacba7f00782a5450",
+      "primaryEntityName": "Infrastructure sociotechnique",
+      "primaryEntityType": "CoreConcept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Infrastructure sociotechnique",
+      "storyTitle": "Infrastructure sociotechnique",
+      "storyBody": "les CM sont des infrastructures sociotechniques dont les formes et contenus incorporent des a priori sociaux et politiques.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-9bd259bd",
+        "focusNodes": [
+          "Infrastructure sociotechnique"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-88c15dbe",
+      "sourceQuoteId": "88c15dbe94a2dcf3cb5717f154543da7",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "D. Objectifs, apports et organisation générale de la thèse",
+      "page": 54,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "dynamique carnavalesque du développement infrastructurel des CM (Kavanagh et Miscione 2017, p. 22).",
+      "primaryEntityId": "25b9562f132d329e49abd53406021dea",
+      "primaryEntityName": "Dynamique carnavalesque du développement infrastructurel",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Dynamique carnavalesque du développement infrastructurel",
+      "storyTitle": "Dynamique carnavalesque du développement infrastructurel",
+      "storyBody": "dynamique carnavalesque du développement infrastructurel des CM (Kavanagh et Miscione 2017, p. 22).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-88c15dbe",
+        "focusNodes": [
+          "Dynamique carnavalesque du développement infrastructurel"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a75fc819",
+      "sourceQuoteId": "a75fc819d1c64aa6805c470c93fba2bc",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": "I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée",
+      "page": 70,
+      "chapter": "Thèse (PDF complet)",
+      "thesisLocation": "Chapitre I, section I.2 (multisig/escrow)",
+      "quoteText": "portefeuilles* multisignatures ou protocoles de seconde couche, traités ci-après). 101 Bitcoin utilise le chiffrement asymétrique ECDSA (Elliptic Curve Digital Signature Algorithm) pour la création de couples de clefs privées-publiques : ces couples sont réputés uniques, car le risque de « collision », c’est-à-dire qu’un même couple de clefs soit généré par un autre utilisateur, est infinitésimal compte tenu des propriétés mathématiques des algorithmes utilisés et de l’état des connaissances.",
+      "primaryEntityId": "f000989b4870499f8940519926d9fdfd",
+      "primaryEntityName": "Capability — Multi-signature (multisig)",
+      "primaryEntityType": "Capability",
+      "secondaryEntityIds": [
+        "ec999565ab0e4474a00a79a2dd6f705e"
+      ],
+      "secondaryEntityNames": [
+        "Concept — Séquestre non centralisé (escrow)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Capability — Multi-signature (multisig)",
+      "storyTitle": "Capability — Multi-signature (multisig)",
+      "storyBody": "portefeuilles* multisignatures ou protocoles de seconde couche, traités ci-après). 101 Bitcoin utilise le chiffrement asymétrique ECDSA (Elliptic Curve Digital Signature Algorithm) pour la création de couples de clefs privées-publiques : ces couples sont réputés uniques, car le risque de « collision », c’est-à-dire qu’un même couple de clefs soit généré par un autre utilisateur, est infinitésimal compte tenu des propriétés mathématiques des algorithmes utilisés et de l’état des connaissances.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a75fc819",
+        "focusNodes": [
+          "Capability — Multi-signature (multisig)",
+          "Concept — Séquestre non centralisé (escrow)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a1b71293",
+      "sourceQuoteId": "a1b71293c9f22e3259e2f9420ba100da",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée",
+      "page": 72,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "attaques par déni de service* (DOS). Celles-ci saturent un serveur.",
+      "primaryEntityId": "1afa31fa6c935556e9802672355ac191",
+      "primaryEntityName": "Attaque de déni de service (DoS/DDoS)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Attaque de déni de service (DoS/DDoS)",
+      "storyTitle": "Attaque de déni de service (DoS/DDoS)",
+      "storyBody": "attaques par déni de service* (DOS). Celles-ci saturent un serveur.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a1b71293",
+        "focusNodes": [
+          "Attaque de déni de service (DoS/DDoS)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-bf8a3b2e",
+      "sourceQuoteId": "bf8a3b2e6722400091b7218e6d248843",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 81,
+      "chapter": "Thèse (PDF complet)",
+      "thesisLocation": "Chapitre I, section I.2 (standards ouvrant des usages différenciés)",
+      "quoteText": "Mais d’autres standards existent ouvrant des usages différenciés comme le « pay-to-script-hash » mobilisé pour les transactions multisignatures ou les « Hashed Timelock Contract » permettant la création des réseaux de paiement de secondes couches (cf.",
+      "primaryEntityId": "be6fc1153e8a4c759a4560243befd61c",
+      "primaryEntityName": "Capability — Pay-to-Script-Hash (P2SH)",
+      "primaryEntityType": "Capability",
+      "secondaryEntityIds": [
+        "9571956204ea46c0a61f41c2b3c988f7",
+        "cf44312c32734899b2de9c7efdf1e3c2"
+      ],
+      "secondaryEntityNames": [
+        "Capability — Hashed Timelock Contract (HTLC)",
+        "Concept — Lightning Network"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Capability — Pay-to-Script-Hash (P2SH)",
+      "storyTitle": "Capability — Pay-to-Script-Hash (P2SH)",
+      "storyBody": "Mais d’autres standards existent ouvrant des usages différenciés comme le « pay-to-script-hash » mobilisé pour les transactions multisignatures ou les « Hashed Timelock Contract » permettant la création des réseaux de paiement de secondes couches (cf.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-bf8a3b2e",
+        "focusNodes": [
+          "Capability — Pay-to-Script-Hash (P2SH)",
+          "Capability — Hashed Timelock Contract (HTLC)",
+          "Concept — Lightning Network"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-2d0b3440",
+      "sourceQuoteId": "2d0b344055f6441789ef8f0265ab4f01",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 85,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Section I.2",
+      "quoteText": "doit se developper progressivement [...] petite communaute beta [...] en cours de route",
+      "primaryEntityId": "70682067f36b474787924786f541857a",
+      "primaryEntityName": "Noyau dur de developpeurs (phase de preuve de concept)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Noyau dur de developpeurs (phase de preuve de concept)",
+      "storyTitle": "Noyau dur de developpeurs (phase de preuve de concept)",
+      "storyBody": "doit se developper progressivement [...] petite communaute beta [...] en cours de route",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-2d0b3440",
+        "focusNodes": [
+          "Noyau dur de developpeurs (phase de preuve de concept)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-3353b0f3",
+      "sourceQuoteId": "3353b0f3d77544ea8e55c4505507d352",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 85,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Section I.2",
+      "quoteText": "boucle de retroaction positive [...] prophetie auto-realisatrice [...] a mesure que le nombre d utilisateurs augmente, la valeur augmente",
+      "primaryEntityId": "b8fbacf5839546a59b1d15bf1b574b51",
+      "primaryEntityName": "Prophétie auto-réalisatrice (monétaire)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "a24eab80e2d94f3080b50f4130003566"
+      ],
+      "secondaryEntityNames": [
+        "Effet réseau (network effect)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Prophétie auto-réalisatrice (monétaire)",
+      "storyTitle": "Prophétie auto-réalisatrice (monétaire)",
+      "storyBody": "boucle de retroaction positive [...] prophetie auto-realisatrice [...] a mesure que le nombre d utilisateurs augmente, la valeur augmente",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-3353b0f3",
+        "focusNodes": [
+          "Prophétie auto-réalisatrice (monétaire)",
+          "Effet réseau (network effect)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-e35c45d1",
+      "sourceQuoteId": "e35c45d17a7f41cf97a124e2638fcced",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 87,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Section I.2",
+      "quoteText": "Sur ces bases, nous constituons 8 domaines de développement infrastructurel de Bitcoin, dont les cinq premiers recomposent les 22 segments de Rauchs (2016, p. 118-119)...",
+      "primaryEntityId": "d47c813a4d0c424cb80422ff6e6109f9",
+      "primaryEntityName": "Sphère d’usage",
+      "primaryEntityType": "InfrastructureDomain",
+      "secondaryEntityIds": [
+        "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "55b5215088664257819b56a918ec67fd"
+      ],
+      "secondaryEntityNames": [
+        "Traitement des transactions",
+        "Services de portefeuille et de paiement"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Sphère d’usage",
+      "storyTitle": "Sphère d’usage",
+      "storyBody": "Sur ces bases, nous constituons 8 domaines de développement infrastructurel de Bitcoin, dont les cinq premiers recomposent les 22 segments de Rauchs (2016, p. 118-119)...",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-e35c45d1",
+        "focusNodes": [
+          "Sphère d’usage",
+          "Traitement des transactions",
+          "Services de portefeuille et de paiement"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-4cd0f3ae",
+      "sourceQuoteId": "4cd0f3aed4bf4dbfb1c34170098715c6",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 89,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "La phase de « preuve de concept » (de juillet 2008 à mars 2012) Dans sa phase de « preuve de concept128 », connaissance et pratique de Bitcoin restent confidentielles ; l’activité de minage prédomine et « sans véritable activité commerciale », le bitcoin n’est qu’une monnaie de « Monopoly » échangée entre des joueurs peu nombreux…",
+      "primaryEntityId": "6414d87541f941a0b428c536ce72e032",
+      "primaryEntityName": "Phase de preuve de concept",
+      "primaryEntityType": "DevelopmentPhase",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Phase de preuve de concept",
+      "storyTitle": "Phase de preuve de concept",
+      "storyBody": "La phase de « preuve de concept » (de juillet 2008 à mars 2012) Dans sa phase de « preuve de concept128 », connaissance et pratique de Bitcoin restent confidentielles ; l’activité de minage prédomine et « sans véritable activité commerciale », le bitcoin n’est qu’une monnaie de « Monopoly » échangée entre des joueurs peu nombreux…",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-4cd0f3ae",
+        "focusNodes": [
+          "Phase de preuve de concept"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a090e5b4",
+      "sourceQuoteId": "a090e5b466eb424fa0635ff40f2854e1",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 90,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Comme dans le script original de Nakamoto, la seule solution disponible - Bitcoin QT, 0.1, publié le 9 janvier 2009 - est un client logiciel polyvalent, lourd et contraignant (Sedgwick 2019b) : il porte encore l’ensemble des composants et fonctions impliqués dans la production, la vérification et le traitement des transactions* et des enregistrements.",
+      "primaryEntityId": "4ece5d2077c14b558480a3a80a7a550f",
+      "primaryEntityName": "InfrastructureEvent — Bitcoin-Qt (client lourd)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "55b5215088664257819b56a918ec67fd",
+        "6414d87541f941a0b428c536ce72e032"
+      ],
+      "secondaryEntityNames": [
+        "Services de portefeuille et de paiement",
+        "Phase de preuve de concept"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Bitcoin-Qt (client lourd)",
+      "storyTitle": "InfrastructureEvent — Bitcoin-Qt (client lourd)",
+      "storyBody": "Comme dans le script original de Nakamoto, la seule solution disponible - Bitcoin QT, 0.1, publié le 9 janvier 2009 - est un client logiciel polyvalent, lourd et contraignant (Sedgwick 2019b) : il porte encore l’ensemble des composants et fonctions impliqués dans la production, la vérification et le traitement des transactions* et des enregistrements.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a090e5b4",
+        "focusNodes": [
+          "InfrastructureEvent — Bitcoin-Qt (client lourd)",
+          "Services de portefeuille et de paiement",
+          "Phase de preuve de concept"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-82813457",
+      "sourceQuoteId": "82813457681d44d09f136eeb4aeed690",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 91 — \nla polyvalence et à la lourdeur du client unique, sont opposées la spécialisation et la légèreté \nd’une diversité de solutions, recomposant la division du travail, des tâches et des fonctions \npassées133.",
+      "primaryEntityId": "0ec8d4683eb14f49a2b5dd37ac2c8858",
+      "primaryEntityName": "InfrastructureEvent — Bitcoin Faucet",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "d47c813a4d0c424cb80422ff6e6109f9",
+        "55b5215088664257819b56a918ec67fd"
+      ],
+      "secondaryEntityNames": [
+        "Sphère d’usage",
+        "Services de portefeuille et de paiement"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Bitcoin Faucet",
+      "storyTitle": "InfrastructureEvent — Bitcoin Faucet",
+      "storyBody": "— 91 — \nla polyvalence et à la lourdeur du client unique, sont opposées la spécialisation et la légèreté \nd’une diversité de solutions, recomposant la division du travail, des tâches et des fonctions \npassées133.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-82813457",
+        "focusNodes": [
+          "InfrastructureEvent — Bitcoin Faucet",
+          "Sphère d’usage",
+          "Services de portefeuille et de paiement"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-633e3317",
+      "sourceQuoteId": "633e33174ee34a7591e998f36a8f05f4",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 91 — \nla polyvalence et à la lourdeur du client unique, sont opposées la spécialisation et la légèreté \nd’une diversité de solutions, recomposant la division du travail, des tâches et des fonctions \npassées133.",
+      "primaryEntityId": "6661cad88f9145a6ad28d6c30840ef00",
+      "primaryEntityName": "Mt. Gox",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "d47c813a4d0c424cb80422ff6e6109f9",
+        "55b5215088664257819b56a918ec67fd"
+      ],
+      "secondaryEntityNames": [
+        "Sphère d’usage",
+        "Services de portefeuille et de paiement"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Mt. Gox",
+      "storyTitle": "Mt. Gox",
+      "storyBody": "— 91 — \nla polyvalence et à la lourdeur du client unique, sont opposées la spécialisation et la légèreté \nd’une diversité de solutions, recomposant la division du travail, des tâches et des fonctions \npassées133.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-633e3317",
+        "focusNodes": [
+          "Mt. Gox",
+          "Sphère d’usage",
+          "Services de portefeuille et de paiement"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-3a75f8de",
+      "sourceQuoteId": "3a75f8de77b0423bb2dd7ac504ac0471",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 91 — \nla polyvalence et à la lourdeur du client unique, sont opposées la spécialisation et la légèreté \nd’une diversité de solutions, recomposant la division du travail, des tâches et des fonctions \npassées133.",
+      "primaryEntityId": "4d131ce65c0e4ed4ac4da539f21979a2",
+      "primaryEntityName": "Multisig wallet",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "d47c813a4d0c424cb80422ff6e6109f9",
+        "55b5215088664257819b56a918ec67fd"
+      ],
+      "secondaryEntityNames": [
+        "Sphère d’usage",
+        "Services de portefeuille et de paiement"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Multisig wallet",
+      "storyTitle": "Multisig wallet",
+      "storyBody": "— 91 — \nla polyvalence et à la lourdeur du client unique, sont opposées la spécialisation et la légèreté \nd’une diversité de solutions, recomposant la division du travail, des tâches et des fonctions \npassées133.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-3a75f8de",
+        "focusNodes": [
+          "Multisig wallet",
+          "Sphère d’usage",
+          "Services de portefeuille et de paiement"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-4c335587",
+      "sourceQuoteId": "4c335587eb4e430996890cb179d9052c",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "133 En 2010 apparaît « MyBitcoin », premier service intermédié (dit de garde ou “custodial wallet”, Rauchs 2016), \npermettant un accès simplifié au réseau.",
+      "primaryEntityId": "30ea73371bad42b3b9e4b58649050ac4",
+      "primaryEntityName": "InfrastructureEvent — MyBitcoin (custodial wallet)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — MyBitcoin (custodial wallet)",
+      "storyTitle": "InfrastructureEvent — MyBitcoin (custodial wallet)",
+      "storyBody": "133 En 2010 apparaît « MyBitcoin », premier service intermédié (dit de garde ou “custodial wallet”, Rauchs 2016), \npermettant un accès simplifié au réseau.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-4c335587",
+        "focusNodes": [
+          "InfrastructureEvent — MyBitcoin (custodial wallet)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-c80f819d",
+      "sourceQuoteId": "c80f819dcb99461daccbd6220853d816",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Une carte graphique, dédiées à l’origine aux jeux vidéo, dispose d’une puissance GPU déjà bien supérieure en termes de Hash* par seconde. Alors plusieurs GPU reliées à une même machine...",
+      "primaryEntityId": "ef24c1fb7a7040b49a2c1e0194355cf1",
+      "primaryEntityName": "InfrastructureEvent — Premier minage GPU",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Premier minage GPU",
+      "storyTitle": "InfrastructureEvent — Premier minage GPU",
+      "storyBody": "Une carte graphique, dédiées à l’origine aux jeux vidéo, dispose d’une puissance GPU déjà bien supérieure en termes de Hash* par seconde. Alors plusieurs GPU reliées à une même machine...",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-c80f819d",
+        "focusNodes": [
+          "InfrastructureEvent — Premier minage GPU"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-110bdfda",
+      "sourceQuoteId": "110bdfda074c49da92e7a47077700a13",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "L’émergence de solutions mieux intégrées et stabilisées ne tarde pas : apparaît en 2010 MtGox, lancé par Jed McCaleb135, qui devient rapidement la première plateforme pour la paire BTC/$136 : de 2010 à 2014, s’y concentreront près de 70% des volumes d’échange (Sedgwick 2018b; Sedgwick 2019o).",
+      "primaryEntityId": "9670a4beed1a47bda5628c9770dddfd1",
+      "primaryEntityName": "InfrastructureEvent — Première bourse d’échange importante (MtGox)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "89bd5e66d7034342bd7761b5f7ead27c",
+        "a58d61a8fbb24b94af41ffcda9c147d8"
+      ],
+      "secondaryEntityNames": [
+        "PriceSeries — BTC price (Chronologie n°6)",
+        "Concept — Découverte du prix (price discovery) de Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Première bourse d’échange importante (MtGox)",
+      "storyTitle": "InfrastructureEvent — Première bourse d’échange importante (MtGox)",
+      "storyBody": "L’émergence de solutions mieux intégrées et stabilisées ne tarde pas : apparaît en 2010 MtGox, lancé par Jed McCaleb135, qui devient rapidement la première plateforme pour la paire BTC/$136 : de 2010 à 2014, s’y concentreront près de 70% des volumes d’échange (Sedgwick 2018b; Sedgwick 2019o).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-110bdfda",
+        "focusNodes": [
+          "InfrastructureEvent — Première bourse d’échange importante (MtGox)",
+          "PriceSeries — BTC price (Chronologie n°6)",
+          "Concept — Découverte du prix (price discovery) de Bitcoin"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d44b5cf9",
+      "sourceQuoteId": "d44b5cf9679a472a840943a48410e666",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 91,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Un portefeuille* « léger » non intermédié (ou « non custodial », Electrum) est lancé fin 2011 (Electrum website 2011), comme des solutions non …",
+      "primaryEntityId": "8bc6f2749a284bb7add34a1739cec310",
+      "primaryEntityName": "InfrastructureEvent — Premier logiciel de portefeuille léger (Electrum)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Premier logiciel de portefeuille léger (Electrum)",
+      "storyTitle": "InfrastructureEvent — Premier logiciel de portefeuille léger (Electrum)",
+      "storyBody": "Un portefeuille* « léger » non intermédié (ou « non custodial », Electrum) est lancé fin 2011 (Electrum website 2011), comme des solutions non …",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d44b5cf9",
+        "focusNodes": [
+          "InfrastructureEvent — Premier logiciel de portefeuille léger (Electrum)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-5b5d1820",
+      "sourceQuoteId": "5b5d18205ead4d7f9b4ebf918c6d85e5",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 92,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 92 — \nAvant MtGox et sans espace de conversion suffisant, la valeur des UCN* se fait dilemme \nde la « poule et de l’œuf » puisque sans valeur, pas d’acceptation en échange et sans échanges, \npas d’apparition de valeur (\"The Madhatter\" cité par Sedgwick 2019b).",
+      "primaryEntityId": "d969f6bc7b0444db8d228a13173b1b74",
+      "primaryEntityName": "WikiLeaks",
+      "primaryEntityType": "Organization",
+      "secondaryEntityIds": [
+        "d47c813a4d0c424cb80422ff6e6109f9"
+      ],
+      "secondaryEntityNames": [
+        "Sphère d’usage"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "WikiLeaks",
+      "storyTitle": "WikiLeaks",
+      "storyBody": "— 92 — \nAvant MtGox et sans espace de conversion suffisant, la valeur des UCN* se fait dilemme \nde la « poule et de l’œuf » puisque sans valeur, pas d’acceptation en échange et sans échanges, \npas d’apparition de valeur (\"The Madhatter\" cité par Sedgwick 2019b).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-5b5d1820",
+        "focusNodes": [
+          "WikiLeaks",
+          "Sphère d’usage"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-bec4bc9b",
+      "sourceQuoteId": "bec4bc9b9d814dd0bb9a02471138645d",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 92,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "L’intensification médiatique participe de vagues d’engouement-répulsion, se répercutant sur la valeur du cours, comme l’illustre sa poussée à 1$14 suite à la publication d’un article de Forbes le concernant en avril 2011 (Greenberg 2011)… ou sa multiplication par 8 le 14 juin, suite à l’annonce très médiatique de l’acceptation par WikiLeaks et son fondateur J.",
+      "primaryEntityId": "78dda096c4364121988bd3fb9757c53e",
+      "primaryEntityName": "InfrastructureEvent — WikiLeaks accepte le BTC",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "89bd5e66d7034342bd7761b5f7ead27c"
+      ],
+      "secondaryEntityNames": [
+        "PriceSeries — BTC price (Chronologie n°6)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — WikiLeaks accepte le BTC",
+      "storyTitle": "InfrastructureEvent — WikiLeaks accepte le BTC",
+      "storyBody": "L’intensification médiatique participe de vagues d’engouement-répulsion, se répercutant sur la valeur du cours, comme l’illustre sa poussée à 1$14 suite à la publication d’un article de Forbes le concernant en avril 2011 (Greenberg 2011)… ou sa multiplication par 8 le 14 juin, suite à l’annonce très médiatique de l’acceptation par WikiLeaks et son fondateur J.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-bec4bc9b",
+        "focusNodes": [
+          "InfrastructureEvent — WikiLeaks accepte le BTC",
+          "PriceSeries — BTC price (Chronologie n°6)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-62d98ffc",
+      "sourceQuoteId": "62d98ffc1447440f9abe547b637c0ee5",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 92,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Avant MtGox et sans espace de conversion suffisant, la valeur des UCN* se fait dilemme de la « poule et de l’œuf » puisque sans valeur, pas d’acceptation en échange et sans échanges, pas d’apparition de valeur (\"The Madhatter\" cité par Sedgwick 2019b).",
+      "primaryEntityId": "68999dd6e7d64457b1f9a77ebd61a3e2",
+      "primaryEntityName": "Concept — Dilemme de la « poule et de l’œuf » de la valeur des UCN",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Concept — Dilemme de la « poule et de l’œuf » de la valeur des UCN",
+      "storyTitle": "Concept — Dilemme de la « poule et de l’œuf » de la valeur des UCN",
+      "storyBody": "Avant MtGox et sans espace de conversion suffisant, la valeur des UCN* se fait dilemme de la « poule et de l’œuf » puisque sans valeur, pas d’acceptation en échange et sans échanges, pas d’apparition de valeur (\"The Madhatter\" cité par Sedgwick 2019b).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-62d98ffc",
+        "focusNodes": [
+          "Concept — Dilemme de la « poule et de l’œuf » de la valeur des UCN"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-f70acf9a",
+      "sourceQuoteId": "f70acf9aa0994418ab59cf9ae505d5b2",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 92,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "L’intensification médiatique participe de vagues d’engouement-répulsion, se répercutant sur la valeur du cours, comme l’illustre sa poussée à 1$14 suite à la publication d’un article de Forbes le concernant en avril 2011 (Greenberg 2011)… ou sa multiplication par 8 le 14 juin, suite à l’annonce très médiatique de l’acceptation par WikiLeaks et son fondateur J. Assange des BTC en paiement (Banque de France 2013, p. 4).",
+      "primaryEntityId": "8de77f3519e747648b51b4f886b53d88",
+      "primaryEntityName": "PriceWindow — Spike Forbes $14 (avril 2011)",
+      "primaryEntityType": "PriceWindow",
+      "secondaryEntityIds": [
+        "2b577242b2a8496aa5604feeac9558cc",
+        "78dda096c4364121988bd3fb9757c53e"
+      ],
+      "secondaryEntityNames": [
+        "PriceWindow — WikiLeaks x8 (14 juin 2011)",
+        "InfrastructureEvent — WikiLeaks accepte le BTC"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "PriceWindow — Spike Forbes $14 (avril 2011)",
+      "storyTitle": "PriceWindow — Spike Forbes $14 (avril 2011)",
+      "storyBody": "L’intensification médiatique participe de vagues d’engouement-répulsion, se répercutant sur la valeur du cours, comme l’illustre sa poussée à 1$14 suite à la publication d’un article de Forbes le concernant en avril 2011 (Greenberg 2011)… ou sa multiplication par 8 le 14 juin, suite à l’annonce très médiatique de l’acceptation par WikiLeaks et son fondateur J. Assange des BTC en paiement (Banque de France 2013, p. 4).",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-f70acf9a",
+        "focusNodes": [
+          "PriceWindow — Spike Forbes $14 (avril 2011)",
+          "PriceWindow — WikiLeaks x8 (14 juin 2011)",
+          "InfrastructureEvent — WikiLeaks accepte le BTC"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-073d0e18",
+      "sourceQuoteId": "073d0e18acd649b68cefa69e72257288",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 92,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Ce cours devient à la fois dépendant du traitement médiatique comme de la santé des passerelles*, encore peu nombreuses, permettant sa connexion à l’économie réelle : des problèmes de sécurité avec les hacks rencontrés par MtGox (…) produiront un « flash crack » en juillet (voyant le BTC passer de 32$ à 0,01$ en quelques jours) (Ibid. ; BitMEX Research 2018).",
+      "primaryEntityId": "381f864130a54b6d9062d413ef56c681",
+      "primaryEntityName": "PriceWindow — Flash crash MtGox : 32$ vers 0,01$ (juillet 2011)",
+      "primaryEntityType": "PriceWindow",
+      "secondaryEntityIds": [
+        "9670a4beed1a47bda5628c9770dddfd1",
+        "89bd5e66d7034342bd7761b5f7ead27c"
+      ],
+      "secondaryEntityNames": [
+        "InfrastructureEvent — Première bourse d’échange importante (MtGox)",
+        "PriceSeries — BTC price (Chronologie n°6)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "PriceWindow — Flash crash MtGox : 32$ vers 0,01$ (juillet 2011)",
+      "storyTitle": "PriceWindow — Flash crash MtGox : 32$ vers 0,01$ (juillet 2011)",
+      "storyBody": "Ce cours devient à la fois dépendant du traitement médiatique comme de la santé des passerelles*, encore peu nombreuses, permettant sa connexion à l’économie réelle : des problèmes de sécurité avec les hacks rencontrés par MtGox (…) produiront un « flash crack » en juillet (voyant le BTC passer de 32$ à 0,01$ en quelques jours) (Ibid. ; BitMEX Research 2018).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-073d0e18",
+        "focusNodes": [
+          "PriceWindow — Flash crash MtGox : 32$ vers 0,01$ (juillet 2011)",
+          "InfrastructureEvent — Première bourse d’échange importante (MtGox)",
+          "PriceSeries — BTC price (Chronologie n°6)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-adcee849",
+      "sourceQuoteId": "adcee8496adb426db05d7aacdf1746e5",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 92,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Section I.2",
+      "quoteText": "WikiLeaks a donne un coup de pied au nid de frelons, et l essaim se dirige vers nous.",
+      "primaryEntityId": "a34001a6571f4fdf8ae13d5e3b64587b",
+      "primaryEntityName": "Développement carnavalesque",
+      "primaryEntityType": "CoreConcept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Développement carnavalesque",
+      "storyTitle": "Développement carnavalesque",
+      "storyBody": "WikiLeaks a donne un coup de pied au nid de frelons, et l essaim se dirige vers nous.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-adcee849",
+        "focusNodes": [
+          "Développement carnavalesque"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-f2c6c6b8",
+      "sourceQuoteId": "f2c6c6b8357f43c6a8e31602ededa7cb",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 93,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 93 — \nmi-période. Émancipé de son créateur, Bitcoin continue d’évoluer et d’attirer, de proche en \nproche par-delà ses premiers cercles, des entrants plus diversifiés.",
+      "primaryEntityId": "1570f65e76a24fb0b3df247eef1d76d1",
+      "primaryEntityName": "Silk Road",
+      "primaryEntityType": "Marketplace",
+      "secondaryEntityIds": [
+        "d47c813a4d0c424cb80422ff6e6109f9",
+        "8fc8b0d7aa1a4510acea6831021bb4ac"
+      ],
+      "secondaryEntityNames": [
+        "Sphère d’usage",
+        "Traitement des transactions"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Silk Road",
+      "storyTitle": "Silk Road",
+      "storyBody": "— 93 — \nmi-période. Émancipé de son créateur, Bitcoin continue d’évoluer et d’attirer, de proche en \nproche par-delà ses premiers cercles, des entrants plus diversifiés.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-f2c6c6b8",
+        "focusNodes": [
+          "Silk Road",
+          "Sphère d’usage",
+          "Traitement des transactions"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-4797931e",
+      "sourceQuoteId": "4797931e56df4fd6a07499c766a77a23",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 94,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 94 — \nDice » sont représentatifs de cette phase « de péché ». Bitcoin est d’abord perçu comme « un \ntruc cool et nerveux, pas juste un autre PayPal » et l’engouement à son égard « concernait \nprincipalement le contournement des contrôles » pour des usages « exotiques » (May 2018), \ndéjà décrits et prescrits dans les écrits Cypherpunks (le \"BlackNet\" de May, 1992; 1994).",
+      "primaryEntityId": "a972e3e3220d450d9b9fca39df08dc25",
+      "primaryEntityName": "Satoshi Dice",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "d47c813a4d0c424cb80422ff6e6109f9",
+        "019689c1ce06489a84768c51637eb9ed"
+      ],
+      "secondaryEntityNames": [
+        "Sphère d’usage",
+        "Phase de péché"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Satoshi Dice",
+      "storyTitle": "Satoshi Dice",
+      "storyBody": "— 94 — \nDice » sont représentatifs de cette phase « de péché ». Bitcoin est d’abord perçu comme « un \ntruc cool et nerveux, pas juste un autre PayPal » et l’engouement à son égard « concernait \nprincipalement le contournement des contrôles » pour des usages « exotiques » (May 2018), \ndéjà décrits et prescrits dans les écrits Cypherpunks (le \"BlackNet\" de May, 1992; 1994).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-4797931e",
+        "focusNodes": [
+          "Satoshi Dice",
+          "Sphère d’usage",
+          "Phase de péché"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-ae08b7bf",
+      "sourceQuoteId": "ae08b7bf612b415585ff3b2a8fb50dc8",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 94,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "En 2013, il aura servi à générer mensuellement près d’1,2 million de dollars en revenu vendeur via « Silk Road », soit 92 000 USD en commissions pour ses opérateurs (Christin 2013, p.",
+      "primaryEntityId": "a089031b82eb4c67b2cfc686016a3820",
+      "primaryEntityName": "InfrastructureEvent — Première place d’échange illégale (Silk Road)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "f608f24486464db7af3b43a2e014948f",
+        "d47c813a4d0c424cb80422ff6e6109f9"
+      ],
+      "secondaryEntityNames": [
+        "Concept — Revenus et commissions de marché",
+        "Sphère d’usage"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Première place d’échange illégale (Silk Road)",
+      "storyTitle": "InfrastructureEvent — Première place d’échange illégale (Silk Road)",
+      "storyBody": "En 2013, il aura servi à générer mensuellement près d’1,2 million de dollars en revenu vendeur via « Silk Road », soit 92 000 USD en commissions pour ses opérateurs (Christin 2013, p.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-ae08b7bf",
+        "focusNodes": [
+          "InfrastructureEvent — Première place d’échange illégale (Silk Road)",
+          "Concept — Revenus et commissions de marché",
+          "Sphère d’usage"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-dabee093",
+      "sourceQuoteId": "dabee09337c6468aaeecf8ca0d09af31",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 94,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Section I.2",
+      "quoteText": "un truc cool et nerveux, pas juste un autre PayPal [...] concernait principalement le contournement des controles [...] usages exotiques",
+      "primaryEntityId": "ebbde512a8e94218893b1500f2ae5225",
+      "primaryEntityName": "Libertarianisme (libertarianism)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Libertarianisme (libertarianism)",
+      "storyTitle": "Libertarianisme (libertarianism)",
+      "storyBody": "un truc cool et nerveux, pas juste un autre PayPal [...] concernait principalement le contournement des controles [...] usages exotiques",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-dabee093",
+        "focusNodes": [
+          "Libertarianisme (libertarianism)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-fbfe3506",
+      "sourceQuoteId": "fbfe3506451e4559aaa8cd540f2f1765",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 95,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Le démantèlement de Silk Road illustre l’irruption du domaine de la conformité aux réglementations nationales (en bleu clair) comme l’ambivalence de la période : l’État, qu’Ulbricht excluait de l’équation (Musiani, Mallard et Méadel 2018, p.",
+      "primaryEntityId": "39fdc0aac1f74b8daad7a5227b99c8a5",
+      "primaryEntityName": "InfrastructureEvent — Démantèlement de Silk Road",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "c149df7c23504f61b048c92e25d4d448"
+      ],
+      "secondaryEntityNames": [
+        "Concept — Conformité réglementaire"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Démantèlement de Silk Road",
+      "storyTitle": "InfrastructureEvent — Démantèlement de Silk Road",
+      "storyBody": "Le démantèlement de Silk Road illustre l’irruption du domaine de la conformité aux réglementations nationales (en bleu clair) comme l’ambivalence de la période : l’État, qu’Ulbricht excluait de l’équation (Musiani, Mallard et Méadel 2018, p.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-fbfe3506",
+        "focusNodes": [
+          "InfrastructureEvent — Démantèlement de Silk Road",
+          "Concept — Conformité réglementaire"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d7006b89",
+      "sourceQuoteId": "d7006b89518c45e18f8a508ca26c7080",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 95,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "La Fondation Bitcoin, société à but non lucratif créée fin 2012, représente une tentative d’acteurs de l’écosystème d’instituer une représentation collective form…",
+      "primaryEntityId": "e5b12cd1015f44e9bf6660e52ab23482",
+      "primaryEntityName": "Bitcoin Foundation",
+      "primaryEntityType": "Organization",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Bitcoin Foundation",
+      "storyTitle": "Bitcoin Foundation",
+      "storyBody": "La Fondation Bitcoin, société à but non lucratif créée fin 2012, représente une tentative d’acteurs de l’écosystème d’instituer une représentation collective form…",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d7006b89",
+        "focusNodes": [
+          "Bitcoin Foundation"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a98ea8f0",
+      "sourceQuoteId": "a98ea8f0d1e34f51af41c320c1b6b7ec",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 96,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 96 — chypriote (ce cours bondit à 230 $ en avril, Banque de France 2013, p.…",
+      "primaryEntityId": "6ce7c70a40f34ef3bf06889bc177511b",
+      "primaryEntityName": "InfrastructureEvent — Crise chypriote (référence dans la monétisation)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "89bd5e66d7034342bd7761b5f7ead27c"
+      ],
+      "secondaryEntityNames": [
+        "PriceSeries — BTC price (Chronologie n°6)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Crise chypriote (référence dans la monétisation)",
+      "storyTitle": "InfrastructureEvent — Crise chypriote (référence dans la monétisation)",
+      "storyBody": "— 96 — chypriote (ce cours bondit à 230 $ en avril, Banque de France 2013, p.…",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a98ea8f0",
+        "focusNodes": [
+          "InfrastructureEvent — Crise chypriote (référence dans la monétisation)",
+          "PriceSeries — BTC price (Chronologie n°6)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-251e08cd",
+      "sourceQuoteId": "251e08cd9b804f479d4275aa56dda32c",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.1.3 — Bitcoin : une chimère théorico-pratique très politique",
+      "page": 96,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "… chypriote (ce cours bondit à 230 $ en avril, Banque de France 2013, p. 3). Ce cours permet de démontrer encore sa dépendance aux aléas infrastructurels exogènes par rapport aux qualités protocolaires de Bitcoin : en mai, il chute à 76 $ suite à une attaque par déni de service (DDOS, Sedgwick 2020a) rencontrée par MtGox, et la fermeture par le FBI du site SilkRoad est aussi l’occasion d’une chute brutale (Ibid.).",
+      "primaryEntityId": "9d2ad55e155c40d7bcc9adb057a83eac",
+      "primaryEntityName": "PriceWindow — Cyprus spike (230$)",
+      "primaryEntityType": "PriceWindow",
+      "secondaryEntityIds": [
+        "db98d7012997478abdbca331ea1438f1",
+        "6ce7c70a40f34ef3bf06889bc177511b"
+      ],
+      "secondaryEntityNames": [
+        "PriceWindow — MtGox DDOS crash (76$)",
+        "InfrastructureEvent — Crise chypriote (référence dans la monétisation)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "PriceWindow — Cyprus spike (230$)",
+      "storyTitle": "PriceWindow — Cyprus spike (230$)",
+      "storyBody": "… chypriote (ce cours bondit à 230 $ en avril, Banque de France 2013, p. 3). Ce cours permet de démontrer encore sa dépendance aux aléas infrastructurels exogènes par rapport aux qualités protocolaires de Bitcoin : en mai, il chute à 76 $ suite à une attaque par déni de service (DDOS, Sedgwick 2020a) rencontrée par MtGox, et la fermeture par le FBI du site SilkRoad est aussi l’occasion d’une chute brutale (Ibid.).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-251e08cd",
+        "focusNodes": [
+          "PriceWindow — Cyprus spike (230$)",
+          "PriceWindow — MtGox DDOS crash (76$)",
+          "InfrastructureEvent — Crise chypriote (référence dans la monétisation)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-df8fc868",
+      "sourceQuoteId": "df8fc86848824886811e45c873cebc75",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.1 Un protocole deborde de carnavalesques improvisations d acteurs",
+      "page": 98,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Dès le début de période, le BTC connaît une envolée importante de son cours (en décembre 2013, il culmine à près de 1000 $) suivant une intervention, largement médiatisée, marquant un affermissement de sa reconnaissance par les États : le 19 novembre 2013, la Commission du Sénat américain organise une session d’information…",
+      "primaryEntityId": "6b451a405b334281ae174f5836b73eb1",
+      "primaryEntityName": "InfrastructureEvent — Session Sénat US sur Bitcoin (19 novembre 2013)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "89bd5e66d7034342bd7761b5f7ead27c"
+      ],
+      "secondaryEntityNames": [
+        "PriceSeries — BTC price (Chronologie n°6)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Session Sénat US sur Bitcoin (19 novembre 2013)",
+      "storyTitle": "InfrastructureEvent — Session Sénat US sur Bitcoin (19 novembre 2013)",
+      "storyBody": "Dès le début de période, le BTC connaît une envolée importante de son cours (en décembre 2013, il culmine à près de 1000 $) suivant une intervention, largement médiatisée, marquant un affermissement de sa reconnaissance par les États : le 19 novembre 2013, la Commission du Sénat américain organise une session d’information…",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-df8fc868",
+        "focusNodes": [
+          "InfrastructureEvent — Session Sénat US sur Bitcoin (19 novembre 2013)",
+          "PriceSeries — BTC price (Chronologie n°6)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-98a7cd02",
+      "sourceQuoteId": "98a7cd02fb9d4a768d1ff1a241121309",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 98,
+      "chapter": "",
+      "thesisLocation": "",
+      "quoteText": "50 000% de rendement sur le bitcoin grace au gouvernement americain",
+      "primaryEntityId": "45bdbea2b9ec4c43a21ed9596e1764f9",
+      "primaryEntityName": "Cycles bull/bear (marches haussiers/baissiers)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "b682a4add98c4b23a98fa987dea8fb78",
+        "645079ad66ee41b689112d383dd54798"
+      ],
+      "secondaryEntityNames": [
+        "Julian Assange",
+        "Phase de maturation / Phase 3 Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Cycles bull/bear (marches haussiers/baissiers)",
+      "storyTitle": "Cycles bull/bear (marches haussiers/baissiers)",
+      "storyBody": "50 000% de rendement sur le bitcoin grace au gouvernement americain",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-98a7cd02",
+        "focusNodes": [
+          "Cycles bull/bear (marches haussiers/baissiers)",
+          "Julian Assange",
+          "Phase de maturation / Phase 3 Bitcoin"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a446bbdc",
+      "sourceQuoteId": "a446bbdc6ce344cfaedfbd5a5915a735",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 103,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "de vérifier les paiements sans faire fonctionner un nœud de réseau complet",
+      "primaryEntityId": "4977f6c788964274956bb1078d81f2c3",
+      "primaryEntityName": "Noeuds legers (SPV)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Noeuds legers (SPV)",
+      "storyTitle": "Noeuds legers (SPV)",
+      "storyBody": "de vérifier les paiements sans faire fonctionner un nœud de réseau complet",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a446bbdc",
+        "focusNodes": [
+          "Noeuds legers (SPV)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-deb832f4",
+      "sourceQuoteId": "deb832f4b72c49ce8a1063223b4ae56d",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 104,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "Ces puces n'ont aucune application légitime en dehors de l'extraction de BTC et du craquage de mots de passe, et la présence de ces puces, qui sont des milliers de fois plus efficaces par dollar et kilowattheure lors des hachages informatiques que les CPU génériques, rend impossible la concurrence pour les utilisateurs ordinaires disposant de CPU et de GPU génériques.",
+      "primaryEntityId": "a1d764bf362646b7822bf199bf9ca6c6",
+      "primaryEntityName": "InfrastructureEvent — ASICs (spécialisation du minage)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "8fc8b0d7aa1a4510acea6831021bb4ac"
+      ],
+      "secondaryEntityNames": [
+        "Traitement des transactions"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — ASICs (spécialisation du minage)",
+      "storyTitle": "InfrastructureEvent — ASICs (spécialisation du minage)",
+      "storyBody": "Ces puces n'ont aucune application légitime en dehors de l'extraction de BTC et du craquage de mots de passe, et la présence de ces puces, qui sont des milliers de fois plus efficaces par dollar et kilowattheure lors des hachages informatiques que les CPU génériques, rend impossible la concurrence pour les utilisateurs ordinaires disposant de CPU et de GPU génériques.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-deb832f4",
+        "focusNodes": [
+          "InfrastructureEvent — ASICs (spécialisation du minage)",
+          "Traitement des transactions"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-2f305218",
+      "sourceQuoteId": "2f3052182833490ea3a04a5fabf65df9",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 104,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "seules les personnes essayant de créer de nouvelles pièces de monnaie [...] de plus en plus laissées aux spécialistes avec des fermes de serveurs de matériel spécialisé. Une ferme de serveurs n'aurait besoin que d'un seul nœud sur le réseau",
+      "primaryEntityId": "da2c1b40ca374770836b98990bb6d55a",
+      "primaryEntityName": "Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "d66b452862854afc98a024f06ddbf56a",
+        "2cce8c93e3984269bf089e262d3af80d"
+      ],
+      "secondaryEntityNames": [
+        "Division sociale du travail protocolaire (Bitcoin)",
+        "Première révolution industrielle du minage Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs",
+      "storyTitle": "Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs",
+      "storyBody": "seules les personnes essayant de créer de nouvelles pièces de monnaie [...] de plus en plus laissées aux spécialistes avec des fermes de serveurs de matériel spécialisé. Une ferme de serveurs n'aurait besoin que d'un seul nœud sur le réseau",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-2f305218",
+        "focusNodes": [
+          "Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs",
+          "Division sociale du travail protocolaire (Bitcoin)",
+          "Première révolution industrielle du minage Bitcoin"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-93f6e0a5",
+      "sourceQuoteId": "93f6e0a576ee445e8d37735e55dd6ae5",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 105,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 105 — \ns’adapter via la constitution de coopératives de minage (ou pools, dont la première fut \nSlushpool, cf. Chap.",
+      "primaryEntityId": "ee7277478ddc4c0886e8d73a4e2ce00d",
+      "primaryEntityName": "Mining pools",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "8fc8b0d7aa1a4510acea6831021bb4ac"
+      ],
+      "secondaryEntityNames": [
+        "Traitement des transactions"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Mining pools",
+      "storyTitle": "Mining pools",
+      "storyBody": "— 105 — \ns’adapter via la constitution de coopératives de minage (ou pools, dont la première fut \nSlushpool, cf. Chap.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-93f6e0a5",
+        "focusNodes": [
+          "Mining pools",
+          "Traitement des transactions"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-6e7c9688",
+      "sourceQuoteId": "6e7c968895604e7e87538b6972007fb7",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 105,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "s’adapter via la constitution de coopératives de minage (ou pools, dont la première fut Slushpool, cf. Initialement adressée au seul des contributeurs élu leader parmi l’ensemble des participants (bien que tous soient nécessaires à la résilience d’ensemble et que cela induise l’arbitraire des cas d’enregistrement orphelins), cette création monétaire se trouve dès lors plus largement et sûrement répartie : centralisée par la pool qui la redistribue entre toutes les parties prenantes de la coopérative, à hauteur de leur contribution en puissance de calcul (même les petits génèrent des gains en UCN*) et ce, en continu157.",
+      "primaryEntityId": "15864ab2cdcd41348eecc0daba8eb11d",
+      "primaryEntityName": "InfrastructureEvent — Mining pools (coopératives de minage)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "6414d87541f941a0b428c536ce72e032"
+      ],
+      "secondaryEntityNames": [
+        "Traitement des transactions",
+        "Phase de preuve de concept"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Mining pools (coopératives de minage)",
+      "storyTitle": "InfrastructureEvent — Mining pools (coopératives de minage)",
+      "storyBody": "s’adapter via la constitution de coopératives de minage (ou pools, dont la première fut Slushpool, cf. Initialement adressée au seul des contributeurs élu leader parmi l’ensemble des participants (bien que tous soient nécessaires à la résilience d’ensemble et que cela induise l’arbitraire des cas d’enregistrement orphelins), cette création monétaire se trouve dès lors plus largement et sûrement répartie : centralisée par la pool qui la redistribue entre toutes les parties prenantes de la coopérative, à hauteur de leur contribution en puissance de calcul (même les petits génèrent des gains en UCN*) et ce, en continu157.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-6e7c9688",
+        "focusNodes": [
+          "InfrastructureEvent — Mining pools (coopératives de minage)",
+          "Traitement des transactions",
+          "Phase de preuve de concept"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-8fb6db82",
+      "sourceQuoteId": "8fb6db820d86471897ef0cdcbe337a78",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 105,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "je suis sur le bitcoin depuis quelques semaines et je n'ai pas encore trouvé de bloc. Quand beaucoup de gens ont des CPU lents [...] chacun est en compétition entre eux ET contre les riches bâtards de GPU",
+      "primaryEntityId": "5dfe15f31a89483aae5b75e1e60fc5ef",
+      "primaryEntityName": "GPU mining emergence",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "053d10d3a5b142778f078e3e2dfe79f4"
+      ],
+      "secondaryEntityNames": [
+        "Barrière à l'entrée (minage)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "GPU mining emergence",
+      "storyTitle": "GPU mining emergence",
+      "storyBody": "je suis sur le bitcoin depuis quelques semaines et je n'ai pas encore trouvé de bloc. Quand beaucoup de gens ont des CPU lents [...] chacun est en compétition entre eux ET contre les riches bâtards de GPU",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-8fb6db82",
+        "focusNodes": [
+          "GPU mining emergence",
+          "Barrière à l'entrée (minage)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-3ac0291d",
+      "sourceQuoteId": "3ac0291d10b147f0a53559a7a4f0a1d8",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 106,
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I, section I.2",
+      "quoteText": "— 106 — \net 18] : cela, l’histoire de Bitcoin l’a déjà éprouvé avec le cas Ghash.io, en janvier 2014159 \n(Hajdarbegovic 2014). Ensuite, des équipes de développeurs* travaillent à redonner aux hashers \nun statut de mineur en réduisant leur dépendance vis-à-vis des pools de minage : c’est la cas de \nStratum V.2, développé par Braiin (entreprise liée à Slushpool) visant à améliore…",
+      "primaryEntityId": "d3dcd3b1a7954ae48b78b39874609e96",
+      "primaryEntityName": "GHash.io",
+      "primaryEntityType": "ActorNonHuman",
+      "secondaryEntityIds": [
+        "8fc8b0d7aa1a4510acea6831021bb4ac"
+      ],
+      "secondaryEntityNames": [
+        "Traitement des transactions"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "GHash.io",
+      "storyTitle": "GHash.io",
+      "storyBody": "— 106 — \net 18] : cela, l’histoire de Bitcoin l’a déjà éprouvé avec le cas Ghash.io, en janvier 2014159 \n(Hajdarbegovic 2014). Ensuite, des équipes de développeurs* travaillent à redonner aux hashers \nun statut de mineur en réduisant leur dépendance vis-à-vis des pools de minage : c’est la cas de \nStratum V.2, développé par Braiin (entreprise liée à Slushpool) visant à améliore…",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-3ac0291d",
+        "focusNodes": [
+          "GHash.io",
+          "Traitement des transactions"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-b88f2525",
+      "sourceQuoteId": "b88f2525f0e348898375203dfc203cda",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 107,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "je suis passé à autre chose [...] le projet est entre de bonnes mains avec Gavin [Andresen] et tous les autres",
+      "primaryEntityId": "ae0f729d88cf472db6b6aeb80783594f",
+      "primaryEntityName": "InfrastructureEvent — Retrait de Nakamoto (décembre 2010)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "ed7476ec5a5040a281789a0b83cd4b90"
+      ],
+      "secondaryEntityNames": [
+        "Gavin Andresen"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Retrait de Nakamoto (décembre 2010)",
+      "storyTitle": "InfrastructureEvent — Retrait de Nakamoto (décembre 2010)",
+      "storyBody": "je suis passé à autre chose [...] le projet est entre de bonnes mains avec Gavin [Andresen] et tous les autres",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-b88f2525",
+        "focusNodes": [
+          "InfrastructureEvent — Retrait de Nakamoto (décembre 2010)",
+          "Gavin Andresen"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-1c0f4b0d",
+      "sourceQuoteId": "1c0f4b0d8a314f5ea7c38835582136a9",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 107,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "le système pourra prendre en charge les frais de transaction si nécessaire [...] la concurrence du marché ouvert [...] il y aura probablement toujours des nœuds prêts à traiter les transactions gratuitement",
+      "primaryEntityId": "5bf9c25933cb44a8aaa8dd335a662f89",
+      "primaryEntityName": "Frais de transaction Bitcoin",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "644be87209214927af0a4ffb959df6d8"
+      ],
+      "secondaryEntityNames": [
+        "InfrastructureEvent — Introduction des frais relais minimums (protocole)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Frais de transaction Bitcoin",
+      "storyTitle": "Frais de transaction Bitcoin",
+      "storyBody": "le système pourra prendre en charge les frais de transaction si nécessaire [...] la concurrence du marché ouvert [...] il y aura probablement toujours des nœuds prêts à traiter les transactions gratuitement",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-1c0f4b0d",
+        "focusNodes": [
+          "Frais de transaction Bitcoin",
+          "InfrastructureEvent — Introduction des frais relais minimums (protocole)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a49967a6",
+      "sourceQuoteId": "a49967a693af4032a04eb4c15bff6aa3",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 108,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "deux seuils à respecter lors de la création d'une transaction [...] frais relais [...] frais de transaction [...] la première opération doit avoir lieu avant la seconde",
+      "primaryEntityId": "644be87209214927af0a4ffb959df6d8",
+      "primaryEntityName": "InfrastructureEvent — Introduction des frais relais minimums (protocole)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "5bf9c25933cb44a8aaa8dd335a662f89"
+      ],
+      "secondaryEntityNames": [
+        "Frais de transaction Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — Introduction des frais relais minimums (protocole)",
+      "storyTitle": "InfrastructureEvent — Introduction des frais relais minimums (protocole)",
+      "storyBody": "deux seuils à respecter lors de la création d'une transaction [...] frais relais [...] frais de transaction [...] la première opération doit avoir lieu avant la seconde",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a49967a6",
+        "focusNodes": [
+          "InfrastructureEvent — Introduction des frais relais minimums (protocole)",
+          "Frais de transaction Bitcoin"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-8057b83d",
+      "sourceQuoteId": "8057b83d66de4edfbb261237a66817e7",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 108,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "des blocs intentionnellement coûteux à valider [...] limites ajoutées pour empêcher une attaque par déni de service du réseau de type 'bloc empoisonné'",
+      "primaryEntityId": "e30beed602fb4d60814946c70db0713b",
+      "primaryEntityName": "Bloc empoisonné (poisoned block)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "5d696ac4f7aa4645baa0e5f88e2b190d"
+      ],
+      "secondaryEntityNames": [
+        "Régulations transactionnelles"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Bloc empoisonné (poisoned block)",
+      "storyTitle": "Bloc empoisonné (poisoned block)",
+      "storyBody": "des blocs intentionnellement coûteux à valider [...] limites ajoutées pour empêcher une attaque par déni de service du réseau de type 'bloc empoisonné'",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-8057b83d",
+        "focusNodes": [
+          "Bloc empoisonné (poisoned block)",
+          "Régulations transactionnelles"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-bcf93aaf",
+      "sourceQuoteId": "bcf93aafa885e1feeb7a5c46a6fcfb13",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 108,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "Nakamoto a ajouté une « limite de poussière » (« dust limit ») visant à parer.",
+      "primaryEntityId": "2e4e25ff8883988739a49a0e0202e695",
+      "primaryEntityName": "Dust limit (Bitcoin)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Dust limit (Bitcoin)",
+      "storyTitle": "Dust limit (Bitcoin)",
+      "storyBody": "Nakamoto a ajouté une « limite de poussière » (« dust limit ») visant à parer.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-bcf93aaf",
+        "focusNodes": [
+          "Dust limit (Bitcoin)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-6bf464cd",
+      "sourceQuoteId": "6bf464cdabd1057b7228d0f3021cb144",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 108,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "limitation de 1 Mo est faite par Nakamoto qui n'ajoute qu'une ligne de code.",
+      "primaryEntityId": "22cda34c732d4ed389639be2024b5a18",
+      "primaryEntityName": "Limite de taille des blocs Bitcoin (1 Mo)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Limite de taille des blocs Bitcoin (1 Mo)",
+      "storyTitle": "Limite de taille des blocs Bitcoin (1 Mo)",
+      "storyBody": "limitation de 1 Mo est faite par Nakamoto qui n'ajoute qu'une ligne de code.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-6bf464cd",
+        "focusNodes": [
+          "Limite de taille des blocs Bitcoin (1 Mo)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-444c5eb7",
+      "sourceQuoteId": "444c5eb734724b4d97943972ab814f14",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 109,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "d'un certain point de vue, les transactions de spam bitcoin n'existent pas - si elles sont valides et qu'elles paient les frais appropriés, elles doivent être confirmées",
+      "primaryEntityId": "01026b1b57374b52958ba35d70400a10",
+      "primaryEntityName": "Spam transactionnel (transaction spam)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "d337ebdb9be74af2b5324f472235f095"
+      ],
+      "secondaryEntityNames": [
+        "Code is Law"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Spam transactionnel (transaction spam)",
+      "storyTitle": "Spam transactionnel (transaction spam)",
+      "storyBody": "d'un certain point de vue, les transactions de spam bitcoin n'existent pas - si elles sont valides et qu'elles paient les frais appropriés, elles doivent être confirmées",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-444c5eb7",
+        "focusNodes": [
+          "Spam transactionnel (transaction spam)",
+          "Code is Law"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-580c6e3f",
+      "sourceQuoteId": "580c6e3f209fdb23dabbe7dde804ae96",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 109,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "Op_Return War. Traité dans la section suivante, ce désaccord entre bitcoiners*.",
+      "primaryEntityId": "43188ec45e15dbb64adc77e81b89dacd",
+      "primaryEntityName": "Op_Return War",
+      "primaryEntityType": "CrisisEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Op_Return War",
+      "storyTitle": "Op_Return War",
+      "storyBody": "Op_Return War. Traité dans la section suivante, ce désaccord entre bitcoiners*.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-580c6e3f",
+        "focusNodes": [
+          "Op_Return War"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-4baeca78",
+      "sourceQuoteId": "4baeca786d084a3cb86bbed6dfe1c812",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 110,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "le processus de sélection naturelle des monnaies [...] que propose Hayek dans The Denationalization of money",
+      "primaryEntityId": "fe8a3378adf04e81bd934293081daeb9",
+      "primaryEntityName": "Bitcoin Maximalisme",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Bitcoin Maximalisme",
+      "storyTitle": "Bitcoin Maximalisme",
+      "storyBody": "le processus de sélection naturelle des monnaies [...] que propose Hayek dans The Denationalization of money",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-4baeca78",
+        "focusNodes": [
+          "Bitcoin Maximalisme"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-0e639d84",
+      "sourceQuoteId": "0e639d8466ab452e9dd430e671e4bf0d",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 111,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "processus de sélection naturelle des monnaies [...] que propose Hayek dans The Denationalization of money",
+      "primaryEntityId": "8cb4dc3c7aeb415dbfd3339c9ac43ca7",
+      "primaryEntityName": "The Denationalization of Money (Hayek 1976)",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "fe8a3378adf04e81bd934293081daeb9"
+      ],
+      "secondaryEntityNames": [
+        "Bitcoin Maximalisme"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "The Denationalization of Money (Hayek 1976)",
+      "storyTitle": "The Denationalization of Money (Hayek 1976)",
+      "storyBody": "processus de sélection naturelle des monnaies [...] que propose Hayek dans The Denationalization of money",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-0e639d84",
+        "focusNodes": [
+          "The Denationalization of Money (Hayek 1976)",
+          "Bitcoin Maximalisme"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-f28872b5",
+      "sourceQuoteId": "f28872b50db54393aa148b4a43f6da65",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 112,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "lutte de pouvoir mondiale pour [son] contrôle [...] à la fois symbolique et réelle [...] de plus en plus politisé [...] l'hégémonie des États-Unis sur l'Internet [...] leurs pratiques de surveillance expansives",
+      "primaryEntityId": "feb3b3b528af4403a43cb63516a4f212",
+      "primaryEntityName": "InfrastructureEvent — ICANN : gouvernance centralisée du DNS (cible cypherpunk)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "ac80b824dedc47419211e4393dfcd681"
+      ],
+      "secondaryEntityNames": [
+        "Gouvernance par l'infrastructure"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — ICANN : gouvernance centralisée du DNS (cible cypherpunk)",
+      "storyTitle": "InfrastructureEvent — ICANN : gouvernance centralisée du DNS (cible cypherpunk)",
+      "storyBody": "lutte de pouvoir mondiale pour [son] contrôle [...] à la fois symbolique et réelle [...] de plus en plus politisé [...] l'hégémonie des États-Unis sur l'Internet [...] leurs pratiques de surveillance expansives",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-f28872b5",
+        "focusNodes": [
+          "InfrastructureEvent — ICANN : gouvernance centralisée du DNS (cible cypherpunk)",
+          "Gouvernance par l'infrastructure"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-55bf8adc",
+      "sourceQuoteId": "55bf8adce794447c8e18b7b6d2c4c411",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 113,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "Les systèmes Bitcoin et BitDNS devront avoir des développements différenciés et des destins distincts, suivant les désirs et intérêts respectifs de leurs communautés",
+      "primaryEntityId": "496ef75551f5475ab7f7ec0c6f31052a",
+      "primaryEntityName": "InfrastructureEvent — BitDNS : projet DNS distribué précurseur de Namecoin (nov. 2010)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [
+        "9c0607981e304202945b2d06b5ca6863"
+      ],
+      "secondaryEntityNames": [
+        "Stratégie 'construire sur' vs 'construire à côté' de Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "InfrastructureEvent — BitDNS : projet DNS distribué précurseur de Namecoin (nov. 2010)",
+      "storyTitle": "InfrastructureEvent — BitDNS : projet DNS distribué précurseur de Namecoin (nov. 2010)",
+      "storyBody": "Les systèmes Bitcoin et BitDNS devront avoir des développements différenciés et des destins distincts, suivant les désirs et intérêts respectifs de leurs communautés",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-55bf8adc",
+        "focusNodes": [
+          "InfrastructureEvent — BitDNS : projet DNS distribué précurseur de Namecoin (nov. 2010)",
+          "Stratégie 'construire sur' vs 'construire à côté' de Bitcoin"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a36cef7f",
+      "sourceQuoteId": "a36cef7f19444a64b0f0b7f61e9bf214",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 113,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "BitDNS d'être un réseau complètement séparé et une chaîne de blocs séparée, tout en partageant la puissance du processeur de Bitcoin [...] les mineurs puissent rechercher des preuves de travail pour les deux réseaux simultanément",
+      "primaryEntityId": "a2cb828bde51457685cea55f1236284a",
+      "primaryEntityName": "Merge Mining / AuxPoW",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Merge Mining / AuxPoW",
+      "storyTitle": "Merge Mining / AuxPoW",
+      "storyBody": "BitDNS d'être un réseau complètement séparé et une chaîne de blocs séparée, tout en partageant la puissance du processeur de Bitcoin [...] les mineurs puissent rechercher des preuves de travail pour les deux réseaux simultanément",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a36cef7f",
+        "focusNodes": [
+          "Merge Mining / AuxPoW"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-5d0fb91b",
+      "sourceQuoteId": "5d0fb91b1da1469a91acd1ef11487f0f",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 115,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "créer une véritable monnaie alternative similaire à Bitcoin [...] temps de confirmation des transactions plus rapide [...] une meilleure efficacité de stockage [...] capable de gérer un volume de transactions plus important",
+      "primaryEntityId": "933ea1ffffba4a38ac567d3c55cd8e73",
+      "primaryEntityName": "Litecoin",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [
+        "5d5a5c91468f4bcc8d078001a5abc240"
+      ],
+      "secondaryEntityNames": [
+        "CM Bitcoin-Like"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Litecoin",
+      "storyTitle": "Litecoin",
+      "storyBody": "créer une véritable monnaie alternative similaire à Bitcoin [...] temps de confirmation des transactions plus rapide [...] une meilleure efficacité de stockage [...] capable de gérer un volume de transactions plus important",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-5d0fb91b",
+        "focusNodes": [
+          "Litecoin",
+          "CM Bitcoin-Like"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-45c0739a",
+      "sourceQuoteId": "45c0739a6a284ac59c2abb709cb68488",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 115,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "la preuve de travail a contribué à la percée majeure de Nakamoto [...] elle induit une dépendance à la consommation d'énergie, introduisant ainsi des frais généraux significatifs [...] supportés par les utilisateurs via une combinaison d'inflation et de frais de transaction",
+      "primaryEntityId": "5fd4d8dcdc404c1998aa8015ff944ecb",
+      "primaryEntityName": "Peercoin",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [
+        "5bd551ea907241fcbb89a63f2b580d78",
+        "f3e7754db9ee4502ae4180e36200ade1"
+      ],
+      "secondaryEntityNames": [
+        "Proof of Stake (PoS)",
+        "Proof of Work (PoW)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Peercoin",
+      "storyTitle": "Peercoin",
+      "storyBody": "la preuve de travail a contribué à la percée majeure de Nakamoto [...] elle induit une dépendance à la consommation d'énergie, introduisant ainsi des frais généraux significatifs [...] supportés par les utilisateurs via une combinaison d'inflation et de frais de transaction",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-45c0739a",
+        "focusNodes": [
+          "Peercoin",
+          "Proof of Stake (PoS)",
+          "Proof of Work (PoW)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-435c3eec",
+      "sourceQuoteId": "435c3eec9f434582afdc1072c5b183e8",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques",
+      "page": 118,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "les développeurs veulent vraiment que le protocole de base reste le même [...] et que tout le reste soit implémenté par-dessus",
+      "primaryEntityId": "9784ca2f71354c4f86e70e540ce64ea3",
+      "primaryEntityName": "Dash / Darkcoin",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [
+        "9c0607981e304202945b2d06b5ca6863"
+      ],
+      "secondaryEntityNames": [
+        "Stratégie 'construire sur' vs 'construire à côté' de Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Dash / Darkcoin",
+      "storyTitle": "Dash / Darkcoin",
+      "storyBody": "les développeurs veulent vraiment que le protocole de base reste le même [...] et que tout le reste soit implémenté par-dessus",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-435c3eec",
+        "focusNodes": [
+          "Dash / Darkcoin",
+          "Stratégie 'construire sur' vs 'construire à côté' de Bitcoin"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-cc93220d",
+      "sourceQuoteId": "cc93220d19dd4c33b995e331a587ec75",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 119,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "créer un réseau entièrement nouveau de monnaies, de marchandises et de titres au-dessus du Bitcoin lui-même",
+      "primaryEntityId": "0893301ee5634aada72fa1aabc72fca7",
+      "primaryEntityName": "Guerre des métaprotocoles / OP_RETURN War",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "9c0607981e304202945b2d06b5ca6863"
+      ],
+      "secondaryEntityNames": [
+        "Stratégie 'construire sur' vs 'construire à côté' de Bitcoin"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Guerre des métaprotocoles / OP_RETURN War",
+      "storyTitle": "Guerre des métaprotocoles / OP_RETURN War",
+      "storyBody": "créer un réseau entièrement nouveau de monnaies, de marchandises et de titres au-dessus du Bitcoin lui-même",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-cc93220d",
+        "focusNodes": [
+          "Guerre des métaprotocoles / OP_RETURN War",
+          "Stratégie 'construire sur' vs 'construire à côté' de Bitcoin"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d0bc18a3",
+      "sourceQuoteId": "d0bc18a3794a44c9983eaf4c02e5b52f",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 122,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "la majorité écrasante (>90%) des demandes d'utilisation de la blockchain de Bitcoin sont des demandes de monnaie, utiliser des nœuds complets comme terminaux de stockage de données stupides revient à abuser d'une ressource réseau entièrement bénévole",
+      "primaryEntityId": "8db86c8e880e4e6a96bfc5d05fb1fd50",
+      "primaryEntityName": "Passager clandestin (free rider) dans les métaprotocoles",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "0893301ee5634aada72fa1aabc72fca7"
+      ],
+      "secondaryEntityNames": [
+        "Guerre des métaprotocoles / OP_RETURN War"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Passager clandestin (free rider) dans les métaprotocoles",
+      "storyTitle": "Passager clandestin (free rider) dans les métaprotocoles",
+      "storyBody": "la majorité écrasante (>90%) des demandes d'utilisation de la blockchain de Bitcoin sont des demandes de monnaie, utiliser des nœuds complets comme terminaux de stockage de données stupides revient à abuser d'une ressource réseau entièrement bénévole",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d0bc18a3",
+        "focusNodes": [
+          "Passager clandestin (free rider) dans les métaprotocoles",
+          "Guerre des métaprotocoles / OP_RETURN War"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-6b1a40ec",
+      "sourceQuoteId": "6b1a40ec612241d3afc1abc1cfd29713",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 125,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "Le développement infrastructurel d'une CM produit des dépendances au sentier, reposant sur des équipes constituées et des sentiers de développement qu'il est bien difficile, voire impossible, de faire évoluer radicalement",
+      "primaryEntityId": "2956b3b87db1448f8a2ddde82d39e9c9",
+      "primaryEntityName": "Ethereum",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [
+        "f4b9aff00c1976c266295ed020e3c8e2"
+      ],
+      "secondaryEntityNames": [
+        "Mastercoin / Omni Layer"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Ethereum",
+      "storyTitle": "Ethereum",
+      "storyBody": "Le développement infrastructurel d'une CM produit des dépendances au sentier, reposant sur des équipes constituées et des sentiers de développement qu'il est bien difficile, voire impossible, de faire évoluer radicalement",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-6b1a40ec",
+        "focusNodes": [
+          "Ethereum",
+          "Mastercoin / Omni Layer"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-c2a1952b",
+      "sourceQuoteId": "c2a1952bbe6183541452abb3c4cf71ba",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 125,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "Wood joue un rôle de premier plan dans le développement de la couche protocolaire d'Ethereum.",
+      "primaryEntityId": "6ec8c7db180146f587acf2870b33c282",
+      "primaryEntityName": "Gavin Wood",
+      "primaryEntityType": "Person",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Gavin Wood",
+      "storyTitle": "Gavin Wood",
+      "storyBody": "Wood joue un rôle de premier plan dans le développement de la couche protocolaire d'Ethereum.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-c2a1952b",
+        "focusNodes": [
+          "Gavin Wood"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-037a4309",
+      "sourceQuoteId": "037a43098035654430fb89de6abe07a2",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 125,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "développement du langage de programmation* natif d'Ethereum : Solidity.",
+      "primaryEntityId": "b2176f93632a42f7a5601a67e07ad436",
+      "primaryEntityName": "Solidity",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Solidity",
+      "storyTitle": "Solidity",
+      "storyBody": "développement du langage de programmation* natif d'Ethereum : Solidity.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-037a4309",
+        "focusNodes": [
+          "Solidity"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-032b9bf6",
+      "sourceQuoteId": "032b9bf6912c438dbe30942a8d905982",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+      "page": 126,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "annonce officielle d'Ethereum est faite le 26 janvier 2014, à Miami, durant la conférence North American Bitcoin Conference.",
+      "primaryEntityId": "344cef0c6643488946ab489f73e2e97f",
+      "primaryEntityName": "North American Bitcoin Conference (Miami 2014)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "North American Bitcoin Conference (Miami 2014)",
+      "storyTitle": "North American Bitcoin Conference (Miami 2014)",
+      "storyBody": "annonce officielle d'Ethereum est faite le 26 janvier 2014, à Miami, durant la conférence North American Bitcoin Conference.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-032b9bf6",
+        "focusNodes": [
+          "North American Bitcoin Conference (Miami 2014)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-447bc91b",
+      "sourceQuoteId": "447bc91bbbb044d007d979a5805c0d77",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 126,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "Mastercoin/Omni que de Bitcoin. Dès les premières conceptualisations d'Ethereum.",
+      "primaryEntityId": "f4b9aff00c1976c266295ed020e3c8e2",
+      "primaryEntityName": "Mastercoin / Omni Layer",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Mastercoin / Omni Layer",
+      "storyTitle": "Mastercoin / Omni Layer",
+      "storyBody": "Mastercoin/Omni que de Bitcoin. Dès les premières conceptualisations d'Ethereum.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-447bc91b",
+        "focusNodes": [
+          "Mastercoin / Omni Layer"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-0923cb0e",
+      "sourceQuoteId": "0923cb0e478e40eb9f8c9cd23359d7c2",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 127,
+      "chapter": "Chapitre I",
+      "thesisLocation": "",
+      "quoteText": "certains avaient quitté leur emploi et n'avaient pas vu un seul satoshi dans leur portefeuille Bitcoin depuis six mois, tandis que d'autres s'inquiétaient de nourrir leur famille et de payer leur hypothèque",
+      "primaryEntityId": "4ceab8fe810c40ea912957840fd6d593",
+      "primaryEntityName": "Ethereum Foundation",
+      "primaryEntityType": "Organization",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Ethereum Foundation",
+      "storyTitle": "Ethereum Foundation",
+      "storyBody": "certains avaient quitté leur emploi et n'avaient pas vu un seul satoshi dans leur portefeuille Bitcoin depuis six mois, tandis que d'autres s'inquiétaient de nourrir leur famille et de payer leur hypothèque",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-0923cb0e",
+        "focusNodes": [
+          "Ethereum Foundation"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-30ef49c8",
+      "sourceQuoteId": "30ef49c8c9fb883a2e24204ddd0f8629",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1.2 — Une remise en ordre rapide (CVE 2018)",
+      "page": 127,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "l'« Ether Genesis Sale » débute le 22 juillet 2014 pour une durée de 42 jours.",
+      "primaryEntityId": "d0f3f4e1a1796c486a136d142127c321",
+      "primaryEntityName": "Ether Genesis Sale (ICO Ethereum 2014)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Ether Genesis Sale (ICO Ethereum 2014)",
+      "storyTitle": "Ether Genesis Sale (ICO Ethereum 2014)",
+      "storyBody": "l'« Ether Genesis Sale » débute le 22 juillet 2014 pour une durée de 42 jours.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-30ef49c8",
+        "focusNodes": [
+          "Ether Genesis Sale (ICO Ethereum 2014)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-ce7092bd",
+      "sourceQuoteId": "ce7092bd41fe20328f98e31d745ca5f2",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+      "page": 127,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "la Suisse, pour ses facilités légales et fiscales, précisément le canton de Zoug.",
+      "primaryEntityId": "a0559d93583c16893a939e5b9d816e1e",
+      "primaryEntityName": "Crypto Valley (Zoug, Suisse)",
+      "primaryEntityType": "GovernanceArena",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Crypto Valley (Zoug, Suisse)",
+      "storyTitle": "Crypto Valley (Zoug, Suisse)",
+      "storyBody": "la Suisse, pour ses facilités légales et fiscales, précisément le canton de Zoug.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-ce7092bd",
+        "focusNodes": [
+          "Crypto Valley (Zoug, Suisse)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-f0197a12",
+      "sourceQuoteId": "f0197a1202d1a60d0741096d307cf7eb",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1.2 — Une remise en ordre rapide (CVE 2018)",
+      "page": 128,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "31 725 BTC (pour une valeur de 18 Millions de $ à l'époque) — Campagne de financement Ethereum (ICO 2014).",
+      "primaryEntityId": "647cfd915fa09e9703fa8cbd1e60e819",
+      "primaryEntityName": "Campagne de financement Ethereum (ICO 2014)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Campagne de financement Ethereum (ICO 2014)",
+      "storyTitle": "Campagne de financement Ethereum (ICO 2014)",
+      "storyBody": "31 725 BTC (pour une valeur de 18 Millions de $ à l'époque) — Campagne de financement Ethereum (ICO 2014).",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-f0197a12",
+        "focusNodes": [
+          "Campagne de financement Ethereum (ICO 2014)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-da1955d1",
+      "sourceQuoteId": "da1955d12014df7049bee1a5799c255a",
+      "chapterKey": "ch1",
+      "chapterEntityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "sectionKey": "III.1.2 — Une remise en ordre rapide (CVE 2018)",
+      "page": 128,
+      "chapter": "chap1",
+      "thesisLocation": "chap1",
+      "quoteText": "Ethereum passe du « rêve » (Gerring, 2016) à la réalité le 20 juillet 2015, avec « Frontier ».",
+      "primaryEntityId": "6cbe860718afbd70507b3dc92aba5973",
+      "primaryEntityName": "Frontier (lancement mainnet Ethereum, juillet 2015)",
+      "primaryEntityType": "InfrastructureEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Frontier (lancement mainnet Ethereum, juillet 2015)",
+      "storyTitle": "Frontier (lancement mainnet Ethereum, juillet 2015)",
+      "storyBody": "Ethereum passe du « rêve » (Gerring, 2016) à la réalité le 20 juillet 2015, avec « Frontier ».",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-da1955d1",
+        "focusNodes": [
+          "Frontier (lancement mainnet Ethereum, juillet 2015)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-ee9ea714",
+      "sourceQuoteId": "ee9ea71439c46e10893edc53fad3aef6",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+      "page": 142,
+      "chapter": "chap2",
+      "thesisLocation": "chap2",
+      "quoteText": "Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages.",
+      "primaryEntityId": "805879ef12780478a182ee9ce35257f9",
+      "primaryEntityName": "Statut monétaire des cryptomonnaies",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Statut monétaire des cryptomonnaies",
+      "storyTitle": "Statut monétaire des cryptomonnaies",
+      "storyBody": "Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-ee9ea714",
+        "focusNodes": [
+          "Statut monétaire des cryptomonnaies"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-dce8efe4",
+      "sourceQuoteId": "dce8efe4f39bbd41f856b5f9cf67dbd0",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+      "page": 142,
+      "chapter": "chap2",
+      "thesisLocation": "chap2",
+      "quoteText": "institutionnalisme intéressé aux usages — approche permettant de dépasser le débat sur le statut monétaire des CM.",
+      "primaryEntityId": "21107fb980daa17e698237df5d7daa2f",
+      "primaryEntityName": "Institutionnalisme intéressé aux usages",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Institutionnalisme intéressé aux usages",
+      "storyTitle": "Institutionnalisme intéressé aux usages",
+      "storyBody": "institutionnalisme intéressé aux usages — approche permettant de dépasser le débat sur le statut monétaire des CM.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-dce8efe4",
+        "focusNodes": [
+          "Institutionnalisme intéressé aux usages"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-882729d7",
+      "sourceQuoteId": "882729d7425a5f6c338ace638bc74979",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+      "page": 143,
+      "chapter": "chap2",
+      "thesisLocation": "chap2",
+      "quoteText": "approche institutionnaliste de la monnaie — cadre théorique central du Chapitre II.",
+      "primaryEntityId": "0be32c5d6649a5962af80206844aa324",
+      "primaryEntityName": "Approche institutionnaliste de la monnaie",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Approche institutionnaliste de la monnaie",
+      "storyTitle": "Approche institutionnaliste de la monnaie",
+      "storyBody": "approche institutionnaliste de la monnaie — cadre théorique central du Chapitre II.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-882729d7",
+        "focusNodes": [
+          "Approche institutionnaliste de la monnaie"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-08c03bdf",
+      "sourceQuoteId": "08c03bdf8fb114f1c221114458f15b16",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+      "page": 144,
+      "chapter": "chap2",
+      "thesisLocation": "chap2",
+      "quoteText": "unité de compte, réserve de valeur, moyen d'échange — triptyque fonctionnel de la monnaie.",
+      "primaryEntityId": "bed2df7ff94f6ded0c32dc33d530571a",
+      "primaryEntityName": "Triptyque fonctionnel de la monnaie",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Triptyque fonctionnel de la monnaie",
+      "storyTitle": "Triptyque fonctionnel de la monnaie",
+      "storyBody": "unité de compte, réserve de valeur, moyen d'échange — triptyque fonctionnel de la monnaie.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-08c03bdf",
+        "focusNodes": [
+          "Triptyque fonctionnel de la monnaie"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-a1ee97b5",
+      "sourceQuoteId": "a1ee97b5d441cc3d1f11998515c74d23",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "II.2.3 — La monnaie à l'épreuve : dettes, confiance et souveraineté",
+      "page": 176,
+      "chapter": "chap2",
+      "thesisLocation": "chap2",
+      "quoteText": "controverse statut monétaire Bitcoin comme révélateur — Chapitre II, p.176.",
+      "primaryEntityId": "758e9ca93d00591b0a077b2d4f0125eb",
+      "primaryEntityName": "Controverse statut monétaire des cryptomonnaies",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Controverse statut monétaire des cryptomonnaies",
+      "storyTitle": "Controverse statut monétaire des cryptomonnaies",
+      "storyBody": "controverse statut monétaire Bitcoin comme révélateur — Chapitre II, p.176.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-a1ee97b5",
+        "focusNodes": [
+          "Controverse statut monétaire des cryptomonnaies"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-c8b6701b",
+      "sourceQuoteId": "c8b6701bb8d0405dae7750212d4c0b2a",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "II.3.2 — Retournement positif du concept : réintégrer le pouvoir et la politique",
+      "page": 194,
+      "chapter": "Chapitre II",
+      "thesisLocation": "",
+      "quoteText": "une monnaie électronique fiable, une méthode par laquelle, sur Internet, vous pouvez transférer des fonds de A à B sans que A ne connaisse B ou que B ne connaisse A",
+      "primaryEntityId": "d35d720e1fa24d9fbe665a90ac0abc73",
+      "primaryEntityName": "Bitcoin",
+      "primaryEntityType": "Protocol",
+      "secondaryEntityIds": [
+        "dafa7054bc5a450ca3f248090113e732",
+        "0c0929e6ef0140ad855052b0dd078f00"
+      ],
+      "secondaryEntityNames": [
+        "Son Money / Monnaie saine",
+        "Règle contre discrétion (Rules vs Discretion)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Bitcoin",
+      "storyTitle": "Bitcoin",
+      "storyBody": "une monnaie électronique fiable, une méthode par laquelle, sur Internet, vous pouvez transférer des fonds de A à B sans que A ne connaisse B ou que B ne connaisse A",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-c8b6701b",
+        "focusNodes": [
+          "Bitcoin",
+          "Son Money / Monnaie saine",
+          "Règle contre discrétion (Rules vs Discretion)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-c1ca75bb",
+      "sourceQuoteId": "c1ca75bbe39a432c94ca82b41fc8808c",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 204,
+      "chapter": "Chapitre II",
+      "thesisLocation": "",
+      "quoteText": "profondément et radicalement anti-juridique et anti-politique",
+      "primaryEntityId": "9f37583aced248cb96dccdbcf50c0cc8",
+      "primaryEntityName": "Loi de Szabo",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [
+        "499e99e5d8cb4148a5d7a4dfef842c58"
+      ],
+      "secondaryEntityNames": [
+        "Loi crypto / Crypto Law (Zamfir)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Loi de Szabo",
+      "storyTitle": "Loi de Szabo",
+      "storyBody": "profondément et radicalement anti-juridique et anti-politique",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-c1ca75bb",
+        "focusNodes": [
+          "Loi de Szabo",
+          "Loi crypto / Crypto Law (Zamfir)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d9e57b9d",
+      "sourceQuoteId": "d9e57b9d278a49959fc9c2409f7f226c",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 205,
+      "chapter": "Thèse (PDF complet)",
+      "thesisLocation": "Passage sur l’optimisation (SegWit, Lightning Network)",
+      "quoteText": "Cela incite les acteurs à optimiser l’usage qu’ils font de Bitcoin et à élaborer des solutions pérennes, comme « SegWit » et le « Lightning Network » (cf. Chap.",
+      "primaryEntityId": "d5dc41db04af41a092f4327cc70df151",
+      "primaryEntityName": "ProtocolChange — SegWit",
+      "primaryEntityType": "ProtocolChange",
+      "secondaryEntityIds": [
+        "cf44312c32734899b2de9c7efdf1e3c2"
+      ],
+      "secondaryEntityNames": [
+        "Concept — Lightning Network"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "ProtocolChange — SegWit",
+      "storyTitle": "ProtocolChange — SegWit",
+      "storyBody": "Cela incite les acteurs à optimiser l’usage qu’ils font de Bitcoin et à élaborer des solutions pérennes, comme « SegWit » et le « Lightning Network » (cf. Chap.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d9e57b9d",
+        "focusNodes": [
+          "ProtocolChange — SegWit",
+          "Concept — Lightning Network"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-83a5e30a",
+      "sourceQuoteId": "83a5e30a7c3347f78f0fadf9a8289577",
+      "chapterKey": null,
+      "chapterEntityId": null,
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 205,
+      "chapter": "Thèse (PDF complet)",
+      "thesisLocation": "Passage sur l’UASF",
+      "quoteText": "Shaoling Fry, développeur extérieur (« Core dev » Litecoin), propose l’ « User Activated Soft Fork* » (UASF) pour activer SegWit sans l’approbation des mineurs, redistribuant ainsi le pouvoir de gouvernance aux utilisateurs et contrecarrant l’influence exclusive des mineurs.",
+      "primaryEntityId": "e786578307e34cb5a588b9b5e85146db",
+      "primaryEntityName": "ProtocolChange — User Activated Soft Fork (UASF)",
+      "primaryEntityType": "ProtocolChange",
+      "secondaryEntityIds": [
+        "d5dc41db04af41a092f4327cc70df151",
+        "164bce6707654ddf9b2aafec5a1b824c"
+      ],
+      "secondaryEntityNames": [
+        "ProtocolChange — SegWit",
+        "Utilisateurs (full nodes)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "ProtocolChange — User Activated Soft Fork (UASF)",
+      "storyTitle": "ProtocolChange — User Activated Soft Fork (UASF)",
+      "storyBody": "Shaoling Fry, développeur extérieur (« Core dev » Litecoin), propose l’ « User Activated Soft Fork* » (UASF) pour activer SegWit sans l’approbation des mineurs, redistribuant ainsi le pouvoir de gouvernance aux utilisateurs et contrecarrant l’influence exclusive des mineurs.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-83a5e30a",
+        "focusNodes": [
+          "ProtocolChange — User Activated Soft Fork (UASF)",
+          "ProtocolChange — SegWit",
+          "Utilisateurs (full nodes)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-59789411",
+      "sourceQuoteId": "597894115b8d44aeb51b8abd72ac78bd",
+      "chapterKey": "ch2",
+      "chapterEntityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 207,
+      "chapter": "Chapitre II",
+      "thesisLocation": "",
+      "quoteText": "une large communauté a dit allez-vous faire foutre, ce n'est pas notre définition de Bitcoin, notre définition de Bitcoin inclut les nœuds complets qui font partie de la décision et la communauté étant active dans ce processus de prise de décision",
+      "primaryEntityId": "e3742113c4674c52930e54ff203f0ac6",
+      "primaryEntityName": "Bitcoin Scaling Debate",
+      "primaryEntityType": "CrisisEvent",
+      "secondaryEntityIds": [
+        "a444085b9b2d4ea1aa734f7e25db6a6c",
+        "eb3485078c86401994e17f6164d80fb0"
+      ],
+      "secondaryEntityNames": [
+        "Gouvernance polycentrique",
+        "Nœud complet (full node)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Bitcoin Scaling Debate",
+      "storyTitle": "Bitcoin Scaling Debate",
+      "storyBody": "une large communauté a dit allez-vous faire foutre, ce n'est pas notre définition de Bitcoin, notre définition de Bitcoin inclut les nœuds complets qui font partie de la décision et la communauté étant active dans ce processus de prise de décision",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-59789411",
+        "focusNodes": [
+          "Bitcoin Scaling Debate",
+          "Gouvernance polycentrique",
+          "Nœud complet (full node)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-b5095c12",
+      "sourceQuoteId": "b5095c128a4949385ac8fe1c4f3bb753",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 220,
+      "chapter": "chap3",
+      "thesisLocation": "chap3",
+      "quoteText": "la gouvernance discrète des CM, dévoilée par leurs crises — thèse centrale du Chapitre III.",
+      "primaryEntityId": "538e905c19fcb164558cc35c08c88112",
+      "primaryEntityName": "Gouvernance discrète des cryptomonnaies",
+      "primaryEntityType": "CoreConcept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Gouvernance discrète des cryptomonnaies",
+      "storyTitle": "Gouvernance discrète des cryptomonnaies",
+      "storyBody": "la gouvernance discrète des CM, dévoilée par leurs crises — thèse centrale du Chapitre III.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-b5095c12",
+        "focusNodes": [
+          "Gouvernance discrète des cryptomonnaies"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-941dc941",
+      "sourceQuoteId": "941dc941ade6bc5578536908bb56d3d0",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 220,
+      "chapter": "chap3",
+      "thesisLocation": "chap3",
+      "quoteText": "Campbell Rebecca 2016 — Robin Hood Group protects DAO funds — contre-attaque pour protéger les fonds.",
+      "primaryEntityId": "770f6e540b075c5c56e45ed5f170347d",
+      "primaryEntityName": "Robin Hood Group (DAO 2016)",
+      "primaryEntityType": "ActorGroup",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Robin Hood Group (DAO 2016)",
+      "storyTitle": "Robin Hood Group (DAO 2016)",
+      "storyBody": "Campbell Rebecca 2016 — Robin Hood Group protects DAO funds — contre-attaque pour protéger les fonds.",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-941dc941",
+        "focusNodes": [
+          "Robin Hood Group (DAO 2016)"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-5efd9565",
+      "sourceQuoteId": "5efd9565343d4719ad0961211c8c1b40",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance",
+      "page": 223,
+      "chapter": "Chapitre III",
+      "thesisLocation": "Chapitre III — cadrage : crises comme dispositif de réfutation",
+      "quoteText": "Étudier des crises, c’est aussi l’occasion de réfuter l’ensemble des propositions du syllogisme « libéral-techniciste » des ambitions monétaires des coiners* : très directement, en contestant précisément la proposition (iii) qui voudraient que les CM soient immunisées de la gouvernance humaine et de ses intérêts socio-politiques, et plus indirectement, en prouvant que la technique n’est pas autonome et neutre vis-à-vis du monde social (proposition [i]), que les CM ne sont pas des monnaies purement techniques (proposition [ii]) et qu’en faire de « meilleures » monnaies que les monnaies nationales, n'a que peu de sens (proposition [iv]) quand leur qualités attendues sont renégociées suivant l’existence de débats et de controverses endogènes à leur communauté de paiement.",
+      "primaryEntityId": "c7467cafd09e4e3eb4c637c7f8d56000",
+      "primaryEntityName": "Argument — Les crises comme révélateurs de la gouvernance duale et polycentrique",
+      "primaryEntityType": "Argument",
+      "secondaryEntityIds": [
+        "3efade56eb0c450a8d1f3060bca119ff",
+        "881dd0f54e0747f2b3737ba34fc30693"
+      ],
+      "secondaryEntityNames": [
+        "Immunité à la gouvernance humaine (prétention coiner)",
+        "CM comme « meilleures » monnaies (prétention coiner)"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Argument — Les crises comme révélateurs de la gouvernance duale et polycentrique",
+      "storyTitle": "Argument — Les crises comme révélateurs de la gouvernance duale et polycentrique",
+      "storyBody": "Étudier des crises, c’est aussi l’occasion de réfuter l’ensemble des propositions du syllogisme « libéral-techniciste » des ambitions monétaires des coiners* : très directement, en contestant précisément la proposition (iii) qui voudraient que les CM soient immunisées de la gouvernance humaine et de ses intérêts socio-politiques, et plus indirectement, en prouvant que la technique n’est pas autonome et neutre vis-à-vis du monde social (proposition [i]), que les CM ne sont pas des monnaies purement techniques (proposition [ii]) et qu’en faire de « meilleures » monnaies que les monnaies nationales, n'a que peu de sens (proposition [iv]) quand leur qualités attendues sont renégociées suivant l’existence de débats et de controverses endogènes à leur communauté de paiement.",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-5efd9565",
+        "focusNodes": [
+          "Argument — Les crises comme révélateurs de la gouvernance duale et polycentrique",
+          "Immunité à la gouvernance humaine (prétention coiner)",
+          "CM comme « meilleures » monnaies (prétention coiner)"
+        ],
+        "cameraPreset": "cluster",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-0b39eeba",
+      "sourceQuoteId": "0b39eebac0c94fc7a2f210e800a6ac59",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)",
+      "page": 225,
+      "chapter": "Chapitre III",
+      "thesisLocation": "Chapitre III > III.1 Crise Bitcoin CVE 2018 17144 : d’une crise à de nombreuses autres…",
+      "quoteText": "le processus de découverte et de divulgation a permis une résolution silencieuse et confidentielle, grâce à un travail « off chain* » coordonné par une poignée d’acteurs de confiance.",
+      "primaryEntityId": "a22f20aea49d4f86ab927e9c71d0a850",
+      "primaryEntityName": "Gouvernance de huis clos",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Gouvernance de huis clos",
+      "storyTitle": "Gouvernance de huis clos",
+      "storyBody": "le processus de découverte et de divulgation a permis une résolution silencieuse et confidentielle, grâce à un travail « off chain* » coordonné par une poignée d’acteurs de confiance.",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-0b39eeba",
+        "focusNodes": [
+          "Gouvernance de huis clos"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-acb5bee9",
+      "sourceQuoteId": "acb5bee92b384b1eadda87025039abd7",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)",
+      "page": 234,
+      "chapter": "Chapitre III",
+      "thesisLocation": "Chapitre III > III.1.1 Présentation périodisée > D’un déclenchement confidentiel par « divulgation responsable »",
+      "quoteText": "il s’engage dans une « divulgation responsable » : il limite l’accès à cette information cruciale à un petit nombre d’acteurs reconnus",
+      "primaryEntityId": "2f54deb5da1440c8bdd5ca16dbc8c647",
+      "primaryEntityName": "Divulgation responsable",
+      "primaryEntityType": "Concept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Divulgation responsable",
+      "storyTitle": "Divulgation responsable",
+      "storyBody": "il s’engage dans une « divulgation responsable » : il limite l’accès à cette information cruciale à un petit nombre d’acteurs reconnus",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-acb5bee9",
+        "focusNodes": [
+          "Divulgation responsable"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-37716e6b",
+      "sourceQuoteId": "37716e6be62a41668b1119bb829ae6ad",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "III.2.1 — De la diversité des crises aux crises protocolaires des CM",
+      "page": 299,
+      "chapter": "Chapitre III",
+      "thesisLocation": "Chapitre III > III.3.2 (pré-attaque) > montée en risque et alertes",
+      "quoteText": "« The DAO » à devenir involontairement un « pot de miel » : autant d’argent au même endroit attire l’attention",
+      "primaryEntityId": "c4eab4f4b3f54162b2404b3da684b840",
+      "primaryEntityName": "Attaque de The DAO",
+      "primaryEntityType": "CrisisEvent",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Attaque de The DAO",
+      "storyTitle": "Attaque de The DAO",
+      "storyBody": "« The DAO » à devenir involontairement un « pot de miel » : autant d’argent au même endroit attire l’attention",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-37716e6b",
+        "focusNodes": [
+          "Attaque de The DAO"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-fb610652",
+      "sourceQuoteId": "fb6106526ebd4d8caa5d9eb4ea39e080",
+      "chapterKey": "ccl",
+      "chapterEntityId": "6b64e26836434471917262334655952c",
+      "sectionKey": "De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises",
+      "page": 336,
+      "chapter": "Conclusion générale",
+      "thesisLocation": "Conclusion générale > De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises",
+      "quoteText": "Notre approche montre que, au-delà d’une gouvernance par l’infrastructure, la gouvernance sur l’infrastructure des CM est conflictuelle et polycentrique, révélant l’hétérogénéité des représentations au sein des communautés de coiners* et la manière dont les propriétés des CM sont renégociées.",
+      "primaryEntityId": "a444085b9b2d4ea1aa734f7e25db6a6c",
+      "primaryEntityName": "Gouvernance polycentrique",
+      "primaryEntityType": "CoreConcept",
+      "secondaryEntityIds": [],
+      "secondaryEntityNames": [],
+      "bridgeEntityIds": [],
+      "readerLabel": "Gouvernance polycentrique",
+      "storyTitle": "Gouvernance polycentrique",
+      "storyBody": "Notre approche montre que, au-delà d’une gouvernance par l’infrastructure, la gouvernance sur l’infrastructure des CM est conflictuelle et polycentrique, révélant l’hétérogénéité des représentations au sein des communautés de coiners* et la manière dont les propriétés des CM sont renégociées.",
+      "featured": true,
+      "graphScene": {
+        "id": "scene-fb610652",
+        "focusNodes": [
+          "Gouvernance polycentrique"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    },
+    {
+      "id": "anchor-d81885f8",
+      "sourceQuoteId": "d81885f8476544a781b03162de14d584",
+      "chapterKey": "ch3",
+      "chapterEntityId": "444d654ce38c41c7a277d883c77ba41b",
+      "sectionKey": "III.3.2 — Une remise en ordre complexe, contrainte et controversée",
+      "page": null,
+      "chapter": "Chapitre III",
+      "thesisLocation": "Chapitre III > III.3.2 > Chronologie 6",
+      "quoteText": "une périodisation documentant les acteurs (...) à chaque étape de la mise en crise et de la remise en ordre",
+      "primaryEntityId": "586e00d1ca15450ca9b25fe4595bc662",
+      "primaryEntityName": "Mise en crise / Remise en ordre",
+      "primaryEntityType": "CoreConcept",
+      "secondaryEntityIds": [
+        "06099088d8e14f7c8596a4f9fc8d3193"
+      ],
+      "secondaryEntityNames": [
+        "Politique de crise"
+      ],
+      "bridgeEntityIds": [],
+      "readerLabel": "Mise en crise / Remise en ordre",
+      "storyTitle": "Mise en crise / Remise en ordre",
+      "storyBody": "une périodisation documentant les acteurs (...) à chaque étape de la mise en crise et de la remise en ordre",
+      "featured": false,
+      "graphScene": {
+        "id": "scene-d81885f8",
+        "focusNodes": [
+          "Mise en crise / Remise en ordre",
+          "Politique de crise"
+        ],
+        "cameraPreset": "tight",
+        "edgeMode": "neighbors",
+        "includeNeighbors": true,
+        "secondaryDepth": 1
+      }
+    }
+  ]
+}

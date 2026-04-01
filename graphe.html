@@ -896,6 +896,43 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   }
 }
 
+/* ── NarrativeAnchor sub-sections in scrollytelling ──────────────── */
+.anchor-section {
+  padding: 36px 0 48px;
+  min-height: auto;
+  border-bottom: 1px dashed rgba(255,170,51,.3);
+}
+.anchor-section .story-tag { border-color: var(--accent2); color: var(--accent2); }
+.anchor-section blockquote.anchor-quote {
+  font-family: 'VT323', monospace;
+  font-size: 1.18em;
+  color: var(--text2);
+  border-left: 3px solid var(--accent);
+  margin: 10px 0 12px 0;
+  padding: 8px 14px;
+  line-height: 1.55;
+  background: rgba(255,204,102,0.04);
+  font-style: normal;
+}
+.anchor-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  align-items: center;
+}
+.anchor-entity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.55em;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-family: 'Press Start 2P', monospace;
+}
+.anchor-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
 </style>
 </head>
 <body>
@@ -5959,15 +5996,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Auto-fetch du graphe au chargement ──────────────────
+  // ── Auto-fetch du graphe + NarrativeAnchors au chargement ──────────
   (async () => {
     try {
-      const resp = await fetch('grc20-these-mael-rolland-v96.json');
+      const [resp, anchorResp] = await Promise.all([
+        fetch('grc20-these-mael-rolland-v96.json'),
+        fetch('narrative-anchors.json').catch(() => null),
+      ]);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const data = await resp.json();
       onDataLoaded(data);
       populateStoryDots();
       initSectionClickHandlers();
+      // Load NarrativeAnchors and inject anchor sub-sections
+      if (anchorResp?.ok) {
+        const anchorData = await anchorResp.json();
+        window._narrativeAnchors = anchorData;
+        initAnchoredScrolly(anchorData);
+      }
     } catch(err) {
       // Affichage d'une option de chargement manuel en cas d'échec
       document.getElementById('auto-spinner').style.display = 'none';
@@ -6149,6 +6195,89 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Attach section click handlers once graph is ready ────
+  // ── NarrativeAnchors : injection des sous-sections dans le scrolly ──
+  function initAnchoredScrolly(anchorData) {
+    const featured = (anchorData?.anchors || []).filter(a => a.featured);
+    if (!featured.length) return;
+
+    // Group featured anchors by chapterKey
+    const byChapter = {};
+    for (const a of featured) {
+      if (!a.chapterKey) continue;
+      if (!byChapter[a.chapterKey]) byChapter[a.chapterKey] = [];
+      byChapter[a.chapterKey].push(a);
+    }
+
+    // For each chapter section, insert anchor sub-sections after it
+    document.querySelectorAll('.story-section[data-chapter-id]').forEach(chapSec => {
+      const chapterId = chapSec.dataset.chapterId;
+      // Map chapter entity IDs to chapterKey
+      const CHAPTER_ID_TO_KEY = {
+        'df405dcd975b406486a260da72f1ad4a': 'intro',
+        'a2c452a77b394a9d836eed0e16ed5851': 'ch1',
+        '5b5935bc3ede49028b7dfbdaa4f34b6d': 'ch2',
+        '444d654ce38c41c7a277d883c77ba41b': 'ch3',
+        '6b64e26836434471917262334655952c': 'ccl',
+      };
+      const chKey = CHAPTER_ID_TO_KEY[chapterId];
+      const anchors = byChapter[chKey] || [];
+      if (!anchors.length) return;
+
+      // Sort by page for narrative order
+      anchors.sort((a, b) => (a.page ?? 9999) - (b.page ?? 9999));
+
+      // Insert each anchor section after the chapter section
+      let insertAfter = chapSec;
+      for (const anchor of anchors) {
+        const sec = document.createElement('section');
+        sec.className = 'story-section anchor-section';
+        sec.dataset.anchorId = anchor.id;
+
+        const qt = anchor.quoteText.length > 320
+          ? anchor.quoteText.slice(0, 317) + '…'
+          : anchor.quoteText;
+
+        // Entity chips for primary + secondary entities
+        const chips = [
+          { name: anchor.primaryEntityName, type: anchor.primaryEntityType },
+          ...(anchor.secondaryEntityNames || []).map((n, i) => ({ name: n, type: '' })),
+        ].slice(0, 3).map(({ name, type }) => {
+          const color = TYPE_COLORS?.[type] || '#ffaa33';
+          return `<span class="anchor-entity-chip"><span class="anchor-dot" style="background:${color}"></span>${escHtml(name)}</span>`;
+        }).join('');
+
+        sec.innerHTML = `
+          <span class="story-tag">${anchor.chapter || ''} · p. ${anchor.page ?? '—'}</span>
+          <h2>${escHtml(anchor.primaryEntityName)}</h2>
+          <blockquote class="anchor-quote">${escHtml(qt)}</blockquote>
+          <div class="anchor-meta">${chips}</div>
+        `;
+
+        insertAfter.insertAdjacentElement('afterend', sec);
+        insertAfter = sec;
+      }
+    });
+
+    // Re-initialize the scrolly observer so it observes the new sections
+    initScrollyObserver();
+
+    // Handle deep-link: ?anchor=<anchorId> in URL
+    const params = new URLSearchParams(window.location.search);
+    const targetAnchorId = params.get('anchor');
+    if (targetAnchorId) {
+      const targetSec = document.querySelector(`.story-section[data-anchor-id="${CSS.escape(targetAnchorId)}"]`);
+      if (targetSec) {
+        // Enter scrolly mode first if not already in it
+        requestAnimationFrame(() => {
+          if (!document.querySelector('.grc-root')?.classList.contains('scrolly-mode')) {
+            document.getElementById('btn-scrolly')?.click();
+          }
+          setTimeout(() => targetSec.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
+        });
+      }
+    }
+  }
+
   function initSectionClickHandlers() {
     document.querySelectorAll('.story-toc li[data-section-key]').forEach(li => {
       li.addEventListener('click', e => {
@@ -6173,7 +6302,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (best) {
         document.querySelectorAll('.story-section').forEach(s => s.classList.remove('active'));
         best.target.classList.add('active');
-        if (best.target.dataset.chapterId) {
+        if (best.target.dataset.anchorId) {
+          // NarrativeAnchor section: activate the graph scene
+          const anchors = window._narrativeAnchors?.anchors || [];
+          const anchor  = anchors.find(a => a.id === best.target.dataset.anchorId);
+          if (anchor?.graphScene) {
+            const resolvedIds = StoryMode.resolveFocusNodes(anchor.graphScene.focusNodes);
+            StoryMode.applyStoryFocus(resolvedIds, anchor.graphScene);
+          }
+        } else if (best.target.dataset.chapterId) {
           highlightByChapter(best.target.dataset.chapterId);
         } else {
           const types = best.target.dataset.types
