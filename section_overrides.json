@@ -1,5 +1,5 @@
 {
-  "_comment": "Pinned entities per section. Keys = section keys from section_entities_map.json. Values = ordered list of entity_id strings (shown first in graph, largest nodes, regardless of TF-IDF score). IDs from grc20-these-mael-rolland-v82.json. Updated to add Robin Hood Group (DAO 2016), Inversion infrastructurelle, Ethereum Classic as primary, and dense-page-informed priorities.",
+  "_comment": "Pinned entities per section. Keys = section keys from section_entities_map.json. Values = ordered list of entity_id strings (shown first in graph, largest nodes, regardless of TF-IDF score). IDs from grc20-these-mael-rolland-v96.json. Updated to add Robin Hood Group (DAO 2016), Inversion infrastructurelle, Ethereum Classic as primary, and dense-page-informed priorities.",
 
   "intro_A": [
     "a078b1b274f74818a8c7f1abcfb3097f",
@@ -35,7 +35,7 @@
   ],
 
   "III.3": [
-    "d3fd5a50d2834bfba881ccd92a167c98",
+    "e2cdb978bbdd4119aa946a271051a753",
     "ed7b68eeb3114b32a7ab0baabd62cc5a",
     "2956b3b87db1448f8a2ddde82d39e9c9",
     "ae97de14e40e48d1965902c9dce6473a"
@@ -50,7 +50,7 @@
 
   "III.3.2": [
     "770f6e540b075c5c56e45ed5f170347d",
-    "d3fd5a50d2834bfba881ccd92a167c98",
+    "e2cdb978bbdd4119aa946a271051a753",
     "2914e957f2dd447385cde0af56b24f1e",
     "bf653891dd9e4c1cbf23f40e4609f55b"
   ],
@@ -65,7 +65,7 @@
     "5ea44d21a07d4d13a6f1d6677936b8e7",
     "4d915f21188945fbb8c5b856f1362640",
     "3e1179f56c4e4340bcc55fcf1f569c6b",
-    "d3fd5a50d2834bfba881ccd92a167c98"
+    "e2cdb978bbdd4119aa946a271051a753"
   ],
 
   "III.4": [

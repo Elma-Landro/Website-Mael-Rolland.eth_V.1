@@ -17,18 +17,18 @@
  *  USAGE
  *  ─────
  *    # 1. Dry run — génère les ops sans rien publier
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v5.json --dry-run
+ *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v96.json --dry-run
  *
  *    # 2. Publish — publie sur IPFS testnet, ancre onchain
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v5.json \
+ *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v96.json \
  *         --private-key 0xTON_CLE_PRIVEE --network TESTNET
  *
  *    # 3. Mainnet (après validation sur testnet)
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v5.json \
+ *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v96.json \
  *         --private-key 0xTON_CLE_PRIVEE --network MAINNET
  *
  *    # 4. Créer un nouveau Space (première fois seulement)
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v5.json \
+ *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v96.json \
  *         --private-key 0xTON_CLE_PRIVEE --network TESTNET --create-space
  *
  *  VARIABLES D'ENVIRONNEMENT (alternative aux flags)
