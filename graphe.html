@@ -880,6 +880,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 @media (max-width: 900px) {
   .mobile-float-toggle { display: inline-flex; }
   .mobile-floating {
+    display: flex !important;
     position: fixed !important;
     margin: 0 !important;
     max-width: 95vw;
@@ -2265,27 +2266,14 @@ const Graph = (() => {
       State.selectedId = id;
       UI.renderPanel(id);
       highlightNeighbors(id);
-      // Sur mobile : ouvrir le panneau en bottom sheet et retailler le canvas
+      // Sur mobile : fenêtre flottante (pas de bottom sheet)
       if (window.innerWidth <= 768) {
         const panel = document.getElementById('detail-panel');
-        panel.classList.add('mobile-open');
-        panel.classList.remove('panel-expanded');
-        const handle = document.getElementById('panel-mobile-handle');
-        if (handle) handle.style.display = 'flex';
-        const expandBtn = document.getElementById('btn-panel-expand');
-        if (expandBtn) expandBtn.textContent = '⤢';
-        // Retailler le canvas pour qu'il tienne au-dessus du panneau
-        const canvasWrap = document.querySelector('.grc-canvas-wrap');
-        if (canvasWrap) {
-          const headerH = document.querySelector('.grc-header')?.offsetHeight || 114;
-          const panelH = Math.round(window.innerHeight * 0.40);
-          canvasWrap.style.flex = 'none';
-          canvasWrap.style.height = `${Math.max(window.innerHeight - headerH - panelH, 80)}px`;
-          requestAnimationFrame(() => {
-            cy.resize();
-            const focusNode = cy.$id(id);
-            if (focusNode.length) cy.center(focusNode);
-          });
+        if (!panel.classList.contains('mobile-floating')) {
+          panel._mobileFloat?.();
+        } else {
+          // Déjà flottant : remonter au premier plan
+          panel.style.zIndex = String(Date.now());
         }
       }
     }
@@ -5823,33 +5811,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Mobile panel handle (bottom sheet) ──────────────
   const _detailPanel = document.getElementById('detail-panel');
   const _panelHandle = document.getElementById('panel-mobile-handle');
-  function _mobileCanvasResize(panelFraction) {
-    // Ajuste la hauteur du canvas pour correspondre à l'espace au-dessus du panneau.
-    // panelFraction=0 → restaure le canvas plein écran.
-    const canvasWrap = document.querySelector('.grc-canvas-wrap');
-    if (!canvasWrap || window.innerWidth > 768) return;
-    if (panelFraction <= 0) {
-      canvasWrap.style.flex = '';
-      canvasWrap.style.height = '';
-    } else {
-      const headerH = document.querySelector('.grc-header')?.offsetHeight || 114;
-      const panelH = Math.round(window.innerHeight * panelFraction);
-      canvasWrap.style.flex = 'none';
-      canvasWrap.style.height = `${Math.max(window.innerHeight - headerH - panelH, 80)}px`;
-    }
-    requestAnimationFrame(() => Graph.cy?.resize());
-  }
-
   document.getElementById('btn-panel-close')?.addEventListener('click', () => {
     _detailPanel.classList.remove('mobile-open', 'panel-expanded');
     if (_panelHandle) _panelHandle.style.display = 'none';
-    _mobileCanvasResize(0);
+    _detailPanel._mobileUnfloat?.();
   });
   document.getElementById('btn-panel-expand')?.addEventListener('click', () => {
     const expanded = _detailPanel.classList.toggle('panel-expanded');
     const expandBtn = document.getElementById('btn-panel-expand');
     if (expandBtn) expandBtn.textContent = expanded ? '⤡' : '⤢';
-    _mobileCanvasResize(expanded ? 0.72 : 0.40);
   });
 
   // ── Layout ───────────────────────────────────────────
@@ -6489,10 +6459,10 @@ document.addEventListener('DOMContentLoaded', () => {
         panel: document.getElementById('detail-panel'),
         toggleHost: document.getElementById('btn-close-panel'),
         key: 'grc-floating-detail',
-        width: 320,
-        height: 460,
-        fallbackTop: 128,
-        fallbackLeft: 20
+        width: 300,
+        height: 420,
+        fallbackTop: 140,
+        fallbackLeft: null   // null → droite par défaut (window.innerWidth - width - 10)
       },
       {
         panel: document.getElementById('focus-panel'),
@@ -6571,8 +6541,12 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.zIndex = String(++zCounter);
         let saved = null;
         try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch {}
+        // Par défaut : aligner à droite (fenêtre ne masque pas le graphe à gauche)
+        const defaultLeft = typeof fallbackLeft === 'function'
+          ? fallbackLeft()
+          : (fallbackLeft ?? window.innerWidth - width - 10);
         applyBounds(
-          saved?.left ?? fallbackLeft,
+          saved?.left ?? defaultLeft,
           saved?.top ?? fallbackTop,
           saved?.width ?? width,
           saved?.height ?? height
@@ -6592,6 +6566,10 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.style.transform = '';
         localStorage.removeItem(key);
       };
+
+      // Exposer pour usage externe (ex: handleNodeSelect)
+      panel._mobileFloat = enableFloating;
+      panel._mobileUnfloat = disableFloating;
 
       toggleBtn.addEventListener('click', () => {
         if (panel.classList.contains('mobile-floating')) {
