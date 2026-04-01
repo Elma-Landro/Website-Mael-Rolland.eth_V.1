@@ -2527,6 +2527,11 @@ const Graph = (() => {
         style: { 'line-color': '#ffcc66', 'target-arrow-color': '#ffcc66', 'opacity': 0.90, 'width': 1 }
       },
       {
+        // Clic sur nœud en story mode : sélecteur double > priorité sur story-hidden (display:none)
+        selector: 'edge.story-hidden.highlighted',
+        style: { 'display': 'element', 'line-color': '#ffcc66', 'target-arrow-color': '#ffcc66', 'opacity': 0.82, 'width': 1.1, 'z-index': 30 }
+      },
+      {
         selector: 'edge.story-primary',
         style: {
           'display': 'element',
@@ -2538,14 +2543,27 @@ const Graph = (() => {
         }
       },
       {
+        // P→S : liaisons primaire-secondaire — modérément visibles
         selector: 'edge.story-secondary',
         style: {
           'display': 'element',
           'line-color': '#ffb347',
           'target-arrow-color': '#ffb347',
-          'opacity': 0.18,
-          'width': 0.55,
+          'opacity': 0.11,
+          'width': 0.42,
           'z-index': 12
+        }
+      },
+      {
+        // S→S : liaisons entre nœuds secondaires — quasi-invisibles (contexte seulement)
+        selector: 'edge.story-tertiary',
+        style: {
+          'display': 'element',
+          'line-color': '#886644',
+          'target-arrow-color': '#886644',
+          'opacity': 0.05,
+          'width': 0.28,
+          'z-index': 5
         }
       },
       {
@@ -5457,7 +5475,7 @@ const StoryMode = (() => {
   function clearStoryFocusClasses(cy) {
     if (!cy) return;
     cy.elements().removeClass(
-      'story-primary story-secondary story-muted story-hidden story-backbone highlighted faded'
+      'story-primary story-secondary story-tertiary story-muted story-hidden story-backbone highlighted faded'
     );
   }
 
@@ -5550,7 +5568,8 @@ const StoryMode = (() => {
       }
 
       if (sP && tP) edge.addClass('story-primary');
-      else if ((sP && tS) || (tP && sS) || (sS && tS)) edge.addClass('story-secondary');
+      else if ((sP && tS) || (tP && sS)) edge.addClass('story-secondary');  // P↔S
+      else if (sS && tS) edge.addClass('story-tertiary');                    // S↔S : distance 2
       else edge.addClass(opts.hideBackbone ? 'story-hidden' : 'story-backbone');
     });
 
