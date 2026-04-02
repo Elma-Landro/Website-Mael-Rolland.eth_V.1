@@ -2402,7 +2402,7 @@ const Graph = (() => {
     });
 
     // ── Show node labels only when sufficiently zoomed in ──
-    const LABEL_ZOOM_THRESHOLD = 3.5;
+    const LABEL_ZOOM_THRESHOLD = window.innerWidth < 600 ? 2.7 : 3.5;
     function syncLabels() {
       const z = cy.zoom();
       const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
@@ -3094,14 +3094,15 @@ const Graph = (() => {
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // V3 mobile: 8 colonnes à 52px chacune (≈416px total) — rendu plus aéré
-    // V2 mobile: 4 macro-colonnes à 90px (strates conservées)
-    const COL_W      = isMobile ? (useStrata ? 90 : 52)   : (useStrata ? 280 : 280);
+    // Mobile: élargir la matrice pour éviter l'effet "colonne tassée" et mieux répartir les points.
+    // V3 garde 8 colonnes mais avec un pas horizontal plus large + cellule utile plus large.
+    // V2 garde 4 macro-colonnes avec un léger gain d'espacement.
+    const COL_W      = isMobile ? (useStrata ? 96 : 66)   : (useStrata ? 280 : 280);
     const ROW_H      = isMobile ? 192  : 540;
-    const OX         = isMobile ? (useStrata ? 120 : 64)  : 400;
+    const OX         = isMobile ? (useStrata ? 74 : 34)   : 400;
     const OY         = isMobile ? 100  : 360;
     const NODE_H     = isMobile ? 11   : 16;
-    const CELL_W_FRAC = isMobile ? 0.86 : 0.78;
+    const CELL_W_FRAC = isMobile ? 0.94 : 0.78;
 
     // ── batch4: variable column widths (desktop V3 non-strata) ───────────
     // Ratios: Chap.|Struct.|Objets|Gouvern.|Crises|Acteurs|Concepts|Réf./Sources
@@ -3413,7 +3414,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 24 : 60);
 
     // ── Canvas overlay : radial gradients per cell (chapter × col) ─────────────────────
     // CSS mix-blend-mode:screen = additive light → nebula glow.
@@ -3900,7 +3901,7 @@ const Graph = (() => {
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 24 : 60);
 
     // ── Canvas overlay: per-cell radial gradient halos ────
     _stopHaloOverlay();
@@ -4175,7 +4176,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 24 : 60);
 
     // ── Canvas overlay ─────────────────────────────────────
     _stopHaloOverlay();
