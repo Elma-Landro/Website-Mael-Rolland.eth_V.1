@@ -3508,6 +3508,43 @@ const Graph = (() => {
   }
   // chapter glow classes are set at build time and never removed — shadow persists across layouts
 
+
+  // ── SourceQuote anchoring helpers (structural/argumentative layouts) ──
+  const CHAPTER_PAGE_RANGES = {
+    0: { start: 15, end: 51 },
+    1: { start: 52, end: 141 },
+    2: { start: 142, end: 219 },
+    3: { start: 220, end: 331 },
+    4: { start: 332, end: 340 },
+  };
+
+  function getEntityNumericAttr(entity, keys) {
+    if (!entity || !entity.attributes) return null;
+    for (const key of keys) {
+      const raw = entity.attributes[key];
+      if (raw === undefined || raw === null) continue;
+      const v = (typeof raw === 'object' && raw.value !== undefined) ? raw.value : raw;
+      const n = parseInt(String(v), 10);
+      if (!Number.isNaN(n)) return n;
+    }
+    return null;
+  }
+
+  function getSourceQuotePage(node) {
+    if (!node || node.data('typeName') !== 'SourceQuote') return null;
+    const entity = State.maps.entities[node.data('id')];
+    return getEntityNumericAttr(entity, ['sourcePage', 'pdfPage', 'page', 'pageRef']);
+  }
+
+  function getSourceQuoteChapterNorm(node, fallbackNorm = 0.5) {
+    const ci = node?.data('chapterIdx');
+    const page = getSourceQuotePage(node);
+    const range = CHAPTER_PAGE_RANGES[ci];
+    if (!range || page === null) return fallbackNorm;
+    const span = Math.max(1, range.end - range.start);
+    return Math.max(0, Math.min(1, (page - range.start) / span));
+  }
+
   // ── Arbre argumentatif (left=chapters → right=refs) ─────────
   function applyArbreLayout() {
     if (!cy || !State.data) return;
@@ -3534,9 +3571,9 @@ const Graph = (() => {
 
     // ── Type → depth ─────────────────────────────────────────
     const SEC_TYPES = new Set(['ThesisSection', 'Chapter']);
-    const REF_TYPES = new Set(['Reference', 'SourceQuote', 'GreyLiterature',
+    const REF_TYPES = new Set(['Reference', 'GreyLiterature',
                                'IndigenousLiterature', 'AcademicWork']);
-    const getDepth  = t => SEC_TYPES.has(t) ? 1 : REF_TYPES.has(t) ? 3 : 2;
+    const getDepth  = t => SEC_TYPES.has(t) ? 1 : (t === 'SourceQuote' ? 2 : REF_TYPES.has(t) ? 3 : 2);
 
     // ── Group nodes by (chapterRow, depth) ───────────────────
     const cells = {};
@@ -3583,6 +3620,13 @@ const Graph = (() => {
         nodes.sort((a, b) => (a.data('label') || '').localeCompare(b.data('label') || ''));
       } else {
         nodes.sort((a, b) => {
+          const aIsSq = a.data('typeName') === 'SourceQuote';
+          const bIsSq = b.data('typeName') === 'SourceQuote';
+          if (aIsSq && bIsSq) {
+            const pa = getSourceQuotePage(a) ?? 9999;
+            const pb = getSourceQuotePage(b) ?? 9999;
+            if (pa !== pb) return pa - pb;
+          }
           const da = (State.maps.outgoing[a.data('id')] || []).length
                    + (State.maps.incoming[a.data('id')] || []).length;
           const db = (State.maps.outgoing[b.data('id')] || []).length
@@ -3600,10 +3644,13 @@ const Graph = (() => {
       nodes.forEach((n, i) => {
         const col = Math.floor(i / maxPerCol);
         const ri  = i % maxPerCol;
-        n.position({
-          x: zone.cx - zone.w / 2 + colW * (col + 0.5),
-          y: startY + ri * nh,
-        });
+        const x = zone.cx - zone.w / 2 + colW * (col + 0.5);
+        let y = startY + ri * nh;
+        if (n.data('typeName') === 'SourceQuote') {
+          const norm = getSourceQuoteChapterNorm(n, nodes.length <= 1 ? 0.5 : (ri / Math.max(1, nodes.length - 1)));
+          y = (bandY[row] - bH / 2) + Math.max(8, nh * 0.5) + norm * Math.max(16, bH - Math.max(16, nh));
+        }
+        n.position({ x, y });
       });
     });
 
@@ -3621,7 +3668,7 @@ const Graph = (() => {
     });
 
     // Column header labels at top
-    [['Sections', 1], ['Entités', 2], ['Références', 3]].forEach(([lbl, d]) => {
+    [['Sections', 1], ['Entités + preuves', 2], ['Références', 3]].forEach(([lbl, d]) => {
       cy.add({
         data: { id: '__arbre_col_' + d, label: lbl, labelColor: '#ffcc66',
                 labelSize: '28px', labelRotation: 0 },
