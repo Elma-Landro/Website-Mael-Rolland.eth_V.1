@@ -5454,6 +5454,29 @@ const StoryMode = (() => {
 
   const normalizeText = (s) => String(s || '')
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  const STORY_FOCUS_ALIASES = {
+    'Monétisation': 'Monétisation des cryptomonnaies',
+    'Fonctions monétaires': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
+    'Critiques instrumentales': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
+    'Critiques chartalistes': 'Théorie chartaliste',
+    'Épreuve d’explicitation de la monnaie': 'Quote — CM comme épreuve d’explicitation de la monnaie',
+    'Nominalisme non étatiste': 'Nominalisme monetaire non etatiste',
+    'Monetary Institutionalism FR (IMF)': 'Institutionnalisme Monetaire Francophone (IMF)',
+    'Usages monétaires': "Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages",
+    'Usage en compte': 'Archetypal monetary functions',
+    'Usage en paiement': 'Systeme de paiement',
+    'Liquidité': 'Concept — Liquidité du marché Bitcoin',
+    'Convertibilité': 'Dilemme de la poule et de l\'œuf (bootstrapping monétaire)',
+    'Passerelles': 'Services Marchands & Passerelles',
+    'Infrastructures de marché': 'Infrastructure monétaire crypto-monétaire',
+    'Intermédiation': "Chaîne d'intermédiation sociotechnique",
+    'Communauté de paiement': 'Communaute de paiement / Groupe monetaire',
+    'Paiement': 'Systeme de paiement',
+    'Dette': 'Monnaie dette / Monnaie crédit',
+    'Confiance': 'Confiance monetaire',
+    'Institutions': 'Institutionnalisme Monetaire Francophone (IMF)',
+    'Souveraineté monétaire': 'Souverainete monetaire'
+  };
 
   function getStoryPresetById(storyId) {
     return (storyRegistry.stories || []).find(s => s.id === storyId) || null;
@@ -5483,9 +5506,10 @@ const StoryMode = (() => {
     });
     const resolved = [];
     focusNodes.forEach(raw => {
-      let found = byId.get(raw) || byName.get(raw) || null;
+      const canonicalRaw = STORY_FOCUS_ALIASES[raw] || raw;
+      let found = byId.get(canonicalRaw) || byName.get(canonicalRaw) || byId.get(raw) || byName.get(raw) || null;
       if (!found) {
-        const candidates = byNorm.get(normalizeText(raw));
+        const candidates = byNorm.get(normalizeText(canonicalRaw)) || byNorm.get(normalizeText(raw));
         if (candidates && candidates.length) {
           found = candidates[0];
           if (candidates.length > 1) {
@@ -5539,6 +5563,8 @@ const StoryMode = (() => {
       revealMode: step.revealMode || 'immediate',
       expandOnClick: step.expandOnClick !== undefined ? Boolean(step.expandOnClick) : false,
       maxAutoEdges: Number.isFinite(step.maxAutoEdges) ? Math.max(0, step.maxAutoEdges) : 6,
+      maxPrimaryEdges: Number.isFinite(step.maxPrimaryEdges) ? Math.max(0, step.maxPrimaryEdges) : Infinity,
+      maxSecondaryEdges: Number.isFinite(step.maxSecondaryEdges) ? Math.max(0, step.maxSecondaryEdges) : Infinity,
       hideBackbone: step.hideBackbone !== undefined ? Boolean(step.hideBackbone) : true,
       backboneRelationTypes: Array.isArray(step.backboneRelationTypes)
         ? step.backboneRelationTypes.map(normalizeRelationName)
@@ -5619,7 +5645,22 @@ const StoryMode = (() => {
       else n.addClass('story-muted');
     });
 
+    let primaryCount = 0;
+    let secondaryCount = 0;
     cy.edges().forEach(edge => {
+      const addEdgeClass = (klass) => {
+        if (klass === 'story-primary' && primaryCount >= opts.maxPrimaryEdges) {
+          edge.addClass('story-hidden');
+          return;
+        }
+        if ((klass === 'story-secondary' || klass === 'story-tertiary') && secondaryCount >= opts.maxSecondaryEdges) {
+          edge.addClass('story-hidden');
+          return;
+        }
+        edge.addClass(klass);
+        if (klass === 'story-primary') primaryCount += 1;
+        if (klass === 'story-secondary' || klass === 'story-tertiary') secondaryCount += 1;
+      };
       const s = edge.source().id();
       const t = edge.target().id();
       const edgeType = normalizeRelationName(getEdgeType(edge));
@@ -5652,23 +5693,23 @@ const StoryMode = (() => {
       }
 
       if (opts.edgeMode === 'strict') {
-        if ((sP && tP) || (sP && tS) || (tP && sS)) edge.addClass('story-primary');
-        else if (runtime.expandedEdgeIds?.has(edge.id())) edge.addClass('story-secondary');
+        if ((sP && tP) || (sP && tS) || (tP && sS)) addEdgeClass('story-primary');
+        else if (runtime.expandedEdgeIds?.has(edge.id())) addEdgeClass('story-secondary');
         else edge.addClass('story-hidden');
         return;
       }
 
       if (opts.edgeMode === 'neighbors') {
-        if (sP && tP) edge.addClass('story-primary');
-        else if ((sP && tS) || (tP && sS)) edge.addClass('story-secondary');
+        if (sP && tP) addEdgeClass('story-primary');
+        else if ((sP && tS) || (tP && sS)) addEdgeClass('story-secondary');
         else edge.addClass('story-hidden');
         return;
       }
 
-      if (sP && tP) edge.addClass('story-primary');
-      else if ((sP && tS) || (tP && sS)) edge.addClass('story-secondary');  // P↔S
-      else if (runtime.expandedEdgeIds?.has(edge.id())) edge.addClass('story-tertiary');
-      else if (sS && tS) edge.addClass('story-tertiary');                    // S↔S : distance 2
+      if (sP && tP) addEdgeClass('story-primary');
+      else if ((sP && tS) || (tP && sS)) addEdgeClass('story-secondary');  // P↔S
+      else if (runtime.expandedEdgeIds?.has(edge.id())) addEdgeClass('story-tertiary');
+      else if (sS && tS) addEdgeClass('story-tertiary');                    // S↔S : distance 2
       else edge.addClass(opts.hideBackbone ? 'story-hidden' : 'story-backbone');
     });
 
