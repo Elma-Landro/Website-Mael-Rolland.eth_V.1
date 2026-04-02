@@ -22,21 +22,21 @@ export const STORY_PRESETS = {
           id: 'm1',
           title: 'Une monnaie ne naît pas seule',
           body: 'Les cryptomonnaies ne deviennent pas monnaie par simple existence technique. Leur monétisation dépend d’usages, d’infrastructures d’accès et de circuits de circulation.',
-          focusNodes: ['Monétisation', 'UCN BTC', 'UCN ETH', 'Communauté de paiement'],
+          focusNodes: ['Monétisation des cryptomonnaies', 'UCN BTC', 'UCN ETH', 'Communaute de paiement / Groupe monetaire'],
           cameraPreset: 'cluster'
         },
         {
           id: 'm2',
           title: 'Émettre une unité native',
           body: 'Bitcoin et Ethereum encadrent l’émission de leurs unités natives par des règles de monnayage qui organisent le système de paiement.',
-          focusNodes: ['UCN BTC', 'UCN ETH', 'PoW', 'Halving', 'Genesis Sale'],
+          focusNodes: ['UCN BTC', 'UCN ETH', 'Proof of Work (PoW)', 'Halving / Monnayage programmatique', 'Ether Genesis Sale (ICO Ethereum 2014)'],
           cameraPreset: 'tight'
         },
         {
           id: 'm3',
           title: 'Circuler via des passerelles',
           body: 'La diffusion dépend de marchés, de paires d’échange et de passerelles qui rendent la commensurabilité concrète.',
-          focusNodes: ['NewLibertyStandard', 'Bitcoinmarket.com', 'Coinbase', 'Kraken', 'Passerelles fiat'],
+          focusNodes: ['NewLibertyStandard', 'InfrastructureEvent — Première plateforme d’échange BTC (BitcoinMarket.com)', 'Coinbase', 'Kraken', 'Services de paiement'],
           cameraPreset: 'cluster',
           edgeMode: 'neighbors',
           includeNeighbors: true,
@@ -48,7 +48,7 @@ export const STORY_PRESETS = {
           id: 'm4',
           title: 'Accéder et conserver',
           body: 'Wallets, custodians et processeurs de paiement rendent l’usage praticable. L’accès est déjà une forme d’institution.',
-          focusNodes: ['Electrum', 'MyBitcoin', 'Ledger', 'Trezor', 'BitPay'],
+          focusNodes: ['Electrum wallet', 'MyBitcoin', 'Ledger', 'Trezor', 'BitPay'],
           cameraPreset: 'cluster',
           edgeMode: 'neighbors',
           includeNeighbors: true,
@@ -60,7 +60,7 @@ export const STORY_PRESETS = {
           id: 'm5',
           title: 'Monétisation et gouvernance',
           body: 'La monétisation durable suppose des institutions et une gouvernance capables de maintenir la capacité d’usage collective.',
-          focusNodes: ['Gouvernance polycentrique', 'Bitcoin Core repo', 'Core Developers', 'Exchanges'],
+          focusNodes: ['Gouvernance polycentrique', 'Bitcoin Core (repo)', 'Core Developers (Bitcoin)', "Bourses d'échange (exchanges)"],
           cameraPreset: 'wide',
           edgeMode: 'neighbors',
           includeNeighbors: true,
@@ -68,6 +68,49 @@ export const STORY_PRESETS = {
           maxSecondaryPerTarget: 4,
           hideBackbone: true,
           fitTargets: 'primary+secondary'
+        }
+      ]
+    },
+    {
+      id: 'monetisation-spine',
+      label: 'Monétisation · chaîne institutionnelle',
+      layoutTarget: 'monetisation',
+      intro: "Parcours compact du Chapitre II : usages, liquidité, système de paiement, communauté et institutionnalisme.",
+      defaultStepOptions: {
+        edgeMode: 'strict',
+        includeNeighbors: false,
+        secondaryDepth: 0,
+        hideBackbone: true,
+        fitTargets: 'primary'
+      },
+      steps: [
+        {
+          id: 'ms1',
+          title: 'Point de départ: les usages',
+          body: "Le statut monétaire n'est pas décrété : il se constate à l'aune des usages.",
+          focusNodes: ['Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages', 'Institutionnalisme intéressé aux usages', "II.2 « Pourtant, elles font monnaie ! » : à l'aune d'un nominalisme « non étatiste » attentif aux usages"],
+          cameraPreset: 'tight'
+        },
+        {
+          id: 'ms2',
+          title: 'Monétisation et liquidité',
+          body: 'La monétisation progresse quand un système de paiement et des conditions de liquidité deviennent effectifs.',
+          focusNodes: ['Monétisation des cryptomonnaies', 'II.2.2 — La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes', 'Concept — Liquidité du marché Bitcoin'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'ms3',
+          title: 'Communauté de paiement',
+          body: "Une monnaie opère dans une communauté de paiement outillée par des services et des infrastructures d'usage.",
+          focusNodes: ['Communaute de paiement / Groupe monetaire', 'Systeme de paiement', 'Services de paiement'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'ms4',
+          title: 'Lecture institutionnaliste',
+          body: "L'institutionnalisme monétaire relie ces dimensions et stabilise l'interprétation du statut monétaire.",
+          focusNodes: ['Institutionnalisme Monétaire Francophone', 'Approche institutionnaliste de la monnaie', 'Processus de monétisation progressive de Bitcoin'],
+          cameraPreset: 'wide'
         }
       ]
     },
@@ -89,7 +132,7 @@ export const STORY_PRESETS = {
           id: 'q1',
           title: 'Le mythe du code seul',
           body: 'Le récit coiner radical présente un système régulé uniquement par le code, sans gouvernance humaine légitime.',
-          focusNodes: ['Code is Law', 'Absence de gouvernance', 'Neutralité technique'],
+          focusNodes: ['Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !', 'Neutralité de la monnaie'],
           cameraPreset: 'tight',
           edgeMode: 'strict',
           includeNeighbors: false,
@@ -99,7 +142,7 @@ export const STORY_PRESETS = {
           id: 'q2',
           title: 'Gouverner sur l’infrastructure',
           body: 'Maintenance, publication, hiérarchie des accès et arbitrages structurent une gouvernance sur l’infrastructure.',
-          focusNodes: ['Bitcoin Core repo', 'Ethereum Core Devs', 'Mainteneurs', 'Pull Requests'],
+          focusNodes: ['Bitcoin Core (repo)', 'Core Developers (Ethereum)', 'Développeurs Core (mainteneurs avec accès commit)', 'Pull Request (PR)'],
           cameraPreset: 'cluster',
           hideRelationTypes: ['partOf', 'source']
         },
@@ -107,7 +150,7 @@ export const STORY_PRESETS = {
           id: 'q3',
           title: 'Les arènes',
           body: 'La gouvernance se distribue dans des arènes multiples : forges, mailing lists, forums et réunions.',
-          focusNodes: ['GitHub Bitcoin Core', 'Bitcoin-dev Mailing List', 'Bitcointalk', 'All Core Dev Meetings', 'Carbon Vote'],
+          focusNodes: ['GitHub Bitcoin Core', 'Bitcoin-dev Mailing List', 'Bitcointalk Forum', 'All Core Dev Meetings (Ethereum)', 'Carbon Vote (DAO Fork, juin-juillet 2016)'],
           cameraPreset: 'cluster',
           hideRelationTypes: ['partOf', 'source', 'citedIn']
         },
@@ -115,7 +158,7 @@ export const STORY_PRESETS = {
           id: 'q4',
           title: 'La thèse',
           body: 'La vraie question n’est pas de savoir s’il y a gouvernance, mais sous quelle forme, avec quels acteurs et quelle légitimité.',
-          focusNodes: ['Gouvernance duale', 'Gouvernance polycentrique', 'Consensus'],
+          focusNodes: ['Gouvernance duale', 'Gouvernance polycentrique', 'Consensus social'],
           cameraPreset: 'wide',
           edgeMode: 'strict',
           includeNeighbors: false,
@@ -140,14 +183,14 @@ export const STORY_PRESETS = {
           id: 'c1',
           title: 'Deux types de crise',
           body: 'La thèse distingue les crises de vulnérabilité et les crises d’évolution.',
-          focusNodes: ['Crises de vulnérabilité', 'Crises d’évolution'],
+          focusNodes: ['Crise de vulnérabilité', "Crise d'évolution"],
           cameraPreset: 'tight'
         },
         {
           id: 'c2',
           title: 'La CVE 2018',
           body: "Bitcoin CVE 2018-17144 illustre une gestion discrète, routinière, dans un petit cercle d'acteurs.",
-          focusNodes: ['Bitcoin CVE 2018-17144', 'Awemany', 'Responsible Disclosure', 'Bitcoin Core repo'],
+          focusNodes: ['Bitcoin CVE 2018-17144', 'Awemany', 'Responsible Disclosure', 'Bitcoin Core (repo)'],
           cameraPreset: 'cluster',
           edgeMode: 'neighbors',
           includeNeighbors: true,
@@ -160,7 +203,7 @@ export const STORY_PRESETS = {
           id: 'c3',
           title: 'The DAO',
           body: 'Avec The DAO, la crise devient publique et controversée : la question n’est plus seulement technique, elle devient politique.',
-          focusNodes: ['The DAO', 'Ethereum DAO Hard Fork', 'Hack', 'Soft Fork', 'Hard Fork'],
+          focusNodes: ['The DAO', 'Ethereum Hard Fork (juillet 2016)', 'Attaquant 2016 — An Open Letter (DAO hacker statement)', 'Soft Fork', 'Hard Fork'],
           cameraPreset: 'cluster',
           edgeMode: 'neighbors',
           includeNeighbors: true,
@@ -172,7 +215,17 @@ export const STORY_PRESETS = {
           id: 'c4',
           title: 'Scission et thèse',
           body: 'Le hard fork majoritaire n’éteint pas le dissensus : Ethereum Classic naît de la rupture. Les crises révèlent la forme réelle de la gouvernance.',
-          focusNodes: ['Ethereum', 'Ethereum Classic', 'Fork', 'Gouvernance polycentrique'],
+          focusNodes: ['Ethereum', 'Ethereum Classic (ETHC)', 'Fork (general)', 'Gouvernance polycentrique'],
+          cameraPreset: 'wide',
+          edgeMode: 'strict',
+          includeNeighbors: false,
+          fitTargets: 'primary'
+        },
+        {
+          id: 'c5',
+          title: 'Retour vers la théorie monétaire',
+          body: "Les crises ne clôturent pas la démonstration : elles requalifient la lecture du Chapitre II (usages, monétisation, règle/discrétion).",
+          focusNodes: ['Institutionnalisme intéressé aux usages', 'Monétisation des cryptomonnaies', 'Règle contre discrétion (Rules vs Discretion)', 'Gouvernance polycentrique'],
           cameraPreset: 'wide',
           edgeMode: 'strict',
           includeNeighbors: false,
@@ -198,7 +251,7 @@ export const STORY_PRESETS = {
           id: 's1',
           title: 'Le problème initial',
           body: "La thèse part d'un imaginaire libéral-techniciste supposant des cryptomonnaies immunisées contre la gouvernance humaine.",
-          focusNodes: ['Syllogisme libéral-techniciste', 'Règle', 'Discrétion'],
+          focusNodes: ['Syllogisme libéral-techniciste', 'Règle contre discrétion (Rules vs Discretion)', 'Tension règle/discrétion (frontière instable)'],
           cameraPreset: 'tight',
           hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo'],
           sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · p. 53
@@ -207,7 +260,7 @@ export const STORY_PRESETS = {
           id: 's2',
           title: 'Chapitre I et II',
           body: 'Bitcoin et Ethereum sont des infrastructures sociotechniques hybrides ; la question de la monétisation effective part des usages et de la communauté de paiement.',
-          focusNodes: ['Chapitre I', 'Infrastructure sociotechnique', 'Chapitre II', 'Monétisation', 'Usage en paiement'],
+          focusNodes: ["Chapitre I - L'émergence du phénomène des cryptomonnaies (CM) : Bitcoin et Ethereum comme infrastructures sociotechniques", 'Infrastructure sociotechnique', 'Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages', 'Monétisation des cryptomonnaies', 'II.2.2 — La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes'],
           cameraPreset: 'cluster',
           hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
         },
@@ -215,7 +268,7 @@ export const STORY_PRESETS = {
           id: 's3',
           title: 'Gouvernance et crises',
           body: 'La gouvernance devient un enjeu politique, visible en crise : acteurs, arènes, dissensus et consensus.',
-          focusNodes: ['Gouvernance duale', 'Gouvernance polycentrique', 'Chapitre III', 'Bitcoin CVE 2018-17144', 'Ethereum DAO Hard Fork'],
+          focusNodes: ['Gouvernance duale', 'Gouvernance polycentrique', 'Chapitre III - Au‑delà des codes : la gouvernance discrète des CM, dévoilée par leurs crises', 'Bitcoin CVE 2018-17144', 'Ethereum Hard Fork (juillet 2016)'],
           cameraPreset: 'cluster',
           edgeMode: 'neighbors',
           includeNeighbors: true,
@@ -228,10 +281,96 @@ export const STORY_PRESETS = {
           id: 's4',
           title: 'Conclusion',
           body: 'Les cryptomonnaies ne suppriment pas la politique monétaire : elles déplacent la souveraineté via des infrastructures et des formes polycentriques de gouvernance.',
-          focusNodes: ['Conclusion générale', 'Gouvernance polycentrique', 'Règle', 'Discrétion'],
+          focusNodes: ['Conclusion générale', 'Gouvernance polycentrique', 'Règle contre discrétion (Rules vs Discretion)', 'Tension règle/discrétion (frontière instable)'],
           cameraPreset: 'wide',
           hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo'],
           sourceQuoteId: 'anchor-fb610652',   // Gouvernance polycentrique · p. 336
+        }
+      ]
+    },
+    {
+      id: 'synthese-conclusion',
+      label: 'Synthèse finale',
+      layoutTarget: 'matrice',
+      intro: 'Relier les acquis des chapitres I, II et III à la thèse de conclusion.',
+      defaultStepOptions: {
+        edgeMode: 'strict',
+        includeNeighbors: false,
+        secondaryDepth: 0,
+        hideBackbone: true,
+        fitTargets: 'primary'
+      },
+      steps: [
+        {
+          id: 'sc1',
+          title: 'Socle infrastructurel (Chapitre I)',
+          body: 'Le premier acquis est infrastructural : les cryptomonnaies sont des infrastructures sociotechniques.',
+          focusNodes: ["Chapitre I - L'émergence du phénomène des cryptomonnaies (CM) : Bitcoin et Ethereum comme infrastructures sociotechniques", 'Infrastructure sociotechnique'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'sc2',
+          title: 'Socle monétaire (Chapitre II)',
+          body: "Le second acquis est monétaire : la monétisation dépend des usages, d'une communauté de paiement et d'institutions.",
+          focusNodes: ['Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages', 'Monétisation des cryptomonnaies', 'Communaute de paiement / Groupe monetaire'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'sc3',
+          title: 'Épreuve des crises (Chapitre III)',
+          body: 'Le troisième acquis est politique : les crises révèlent la forme effective de gouvernance.',
+          focusNodes: ['Chapitre III - Au‑delà des codes : la gouvernance discrète des CM, dévoilée par leurs crises', 'Crises comme épreuves d’explicitation', 'Gouvernance duale'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'sc4',
+          title: 'Thèse de conclusion',
+          body: "La conclusion articule ces trois acquis: la gouvernance de l'infrastructure est conflictuelle et polycentrique.",
+          focusNodes: ['Conclusion générale', 'Gouvernance polycentrique', 'Infrastructure sociotechnique', 'Monétisation des cryptomonnaies'],
+          cameraPreset: 'wide'
+        }
+      ]
+    },
+    {
+      id: 'intro-scaffold',
+      label: 'Intro → I → II → III',
+      layoutTarget: 'matrice',
+      intro: 'Parcours guidé de la structure argumentative de la thèse avant la lecture des crises.',
+      defaultStepOptions: {
+        edgeMode: 'strict',
+        includeNeighbors: false,
+        secondaryDepth: 0,
+        hideBackbone: true,
+        fitTargets: 'primary'
+      },
+      steps: [
+        {
+          id: 'is1',
+          title: 'Introduction: problème et méthode',
+          body: 'Le cadrage initial pose le problème de la gouvernance et prépare la démonstration des chapitres.',
+          focusNodes: ['Introduction générale', 'Syllogisme libéral-techniciste'],
+          cameraPreset: 'tight'
+        },
+        {
+          id: 'is2',
+          title: 'Chapitre I: infrastructure',
+          body: 'Le premier mouvement établit les cryptomonnaies comme infrastructures sociotechniques.',
+          focusNodes: ["Chapitre I - L'émergence du phénomène des cryptomonnaies (CM) : Bitcoin et Ethereum comme infrastructures sociotechniques", 'Infrastructure sociotechnique'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'is3',
+          title: 'Chapitre II: monétisation',
+          body: 'Le second mouvement traite la monétisation effective à partir des usages et de la communauté de paiement.',
+          focusNodes: ['Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages', 'Monétisation des cryptomonnaies', 'Communaute de paiement / Groupe monetaire'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'is4',
+          title: 'Chapitre III: crises et gouvernance',
+          body: 'Les crises servent ensuite de révélateurs de la forme réelle de gouvernance.',
+          focusNodes: ['Chapitre III - Au‑delà des codes : la gouvernance discrète des CM, dévoilée par leurs crises', 'Crises comme épreuves d’explicitation', 'Gouvernance polycentrique'],
+          cameraPreset: 'wide'
         }
       ]
     },
@@ -257,7 +396,7 @@ export const STORY_PRESETS = {
           id: 'fp1',
           title: 'La cryptomonnaie comme phénomène',
           body: `« Avec lui commence le phénomène des cryptomonnaies, dont les codes sources sont ouverts. » — La thèse part du fait brut de l'existence des CM comme objets politiques et monétaires.`,
-          focusNodes: ['cryptomonnaie', 'Code Source Ouvert', 'Communauté de paiement'],
+          focusNodes: ['cryptomonnaie', 'Code Source Ouvert', 'Communaute de paiement / Groupe monetaire'],
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-7c595e5b',   // cryptomonnaie · intro p. 15
         },
@@ -265,7 +404,7 @@ export const STORY_PRESETS = {
           id: 'fp2',
           title: 'Le syllogisme libéral-techniciste',
           body: `« Les ambitions technicistes des coiners qu'interroge cette thèse peuvent se traduire en un syllogisme. » — L'hypothèse réfutée : le code serait la loi, la gouvernance serait absente.`,
-          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'Absence de gouvernance'],
+          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !'],
           cameraPreset: 'tight',
           edgeMode: 'strict',
           includeNeighbors: false,
@@ -275,7 +414,7 @@ export const STORY_PRESETS = {
           id: 'fp3',
           title: 'Les crises comme épreuve',
           body: `« Les CM représentent une épreuve d'explicitation de la monnaie. » — Les crises révèlent ce que l'usage ordinaire laisse implicite.`,
-          focusNodes: ["Crises comme épreuves d'explicitation", 'Bitcoin', 'Ethereum'],
+          focusNodes: ["Crises comme épreuves d’explicitation", 'Bitcoin', 'Ethereum'],
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-c6fadcf4',   // épreuves d'explicitation · ch2 p. 50
         },
@@ -291,7 +430,7 @@ export const STORY_PRESETS = {
           id: 'fp5',
           title: 'La divulgation responsable',
           body: `« Il s'engage dans une divulgation responsable : il limite l'accès à cette information. » — Pratique qui codifie la gestion discrète des crises.`,
-          focusNodes: ['Divulgation responsable', 'Awemany', 'Bitcoin Core repo'],
+          focusNodes: ['Divulgation responsable', 'Awemany', 'Bitcoin Core (repo)'],
           cameraPreset: 'tight',
           sourceQuoteId: 'anchor-acb5bee9',   // Divulgation responsable · ch3 p. 234
         },
