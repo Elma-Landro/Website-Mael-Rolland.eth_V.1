@@ -2287,11 +2287,16 @@ const Graph = (() => {
     const shape = TYPE_SHAPES[typeName] || 'ellipse';
     const size = computeVisualNodeSize(entity);
     const chapterIdx = _chapterMap[entity.id] !== undefined ? _chapterMap[entity.id] : -1;
+    const degree = (State.maps.outgoing[entity.id] || []).length
+                 + (State.maps.incoming[entity.id] || []).length;
+    const isMajorLabel = degree >= 10 || STRATUM_ALWAYS_VISIBLE_NAMES.has(entity.name);
     return {
       data: {
         id: entity.id, label: getNodeLabel(entity),
         typeName, color, shape, size,
         fullName: entity.name,
+        degree,
+        isMajorLabel,
         chapterIdx,
         labelColor: color,  // type color = same as node body and col-halo
       },
@@ -2401,21 +2406,40 @@ const Graph = (() => {
       }
     });
 
-    // ── Show node labels only when sufficiently zoomed in ──
-    const LABEL_ZOOM_THRESHOLD = window.innerWidth < 600 ? 2.7 : 3.5;
+    // ── Show node labels progressively when zooming in ──
+    const isMobileViewport = window.innerWidth < 600;
+    const LABEL_ZOOM_MAJOR_THRESHOLD = isMobileViewport ? 1.35 : 2.7;
+    const LABEL_ZOOM_ALL_THRESHOLD   = isMobileViewport ? 2.15 : 3.5;
     function syncLabels() {
       const z = cy.zoom();
       const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
-      if (z >= LABEL_ZOOM_THRESHOLD) {
+      const majorNodes = nodes.filter(n => !!n.data('isMajorLabel'));
+      if (z >= LABEL_ZOOM_ALL_THRESHOLD) {
         nodes.addClass('show-label');
+        nodes.removeClass('show-major-label');
+      } else if (z >= LABEL_ZOOM_MAJOR_THRESHOLD) {
+        nodes.removeClass('show-label');
+        majorNodes.addClass('show-major-label');
       } else {
         nodes.removeClass('show-label');
+        nodes.removeClass('show-major-label');
       }
     }
     cy.on('zoom', syncLabels);
+    syncLabels();
   }
 
   function getCyStyle() {
+    const readableLabelBase = {
+      'text-wrap': 'wrap',
+      'text-max-width': 180,
+      'text-outline-color': '#000',
+      'text-outline-width': 3,
+      'text-background-color': 'rgba(0,0,0,0.68)',
+      'text-background-opacity': 0.9,
+      'text-background-shape': 'roundrectangle',
+      'text-background-padding': 3,
+    };
     return [
       {
         selector: 'node',
@@ -2442,12 +2466,36 @@ const Graph = (() => {
       // ── Labels only visible when zoomed in (class toggled by zoom handler) ──
       {
         selector: 'node.show-label',
-        style: { 'label': 'data(label)' }
+        style: {
+          'label': 'data(label)',
+          ...readableLabelBase,
+        }
+      },
+      // ── Progressive reveal: major names appear first ──
+      {
+        selector: 'node.show-major-label',
+        style: {
+          'label': 'data(label)',
+          'font-size': '12px',
+          ...readableLabelBase,
+          'text-max-width': 170,
+          'text-outline-width': 3.5,
+          'text-background-color': 'rgba(0,0,0,0.72)',
+          'text-background-opacity': 0.92,
+        }
       },
       // ── Always-visible labels (Vue Monétisation — key nodes) ──────────────
       {
         selector: 'node.always-label',
-        style: { 'label': 'data(label)', 'font-size': '13px', 'font-family': 'VT323, monospace', 'text-outline-width': 3 }
+        style: {
+          'label': 'data(label)', 'font-size': '14px', 'font-family': 'VT323, monospace',
+          ...readableLabelBase,
+          'text-outline-width': 3.5,
+          'text-max-width': 190,
+          'text-background-color': 'rgba(0,0,0,0.75)',
+          'text-background-opacity': 0.94,
+          'text-background-padding': 4
+        }
       },
       // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
       { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
@@ -2468,8 +2516,11 @@ const Graph = (() => {
           'font-size': 'data(labelSize)',
           'color': 'data(labelColor)',
           'text-valign': 'center', 'text-halign': 'data(labelHalign)',
-          'text-outline-color': '#000', 'text-outline-width': 3,
-          'text-wrap': 'wrap',
+          ...readableLabelBase,
+          'text-outline-width': 3.5,
+          'text-max-width': 260,
+          'text-background-color': 'rgba(0,0,0,0.62)',
+          'text-background-opacity': 0.90,
           'events': 'no',
         }
       },
@@ -2485,8 +2536,11 @@ const Graph = (() => {
           'color': 'data(labelColor)',
           'text-rotation': 'data(labelRotation)',
           'text-valign': 'center', 'text-halign': 'center',
-          'text-outline-color': '#000', 'text-outline-width': 2,
-          'text-wrap': 'nowrap',
+          ...readableLabelBase,
+          'text-outline-width': 3,
+          'text-max-width': 260,
+          'text-background-color': 'rgba(0,0,0,0.64)',
+          'text-background-opacity': 0.90,
           'events': 'no',
         }
       },
@@ -3097,12 +3151,12 @@ const Graph = (() => {
     // Mobile: élargir la matrice pour éviter l'effet "colonne tassée" et mieux répartir les points.
     // V3 garde 8 colonnes mais avec un pas horizontal plus large + cellule utile plus large.
     // V2 garde 4 macro-colonnes avec un léger gain d'espacement.
-    const COL_W      = isMobile ? (useStrata ? 96 : 66)   : (useStrata ? 280 : 280);
-    const ROW_H      = isMobile ? 192  : 540;
-    const OX         = isMobile ? (useStrata ? 74 : 34)   : 400;
+    const COL_W      = isMobile ? (useStrata ? 110 : 78)  : (useStrata ? 280 : 280);
+    const ROW_H      = isMobile ? 162  : 540;
+    const OX         = isMobile ? (useStrata ? 44 : 8)    : 400;
     const OY         = isMobile ? 100  : 360;
     const NODE_H     = isMobile ? 11   : 16;
-    const CELL_W_FRAC = isMobile ? 0.94 : 0.78;
+    const CELL_W_FRAC = isMobile ? 1.14 : 0.78;
 
     // ── batch4: variable column widths (desktop V3 non-strata) ───────────
     // Ratios: Chap.|Struct.|Objets|Gouvern.|Crises|Acteurs|Concepts|Réf./Sources
@@ -3331,12 +3385,12 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    const rowLabelX = isMobile ? OX - 38 : OX - 230;
+    const rowLabelX = isMobile ? OX - 30 : OX - 230;
     const hasRow5   = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
     const mobileRowLabels = ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.'];
     if (hasRow5) mobileRowLabels.push('Multi.');
     const MAT_CHAPTER_LABELS = isMobile ? mobileRowLabels : CHAPTER_LABELS;
-    const rowSize   = isMobile ? '33px' : '18px';
+    const rowSize   = isMobile ? '38px' : '18px';
     const rowHalign = isMobile ? 'left'  : 'center';
     MAT_CHAPTER_LABELS.forEach((label, i) => {
       cy.add({
@@ -3348,10 +3402,10 @@ const Graph = (() => {
       });
     });
 
-    const colLabelY   = isMobile ? OY - 152 : OY - 240;
+    const colLabelY   = isMobile ? OY - 138 : OY - 240;
     // V3 mobile: rotation douce (15°) pour lisibilité; V2 mobile: 45° (labels longs)
     const colRotation = isMobile ? (useStrata ? -Math.PI / 4 : -Math.PI / 12) : 0;
-    const colSize     = isMobile ? (useStrata ? '34px' : '24px') : '28px';
+    const colSize     = isMobile ? (useStrata ? '38px' : '30px') : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
@@ -3414,7 +3468,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 24 : 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 6 : 60);
 
     // ── Canvas overlay : radial gradients per cell (chapter × col) ─────────────────────
     // CSS mix-blend-mode:screen = additive light → nebula glow.
@@ -3747,12 +3801,12 @@ const Graph = (() => {
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
     // 7 cols: mobile 60px → 420px total; desktop 260px
-    const COL_W  = isMobile ? 64  : 260;
-    const ROW_H  = isMobile ? 148 : 420;
-    const OX     = isMobile ? 70  : 320;
+    const COL_W  = isMobile ? 76  : 260;
+    const ROW_H  = isMobile ? 132 : 420;
+    const OX     = isMobile ? 38  : 320;
     const OY     = isMobile ? 100 : 280;
     const NODE_H = isMobile ? 9   : 14;
-    const CELL_W_FRAC = 0.82;
+    const CELL_W_FRAC = isMobile ? 1.10 : 0.82;
 
     // ── Build name→id + id→placement ─────────────────────
     const nameToId = {};
@@ -3849,14 +3903,14 @@ const Graph = (() => {
     cy.$('.chapter-label, .type-label').remove();
 
     // Row labels (left)
-    const rowLabelX = isMobile ? OX - 55 : OX - 210;
+    const rowLabelX = isMobile ? OX - 40 : OX - 210;
     MON_ROW_LABELS.forEach((label, i) => {
       cy.add({
         data: {
           id: '__mon_row_' + i,
           label,
           labelColor: MON_ROW_TINT[i] || '#aaaaaa',
-          labelSize: isMobile ? '30px' : '22px',
+          labelSize: isMobile ? '36px' : '22px',
           labelHalign: 'center',
         },
         position: { x: rowLabelX, y: OY + i * ROW_H },
@@ -3865,9 +3919,9 @@ const Graph = (() => {
     });
 
     // Column labels (top) — large, readable, near-horizontal
-    const colLabelY   = isMobile ? OY - 100 : OY - 200;
+    const colLabelY   = isMobile ? OY - 92 : OY - 200;
     const colRotation = isMobile ? -Math.PI / 8 : 0;
-    const colSize     = isMobile ? '28px' : '26px';
+    const colSize     = isMobile ? '34px' : '26px';
     MON_COL_LABELS.forEach((label, j) => {
       cy.add({
         data: {
@@ -3901,7 +3955,7 @@ const Graph = (() => {
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 24 : 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 6 : 60);
 
     // ── Canvas overlay: per-cell radial gradient halos ────
     _stopHaloOverlay();
@@ -4027,12 +4081,12 @@ const Graph = (() => {
 
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    const COL_W  = isMobile ? 52  : 240;
-    const ROW_H  = isMobile ? 138 : 420;
-    const OX     = isMobile ? 58  : 300;
+    const COL_W  = isMobile ? 66  : 240;
+    const ROW_H  = isMobile ? 124 : 420;
+    const OX     = isMobile ? 24  : 300;
     const OY     = isMobile ? 90  : 260;
     const NODE_H = isMobile ? 9   : 14;
-    const CELL_W_FRAC = 0.82;
+    const CELL_W_FRAC = isMobile ? 1.08 : 0.82;
 
     // ── Build name→id + id→placement ─────────────────────
     const nameToId = {};
@@ -4137,19 +4191,19 @@ const Graph = (() => {
     cy.$('.chapter-label, .type-label').remove();
 
     // Row labels (left)
-    const rowLabelX = isMobile ? OX - 38 : OX - 190;
+    const rowLabelX = isMobile ? OX - 28 : OX - 190;
     QG_ROW_LABELS.forEach((label, i) => {
       cy.add({
-        data: { id: '__qg_row_' + i, label, labelColor: QG_ROW_TINT[i], labelSize: isMobile ? '26px' : '20px', labelHalign: 'center' },
+        data: { id: '__qg_row_' + i, label, labelColor: QG_ROW_TINT[i], labelSize: isMobile ? '32px' : '20px', labelHalign: 'center' },
         position: { x: rowLabelX, y: OY + i * ROW_H },
         classes: 'chapter-label',
       });
     });
 
     // Column labels (top)
-    const colLabelY   = isMobile ? OY - 90 : OY - 190;
+    const colLabelY   = isMobile ? OY - 82 : OY - 190;
     const colRotation = isMobile ? -Math.PI / 8 : 0;
-    const colSize     = isMobile ? '22px' : '24px';
+    const colSize     = isMobile ? '30px' : '24px';
     QG_COL_LABELS.forEach((label, j) => {
       cy.add({
         data: { id: '__qg_col_' + j, label, labelColor: QG_COL_COLORS[j], labelSize: colSize, labelRotation: colRotation },
@@ -4176,7 +4230,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 24 : 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 6 : 60);
 
     // ── Canvas overlay ─────────────────────────────────────
     _stopHaloOverlay();
