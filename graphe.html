@@ -29,7 +29,7 @@
   --surface-soft: rgba(33, 0, 0, 0.9);
   --glow: 0 0 0 1px rgba(255,204,102,.55), 0 0 14px rgba(255,170,51,.22);
   --sidebar-w:220px;
-  --panel-w:  340px;
+  --panel-w:  300px;
   --header-h: 54px;
   --app-vh:   100vh;
   --font:     'Press Start 2P', monospace;
@@ -190,8 +190,8 @@ html, body {
   top: 84px;
   right: 14px;
   width: min(var(--panel-w), calc(100vw - 28px));
-  min-width: 260px;
-  max-width: 420px;
+  min-width: 230px;
+  max-width: 360px;
   min-height: 180px;
   max-height: calc(100vh - 106px);
   z-index: 190;
@@ -211,9 +211,21 @@ html, body {
 .grc-panel.is-minimized .panel-empty,
 .grc-panel.is-minimized .panel-resize-grip { display: none !important; }
 .panel-head-main { flex: 1; min-width: 0; }
+.panel-head { cursor: default; user-select: auto; touch-action: auto; }
 .panel-head-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .panel-head-meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .panel-head-actions { display: flex; gap: 5px; flex-shrink: 0; }
+.panel-drag-handle {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  line-height: 1;
+  font-size: 0.92em;
+  cursor: grab;
+  touch-action: none;
+}
+.panel-drag-handle:active { cursor: grabbing; }
 .panel-empty {
   flex: 1; display: flex; align-items: center; justify-content: center;
   padding: 24px; text-align: center; color: var(--text2); font-size: 0.9em;
@@ -794,10 +806,22 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   max-height: 70vh;
   overflow: auto;
   padding: 10px;
+  background: rgba(10, 12, 26, 0.95);
+  border: 1px solid #ffcc6666;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
 }
 .story-mode-panel.hidden { display: none; }
-.story-mode-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin: -10px -10px 8px; }
-.story-mode-title { font-size: 0.9em; }
+.story-mode-head {
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  margin: -10px -10px 8px;
+  padding: 10px 10px 8px;
+  border-bottom: 1px solid rgba(255, 204, 102, 0.2);
+}
+.story-mode-title { font-size: 0.9em; color: var(--accent2); font-weight: 700; }
+.story-mode-subtitle { font-size: 0.62em; color: var(--text2); margin-top: 3px; opacity: 0.9; }
+.story-close-btn { min-width: 28px; padding: 5px 7px; font-size: 0.72em; }
 .story-mode-meta {
   font-size: 0.68em;
   color: var(--text2);
@@ -1135,13 +1159,13 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
       </div>
     </div>
   </div>
-  <div class="story-mode-panel info-card-shell hidden" id="story-mode-panel">
-    <div class="story-mode-head info-card-head">
+  <div class="story-mode-panel hidden" id="story-mode-panel">
+    <div class="story-mode-head">
       <div>
-        <div class="story-mode-title info-card-title">Story mode</div>
-        <div class="info-card-subtitle">Micro-récit guidé</div>
+        <div class="story-mode-title">Story mode</div>
+        <div class="story-mode-subtitle">Micro-récit guidé</div>
       </div>
-      <button class="btn-secondary btn-sm info-action-btn" id="btn-story-close">✕</button>
+      <button class="btn-secondary btn-sm story-close-btn" id="btn-story-close">✕</button>
     </div>
     <select class="story-mode-select" id="story-select"></select>
     <h3 class="story-mode-step-title" id="story-step-title">—</h3>
@@ -1176,6 +1200,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
       <div class="panel-head-meta info-card-subtitle" id="detail-panel-meta">Sélectionnez un nœud</div>
     </div>
     <div class="panel-head-actions">
+      <button class="btn-secondary btn-sm panel-drag-handle" id="btn-panel-drag" type="button" title="Déplacer le panneau" aria-label="Déplacer le panneau">⠿</button>
       <button class="btn-secondary btn-sm info-action-btn" id="btn-panel-minimize" type="button" title="Réduire">—</button>
       <button class="btn-secondary btn-sm info-action-btn" id="btn-panel-close" type="button" title="Fermer">✕</button>
     </div>
@@ -5109,7 +5134,7 @@ const Modals = (() => {
 })();
 
 const PanelController = (() => {
-  let panel, launcher, titleEl, metaEl, head, grip;
+  let panel, launcher, titleEl, metaEl, dragHandle, grip;
   let dragging = null;
   let resizing = null;
   const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
@@ -5125,9 +5150,9 @@ const PanelController = (() => {
   function applyBounds(left, top, width, height) {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
-    const minW = window.matchMedia('(max-width: 900px)').matches ? 230 : 260;
+    const minW = window.matchMedia('(max-width: 900px)').matches ? 220 : 230;
     const minH = 170;
-    const maxW = Math.min(520, vw - 20);
+    const maxW = Math.min(window.matchMedia('(max-width: 900px)').matches ? 360 : 380, vw - 20);
     const maxH = Math.max(220, vh - 92);
     const w = clamp(width, minW, maxW);
     const h = clamp(height, minH, maxH);
@@ -5165,10 +5190,10 @@ const PanelController = (() => {
     launcher = document.getElementById('btn-info-launcher');
     titleEl = document.getElementById('detail-panel-title');
     metaEl = document.getElementById('detail-panel-meta');
-    head = document.getElementById('detail-panel-head');
+    dragHandle = document.getElementById('btn-panel-drag');
     grip = document.getElementById('panel-resize-grip');
-    if (!panel || !head || !grip) return;
-    applyBounds(window.innerWidth - 370, 84, 340, 470);
+    if (!panel || !dragHandle || !grip) return;
+    applyBounds(window.innerWidth - 330, 84, 300, 470);
     setLauncherLabel();
     document.getElementById('btn-panel-close')?.addEventListener('click', close);
     document.getElementById('btn-panel-minimize')?.addEventListener('click', minimize);
@@ -5179,12 +5204,12 @@ const PanelController = (() => {
     });
     panel.addEventListener('pointerdown', focusPanel);
 
-    head.addEventListener('pointerdown', e => {
-      if (e.target.closest('button')) return;
+    dragHandle.addEventListener('pointerdown', e => {
+      e.preventDefault();
       dragging = { id: e.pointerId, x: e.clientX, y: e.clientY, rect: panel.getBoundingClientRect() };
-      head.setPointerCapture(e.pointerId);
+      dragHandle.setPointerCapture(e.pointerId);
     });
-    head.addEventListener('pointermove', e => {
+    dragHandle.addEventListener('pointermove', e => {
       if (!dragging || dragging.id !== e.pointerId) return;
       applyBounds(
         dragging.rect.left + (e.clientX - dragging.x),
@@ -5193,8 +5218,8 @@ const PanelController = (() => {
         dragging.rect.height
       );
     });
-    head.addEventListener('pointerup', e => { if (dragging?.id === e.pointerId) dragging = null; });
-    head.addEventListener('pointercancel', e => { if (dragging?.id === e.pointerId) dragging = null; });
+    dragHandle.addEventListener('pointerup', e => { if (dragging?.id === e.pointerId) dragging = null; });
+    dragHandle.addEventListener('pointercancel', e => { if (dragging?.id === e.pointerId) dragging = null; });
 
     grip.addEventListener('pointerdown', e => {
       e.preventDefault();
