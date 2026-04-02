@@ -297,7 +297,8 @@ select:focus { border-color: var(--accent2); }
 }
 .badge-ok { background: var(--success); }
 /* ─── Tools dropdown ─────────────────────────────────────────────── */
-.tools-dropdown { position: relative; flex-shrink: 0; }
+.toolbar-primary-nav { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.tools-dropdown, .carte-dropdown, .recit-dropdown, .explorer-dropdown { position: relative; flex-shrink: 0; }
 .tools-menu {
   position: absolute; top: calc(100% + 4px); left: 0;
   background: var(--bg2); border: 1px solid var(--border);
@@ -306,6 +307,9 @@ select:focus { border-color: var(--accent2); }
   box-shadow: 0 4px 16px rgba(0,0,0,.4);
 }
 .tools-menu.hidden { display: none; }
+.carte-menu,
+.recit-menu,
+.explorer-menu { min-width: 280px; }
 .tools-section { display: flex; flex-direction: column; gap: 5px; }
 .tools-section-label {
   font-size: 0.52em; letter-spacing: .1em; text-transform: uppercase;
@@ -313,6 +317,9 @@ select:focus { border-color: var(--accent2); }
   border-bottom: 1px solid var(--border);
 }
 .tools-row { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+.tools-row .search-wrap { width: 100%; }
+.tools-row .search-input { width: 100%; }
+.tools-row button { width: 100%; text-align: left; }
 /* ─── Modals ─────────────────────────────────────────────────────── */
 .modal-backdrop {
   position: fixed; inset: 0; background: rgba(0,0,0,.65);
@@ -481,18 +488,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     border-bottom-width: 2px;
   }
 
-  .search-wrap {
-    order: 8;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .search-input {
-    width: 100%;
-    font-size: 0.86em;
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
   /* Masquer éléments non essentiels sur mobile */
   .grc-sep,
   .grc-title-text,
@@ -501,6 +496,22 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   #btn-undo,
   #btn-theme,
   .undo-count { display: none !important; }
+
+  .toolbar-primary-nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .toolbar-primary-nav > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .toolbar-primary-nav > div > button {
+    width: 100%;
+    text-align: center;
+  }
 
   /* Dropdown outils : bottom sheet sur mobile */
   .tools-menu {
@@ -519,11 +530,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   .grc-canvas-wrap { flex: 1; width: 100%; }
   .grc-main {
     height: calc(var(--app-vh) - 114px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
-  }
-
-  /* Bouton sidebar toggle sur mobile */
-  #btn-mobile-sidebar {
-    display: inline-flex !important;
   }
 
   /* Sidebar en overlay sur mobile */
@@ -949,66 +955,110 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <span class="grc-title-text">Au-delà des codes · GRC-20</span>
   <div class="grc-sep"></div>
 
-  <button class="btn-secondary" id="btn-load" title="Charger un fichier JSON GRC-20">📂 Charger</button>
+  <button class="btn-secondary hidden" id="btn-load" title="Charger un fichier JSON GRC-20">📂 Charger</button>
   <input type="file" id="file-input" accept=".json" style="display:none">
   <button class="btn-secondary btn-sm hidden" id="btn-undo" title="Annuler la dernière action">↩ Annuler</button>
   <span class="undo-count hidden" id="undo-label"></span>
 
   <div class="grc-sep"></div>
 
-  <div class="search-wrap">
-    <input type="text" class="search-input" id="search-input" placeholder="🔍 Rechercher…" autocomplete="off">
-    <button class="search-clear" id="search-clear" title="Effacer">✕</button>
-  </div>
+  <div class="toolbar-primary-nav">
+    <div class="carte-dropdown" id="carte-dropdown">
+      <button class="btn-primary btn-sm" id="btn-carte" title="Navigation Carte">◫ Carte ▾</button>
+      <div class="tools-menu carte-menu hidden" id="carte-menu">
+        <div class="tools-section">
+          <span class="tools-section-label">Carte</span>
+          <div class="tools-row">
+            <button class="btn-primary btn-sm" id="btn-carte-show" title="Vue Structure de la thèse">Afficher la carte</button>
+            <button class="btn-secondary btn-sm" id="btn-fit" title="Ajuster à l'écran">⊡ Ajuster au cadre</button>
+          </div>
+        </div>
+        <div class="tools-section">
+          <span class="tools-section-label">Disposition</span>
+          <div class="tools-row">
+            <select id="layout-select" title="Changer le layout">
+              <option value="cose">Force-directed</option>
+              <option value="nebulae">Archipel / chapitres</option>
+              <option value="matrice" selected>Matrice chapitres × types</option>
+              <option value="arbre">Arbre argumentatif ↦</option>
+              <option value="dagre">Hiérarchique</option>
+              <option value="circle">Cercle</option>
+              <option value="concentric">Concentrique</option>
+              <option value="grid">Grille</option>
+              <option value="qui-gouverne">Qui gouverne réellement ?</option>
+            </select>
+            <button class="btn-secondary btn-sm" id="btn-relayout" title="Recalculer le layout">↺ Recalculer</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <div class="tools-dropdown" id="tools-dropdown">
-    <button class="btn-secondary btn-sm" id="btn-tools-toggle" title="Outils avancés">⚙ Outils ▾</button>
-    <div class="tools-menu hidden" id="tools-menu">
-      <div class="tools-section">
-        <span class="tools-section-label">Disposition</span>
-        <div class="tools-row">
-          <select id="layout-select" title="Changer le layout">
-            <option value="cose">Force-directed</option>
-            <option value="nebulae">Archipel / chapitres</option>
-            <option value="matrice" selected>Matrice chapitres × types</option>
-            <option value="arbre">Arbre argumentatif ↦</option>
-            <option value="dagre">Hiérarchique</option>
-            <option value="circle">Cercle</option>
-            <option value="concentric">Concentrique</option>
-            <option value="grid">Grille</option>
-            <option value="qui-gouverne">Qui gouverne réellement ?</option>
-          </select>
-          <button class="btn-secondary btn-sm" id="btn-relayout" title="Recalculer le layout">↺</button>
+    <div class="recit-dropdown" id="recit-dropdown">
+      <button class="btn-secondary btn-sm" id="btn-recit-toggle" title="Lecture guidée et story mode">📖 Récit ▾</button>
+      <div class="tools-menu recit-menu hidden" id="recit-menu">
+        <div class="tools-section">
+          <span class="tools-section-label">Lecture guidée</span>
+          <div class="tools-row">
+            <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Basculer récit</button>
+            <button class="btn-secondary btn-sm" id="btn-story-mode" title="Micro-récits guidés">🎬 Story mode</button>
+          </div>
         </div>
       </div>
-      <div class="tools-section">
-        <span class="tools-section-label">Édition</span>
-        <div class="tools-row">
-          <button class="btn-primary btn-sm" id="btn-add-entity" disabled>+ Entité</button>
-          <button class="btn-secondary btn-sm" id="btn-add-relation" disabled>+ Relation</button>
-          <button class="btn-secondary btn-sm" id="btn-validate" disabled>✓ Valider</button>
+    </div>
+
+    <div class="explorer-dropdown" id="explorer-dropdown">
+      <button class="btn-secondary btn-sm" id="btn-explorer-toggle" title="Recherche, focus et filtres">🔎 Explorer ▾</button>
+      <div class="tools-menu explorer-menu hidden" id="explorer-menu">
+        <div class="tools-section">
+          <span class="tools-section-label">Recherche</span>
+          <div class="tools-row">
+            <div class="search-wrap">
+              <input type="text" class="search-input" id="search-input" placeholder="🔍 Rechercher…" autocomplete="off">
+              <button class="search-clear" id="search-clear" title="Effacer">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="tools-section">
+          <span class="tools-section-label">Explorer</span>
+          <div class="tools-row">
+            <button class="btn-secondary btn-sm" id="btn-focus-header" title="Filtrer / Éclater une sélection">▣ Focus analytique</button>
+            <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Afficher les filtres de types">☰ Filtres de types</button>
+          </div>
         </div>
       </div>
-      <div class="tools-section">
-        <span class="tools-section-label">Export</span>
-        <div class="tools-row">
-          <button class="btn-secondary btn-sm" id="btn-export" disabled>⬇ JSON v<span id="export-version">2</span></button>
-          <span class="badge-error hidden" id="error-badge">0</span>
+    </div>
+
+    <div class="tools-dropdown" id="tools-dropdown">
+      <button class="btn-secondary btn-sm" id="btn-tools-toggle" title="Outils avancés">⚙ Outils ▾</button>
+      <div class="tools-menu hidden" id="tools-menu">
+        <div class="tools-section">
+          <span class="tools-section-label">Chargement</span>
+          <div class="tools-row">
+            <button class="btn-secondary btn-sm" id="btn-load-tool" title="Charger un fichier JSON GRC-20">📂 Charger un graphe</button>
+          </div>
+        </div>
+        <div class="tools-section">
+          <span class="tools-section-label">Édition</span>
+          <div class="tools-row">
+            <button class="btn-primary btn-sm" id="btn-add-entity" disabled>+ Entité</button>
+            <button class="btn-secondary btn-sm" id="btn-add-relation" disabled>+ Relation</button>
+            <button class="btn-secondary btn-sm" id="btn-validate" disabled>✓ Valider</button>
+          </div>
+        </div>
+        <div class="tools-section">
+          <span class="tools-section-label">Export / Expert</span>
+          <div class="tools-row">
+            <button class="btn-secondary btn-sm" id="btn-export" disabled>⬇ JSON v<span id="export-version">2</span></button>
+            <button class="btn-secondary btn-sm" id="btn-strata-toggle" title="Basculer vers les strates analytiques" style="display:none">⊟ Strates V2</button>
+            <span class="badge-error hidden" id="error-badge">0</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <button class="btn-secondary btn-sm" id="btn-fit" title="Ajuster à l'écran">⊡ Ajuster</button>
 
   <div style="flex:1"></div>
   <span class="version-label" id="version-label">–</span>
-  <button class="btn-secondary btn-sm" id="btn-sidebar-toggle" title="Masquer/afficher la sidebar">⊢</button>
-  <button class="btn-secondary btn-sm" id="btn-mobile-sidebar" title="Filtres" style="display:none">☰ Filtres</button>
-  <button class="btn-primary btn-sm" id="btn-carte" title="Vue Structure de la thèse">◫ Carte</button>
-  <button class="btn-secondary btn-sm" id="btn-focus-header" title="Filtrer / Éclater une sélection">▣ Focus</button>
-  <button class="btn-secondary btn-sm" id="btn-strata-toggle" title="Basculer vers les strates analytiques" style="display:none">⊟ Strates V2</button>
-  <button class="btn-secondary btn-sm" id="btn-scrolly" title="Mode scrollytelling / éditeur">📖 Récit</button>
-  <button class="btn-secondary btn-sm" id="btn-story-mode" title="Micro-récits guidés">🎬 Story mode</button>
   <button class="btn-secondary btn-sm" id="btn-theme" title="Basculer le thème">◐</button>
   <div class="grc-sep"></div>
   <a href="index.html" class="btn-secondary btn-sm" style="text-decoration:none; display:inline-flex; align-items:center;">← Accueil</a>
@@ -6235,6 +6285,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.getElementById('file-input');
   function triggerLoad() { fileInput.click(); }
   document.getElementById('btn-load').addEventListener('click', triggerLoad);
+  document.getElementById('btn-load-tool').addEventListener('click', triggerLoad);
   document.getElementById('btn-load2').addEventListener('click', triggerLoad);
   fileInput.addEventListener('change', e => {
     const file = e.target.files[0];
@@ -6252,15 +6303,33 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput.value = '';
   });
 
-  // ── Tools dropdown toggle ────────────────────────────
+  // ── Navigation dropdowns ─────────────────────────────
+  const menuIds = ['carte-menu', 'recit-menu', 'explorer-menu', 'tools-menu'];
+  function closeAllMenus(exceptId = null) {
+    menuIds.forEach(id => {
+      if (id !== exceptId) document.getElementById(id)?.classList.add('hidden');
+    });
+  }
+  function toggleMenu(menuId, ev) {
+    ev?.stopPropagation?.();
+    const menu = document.getElementById(menuId);
+    if (!menu) return;
+    const opening = menu.classList.contains('hidden');
+    closeAllMenus(opening ? menuId : null);
+    menu.classList.toggle('hidden', !opening);
+  }
+
+  document.getElementById('btn-carte').addEventListener('click', e => toggleMenu('carte-menu', e));
+  document.getElementById('btn-recit-toggle').addEventListener('click', e => toggleMenu('recit-menu', e));
+  document.getElementById('btn-explorer-toggle').addEventListener('click', e => toggleMenu('explorer-menu', e));
+
+  // ── Outils dropdown ──────────────────────────────────
   const toolsMenu = document.getElementById('tools-menu');
-  document.getElementById('btn-tools-toggle').addEventListener('click', e => {
-    e.stopPropagation();
-    toolsMenu.classList.toggle('hidden');
-  });
+  document.getElementById('btn-tools-toggle').addEventListener('click', e => toggleMenu('tools-menu', e));
   document.addEventListener('click', e => {
-    if (!document.getElementById('tools-dropdown').contains(e.target)) {
-      toolsMenu.classList.add('hidden');
+    if ([...document.querySelectorAll('.toolbar-primary-nav .tools-menu')].some(m => !m.classList.contains('hidden'))) {
+      const insideDropdown = !!e.target.closest('.toolbar-primary-nav > div');
+      if (!insideDropdown) closeAllMenus();
     }
   });
 
@@ -6304,16 +6373,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-fit').addEventListener('click', () => Graph.fit());
   document.getElementById('btn-archipel-back').addEventListener('click', () => Graph.zoomToArchipelago());
 
-  // ── Bouton "Carte" : raccourci Matrice toujours visible ──
-  document.getElementById('btn-carte').addEventListener('click', () => {
+  // ── Entrée "Carte" : raccourci Matrice ──
+  document.getElementById('btn-carte-show').addEventListener('click', () => {
     if (!State.data) return;
+    closeAllMenus();
     document.getElementById('canvas-overlay').classList.add('hidden');
     State.hiddenTypes.clear();
     Graph.applyFilters();
     UI.renderTypeFilters();
     Graph.applyMatriceLayout();
     document.getElementById('layout-select').value = 'matrice';
-    document.getElementById('btn-carte').classList.replace('btn-secondary', 'btn-primary');
+    document.getElementById('btn-carte').classList.remove('btn-secondary');
+    document.getElementById('btn-carte').classList.add('btn-primary');
   });
 
   // ── Toggle Types bruts / Strates analytiques V2 ──────
@@ -6454,6 +6525,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
       e.preventDefault();
+      document.getElementById('explorer-menu')?.classList.remove('hidden');
       document.getElementById('search-input').focus();
     }
   });
@@ -6800,17 +6872,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.story-section').forEach(sec => scrollyObserver.observe(sec));
   }
 
-  // ── Mobile sidebar toggle ─────────────────────────────────
-  document.getElementById('btn-mobile-sidebar').addEventListener('click', () => {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('mobile-open');
-  });
   // Fermer la sidebar mobile en cliquant en dehors
   document.addEventListener('click', e => {
     const sidebar = document.getElementById('sidebar');
     if (sidebar.classList.contains('mobile-open') &&
         !sidebar.contains(e.target) &&
-        e.target.id !== 'btn-mobile-sidebar') {
+        e.target.id !== 'btn-sidebar-toggle') {
       sidebar.classList.remove('mobile-open');
     }
   });
@@ -6824,7 +6891,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Sidebar toggle (desktop) ─────────────────────────────
   document.getElementById('btn-sidebar-toggle').addEventListener('click', () => {
     const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('sidebar-collapsed');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) sidebar.classList.toggle('mobile-open');
+    else sidebar.classList.toggle('sidebar-collapsed');
     if (Graph.cy) Graph.cy.resize();
   });
 
