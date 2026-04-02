@@ -1520,6 +1520,47 @@ const TYPE_SHAPES = {
   'ConceptTechnical':    'hexagon',
   'InfrastructureService': 'barrel',
 };
+const TYPE_HIERARCHY_WEIGHT = {
+  // Macro-structure / noyaux conceptuels : dominants visuels
+  'DoctoralThesis':       1.42,
+  'Chapter':              1.36,
+  'ChapterSection':       1.3,
+  'ThesisSection':        1.26,
+  'CoreConcept':          1.24,
+  'ConceptCore':          1.24,
+  'AnalyticClaim':        1.2,
+  'Argument':             1.18,
+
+  // Entités pivot intermédiaires
+  'Protocol':             1.12,
+  'ProtocolChange':       1.1,
+  'GovernanceArena':      1.08,
+  'GovernanceProcess':    1.06,
+  'Institution':          1.05,
+  'Organization':         1.05,
+  'Reference':            1.04,
+
+  // Entités satellites / feuilles (plus discrètes)
+  'PrimarySource':        0.95,
+  'SourceQuote':          0.84,
+  'Corpus':               0.9,
+  'GreyLiterature':       0.9,
+  'IndigenousLiterature': 0.9,
+  'PriceWindow':          0.88,
+  'PriceSeries':          0.9,
+};
+
+function computeHierarchyWeight(typeName) {
+  return TYPE_HIERARCHY_WEIGHT[typeName] || 1;
+}
+
+function computeVisualNodeSize(entity) {
+  const degree = (State.maps.outgoing[entity.id] || []).length
+               + (State.maps.incoming[entity.id] || []).length;
+  const baseSize = Math.max(22, Math.min(90, 22 + Math.sqrt(degree) * 9));
+  const hierarchyWeight = computeHierarchyWeight(State.getEntityTypeName(entity));
+  return Math.max(18, Math.min(120, baseSize * hierarchyWeight));
+}
 
 // ─────────────────────────────────────────────────────────
 //  CHAPTER NEBULA CONFIG
@@ -2201,9 +2242,7 @@ const Graph = (() => {
     const typeName = State.getEntityTypeName(entity);
     const color = TYPE_COLORS[typeName] || '#64748b';
     const shape = TYPE_SHAPES[typeName] || 'ellipse';
-    const degree = (State.maps.outgoing[entity.id] || []).length
-                 + (State.maps.incoming[entity.id] || []).length;
-    const size = Math.max(22, Math.min(90, 22 + Math.sqrt(degree) * 9));
+    const size = computeVisualNodeSize(entity);
     const chapterIdx = _chapterMap[entity.id] !== undefined ? _chapterMap[entity.id] : -1;
     return {
       data: {
@@ -2453,10 +2492,10 @@ const Graph = (() => {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'shape': 'ellipse',   // formes douces en matrice (évite losanges/étoiles durs en petite taille)
+          'shape': 'data(shape)', // conserve la différenciation morphologique des types
           // Glow dynamique proportionnel à la taille — les hubs irradient, les feuilles restent discrètes
-          'shadow-blur':    'mapData(size, 22, 90, 12, 110)',
-          'shadow-opacity': 'mapData(size, 22, 90, 0.55, 0.95)',
+          'shadow-blur':    'mapData(size, 18, 120, 10, 130)',
+          'shadow-opacity': 'mapData(size, 18, 120, 0.42, 0.96)',
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.85,
@@ -3173,7 +3212,7 @@ const Graph = (() => {
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
       // matrix mobile: nœuds réduits pour dispersion interne — max 16px (vs 22px par défaut)
-      const mobileSize = isMobile ? Math.max(8, Math.min(raw * 0.65, 16)) : raw;
+      const mobileSize = isMobile ? Math.max(7, Math.min(raw * 0.62, 20)) : raw;
       n.data('msize', mobileSize);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
@@ -3677,7 +3716,7 @@ const Graph = (() => {
     // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? Math.max(8, Math.min(raw, 22)) : raw);
+      n.data('msize', isMobile ? Math.max(7, Math.min(raw * 0.7, 21)) : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
@@ -3971,7 +4010,7 @@ const Graph = (() => {
     // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? Math.max(8, Math.min(raw, 22)) : raw);
+      n.data('msize', isMobile ? Math.max(7, Math.min(raw * 0.7, 21)) : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
