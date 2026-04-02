@@ -363,75 +363,73 @@ export const STORY_PRESETS = {
       ]
     },
     {
-      // ── Histoire narrative ancrée sur SourceQuotes ────────────────────
-      // Chaque étape est liée à un NarrativeAnchor : la citation est la
-      // preuve primaire, l'entité est l'objet analytique, la scène de
-      // graphe est la traduction visuelle.
       id: 'fil-de-preuves',
       label: 'Fil de preuves',
       layoutTarget: 'matrice',
-      intro: 'Suivre la démonstration de la thèse à travers ses citations clés — chaque étape est ancrée sur une SourceQuote.',
+      intro: 'Un récit démonstratif en 6 scènes : des lignes de preuve distinctes qui convergent vers la thèse centrale.',
       defaultStepOptions: {
-        edgeMode: 'neighbors',
-        includeNeighbors: true,
-        secondaryDepth: 1,
-        maxSecondaryPerTarget: 3,
+        edgeMode: 'strict',
+        includeNeighbors: false,
+        secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        expandFromPrimary: true,
+        maxAutoEdges: 3,
+        maxPrimaryEdges: 6,
+        maxSecondaryEdges: 4,
         hideBackbone: true,
-        fitTargets: 'primary+secondary'
+        fitTargets: 'primary',
+        allowedRelationTypes: ['hasConcept', 'demonstrates', 'source', 'relatedTo', 'refutedBy', 'opposedTo', 'governance', 'hasCrisis']
       },
       steps: [
         {
           id: 'fp1',
-          title: 'La cryptomonnaie comme phénomène',
-          body: `« Avec lui commence le phénomène des cryptomonnaies, dont les codes sources sont ouverts. » — La thèse part du fait brut de l'existence des CM comme objets politiques et monétaires.`,
-          focusNodes: ['cryptomonnaie', 'Code Source Ouvert', 'Communaute de paiement / Groupe monetaire'],
-          cameraPreset: 'cluster',
-          sourceQuoteId: 'anchor-7c595e5b',   // cryptomonnaie · intro p. 15
+          title: 'Le problème initial à éprouver',
+          body: 'La thèse part d’un syllogisme libéral-techniciste : si la technique est neutre et si les cryptomonnaies sont purement techniques, alors elles seraient sans gouvernance humaine et meilleures que les monnaies nationales. Le fil de preuves doit montrer comment ce syllogisme est déconstruit pas à pas.',
+          focusNodes: ['Syllogisme libéral-techniciste', 'Bitcoin', 'cryptomonnaie', 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'],
+          cameraPreset: 'tight',
+          maxPrimaryEdges: 5
         },
         {
           id: 'fp2',
-          title: 'Le syllogisme libéral-techniciste',
-          body: `« Les ambitions technicistes des coiners qu'interroge cette thèse peuvent se traduire en un syllogisme. » — L'hypothèse réfutée : le code serait la loi, la gouvernance serait absente.`,
-          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !'],
-          cameraPreset: 'tight',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · ch1 p. 53
+          title: 'Première ligne de preuve : la conception n’est pas neutre',
+          body: 'Les choix architecturaux, les inspirations idéelles et les compromis techniques montrent déjà que les protocoles ne naissent pas hors du monde social. La preuve commence donc avant même les usages ou les crises.',
+          focusNodes: ['Satoshi Nakamoto', 'Bitcoin', 'Conception politique', 'Choix architecturaux', 'STS'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 6
         },
         {
           id: 'fp3',
-          title: 'Les crises comme épreuve',
-          body: `« Les CM représentent une épreuve d'explicitation de la monnaie. » — Les crises révèlent ce que l'usage ordinaire laisse implicite.`,
-          focusNodes: ["Crises comme épreuves d’explicitation", 'Bitcoin', 'Ethereum'],
+          title: 'Deuxième ligne de preuve : l’infrastructure déborde le protocole',
+          body: 'Le développement infrastructurel, les passerelles, les intermédiaires, les usages et les recompositions d’acteurs montrent qu’un protocole nu ne fait pas monnaie à lui seul. Cette ligne de preuve déplace l’analyse du design vers le monde socio-technique effectivement constitué.',
+          focusNodes: ['Développement infrastructurel carnavalesque', 'Passerelles', 'Intermédiation', 'Usages', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'cluster',
-          sourceQuoteId: 'anchor-c6fadcf4',   // épreuves d'explicitation · ch2 p. 50
+          maxPrimaryEdges: 6
         },
         {
           id: 'fp4',
-          title: 'Gouvernance de huis clos',
-          body: `« Le processus de découverte et de divulgation a permis une résolution silencieuse. » — La CVE 2018 exemplifie la gouvernance discrète : correction sans dissensus public.`,
-          focusNodes: ['Gouvernance de huis clos', 'Bitcoin CVE 2018-17144', 'Divulgation responsable', 'Core Developers (Bitcoin)'],
+          title: 'Troisième ligne de preuve : la monétisation se construit',
+          body: 'La monnaie n’apparaît pas ici comme une essence, mais comme un processus de monétisation soutenu par des usages, une communauté de paiement, des équipements et des institutions. Cette étape doit montrer comment l’infrastructure devient argument monétaire.',
+          focusNodes: ['Monétisation', 'Communauté de paiement', 'Usages monétaires', 'UCN BTC', 'UCN ETH', 'Monetary Institutionalism FR (IMF)'],
           cameraPreset: 'cluster',
-          sourceQuoteId: 'anchor-0b39eeba',   // Gouvernance de huis clos · ch3 p. 225
+          maxPrimaryEdges: 6
         },
         {
           id: 'fp5',
-          title: 'La divulgation responsable',
-          body: `« Il s'engage dans une divulgation responsable : il limite l'accès à cette information. » — Pratique qui codifie la gestion discrète des crises.`,
-          focusNodes: ['Divulgation responsable', 'Awemany', 'Bitcoin Core (repo)'],
-          cameraPreset: 'tight',
-          sourceQuoteId: 'anchor-acb5bee9',   // Divulgation responsable · ch3 p. 234
+          title: 'Quatrième ligne de preuve : les crises révèlent la gouvernance',
+          body: 'Les crises montrent que le code ne clôt jamais entièrement la décision. Quand les tensions deviennent manifestes, les formes de gouvernance, les arènes, les hiérarchies et les dispositifs de consensus apparaissent à découvert. Cette étape doit condenser la force probatoire de CVE 2018 et de The DAO.',
+          focusNodes: ['Bitcoin CVE 2018-17144', 'Ethereum DAO Hard Fork', 'Gouvernance duale', 'Space of Rule / Space of Discretion', 'Consensus social'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 7
         },
         {
           id: 'fp6',
-          title: 'La gouvernance polycentrique',
-          body: `« La gouvernance sur l'infrastructure des CM est conflictuelle et polycentrique. » — Conclusion générale : la thèse réfute l'acéphalisme et nomme la forme réelle de gouvernance.`,
-          focusNodes: ['Gouvernance polycentrique', 'Gouvernance duale', 'Infrastructure sociotechnique'],
+          title: 'Ce que l’ensemble prouve',
+          body: 'Le fil de preuves doit finir sur une conclusion pleinement démonstrative : les cryptomonnaies sont des infrastructures socio-techniques dont la monétisation et la reproduction passent par des formes de gouvernance discrètes, conflictuelles et polycentriques. Il faut que cette dernière étape fasse sentir la convergence des preuves, pas une simple récapitulation.',
+          focusNodes: ['Thèse centrale (infrastructures, crises, gouvernance polycentrique)', 'Monétisation', 'Gouvernance polycentrique', 'Crises', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'wide',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          fitTargets: 'primary',
-          sourceQuoteId: 'anchor-fb610652',   // Gouvernance polycentrique · ccl p. 336
+          maxPrimaryEdges: 7
         }
       ]
     }
