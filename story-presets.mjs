@@ -9,65 +9,77 @@ export const STORY_PRESETS = {
       id: 'monetisation-cryptos',
       label: 'Monétisation des cryptomonnaies',
       layoutTarget: 'monetisation',
-      intro: 'Comment les cryptomonnaies font monnaie dans des communautés de paiement.',
+      intro: 'Du statut monétaire controversé à la gouvernance : une démonstration progressive du chapitre II.',
       defaultStepOptions: {
         edgeMode: 'strict',
         includeNeighbors: false,
         secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        maxAutoEdges: 3,
+        maxPrimaryEdges: 6,
+        maxSecondaryEdges: 4,
         hideBackbone: true,
-        fitTargets: 'primary'
+        fitTargets: 'primary',
+        allowedRelationTypes: ['hasConcept', 'monetaryObject', 'governance', 'relatedTo', 'demonstrates', 'opposedTo', 'refutedBy', 'source']
       },
       steps: [
         {
           id: 'm1',
-          title: 'Une monnaie ne naît pas seule',
-          body: 'Les cryptomonnaies ne deviennent pas monnaie par simple existence technique. Leur monétisation dépend d’usages, d’infrastructures d’accès et de circuits de circulation.',
-          focusNodes: ['Monétisation des cryptomonnaies', 'UCN BTC', 'UCN ETH', 'Communaute de paiement / Groupe monetaire'],
-          cameraPreset: 'cluster'
+          title: 'Pourquoi le statut monétaire est controversé',
+          body: 'Les cryptomonnaies sont d’abord saisies comme des objets monétaires problématiques. Beaucoup de critiques les rejettent hors de la monnaie, soit parce qu’elles rempliraient mal les fonctions monétaires classiques, soit parce qu’elles n’auraient pas d’ancrage institutionnel légitime.',
+          centralNode: 'Statut monétaire des cryptomonnaies',
+          focusNodes: ['cryptomonnaie', 'Statut monétaire des cryptomonnaies', 'Fonctions monétaires', 'Critiques instrumentales', 'Critiques chartalistes'],
+          cameraPreset: 'tight'
         },
         {
           id: 'm2',
-          title: 'Émettre une unité native',
-          body: 'Bitcoin et Ethereum encadrent l’émission de leurs unités natives par des règles de monnayage qui organisent le système de paiement.',
-          focusNodes: ['UCN BTC', 'UCN ETH', 'Proof of Work (PoW)', 'Halving / Monnayage programmatique', 'Ether Genesis Sale (ICO Ethereum 2014)'],
+          title: 'L’épreuve d’explicitation de la monnaie',
+          body: 'La thèse ne traite pas les cryptomonnaies comme un simple échec monétaire. Elle les prend comme une épreuve d’explicitation : elles obligent à rendre visibles les présupposés des théories dominantes de la monnaie.',
+          centralNode: 'Épreuve d’explicitation de la monnaie',
+          focusNodes: ['Épreuve d’explicitation de la monnaie', 'cryptomonnaie', 'Monnaie', 'Nominalisme non étatiste', 'Monetary Institutionalism FR (IMF)'],
           cameraPreset: 'tight'
         },
         {
           id: 'm3',
-          title: 'Circuler via des passerelles',
-          body: 'La diffusion dépend de marchés, de paires d’échange et de passerelles qui rendent la commensurabilité concrète.',
-          focusNodes: ['NewLibertyStandard', 'InfrastructureEvent — Première plateforme d’échange BTC (BitcoinMarket.com)', 'Coinbase', 'Kraken', 'Services de paiement'],
-          cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 3,
-          fitTargets: 'primary+secondary'
+          title: 'Pourtant, elles font monnaie',
+          body: 'Le point de bascule du chapitre II est là : malgré les critiques, les cryptomonnaies font monnaie dans certains usages. L’enjeu n’est donc plus de leur dénier abstraitement tout caractère monétaire, mais de comprendre comment se fabrique leur monétisation.',
+          centralNode: 'Monétisation',
+          focusNodes: ['Usages monétaires', 'Monétisation', 'UCN BTC', 'UCN ETH', 'Usage en compte', 'Usage en paiement'],
+          cameraPreset: 'cluster'
         },
         {
           id: 'm4',
-          title: 'Accéder et conserver',
-          body: 'Wallets, custodians et processeurs de paiement rendent l’usage praticable. L’accès est déjà une forme d’institution.',
-          focusNodes: ['Electrum wallet', 'MyBitcoin', 'Ledger', 'Trezor', 'BitPay'],
-          cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 3,
-          fitTargets: 'primary+secondary'
+          title: 'La monétisation n’est pas donnée, elle se construit',
+          body: 'La monétisation n’est ni automatique ni purement protocolaire. Elle dépend d’un travail de mise en forme, d’équipement, de convertibilité, de liquidité et de reconnaissance par des acteurs dispersés.',
+          centralNode: 'Monétisation',
+          focusNodes: ['Monétisation', 'Liquidité', 'Convertibilité', 'Passerelles', 'Infrastructures de marché', 'Intermédiation'],
+          cameraPreset: 'cluster'
         },
         {
           id: 'm5',
-          title: 'Monétisation et gouvernance',
-          body: 'La monétisation durable suppose des institutions et une gouvernance capables de maintenir la capacité d’usage collective.',
-          focusNodes: ['Gouvernance polycentrique', 'Bitcoin Core (repo)', 'Core Developers (Bitcoin)', "Bourses d'échange (exchanges)"],
-          cameraPreset: 'wide',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 4,
-          hideBackbone: true,
-          fitTargets: 'primary+secondary'
+          title: 'La communauté de paiement comme pivot',
+          body: 'La monnaie n’existe pas seulement comme objet technique ou comme actif coté. Elle existe parce qu’une communauté de paiement se forme, accepte des unités, les compte, les échange et les reconnaît dans des usages situés.',
+          centralNode: 'Communauté de paiement',
+          focusNodes: ['Communauté de paiement', 'Usages monétaires', 'UCN BTC', 'UCN ETH', 'Paiement', 'Dette', 'Confiance'],
+          cameraPreset: 'cluster'
+        },
+        {
+          id: 'm6',
+          title: 'Institutions, usages et souveraineté',
+          body: 'La monétisation renvoie alors à des institutions, à des attentes collectives et à des formes de souveraineté. Ce déplacement permet de sortir du faux choix entre pure autonomie technique et pure garantie étatique.',
+          centralNode: 'Institutions',
+          focusNodes: ['Institutions', 'Souveraineté monétaire', 'Confiance', 'Monetary Institutionalism FR (IMF)', 'Nominalisme non étatiste', 'Gouvernance polycentrique'],
+          cameraPreset: 'wide'
+        },
+        {
+          id: 'm7',
+          title: 'Ce que ce récit doit prouver',
+          body: 'Le récit doit se conclure clairement : les cryptomonnaies ne sont ni de simples actifs sans monde social, ni de parfaites monnaies déjà données. Elles relèvent de processus de monétisation situés, socialement équipés et politiquement encadrés.',
+          centralNode: 'Monétisation',
+          focusNodes: ['Monétisation', 'Communauté de paiement', 'Gouvernance polycentrique', 'cryptomonnaie', 'Monnaie', 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'],
+          cameraPreset: 'wide'
         }
       ]
     },
