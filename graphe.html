@@ -2255,6 +2255,8 @@ const CHAPTER_LABELS = ['Introduction', 'Chapitre I', 'Chapitre II', 'Chapitre I
 
 const Graph = (() => {
   let cy = null;
+  let _zoomLabelNodes = null;
+  let _zoomMajorNodes = null;
   // Nebula / Archipelago state
   let _nebulaActive = false;
   let _nebulaZoomDepth = 'archipelago'; // 'archipelago' | 'chapter'
@@ -2286,17 +2288,39 @@ const Graph = (() => {
     const color = TYPE_COLORS[typeName] || '#64748b';
     const shape = TYPE_SHAPES[typeName] || 'ellipse';
     const size = computeVisualNodeSize(entity);
+    const degree = (State.maps.outgoing[entity.id] || []).length
+                 + (State.maps.incoming[entity.id] || []).length;
+    const isMajor = degree >= 10 || STRATUM_ALWAYS_VISIBLE_NAMES.has(entity.name);
     const chapterIdx = _chapterMap[entity.id] !== undefined ? _chapterMap[entity.id] : -1;
     return {
       data: {
         id: entity.id, label: getNodeLabel(entity),
         typeName, color, shape, size,
         fullName: entity.name,
+        degree,
+        isMajor,
         chapterIdx,
         labelColor: color,  // type color = same as node body and col-halo
       },
       classes: chapterIdx >= 0 ? 'chapter-' + chapterIdx : '',
     };
+  }
+
+  function refreshZoomLabelCollections() {
+    if (!cy) return;
+    _zoomLabelNodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
+    _zoomMajorNodes = _zoomLabelNodes.filter(n => Boolean(n.data('isMajor')));
+  }
+
+  function refreshNodeDegreeMeta(entityId) {
+    if (!cy) return;
+    const node = cy.$id(entityId);
+    if (!node.length) return;
+    const degree = (State.maps.outgoing[entityId] || []).length
+                 + (State.maps.incoming[entityId] || []).length;
+    const fullName = node.data('fullName') || '';
+    const isMajor = degree >= 10 || STRATUM_ALWAYS_VISIBLE_NAMES.has(fullName);
+    node.data({ degree, isMajor });
   }
 
   function relationToEdge(rel, idx) {
@@ -2407,12 +2431,8 @@ const Graph = (() => {
     const LABEL_ZOOM_ALL_THRESHOLD   = isMobileViewport ? 2.15 : 3.5;
     function syncLabels() {
       const z = cy.zoom();
-      const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
-      const majorNodes = nodes.filter(n => {
-        const degree = (State.maps.outgoing[n.data('id')] || []).length
-                     + (State.maps.incoming[n.data('id')] || []).length;
-        return degree >= 10 || STRATUM_ALWAYS_VISIBLE_NAMES.has(n.data('fullName'));
-      });
+      const nodes = _zoomLabelNodes || cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
+      const majorNodes = _zoomMajorNodes || nodes.filter(n => Boolean(n.data('isMajor')));
       if (z >= LABEL_ZOOM_ALL_THRESHOLD) {
         nodes.addClass('show-label');
         nodes.removeClass('show-major-label');
@@ -2425,10 +2445,18 @@ const Graph = (() => {
       }
     }
     cy.on('zoom', syncLabels);
+    refreshZoomLabelCollections();
     syncLabels();
   }
 
   function getCyStyle() {
+    const buildLabelStyle = (overrides = {}) => ({
+      'label': 'data(label)',
+      'text-wrap': 'wrap',
+      'text-background-shape': 'roundrectangle',
+      ...overrides,
+    });
+
     return [
       {
         selector: 'node',
@@ -2455,44 +2483,36 @@ const Graph = (() => {
       // ── Labels only visible when zoomed in (class toggled by zoom handler) ──
       {
         selector: 'node.show-label',
-        style: {
-          'label': 'data(label)',
-          'text-wrap': 'wrap',
+        style: buildLabelStyle({
           'text-max-width': 180,
           'text-background-color': 'rgba(0,0,0,0.68)',
           'text-background-opacity': 0.9,
-          'text-background-shape': 'roundrectangle',
           'text-background-padding': 3
-        }
+        })
       },
       // ── Progressive reveal: major names appear first ──
       {
         selector: 'node.show-major-label',
-        style: {
-          'label': 'data(label)',
+        style: buildLabelStyle({
           'font-size': '12px',
-          'text-wrap': 'wrap',
           'text-max-width': 170,
           'text-outline-width': 3.5,
           'text-background-color': 'rgba(0,0,0,0.72)',
           'text-background-opacity': 0.92,
-          'text-background-shape': 'roundrectangle',
           'text-background-padding': 3
-        }
+        })
       },
       // ── Always-visible labels (Vue Monétisation — key nodes) ──────────────
       {
         selector: 'node.always-label',
-        style: {
-          'label': 'data(label)', 'font-size': '14px', 'font-family': 'VT323, monospace',
+        style: buildLabelStyle({
+          'font-size': '14px', 'font-family': 'VT323, monospace',
           'text-outline-width': 3.5,
-          'text-wrap': 'wrap',
           'text-max-width': 190,
           'text-background-color': 'rgba(0,0,0,0.75)',
           'text-background-opacity': 0.94,
-          'text-background-shape': 'roundrectangle',
           'text-background-padding': 4
-        }
+        })
       },
       // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
       { selector: 'node.chapter-0', style: { 'shadow-color': '#00ccff', 'shadow-blur': 30, 'shadow-opacity': 0.62 } },
@@ -2505,45 +2525,39 @@ const Graph = (() => {
       // ── Chapter label ghost nodes (floating title above each island) ──
       {
         selector: 'node.chapter-label',
-        style: {
+        style: buildLabelStyle({
           'background-opacity': 0, 'border-opacity': 0,
           'width': 2, 'height': 2,
-          'label': 'data(label)',
           'font-family': "'VT323', monospace",
           'font-size': 'data(labelSize)',
           'color': 'data(labelColor)',
           'text-valign': 'center', 'text-halign': 'data(labelHalign)',
           'text-outline-color': '#000', 'text-outline-width': 3.5,
-          'text-wrap': 'wrap',
           'text-max-width': 260,
           'text-background-color': 'rgba(0,0,0,0.62)',
           'text-background-opacity': 0.90,
-          'text-background-shape': 'roundrectangle',
           'text-background-padding': 3,
           'events': 'no',
-        }
+        })
       },
       // ── Type column labels (matrice layout) ──────────────
       {
         selector: 'node.type-label',
-        style: {
+        style: buildLabelStyle({
           'background-opacity': 0, 'border-opacity': 0,
           'width': 2, 'height': 2,
-          'label': 'data(label)',
           'font-family': "'VT323', monospace",
           'font-size': 'data(labelSize)',
           'color': 'data(labelColor)',
           'text-rotation': 'data(labelRotation)',
           'text-valign': 'center', 'text-halign': 'center',
           'text-outline-color': '#000', 'text-outline-width': 3,
-          'text-wrap': 'wrap',
           'text-max-width': 260,
           'text-background-color': 'rgba(0,0,0,0.64)',
           'text-background-opacity': 0.90,
-          'text-background-shape': 'roundrectangle',
           'text-background-padding': 3,
           'events': 'no',
-        }
+        })
       },
       {
         selector: 'node:selected',
@@ -2886,6 +2900,7 @@ const Graph = (() => {
     const nodeData = entityToNode(entity);
     cy.add(nodeData);
     cy.$id(entity.id).position({ x: cy.width()/2 + (Math.random()-0.5)*100, y: cy.height()/2 + (Math.random()-0.5)*100 });
+    refreshZoomLabelCollections();
     applyFilters();
   }
 
@@ -2893,6 +2908,7 @@ const Graph = (() => {
     if (!cy) return;
     cy.$id(id).remove();
     cy.edges(`[source = "${id}"], [target = "${id}"]`).remove();
+    refreshZoomLabelCollections();
   }
 
   function updateNode(entity) {
@@ -2901,6 +2917,7 @@ const Graph = (() => {
     if (n.length) {
       const newData = entityToNode(entity).data;
       n.data(newData);
+      refreshZoomLabelCollections();
     }
   }
 
@@ -2908,12 +2925,18 @@ const Graph = (() => {
     if (!cy) return;
     const edgeData = relationToEdge(rel, idx);
     const src = cy.$id(rel.from), tgt = cy.$id(rel.to);
-    if (src.length && tgt.length) cy.add(edgeData);
+    if (src.length && tgt.length) {
+      cy.add(edgeData);
+      refreshNodeDegreeMeta(rel.from);
+      refreshNodeDegreeMeta(rel.to);
+      refreshZoomLabelCollections();
+    }
   }
 
   function removeEdge(edgeId) {
     if (!cy) return;
     cy.$(`[id = "${edgeId}"]`).remove();
+    refreshZoomLabelCollections();
   }
 
   function fit() { cy && cy.fit(40); }
