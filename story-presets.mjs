@@ -139,56 +139,125 @@ export const STORY_PRESETS = {
       id: 'crises',
       label: 'Crises',
       layoutTarget: 'matrice',
-      intro: 'Les crises rendent visible la gouvernance discrète en régime ordinaire.',
+      intro: 'Un récit comparatif et processuel : mise en crise, qualification, dispositifs, remise en ordre et forme de gouvernance révélée.',
       defaultStepOptions: {
         edgeMode: 'strict',
         includeNeighbors: false,
         secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        maxAutoEdges: 4,
+        maxPrimaryEdges: 8,
+        maxSecondaryEdges: 6,
+        allowedRelationTypes: [
+          'has crisis',
+          'demonstrates',
+          'debated in',
+          'used in',
+          'governance',
+          'has governance process',
+          'opposed to',
+          'refuted by'
+        ],
         hideBackbone: true,
         fitTargets: 'primary'
       },
       steps: [
         {
           id: 'c1',
-          title: 'Deux types de crise',
-          body: 'La thèse distingue les crises de vulnérabilité et les crises d’évolution.',
-          focusNodes: ['Crise de vulnérabilité', "Crise d'évolution"],
+          title: 'Pourquoi passer par les crises',
+          body: 'Les crises ne sont pas un supplément spectaculaire à la thèse. Elles sont le moment où l’infrastructure, la gouvernance et les hiérarchies deviennent visibles. Le récit doit faire comprendre d’emblée que les crises sont une méthode d’accès à la structure réelle des cryptomonnaies.',
+          centralNode: 'Crises',
+          focusNodes: [
+            'Crises',
+            'Mise en crise',
+            'Remise en ordre',
+            'Gouvernance des cryptomonnaies',
+            'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'
+          ],
           cameraPreset: 'tight'
         },
         {
           id: 'c2',
-          title: 'La CVE 2018',
-          body: "Bitcoin CVE 2018-17144 illustre une gestion discrète, routinière, dans un petit cercle d'acteurs.",
-          focusNodes: ['Bitcoin CVE 2018-17144', 'Awemany', 'Responsible Disclosure', 'Bitcoin Core (repo)'],
+          title: 'Deux types de crises',
+          body: 'Le récit doit expliciter la distinction entre crises de vulnérabilité et crises d’évolution. Cette typologie est décisive pour comprendre pourquoi toutes les défaillances, controverses ou conflits ne produisent pas la même forme de gouvernance.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: ['Crise de vulnérabilité', "Crise d’évolution", 'Gouvernance duale', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 3,
-          fitTargets: 'primary+secondary',
-          sourceQuoteId: 'anchor-0b39eeba',   // Gouvernance de huis clos · p. 225
+          maxPrimaryEdges: 6
         },
         {
           id: 'c3',
-          title: 'The DAO',
-          body: 'Avec The DAO, la crise devient publique et controversée : la question n’est plus seulement technique, elle devient politique.',
-          focusNodes: ['The DAO', 'Ethereum Hard Fork (juillet 2016)', 'Attaquant 2016 — An Open Letter (DAO hacker statement)', 'Soft Fork', 'Hard Fork'],
+          title: 'Bitcoin CVE 2018 : une crise de vulnérabilité',
+          body: 'La crise Bitcoin CVE-2018 doit être montrée comme un cas de gouvernance de huis clos, marquée par la responsible disclosure, l’évaluation discrète, la correction silencieuse et la formation d’un consensus local. Il faut faire sentir qu’il ne s’agit pas d’une absence de gouvernance, mais d’une gouvernance routinière, resserrée et discrète.',
+          centralNode: 'Bitcoin CVE 2018-17144',
+          focusNodes: [
+            'Bitcoin CVE 2018-17144',
+            'Gouvernance de huis clos',
+            'Responsible disclosure',
+            'Bitcoin Core (repo)',
+            'Consensus local',
+            'Patch'
+          ],
           cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 4,
-          fitTargets: 'primary+secondary'
+          maxPrimaryEdges: 7
         },
         {
           id: 'c4',
-          title: 'Scission et thèse',
-          body: 'Le hard fork majoritaire n’éteint pas le dissensus : Ethereum Classic naît de la rupture. Les crises révèlent la forme réelle de la gouvernance.',
-          focusNodes: ['Ethereum', 'Ethereum Classic (ETHC)', 'Fork (general)', 'Gouvernance polycentrique'],
+          title: 'The DAO : une crise publique et conflictuelle',
+          body: 'The DAO doit apparaître comme l’autre grand modèle : crise publique, controverse ouverte, stratégies concurrentes, débat sur les moyens légitimes de remise en ordre, puis hard fork et sécession. Il faut rendre visible le passage du désaccord technique au dissensus politique.',
+          centralNode: 'The DAO',
+          focusNodes: ['The DAO', 'Ethereum DAO Hard Fork', 'Gouvernance publique', 'Hard Fork', 'Ethereum Classic', 'Consensus global'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 7
+        },
+        {
+          id: 'c5',
+          title: 'Ce que les crises révèlent',
+          body: 'Les crises rendent visibles les écarts entre la lettre du code et l’esprit communautaire. Elles montrent que le consensus technique ne suffit pas toujours et que la décision revient aussi à des médiations sociales et politiques. Cette étape doit être clairement interprétative, pas seulement descriptive.',
+          centralNode: 'Space of Rule / Space of Discretion',
+          focusNodes: [
+            'Code is Law',
+            'Esprit communautaire',
+            'Space of Rule / Space of Discretion',
+            'Consensus social',
+            'Gouvernance duale'
+          ],
+          cameraPreset: 'tight',
+          maxPrimaryEdges: 6
+        },
+        {
+          id: 'c6',
+          title: 'Comparer CVE 2018 et The DAO',
+          body: 'Le récit doit contenir une vraie étape comparative, pas deux cas simplement juxtaposés. Elle doit faire ressortir : type de crise, degré de publicité, temporalité, acteurs centraux, dispositifs de décision, forme de consensus, type de sortie, et forme de gouvernance rendue visible.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: [
+            'Bitcoin CVE 2018-17144',
+            'Ethereum DAO Hard Fork',
+            'Gouvernance de huis clos',
+            'Gouvernance publique',
+            'Consensus local',
+            'Consensus global'
+          ],
           cameraPreset: 'wide',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          fitTargets: 'primary'
+          maxPrimaryEdges: 8
+        },
+        {
+          id: 'c7',
+          title: 'Ce que ce récit doit prouver',
+          body: 'Le récit doit finir sur une thèse forte : les crises ne sont pas des anomalies extérieures aux cryptomonnaies ; elles révèlent la structure ordinaire de leur reproduction, la présence de médiations décisives et la nature conflictuelle, discrète et polycentrique de leur gouvernance.',
+          centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
+          focusNodes: [
+            'Crises',
+            'Gouvernance duale',
+            'Gouvernance polycentrique',
+            'Bitcoin',
+            'Ethereum',
+            'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'
+          ],
+          cameraPreset: 'wide',
+          maxPrimaryEdges: 8
         }
       ]
     },
