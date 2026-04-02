@@ -5488,7 +5488,14 @@ const StoryMode = (() => {
     'Patch': 'CVE-2018-17144 — Remise en ordre par patch',
     'Esprit communautaire': 'Esprit du code vs Lettre du code',
     'Ethereum Classic': 'Ethereum Classic (ETHC)',
-    'Ethereum DAO Hard Fork': 'Ethereum Hard Fork (juillet 2016)'
+    'Ethereum DAO Hard Fork': 'Ethereum Hard Fork (juillet 2016)',
+    'Conception politique': 'I.3.3 Ethereum : différences architecturales et normativité politique des designs',
+    'Choix architecturaux': "Normativité de l'architecture et des paramètres Bitcoin",
+    'STS': 'Sociology of Science & Technology (STS)',
+    'Développement infrastructurel carnavalesque': 'Dynamique carnavalesque du développement infrastructurel',
+    'Usages': 'Institutionnalisme intéressé aux usages',
+    'Usages monétaires': "Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages",
+    'Monetary Institutionalism FR (IMF)': 'Institutionnalisme Monetaire Francophone (IMF)'
   };
 
   function getStoryPresetById(storyId) {
@@ -5575,6 +5582,7 @@ const StoryMode = (() => {
       initialState: step.initialState || 'primaryEdges',
       revealMode: step.revealMode || 'immediate',
       expandOnClick: step.expandOnClick !== undefined ? Boolean(step.expandOnClick) : false,
+      expandFromPrimary: step.expandFromPrimary !== undefined ? Boolean(step.expandFromPrimary) : false,
       maxAutoEdges: Number.isFinite(step.maxAutoEdges) ? Math.max(0, step.maxAutoEdges) : 6,
       maxPrimaryEdges: Number.isFinite(step.maxPrimaryEdges) ? Math.max(0, step.maxPrimaryEdges) : Infinity,
       maxSecondaryEdges: Number.isFinite(step.maxSecondaryEdges) ? Math.max(0, step.maxSecondaryEdges) : Infinity,
@@ -5822,7 +5830,9 @@ const StoryMode = (() => {
       ...(story.steps[storyState.activeStoryStepIndex] || {})
     };
     const opts = buildStoryFocusOptions(step);
-    if (!opts.expandOnClick || !node || !node.hasClass('story-secondary')) return;
+    if (!opts.expandOnClick || !node) return;
+    const canExpandFromNode = node.hasClass('story-secondary') || (opts.expandFromPrimary && node.hasClass('story-primary'));
+    if (!canExpandFromNode) return;
     const cy = Graph.cy;
     if (!cy) return;
 
