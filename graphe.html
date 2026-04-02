@@ -1093,6 +1093,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <p class="story-mode-step-body" id="story-step-body">—</p>
     <div class="story-mode-controls">
       <button class="btn-secondary btn-sm" id="btn-story-prev">◀ Précédent</button>
+      <button class="btn-secondary btn-sm" id="btn-story-reveal">Révéler liens</button>
       <button class="btn-primary btn-sm" id="btn-story-next">Suivant ▶</button>
       <button class="btn-secondary btn-sm" id="btn-story-quit">Quitter</button>
     </div>
@@ -2342,6 +2343,9 @@ const Graph = (() => {
       State.selectedId = id;
       UI.renderPanel(id);
       highlightNeighbors(id);
+      if (typeof StoryMode !== 'undefined' && StoryMode?.maybeExpandFromNode) {
+        StoryMode.maybeExpandFromNode(id, e.target);
+      }
       // Sur mobile : fenêtre flottante (pas de bottom sheet)
       if (window.innerWidth <= 768) {
         const panel = document.getElementById('detail-panel');
@@ -5444,7 +5448,8 @@ const StoryMode = (() => {
   const storyState = {
     activeStoryId: null,
     activeStoryStepIndex: -1,
-    storyModeEnabled: false
+    storyModeEnabled: false,
+    currentStepRuntime: null
   };
 
   const normalizeText = (s) => String(s || '')
@@ -5512,7 +5517,14 @@ const StoryMode = (() => {
     return (v || '').toString().trim().toLowerCase();
   }
 
+  function canonicalizeRelationName(v) {
+    return normalizeRelationName(v).replace(/[^a-z0-9]/g, '');
+  }
+
   function buildStoryFocusOptions(step = {}) {
+    const allowedRelationTypes = Array.isArray(step.allowedRelationTypes)
+      ? step.allowedRelationTypes.map(canonicalizeRelationName).filter(Boolean)
+      : [];
     return {
       cameraPreset: step.cameraPreset || 'cluster',
       edgeMode: step.edgeMode || 'strict',
@@ -5521,6 +5533,12 @@ const StoryMode = (() => {
       maxSecondaryPerTarget: Number.isFinite(step.maxSecondaryPerTarget) ? step.maxSecondaryPerTarget : 10,
       hideRelationTypes: Array.isArray(step.hideRelationTypes) ? step.hideRelationTypes.map(normalizeRelationName) : [],
       showRelationTypes: Array.isArray(step.showRelationTypes) ? step.showRelationTypes.map(normalizeRelationName) : [],
+      allowedRelationTypes,
+      centralNodes: Array.isArray(step.centralNodes) ? step.centralNodes : (step.centralNode ? [step.centralNode] : []),
+      initialState: step.initialState || 'primaryEdges',
+      revealMode: step.revealMode || 'immediate',
+      expandOnClick: step.expandOnClick !== undefined ? Boolean(step.expandOnClick) : false,
+      maxAutoEdges: Number.isFinite(step.maxAutoEdges) ? Math.max(0, step.maxAutoEdges) : 6,
       hideBackbone: step.hideBackbone !== undefined ? Boolean(step.hideBackbone) : true,
       backboneRelationTypes: Array.isArray(step.backboneRelationTypes)
         ? step.backboneRelationTypes.map(normalizeRelationName)
@@ -5569,7 +5587,7 @@ const StoryMode = (() => {
     return secondary;
   }
 
-  function applyStoryFocus(targetIds = [], step = {}) {
+  function applyStoryFocus(targetIds = [], step = {}, runtime = {}) {
     const cy = Graph.cy;
     if (!cy) return;
 
@@ -5577,9 +5595,21 @@ const StoryMode = (() => {
     clearStoryFocusClasses(cy);
     if (!targetIds.length) return;
 
-    const primaryNodes = cy.nodes().filter(n => targetIds.includes(n.data('id')) || targetIds.includes(n.id()));
+    const centralTargetIds = resolveFocusNodes(opts.centralNodes || []);
+    let primaryNodes = cy.nodes().filter(n => centralTargetIds.includes(n.data('id')) || centralTargetIds.includes(n.id()));
+    if (!primaryNodes.length) {
+      primaryNodes = cy.nodes().filter(n => targetIds.includes(n.data('id')) || targetIds.includes(n.id())).slice(0, 1);
+    }
+    const focusNodes = cy.nodes().filter(n => targetIds.includes(n.data('id')) || targetIds.includes(n.id()));
     const primaryIdSet = new Set(primaryNodes.map(n => n.id()));
-    const secondaryNodes = collectSecondaryNodes(cy, primaryNodes, opts).filter(n => !primaryIdSet.has(n.id()));
+    let secondaryNodes = focusNodes.filter(n => !primaryIdSet.has(n.id()));
+    const allowNeighbors = opts.includeNeighbors || opts.edgeMode !== 'strict' || opts.secondaryDepth > 0;
+    if (allowNeighbors) {
+      secondaryNodes = secondaryNodes.union(collectSecondaryNodes(cy, primaryNodes, opts).filter(n => !primaryIdSet.has(n.id())));
+    }
+    if (runtime.expandedSecondaryIds?.size) {
+      secondaryNodes = secondaryNodes.union(cy.nodes().filter(n => runtime.expandedSecondaryIds.has(n.id())));
+    }
     const secondaryIdSet = new Set(secondaryNodes.map(n => n.id()));
 
     cy.nodes().forEach(n => {
@@ -5593,11 +5623,16 @@ const StoryMode = (() => {
       const s = edge.source().id();
       const t = edge.target().id();
       const edgeType = normalizeRelationName(getEdgeType(edge));
+      const edgeTypeCanonical = canonicalizeRelationName(getEdgeType(edge));
       const sP = primaryIdSet.has(s);
       const tP = primaryIdSet.has(t);
       const sS = secondaryIdSet.has(s);
       const tS = secondaryIdSet.has(t);
 
+      if (opts.allowedRelationTypes.length && !opts.allowedRelationTypes.includes(edgeTypeCanonical)) {
+        edge.addClass('story-hidden');
+        return;
+      }
       if (opts.hideRelationTypes.includes(edgeType)) {
         edge.addClass('story-hidden');
         return;
@@ -5611,8 +5646,14 @@ const StoryMode = (() => {
         return;
       }
 
+      if ((runtime.phase || opts.initialState) === 'nodesOnly') {
+        edge.addClass('story-hidden');
+        return;
+      }
+
       if (opts.edgeMode === 'strict') {
-        if (sP && tP) edge.addClass('story-primary');
+        if ((sP && tP) || (sP && tS) || (tP && sS)) edge.addClass('story-primary');
+        else if (runtime.expandedEdgeIds?.has(edge.id())) edge.addClass('story-secondary');
         else edge.addClass('story-hidden');
         return;
       }
@@ -5626,6 +5667,7 @@ const StoryMode = (() => {
 
       if (sP && tP) edge.addClass('story-primary');
       else if ((sP && tS) || (tP && sS)) edge.addClass('story-secondary');  // P↔S
+      else if (runtime.expandedEdgeIds?.has(edge.id())) edge.addClass('story-tertiary');
       else if (sS && tS) edge.addClass('story-tertiary');                    // S↔S : distance 2
       else edge.addClass(opts.hideBackbone ? 'story-hidden' : 'story-backbone');
     });
@@ -5679,6 +5721,11 @@ const StoryMode = (() => {
     meta.textContent = `${story.label} · Étape ${storyState.activeStoryStepIndex + 1}/${story.steps.length}`;
     t.textContent = step.title;
     b.textContent = step.body;
+    const revealBtn = document.getElementById('btn-story-reveal');
+    if (revealBtn) {
+      const phase = storyState.currentStepRuntime?.phase || step.initialState || 'primaryEdges';
+      revealBtn.textContent = phase === 'nodesOnly' ? 'Révéler liens' : 'Masquer liens';
+    }
   }
 
   function applyStoryStep(step) {
@@ -5692,7 +5739,56 @@ const StoryMode = (() => {
       document.getElementById('fp-col-sel').value = mergedStep.filters.column;
     }
     const resolvedTargets = resolveFocusNodes(mergedStep.focusNodes || []);
-    applyStoryFocus(resolvedTargets, mergedStep);
+    storyState.currentStepRuntime = {
+      phase: mergedStep.initialState || 'primaryEdges',
+      resolvedTargets,
+      expandedSecondaryIds: new Set(),
+      expandedEdgeIds: new Set()
+    };
+    applyStoryFocus(resolvedTargets, mergedStep, storyState.currentStepRuntime);
+  }
+
+  function toggleStoryReveal() {
+    const story = getStoryPresetById(storyState.activeStoryId);
+    if (!story || storyState.activeStoryStepIndex < 0 || !storyState.currentStepRuntime) return;
+    const step = {
+      ...(story.defaultStepOptions || {}),
+      ...(story.steps[storyState.activeStoryStepIndex] || {})
+    };
+    storyState.currentStepRuntime.phase = storyState.currentStepRuntime.phase === 'nodesOnly' ? 'primaryEdges' : 'nodesOnly';
+    applyStoryFocus(storyState.currentStepRuntime.resolvedTargets || [], step, storyState.currentStepRuntime);
+    updateStoryPanel();
+  }
+
+  function maybeExpandFromNode(nodeId, node) {
+    const story = getStoryPresetById(storyState.activeStoryId);
+    if (!story || storyState.activeStoryStepIndex < 0 || !storyState.currentStepRuntime) return;
+    const step = {
+      ...(story.defaultStepOptions || {}),
+      ...(story.steps[storyState.activeStoryStepIndex] || {})
+    };
+    const opts = buildStoryFocusOptions(step);
+    if (!opts.expandOnClick || !node || !node.hasClass('story-secondary')) return;
+    const cy = Graph.cy;
+    if (!cy) return;
+
+    let added = 0;
+    node.connectedEdges().forEach(edge => {
+      if (added >= opts.maxAutoEdges) return;
+      const edgeTypeCanonical = canonicalizeRelationName(getEdgeType(edge));
+      if (opts.allowedRelationTypes.length && !opts.allowedRelationTypes.includes(edgeTypeCanonical)) return;
+      const other = edge.source().id() === node.id() ? edge.target() : edge.source();
+      if (other.hasClass('story-muted')) {
+        storyState.currentStepRuntime.expandedSecondaryIds.add(other.id());
+      }
+      storyState.currentStepRuntime.expandedEdgeIds.add(edge.id());
+      added += 1;
+    });
+
+    if (added > 0) {
+      applyStoryFocus(storyState.currentStepRuntime.resolvedTargets || [], step, storyState.currentStepRuntime);
+      updateStoryPanel();
+    }
   }
 
   function goToStoryStep(index) {
@@ -5710,6 +5806,7 @@ const StoryMode = (() => {
     storyState.activeStoryId = null;
     storyState.activeStoryStepIndex = -1;
     storyState.storyModeEnabled = false;
+    storyState.currentStepRuntime = null;
     clearStoryFocus();
     document.getElementById('story-mode-panel')?.classList.add('hidden');
     updateStoryPanel();
@@ -5777,6 +5874,7 @@ const StoryMode = (() => {
     document.getElementById('btn-story-quit').addEventListener('click', closeStory);
     document.getElementById('btn-story-next').addEventListener('click', nextStoryStep);
     document.getElementById('btn-story-prev').addEventListener('click', prevStoryStep);
+    document.getElementById('btn-story-reveal').addEventListener('click', toggleStoryReveal);
     document.getElementById('story-select').addEventListener('change', (e) => {
       if (e.target.value) {
         leaveScrollyIfNeeded();
@@ -5791,7 +5889,7 @@ const StoryMode = (() => {
     });
   }
 
-  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus };
+  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus, maybeExpandFromNode };
 })();
 
 // ─────────────────────────────────────────────────────────

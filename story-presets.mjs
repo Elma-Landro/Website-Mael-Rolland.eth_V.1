@@ -189,6 +189,10 @@ export const STORY_PRESETS = {
         edgeMode: 'strict',
         includeNeighbors: false,
         secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        maxAutoEdges: 5,
         hideBackbone: true,
         fitTargets: 'primary',
         backboneRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
@@ -196,42 +200,84 @@ export const STORY_PRESETS = {
       steps: [
         {
           id: 's1',
-          title: 'Le problème initial',
-          body: "La thèse part d'un imaginaire libéral-techniciste supposant des cryptomonnaies immunisées contre la gouvernance humaine.",
-          focusNodes: ['Syllogisme libéral-techniciste', 'Règle contre discrétion (Rules vs Discretion)', 'Tension règle/discrétion (frontière instable)'],
+          title: 'Pourquoi cette thèse commence',
+          body: 'Bitcoin surgit comme une contestation monétaire radicale. La thèse ne part pas d’un simple objet technique, mais d’un problème : comment des cryptomonnaies prétendant supprimer la gouvernance peuvent-elles malgré tout produire de la monnaie, durer et traverser des crises ? Cette entrée pose déjà le cœur du conflit entre imaginaire techniciste et réalité socio-politique.',
+          centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
+          focusNodes: ['Thèse centrale (infrastructures, crises, gouvernance polycentrique)', 'Bitcoin', 'cryptomonnaie', 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche', 'Syllogisme libéral-techniciste'],
           cameraPreset: 'tight',
-          hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo'],
-          sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · p. 53
+          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
         },
         {
           id: 's2',
-          title: 'Chapitre I et II',
-          body: 'Bitcoin et Ethereum sont des infrastructures sociotechniques hybrides ; la question de la monétisation effective part des usages et de la communauté de paiement.',
-          focusNodes: ["Chapitre I - L'émergence du phénomène des cryptomonnaies (CM) : Bitcoin et Ethereum comme infrastructures sociotechniques", 'Infrastructure sociotechnique', 'Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages', 'Monétisation des cryptomonnaies', 'II.2.2 — La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes'],
+          title: 'L’objet réel de la recherche',
+          body: 'L’objet n’est pas “la blockchain” en général, ni une simple histoire des cryptos. L’objet, c’est la gouvernance des cryptomonnaies, telle qu’elle se révèle quand on quitte les slogans de neutralité pour regarder les controverses, les médiations, les dispositifs et les crises.',
+          centralNode: 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche',
+          focusNodes: ['A. La gouvernance des cryptomonnaies : construction de notre objet de recherche', 'Bitcoin', 'Ethereum', 'Sociology of Science & Technology (STS)', 'Institutionnalisme Monetaire Francophone (IMF)'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
+          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
         },
         {
           id: 's3',
-          title: 'Gouvernance et crises',
-          body: 'La gouvernance devient un enjeu politique, visible en crise : acteurs, arènes, dissensus et consensus.',
-          focusNodes: ['Gouvernance duale', 'Gouvernance polycentrique', 'Chapitre III - Au‑delà des codes : la gouvernance discrète des CM, dévoilée par leurs crises', 'Bitcoin CVE 2018-17144', 'Ethereum Hard Fork (juillet 2016)'],
+          title: 'L’introduction fabrique l’outil d’analyse',
+          body: 'L’introduction articule deux appuis : un institutionnalisme monétaire attentif aux usages, et une sociologie des sciences et techniques attentive aux infrastructures, aux dispositifs et aux controverses. Elle ajoute une méthode ethnographique multi-niveaux pour suivre à la fois acteurs, artefacts et arènes.',
+          centralNode: 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche',
+          focusNodes: ['A. La gouvernance des cryptomonnaies : construction de notre objet de recherche', 'Institutionnalisme Monetaire Francophone (IMF)', 'Sociology of Science & Technology (STS)', 'Ethnographie', "C.2. Stratégie d'accès et matériaux de terrain récoltés"],
           cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 4,
-          hideBackbone: true,
-          fitTargets: 'primary+secondary'
+          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
         },
         {
           id: 's4',
-          title: 'Conclusion',
-          body: 'Les cryptomonnaies ne suppriment pas la politique monétaire : elles déplacent la souveraineté via des infrastructures et des formes polycentriques de gouvernance.',
-          focusNodes: ['Conclusion générale', 'Gouvernance polycentrique', 'Règle contre discrétion (Rules vs Discretion)', 'Tension règle/discrétion (frontière instable)'],
+          title: 'Chapitre I : Bitcoin n’est pas un pur protocole',
+          body: 'Le premier chapitre démonte l’idée d’un objet purement technique. Il montre d’abord que Bitcoin est déjà politiquement configuré dans sa conception. Puis il suit la façon dont le monde redéfinit Bitcoin de manière carnavalesque : nouveaux acteurs, nouvelles passerelles, nouvelles médiations, nouveaux usages.',
+          centralNode: 'Bitcoin',
+          focusNodes: ['Bitcoin', 'Satoshi Nakamoto', 'Développement carnavalesque', 'Services Marchands & Passerelles', "Chaîne d'intermédiation sociotechnique", 'Altcoins'],
+          cameraPreset: 'cluster',
+          allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
+        },
+        {
+          id: 's5',
+          title: 'Chapitre I : d’un monde Bitcoin à une bifurcation Ethereum',
+          body: 'Le chapitre I ne s’arrête pas à Bitcoin. Il montre aussi qu’Ethereum naît à la fois dans sa continuité et contre ses rigidités : l’écosystème crypto n’est pas un bloc homogène, mais un espace de recompositions socio-techniques.',
+          centralNode: 'Ethereum',
+          focusNodes: ['Ethereum', 'Bitcoin', 'Altcoins', 'Vitalik Buterin', 'Smart Contracts', 'The DAO'],
+          cameraPreset: 'cluster',
+          allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
+        },
+        {
+          id: 's6',
+          title: 'Chapitre II : la vraie charnière de la thèse',
+          body: 'Le deuxième chapitre pose la question décisive : ces objets font-ils monnaie ? La thèse répond oui, mais pas au sens orthodoxe. Elle déplace l’analyse vers les usages, la communauté de paiement, la monétisation, les frais, les dettes et les formes de souveraineté impliquées. C’est ici que l’infrastructure devient argument monétaire.',
+          centralNode: 'Monétisation des cryptomonnaies',
+          focusNodes: ['Monétisation des cryptomonnaies', 'Communaute de paiement / Groupe monetaire', 'UCN BTC', 'UCN ETH', 'Institutionnalisme Monetaire Francophone (IMF)', 'Institutionnalisme intéressé aux usages', 'Gouvernance polycentrique'],
           cameraPreset: 'wide',
-          hideRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo'],
-          sourceQuoteId: 'anchor-fb610652',   // Gouvernance polycentrique · p. 336
+          allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
+        },
+        {
+          id: 's7',
+          title: 'Chapitre II : du statut monétaire à la gouvernance',
+          body: 'Le chapitre II ne dit pas seulement que les cryptomonnaies font monnaie. Il montre que leur singularité tient à une gouvernance ni absente ni centralisée, mais polycentrique, débattue et contestée. C’est là que revient, sous une autre forme, le vieux conflit entre règle et discrétion.',
+          centralNode: 'Gouvernance polycentrique',
+          focusNodes: ['Gouvernance polycentrique', 'Règle comme cristallisation normative située', 'Discretion contrainte', 'Gouvernance duale', 'Règle contre discrétion (Rules vs Discretion)', 'Space of Rule / Space of Discretion'],
+          cameraPreset: 'wide',
+          allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
+        },
+        {
+          id: 's8',
+          title: 'Chapitre III : les crises rendent visible l’invisible',
+          body: 'Le troisième chapitre fait passer la démonstration à l’épreuve. Avec Bitcoin CVE-2018 et The DAO, la thèse montre que la gouvernance des cryptomonnaies n’est jamais purement codée. Quand le code cesse d’incarner l’esprit communautaire, le consensus social revient au premier plan.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: ['Gouvernance duale', 'Bitcoin CVE 2018-17144', 'Ethereum Hard Fork (juillet 2016)', 'Gouvernance de huis clos', 'Gouvernance publique et ouverte', 'Bitcoin Core (repo)'],
+          cameraPreset: 'cluster',
+          allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
+        },
+        {
+          id: 's9',
+          title: 'Conclusion : ce que la thèse prouve',
+          body: 'La conclusion referme la boucle : les cryptomonnaies ne sont ni acéphales ni purement techniques. Elles relèvent d’infrastructures socio-techniques, de processus de monétisation situés et de formes de gouvernance discrètes et polycentriques, révélées avec netteté dans les crises.',
+          centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
+          focusNodes: ['Thèse centrale (infrastructures, crises, gouvernance polycentrique)', 'Bitcoin', 'Ethereum', 'Monétisation des cryptomonnaies', 'Gouvernance polycentrique', 'Crises comme épreuves d’explicitation', 'Space of Rule / Space of Discretion'],
+          cameraPreset: 'wide',
+          allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
         }
       ]
     },
