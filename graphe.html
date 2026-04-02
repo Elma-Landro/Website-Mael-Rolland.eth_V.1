@@ -1520,6 +1520,8 @@ const TYPE_SHAPES = {
   'ConceptTechnical':    'hexagon',
   'InfrastructureService': 'barrel',
 };
+// Visual hierarchy multipliers by type family (used by computeVisualNodeSize).
+// Keep values explicit here so tuning remains predictable across layouts.
 const TYPE_HIERARCHY_WEIGHT = {
   // Macro-structure / noyaux conceptuels : dominants visuels
   'DoctoralThesis':       1.42,
@@ -1557,9 +1559,39 @@ function computeHierarchyWeight(typeName) {
 function computeVisualNodeSize(entity) {
   const degree = (State.maps.outgoing[entity.id] || []).length
                + (State.maps.incoming[entity.id] || []).length;
-  const baseSize = Math.max(22, Math.min(90, 22 + Math.sqrt(degree) * 9));
+  // Named thresholds avoid "magic numbers" during future visual tuning passes.
+  const NODE_SIZE_BASE_MIN = 22;
+  const NODE_SIZE_BASE_MAX = 90;
+  const NODE_SIZE_DEGREE_FACTOR = 9;
+  const NODE_SIZE_FINAL_MIN = 18;
+  const NODE_SIZE_FINAL_MAX = 120;
+  const baseSize = Math.max(
+    NODE_SIZE_BASE_MIN,
+    Math.min(NODE_SIZE_BASE_MAX, NODE_SIZE_BASE_MIN + Math.sqrt(degree) * NODE_SIZE_DEGREE_FACTOR)
+  );
   const hierarchyWeight = computeHierarchyWeight(State.getEntityTypeName(entity));
-  return Math.max(18, Math.min(120, baseSize * hierarchyWeight));
+  return Math.max(NODE_SIZE_FINAL_MIN, Math.min(NODE_SIZE_FINAL_MAX, baseSize * hierarchyWeight));
+}
+
+const MATRIX_MOBILE_SIZE_PRESET = Object.freeze({
+  // Denser matrix variant (focus grid): tighter mobile cap for better internal spacing.
+  dense:    { scale: 0.62, min: 7, max: 20 },
+  // Standard matrix variants (monetization / governance): slightly larger mobile cap.
+  standard: { scale: 0.70, min: 7, max: 21 },
+});
+
+function getMatrixNodeSize(rawSize, isMobile, preset = MATRIX_MOBILE_SIZE_PRESET.standard) {
+  if (!isMobile) return rawSize;
+  return Math.max(preset.min, Math.min(rawSize * preset.scale, preset.max));
+}
+
+function applyMatrixNodeSizingAndClasses(cy, isMobile, preset = MATRIX_MOBILE_SIZE_PRESET.standard) {
+  cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
+    const raw = n.data('size') || 22;
+    n.data('msize', getMatrixNodeSize(raw, isMobile, preset));
+  });
+  cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
+  cy.edges().addClass('in-matrix');
 }
 
 // ─────────────────────────────────────────────────────────
@@ -2493,9 +2525,9 @@ const Graph = (() => {
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
           'shape': 'data(shape)', // conserve la différenciation morphologique des types
-          // Glow dynamique proportionnel à la taille — les hubs irradient, les feuilles restent discrètes
-          'shadow-blur':    'mapData(size, 18, 120, 10, 130)',
-          'shadow-opacity': 'mapData(size, 18, 120, 0.42, 0.96)',
+          // Glow dynamique proportionnel à la taille affichée (msize), y compris en mobile.
+          'shadow-blur':    'mapData(msize, 7, 120, 10, 130)',
+          'shadow-opacity': 'mapData(msize, 7, 120, 0.42, 0.96)',
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
           'background-opacity': 0.85,
@@ -3209,14 +3241,7 @@ const Graph = (() => {
     }
 
     // ── Taille mobile-aware + classe in-matrix ────────────
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const raw = n.data('size') || 22;
-      // matrix mobile: nœuds réduits pour dispersion interne — max 16px (vs 22px par défaut)
-      const mobileSize = isMobile ? Math.max(7, Math.min(raw * 0.62, 20)) : raw;
-      n.data('msize', mobileSize);
-    });
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
-    cy.edges().addClass('in-matrix');
+    applyMatrixNodeSizingAndClasses(cy, isMobile, MATRIX_MOBILE_SIZE_PRESET.dense);
 
     // (glow mobile géré par mapData dans getCyStyle — pas de surcharge fixe ici)
 
@@ -3714,12 +3739,7 @@ const Graph = (() => {
     });
 
     // ── Node sizing + classes ─────────────────────────────
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? Math.max(7, Math.min(raw * 0.7, 21)) : raw);
-    });
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
-    cy.edges().addClass('in-matrix');
+    applyMatrixNodeSizingAndClasses(cy, isMobile, MATRIX_MOBILE_SIZE_PRESET.standard);
     // ── Always-visible labels ─────────────────────────────
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
       if (STRATUM_ALWAYS_VISIBLE_NAMES.has(n.data('fullName'))) {
@@ -4008,12 +4028,7 @@ const Graph = (() => {
     });
 
     // ── Node sizing + classes ─────────────────────────────
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
-      const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? Math.max(7, Math.min(raw * 0.7, 21)) : raw);
-    });
-    cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
-    cy.edges().addClass('in-matrix');
+    applyMatrixNodeSizingAndClasses(cy, isMobile, MATRIX_MOBILE_SIZE_PRESET.standard);
 
     // ── Always-visible labels ─────────────────────────────
     cy.nodes(':not(.chapter-label):not(.type-label)').forEach(n => {
