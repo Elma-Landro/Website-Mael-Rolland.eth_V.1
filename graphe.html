@@ -708,43 +708,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 .guided-mode-sub { font-size: 0.82em; font-weight: normal; opacity: .75; }
 
 /* ── Focus Mode ─────────────────────────────────────── */
-#focus-bar {
-  position: fixed; bottom: 86px; right: 16px;
-  z-index: 9990; display: flex; flex-direction: column; align-items: flex-end;
-  gap: 6px; pointer-events: none;
-}
-#focus-bar.mobile-floating {
-  right: auto;
-  bottom: auto;
-  left: 16px;
-  top: 140px;
-  z-index: 1405;
-}
-#btn-focus {
-  pointer-events: auto;
-  background: rgba(14,0,0,0.8); color: #ffcf75;
-  border: 1px solid rgba(255,204,102,.8);
-  font-family: 'Press Start 2P', monospace; font-size: 8px;
-  padding: 9px 14px; cursor: pointer; letter-spacing: 0.04em;
-  box-shadow: 0 8px 22px rgba(0,0,0,.45), 0 0 0 1px rgba(255,204,102,.18);
-  min-width: 48px; min-height: 44px;
-  display: flex; align-items: center; justify-content: center; gap: 5px;
-}
-#btn-focus:hover, #btn-focus.active {
-  background: #2a0000; border-color: #ff9900; color: #ff9900;
-  box-shadow: 0 0 18px #ff990066;
-}
-#focus-active-chips { pointer-events: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-.focus-chip-summary {
-  background: rgba(0,0,0,0.92); color: #33ff33;
-  border: 1px solid #33ff33;
-  font-family: 'Press Start 2P', monospace; font-size: 6px; padding: 4px 8px;
-  box-shadow: 0 0 8px #33ff3344;
-}
-#btn-focus-chip-reset {
-  background: rgba(0,0,0,0.80); color: #ff5555; border: 1px solid #ff5555;
-  font-size: 13px; cursor: pointer; padding: 1px 6px; line-height: 1; pointer-events: auto;
-}
 #focus-panel {
   position: fixed; bottom: 0; left: 0; right: 0;
   z-index: 9995; background: linear-gradient(180deg, rgba(92,0,0,.95), rgba(44,0,0,.98));
@@ -813,7 +776,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 .fp-preset-btn:hover { background: #141428; border-color: #6688cc; }
 .fp-actions { margin-top: 6px; display: flex; gap: 8px; }
 @media (max-width: 600px) {
-  #focus-bar { bottom: 114px; right: 12px; }
   #focus-panel.open { max-height: 50vh; }
   .fp-field select { max-width: 90px; font-size: 6px; }
   .story-mode-panel {
@@ -1076,10 +1038,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="tt-stats" id="tt-stats"></div>
   </div>
   <!-- ── Focus Mode ── -->
-  <div id="focus-bar">
-    <button id="btn-focus">&#9635; Focus</button>
-    <div id="focus-active-chips"></div>
-  </div>
   <div id="focus-panel">
     <div class="fp-header">
       <span>Filtre &amp; &#201;clatement</span>
@@ -4694,20 +4652,17 @@ const FocusMode = (() => {
     _st.open = true;
     _populate();
     document.getElementById('focus-panel').classList.add('open');
-    document.getElementById('btn-focus').classList.add('active');
     document.getElementById('btn-focus-header').classList.replace('btn-secondary', 'btn-primary');
   }
 
   function _close() {
     _st.open = false;
     document.getElementById('focus-panel').classList.remove('open');
-    document.getElementById('btn-focus').classList.remove('active');
     document.getElementById('btn-focus-header').classList.replace('btn-primary', 'btn-secondary');
   }
 
   function init() {
     const _toggleFocus = () => _st.open ? _close() : _open();
-    document.getElementById('btn-focus').addEventListener('click', _toggleFocus);
     document.getElementById('btn-focus-header').addEventListener('click', _toggleFocus);
     document.getElementById('btn-focus-close').addEventListener('click', _close);
     document.getElementById('btn-focus-apply').addEventListener('click', () => {
@@ -7043,87 +6998,7 @@ document.addEventListener('DOMContentLoaded', () => {
     configs.forEach(attachFloating);
   })();
 
-  // ── Focus button drag (mobile) ──────────────────────────
-  (() => {
-    const mobileMq = window.matchMedia('(max-width: 900px)');
-    const key = 'grc-floating-focusbar';
-    const focusBar = document.getElementById('focus-bar');
-    const focusBtn = document.getElementById('btn-focus');
-    if (!focusBar || !focusBtn) return;
 
-    const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
-    const applyPos = (left, top) => {
-      const rect = focusBar.getBoundingClientRect();
-      const maxLeft = window.innerWidth - rect.width - 6;
-      const maxTop = window.innerHeight - rect.height - 6;
-      focusBar.classList.add('mobile-floating');
-      focusBar.style.left = `${clamp(left, 6, maxLeft)}px`;
-      focusBar.style.top = `${clamp(top, 6, maxTop)}px`;
-    };
-    const savePos = () => {
-      if (!focusBar.classList.contains('mobile-floating')) return;
-      const rect = focusBar.getBoundingClientRect();
-      localStorage.setItem(key, JSON.stringify({ left: rect.left, top: rect.top }));
-    };
-    const loadPos = () => {
-      if (!mobileMq.matches) return;
-      try {
-        const saved = JSON.parse(localStorage.getItem(key) || 'null');
-        if (saved) applyPos(saved.left, saved.top);
-      } catch {}
-    };
-    const resetPos = () => {
-      focusBar.classList.remove('mobile-floating');
-      focusBar.style.left = '';
-      focusBar.style.top = '';
-    };
-
-    let dragging = false;
-    let moved = false;
-    let startX = 0, startY = 0, originLeft = 0, originTop = 0;
-
-    const onMove = (clientX, clientY) => {
-      applyPos(originLeft + (clientX - startX), originTop + (clientY - startY));
-    };
-
-    focusBtn.addEventListener('touchstart', (e) => {
-      if (!mobileMq.matches || !e.touches?.length) return;
-      const rect = focusBar.getBoundingClientRect();
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      originLeft = rect.left;
-      originTop = rect.top;
-      dragging = true;
-      moved = false;
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!dragging || !e.touches?.length) return;
-      if (Math.abs(e.touches[0].clientX - startX) > 6 || Math.abs(e.touches[0].clientY - startY) > 6) moved = true;
-      onMove(e.touches[0].clientX, e.touches[0].clientY);
-      e.preventDefault();
-    }, { passive: false });
-
-    window.addEventListener('touchend', () => {
-      if (!dragging) return;
-      dragging = false;
-      savePos();
-    });
-
-    focusBtn.addEventListener('click', (e) => {
-      if (!moved) return;
-      e.preventDefault();
-      e.stopPropagation();
-      moved = false;
-    }, true);
-
-    window.addEventListener('resize', () => {
-      if (!mobileMq.matches) resetPos();
-      else loadPos();
-    });
-
-    loadPos();
-  })();
 
   FocusMode.init();
   StoryMode.init();
