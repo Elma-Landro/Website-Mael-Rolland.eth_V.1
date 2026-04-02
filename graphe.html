@@ -2401,15 +2401,23 @@ const Graph = (() => {
       }
     });
 
-    // ── Show node labels only when sufficiently zoomed in ──
-    const LABEL_ZOOM_THRESHOLD = 3.5;
+    // ── Show node labels progressively (mobile-first readability) ──
+    const LABEL_ZOOM_THRESHOLD = window.innerWidth < 600 ? 2.35 : 3.5;
+    const LABEL_ZOOM_THRESHOLD_MAJOR = window.innerWidth < 600 ? 1.55 : 3.1;
     function syncLabels() {
       const z = cy.zoom();
       const nodes = cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
+      nodes.removeClass('show-label show-label-major');
+
       if (z >= LABEL_ZOOM_THRESHOLD) {
         nodes.addClass('show-label');
-      } else {
-        nodes.removeClass('show-label');
+        return;
+      }
+
+      if (z >= LABEL_ZOOM_THRESHOLD_MAJOR) {
+        nodes
+          .filter(n => ((n.data('size') || 0) >= 56) || n.degree(false) >= 10)
+          .addClass('show-label-major');
       }
     }
     cy.on('zoom', syncLabels);
@@ -2442,7 +2450,29 @@ const Graph = (() => {
       // ── Labels only visible when zoomed in (class toggled by zoom handler) ──
       {
         selector: 'node.show-label',
-        style: { 'label': 'data(label)' }
+        style: {
+          'label': 'data(label)',
+          'font-size': 'mapData(size, 22, 90, 13, 25)',
+          'text-outline-width': 4,
+          'text-wrap': 'wrap',
+          'text-max-width': 140,
+          'text-background-color': '#000000',
+          'text-background-opacity': 0.62,
+          'text-background-padding': 2,
+        }
+      },
+      {
+        selector: 'node.show-label-major',
+        style: {
+          'label': 'data(label)',
+          'font-size': 'mapData(size, 22, 90, 14, 27)',
+          'text-outline-width': 5,
+          'text-wrap': 'wrap',
+          'text-max-width': 160,
+          'text-background-color': '#000000',
+          'text-background-opacity': 0.72,
+          'text-background-padding': 3,
+        }
       },
       // ── Always-visible labels (Vue Monétisation — key nodes) ──────────────
       {
@@ -3094,14 +3124,15 @@ const Graph = (() => {
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // V3 mobile: 8 colonnes à 52px chacune (≈416px total) — rendu plus aéré
-    // V2 mobile: 4 macro-colonnes à 90px (strates conservées)
-    const COL_W      = isMobile ? (useStrata ? 90 : 52)   : (useStrata ? 280 : 280);
-    const ROW_H      = isMobile ? 192  : 540;
-    const OX         = isMobile ? (useStrata ? 120 : 64)  : 400;
+    // Mobile: élargir la matrice pour éviter l'effet "colonne tassée" et mieux répartir les points.
+    // V3 garde 8 colonnes mais avec un pas horizontal plus large + cellule utile plus large.
+    // V2 garde 4 macro-colonnes avec un léger gain d'espacement.
+    const COL_W      = isMobile ? (useStrata ? 102 : 82)  : (useStrata ? 280 : 280);
+    const ROW_H      = isMobile ? 154  : 540;
+    const OX         = isMobile ? (useStrata ? 42 : 12)   : 400;
     const OY         = isMobile ? 100  : 360;
     const NODE_H     = isMobile ? 11   : 16;
-    const CELL_W_FRAC = isMobile ? 0.86 : 0.78;
+    const CELL_W_FRAC = isMobile ? 0.98 : 0.78;
 
     // ── batch4: variable column widths (desktop V3 non-strata) ───────────
     // Ratios: Chap.|Struct.|Objets|Gouvern.|Crises|Acteurs|Concepts|Réf./Sources
@@ -3413,7 +3444,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 8 : 60);
 
     // ── Canvas overlay : radial gradients per cell (chapter × col) ─────────────────────
     // CSS mix-blend-mode:screen = additive light → nebula glow.
@@ -3900,7 +3931,7 @@ const Graph = (() => {
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 8 : 60);
 
     // ── Canvas overlay: per-cell radial gradient halos ────
     _stopHaloOverlay();
@@ -4175,7 +4206,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 8 : 60);
 
     // ── Canvas overlay ─────────────────────────────────────
     _stopHaloOverlay();
