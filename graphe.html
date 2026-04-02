@@ -2477,8 +2477,8 @@ const Graph = (() => {
 
     // ── Show node labels progressively when zooming in ──
     const isMobileViewport = window.innerWidth < 600;
-    const LABEL_ZOOM_MAJOR_THRESHOLD = isMobileViewport ? 1.35 : 2.7;
-    const LABEL_ZOOM_ALL_THRESHOLD   = isMobileViewport ? 2.15 : 3.5;
+    const LABEL_ZOOM_MAJOR_THRESHOLD = isMobileViewport ? 1.55 : 2.7;
+    const LABEL_ZOOM_ALL_THRESHOLD   = isMobileViewport ? 2.35 : 3.5;
     function syncLabels() {
       const z = cy.zoom();
       const nodes = _zoomLabelNodes || cy.nodes(':not(.chapter-label):not(.type-label):not(.col-halo)');
@@ -2500,9 +2500,21 @@ const Graph = (() => {
   }
 
   function getCyStyle() {
+    const isMobileViewport = window.innerWidth < 600;
+    const LABEL_FONT_SIZE_BASE = isMobileViewport ? '13px' : '11px';
+    const LABEL_FONT_SIZE_MAJOR = isMobileViewport ? '15px' : '12px';
+    const LABEL_FONT_SIZE_ALWAYS = isMobileViewport ? '16px' : '14px';
+    const LABEL_MAX_WIDTH = isMobileViewport ? 220 : 190;
+    const LABEL_WRAP_MAX_WIDTH = isMobileViewport ? 210 : 180;
+    const LABEL_BG_COLOR = isMobileViewport ? 'rgba(8,10,16,0.86)' : 'rgba(0,0,0,0.74)';
+    const LABEL_BG_OPACITY = isMobileViewport ? 0.96 : 0.92;
+    const LABEL_BG_PADDING = isMobileViewport ? 5 : 4;
+    const LABEL_OUTLINE_WIDTH = isMobileViewport ? 5 : 4;
+
     const buildLabelStyle = (overrides = {}) => ({
       'label': 'data(label)',
       'text-wrap': 'wrap',
+      'text-overflow-wrap': 'anywhere',
       'text-background-shape': 'roundrectangle',
       ...overrides,
     });
@@ -2517,11 +2529,11 @@ const Graph = (() => {
           'width': 'data(size)', 'height': 'data(size)',
           'label': '',
           'font-family': 'VT323, monospace',
-          'font-size': '11px',
+          'font-size': LABEL_FONT_SIZE_BASE,
           'color': 'data(labelColor)',
           'text-valign': 'bottom', 'text-halign': 'center',
           'text-margin-y': 6,
-          'text-outline-color': '#000000', 'text-outline-width': 3,
+          'text-outline-color': '#000000', 'text-outline-width': LABEL_OUTLINE_WIDTH,
           'border-width': 0,
           'overlay-padding': 6,
           'shadow-blur':     0,
@@ -2534,34 +2546,36 @@ const Graph = (() => {
       {
         selector: 'node.show-label',
         style: buildLabelStyle({
-          'text-max-width': 180,
-          'text-background-color': 'rgba(0,0,0,0.68)',
-          'text-background-opacity': 0.9,
-          'text-background-padding': 3
+          'font-size': LABEL_FONT_SIZE_BASE,
+          'text-max-width': LABEL_WRAP_MAX_WIDTH,
+          'text-outline-width': LABEL_OUTLINE_WIDTH,
+          'text-background-color': LABEL_BG_COLOR,
+          'text-background-opacity': LABEL_BG_OPACITY,
+          'text-background-padding': LABEL_BG_PADDING
         })
       },
       // ── Progressive reveal: major names appear first ──
       {
         selector: 'node.show-major-label',
         style: buildLabelStyle({
-          'font-size': '12px',
-          'text-max-width': 170,
-          'text-outline-width': 3.5,
-          'text-background-color': 'rgba(0,0,0,0.72)',
-          'text-background-opacity': 0.92,
-          'text-background-padding': 3
+          'font-size': LABEL_FONT_SIZE_MAJOR,
+          'text-max-width': LABEL_MAX_WIDTH,
+          'text-outline-width': LABEL_OUTLINE_WIDTH + 0.5,
+          'text-background-color': LABEL_BG_COLOR,
+          'text-background-opacity': Math.min(0.98, LABEL_BG_OPACITY + 0.02),
+          'text-background-padding': LABEL_BG_PADDING
         })
       },
       // ── Always-visible labels (Vue Monétisation — key nodes) ──────────────
       {
         selector: 'node.always-label',
         style: buildLabelStyle({
-          'font-size': '14px', 'font-family': 'VT323, monospace',
-          'text-outline-width': 3.5,
-          'text-max-width': 190,
-          'text-background-color': 'rgba(0,0,0,0.75)',
-          'text-background-opacity': 0.94,
-          'text-background-padding': 4
+          'font-size': LABEL_FONT_SIZE_ALWAYS, 'font-family': 'VT323, monospace',
+          'text-outline-width': LABEL_OUTLINE_WIDTH + 1,
+          'text-max-width': LABEL_MAX_WIDTH,
+          'text-background-color': LABEL_BG_COLOR,
+          'text-background-opacity': Math.min(0.99, LABEL_BG_OPACITY + 0.03),
+          'text-background-padding': LABEL_BG_PADDING + 1
         })
       },
       // ── Chapter glow halos — override shadow color/opacity even sans in-nebula ──
@@ -3564,7 +3578,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 6 : 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 10 : 60);
 
     // ── Canvas overlay : radial gradients per cell (chapter × col) ─────────────────────
     // CSS mix-blend-mode:screen = additive light → nebula glow.
@@ -4051,7 +4065,7 @@ const Graph = (() => {
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 6 : 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 10 : 60);
 
     // ── Canvas overlay: per-cell radial gradient halos ────
     _stopHaloOverlay();
@@ -4326,7 +4340,7 @@ const Graph = (() => {
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
-    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 6 : 60);
+    if (dataNodes.length) cy.fit(dataNodes, isMobile ? 10 : 60);
 
     // ── Canvas overlay ─────────────────────────────────────
     _stopHaloOverlay();
