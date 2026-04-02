@@ -87,51 +87,83 @@ export const STORY_PRESETS = {
       id: 'qui-gouverne-reellement',
       label: 'Qui gouverne réellement ?',
       layoutTarget: 'qui-gouverne',
-      intro: 'Déconstruire le mythe du code seul et montrer la gouvernance distribuée.',
+      intro: 'Un récit concret des acteurs, arènes, dispositifs et asymétries qui structurent les chaînes réelles de décision.',
       defaultStepOptions: {
-        edgeMode: 'neighbors',
-        includeNeighbors: true,
-        secondaryDepth: 1,
-        maxSecondaryPerTarget: 4,
+        edgeMode: 'strict',
+        includeNeighbors: false,
+        secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        maxAutoEdges: 4,
+        maxPrimaryEdges: 7,
+        maxSecondaryEdges: 6,
+        allowedRelationTypes: [
+          'governance',
+          'has governance process',
+          'used in',
+          'debated in',
+          'demonstrates',
+          'opposed to',
+          'refuted by'
+        ],
         hideBackbone: true,
-        fitTargets: 'primary+secondary'
+        fitTargets: 'primary'
       },
       steps: [
         {
           id: 'q1',
-          title: 'Le mythe du code seul',
-          body: 'Le récit coiner radical présente un système régulé uniquement par le code, sans gouvernance humaine légitime.',
-          focusNodes: ['Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !', 'Neutralité de la monnaie'],
+          title: 'Le mythe de l’absence de gouvernance',
+          body: 'Le récit doit commencer par la thèse adverse : beaucoup de discours coiners présentent les cryptomonnaies comme gouvernées par le code seul. Le récit doit immédiatement montrer que cette affirmation est un point de départ polémique, pas un constat descriptif.',
+          centralNode: 'Absence de gouvernance',
+          focusNodes: ['Absence de gouvernance', 'Code is Law', 'cryptomonnaie', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'tight',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          fitTargets: 'primary'
+          maxPrimaryEdges: 5
         },
         {
           id: 'q2',
-          title: 'Gouverner sur l’infrastructure',
-          body: 'Maintenance, publication, hiérarchie des accès et arbitrages structurent une gouvernance sur l’infrastructure.',
-          focusNodes: ['Bitcoin Core (repo)', 'Core Developers (Ethereum)', 'Développeurs Core (mainteneurs avec accès commit)', 'Pull Request (PR)'],
+          title: 'Gouverner par l’infrastructure / sur l’infrastructure',
+          body: 'La première distinction à rendre visible est celle entre gouvernance par l’infrastructure et gouvernance sur l’infrastructure. Le code contraint, mais il est lui-même administré, discuté, modifié, relu et contesté.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: ['Gouvernance par l’infrastructure', 'Gouvernance sur l’infrastructure', 'Gouvernance duale', 'Code source', 'Protocole', 'Infrastructure'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source']
+          maxPrimaryEdges: 6
         },
         {
           id: 'q3',
-          title: 'Les arènes',
-          body: 'La gouvernance se distribue dans des arènes multiples : forges, mailing lists, forums et réunions.',
-          focusNodes: ['GitHub Bitcoin Core', 'Bitcoin-dev Mailing List', 'Bitcointalk Forum', 'All Core Dev Meetings (Ethereum)', 'Carbon Vote (DAO Fork, juin-juillet 2016)'],
+          title: 'Les acteurs centraux de la maintenance',
+          body: 'La gouvernance réelle passe par des acteurs souvent discrets : core developers, maintainers, opérateurs de nœuds et intermédiaires de maintenance. Ce sont eux qui filtrent les propositions, arbitrent les priorités et rendent certaines trajectoires techniques plus probables que d’autres.',
+          centralNode: 'Développeurs Core (mainteneurs avec accès commit)',
+          focusNodes: ['Développeurs Core (mainteneurs avec accès commit)', 'Core Developers (Ethereum)', 'Bitcoin Core (repo)', 'Pull Request (PR)', 'Opérateurs de nœuds', 'Mineurs Bitcoin'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source', 'citedIn']
+          maxPrimaryEdges: 7
         },
         {
           id: 'q4',
-          title: 'La thèse',
-          body: 'La vraie question n’est pas de savoir s’il y a gouvernance, mais sous quelle forme, avec quels acteurs et quelle légitimité.',
-          focusNodes: ['Gouvernance duale', 'Gouvernance polycentrique', 'Consensus social'],
+          title: 'Les arènes où se décident les arbitrages',
+          body: 'Les décisions ne sortent pas d’un point unique. Elles se fabriquent dans des arènes hétérogènes : dépôts de code, mailing lists, forums, réunions de coordination et dispositifs de consultation. Le récit doit montrer le passage entre ces arènes.',
+          centralNode: 'GitHub Bitcoin Core',
+          focusNodes: ['GitHub Bitcoin Core', 'Bitcoin-dev Mailing List', 'Bitcointalk Forum', 'All Core Dev Meetings (Ethereum)', 'BIP (Bitcoin Improvement Proposal)', 'EIP (Ethereum Improvement Proposal)', 'Carbon Vote (DAO Fork, juin-juillet 2016)'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 7
+        },
+        {
+          id: 'q5',
+          title: 'Dispositifs et asymétries effectives de pouvoir',
+          body: 'La gouvernance réelle n’est pas une égalité abstraite entre pairs. Les droits d’écriture, la capacité de review, la maîtrise des canaux de coordination et la possibilité d’imposer un tempo produisent des asymétries effectives de pouvoir.',
+          centralNode: 'Gouvernance de maintenance (huis clos routinier)',
+          focusNodes: ['Gouvernance de maintenance (huis clos routinier)', 'Gouvernance publique et ouverte', 'Pull Request (PR)', 'BIP (Bitcoin Improvement Proposal)', 'EIP (Ethereum Improvement Proposal)', 'Consensus social'],
+          cameraPreset: 'tight',
+          maxPrimaryEdges: 6
+        },
+        {
+          id: 'q6',
+          title: 'Ce que ce récit doit démontrer',
+          body: 'La question pertinente n’est pas “décentralisé ou centralisé”, mais : qui peut proposer, qui peut bloquer, qui peut décider et dans quelles arènes ? Le récit doit conclure que la gouvernance des cryptomonnaies est située, processuelle, conflictuelle et polycentrique.',
+          centralNode: 'Gouvernance polycentrique',
+          focusNodes: ['Visibilisation de la gouvernance', 'Gouvernance duale', 'Gouvernance polycentrique', 'Consensus social', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'wide',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          fitTargets: 'primary'
+          maxPrimaryEdges: 7
         }
       ]
     },
@@ -139,56 +171,125 @@ export const STORY_PRESETS = {
       id: 'crises',
       label: 'Crises',
       layoutTarget: 'matrice',
-      intro: 'Les crises rendent visible la gouvernance discrète en régime ordinaire.',
+      intro: 'Un récit comparatif et processuel : mise en crise, qualification, dispositifs, remise en ordre et forme de gouvernance révélée.',
       defaultStepOptions: {
         edgeMode: 'strict',
         includeNeighbors: false,
         secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        maxAutoEdges: 4,
+        maxPrimaryEdges: 8,
+        maxSecondaryEdges: 6,
+        allowedRelationTypes: [
+          'has crisis',
+          'demonstrates',
+          'debated in',
+          'used in',
+          'governance',
+          'has governance process',
+          'opposed to',
+          'refuted by'
+        ],
         hideBackbone: true,
         fitTargets: 'primary'
       },
       steps: [
         {
           id: 'c1',
-          title: 'Deux types de crise',
-          body: 'La thèse distingue les crises de vulnérabilité et les crises d’évolution.',
-          focusNodes: ['Crise de vulnérabilité', "Crise d'évolution"],
+          title: 'Pourquoi passer par les crises',
+          body: 'Les crises ne sont pas un supplément spectaculaire à la thèse. Elles sont le moment où l’infrastructure, la gouvernance et les hiérarchies deviennent visibles. Le récit doit faire comprendre d’emblée que les crises sont une méthode d’accès à la structure réelle des cryptomonnaies.',
+          centralNode: 'Crises',
+          focusNodes: [
+            'Crises',
+            'Mise en crise',
+            'Remise en ordre',
+            'Gouvernance des cryptomonnaies',
+            'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'
+          ],
           cameraPreset: 'tight'
         },
         {
           id: 'c2',
-          title: 'La CVE 2018',
-          body: "Bitcoin CVE 2018-17144 illustre une gestion discrète, routinière, dans un petit cercle d'acteurs.",
-          focusNodes: ['Bitcoin CVE 2018-17144', 'Awemany', 'Responsible Disclosure', 'Bitcoin Core (repo)'],
+          title: 'Deux types de crises',
+          body: 'Le récit doit expliciter la distinction entre crises de vulnérabilité et crises d’évolution. Cette typologie est décisive pour comprendre pourquoi toutes les défaillances, controverses ou conflits ne produisent pas la même forme de gouvernance.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: ['Crise de vulnérabilité', "Crise d’évolution", 'Gouvernance duale', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 3,
-          fitTargets: 'primary+secondary',
-          sourceQuoteId: 'anchor-0b39eeba',   // Gouvernance de huis clos · p. 225
+          maxPrimaryEdges: 6
         },
         {
           id: 'c3',
-          title: 'The DAO',
-          body: 'Avec The DAO, la crise devient publique et controversée : la question n’est plus seulement technique, elle devient politique.',
-          focusNodes: ['The DAO', 'Ethereum Hard Fork (juillet 2016)', 'Attaquant 2016 — An Open Letter (DAO hacker statement)', 'Soft Fork', 'Hard Fork'],
+          title: 'Bitcoin CVE 2018 : une crise de vulnérabilité',
+          body: 'La crise Bitcoin CVE-2018 doit être montrée comme un cas de gouvernance de huis clos, marquée par la responsible disclosure, l’évaluation discrète, la correction silencieuse et la formation d’un consensus local. Il faut faire sentir qu’il ne s’agit pas d’une absence de gouvernance, mais d’une gouvernance routinière, resserrée et discrète.',
+          centralNode: 'Bitcoin CVE 2018-17144',
+          focusNodes: [
+            'Bitcoin CVE 2018-17144',
+            'Gouvernance de huis clos',
+            'Responsible disclosure',
+            'Bitcoin Core (repo)',
+            'Consensus local',
+            'Patch'
+          ],
           cameraPreset: 'cluster',
-          edgeMode: 'neighbors',
-          includeNeighbors: true,
-          secondaryDepth: 1,
-          maxSecondaryPerTarget: 4,
-          fitTargets: 'primary+secondary'
+          maxPrimaryEdges: 7
         },
         {
           id: 'c4',
-          title: 'Scission et thèse',
-          body: 'Le hard fork majoritaire n’éteint pas le dissensus : Ethereum Classic naît de la rupture. Les crises révèlent la forme réelle de la gouvernance.',
-          focusNodes: ['Ethereum', 'Ethereum Classic (ETHC)', 'Fork (general)', 'Gouvernance polycentrique'],
+          title: 'The DAO : une crise publique et conflictuelle',
+          body: 'The DAO doit apparaître comme l’autre grand modèle : crise publique, controverse ouverte, stratégies concurrentes, débat sur les moyens légitimes de remise en ordre, puis hard fork et sécession. Il faut rendre visible le passage du désaccord technique au dissensus politique.',
+          centralNode: 'The DAO',
+          focusNodes: ['The DAO', 'Ethereum DAO Hard Fork', 'Gouvernance publique', 'Hard Fork', 'Ethereum Classic', 'Consensus global'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 7
+        },
+        {
+          id: 'c5',
+          title: 'Ce que les crises révèlent',
+          body: 'Les crises rendent visibles les écarts entre la lettre du code et l’esprit communautaire. Elles montrent que le consensus technique ne suffit pas toujours et que la décision revient aussi à des médiations sociales et politiques. Cette étape doit être clairement interprétative, pas seulement descriptive.',
+          centralNode: 'Space of Rule / Space of Discretion',
+          focusNodes: [
+            'Code is Law',
+            'Esprit communautaire',
+            'Space of Rule / Space of Discretion',
+            'Consensus social',
+            'Gouvernance duale'
+          ],
+          cameraPreset: 'tight',
+          maxPrimaryEdges: 6
+        },
+        {
+          id: 'c6',
+          title: 'Comparer CVE 2018 et The DAO',
+          body: 'Le récit doit contenir une vraie étape comparative, pas deux cas simplement juxtaposés. Elle doit faire ressortir : type de crise, degré de publicité, temporalité, acteurs centraux, dispositifs de décision, forme de consensus, type de sortie, et forme de gouvernance rendue visible.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: [
+            'Bitcoin CVE 2018-17144',
+            'Ethereum DAO Hard Fork',
+            'Gouvernance de huis clos',
+            'Gouvernance publique',
+            'Consensus local',
+            'Consensus global'
+          ],
           cameraPreset: 'wide',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          fitTargets: 'primary'
+          maxPrimaryEdges: 8
+        },
+        {
+          id: 'c7',
+          title: 'Ce que ce récit doit prouver',
+          body: 'Le récit doit finir sur une thèse forte : les crises ne sont pas des anomalies extérieures aux cryptomonnaies ; elles révèlent la structure ordinaire de leur reproduction, la présence de médiations décisives et la nature conflictuelle, discrète et polycentrique de leur gouvernance.',
+          centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
+          focusNodes: [
+            'Crises',
+            'Gouvernance duale',
+            'Gouvernance polycentrique',
+            'Bitcoin',
+            'Ethereum',
+            'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'
+          ],
+          cameraPreset: 'wide',
+          maxPrimaryEdges: 8
         }
       ]
     },
@@ -294,75 +395,78 @@ export const STORY_PRESETS = {
       ]
     },
     {
-      // ── Histoire narrative ancrée sur SourceQuotes ────────────────────
-      // Chaque étape est liée à un NarrativeAnchor : la citation est la
-      // preuve primaire, l'entité est l'objet analytique, la scène de
-      // graphe est la traduction visuelle.
       id: 'fil-de-preuves',
       label: 'Fil de preuves',
       layoutTarget: 'matrice',
-      intro: 'Suivre la démonstration de la thèse à travers ses citations clés — chaque étape est ancrée sur une SourceQuote.',
+      intro: 'Un récit démonstratif : plusieurs lignes de preuve distinctes qui convergent vers la thèse centrale.',
       defaultStepOptions: {
-        edgeMode: 'neighbors',
-        includeNeighbors: true,
-        secondaryDepth: 1,
-        maxSecondaryPerTarget: 3,
+        edgeMode: 'strict',
+        includeNeighbors: false,
+        secondaryDepth: 0,
+        initialState: 'nodesOnly',
+        revealMode: 'staged',
+        expandOnClick: true,
+        maxAutoEdges: 4,
+        maxPrimaryEdges: 7,
+        maxSecondaryEdges: 6,
+        allowedRelationTypes: ['hasConcept', 'demonstrates', 'source', 'relatedTo', 'refutedBy', 'opposedTo', 'governance', 'hasCrisis'],
         hideBackbone: true,
-        fitTargets: 'primary+secondary'
+        fitTargets: 'primary'
       },
       steps: [
         {
           id: 'fp1',
-          title: 'La cryptomonnaie comme phénomène',
-          body: `« Avec lui commence le phénomène des cryptomonnaies, dont les codes sources sont ouverts. » — La thèse part du fait brut de l'existence des CM comme objets politiques et monétaires.`,
-          focusNodes: ['cryptomonnaie', 'Code Source Ouvert', 'Communaute de paiement / Groupe monetaire'],
-          cameraPreset: 'cluster',
-          sourceQuoteId: 'anchor-7c595e5b',   // cryptomonnaie · intro p. 15
+          title: 'Le problème initial à éprouver',
+          body: 'La thèse part d’un syllogisme libéral-techniciste : si la technique est neutre et si les cryptomonnaies sont purement techniques, alors elles seraient sans gouvernance humaine et meilleures que les monnaies nationales. Le fil de preuves doit montrer comment ce syllogisme est déconstruit pas à pas.',
+          centralNode: 'Syllogisme libéral-techniciste',
+          focusNodes: ['Syllogisme libéral-techniciste', 'Bitcoin', 'cryptomonnaie', 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)'],
+          cameraPreset: 'tight',
+          maxPrimaryEdges: 5
         },
         {
           id: 'fp2',
-          title: 'Le syllogisme libéral-techniciste',
-          body: `« Les ambitions technicistes des coiners qu'interroge cette thèse peuvent se traduire en un syllogisme. » — L'hypothèse réfutée : le code serait la loi, la gouvernance serait absente.`,
-          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !'],
-          cameraPreset: 'tight',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · ch1 p. 53
+          title: 'Première ligne de preuve : la conception n’est pas neutre',
+          body: 'Les choix architecturaux, les inspirations idéelles et les compromis techniques montrent déjà que les protocoles ne naissent pas hors du monde social. La preuve commence donc avant même les usages ou les crises.',
+          centralNode: 'Satoshi Nakamoto',
+          focusNodes: ['Satoshi Nakamoto', 'Bitcoin', 'Conception politique', 'Choix architecturaux', 'STS'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 6
         },
         {
           id: 'fp3',
-          title: 'Les crises comme épreuve',
-          body: `« Les CM représentent une épreuve d'explicitation de la monnaie. » — Les crises révèlent ce que l'usage ordinaire laisse implicite.`,
-          focusNodes: ["Crises comme épreuves d’explicitation", 'Bitcoin', 'Ethereum'],
+          title: 'Deuxième ligne de preuve : l’infrastructure déborde le protocole',
+          body: 'Le développement infrastructurel, les passerelles, les intermédiaires, les usages et les recompositions d’acteurs montrent qu’un protocole nu ne fait pas monnaie à lui seul. Cette ligne de preuve déplace l’analyse du design vers le monde socio-technique effectivement constitué.',
+          centralNode: 'Développement infrastructurel carnavalesque',
+          focusNodes: ['Développement infrastructurel carnavalesque', 'Passerelles', 'Intermédiation', 'Usages', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'cluster',
-          sourceQuoteId: 'anchor-c6fadcf4',   // épreuves d'explicitation · ch2 p. 50
+          maxPrimaryEdges: 7
         },
         {
           id: 'fp4',
-          title: 'Gouvernance de huis clos',
-          body: `« Le processus de découverte et de divulgation a permis une résolution silencieuse. » — La CVE 2018 exemplifie la gouvernance discrète : correction sans dissensus public.`,
-          focusNodes: ['Gouvernance de huis clos', 'Bitcoin CVE 2018-17144', 'Divulgation responsable', 'Core Developers (Bitcoin)'],
+          title: 'Troisième ligne de preuve : la monétisation se construit',
+          body: 'La monnaie n’apparaît pas ici comme une essence, mais comme un processus de monétisation soutenu par des usages, une communauté de paiement, des équipements et des institutions. Cette étape doit montrer comment l’infrastructure devient argument monétaire.',
+          centralNode: 'Monétisation',
+          focusNodes: ['Monétisation', 'Communauté de paiement', 'Usages monétaires', 'UCN BTC', 'UCN ETH', 'Monetary Institutionalism FR (IMF)'],
           cameraPreset: 'cluster',
-          sourceQuoteId: 'anchor-0b39eeba',   // Gouvernance de huis clos · ch3 p. 225
+          maxPrimaryEdges: 7
         },
         {
           id: 'fp5',
-          title: 'La divulgation responsable',
-          body: `« Il s'engage dans une divulgation responsable : il limite l'accès à cette information. » — Pratique qui codifie la gestion discrète des crises.`,
-          focusNodes: ['Divulgation responsable', 'Awemany', 'Bitcoin Core (repo)'],
-          cameraPreset: 'tight',
-          sourceQuoteId: 'anchor-acb5bee9',   // Divulgation responsable · ch3 p. 234
+          title: 'Quatrième ligne de preuve : les crises révèlent la gouvernance',
+          body: 'Les crises montrent que le code ne clôt jamais entièrement la décision. Quand les tensions deviennent manifestes, les formes de gouvernance, les arènes, les hiérarchies et les dispositifs de consensus apparaissent à découvert. Cette étape doit condenser la force probatoire de CVE 2018 et de The DAO.',
+          centralNode: 'Gouvernance duale',
+          focusNodes: ['Bitcoin CVE 2018-17144', 'Ethereum DAO Hard Fork', 'Gouvernance duale', 'Space of Rule / Space of Discretion', 'Consensus social'],
+          cameraPreset: 'cluster',
+          maxPrimaryEdges: 7
         },
         {
           id: 'fp6',
-          title: 'La gouvernance polycentrique',
-          body: `« La gouvernance sur l'infrastructure des CM est conflictuelle et polycentrique. » — Conclusion générale : la thèse réfute l'acéphalisme et nomme la forme réelle de gouvernance.`,
-          focusNodes: ['Gouvernance polycentrique', 'Gouvernance duale', 'Infrastructure sociotechnique'],
+          title: 'Ce que l’ensemble prouve',
+          body: 'Le fil de preuves doit finir sur une conclusion pleinement démonstrative : les cryptomonnaies sont des infrastructures socio-techniques dont la monétisation et la reproduction passent par des formes de gouvernance discrètes, conflictuelles et polycentriques. Il faut que cette dernière étape fasse sentir la convergence des preuves, pas une simple récapitulation.',
+          centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
+          focusNodes: ['Thèse centrale (infrastructures, crises, gouvernance polycentrique)', 'Monétisation', 'Gouvernance polycentrique', 'Crises', 'Bitcoin', 'Ethereum'],
           cameraPreset: 'wide',
-          edgeMode: 'strict',
-          includeNeighbors: false,
-          fitTargets: 'primary',
-          sourceQuoteId: 'anchor-fb610652',   // Gouvernance polycentrique · ccl p. 336
+          maxPrimaryEdges: 7
         }
       ]
     }
