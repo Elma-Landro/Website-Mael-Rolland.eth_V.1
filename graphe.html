@@ -166,17 +166,59 @@ html, body {
   mix-blend-mode: screen; /* additive light: halos glow through Cytoscape nodes */
 }
 /* ─── Detail Panel ───────────────────────────────────────────────── */
-.grc-panel {
-  width: var(--panel-w); min-width: 260px; flex-shrink: 0;
-  background: var(--surface); border-left: 1px solid rgba(255,170,51,.8);
-  box-shadow: inset 1px 0 0 rgba(255,210,140,.2);
-  overflow-y: auto; display: flex; flex-direction: column;
+.grc-main { position: relative; }
+.info-card-shell {
+  background: rgba(10, 12, 26, 0.95);
+  border: 1px solid #ffcc6666;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
 }
+.info-card-head {
+  display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+  padding: 10px 10px 8px;
+  border-bottom: 1px solid rgba(255, 204, 102, 0.2);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.info-card-title { font-size: 0.82em; color: var(--accent2); font-weight: 700; }
+.info-card-subtitle { font-size: 0.62em; color: var(--text2); margin-top: 3px; opacity: 0.9; }
+.info-action-btn { min-width: 28px; padding: 5px 7px; font-size: 0.72em; }
+.grc-panel {
+  position: fixed;
+  top: 84px;
+  right: 14px;
+  width: min(var(--panel-w), calc(100vw - 28px));
+  min-width: 260px;
+  max-width: 420px;
+  min-height: 180px;
+  max-height: calc(100vh - 106px);
+  z-index: 190;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  resize: none;
+}
+.grc-panel.is-closed { display: none; }
+.grc-panel.is-minimized {
+  width: 220px !important;
+  min-width: 220px;
+  min-height: 0;
+  max-height: none;
+}
+.grc-panel.is-minimized .panel-body,
+.grc-panel.is-minimized .panel-empty,
+.grc-panel.is-minimized .panel-resize-grip { display: none !important; }
+.panel-head-main { flex: 1; min-width: 0; }
+.panel-head-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.panel-head-meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.panel-head-actions { display: flex; gap: 5px; flex-shrink: 0; }
 .panel-empty {
   flex: 1; display: flex; align-items: center; justify-content: center;
   padding: 24px; text-align: center; color: var(--text2); font-size: 0.9em;
 }
-.panel-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+.panel-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; overflow: auto; }
 .panel-type-badge {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 0.72em; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
@@ -205,6 +247,66 @@ html, body {
 .rel-chip .rel-del:hover { color: #ff6b6b; }
 .rel-type-label { color: var(--accent2); font-style: italic; }
 .panel-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.panel-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.panel-summary-item {
+  background: rgba(255, 204, 102, 0.05);
+  border: 1px solid rgba(255, 204, 102, 0.22);
+  border-radius: 8px;
+  padding: 6px 7px;
+}
+.panel-summary-label {
+  display:block;
+  font-size: 0.55em;
+  color: var(--text2);
+  margin-bottom: 3px;
+}
+.panel-summary-value { font-size: 0.72em; color: var(--text); }
+.panel-details-block {
+  border: 1px solid rgba(255, 170, 51, 0.3);
+  border-radius: 8px;
+  padding: 5px 8px 8px;
+  background: rgba(58, 0, 0, 0.3);
+}
+.panel-details-block summary {
+  cursor: pointer;
+  font-size: 0.68em;
+  letter-spacing: .04em;
+  color: var(--accent2);
+  list-style: none;
+}
+.panel-details-block summary::-webkit-details-marker { display: none; }
+.panel-details-block[open] summary { margin-bottom: 8px; }
+.panel-resize-grip {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background:
+    linear-gradient(135deg, transparent 56%, rgba(255,204,102,.88) 58%, rgba(255,204,102,.88) 63%, transparent 65%),
+    linear-gradient(135deg, transparent 38%, rgba(255,204,102,.65) 40%, rgba(255,204,102,.65) 46%, transparent 48%);
+  cursor: nwse-resize;
+  opacity: 0.85;
+}
+.info-launcher {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 200;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 0.8em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 /* ─── Panel: source links ────────────────────────────────────────── */
 .panel-sources-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
 .panel-source-link {
@@ -526,7 +628,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 
   /* Sidebar masquée, canvas plein écran */
   .grc-sidebar { display: none !important; }
-  .grc-panel   { display: none !important; }
   .grc-canvas-wrap { flex: 1; width: 100%; }
   .grc-main {
     height: calc(var(--app-vh) - 114px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
@@ -544,56 +645,20 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     box-shadow: 4px 0 16px rgba(0,0,0,0.6);
   }
 
-  /* Panel détail mobile : bottom sheet compact — laisse ≥55vh de graphe visible */
-  .grc-panel.mobile-open {
-    display: flex !important;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+  .grc-panel {
     top: auto;
-    height: 40vh;
-    max-height: calc(var(--app-vh) - 120px);
-    width: 100%;
-    z-index: 500;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.7);
-    flex-direction: column;
-    overflow: hidden;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    max-height: 54vh;
   }
-  .grc-panel.mobile-open.panel-expanded {
-    height: 72vh;
-    max-height: calc(var(--app-vh) - 60px);
-  }
-  /* Poignée mobile en haut du bottom sheet */
-  .panel-mobile-handle {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 0 10px;
-    height: 44px;
-    gap: 8px;
-  }
-  .panel-mobile-handle .handle-bar-wrap {
-    flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 0;
-  }
-  .panel-mobile-handle .handle-bar {
-    width: 36px; height: 4px; border-radius: 2px;
-    background: var(--text2, #888); opacity: 0.5;
-  }
-  .panel-mobile-handle .handle-expand {
-    background: none; border: 1px solid var(--border); color: var(--text2);
-    font-size: 10px; padding: 5px 8px; border-radius: 4px; cursor: pointer;
-    flex-shrink: 0;
-  }
-  .panel-mobile-handle .handle-close {
-    background: none; border: 1px solid var(--border); color: var(--text2);
-    font-size: 10px; padding: 5px 8px; border-radius: 4px; cursor: pointer;
-    flex-shrink: 0;
-  }
-  .grc-panel.mobile-open .panel-body {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  .grc-panel.is-minimized {
+    left: auto;
+    right: 10px;
+    bottom: 10px;
   }
 
   /* Overlay guidé mobile : colonne unique au lieu de masquer complètement */
@@ -612,9 +677,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   .guided-mode-btn-matrice { font-size: 0.9em; padding: 16px 20px; }
   .guided-modes-secondary { flex-direction: column; }
   .guided-modes-secondary .guided-mode-btn { font-size: 0.75em; }
-
-  /* Bouton fermeture panneau legacy — masqué sur mobile (remplacé par .panel-mobile-handle) */
-  #btn-close-panel { display: none !important; }
 
   /* Scrolly text panel mobile — bottom sheet, laisse 68vh au graphe */
   .grc-root.scrolly-mode .grc-canvas-wrap { width: 100%; height: 68vh; }
@@ -731,15 +793,11 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   width: min(360px, calc(100vw - 28px));
   max-height: 70vh;
   overflow: auto;
-  background: rgba(10, 12, 26, 0.96);
-  border: 1px solid #ffcc6666;
-  border-radius: 12px;
   padding: 10px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.45);
 }
 .story-mode-panel.hidden { display: none; }
-.story-mode-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:8px; }
-.story-mode-title { font-size: 0.92em; color: var(--accent2); font-weight: 700; }
+.story-mode-head { display:flex; align-items:center; justify-content:space-between; gap:8px; margin: -10px -10px 8px; }
+.story-mode-title { font-size: 0.9em; }
 .story-mode-meta {
   font-size: 0.68em;
   color: var(--text2);
@@ -796,7 +854,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     width: auto;
     top: auto;
     bottom: 14px;
-    max-height: 34vh;
+    max-height: 40vh;
     padding: 8px;
   }
   .story-mode-title { font-size: 0.84em; }
@@ -812,62 +870,6 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     flex: 1 1 32%;
     font-size: 0.72em;
     padding: 5px 6px;
-  }
-}
-
-/* ── Mobile floating windows (drag + resize) ───────────── */
-.mobile-panel-drag-handle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 16px;
-  margin: 4px auto 2px;
-  border: 1px solid #ffcc6677;
-  border-radius: 10px;
-  color: #ffcc66;
-  background: rgba(20, 0, 0, 0.6);
-  font-size: 9px;
-  line-height: 1;
-  touch-action: none;
-  user-select: none;
-  cursor: grab;
-}
-.mobile-panel-resize-handle {
-  display: none;
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  right: 4px;
-  bottom: 4px;
-  border-right: 2px solid #ffcc66aa;
-  border-bottom: 2px solid #ffcc66aa;
-  touch-action: none;
-  user-select: none;
-  cursor: nwse-resize;
-}
-.mobile-float-toggle {
-  display: none;
-  font-size: 0.68em;
-  padding: 4px 8px;
-}
-@media (max-width: 900px) {
-  .mobile-float-toggle { display: inline-flex; }
-  .mobile-floating {
-    display: flex !important;
-    position: fixed !important;
-    margin: 0 !important;
-    max-width: 95vw;
-    max-height: 85vh;
-    overflow: auto;
-    z-index: 1200 !important;
-    box-shadow: 0 10px 26px rgba(0,0,0,0.72);
-    border: 1px solid #ffb34788;
-    touch-action: none;
-  }
-  .mobile-floating .mobile-panel-drag-handle,
-  .mobile-floating .mobile-panel-resize-handle {
-    display: flex;
   }
 }
 
@@ -1087,6 +1089,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 <!-- ── Canvas ── -->
 <div class="grc-canvas-wrap">
   <div id="cy"></div>
+  <button id="btn-info-launcher" class="info-launcher hidden" title="Rouvrir le panneau d’information">ⓘ</button>
   <button id="btn-archipel-back" title="Vue d'ensemble">← Archipel</button>
   <div id="cy-tooltip">
     <div class="tt-type" id="tt-type"></div>
@@ -1132,10 +1135,13 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
       </div>
     </div>
   </div>
-  <div class="story-mode-panel hidden" id="story-mode-panel">
-    <div class="story-mode-head">
-      <div class="story-mode-title">Story mode</div>
-      <button class="btn-secondary btn-sm" id="btn-story-close">✕</button>
+  <div class="story-mode-panel info-card-shell hidden" id="story-mode-panel">
+    <div class="story-mode-head info-card-head">
+      <div>
+        <div class="story-mode-title info-card-title">Story mode</div>
+        <div class="info-card-subtitle">Micro-récit guidé</div>
+      </div>
+      <button class="btn-secondary btn-sm info-action-btn" id="btn-story-close">✕</button>
     </div>
     <select class="story-mode-select" id="story-select"></select>
     <h3 class="story-mode-step-title" id="story-step-title">—</h3>
@@ -1163,13 +1169,17 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
 </div>
 
 <!-- ── Detail Panel ── -->
-<aside class="grc-panel" id="detail-panel">
-  <div class="panel-mobile-handle" id="panel-mobile-handle" style="display:none">
-    <div class="handle-bar-wrap"><div class="handle-bar"></div></div>
-    <button class="handle-expand" id="btn-panel-expand" type="button" title="Agrandir">⤢</button>
-    <button class="handle-close" id="btn-panel-close" type="button" title="Fermer">✕</button>
+<aside class="grc-panel info-card-shell is-closed" id="detail-panel" aria-hidden="true">
+  <div class="panel-head info-card-head" id="detail-panel-head">
+    <div class="panel-head-main">
+      <div class="panel-head-title info-card-title" id="detail-panel-title">Informations du nœud</div>
+      <div class="panel-head-meta info-card-subtitle" id="detail-panel-meta">Sélectionnez un nœud</div>
+    </div>
+    <div class="panel-head-actions">
+      <button class="btn-secondary btn-sm info-action-btn" id="btn-panel-minimize" type="button" title="Réduire">—</button>
+      <button class="btn-secondary btn-sm info-action-btn" id="btn-panel-close" type="button" title="Fermer">✕</button>
+    </div>
   </div>
-  <button class="btn-secondary btn-sm" id="btn-close-panel" style="display:none;margin:8px 8px 0 auto;align-self:flex-end">✕ Fermer</button>
   <div class="panel-empty" id="panel-empty">
     <div>
       <div style="font-size:2em;margin-bottom:8px">◎</div>
@@ -1179,6 +1189,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
   <div class="hidden panel-body" id="panel-body">
     <!-- dynamic content -->
   </div>
+  <button class="panel-resize-grip" id="panel-resize-grip" type="button" aria-label="Redimensionner"></button>
 </aside>
 
 <!-- ── Scrollytelling narrative panel ── -->
@@ -2424,16 +2435,6 @@ const Graph = (() => {
       highlightNeighbors(id);
       if (typeof StoryMode !== 'undefined' && StoryMode?.maybeExpandFromNode) {
         StoryMode.maybeExpandFromNode(id, e.target);
-      }
-      // Sur mobile : fenêtre flottante (pas de bottom sheet)
-      if (window.innerWidth <= 768) {
-        const panel = document.getElementById('detail-panel');
-        if (!panel.classList.contains('mobile-floating')) {
-          panel._mobileFloat?.();
-        } else {
-          // Déjà flottant : remonter au premier plan
-          panel.style.zIndex = String(Date.now());
-        }
       }
     }
 
@@ -5107,6 +5108,119 @@ const Modals = (() => {
   return { open, close, closeAll };
 })();
 
+const PanelController = (() => {
+  let panel, launcher, titleEl, metaEl, head, grip;
+  let dragging = null;
+  let resizing = null;
+  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+
+  function setLauncherLabel() {
+    if (!launcher) return;
+    const hasSelection = Boolean(State.selectedId && State.maps.entities[State.selectedId]);
+    launcher.classList.toggle('hidden', !hasSelection);
+    launcher.title = panel.classList.contains('is-closed') ? 'Ouvrir le panneau d’information' : 'Ramener le panneau';
+    launcher.textContent = panel.classList.contains('is-closed') ? 'ⓘ' : '◫';
+  }
+
+  function applyBounds(left, top, width, height) {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const minW = window.matchMedia('(max-width: 900px)').matches ? 230 : 260;
+    const minH = 170;
+    const maxW = Math.min(520, vw - 20);
+    const maxH = Math.max(220, vh - 92);
+    const w = clamp(width, minW, maxW);
+    const h = clamp(height, minH, maxH);
+    panel.style.width = `${w}px`;
+    panel.style.height = `${h}px`;
+    panel.style.left = `${clamp(left, 8, vw - w - 8)}px`;
+    panel.style.top = `${clamp(top, 66, vh - h - 8)}px`;
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+  }
+
+  function open() {
+    panel.classList.remove('is-closed');
+    panel.setAttribute('aria-hidden', 'false');
+    setLauncherLabel();
+  }
+  function close() {
+    panel.classList.add('is-closed');
+    panel.classList.remove('is-minimized');
+    panel.setAttribute('aria-hidden', 'true');
+    setLauncherLabel();
+  }
+  function minimize() {
+    panel.classList.toggle('is-minimized');
+  }
+  function focusPanel() { panel.style.zIndex = String(Date.now()); }
+
+  function setMeta(title, subtitle) {
+    if (titleEl) titleEl.textContent = title || 'Informations du nœud';
+    if (metaEl) metaEl.textContent = subtitle || '';
+  }
+
+  function init() {
+    panel = document.getElementById('detail-panel');
+    launcher = document.getElementById('btn-info-launcher');
+    titleEl = document.getElementById('detail-panel-title');
+    metaEl = document.getElementById('detail-panel-meta');
+    head = document.getElementById('detail-panel-head');
+    grip = document.getElementById('panel-resize-grip');
+    if (!panel || !head || !grip) return;
+    applyBounds(window.innerWidth - 370, 84, 340, 470);
+    setLauncherLabel();
+    document.getElementById('btn-panel-close')?.addEventListener('click', close);
+    document.getElementById('btn-panel-minimize')?.addEventListener('click', minimize);
+    launcher?.addEventListener('click', () => {
+      open();
+      panel.classList.remove('is-minimized');
+      focusPanel();
+    });
+    panel.addEventListener('pointerdown', focusPanel);
+
+    head.addEventListener('pointerdown', e => {
+      if (e.target.closest('button')) return;
+      dragging = { id: e.pointerId, x: e.clientX, y: e.clientY, rect: panel.getBoundingClientRect() };
+      head.setPointerCapture(e.pointerId);
+    });
+    head.addEventListener('pointermove', e => {
+      if (!dragging || dragging.id !== e.pointerId) return;
+      applyBounds(
+        dragging.rect.left + (e.clientX - dragging.x),
+        dragging.rect.top + (e.clientY - dragging.y),
+        dragging.rect.width,
+        dragging.rect.height
+      );
+    });
+    head.addEventListener('pointerup', e => { if (dragging?.id === e.pointerId) dragging = null; });
+    head.addEventListener('pointercancel', e => { if (dragging?.id === e.pointerId) dragging = null; });
+
+    grip.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      resizing = { id: e.pointerId, x: e.clientX, y: e.clientY, rect: panel.getBoundingClientRect() };
+      grip.setPointerCapture(e.pointerId);
+    });
+    grip.addEventListener('pointermove', e => {
+      if (!resizing || resizing.id !== e.pointerId) return;
+      applyBounds(
+        resizing.rect.left,
+        resizing.rect.top,
+        resizing.rect.width + (e.clientX - resizing.x),
+        resizing.rect.height + (e.clientY - resizing.y)
+      );
+    });
+    grip.addEventListener('pointerup', e => { if (resizing?.id === e.pointerId) resizing = null; });
+    grip.addEventListener('pointercancel', e => { if (resizing?.id === e.pointerId) resizing = null; });
+    window.addEventListener('resize', () => {
+      const rect = panel.getBoundingClientRect();
+      applyBounds(rect.left, rect.top, rect.width, rect.height);
+    });
+  }
+
+  return { init, open, close, minimize, setMeta, setLauncherLabel };
+})();
+
 // ─────────────────────────────────────────────────────────
 //  UI
 // ─────────────────────────────────────────────────────────
@@ -5159,6 +5273,8 @@ const UI = (() => {
     document.getElementById('panel-empty').classList.add('hidden');
     const body = document.getElementById('panel-body');
     body.classList.remove('hidden');
+    PanelController.open();
+    PanelController.setMeta(entity.name, typeName);
 
     // ── Separate sources from regular attributes ──────────────────────
     const attrs = entity.attributes || {};
@@ -5180,21 +5296,21 @@ const UI = (() => {
     }
 
     const sourcesHtml = sourceLinks.length
-      ? `<div>
-           <div class="panel-section-title">Sources</div>
+      ? `<details class="panel-details-block" open>
+           <summary>Sources (${sourceLinks.length})</summary>
            <div class="panel-sources-wrap">${sourceLinks.join('')}</div>
-         </div>`
+         </details>`
       : '';
 
     const attrsHtml = regularAttrs.length
-      ? `<div>
-           <div class="panel-section-title">Attributs</div>
+      ? `<details class="panel-details-block">
+           <summary>Attributs (${regularAttrs.length})</summary>
            ${regularAttrs.map(({ k, val, isUrl }) => `
              <div class="attr-row-inline">
                <span class="attr-key-inline">${escHtml(k)}</span>
                <span class="attr-val-inline">${isUrl ? `<a href="${escHtml(val)}" target="_blank" rel="noopener">${escHtml(val)}</a>` : escHtml(val)}</span>
              </div>`).join('')}
-         </div>`
+         </details>`
       : '';
 
     // ── Relations groupées par type ───────────────────────────────────
@@ -5238,15 +5354,15 @@ const UI = (() => {
           ${g.rows.join('')}
         </div>`).join('');
 
-      relsHtml = `<div>
-           <div class="panel-section-title">Relations (${totalRels})</div>
+      relsHtml = `<details class="panel-details-block">
+           <summary>Relations (${totalRels})</summary>
            ${groupsHtml}
-         </div>`;
+         </details>`;
     } else {
-      relsHtml = `<div>
-           <div class="panel-section-title">Relations</div>
+      relsHtml = `<details class="panel-details-block">
+           <summary>Relations</summary>
            <span style="color:var(--text2);font-size:0.8em">Aucune relation</span>
-         </div>`;
+         </details>`;
     }
 
     body.innerHTML = `
@@ -5258,6 +5374,10 @@ const UI = (() => {
       <div>
         <div class="panel-name">${escHtml(entity.name)}</div>
         <div class="panel-desc" style="margin-top:6px">${desc ? escHtml(desc) : '<em style="opacity:.5">Pas de description</em>'}</div>
+      </div>
+      <div class="panel-summary-grid">
+        <div class="panel-summary-item"><span class="panel-summary-label">Relations</span><span class="panel-summary-value">${totalRels}</span></div>
+        <div class="panel-summary-item"><span class="panel-summary-label">Attributs</span><span class="panel-summary-value">${regularAttrs.length}</span></div>
       </div>
       ${sourcesHtml}
       ${attrsHtml}
@@ -5307,6 +5427,8 @@ const UI = (() => {
     document.getElementById('panel-empty').classList.remove('hidden');
     document.getElementById('panel-body').classList.add('hidden');
     document.getElementById('panel-body').innerHTML = '';
+    PanelController.setMeta('Informations du nœud', 'Sélectionnez un nœud');
+    PanelController.setLauncherLabel();
   }
 
   function selectEntity(id) {
@@ -6347,20 +6469,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Mobile panel handle (bottom sheet) ──────────────
-  const _detailPanel = document.getElementById('detail-panel');
-  const _panelHandle = document.getElementById('panel-mobile-handle');
-  document.getElementById('btn-panel-close')?.addEventListener('click', () => {
-    _detailPanel.classList.remove('mobile-open', 'panel-expanded');
-    if (_panelHandle) _panelHandle.style.display = 'none';
-    _detailPanel._mobileUnfloat?.();
-  });
-  document.getElementById('btn-panel-expand')?.addEventListener('click', () => {
-    const expanded = _detailPanel.classList.toggle('panel-expanded');
-    const expandBtn = document.getElementById('btn-panel-expand');
-    if (expandBtn) expandBtn.textContent = expanded ? '⤡' : '⤢';
-  });
-
   // ── Layout ───────────────────────────────────────────
   function applySelectedLayout(v) {
     if (v === 'nebulae') { Graph.applyNebulaLayout(); }
@@ -6896,12 +7004,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── Sur mobile, le panneau détail s'ouvre en overlay ──────
-  // Patch : rendre le panel visible en overlay sur mobile
-  const _origRenderPanel = UI.renderPanel;
-  // (UI.renderPanel est déjà fonctionnel, on ajoute juste la classe mobile-open)
-  document.getElementById('detail-panel').addEventListener('transitionend', () => {});
-
   // ── Sidebar toggle (desktop) ─────────────────────────────
   document.getElementById('btn-sidebar-toggle').addEventListener('click', () => {
     const sidebar = document.getElementById('sidebar');
@@ -6988,214 +7090,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('resize', applyScrollyMobilePanelState);
 
-  // ── Mobile windows: déplacement + redimensionnement ─────
-  (() => {
-    const mobileMq = window.matchMedia('(max-width: 900px)');
-    let zCounter = 1300;
-    const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
-    const configs = [
-      {
-        panel: document.getElementById('detail-panel'),
-        toggleHost: document.getElementById('btn-close-panel'),
-        key: 'grc-floating-detail',
-        width: 300,
-        height: 420,
-        fallbackTop: 140,
-        fallbackLeft: null   // null → droite par défaut (window.innerWidth - width - 10)
-      },
-      {
-        panel: document.getElementById('focus-panel'),
-        toggleHost: document.querySelector('#focus-panel .fp-header'),
-        key: 'grc-floating-focus',
-        width: 340,
-        height: 320,
-        fallbackTop: 220,
-        fallbackLeft: 18
-      },
-      {
-        panel: document.getElementById('scrolly-text'),
-        toggleHost: document.getElementById('btn-scrolly-resize')?.parentElement || document.getElementById('scrolly-text'),
-        key: 'grc-floating-scrolly',
-        width: 350,
-        height: 320,
-        fallbackTop: 240,
-        fallbackLeft: 12
-      }
-    ].filter(cfg => cfg.panel && cfg.toggleHost);
-
-    function attachFloating(cfg) {
-      const { panel, toggleHost, key, width, height, fallbackTop, fallbackLeft } = cfg;
-      if (panel.dataset.mobileFloatingReady) return;
-      panel.dataset.mobileFloatingReady = '1';
-      panel.style.touchAction = 'auto';
-
-      const dragHandle = document.createElement('div');
-      dragHandle.className = 'mobile-panel-drag-handle';
-      dragHandle.textContent = '⇕ Déplacer';
-      panel.insertBefore(dragHandle, panel.firstChild);
-
-      const resizeHandle = document.createElement('div');
-      resizeHandle.className = 'mobile-panel-resize-handle';
-      panel.appendChild(resizeHandle);
-
-      const toggleBtn = document.createElement('button');
-      toggleBtn.type = 'button';
-      toggleBtn.className = 'btn-secondary btn-sm mobile-float-toggle';
-      toggleBtn.textContent = '◱ Fenêtre';
-      toggleHost.appendChild(toggleBtn);
-
-      const saveState = () => {
-        if (!panel.classList.contains('mobile-floating')) {
-          localStorage.removeItem(key);
-          return;
-        }
-        const rect = panel.getBoundingClientRect();
-        localStorage.setItem(key, JSON.stringify({
-          left: rect.left, top: rect.top, width: rect.width, height: rect.height
-        }));
-      };
-
-      const applyBounds = (left, top, w, h) => {
-        const minW = 240;
-        const minH = 180;
-        const maxW = window.innerWidth - 8;
-        const maxH = window.innerHeight - 8;
-        const nextW = clamp(w, minW, maxW);
-        const nextH = clamp(h, minH, maxH);
-        const nextLeft = clamp(left, 4, window.innerWidth - nextW - 4);
-        const nextTop = clamp(top, 4, window.innerHeight - nextH - 4);
-        panel.style.left = `${nextLeft}px`;
-        panel.style.top = `${nextTop}px`;
-        panel.style.width = `${nextW}px`;
-        panel.style.height = `${nextH}px`;
-      };
-
-      const enableFloating = () => {
-        if (!mobileMq.matches) return;
-        panel.classList.add('mobile-floating');
-        panel.style.right = 'auto';
-        panel.style.bottom = 'auto';
-        panel.style.maxHeight = 'none';
-        panel.style.transform = 'none';
-        panel.style.zIndex = String(++zCounter);
-        let saved = null;
-        try { saved = JSON.parse(localStorage.getItem(key) || 'null'); } catch {}
-        // Par défaut : aligner à droite (fenêtre ne masque pas le graphe à gauche)
-        const defaultLeft = typeof fallbackLeft === 'function'
-          ? fallbackLeft()
-          : (fallbackLeft ?? window.innerWidth - width - 10);
-        applyBounds(
-          saved?.left ?? defaultLeft,
-          saved?.top ?? fallbackTop,
-          saved?.width ?? width,
-          saved?.height ?? height
-        );
-        saveState();
-      };
-
-      const disableFloating = () => {
-        panel.classList.remove('mobile-floating');
-        panel.style.left = '';
-        panel.style.top = '';
-        panel.style.width = '';
-        panel.style.height = '';
-        panel.style.right = '';
-        panel.style.bottom = '';
-        panel.style.maxHeight = '';
-        panel.style.transform = '';
-        localStorage.removeItem(key);
-      };
-
-      // Exposer pour usage externe (ex: handleNodeSelect)
-      panel._mobileFloat = enableFloating;
-      panel._mobileUnfloat = disableFloating;
-
-      toggleBtn.addEventListener('click', () => {
-        if (panel.classList.contains('mobile-floating')) {
-          disableFloating();
-          toggleBtn.textContent = '◱ Fenêtre';
-        } else {
-          enableFloating();
-          toggleBtn.textContent = '⇱ Ancrer';
-        }
-      });
-
-      panel.addEventListener('pointerdown', () => {
-        if (panel.classList.contains('mobile-floating')) panel.style.zIndex = String(++zCounter);
-      });
-
-      let dragState = null;
-      dragHandle.addEventListener('pointerdown', e => {
-        if (!panel.classList.contains('mobile-floating')) return;
-        e.preventDefault();
-        dragState = {
-          pointerId: e.pointerId,
-          startX: e.clientX,
-          startY: e.clientY,
-          rect: panel.getBoundingClientRect()
-        };
-        dragHandle.setPointerCapture(e.pointerId);
-      });
-      dragHandle.addEventListener('pointermove', e => {
-        if (!dragState || e.pointerId !== dragState.pointerId) return;
-        const dx = e.clientX - dragState.startX;
-        const dy = e.clientY - dragState.startY;
-        applyBounds(dragState.rect.left + dx, dragState.rect.top + dy, dragState.rect.width, dragState.rect.height);
-      });
-      const stopDrag = e => {
-        if (!dragState || e.pointerId !== dragState.pointerId) return;
-        dragState = null;
-        saveState();
-      };
-      dragHandle.addEventListener('pointerup', stopDrag);
-      dragHandle.addEventListener('pointercancel', stopDrag);
-
-      let resizeState = null;
-      resizeHandle.addEventListener('pointerdown', e => {
-        if (!panel.classList.contains('mobile-floating')) return;
-        e.preventDefault();
-        resizeState = {
-          pointerId: e.pointerId,
-          startX: e.clientX,
-          startY: e.clientY,
-          rect: panel.getBoundingClientRect()
-        };
-        resizeHandle.setPointerCapture(e.pointerId);
-      });
-      resizeHandle.addEventListener('pointermove', e => {
-        if (!resizeState || e.pointerId !== resizeState.pointerId) return;
-        const dx = e.clientX - resizeState.startX;
-        const dy = e.clientY - resizeState.startY;
-        applyBounds(resizeState.rect.left, resizeState.rect.top, resizeState.rect.width + dx, resizeState.rect.height + dy);
-      });
-      const stopResize = e => {
-        if (!resizeState || e.pointerId !== resizeState.pointerId) return;
-        resizeState = null;
-        saveState();
-      };
-      resizeHandle.addEventListener('pointerup', stopResize);
-      resizeHandle.addEventListener('pointercancel', stopResize);
-
-      const syncMode = () => {
-        if (!mobileMq.matches && panel.classList.contains('mobile-floating')) {
-          disableFloating();
-          toggleBtn.textContent = '◱ Fenêtre';
-        }
-      };
-      mobileMq.addEventListener('change', syncMode);
-      window.addEventListener('resize', () => {
-        if (!panel.classList.contains('mobile-floating')) return;
-        const r = panel.getBoundingClientRect();
-        applyBounds(r.left, r.top, r.width, r.height);
-        saveState();
-      });
-    }
-
-    configs.forEach(attachFloating);
-  })();
-
-
-
+  PanelController.init();
   FocusMode.init();
   StoryMode.init();
 
