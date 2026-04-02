@@ -291,7 +291,9 @@ export const STORY_PRESETS = {
         initialState: 'nodesOnly',
         revealMode: 'staged',
         expandOnClick: true,
-        maxAutoEdges: 5,
+        maxAutoEdges: 3,
+        maxPrimaryEdges: 5,
+        maxSecondaryEdges: 4,
         hideBackbone: true,
         fitTargets: 'primary',
         backboneRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
@@ -304,6 +306,7 @@ export const STORY_PRESETS = {
           centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
           focusNodes: ['Thèse centrale (infrastructures, crises, gouvernance polycentrique)', 'Bitcoin', 'cryptomonnaie', 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche', 'Syllogisme libéral-techniciste'],
           cameraPreset: 'tight',
+          sourceQuoteId: 'anchor-7c595e5b',
           bridgeEntityIds: ['Bitcoin', 'Gouvernance polycentrique'],
           allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
         },
@@ -314,6 +317,7 @@ export const STORY_PRESETS = {
           centralNode: 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche',
           focusNodes: ['A. La gouvernance des cryptomonnaies : construction de notre objet de recherche', 'Bitcoin', 'Ethereum', 'Sociology of Science & Technology (STS)', 'Institutionnalisme Monetaire Francophone (IMF)'],
           cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-251c8c2b',
           bridgeEntityIds: ['Institutionnalisme Monetaire Francophone (IMF)', 'Sociology of Science & Technology (STS)'],
           allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
         },
@@ -324,6 +328,7 @@ export const STORY_PRESETS = {
           centralNode: 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche',
           focusNodes: ['A. La gouvernance des cryptomonnaies : construction de notre objet de recherche', 'Institutionnalisme Monetaire Francophone (IMF)', 'Sociology of Science & Technology (STS)', 'Ethnographie', "C.2. Stratégie d'accès et matériaux de terrain récoltés"],
           cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-4934a3d8',
           bridgeEntityIds: ['Bitcoin', 'Ethnographie'],
           allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
         },
@@ -334,6 +339,7 @@ export const STORY_PRESETS = {
           centralNode: 'Bitcoin',
           focusNodes: ['Bitcoin', 'Satoshi Nakamoto', 'Développement carnavalesque', 'Services Marchands & Passerelles', "Chaîne d'intermédiation sociotechnique", 'Altcoins'],
           cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-88c15dbe',
           bridgeEntityIds: ['Ethereum', 'Bitcoin'],
           allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
         },
@@ -344,6 +350,7 @@ export const STORY_PRESETS = {
           centralNode: 'Ethereum',
           focusNodes: ['Ethereum', 'Bitcoin', 'Altcoins', 'Vitalik Buterin', 'Smart Contracts', 'The DAO'],
           cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-45c0739a',
           bridgeEntityIds: ['Monétisation des cryptomonnaies', 'Monetary Institutionalism FR (IMF)'],
           allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
         },
@@ -354,6 +361,7 @@ export const STORY_PRESETS = {
           centralNode: 'Monétisation des cryptomonnaies',
           focusNodes: ['Monétisation des cryptomonnaies', 'Communaute de paiement / Groupe monetaire', 'UCN BTC', 'UCN ETH', 'Institutionnalisme Monetaire Francophone (IMF)', 'Institutionnalisme intéressé aux usages', 'Gouvernance polycentrique'],
           cameraPreset: 'wide',
+          sourceQuoteId: 'anchor-dce8efe4',
           bridgeEntityIds: ['Gouvernance polycentrique', 'Gouvernance duale'],
           allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
         },
@@ -364,6 +372,7 @@ export const STORY_PRESETS = {
           centralNode: 'Gouvernance polycentrique',
           focusNodes: ['Gouvernance polycentrique', 'Règle comme cristallisation normative située', 'Discretion contrainte', 'Gouvernance duale', 'Règle contre discrétion (Rules vs Discretion)', 'Space of Rule / Space of Discretion'],
           cameraPreset: 'wide',
+          sourceQuoteId: 'anchor-59789411',
           bridgeEntityIds: ['Gouvernance duale', 'Bitcoin CVE 2018-17144'],
           allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
         },
@@ -374,6 +383,8 @@ export const STORY_PRESETS = {
           centralNode: 'Gouvernance duale',
           focusNodes: ['Gouvernance duale', 'Bitcoin CVE 2018-17144', 'Ethereum Hard Fork (juillet 2016)', 'Gouvernance de huis clos', 'Gouvernance publique et ouverte', 'Bitcoin Core (repo)'],
           cameraPreset: 'cluster',
+          sourceQuoteId: 'anchor-0b39eeba',
+          maxPrimaryEdges: 6,
           bridgeEntityIds: ['Gouvernance polycentrique'],
           allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
         },
@@ -384,6 +395,8 @@ export const STORY_PRESETS = {
           centralNode: 'Thèse centrale (infrastructures, crises, gouvernance polycentrique)',
           focusNodes: ['Thèse centrale (infrastructures, crises, gouvernance polycentrique)', 'Bitcoin', 'Ethereum', 'Monétisation des cryptomonnaies', 'Gouvernance polycentrique', 'Crises comme épreuves d’explicitation', 'Space of Rule / Space of Discretion'],
           cameraPreset: 'wide',
+          sourceQuoteId: 'anchor-fb610652',
+          maxPrimaryEdges: 6,
           bridgeEntityIds: [],
           allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
         }

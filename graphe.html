@@ -3236,6 +3236,9 @@ const Graph = (() => {
     const mobileMaxCol = MOBILE_HALO_COLS.length;
 
     // ── Grouper les nœuds par (chapitreRow, col) ─────────
+    const activeStoryId = document.documentElement?.dataset?.activeStoryId || '';
+    const isStructureNarrativeView = !useStrata && (activeStoryId === 'structure-these' || activeStoryId === 'fil-de-preuves');
+    const SOURCEQUOTE_CHAPTER_COL = { 0: 1, 1: 2, 2: 3, 3: 4, 4: 6, 5: 7 };
     // Types infrastructure qui doivent être ancrés Chap. I par défaut
     const INFRA_CHAP_I_TYPES = new Set([
       'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureDomain',
@@ -3279,6 +3282,8 @@ const Graph = (() => {
             // embedded_persons (empirical actors) -> Acteurs (5); reference_authors -> Réf./Sources (7)
             desktopCol = (_displayStratumMap[n.data('id')] === 'embedded_persons') ? 5 : 7;
           }
+        } else if (typeName === 'SourceQuote' && isStructureNarrativeView) {
+          desktopCol = SOURCEQUOTE_CHAPTER_COL[row] ?? 7;
         } else {
           desktopCol = TYPE_COL_V3[typeName] ?? 6; // unknown -> Concepts
         }
@@ -3305,6 +3310,16 @@ const Graph = (() => {
 
       // Tri: type hierarchy d'abord, puis degré (hubs en haut de chaque sous-col)
       nodes.sort((a, b) => {
+        if (isStructureNarrativeView) {
+          const aIsSq = a.data('typeName') === 'SourceQuote';
+          const bIsSq = b.data('typeName') === 'SourceQuote';
+          if (aIsSq && bIsSq) {
+            const pa = getSourceQuotePage(a) ?? 9999;
+            const pb = getSourceQuotePage(b) ?? 9999;
+            if (pa !== pb) return pa - pb;
+            return String(a.data('label') || '').localeCompare(String(b.data('label') || ''));
+          }
+        }
         const pa = TYPE_SORT_PRIORITY[a.data('typeName')] ?? 50;
         const pb = TYPE_SORT_PRIORITY[b.data('typeName')] ?? 50;
         if (pa !== pb) return pa - pb;
@@ -3328,10 +3343,17 @@ const Graph = (() => {
         const sizeScale = Math.max(0, Math.min(1, (raw - 22) / 68));
         const localNodeH = NODE_H + (isMobile ? sizeScale * 6 : sizeScale * 2);
         const startY = cy_c - (count * localNodeH) / 2;
+        let y = startY + ri * localNodeH;
+        if (isStructureNarrativeView && n.data('typeName') === 'SourceQuote') {
+          const norm = getSourceQuoteChapterNorm(n, count <= 1 ? 0.5 : (ri / Math.max(1, count - 1)));
+          const cellTop = cy_c - (count * localNodeH) / 2;
+          const usableH = Math.max(localNodeH, count * localNodeH - localNodeH);
+          y = cellTop + (localNodeH * 0.5) + norm * usableH;
+        }
         // Jitter organique proportionnel à la taille du nœud (hubs plus dispersés)
         const jx = (Math.random() - 0.5) * (isMobile ? 34 + sizeScale * 58 : 20 + sizeScale * 40);
         const jy = (Math.random() - 0.5) * (isMobile ? 24 + sizeScale * 36 : 12 + sizeScale * 24);
-        n.position({ x: startX + jx, y: startY + ri * localNodeH + jy });
+        n.position({ x: startX + jx, y: y + jy });
         n.style({ opacity: 1.0 });
       });
     });
@@ -6082,6 +6104,7 @@ const StoryMode = (() => {
     storyState.storyModeEnabled = false;
     storyState.currentStepRuntime = null;
     clearStoryFocus();
+    document.documentElement.dataset.activeStoryId = '';
     document.getElementById('story-mode-panel')?.classList.add('hidden');
     updateStoryPanel();
   }
@@ -6102,6 +6125,7 @@ const StoryMode = (() => {
     storyState.activeStoryId = storyId;
     storyState.activeStoryStepIndex = 0;
     storyState.storyModeEnabled = true;
+    document.documentElement.dataset.activeStoryId = storyId;
     updateStoryPanel();
     applyStoryStep(story.steps[0]);
   }
@@ -6163,7 +6187,11 @@ const StoryMode = (() => {
     });
   }
 
-  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus, maybeExpandFromNode };
+  function getActiveStoryId() {
+    return storyState.activeStoryId;
+  }
+
+  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus, maybeExpandFromNode, getActiveStoryId };
 })();
 
 // ─────────────────────────────────────────────────────────
