@@ -216,12 +216,12 @@ html, body {
 .panel-head-meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .panel-head-actions { display: flex; gap: 5px; flex-shrink: 0; }
 .panel-drag-handle {
-  min-width: 24px;
-  width: 24px;
-  height: 24px;
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
   padding: 0;
   line-height: 1;
-  font-size: 0.92em;
+  font-size: 0.75em;
   cursor: grab;
   touch-action: none;
 }
@@ -661,10 +661,10 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     top: auto;
     bottom: 10px;
     right: 10px;
-    left: 10px;
-    width: auto;
-    max-width: none;
-    min-width: 0;
+    left: auto;
+    width: min(82vw, 320px);
+    max-width: calc(100vw - 20px);
+    min-width: 190px;
     max-height: 54vh;
   }
   .grc-panel.is-minimized {
@@ -1200,7 +1200,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
       <div class="panel-head-meta info-card-subtitle" id="detail-panel-meta">Sélectionnez un nœud</div>
     </div>
     <div class="panel-head-actions">
-      <button class="btn-secondary btn-sm panel-drag-handle" id="btn-panel-drag" type="button" title="Déplacer le panneau" aria-label="Déplacer le panneau">⠿</button>
+      <button class="btn-secondary btn-sm panel-drag-handle" id="btn-panel-drag" type="button" title="Déplacer le panneau" aria-label="Déplacer le panneau">↕</button>
       <button class="btn-secondary btn-sm info-action-btn" id="btn-panel-minimize" type="button" title="Réduire">—</button>
       <button class="btn-secondary btn-sm info-action-btn" id="btn-panel-close" type="button" title="Fermer">✕</button>
     </div>
