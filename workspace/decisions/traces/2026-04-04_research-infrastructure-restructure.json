@@ -1,0 +1,39 @@
+{
+  "id": "2026-04-04_research-infrastructure-restructure",
+  "decisionType": "architecture_decision",
+  "title": "Introduce workspace/ authoring layer and two-layer architecture (Phase 1)",
+  "rationale": "The repository had no separation between the authoring/workshop layer and the public publication layer. All files (HTML, canonical graph JSON, patch files, audit documents, migration scripts, and public site assets) were co-located at the root level with no organizational structure. This created several concrete problems: (1) The patch file inventory (13+ JSON files at root) had no application log — it was unknown which were already incorporated into v96 and which were pending. (2) The scripts/ directory existed but had no README or documented lifecycle. (3) No machine-readable status model existed — only 13/2,263 entities had any status-like attribute. (4) No DecisionTrace infrastructure existed; decisions were only captured in informal Markdown audit docs. (5) NarrativePreset management was absent despite narrative-anchors-build.mjs already functioning. Phase 1 introduces workspace/ as the authoring layer and public/exports/ as the publication output target, following a local-first, file-first, non-destructive architecture.",
+  "author": "mael-rolland.eth",
+  "date": "2026-04-04",
+  "affectedFiles": [
+    "workspace/",
+    "workspace/README.md",
+    "workspace/ARCHITECTURE_AUDIT.md",
+    "workspace/schemas/status-model.json",
+    "workspace/schemas/source-quote.schema.json",
+    "workspace/schemas/claim.schema.json",
+    "workspace/schemas/decision-trace.schema.json",
+    "workspace/schemas/narrative-preset.schema.json",
+    "workspace/schemas/narrative-step.schema.json",
+    "workspace/schemas/validation-event.schema.json",
+    "workspace/patches/README.md",
+    "workspace/evidence/README.md",
+    "workspace/decisions/README.md",
+    "workspace/narratives/README.md",
+    "workspace/scripts/README.md",
+    "workspace/audits/README.md",
+    "public/exports/"
+  ],
+  "relatedGraphVersion": "v96",
+  "status": "applied",
+  "precedents": [],
+  "consequences": [
+    "Phase 2: audit and consolidate root patch files into workspace/patches/",
+    "Phase 2: move docs/ audit documents to workspace/audits/",
+    "Phase 2: move Migration/ to workspace/migrations/",
+    "Phase 2: create workspace/scripts/lint-graph.mjs",
+    "Phase 2: create workspace/scripts/build-export.mjs",
+    "Phase 2: produce grc20-these-mael-rolland-v97.json via validated patch application"
+  ],
+  "notes": "Phase 1 constraints strictly observed: no HTML/CSS/JS files modified, no canonical graph JSON modified, no package.json changes, no file moves from existing locations, no runtime behavior changes. All new files are additive. The pre-existing scripts/ directory at repository root was NOT modified — its boundary with workspace/scripts/ is documented in workspace/scripts/README.md. The public/exports/ directory is empty and not referenced by any public-facing code."
+}

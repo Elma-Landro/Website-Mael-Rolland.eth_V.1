@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/narrative-preset",
+  "title": "NarrativePreset",
+  "description": "Schema for NarrativePreset objects — curated guided narrative sequences for scrollytelling and thematic graph exploration. NarrativePresets reference NarrativeAnchor IDs from narrative-anchors.json and add audience framing, sequence order, and view instructions. Stored in workspace/narratives/presets/.",
+  "type": "object",
+  "required": ["id", "title", "goal", "status"],
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier. Convention: snake_case slug.",
+      "examples": ["governance_crisis_bitcoin", "monetary_institutionalism", "dao_hard_fork"]
+    },
+    "title": {
+      "type": "string",
+      "description": "Display title for this narrative.",
+      "maxLength": 120
+    },
+    "titleFr": {
+      "type": "string",
+      "description": "French language version of the title.",
+      "maxLength": 120
+    },
+    "goal": {
+      "type": "string",
+      "description": "What this narrative is designed to show or demonstrate. One or two sentences."
+    },
+    "targetAudience": {
+      "type": "string",
+      "enum": ["academic", "general", "technical", "journalist"],
+      "description": "Primary intended audience for this narrative."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "validated", "published"],
+      "description": "Publication status. Only 'published' presets are included in public/exports/."
+    },
+    "viewMode": {
+      "type": "string",
+      "enum": ["matrice", "nebulae", "cose", "arbre", "monetisation", "qui-gouverne"],
+      "description": "Default graph layout for this narrative. Corresponds to layout options in graphe.html.",
+      "default": "matrice"
+    },
+    "evidenceMode": {
+      "type": "string",
+      "enum": ["show", "hide", "on-hover"],
+      "description": "How SourceQuote evidence is displayed during this narrative.",
+      "default": "show"
+    },
+    "steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordered array of NarrativeStep IDs. Defines the sequence of the narrative."
+    },
+    "anchorIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "NarrativeAnchor IDs from narrative-anchors.json that this preset references. Informational — steps carry the detailed anchor references."
+    },
+    "chapterScope": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 4
+      },
+      "description": "Thesis chapter indices that this narrative primarily covers. 0=Introduction, 1=Chapitre I, 2=Chapitre II, 3=Chapitre III, 4=Conclusion."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date",
+      "description": "Creation date (YYYY-MM-DD)."
+    },
+    "author": {
+      "type": "string",
+      "description": "Author of this narrative preset."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Editorial notes about this narrative, open questions, or revision history."
+    }
+  },
+
+  "examples": [
+    {
+      "id": "governance_crisis_bitcoin_cve2018",
+      "title": "CVE-2018: Discrete Governance Unveiled",
+      "titleFr": "CVE-2018 : la gouvernance discrète dévoilée",
+      "goal": "Show how the CVE-2018-17144 vulnerability reveals a discrete, non-public decision-making mode in Bitcoin governance, tracing the actors, phases, and infrastructure implications.",
+      "targetAudience": "academic",
+      "status": "draft",
+      "viewMode": "nebulae",
+      "evidenceMode": "show",
+      "steps": [],
+      "chapterScope": [3],
+      "createdAt": "2026-04-04",
+      "author": "mael-rolland.eth"
+    }
+  ]
+}

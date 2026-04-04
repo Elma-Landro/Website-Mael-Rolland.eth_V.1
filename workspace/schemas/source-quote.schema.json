@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/source-quote",
+  "title": "SourceQuote",
+  "description": "Schema for SourceQuote objects — exact textual evidence anchors extracted from the thesis. Extends the attribute structure already used in grc20-these-mael-rolland-v96.json (245 existing SourceQuote entities). This schema defines the canonical field set for both existing and new SourceQuote entities.",
+  "type": "object",
+  "required": ["id", "name", "quoteText", "chapter"],
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier (32-char hex, matching GRC-20 entity ID format)",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Short display label for the quote (used as graph node label). Format: 'Quote — [brief description]'",
+      "maxLength": 120
+    },
+    "quoteText": {
+      "type": "string",
+      "description": "Exact verbatim quote from the thesis or primary source. Do not paraphrase. Preserve French typography including guillemets (« »), ellipses (…), and non-breaking spaces."
+    },
+    "chapter": {
+      "type": "string",
+      "description": "Thesis chapter containing this quote. One of: 'Introduction générale', 'Chapitre I', 'Chapitre II', 'Chapitre III', 'Conclusion générale', 'Glossaire et annexes'"
+    },
+    "thesisLocation": {
+      "type": "string",
+      "description": "Human-readable location within thesis. Format: '[Chapter] > [Section title]'. Example: 'Chapitre III > Gouvernance discrète dévoilée par les crises'"
+    },
+    "page": {
+      "type": "string",
+      "description": "Page number in the PDF version of the thesis. String to allow ranges ('42-43') or approximate values ('~42')."
+    },
+    "sectionKey": {
+      "type": "string",
+      "description": "Machine-readable ThesisSection key. Format: 'I.1.2', 'III.3.4', 'intro_A', etc. Matches ThesisSection entity names in the canonical graph.",
+      "examples": ["I.1.1", "II.3.4", "III.2.1", "intro_A", "conclusion_B"]
+    },
+    "language": {
+      "type": "string",
+      "enum": ["fr", "en"],
+      "description": "Language of the quote text. Most quotes are 'fr' (French original)."
+    },
+    "sourceFormat": {
+      "type": "string",
+      "enum": ["PDF", "MD", "interview", "online"],
+      "description": "Format of the source document from which this quote was extracted."
+    },
+    "exactnessStatus": {
+      "type": "string",
+      "enum": ["verbatim", "paraphrased", "translated"],
+      "description": "How closely the quoteText matches the source. 'verbatim' = exact copy. 'paraphrased' = approximated. 'translated' = translated from another language."
+    },
+    "evidenceStatus": {
+      "type": "string",
+      "enum": ["SUPPORTED", "TODO_VERIFY", "UNRESOLVED", "PROPOSED_REVIEW"],
+      "description": "Validation status of this quote. Matches existing values in v96 SourceQuote entities. Maps to the canonical status model: SUPPORTED→validated, others→needs_review."
+    },
+    "status": {
+      "type": "string",
+      "description": "Canonical lifecycle status from status-model.json. For new SourceQuote objects. Legacy v96 entities are implicitly 'legacy_canonical'.",
+      "enum": ["legacy_canonical", "raw", "extracted", "linked", "needs_review", "validated", "contested", "published", "deprecated"]
+    },
+    "source": {
+      "type": "string",
+      "description": "Source document identifier or bibliographic reference. May be a Reference entity name or a free-text citation."
+    },
+    "speaker": {
+      "type": "string",
+      "description": "Speaker name for interview quotes. Only applies when sourceFormat is 'interview'."
+    },
+    "date": {
+      "type": "string",
+      "description": "Date of the source document (ISO 8601 or partial date). Mainly relevant for interview or online sources."
+    },
+    "context": {
+      "type": "string",
+      "description": "Surrounding text context (optional). Provides the paragraph or passage immediately surrounding the quote for disambiguation."
+    },
+    "recipient": {
+      "type": "string",
+      "description": "Recipient of a communication (for interview or email sources)."
+    },
+    "relations": {
+      "type": "object",
+      "description": "Expected relations for this SourceQuote (informational — actual relations are in the GRC-20 graph).",
+      "properties": {
+        "appears_in_section": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "ThesisSection entity IDs this quote appears in."
+        },
+        "quote_supports": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Entity IDs supported by this quote."
+        },
+        "cited_in": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Chapter entity IDs where this quote is cited."
+        }
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "id": "fb6106526ebd4d8caa5d9eb4ea39e080",
+      "name": "Quote — gouvernance sur l'infrastructure conflictuelle et polycentrique",
+      "quoteText": "Notre approche montre que, au-delà d'une gouvernance par l'infrastructure, la gouvernance sur l'infrastructure des CM est conflictuelle et polycentrique, révélant l'hétérogénéité des représentations au sein des communautés de coiners* et la manière dont les propriétés des CM sont renégociées.",
+      "chapter": "Conclusion générale",
+      "thesisLocation": "Conclusion générale > De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises",
+      "page": "336",
+      "language": "fr",
+      "sourceFormat": "PDF",
+      "exactnessStatus": "verbatim",
+      "status": "legacy_canonical"
+    }
+  ],
+
+  "compatibility_note": "This schema is fully compatible with existing v96 SourceQuote attribute structure. All fields present in v96 entities (quoteText, page, chapter, thesisLocation, language, sourceFormat, evidenceStatus, source, speaker, date, context, recipient) are represented here. New fields (sectionKey, exactnessStatus, status) are optional and additive."
+}

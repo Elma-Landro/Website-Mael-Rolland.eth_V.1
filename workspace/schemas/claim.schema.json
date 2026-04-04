@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/claim",
+  "title": "Claim",
+  "description": "Schema for Claim objects — explicit analytical propositions of the thesis. A Claim is a workspace-layer object. When validated, it can be promoted to a graph entity of type 'AnalyticClaim' (already defined in v96 types, zero instances as of 2026-04-04) via a versioned patch.",
+  "type": "object",
+  "required": ["id", "name", "claimText", "claimType", "status"],
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier (32-char hex or human-readable slug for workspace objects)",
+      "examples": ["claim_bitcoin_not_reducible_to_protocol", "a2f4e8b1c3d7f9e0a1b2c3d4e5f60001"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Short label for the claim. Used as display name if promoted to graph entity.",
+      "maxLength": 120
+    },
+    "claimText": {
+      "type": "string",
+      "description": "Full analytical proposition text. Must be a complete sentence making a substantive claim."
+    },
+    "claimType": {
+      "type": "string",
+      "enum": ["central", "subsidiary", "methodological", "contested"],
+      "description": "Category of claim. 'central' = main thesis argument. 'subsidiary' = supporting argument. 'methodological' = claim about research method. 'contested' = claim that is explicitly debated."
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"],
+      "description": "Author's confidence level in this claim."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["legacy_canonical", "raw", "extracted", "linked", "needs_review", "validated", "contested", "published", "deprecated"],
+      "description": "Lifecycle status per status-model.json."
+    },
+    "chapter": {
+      "type": "string",
+      "description": "Primary thesis chapter where this claim is made."
+    },
+    "thesisLocation": {
+      "type": "string",
+      "description": "Human-readable location of the claim in the thesis."
+    },
+    "sectionKey": {
+      "type": "string",
+      "description": "Machine-readable ThesisSection key (matches ThesisSection entity names in canonical graph)."
+    },
+    "supportingQuoteIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of SourceQuote entities (in canonical graph) that support this claim."
+    },
+    "supportingEntityIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of graph entities that provide supporting evidence or context for this claim."
+    },
+    "contestingEntityIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of entities or claims that contest or complicate this claim."
+    },
+    "parentClaimId": {
+      "type": "string",
+      "description": "ID of the parent claim (for subsidiary claims). Enables hierarchical argument structure."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 creation timestamp."
+    },
+    "author": {
+      "type": "string",
+      "description": "Author or agent that created this claim record.",
+      "examples": ["mael-rolland.eth", "claude-agent"]
+    },
+    "promotedToEntityId": {
+      "type": "string",
+      "description": "If promoted to canonical graph entity (AnalyticClaim type), the resulting entity ID."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text notes about this claim, its evidence, or open questions."
+    }
+  },
+
+  "examples": [
+    {
+      "id": "claim_bitcoin_reducible_protocol",
+      "name": "Bitcoin is not reducible to its protocol",
+      "claimText": "Bitcoin cannot be reduced to its technical protocol specification; it is constituted through the ongoing governance practices, crises, and social negotiations of its community.",
+      "claimType": "central",
+      "confidence": "high",
+      "status": "validated",
+      "chapter": "Chapitre I",
+      "thesisLocation": "Chapitre I > Au-delà du protocole",
+      "sectionKey": "I.1.1",
+      "supportingQuoteIds": [],
+      "createdAt": "2026-04-04T00:00:00Z",
+      "author": "mael-rolland.eth"
+    },
+    {
+      "id": "claim_cve2018_closed_governance",
+      "name": "CVE-2018 reveals a closed-door governance mode",
+      "claimText": "The CVE-2018-17144 vulnerability disclosure reveals a discrete, non-public mode of governance in Bitcoin that contradicts the ideology of radical transparency.",
+      "claimType": "central",
+      "confidence": "high",
+      "status": "validated",
+      "chapter": "Chapitre III",
+      "thesisLocation": "Chapitre III > Gouvernance discrète dévoilée par les crises",
+      "sectionKey": "III.1",
+      "createdAt": "2026-04-04T00:00:00Z",
+      "author": "mael-rolland.eth"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/narrative-step",
+  "title": "NarrativeStep",
+  "description": "Schema for NarrativeStep objects — one step within a NarrativePreset. Each step defines a graph state (which nodes are focused, which edges are visible, camera position) and narrative text (headline, body). Steps reference entity IDs from the canonical graph and anchor IDs from narrative-anchors.json.",
+  "type": "object",
+  "required": ["id", "presetId", "order", "headline"],
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this step. Convention: {presetId}_step_{N}.",
+      "examples": ["governance_crisis_cve2018_step_1", "governance_crisis_cve2018_step_2"]
+    },
+    "presetId": {
+      "type": "string",
+      "description": "ID of the parent NarrativePreset."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "1-based position of this step within the preset."
+    },
+    "headline": {
+      "type": "string",
+      "description": "Short headline displayed at the top of the narrative card. Typically one sentence.",
+      "maxLength": 160
+    },
+    "headlineFr": {
+      "type": "string",
+      "description": "French version of the headline.",
+      "maxLength": 160
+    },
+    "body": {
+      "type": "string",
+      "description": "Explanatory text for this step. 2-5 sentences. Should connect the graph state to the thesis argument."
+    },
+    "bodyFr": {
+      "type": "string",
+      "description": "French version of the body text."
+    },
+    "bridgeEntityIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "GRC-20 entity IDs to focus on in this step. These nodes will be highlighted in the graph."
+    },
+    "bridgeEntityNames": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Entity names as fallback resolution for bridgeEntityIds (used when IDs are not yet resolved)."
+    },
+    "anchorQuoteIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "NarrativeAnchor IDs from narrative-anchors.json that are displayed in this step."
+    },
+    "graphAction": {
+      "type": "string",
+      "enum": ["focus", "expand", "zoom", "reset", "chapter_zoom"],
+      "description": "Graph action to perform when entering this step.",
+      "default": "focus"
+    },
+    "cameraPreset": {
+      "type": "string",
+      "enum": ["tight", "wide", "archipelago"],
+      "description": "Camera/zoom preset for this step.",
+      "default": "tight"
+    },
+    "edgeMode": {
+      "type": "string",
+      "enum": ["none", "primary", "all"],
+      "description": "Which edges to display in this step. 'none' = nodes only. 'primary' = direct neighbor edges. 'all' = full edge set.",
+      "default": "primary"
+    },
+    "secondaryDepth": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Hop depth for secondary nodes shown alongside focal nodes.",
+      "default": 1
+    },
+    "chapterFilter": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "description": "If set, restricts displayed nodes to this chapter index only."
+    },
+    "typeFilter": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Entity type names to display in this step (others are hidden). Empty array = show all types."
+    }
+  },
+
+  "examples": [
+    {
+      "id": "governance_crisis_cve2018_step_1",
+      "presetId": "governance_crisis_bitcoin_cve2018",
+      "order": 1,
+      "headline": "September 2018: A critical bug is silently fixed",
+      "headlineFr": "Septembre 2018 : un bug critique est corrigé en silence",
+      "body": "CVE-2018-17144 was a critical inflation vulnerability in Bitcoin Core. Its disclosure and fix were coordinated privately among a small group of developers — without public announcement, forum post, or BIP.",
+      "bridgeEntityNames": ["CVE-2018-17144", "Bitcoin Core", "Wladimir van der Laan"],
+      "graphAction": "focus",
+      "cameraPreset": "tight",
+      "edgeMode": "primary",
+      "secondaryDepth": 1,
+      "chapterFilter": 3
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/decision-trace",
+  "title": "DecisionTrace",
+  "description": "Schema for DecisionTrace objects — machine-readable records of architectural and editorial decisions about the knowledge graph, public site, and research infrastructure. Stored in workspace/decisions/traces/ as individual JSON files (one per decision). NOT a canonical graph entity type — purely workspace metadata.",
+  "type": "object",
+  "required": ["id", "decisionType", "title", "rationale", "date", "status"],
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this decision. Convention: YYYY-MM-DD_short-slug",
+      "examples": ["2026-04-04_research-infrastructure-restructure", "2026-03-28_v96-graph-release"]
+    },
+    "decisionType": {
+      "type": "string",
+      "enum": [
+        "entity_added",
+        "entity_merged",
+        "entity_removed",
+        "relation_requalified",
+        "type_created",
+        "patch_applied",
+        "ui_change",
+        "schema_change",
+        "narrative_change",
+        "architecture_decision",
+        "graph_version_release"
+      ],
+      "description": "Category of decision."
+    },
+    "title": {
+      "type": "string",
+      "description": "Short descriptive title of the decision.",
+      "maxLength": 200
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Full explanation of why this decision was made. Should include: the problem it addresses, alternatives considered, and why this approach was chosen."
+    },
+    "author": {
+      "type": "string",
+      "description": "Person or agent that made this decision.",
+      "examples": ["mael-rolland.eth", "claude-agent", "eve-chiapello"]
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date of the decision (YYYY-MM-DD)."
+    },
+    "affectedEntities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "GRC-20 entity IDs affected by this decision (optional)."
+    },
+    "affectedFiles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Repository file paths affected by this decision.",
+      "examples": ["grc20-these-mael-rolland-v96.json", "graphe.html", "workspace/schemas/status-model.json"]
+    },
+    "relatedPatch": {
+      "type": "string",
+      "description": "Patch filename if this decision corresponds to a patch application (e.g., 'patch_1a_fix_cited_in.json')."
+    },
+    "relatedGraphVersion": {
+      "type": "string",
+      "description": "Graph version produced or affected by this decision (e.g., 'v96', 'v97')."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "applied", "reverted"],
+      "description": "Whether this decision has been implemented. 'proposed' = documented but not enacted. 'applied' = implemented. 'reverted' = reversed."
+    },
+    "revertedBy": {
+      "type": "string",
+      "description": "ID of the DecisionTrace that reverted this decision (if status is 'reverted')."
+    },
+    "precedents": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of prior DecisionTrace objects that informed or led to this decision."
+    },
+    "consequences": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of DecisionTrace objects that were triggered by or follow from this decision."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text supplementary notes, open questions, or future considerations."
+    }
+  },
+
+  "examples": [
+    {
+      "id": "2026-04-04_research-infrastructure-restructure",
+      "decisionType": "architecture_decision",
+      "title": "Introduce workspace/ authoring layer and two-layer architecture",
+      "rationale": "The repository lacked a clear separation between the authoring/workshop layer and the public publication layer. Patch files, audit documents, migration scripts, and public site assets were all co-located at the root level. The runbook (docs/sourcequote-migration-runbook.md) referenced scripts that did not exist. This decision introduces workspace/ as the authoring layer and public/exports/ as the publication output target, following a local-first, file-first architecture.",
+      "author": "mael-rolland.eth",
+      "date": "2026-04-04",
+      "affectedFiles": [
+        "workspace/",
+        "public/exports/",
+        "package.json"
+      ],
+      "status": "applied",
+      "notes": "Phase 1 only. No file moves, no canonical graph rewrites, no public site changes."
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/validation-event",
+  "title": "ValidationEvent",
+  "description": "Schema for ValidationEvent objects — records of validation actions performed on graph entities, relations, SourceQuote objects, or Claims. Enables tracking of who validated what, when, and with what result. Provisional workspace-layer format; not yet wired to canonical graph.",
+  "type": "object",
+  "required": ["id", "targetId", "targetType", "validator", "date", "result"],
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier. Convention: val_{YYYYMMDD}_{targetId_short}.",
+      "examples": ["val_20260404_fb6106"]
+    },
+    "targetId": {
+      "type": "string",
+      "description": "ID of the entity, relation, SourceQuote, or Claim being validated."
+    },
+    "targetType": {
+      "type": "string",
+      "enum": ["entity", "relation", "source_quote", "claim", "patch", "narrative_preset"],
+      "description": "Type of object being validated."
+    },
+    "targetName": {
+      "type": "string",
+      "description": "Human-readable name of the validated object (for quick identification)."
+    },
+    "validator": {
+      "type": "string",
+      "description": "Name or identifier of the person or agent performing validation.",
+      "examples": ["mael-rolland.eth", "eve-chiapello", "claude-agent"]
+    },
+    "validatorType": {
+      "type": "string",
+      "enum": ["human", "agent", "automated"],
+      "description": "Whether the validator is a human, AI agent, or automated script.",
+      "default": "human"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the validation event (YYYY-MM-DD)."
+    },
+    "scope": {
+      "type": "string",
+      "description": "What aspect of the target was validated. Examples: 'quoteText accuracy', 'page number', 'relation type', 'entity classification'."
+    },
+    "result": {
+      "type": "string",
+      "enum": ["confirmed", "corrected", "contested", "rejected", "deferred"],
+      "description": "Outcome of validation. 'confirmed' = valid as-is. 'corrected' = valid after correction. 'contested' = has unresolved issues. 'rejected' = invalid/incorrect. 'deferred' = needs more information."
+    },
+    "correction": {
+      "type": "string",
+      "description": "If result is 'corrected', describe what was changed."
+    },
+    "comment": {
+      "type": "string",
+      "description": "Free-text validation notes, reasoning, or open questions."
+    },
+    "relatedDecisionId": {
+      "type": "string",
+      "description": "ID of a DecisionTrace triggered by this validation (if applicable)."
+    }
+  },
+
+  "examples": [
+    {
+      "id": "val_20260404_fb6106",
+      "targetId": "fb6106526ebd4d8caa5d9eb4ea39e080",
+      "targetType": "source_quote",
+      "targetName": "Quote — gouvernance sur l'infrastructure conflictuelle et polycentrique",
+      "validator": "mael-rolland.eth",
+      "validatorType": "human",
+      "date": "2026-04-04",
+      "scope": "quoteText accuracy and page number",
+      "result": "confirmed",
+      "comment": "Verbatim match verified against PDF p.336."
+    }
+  ]
+}

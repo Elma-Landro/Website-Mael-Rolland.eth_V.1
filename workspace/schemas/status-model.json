@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace/schemas/status-model",
+  "title": "Status Model",
+  "description": "Canonical trust and lifecycle status definitions for all knowledge graph objects. All v96 legacy entities are interpreted as 'legacy_canonical' by default — no bulk annotation required.",
+  "version": "1.0.0",
+  "generated_at": "2026-04-04",
+
+  "statuses": {
+    "legacy_canonical": {
+      "label": "Legacy Canonical",
+      "description": "Content inherited from grc20-these-mael-rolland-v96.json. Assumed valid as a scholarly baseline. Not individually reviewed under the new evidence framework. Default interpretation for all v96 entities and relations.",
+      "public": true,
+      "internal": false,
+      "applies_to": ["entity", "relation"],
+      "promoted_from": null,
+      "promotes_to": ["validated", "needs_review", "contested"]
+    },
+    "raw": {
+      "label": "Raw",
+      "description": "Extracted or imported from source material. Not yet processed, normalized, or linked to the graph.",
+      "public": false,
+      "internal": true,
+      "applies_to": ["entity", "evidence", "claim"],
+      "promoted_from": null,
+      "promotes_to": ["extracted"]
+    },
+    "extracted": {
+      "label": "Extracted",
+      "description": "Processed from raw material. Normalized (deduplication, name resolution). Not yet linked to graph entities.",
+      "public": false,
+      "internal": true,
+      "applies_to": ["entity", "evidence", "claim"],
+      "promoted_from": ["raw"],
+      "promotes_to": ["linked"]
+    },
+    "linked": {
+      "label": "Linked",
+      "description": "Connected to at least one graph entity or section. Relations established but not yet validated.",
+      "public": false,
+      "internal": true,
+      "applies_to": ["entity", "evidence", "relation", "claim"],
+      "promoted_from": ["extracted"],
+      "promotes_to": ["needs_review", "validated"]
+    },
+    "needs_review": {
+      "label": "Needs Review",
+      "description": "Flagged for human or agent review. May have inconsistencies, missing fields, or uncertain evidence.",
+      "public": false,
+      "internal": true,
+      "applies_to": ["entity", "relation", "evidence", "claim"],
+      "promoted_from": ["linked", "legacy_canonical"],
+      "promotes_to": ["validated", "contested", "deprecated"]
+    },
+    "validated": {
+      "label": "Validated",
+      "description": "Explicitly reviewed and confirmed by a human or qualified agent review. Evidence has been verified.",
+      "public": true,
+      "internal": false,
+      "applies_to": ["entity", "relation", "evidence", "claim", "narrative"],
+      "promoted_from": ["linked", "needs_review", "legacy_canonical"],
+      "promotes_to": ["published", "contested"]
+    },
+    "contested": {
+      "label": "Contested",
+      "description": "Has unresolved alternative interpretations, conflicting sources, or documented disagreement. Visible in public UI with caveat.",
+      "public": true,
+      "internal": false,
+      "applies_to": ["entity", "relation", "claim"],
+      "promoted_from": ["validated", "needs_review"],
+      "promotes_to": ["validated", "deprecated"]
+    },
+    "published": {
+      "label": "Published",
+      "description": "Included in a public static export snapshot (public/exports/). Visible to public without qualification.",
+      "public": true,
+      "internal": false,
+      "applies_to": ["entity", "relation", "evidence", "narrative"],
+      "promoted_from": ["validated"],
+      "promotes_to": []
+    },
+    "deprecated": {
+      "label": "Deprecated",
+      "description": "Superseded by a newer version, merged into another entity, or withdrawn. Retained for lineage. Not included in exports.",
+      "public": false,
+      "internal": true,
+      "applies_to": ["entity", "relation", "evidence", "claim", "patch"],
+      "promoted_from": ["needs_review", "contested"],
+      "promotes_to": []
+    }
+  },
+
+  "promotion_rules": {
+    "default_for_v96_content": "legacy_canonical",
+    "default_for_new_workspace_objects": "raw",
+    "auto_publish_requires": ["validated"],
+    "public_statuses": ["legacy_canonical", "validated", "contested", "published"],
+    "internal_only_statuses": ["raw", "extracted", "linked", "needs_review", "deprecated"]
+  },
+
+  "evidence_status_mapping": {
+    "note": "The existing 'evidenceStatus' attribute on SourceQuote entities maps approximately to these statuses. Mapping is for reference; no bulk rewrite is performed.",
+    "existing_values": {
+      "SUPPORTED": "validated",
+      "TODO_VERIFY": "needs_review",
+      "UNRESOLVED": "needs_review",
+      "PROPOSED_REVIEW": "needs_review"
+    }
+  },
+
+  "applies_to_objects": {
+    "graph_entity": "Status on an entity in the GRC-20 canonical graph",
+    "graph_relation": "Status on a relation in the GRC-20 canonical graph",
+    "evidence": "Status on a SourceQuote or working evidence object",
+    "claim": "Status on a workspace Claim object",
+    "narrative": "Status on a NarrativePreset or NarrativeStep"
+  }
+}
