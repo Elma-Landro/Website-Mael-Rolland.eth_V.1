@@ -1,6 +1,6 @@
 # Workshop Export Dry-Run (manifest-driven, non-destructive)
 
-Generated: 2026-04-04T19:49:08.192Z
+Generated: 2026-04-04T21:33:45.599Z
 
 ## Guarantees
 - No canonical graph file is modified.
