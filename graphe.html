@@ -15,6 +15,7 @@
 <script src="graphe.panels.js"></script>
 <script src="graphe.panel-render.js"></script>
 <script src="graphe.ui-panel.js"></script>
+<script src="graphe.ui-panel-actions.js"></script>
 <script src="graphe.ui-filters.js"></script>
 <script src="graphe.ui-search.js"></script>
 <script src="graphe.ui-relations-modal.js"></script>
@@ -4981,6 +4982,19 @@ const UI = (() => {
   const uiFilters = window.createGrapheUiFilters({ document, State, Graph, TYPE_COLORS });
   const uiSearch = window.createGrapheUiSearch({ document, State, TYPE_COLORS, escHtml });
   const uiRelationsModal = window.createGrapheUiRelationsModal({ document, State, Modals });
+  // Action wiring delegated to graphe.ui-panel-actions.js (see GRAPH_PANEL_DEEPER_CHECKPOINT.md).
+  // Arrow-function callbacks allow hoisted function declarations (selectEntity, openEditModal, etc.)
+  // to be safely captured even though PanelActions is instantiated before their source position.
+  const PanelActions = window.createGrapheUiPanelActions({
+    document,
+    State,
+    Modals,
+    onSelectEntity: (id) => selectEntity(id),
+    onEditEntity: (id) => openEditModal(id),
+    onAddRelation: (id) => openAddRelationModal(id),
+    onExecuteDeleteEntity: (id) => Editor.deleteEntity(id),
+    onExecuteDeleteRelation: (relIdx) => Editor.deleteRelation(relIdx),
+  });
 
   function renderTypeFilters() {
     return uiFilters.renderTypeFilters();
@@ -4999,39 +5013,8 @@ const UI = (() => {
 
     // HTML building delegated to graphe.ui-panel.js (pure, no DOM/events)
     body.innerHTML = UIPanelRenderer.buildPanelBodyHtml(id);
-
-    // Event listeners (intentionally kept here — see GRAPH_PANEL_DEEPER_CHECKPOINT.md)
-    // selectEntity, confirmDeleteRelation, openEditModal, Editor calls all remain
-    // inline because they require Graph, Editor, and UI coordination.
-    body.querySelectorAll('.panel-rel-row').forEach(row => {
-      row.addEventListener('click', e => {
-        if (e.target.classList.contains('panel-rel-del')) {
-          const idx = parseInt(e.target.dataset.relidx);
-          confirmDeleteRelation(idx);
-          e.stopPropagation();
-          return;
-        }
-        const gotoId = row.dataset.goto;
-        if (gotoId && State.maps.entities[gotoId]) {
-          selectEntity(gotoId);
-        }
-      });
-    });
-
-    document.getElementById('panel-btn-edit').addEventListener('click', () => openEditModal(id));
-    document.getElementById('panel-btn-addrel').addEventListener('click', () => {
-      openAddRelationModal(id);
-    });
-    document.getElementById('panel-btn-delete').addEventListener('click', () => {
-      const rels = (State.maps.outgoing[id] || []).length + (State.maps.incoming[id] || []).length;
-      document.getElementById('confirm-delete-msg').textContent =
-        `Supprimer « ${entity.name} » ? Cette action supprimera aussi ${rels} relation(s) liée(s).`;
-      document.getElementById('confirm-delete-btn').onclick = () => {
-        Editor.deleteEntity(id);
-        Modals.close('modal-confirm-delete');
-      };
-      Modals.open('modal-confirm-delete');
-    });
+    // Action wiring delegated to graphe.ui-panel-actions.js (see GRAPH_PANEL_DEEPER_CHECKPOINT.md)
+    PanelActions.wirePanel(body, id);
   }
 
   function clearPanel() {
@@ -5134,18 +5117,7 @@ const UI = (() => {
   }
 
   function confirmDeleteRelation(relIdx) {
-    const rel = State.data.relations[relIdx];
-    if (!rel) return;
-    const rt = State.maps.relTypes[rel.type];
-    const from = State.maps.entities[rel.from];
-    const to = State.maps.entities[rel.to];
-    document.getElementById('confirm-delete-msg').textContent =
-      `Supprimer la relation « ${rt ? rt.name : rel.type} » de « ${from ? from.name : rel.from} » vers « ${to ? to.name : rel.to} » ?`;
-    document.getElementById('confirm-delete-btn').onclick = () => {
-      Editor.deleteRelation(relIdx);
-      Modals.close('modal-confirm-delete');
-    };
-    Modals.open('modal-confirm-delete');
+    PanelActions.confirmDeleteRelation(relIdx);
   }
 
   return {
