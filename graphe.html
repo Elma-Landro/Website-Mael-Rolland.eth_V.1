@@ -2238,7 +2238,7 @@ const State = window.createGrapheState();
 //  HELPERS (externalized, with safe fallback)
 // ─────────────────────────────────────────────────────────
 const escHtml = window.GrapheHelpers?.escHtml || ((str) => {
-  if (!str) return '';
+  if (str == null) return '';
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 });
 

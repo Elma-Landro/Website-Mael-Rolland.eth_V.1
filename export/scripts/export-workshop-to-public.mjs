@@ -11,7 +11,7 @@ import path from 'path';
 const args = process.argv.slice(2);
 const getArg = (name, fallback) => {
   const idx = args.indexOf(name);
-  return idx >= 0 ? args[idx + 1] : fallback;
+  return (idx >= 0 && args[idx + 1] !== undefined) ? args[idx + 1] : fallback;
 };
 
 const inputCanonical = getArg('--canonical', './grc20-these-mael-rolland-v96.json');

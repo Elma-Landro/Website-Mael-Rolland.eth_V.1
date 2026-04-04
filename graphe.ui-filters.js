@@ -23,12 +23,28 @@
         const item = document.createElement('div');
         item.className = 'type-filter-item';
         item.style.opacity = hidden ? '0.4' : '1';
-        item.innerHTML = `
-        <input type="checkbox" ${hidden ? '' : 'checked'} data-typename="${t.name}" style="display:none">
-        <div class="type-dot" style="background:${color}"></div>
-        <span class="type-label">${t.name}</span>
-        <span class="type-count">${count}</span>
-      `;
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = !hidden;
+        checkbox.dataset.typename = t.name;
+        checkbox.style.display = 'none';
+        item.appendChild(checkbox);
+
+        const dot = document.createElement('div');
+        dot.className = 'type-dot';
+        dot.style.background = color;
+        item.appendChild(dot);
+
+        const labelEl = document.createElement('span');
+        labelEl.className = 'type-label';
+        labelEl.textContent = t.name;
+        item.appendChild(labelEl);
+
+        const countEl = document.createElement('span');
+        countEl.className = 'type-count';
+        countEl.textContent = String(count);
+        item.appendChild(countEl);
         item.addEventListener('click', () => {
           if (State.hiddenTypes.has(t.name)) State.hiddenTypes.delete(t.name);
           else State.hiddenTypes.add(t.name);

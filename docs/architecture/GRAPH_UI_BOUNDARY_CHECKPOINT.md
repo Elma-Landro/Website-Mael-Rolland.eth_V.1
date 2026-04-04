@@ -7,11 +7,15 @@ Scope: documentation-only checkpoint after helper/state/validator/modals/panel-c
 
 This checkpoint focuses on UI-side logic still inline in `graphe.html` after module extractions.
 
-### In-scope remaining UI blocks
-- `UI.renderTypeFilters` (type counting + DOM rendering + click wiring to hidden types + filter apply).
-- `UI.renderPanel` main body (panel content assembly, relation grouping, action button wiring, delete confirmations).
-- UI utility methods still tied to modals/forms/search (`openAddEntityModal`, `openAddRelationModal`, `openEditModal`, `setupEntitySearch`, `confirmDeleteRelation`).
-- Large DOMContentLoaded UI/event wiring block for menus, filters, form actions, validation modal rendering, and panel-triggered flows.
+### In-scope remaining UI blocks (at time of writing)
+- `UI.renderTypeFilters` — **now extracted** to `graphe.ui-filters.js`; stub remains in `UI`.
+- `UI.renderPanel` main body — **now extracted** (HTML builder to `graphe.ui-panel.js`, action wiring to `graphe.ui-panel-actions.js`); `renderPanel` is now a 10-line coordinator.
+- UI form/modal helpers (`openAddEntityModal`, `openEditModal`, `addAttrRow`, `getAttrRows`) — **now extracted** to `graphe.ui-entity-forms.js`.
+- `openAddRelationModal` — delegated to `graphe.ui-relations-modal.js`.
+- `confirmDeleteRelation` — delegated to `graphe.ui-panel-actions.js`.
+- `selectEntity` — remains inline; depends on `Graph.cy` (Graph not yet extracted).
+- `clearPanel` — remains inline; 3-line DOM reset, too small to extract alone.
+- Large DOMContentLoaded UI/event wiring block — intentionally untouched.
 
 ### Already extracted (context)
 - Helpers: `graphe.helpers.js`
@@ -23,18 +27,10 @@ This checkpoint focuses on UI-side logic still inline in `graphe.html` after mod
 
 ## 2) Boundary classification by extraction risk
 
-## A. Low-risk extractable next
+## A. Low-risk extractable next (updated — prior items completed)
 
-### A1. `renderTypeFilters` boundary (recommended next)
-Why low risk:
-- Small, self-contained rendering loop.
-- Depends on known inputs (`State.data`, `State.hiddenTypes`, `TYPE_COLORS`) and one side effect (`Graph.applyFilters`).
-- Already called from clear points (`onDataLoaded`, filter buttons, undo refresh) and has a clean UI purpose.
-
-Extraction shape:
-- Keep behavior identical.
-- Move into a small `graphe.ui-filters.js` factory with explicit deps (`State`, `Graph`, `TYPE_COLORS`, `document`).
-- Preserve same call pattern via `UI.renderTypeFilters()` shim if needed.
+### A1. `renderTypeFilters` boundary — **DONE** (`graphe.ui-filters.js`)
+Extracted with safe DOM construction; `UI.renderTypeFilters` is now a stub.
 
 ### A2. Validation report modal HTML formatter (optional low risk)
 - The small inline formatter in the validate button handler can be pulled into a pure formatter helper.
@@ -67,18 +63,23 @@ Extraction shape:
 - Scrolly mode toggles and story panel interactions share runtime controls with toolbar and panel behavior.
 - Deferred by design until story/scrolly phase.
 
-## 3) Recommended next step after this checkpoint
+## 3) Status after child branch `feat/research-architecture-vnext-panel-deeper`
 
-### Recommendation: extract **renderTypeFilters / UI filter boundary** next.
+All medium-risk UI surfaces have been extracted. The `UI` IIFE now contains only its irreducible coordination core.
 
-Reasoning:
-1. It is the cleanest remaining UI-only surface with minimal coupling footprint.
-2. It gives immediate reduction in `UI` inline size without entering story/scrolly or graph/layout internals.
-3. It provides a stable pattern for future `UI` modularization (factory + dependency injection) before touching medium-risk panel rendering or search forms.
+Completed extractions (beyond original checkpoint scope):
+- `graphe.ui-panel.js` — pure panel body HTML builder
+- `graphe.ui-panel-actions.js` — post-render action wiring with callback injection
+- `graphe.ui-entity-forms.js` — entity form/modal helpers
+
+Remaining inline by design:
+- `selectEntity` — calls `Graph.cy`; requires Graph extraction first.
+- `clearPanel` — 3-line DOM reset; too small to extract alone.
+- `DOMContentLoaded` wiring block — composition root; out of scope.
 
 ## 4) What to defer intentionally
 
-- Full `UI.renderPanel` extraction (keep current in-place structure).
+- `selectEntity` extraction (requires Graph module boundary first).
 - DOMContentLoaded-wide extraction.
 - Story/scrolly extraction.
 - Graph/layout extraction.

@@ -21,7 +21,14 @@
           const color = TYPE_COLORS[typeName] || '#64748b';
           const item = document.createElement('div');
           item.style.cssText = 'padding:6px 10px;cursor:pointer;font-size:0.82em;display:flex;gap:6px;align-items:center;';
-          item.innerHTML = `<div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0"></div>${escHtml(e.name)}<span style="color:var(--text2);font-size:0.85em">${typeName}</span>`;
+          const dot = document.createElement('div');
+          dot.style.cssText = `width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0`;
+          item.appendChild(dot);
+          item.appendChild(document.createTextNode(e.name));
+          const typeSpan = document.createElement('span');
+          typeSpan.style.cssText = 'color:var(--text2);font-size:0.85em';
+          typeSpan.textContent = typeName;
+          item.appendChild(typeSpan);
           item.addEventListener('mouseenter', () => { item.style.background = 'var(--bg2)'; });
           item.addEventListener('mouseleave', () => { item.style.background = ''; });
           item.addEventListener('click', () => {

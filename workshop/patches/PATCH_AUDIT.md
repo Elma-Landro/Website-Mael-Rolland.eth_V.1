@@ -4,7 +4,7 @@ Generated: 2026-04-04T13:41:28.138Z
 
 ## Scope
 - Root patch JSON artifacts (`patch*.json`, `new_relations_patch.json`, `grc20_v91_migration_report.json`)
-- `patches/` JSON artifacts
+- `workshop/patches/` JSON artifacts
 - `Migration/` bundle and helper artifacts
 - Root and sourcequote migration scripts under `scripts/` + `apply_v91_migration.py`
 

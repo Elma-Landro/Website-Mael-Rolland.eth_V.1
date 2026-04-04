@@ -4,7 +4,7 @@
  */
 (function attachGrapheHelpers(globalObj) {
   function escHtml(str) {
-    if (!str) return '';
+    if (str == null) return '';
     return String(str)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')

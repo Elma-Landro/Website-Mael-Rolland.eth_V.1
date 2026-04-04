@@ -168,6 +168,29 @@ function collectFamilyStatus(policy) {
 
   for (const family of policy.families) {
     const sourcePath = typeof family.sourcePath === 'string' ? family.sourcePath : '';
+
+    // Guard: an empty sourcePath would resolve to ROOT, scanning the entire repo.
+    // Skip such families and log them clearly rather than producing misleading counts.
+    if (!sourcePath) {
+      console.warn(`[dry-run] skipping family "${family.id || 'unknown'}": sourcePath is empty or missing`);
+      familyReports.push({
+        id: family.id || 'unknown',
+        objectFamily: family.label || family.id || 'unknown',
+        path: 'unknown',
+        fileCount: 0,
+        parseErrors: 0,
+        statusField: typeof family.statusField === 'string' ? family.statusField : 'status',
+        statusBreakdown: [],
+        allowedStatusesForExportInPrinciple: Array.isArray(family.allowedStatusesForExportInPrinciple) ? family.allowedStatusesForExportInPrinciple : [],
+        visibility: family.visibility || 'unknown',
+        expectedOutput: family.expectedOutput || 'unknown',
+        notes: 'skipped: sourcePath is empty or missing — configure family.sourcePath to enable scanning',
+        eligibleCount: 0,
+        readiness: 'no_artifacts_detected'
+      });
+      continue;
+    }
+
     const sourceDir = path.join(ROOT, sourcePath);
     const files = listJsonFiles(sourceDir);
 

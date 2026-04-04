@@ -11,7 +11,7 @@
 
     function setLauncherLabel() {
       if (!launcher) return;
-      const hasSelection = Boolean(State.selectedId && State.maps.entities[State.selectedId]);
+      const hasSelection = Boolean(State.selectedId && State.maps?.entities?.[State.selectedId]);
       launcher.classList.toggle('hidden', !hasSelection);
       launcher.title = panel.classList.contains('is-closed') ? 'Ouvrir le panneau d’information' : 'Ramener le panneau';
       launcher.textContent = panel.classList.contains('is-closed') ? 'ⓘ' : '◫';

@@ -28,8 +28,13 @@ All of these expose global symbols on `window` (factory functions or helper name
 | 3 | `graphe.validation-export.js` | `window.createGrapheValidator`, `window.createGrapheExporter` | `Validator`, `Exporter` initialization |
 | 4 | `graphe.modals.js` | `window.createGrapheModals` | `Modals` initialization |
 | 5 | `graphe.panels.js` | `window.createGraphePanelController` | `PanelController` initialization |
-| 6 | `graphe.panel-render.js` | `window.GraphePanelRender` | `UI.renderPanel` helper calls |
-| 7 | `graphe.ui-filters.js` | `window.createGrapheUiFilters` | `uiFilters` init inside `UI` |
+| 6 | `graphe.panel-render.js` | `window.GraphePanelRender` | `UIPanelRenderer.buildPanelBodyHtml` |
+| 7 | `graphe.ui-panel.js` | `window.createGrapheUiPanel` | `UIPanelRenderer` init inside `UI` |
+| 8 | `graphe.ui-panel-actions.js` | `window.createGrapheUiPanelActions` | `PanelActions` init inside `UI` |
+| 9 | `graphe.ui-entity-forms.js` | `window.createGrapheUiEntityForms` | `EntityForms` init inside `UI` |
+| 10 | `graphe.ui-filters.js` | `window.createGrapheUiFilters` | `uiFilters` init inside `UI` |
+| 11 | `graphe.ui-search.js` | `window.createGrapheUiSearch` | `uiSearch` init inside `UI` |
+| 12 | `graphe.ui-relations-modal.js` | `window.createGrapheUiRelationsModal` | `uiRelationsModal` init inside `UI` |
 
 ## 3) Dependency map (module-level)
 
