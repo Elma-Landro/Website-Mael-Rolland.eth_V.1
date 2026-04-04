@@ -1,0 +1,25 @@
+{
+  "id": "sq-sample-thesis-description-v96",
+  "quoteText": "These de doctorat EHESS (2024) : gouvernance polycentrique de Bitcoin et Ethereum revelee par leurs crises.",
+  "sourceDocumentId": "canonical-entity-a078b1b274f74818a8c7f1abcfb3097f",
+  "page": null,
+  "chapter": null,
+  "section": null,
+  "paragraph": "entity.description.value",
+  "locator": "grc20-these-mael-rolland-v96.json#entities[id=a078b1b274f74818a8c7f1abcfb3097f].description.value",
+  "quoteType": "verbatim",
+  "speaker": null,
+  "language": "fr",
+  "exactnessStatus": "exact",
+  "status": "needs_review",
+  "linkedClaimIds": [
+    "claim-sample-thesis-scope-v96"
+  ],
+  "provenance": {
+    "createdBy": "workshop-bootstrap",
+    "createdAt": "2026-04-04T00:00:00Z",
+    "method": "canonical-graph-extraction",
+    "sourceGraph": "grc20-these-mael-rolland-v96.json"
+  },
+  "notes": "Minimal grounded SourceQuote sample for first evidence-to-claim linkage exercise."
+}

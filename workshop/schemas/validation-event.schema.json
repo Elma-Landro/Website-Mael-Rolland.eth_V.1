@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workshop/schemas/validation-event.schema.json",
+  "title": "ValidationEvent",
+  "type": "object",
+  "required": ["id", "validator", "date", "scope", "result"],
+  "properties": {
+    "id": { "type": "string" },
+    "validator": { "type": "string" },
+    "date": { "type": "string" },
+    "scope": { "type": "string" },
+    "result": { "type": "string" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,20 @@
+{
+  "id": "validation-sample-claim-thesis-scope-v96",
+  "validator": "workshop-bootstrap-review",
+  "date": "2026-04-04",
+  "scope": "claim:claim-sample-thesis-scope-v96|evidence:sq-sample-thesis-description-v96",
+  "result": "approved",
+  "comment": "Validated that claim-sample-thesis-scope-v96 explicitly links to sq-sample-thesis-description-v96 and that the quote locator points to the cited canonical entity description in v96.",
+  "status": "validated",
+  "checkedClaimIds": [
+    "claim-sample-thesis-scope-v96"
+  ],
+  "checkedEvidenceIds": [
+    "sq-sample-thesis-description-v96"
+  ],
+  "provenance": {
+    "method": "manual-cross-check",
+    "sourceGraph": "grc20-these-mael-rolland-v96.json",
+    "notes": "Evidence-chain traceability check in workshop layer only; no canonical mutation."
+  }
+}

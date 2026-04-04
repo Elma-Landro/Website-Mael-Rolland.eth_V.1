@@ -8,6 +8,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js" crossorigin="anonymous"></script>
+<script src="graphe.helpers.js"></script>
+<script src="graphe.state.js"></script>
+<script src="graphe.validation-export.js"></script>
+<script src="graphe.modals.js"></script>
+<script src="graphe.panels.js"></script>
+<script src="graphe.panel-render.js"></script>
+<script src="graphe.ui-filters.js"></script>
+<script src="graphe.ui-search.js"></script>
+<script src="graphe.ui-relations-modal.js"></script>
 <style>
 /* ─── GRC-20 Graph Editor — Charte mael-rolland.eth ──────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
@@ -2220,119 +2229,32 @@ function buildDisplayStratumMap(data) {
 // ─────────────────────────────────────────────────────────
 //  STATE
 // ─────────────────────────────────────────────────────────
-const State = (() => {
-  let _data = null;          // current working data
-  let _original = null;      // snapshot at load time
-  let _version = 2;
-  let _dirty = false;
-  let _selectedId = null;
-  let _hiddenTypes = new Set();
-  let _searchQ = '';
-  let _undoStack = [];
-  let _errors = [];
-
-  const maps = {
-    entities: {},   // id → entity
-    types: {},      // id → type obj
-    typeName: {},   // name → type obj
-    relTypes: {},   // id → relType obj
-    relTypeName:{}, // name → relType obj
-    outgoing: {},   // entityId → [relation …]
-    incoming: {},   // entityId → [relation …]
-  };
-
-  function buildMaps(data) {
-    maps.entities = {};
-    maps.types = {};
-    maps.typeName = {};
-    maps.relTypes = {};
-    maps.relTypeName = {};
-    maps.outgoing = {};
-    maps.incoming = {};
-    for (const t of data.types) {
-      maps.types[t.id] = t;
-      maps.typeName[t.name] = t;
-    }
-    for (const r of data.relation_types) {
-      maps.relTypes[r.id] = r;
-      maps.relTypeName[r.name] = r;
-    }
-    for (const e of data.entities) {
-      maps.entities[e.id] = e;
-      maps.outgoing[e.id] = [];
-      maps.incoming[e.id] = [];
-    }
-    for (const rel of data.relations) {
-      if (maps.outgoing[rel.from]) maps.outgoing[rel.from].push(rel);
-      if (maps.incoming[rel.to])   maps.incoming[rel.to].push(rel);
-    }
-  }
-
-  function load(data) {
-    _original = JSON.parse(JSON.stringify(data));
-    _data = JSON.parse(JSON.stringify(data));
-    _version = parseInt((data.space && data.space.version) || 2) || 2;
-    _dirty = false;
-    _undoStack = [];
-    _errors = [];
-    _selectedId = null;
-    buildMaps(_data);
-  }
-
-  function snapshot() {
-    _undoStack.push(JSON.parse(JSON.stringify(_data)));
-    if (_undoStack.length > 40) _undoStack.shift();
-    _dirty = true;
-  }
-
-  function undo() {
-    if (!_undoStack.length) return false;
-    _data = _undoStack.pop();
-    buildMaps(_data);
-    return true;
-  }
-
-  function getEntityTypeName(entity) {
-    if (!entity.types || !entity.types.length) return 'Unknown';
-    const tid = entity.types[0];
-    return maps.types[tid] ? maps.types[tid].name : 'Unknown';
-  }
-
-  function getEntityDesc(entity) {
-    if (!entity.description) return '';
-    return entity.description.value || '';
-  }
-
-  return {
-    get data() { return _data; },
-    get version() { return _version; },
-    get dirty() { return _dirty; },
-    get selectedId() { return _selectedId; },
-    set selectedId(v) { _selectedId = v; },
-    get hiddenTypes() { return _hiddenTypes; },
-    get searchQ() { return _searchQ; },
-    set searchQ(v) { _searchQ = v; },
-    get errors() { return _errors; },
-    set errors(v) { _errors = v; },
-    maps,
-    load, snapshot, undo,
-    getEntityTypeName, getEntityDesc,
-    get undoCount() { return _undoStack.length; },
-    bumpVersion() { _version++; },
-  };
-})();
+const State = window.createGrapheState();
 
 // ─────────────────────────────────────────────────────────
-//  ID GENERATOR  (nanoid-compatible 22 chars)
+//  HELPERS (externalized, with safe fallback)
 // ─────────────────────────────────────────────────────────
-function generateId() {
+const escHtml = window.GrapheHelpers?.escHtml || ((str) => {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+});
+
+const generateId = window.GrapheHelpers?.generateId || (() => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let id = '';
   const arr = new Uint8Array(22);
   crypto.getRandomValues(arr);
   for (let i = 0; i < 22; i++) id += chars[arr[i] % chars.length];
   return id;
-}
+});
+
+const normalizeRelationName = window.GrapheHelpers?.normalizeRelationName || ((v) => {
+  return (v || '').toString().trim().toLowerCase();
+});
+
+const canonicalizeRelationName = window.GrapheHelpers?.canonicalizeRelationName || ((v) => {
+  return normalizeRelationName(v).replace(/[^a-z0-9]/g, '');
+});
 
 // ─────────────────────────────────────────────────────────
 //  CYTOSCAPE GRAPH
@@ -5032,258 +4954,28 @@ const Editor = (() => {
 })();
 
 // ─────────────────────────────────────────────────────────
-//  VALIDATOR
+//  VALIDATOR + EXPORTER
 // ─────────────────────────────────────────────────────────
-const Validator = (() => {
-  function run() {
-    const data = State.data;
-    if (!data) return [];
-    const errors = [];
-    // Broken relations
-    for (let i = 0; i < data.relations.length; i++) {
-      const r = data.relations[i];
-      if (!State.maps.entities[r.from]) {
-        errors.push({ type: 'broken_rel', msg: `Relation #${i}: source introuvable (${r.from})`, relIdx: i });
-      }
-      if (!State.maps.entities[r.to]) {
-        errors.push({ type: 'broken_rel', msg: `Relation #${i}: cible introuvable (${r.to})`, relIdx: i });
-      }
-    }
-    // Duplicate names within same type
-    const nameByType = {};
-    for (const e of data.entities) {
-      const typeName = State.getEntityTypeName(e);
-      const key = typeName + '|' + e.name.toLowerCase().trim();
-      if (!nameByType[key]) nameByType[key] = [];
-      nameByType[key].push(e);
-    }
-    for (const [key, ents] of Object.entries(nameByType)) {
-      if (ents.length > 1) {
-        errors.push({ type: 'duplicate', msg: `Doublon : « ${ents[0].name} » (${ents.length}× dans ${key.split('|')[0]})`, ids: ents.map(e => e.id) });
-      }
-    }
-    // Empty types
-    for (const t of data.types) {
-      const count = data.entities.filter(e => e.types && e.types.includes(t.id)).length;
-      if (count === 0) errors.push({ type: 'empty_type', msg: `Type « ${t.name} » vide (aucune entité)` });
-    }
-    State.errors = errors;
-    return errors;
-  }
-
-  function updateBadge() {
-    const errs = State.errors.length;
-    const badge = document.getElementById('error-badge');
-    const statErr = document.getElementById('stat-errors');
-    badge.textContent = errs + (errs === 1 ? ' erreur' : ' erreurs');
-    if (errs === 0) {
-      badge.className = 'badge-error badge-ok';
-    } else {
-      badge.className = 'badge-error' + (errs > 5 ? '' : ' badge-warn');
-    }
-    badge.classList.remove('hidden');
-    statErr.textContent = errs;
-  }
-
-  return { run, updateBadge };
-})();
-
-// ─────────────────────────────────────────────────────────
-//  EXPORTER
-// ─────────────────────────────────────────────────────────
-const Exporter = (() => {
-  function exportJSON() {
-    const data = State.data;
-    if (!data) return;
-    State.bumpVersion();
-    const out = JSON.parse(JSON.stringify(data));
-    out.space = out.space || {};
-    out.space.version = String(State.version);
-    out.space.exported = new Date().toISOString();
-    const blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `grc20-these-mael-rolland-v${State.version}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-    document.getElementById('export-version').textContent = State.version;
-    toast(`Exporté : v${State.version}`, 'success');
-  }
-  return { exportJSON };
-})();
+const Validator = window.createGrapheValidator({ State, document });
+const Exporter = window.createGrapheExporter({ State, document, toast, BlobCtor: Blob, URLApi: URL });
 
 // ─────────────────────────────────────────────────────────
 //  MODALS
 // ─────────────────────────────────────────────────────────
-const Modals = (() => {
-  function open(id) {
-    document.getElementById(id).classList.remove('hidden');
-  }
-  function close(id) {
-    document.getElementById(id).classList.add('hidden');
-  }
-  function closeAll() {
-    document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.add('hidden'));
-  }
-  // Close on backdrop click
-  document.addEventListener('click', e => {
-    if (e.target.classList.contains('modal-backdrop')) closeAll();
-  });
-  return { open, close, closeAll };
-})();
+const Modals = window.createGrapheModals({ document });
 
-const PanelController = (() => {
-  let panel, launcher, titleEl, metaEl, dragHandle, grip;
-  let dragging = null;
-  let resizing = null;
-  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
-
-  function setLauncherLabel() {
-    if (!launcher) return;
-    const hasSelection = Boolean(State.selectedId && State.maps.entities[State.selectedId]);
-    launcher.classList.toggle('hidden', !hasSelection);
-    launcher.title = panel.classList.contains('is-closed') ? 'Ouvrir le panneau d’information' : 'Ramener le panneau';
-    launcher.textContent = panel.classList.contains('is-closed') ? 'ⓘ' : '◫';
-  }
-
-  function applyBounds(left, top, width, height) {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const minW = window.matchMedia('(max-width: 900px)').matches ? 220 : 230;
-    const minH = 170;
-    const maxW = Math.min(window.matchMedia('(max-width: 900px)').matches ? 360 : 380, vw - 20);
-    const maxH = Math.max(220, vh - 92);
-    const w = clamp(width, minW, maxW);
-    const h = clamp(height, minH, maxH);
-    panel.style.width = `${w}px`;
-    panel.style.height = `${h}px`;
-    panel.style.left = `${clamp(left, 8, vw - w - 8)}px`;
-    panel.style.top = `${clamp(top, 66, vh - h - 8)}px`;
-    panel.style.right = 'auto';
-    panel.style.bottom = 'auto';
-  }
-
-  function open() {
-    panel.classList.remove('is-closed');
-    panel.setAttribute('aria-hidden', 'false');
-    setLauncherLabel();
-  }
-  function close() {
-    panel.classList.add('is-closed');
-    panel.classList.remove('is-minimized');
-    panel.setAttribute('aria-hidden', 'true');
-    setLauncherLabel();
-  }
-  function minimize() {
-    panel.classList.toggle('is-minimized');
-  }
-  function focusPanel() { panel.style.zIndex = String(Date.now()); }
-
-  function setMeta(title, subtitle) {
-    if (titleEl) titleEl.textContent = title || 'Informations du nœud';
-    if (metaEl) metaEl.textContent = subtitle || '';
-  }
-
-  function init() {
-    panel = document.getElementById('detail-panel');
-    launcher = document.getElementById('btn-info-launcher');
-    titleEl = document.getElementById('detail-panel-title');
-    metaEl = document.getElementById('detail-panel-meta');
-    dragHandle = document.getElementById('btn-panel-drag');
-    grip = document.getElementById('panel-resize-grip');
-    if (!panel || !dragHandle || !grip) return;
-    applyBounds(window.innerWidth - 330, 84, 300, 470);
-    setLauncherLabel();
-    document.getElementById('btn-panel-close')?.addEventListener('click', close);
-    document.getElementById('btn-panel-minimize')?.addEventListener('click', minimize);
-    launcher?.addEventListener('click', () => {
-      open();
-      panel.classList.remove('is-minimized');
-      focusPanel();
-    });
-    panel.addEventListener('pointerdown', focusPanel);
-
-    dragHandle.addEventListener('pointerdown', e => {
-      e.preventDefault();
-      dragging = { id: e.pointerId, x: e.clientX, y: e.clientY, rect: panel.getBoundingClientRect() };
-      dragHandle.setPointerCapture(e.pointerId);
-    });
-    dragHandle.addEventListener('pointermove', e => {
-      if (!dragging || dragging.id !== e.pointerId) return;
-      applyBounds(
-        dragging.rect.left + (e.clientX - dragging.x),
-        dragging.rect.top + (e.clientY - dragging.y),
-        dragging.rect.width,
-        dragging.rect.height
-      );
-    });
-    dragHandle.addEventListener('pointerup', e => { if (dragging?.id === e.pointerId) dragging = null; });
-    dragHandle.addEventListener('pointercancel', e => { if (dragging?.id === e.pointerId) dragging = null; });
-
-    grip.addEventListener('pointerdown', e => {
-      e.preventDefault();
-      resizing = { id: e.pointerId, x: e.clientX, y: e.clientY, rect: panel.getBoundingClientRect() };
-      grip.setPointerCapture(e.pointerId);
-    });
-    grip.addEventListener('pointermove', e => {
-      if (!resizing || resizing.id !== e.pointerId) return;
-      applyBounds(
-        resizing.rect.left,
-        resizing.rect.top,
-        resizing.rect.width + (e.clientX - resizing.x),
-        resizing.rect.height + (e.clientY - resizing.y)
-      );
-    });
-    grip.addEventListener('pointerup', e => { if (resizing?.id === e.pointerId) resizing = null; });
-    grip.addEventListener('pointercancel', e => { if (resizing?.id === e.pointerId) resizing = null; });
-    window.addEventListener('resize', () => {
-      const rect = panel.getBoundingClientRect();
-      applyBounds(rect.left, rect.top, rect.width, rect.height);
-    });
-  }
-
-  return { init, open, close, minimize, setMeta, setLauncherLabel };
-})();
+const PanelController = window.createGraphePanelController({ document, window, State });
 
 // ─────────────────────────────────────────────────────────
 //  UI
 // ─────────────────────────────────────────────────────────
 const UI = (() => {
+  const uiFilters = window.createGrapheUiFilters({ document, State, Graph, TYPE_COLORS });
+  const uiSearch = window.createGrapheUiSearch({ document, State, TYPE_COLORS, escHtml });
+  const uiRelationsModal = window.createGrapheUiRelationsModal({ document, State, Modals });
 
   function renderTypeFilters() {
-    const data = State.data;
-    if (!data) return;
-    const container = document.getElementById('type-filters');
-    container.innerHTML = '';
-    // Count entities by type
-    const counts = {};
-    for (const e of data.entities) {
-      for (const tid of (e.types || [])) {
-        counts[tid] = (counts[tid] || 0) + 1;
-      }
-    }
-    for (const t of data.types) {
-      const color = TYPE_COLORS[t.name] || '#64748b';
-      const count = counts[t.id] || 0;
-      const hidden = State.hiddenTypes.has(t.name);
-      const item = document.createElement('div');
-      item.className = 'type-filter-item';
-      item.style.opacity = hidden ? '0.4' : '1';
-      item.innerHTML = `
-        <input type="checkbox" ${hidden ? '' : 'checked'} data-typename="${t.name}" style="display:none">
-        <div class="type-dot" style="background:${color}"></div>
-        <span class="type-label">${t.name}</span>
-        <span class="type-count">${count}</span>
-      `;
-      item.addEventListener('click', () => {
-        if (State.hiddenTypes.has(t.name)) State.hiddenTypes.delete(t.name);
-        else State.hiddenTypes.add(t.name);
-        renderTypeFilters();
-        Graph.applyFilters();
-      });
-      container.appendChild(item);
-    }
+    return uiFilters.renderTypeFilters();
   }
 
   function renderPanel(id) {
@@ -5303,22 +4995,7 @@ const UI = (() => {
 
     // ── Separate sources from regular attributes ──────────────────────
     const attrs = entity.attributes || {};
-    const sourceLinks = [];
-    const regularAttrs = [];
-    for (const [k, v] of Object.entries(attrs)) {
-      const val = typeof v === 'object' ? (v.value || '') : String(v);
-      if (/^(sourcePage|pdfPage|page|pageRef|pdfQuote)$/i.test(k)) {
-        const pageNum = parseInt(val);
-        if (!isNaN(pageNum)) {
-          sourceLinks.push(`<a class="panel-source-link" href="these-mael-rolland.pdf#page=${pageNum}" target="_blank" rel="noopener">📄 p.${pageNum}</a>`);
-        } else if (val.trim()) {
-          sourceLinks.push(`<span class="panel-source-link" style="cursor:default">${escHtml(val)}</span>`);
-        }
-      } else {
-        const isUrl = k.toLowerCase().includes('url') || k.toLowerCase().includes('website') || k.toLowerCase().includes('link') || val.startsWith('http');
-        regularAttrs.push({ k, val, isUrl });
-      }
-    }
+    const { sourceLinks, regularAttrs } = window.GraphePanelRender.splitPanelAttributes(attrs, escHtml);
 
     const sourcesHtml = sourceLinks.length
       ? `<details class="panel-details-block" open>
@@ -5327,16 +5004,7 @@ const UI = (() => {
          </details>`
       : '';
 
-    const attrsHtml = regularAttrs.length
-      ? `<details class="panel-details-block">
-           <summary>Attributs (${regularAttrs.length})</summary>
-           ${regularAttrs.map(({ k, val, isUrl }) => `
-             <div class="attr-row-inline">
-               <span class="attr-key-inline">${escHtml(k)}</span>
-               <span class="attr-val-inline">${isUrl ? `<a href="${escHtml(val)}" target="_blank" rel="noopener">${escHtml(val)}</a>` : escHtml(val)}</span>
-             </div>`).join('')}
-         </details>`
-      : '';
+    const attrsHtml = window.GraphePanelRender.buildAttrsHtml(regularAttrs, escHtml);
 
     // ── Relations groupées par type ───────────────────────────────────
     function relRow(rel, dir) {
@@ -5487,26 +5155,7 @@ const UI = (() => {
   }
 
   function openAddRelationModal(prefillFromId) {
-    const sel = document.getElementById('ar-type');
-    sel.innerHTML = '';
-    for (const rt of State.data.relation_types) {
-      const opt = document.createElement('option');
-      opt.value = rt.id; opt.textContent = rt.name;
-      sel.appendChild(opt);
-    }
-    document.getElementById('ar-from-id').value = '';
-    document.getElementById('ar-to-id').value = '';
-    document.getElementById('ar-from-preview').textContent = '';
-    document.getElementById('ar-to-preview').textContent = '';
-    document.getElementById('ar-from-search').value = '';
-    document.getElementById('ar-to-search').value = '';
-    if (prefillFromId && State.maps.entities[prefillFromId]) {
-      const e = State.maps.entities[prefillFromId];
-      document.getElementById('ar-from-id').value = prefillFromId;
-      document.getElementById('ar-from-search').value = e.name;
-      document.getElementById('ar-from-preview').textContent = `✓ ${e.name}`;
-    }
-    Modals.open('modal-add-relation');
+    return uiRelationsModal.openAddRelationModal(prefillFromId);
   }
 
   function openEditModal(id) {
@@ -5563,36 +5212,7 @@ const UI = (() => {
   }
 
   function setupEntitySearch(inputId, suggestId, hiddenId, previewId) {
-    const input = document.getElementById(inputId);
-    const suggest = document.getElementById(suggestId);
-    const hidden = document.getElementById(hiddenId);
-    const preview = document.getElementById(previewId);
-
-    input.addEventListener('input', () => {
-      const q = input.value.toLowerCase().trim();
-      suggest.innerHTML = '';
-      if (!q) { suggest.style.display = 'none'; return; }
-      const matches = State.data.entities.filter(e => e.name.toLowerCase().includes(q)).slice(0, 12);
-      if (!matches.length) { suggest.style.display = 'none'; return; }
-      matches.forEach(e => {
-        const typeName = State.getEntityTypeName(e);
-        const color = TYPE_COLORS[typeName] || '#64748b';
-        const item = document.createElement('div');
-        item.style.cssText = 'padding:6px 10px;cursor:pointer;font-size:0.82em;display:flex;gap:6px;align-items:center;';
-        item.innerHTML = `<div style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0"></div>${escHtml(e.name)}<span style="color:var(--text2);font-size:0.85em">${typeName}</span>`;
-        item.addEventListener('mouseenter', () => item.style.background = 'var(--bg2)');
-        item.addEventListener('mouseleave', () => item.style.background = '');
-        item.addEventListener('click', () => {
-          input.value = e.name;
-          hidden.value = e.id;
-          preview.textContent = `✓ ${e.name} [${typeName}]`;
-          suggest.style.display = 'none';
-        });
-        suggest.appendChild(item);
-      });
-      suggest.style.display = 'block';
-    });
-    input.addEventListener('blur', () => setTimeout(() => { suggest.style.display = 'none'; }, 200));
+    return uiSearch.setupEntitySearch(inputId, suggestId, hiddenId, previewId);
   }
 
   function confirmDeleteRelation(relIdx) {
@@ -5627,14 +5247,6 @@ function toast(msg, type='info') {
   t.textContent = msg;
   c.appendChild(t);
   setTimeout(() => t.remove(), 3000);
-}
-
-// ─────────────────────────────────────────────────────────
-//  UTILS
-// ─────────────────────────────────────────────────────────
-function escHtml(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // ─────────────────────────────────────────────────────────
@@ -5942,14 +5554,6 @@ const StoryMode = (() => {
       edge.data('name') ||
       ''
     ).toString();
-  }
-
-  function normalizeRelationName(v) {
-    return (v || '').toString().trim().toLowerCase();
-  }
-
-  function canonicalizeRelationName(v) {
-    return normalizeRelationName(v).replace(/[^a-z0-9]/g, '');
   }
 
   function buildStoryFocusOptions(step = {}) {

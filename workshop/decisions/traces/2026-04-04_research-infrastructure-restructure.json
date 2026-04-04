@@ -1,0 +1,21 @@
+{
+  "id": "decision-2026-04-04-research-infrastructure-restructure",
+  "decisionText": "Adopted a non-breaking workshop/public architecture scaffold while preserving the existing canonical graph and static public runtime.",
+  "decisionType": "architecture",
+  "author": "research-infrastructure-agent",
+  "date": "2026-04-04",
+  "rationale": "Repository review confirmed that grc20-these-mael-rolland-v96.json, graphe.html, and lecteur.html already provide a meaningful canonical scholarly base. The safe next step is additive scaffolding (docs, schemas, workshop templates, and linting) rather than runtime rewrites or canonical migrations.",
+  "affectedEntities": [
+    "grc20-these-mael-rolland-v96.json"
+  ],
+  "affectedRelations": [],
+  "affectedFiles": [
+    "docs/architecture/research-architecture-vnext.md",
+    "docs/architecture/schema-vnext.md",
+    "workshop/ARCHITECTURE_AUDIT.md",
+    "workshop/scripts/README.md",
+    "workshop/schemas/README.md",
+    "workshop/scripts/lint-workshop-artifacts.mjs"
+  ],
+  "status": "validated"
+}

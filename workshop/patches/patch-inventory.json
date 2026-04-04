@@ -1,0 +1,488 @@
+{
+  "generatedAt": "2026-04-04T13:41:28.138Z",
+  "mode": "documentary_inventory_only",
+  "caution": "Statuses are heuristic. unknown/needs_audit preferred where evidence is weak.",
+  "totals": {
+    "artifacts": 34,
+    "patch_json": 16,
+    "migration_script": 11,
+    "zip_bundle": 4,
+    "helper_script": 2,
+    "unknown": 1
+  },
+  "artifacts": [
+    {
+      "filename": "apply_v91_migration.py",
+      "path": "apply_v91_migration.py",
+      "artifactType": "migration_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "v90→v91",
+        "v91",
+        "v90"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "grc20_v91_migration_report.json",
+      "path": "grc20_v91_migration_report.json",
+      "artifactType": "patch_json",
+      "probableScope": "migration reporting",
+      "referencedVersion": [
+        "v90",
+        "v91"
+      ],
+      "probableStatus": "candidate_applied",
+      "relatedScripts": [
+        "apply_v91_migration.py"
+      ],
+      "notes": "report artifact indicates a migration run occurred",
+      "confidence": "medium"
+    },
+    {
+      "filename": "APPLY_WITH_AGENT.md",
+      "path": "Migration/APPLY_WITH_AGENT.md",
+      "artifactType": "helper_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "brief_sourcequote_scrollytelling_bloc_unique.docx",
+      "path": "Migration/brief_sourcequote_scrollytelling_bloc_unique.docx",
+      "artifactType": "helper_script",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/apply-sourcequote-phases.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "D",
+      "path": "Migration/D",
+      "artifactType": "unknown",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "sourcequote_effective_patch_phase1.zip",
+      "path": "Migration/sourcequote_effective_patch_phase1.zip",
+      "artifactType": "zip_bundle",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/apply-sourcequote-phases.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "sourcequote_effective_patch_phase2.zip",
+      "path": "Migration/sourcequote_effective_patch_phase2.zip",
+      "artifactType": "zip_bundle",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/apply-sourcequote-phases.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "sourcequote_effective_patch_phase3.zip",
+      "path": "Migration/sourcequote_effective_patch_phase3.zip",
+      "artifactType": "zip_bundle",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/apply-sourcequote-phases.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "sourcequote_migration_foundation.zip",
+      "path": "Migration/sourcequote_migration_foundation.zip",
+      "artifactType": "zip_bundle",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/apply-sourcequote-phases.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "new_relations_patch.json",
+      "path": "new_relations_patch.json",
+      "artifactType": "patch_json",
+      "probableScope": "relation augmentation",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "candidate_pending",
+      "relatedScripts": [],
+      "notes": "contains unresolved placeholders",
+      "confidence": "medium"
+    },
+    {
+      "filename": "patch_1a_fix_cited_in.json",
+      "path": "patch_1a_fix_cited_in.json",
+      "artifactType": "patch_json",
+      "probableScope": "chapter citation repair",
+      "referencedVersion": [
+        "v72"
+      ],
+      "probableStatus": "superseded_possible",
+      "relatedScripts": [],
+      "notes": "targets an older graph baseline",
+      "confidence": "medium"
+    },
+    {
+      "filename": "patch_1b_missing_cited_in.json",
+      "path": "patch_1b_missing_cited_in.json",
+      "artifactType": "patch_json",
+      "probableScope": "chapter citation repair",
+      "referencedVersion": [
+        "v72"
+      ],
+      "probableStatus": "superseded_possible",
+      "relatedScripts": [],
+      "notes": "targets an older graph baseline",
+      "confidence": "medium"
+    },
+    {
+      "filename": "patch_2a_sourcequote_subsections.json",
+      "path": "patch_2a_sourcequote_subsections.json",
+      "artifactType": "patch_json",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "v73"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/apply-sourcequote-phases.mjs",
+        "scripts/sourcequote-migration/normalize.mjs",
+        "scripts/sourcequote-migration/resolve.mjs",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/report.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_2b_central_arguments.json",
+      "path": "patch_2b_central_arguments.json",
+      "artifactType": "patch_json",
+      "probableScope": "thesis section central arguments",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_2c_definitions.json",
+      "path": "patch_2c_definitions.json",
+      "artifactType": "patch_json",
+      "probableScope": "definition attributes enrichment",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_3a_intro_subsections.json",
+      "path": "patch_3a_intro_subsections.json",
+      "artifactType": "patch_json",
+      "probableScope": "intro section anchoring",
+      "referencedVersion": [
+        "v82→v83"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_4_intro_key_entities.json",
+      "path": "patch_4_intro_key_entities.json",
+      "artifactType": "patch_json",
+      "probableScope": "intro section anchoring",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_4a_chapter_attribution.json",
+      "path": "patch_4a_chapter_attribution.json",
+      "artifactType": "patch_json",
+      "probableScope": "section/chapter anchoring",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/generate_chapter_patch.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_5_missing_sections.json",
+      "path": "patch_5_missing_sections.json",
+      "artifactType": "patch_json",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "V2"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_5a_corrective_anchoring.json",
+      "path": "patch_5a_corrective_anchoring.json",
+      "artifactType": "patch_json",
+      "probableScope": "section/chapter anchoring",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/generate_corrective_patch.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_batch1_anchoring.json",
+      "path": "patch_batch1_anchoring.json",
+      "artifactType": "patch_json",
+      "probableScope": "section/chapter anchoring",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/generate_corrective_patch_batch1.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_batch2_anchoring.json",
+      "path": "patch_batch2_anchoring.json",
+      "artifactType": "patch_json",
+      "probableScope": "section/chapter anchoring",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/generate_corrective_patch_batch2.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "patch_batch3_relations.json",
+      "path": "patch_batch3_relations.json",
+      "artifactType": "patch_json",
+      "probableScope": "relation augmentation",
+      "referencedVersion": [
+        "V4"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [
+        "scripts/generate_corrective_patch_batch3.mjs"
+      ],
+      "notes": "no grounded application evidence found in this pass",
+      "confidence": "low"
+    },
+    {
+      "filename": "grc20_anchor_overrides_targeted.json",
+      "path": "patches/grc20_anchor_overrides_targeted.json",
+      "artifactType": "patch_json",
+      "probableScope": "targeted anchor overrides",
+      "referencedVersion": [
+        "v93"
+      ],
+      "probableStatus": "candidate_pending",
+      "relatedScripts": [],
+      "notes": "explicitly documented as planned/controlled future injection",
+      "confidence": "high"
+    },
+    {
+      "filename": "apply-sourcequote-phases.mjs",
+      "path": "scripts/apply-sourcequote-phases.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "generate_chapter_patch.mjs",
+      "path": "scripts/generate_chapter_patch.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "v88"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "generate_corrective_patch_batch1.mjs",
+      "path": "scripts/generate_corrective_patch_batch1.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "generate_corrective_patch_batch2.mjs",
+      "path": "scripts/generate_corrective_patch_batch2.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "generate_corrective_patch_batch3.mjs",
+      "path": "scripts/generate_corrective_patch_batch3.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "V4"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "generate_corrective_patch.mjs",
+      "path": "scripts/generate_corrective_patch.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "unknown",
+      "referencedVersion": [
+        "v1"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "apply.mjs",
+      "path": "scripts/sourcequote-migration/apply.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "normalize.mjs",
+      "path": "scripts/sourcequote-migration/normalize.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "report.mjs",
+      "path": "scripts/sourcequote-migration/report.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    },
+    {
+      "filename": "resolve.mjs",
+      "path": "scripts/sourcequote-migration/resolve.mjs",
+      "artifactType": "migration_script",
+      "probableScope": "sourcequote anchoring/migration",
+      "referencedVersion": [
+        "unknown"
+      ],
+      "probableStatus": "unknown",
+      "relatedScripts": [],
+      "notes": "script present; execution/applicability not asserted in this inventory pass",
+      "confidence": "medium"
+    }
+  ]
+}

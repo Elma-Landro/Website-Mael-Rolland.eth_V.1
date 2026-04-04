@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workshop/schemas/claim.schema.json",
+  "title": "Claim",
+  "type": "object",
+  "required": ["id", "claimText", "claimType", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "claimText": { "type": "string" },
+    "claimType": { "type": "string" },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

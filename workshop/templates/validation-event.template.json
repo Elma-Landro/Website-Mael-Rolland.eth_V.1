@@ -1,0 +1,9 @@
+{
+  "id": "validation-template-0001",
+  "validator": "validator-id",
+  "date": "2026-04-04",
+  "scope": "claim:claim-template-0001",
+  "result": "approved",
+  "comment": "Validation notes and caveats.",
+  "status": "validated"
+}

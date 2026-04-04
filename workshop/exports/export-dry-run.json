@@ -1,0 +1,209 @@
+{
+  "generatedAt": "2026-04-04T19:49:08.192Z",
+  "mode": "dry_run_documentary_only",
+  "nonDestructiveGuarantee": [
+    "No canonical graph file is modified.",
+    "No new canonical graph version is generated.",
+    "No patch is applied.",
+    "No runtime/public loader path is changed."
+  ],
+  "canonicalSource": {
+    "found": true,
+    "path": "grc20-these-mael-rolland-v96.json",
+    "version": "v96",
+    "entityCount": 2263,
+    "relationCount": 20057,
+    "notes": "Selected highest detected canonical graph version at repository root."
+  },
+  "patchInventory": {
+    "found": true,
+    "path": "workshop/patches/patch-inventory.json",
+    "notes": "Using documentary patch inventory as context only. No patch application is performed in dry-run mode.",
+    "totals": {
+      "artifacts": 34,
+      "patch_json": 16,
+      "migration_script": 11,
+      "zip_bundle": 4,
+      "helper_script": 2,
+      "unknown": 1
+    },
+    "statusBreakdown": [
+      {
+        "status": "candidate_applied",
+        "count": 1
+      },
+      {
+        "status": "candidate_pending",
+        "count": 2
+      },
+      {
+        "status": "superseded_possible",
+        "count": 2
+      },
+      {
+        "status": "unknown",
+        "count": 29
+      }
+    ]
+  },
+  "exportPolicy": {
+    "found": true,
+    "path": "workshop/exports/export-policy.json",
+    "version": "1.0.0-dry-run",
+    "mode": "documentary_only",
+    "notes": "Manifest-driven policy loaded for dry-run analysis only."
+  },
+  "statusPolicy": {
+    "exportableInPrinciple": [
+      "legacy_canonical",
+      "validated"
+    ],
+    "reviewOrDispute": [
+      "needs_review",
+      "contested"
+    ],
+    "workshopOnlyInternal": [
+      "raw",
+      "extracted",
+      "linked"
+    ],
+    "note": "Status policy comes from workshop/exports/export-policy.json. Dry-run only; no promotion occurs."
+  },
+  "objectFamilies": [
+    {
+      "id": "sourcequotes",
+      "objectFamily": "SourceQuote",
+      "path": "workshop/evidence/sourcequotes",
+      "fileCount": 1,
+      "parseErrors": 0,
+      "statusField": "status",
+      "statusBreakdown": [
+        {
+          "status": "needs_review",
+          "count": 1
+        }
+      ],
+      "allowedStatusesForExportInPrinciple": [
+        "validated"
+      ],
+      "visibility": "public_eligible",
+      "expectedOutput": "public-data/evidence.public.json",
+      "notes": "Public-eligible only when explicit status gating is satisfied in a future real export step.",
+      "eligibleCount": 0,
+      "readiness": "present_but_not_export_ready"
+    },
+    {
+      "id": "claims",
+      "objectFamily": "Claim",
+      "path": "workshop/claims",
+      "fileCount": 1,
+      "parseErrors": 0,
+      "statusField": "status",
+      "statusBreakdown": [
+        {
+          "status": "validated",
+          "count": 1
+        }
+      ],
+      "allowedStatusesForExportInPrinciple": [
+        "validated"
+      ],
+      "visibility": "public_eligible",
+      "expectedOutput": "public-data/claims.public.json",
+      "notes": "Conservative policy: only validated claims are eligible in principle.",
+      "eligibleCount": 1,
+      "readiness": "candidate_exportable_items_present"
+    },
+    {
+      "id": "decision-traces",
+      "objectFamily": "DecisionTrace",
+      "path": "workshop/decisions/traces",
+      "fileCount": 1,
+      "parseErrors": 0,
+      "statusField": "status",
+      "statusBreakdown": [
+        {
+          "status": "validated",
+          "count": 1
+        }
+      ],
+      "allowedStatusesForExportInPrinciple": [],
+      "visibility": "workshop_only",
+      "expectedOutput": "workshop/decisions/traces/*.json",
+      "notes": "Editorial and governance traceability artifact. Kept workshop-only in this phase.",
+      "eligibleCount": 0,
+      "readiness": "not_exportable_in_public_bundle"
+    },
+    {
+      "id": "validation-events",
+      "objectFamily": "ValidationEvent",
+      "path": "workshop/validations",
+      "fileCount": 1,
+      "parseErrors": 0,
+      "statusField": "result",
+      "statusBreakdown": [
+        {
+          "status": "approved",
+          "count": 1
+        }
+      ],
+      "allowedStatusesForExportInPrinciple": [],
+      "visibility": "workshop_only",
+      "expectedOutput": "workshop/validations/*.json",
+      "notes": "Validator workflow logs remain workshop-only until explicit publication policy is defined.",
+      "eligibleCount": 0,
+      "readiness": "not_exportable_in_public_bundle"
+    },
+    {
+      "id": "narrative-presets",
+      "objectFamily": "NarrativePreset",
+      "path": "workshop/narratives/presets",
+      "fileCount": 1,
+      "parseErrors": 0,
+      "statusField": "status",
+      "statusBreakdown": [
+        {
+          "status": "needs_review",
+          "count": 1
+        }
+      ],
+      "allowedStatusesForExportInPrinciple": [
+        "validated"
+      ],
+      "visibility": "public_eligible",
+      "expectedOutput": "public-data/narratives.public.json",
+      "notes": "Public-eligible in principle when vetted; no runtime hook is added in this phase.",
+      "eligibleCount": 0,
+      "readiness": "present_but_not_export_ready"
+    }
+  ],
+  "workshopOnlyObjectFamiliesDetected": [
+    "DecisionTrace",
+    "ValidationEvent"
+  ],
+  "publicExportEligibleObjectFamiliesDetected": [
+    "SourceQuote",
+    "Claim",
+    "NarrativePreset"
+  ],
+  "workshopArtifactsReadyForExportNow": [
+    {
+      "objectFamily": "Claim",
+      "eligibleCount": 1
+    }
+  ],
+  "exportReadinessSummary": "Some public-eligible families contain artifacts with statuses allowed by the manifest policy.",
+  "futurePipelineOutputsWouldInclude": [
+    "public-data/evidence.public.json",
+    "public-data/claims.public.json",
+    "workshop/decisions/traces/*.json",
+    "workshop/validations/*.json",
+    "public-data/narratives.public.json"
+  ],
+  "unresolvedBlockersOrUnknowns": [
+    "Manifest policy is conservative and may keep families workshop-only until explicit publication criteria are approved.",
+    "Patch inventory statuses are heuristic and documentary, not proof of apply-state.",
+    "Missing/empty family directories are treated as no artifacts detected, not as errors.",
+    "This script does not execute canonical export; it only reports policy-based readiness."
+  ]
+}

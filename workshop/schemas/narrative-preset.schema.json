@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workshop/schemas/narrative-preset.schema.json",
+  "title": "NarrativePreset",
+  "type": "object",
+  "required": ["id", "title", "orderedStepIds", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "orderedStepIds": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

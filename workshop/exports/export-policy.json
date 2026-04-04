@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0-dry-run",
+  "mode": "documentary_only",
+  "notes": "Conservative workshop export policy for dry-run inspection only. This file does not trigger runtime integration or real export mutation.",
+  "statusPolicy": {
+    "exportableInPrinciple": [
+      "legacy_canonical",
+      "validated"
+    ],
+    "reviewOrDispute": [
+      "needs_review",
+      "contested"
+    ],
+    "workshopOnlyInternal": [
+      "raw",
+      "extracted",
+      "linked"
+    ]
+  },
+  "families": [
+    {
+      "id": "sourcequotes",
+      "label": "SourceQuote",
+      "sourcePath": "workshop/evidence/sourcequotes",
+      "statusField": "status",
+      "allowedStatusesForExportInPrinciple": [
+        "validated"
+      ],
+      "visibility": "public_eligible",
+      "expectedOutput": "public-data/evidence.public.json",
+      "notes": "Public-eligible only when explicit status gating is satisfied in a future real export step."
+    },
+    {
+      "id": "claims",
+      "label": "Claim",
+      "sourcePath": "workshop/claims",
+      "statusField": "status",
+      "allowedStatusesForExportInPrinciple": [
+        "validated"
+      ],
+      "visibility": "public_eligible",
+      "expectedOutput": "public-data/claims.public.json",
+      "notes": "Conservative policy: only validated claims are eligible in principle."
+    },
+    {
+      "id": "decision-traces",
+      "label": "DecisionTrace",
+      "sourcePath": "workshop/decisions/traces",
+      "statusField": "status",
+      "allowedStatusesForExportInPrinciple": [],
+      "visibility": "workshop_only",
+      "expectedOutput": "workshop/decisions/traces/*.json",
+      "notes": "Editorial and governance traceability artifact. Kept workshop-only in this phase."
+    },
+    {
+      "id": "validation-events",
+      "label": "ValidationEvent",
+      "sourcePath": "workshop/validations",
+      "statusField": "result",
+      "allowedStatusesForExportInPrinciple": [],
+      "visibility": "workshop_only",
+      "expectedOutput": "workshop/validations/*.json",
+      "notes": "Validator workflow logs remain workshop-only until explicit publication policy is defined."
+    },
+    {
+      "id": "narrative-presets",
+      "label": "NarrativePreset",
+      "sourcePath": "workshop/narratives/presets",
+      "statusField": "status",
+      "allowedStatusesForExportInPrinciple": [
+        "validated"
+      ],
+      "visibility": "public_eligible",
+      "expectedOutput": "public-data/narratives.public.json",
+      "notes": "Public-eligible in principle when vetted; no runtime hook is added in this phase."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "decision-template-0001",
+  "decisionText": "Decision summary visible to future maintainers.",
+  "decisionType": "modeling",
+  "author": "researcher-id",
+  "date": "2026-04-04",
+  "rationale": "Why this decision was made, including trade-offs.",
+  "affectedEntities": [
+    "entity-id-placeholder"
+  ],
+  "affectedRelations": [
+    "relation-id-placeholder"
+  ],
+  "affectedFiles": [
+    "grc20-these-mael-rolland-v96.json"
+  ],
+  "status": "validated"
+}

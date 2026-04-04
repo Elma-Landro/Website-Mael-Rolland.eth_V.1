@@ -1,0 +1,20 @@
+{
+  "id": "claim-sample-thesis-scope-v96",
+  "claimText": "The canonical thesis root entity records a 2024 defense date and frames the corpus as covering origins to 2020.",
+  "claimType": "descriptive",
+  "confidenceLevel": "high",
+  "status": "validated",
+  "linkedEvidenceIds": [
+    "sq-sample-thesis-description-v96"
+  ],
+  "linkedEntityIds": [
+    "a078b1b274f74818a8c7f1abcfb3097f"
+  ],
+  "provenance": {
+    "author": "workshop-bootstrap",
+    "createdAt": "2026-04-04T00:00:00Z",
+    "method": "canonical-graph-read",
+    "sourceGraph": "grc20-these-mael-rolland-v96.json"
+  },
+  "notes": "Grounded mini-lot example; no canonical mutation performed."
+}

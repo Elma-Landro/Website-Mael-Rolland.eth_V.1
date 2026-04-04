@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workshop/schemas/narrative-step.schema.json",
+  "title": "NarrativeStep",
+  "type": "object",
+  "required": ["id", "headline", "body", "order", "status"],
+  "properties": {
+    "id": { "type": "string" },
+    "headline": { "type": "string" },
+    "body": { "type": "string" },
+    "order": { "type": "number" },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

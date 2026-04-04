@@ -1,0 +1,21 @@
+{
+  "id": "sq-template-0001",
+  "quoteText": "Exact quote text from source.",
+  "sourceDocumentId": "doc-thesis-2024",
+  "page": "p. 142",
+  "chapter": "Chapitre II",
+  "section": "II.1",
+  "paragraph": "para-03",
+  "locator": "pdf://ROLLAND_Mael_These_Complete.pdf#page=142",
+  "quoteType": "verbatim",
+  "speaker": null,
+  "language": "fr",
+  "exactnessStatus": "exact",
+  "status": "needs_review",
+  "provenance": {
+    "createdBy": "researcher-id",
+    "createdAt": "2026-04-04T00:00:00Z",
+    "method": "manual-extraction",
+    "sourceHash": "sha256:replace-me"
+  }
+}

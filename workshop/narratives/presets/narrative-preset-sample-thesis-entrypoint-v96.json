@@ -1,0 +1,31 @@
+{
+  "id": "narrative-preset-sample-thesis-entrypoint-v96",
+  "title": "Thesis entrypoint (workshop sample)",
+  "goal": "Provide a minimal guided entry anchored on the canonical thesis root entity.",
+  "targetAudience": "internal-lab",
+  "orderedStepIds": [
+    "step-sample-thesis-root"
+  ],
+  "viewMode": "guided",
+  "evidenceMode": "summary",
+  "status": "needs_review",
+  "steps": [
+    {
+      "id": "step-sample-thesis-root",
+      "headline": "Locate thesis root node",
+      "body": "Focus the canonical thesis root entity before adding any public narrative claims.",
+      "bridgeEntityIds": [
+        "a078b1b274f74818a8c7f1abcfb3097f"
+      ],
+      "anchorQuoteIds": [],
+      "graphAction": "focusNodes",
+      "order": 1,
+      "status": "needs_review"
+    }
+  ],
+  "provenance": {
+    "author": "workshop-bootstrap",
+    "createdAt": "2026-04-04T00:00:00Z",
+    "sourceGraph": "grc20-these-mael-rolland-v96.json"
+  }
+}

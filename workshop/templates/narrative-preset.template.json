@@ -1,0 +1,30 @@
+{
+  "preset": {
+    "id": "narrative-template-0001",
+    "title": "Narrative title",
+    "goal": "What this narrative demonstrates.",
+    "targetAudience": "public-academic",
+    "orderedStepIds": [
+      "step-template-0001"
+    ],
+    "viewMode": "guided",
+    "evidenceMode": "quoted",
+    "status": "needs_review"
+  },
+  "steps": [
+    {
+      "id": "step-template-0001",
+      "headline": "Step headline",
+      "body": "Step body text.",
+      "bridgeEntityIds": [
+        "entity-id-placeholder"
+      ],
+      "anchorQuoteIds": [
+        "sq-template-0001"
+      ],
+      "graphAction": "focusNodes",
+      "order": 1,
+      "status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "claim-template-0001",
+  "claimText": "Analytical proposition written as a falsifiable/traceable statement.",
+  "claimType": "interpretive",
+  "confidenceLevel": "medium",
+  "status": "needs_review",
+  "linkedEvidenceIds": [
+    "sq-template-0001"
+  ],
+  "linkedEntityIds": [
+    "entity-id-placeholder"
+  ],
+  "provenance": {
+    "author": "researcher-id",
+    "createdAt": "2026-04-04T00:00:00Z",
+    "method": "close-reading"
+  }
+}

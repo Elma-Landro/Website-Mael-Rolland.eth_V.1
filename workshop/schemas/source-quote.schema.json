@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workshop/schemas/source-quote.schema.json",
+  "title": "SourceQuote",
+  "type": "object",
+  "required": ["id", "quoteText", "sourceDocumentId", "status", "provenance"],
+  "properties": {
+    "id": { "type": "string" },
+    "quoteText": { "type": "string" },
+    "sourceDocumentId": { "type": "string" },
+    "status": { "type": "string" },
+    "provenance": { "type": "object" }
+  },
+  "additionalProperties": true
+}

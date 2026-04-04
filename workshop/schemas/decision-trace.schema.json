@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workshop/schemas/decision-trace.schema.json",
+  "title": "DecisionTrace",
+  "type": "object",
+  "required": [
+    "id",
+    "decisionText",
+    "decisionType",
+    "author",
+    "date",
+    "rationale",
+    "affectedFiles",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "decisionText": { "type": "string" },
+    "decisionType": { "type": "string" },
+    "author": { "type": "string" },
+    "date": { "type": "string" },
+    "rationale": { "type": "string" },
+    "affectedEntities": { "type": "array", "items": { "type": "string" } },
+    "affectedRelations": { "type": "array", "items": { "type": "string" } },
+    "affectedFiles": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}
