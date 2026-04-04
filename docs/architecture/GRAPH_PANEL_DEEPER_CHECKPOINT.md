@@ -132,7 +132,65 @@ Intentionally untouched. **Out of scope for this branch.**
 
 ---
 
-## Script Load Order (post Pass 2)
+## Pass 3 — Entity Form/Modal Extraction (2026-04-04)
+
+### New file: `graphe.ui-entity-forms.js`
+
+Factory: `createGrapheUiEntityForms({ document, State, Modals, escHtml })`  
+Exported via: `window.createGrapheUiEntityForms`  
+Instantiated as: `EntityForms` inside the `UI` IIFE (after `PanelActions`, before function declarations)
+
+**Exported methods:**
+- `openAddEntityModal()` — populates and opens `#modal-add-entity`
+- `openEditModal(id)` — populates and opens `#modal-edit-entity`
+- `addAttrRow(editorId, key, val)` — appends a key/value row to an attr-editor container
+- `getAttrRows(editorId)` — reads all key/value pairs from an attr-editor container
+
+**What was moved:**
+All four function implementations, extracted verbatim. `openEditModal` internally calls `addAttrRow` directly (local reference, no `UI` indirection needed).
+
+### Modified: `graphe.html` (Pass 3)
+
+1. **Script load order** (line 19): added `<script src="graphe.ui-entity-forms.js"></script>` after `graphe.ui-panel-actions.js`.
+
+2. **UI IIFE — EntityForms instantiation**: added after `PanelActions` declaration:
+   ```javascript
+   const EntityForms = window.createGrapheUiEntityForms({ document, State, Modals, escHtml });
+   ```
+
+3. **Four function bodies replaced with stubs** (~55 lines → 4 lines):
+   ```javascript
+   function openAddEntityModal()                 { EntityForms.openAddEntityModal(); }
+   function openEditModal(id)                    { EntityForms.openEditModal(id); }
+   function addAttrRow(editorId, key='', val='') { EntityForms.addAttrRow(editorId, key, val); }
+   function getAttrRows(editorId)                { return EntityForms.getAttrRows(editorId); }
+   ```
+
+4. **Static modal HTML — NO CHANGE**: Lines ~1388 and ~1455 keep `onclick="UI.addAttrRow(...)"`. `UI.addAttrRow` is the stub that delegates to `EntityForms.addAttrRow`. Zero change to HTML.
+
+---
+
+## Current UI IIFE surface (post Pass 3)
+
+The `UI` IIFE now contains only its irreducible coordination core:
+
+| Function | Status | Reason kept inline |
+|---|---|---|
+| `renderTypeFilters` | Stub → `uiFilters` | Already delegated (Pass 1 ancestor) |
+| `renderPanel` | Coordinator | DOM show/hide + PanelController calls |
+| `clearPanel` | Inline | 3-line DOM reset; too small to extract alone |
+| `selectEntity` | Inline | Calls `Graph.cy` — Graph not extracted |
+| `openAddRelationModal` | Stub → `uiRelationsModal` | Already delegated |
+| `openAddEntityModal` | Stub → `EntityForms` | ← Pass 3 |
+| `openEditModal` | Stub → `EntityForms` | ← Pass 3 |
+| `addAttrRow` | Stub → `EntityForms` | ← Pass 3 |
+| `getAttrRows` | Stub → `EntityForms` | ← Pass 3 |
+| `setupEntitySearch` | Stub → `uiSearch` | Already delegated |
+| `confirmDeleteRelation` | Stub → `PanelActions` | ← Pass 2 |
+
+---
+
+## Script Load Order (post Pass 3)
 
 ```
 graphe.helpers.js
@@ -143,32 +201,31 @@ graphe.panels.js
 graphe.panel-render.js
 graphe.ui-panel.js              ← Pass 1: pure HTML builder
 graphe.ui-panel-actions.js      ← Pass 2: action wiring
+graphe.ui-entity-forms.js       ← Pass 3: entity form/modal helpers
 graphe.ui-filters.js
 graphe.ui-search.js
 graphe.ui-relations-modal.js
 ```
 
 **Dependency rules:**
-- `graphe.ui-panel-actions.js` depends on `window.createGrapheUiPanelActions` being available when the `UI` IIFE runs; it must load before the inline script block.
-- It has no dependency on `graphe.ui-panel.js` (they are siblings).
+- `graphe.ui-entity-forms.js` has no dependency on other extracted modules. It only needs `State`, `Modals`, `escHtml`, `document` — all available at instantiation time inside the UI IIFE.
+- It must load before the inline script block that runs the UI IIFE.
 
 ---
 
 ## Runtime Behavior
 
-- **No behavioral change across both passes.** HTML output, event responses, panel lifecycle, modal flows, and story-mode node selection are all identical to the pre-extraction state.
-- `UI.confirmDeleteRelation` is still exported and still functions identically.
-- The `UI.renderPanel` function signature and all external call sites are unchanged.
+- **No behavioral change across all three passes.**
+- `UI.addAttrRow` export is preserved; all three `onclick` callsites continue to work.
+- `UI.openEditModal`, `UI.openAddEntityModal`, `UI.getAttrRows` exports are preserved and delegate correctly.
+- `DOMContentLoaded` callsites (`UI.openAddEntityModal()`, `UI.getAttrRows(...)`) are unchanged.
 
 ---
 
 ## Recommended Next Safe Sub-step
 
-**Extract `openEditModal` / `openAddEntityModal` / `addAttrRow` / `getAttrRows` as `graphe.ui-entity-forms.js`**
+The `UI` IIFE now contains only genuine coordination code. The only remaining extractable fragment is `clearPanel()` — but at 3 lines it is too small to warrant a standalone module. It could be folded into `PanelController.reset()` in a future `graphe.panels.js` update, or simply left as-is.
 
-Scope: form population and attr-editor helpers for the Add Entity and Edit Entity modals.  
-Dependencies: `State`, `Modals`, `escHtml`, `document`.  
-No dependency on `Graph`, `selectEntity`, or `PanelActions`.  
-Risk: `UI.addAttrRow` is called from inline `onclick` attributes in modal HTML — those two `onclick` strings must be updated simultaneously (simple find/replace, low risk).
+**The true next step is `selectEntity` — but this requires extracting or abstracting the `Graph` module first**, which is a separate, much larger effort. It is out of scope for this child branch.
 
-This pass would reduce the `UI` IIFE to its irreducible coordination core: `renderTypeFilters`, `renderPanel`, `clearPanel`, `selectEntity`, `setupEntitySearch`, and the module's return statement.
+This child branch (`feat/research-architecture-vnext-panel-deeper`) is now complete for its declared scope. The UI IIFE is reduced to its irreducible core. No further extractions in this branch are warranted without touching Graph or DOMContentLoaded.
