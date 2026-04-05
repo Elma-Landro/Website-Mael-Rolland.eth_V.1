@@ -281,11 +281,26 @@ function createGrapheCanvasOverlays({ getCy, canvasId }) {
 ### Step 1 — Extract `getCyStyle()` (no event bus required)
 Move Cytoscape style configuration to `graphe.graph-styles.js`. Pure function, no coupling. Validates the extraction pattern for the Graph sub-zone.
 
+**Execution checkpoint (2026-04-05):** Completed conservatively in branch `feat/research-architecture-vnext-graph-extract`.
+- `getCyStyle()` now delegates to `window.createGrapheGraphStyles({ TYPE_COLORS, isMobileViewport })`.
+- The extracted module (`graphe.graph-styles.js`) contains only style-array construction (no events, no layouts, no buildElements/hydration).
+- `graphe.html` script order now includes `graphe.graph-styles.js` before the inline Graph IIFE.
+
 ### Step 2 — Extract `entityToNode` / `buildElements` (no event bus required)
 Move data binding to `graphe.graph-data.js`. Pure functions, no coupling. Validates parameterization of globals.
 
+**Execution checkpoint (2026-04-05):** Completed conservatively in branch `feat/research-architecture-vnext-graph-extract`.
+- `entityToNode()`, `relationToEdge()`, and `buildElements()` now delegate to `window.createGrapheGraphData(...)`.
+- The extracted module (`graphe.graph-data.js`) is limited to element/data construction and reads injected dependencies (`State`, `TYPE_COLORS`, `TYPE_SHAPES`, `computeVisualNodeSize`, `getNodeLabel`, `STRATUM_ALWAYS_VISIBLE_NAMES`, `getChapterMap`).
+- No Graph init/bootstrap, event wiring, filtering/highlighting, or layout logic was extracted in this pass.
+
 ### Step 3 — Extract canvas overlay (no event bus required)
 Move halo system to `graphe.canvas-overlays.js` with lazy `getCy` getter. Validates canvas lifecycle separation from layout engines.
+
+**Execution checkpoint (2026-04-05):** Completed conservatively in branch `feat/research-architecture-vnext-graph-extract`.
+- `_drawHalos()`, `_startHaloOverlay()`, and `_stopHaloOverlay()` now delegate to `window.createGrapheCanvasOverlays(...)`.
+- The extracted module (`graphe.canvas-overlays.js`) keeps the canvas lifecycle + draw logic only, with injected `getCy`, `canvasId`, and `getCanvasHost`.
+- No Graph init/bootstrap, event wiring, filtering/highlighting, or layout method extraction was performed in this pass.
 
 ### Step 4 — Implement event bus spike (one interaction only)
 Add `graphe.event-bus.js`. Replace `handleNodeSelect → UI.renderPanel` (line 2384) and `selectEntity → Graph.cy.*` (lines 5033–5038) with `entity:selected` / `entity:focused` events. Validate on all five layout modes.
