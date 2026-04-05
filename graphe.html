@@ -9,6 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js" crossorigin="anonymous"></script>
 <script src="graphe.helpers.js"></script>
+<script src="graphe.story-helpers.js"></script>
 <script src="graphe.state.js"></script>
 <script src="graphe.validation-export.js"></script>
 <script src="graphe.modals.js"></script>
@@ -2258,6 +2259,27 @@ const normalizeRelationName = window.GrapheHelpers?.normalizeRelationName || ((v
 const canonicalizeRelationName = window.GrapheHelpers?.canonicalizeRelationName || ((v) => {
   return normalizeRelationName(v).replace(/[^a-z0-9]/g, '');
 });
+const loadStoryRegistry = window.GrapheStoryHelpers?.loadStoryRegistry || (async () => ({ stories: [], viewToStoryId: {} }));
+const resolveStoryFocusNodes = window.GrapheStoryHelpers?.resolveStoryFocusNodes || ((stateData, focusNodes = []) => []);
+const mergeStoryStepOptions = window.GrapheStoryHelpers?.mergeStoryStepOptions || ((defaults, step) => ({ ...(defaults || {}), ...(step || {}) }));
+const getStoryRevealButtonLabel = window.GrapheStoryHelpers?.getStoryRevealButtonLabel || ((phase) => phase === 'nodesOnly' ? 'Révéler liens' : 'Masquer liens');
+const formatStoryCitationText = window.GrapheStoryHelpers?.formatStoryCitationText || ((anchor, maxLen = 210) => {
+  if (!anchor || !anchor.quoteText) return '';
+  const rawQuote = String(anchor.quoteText);
+  const clipped = rawQuote.length > maxLen ? rawQuote.slice(0, Math.max(0, maxLen - 3)) + '\u2026' : rawQuote;
+  return `\u00AB\u202F${clipped}\u202F\u00BB`;
+});
+const formatStoryCitationPage = window.GrapheStoryHelpers?.formatStoryCitationPage || ((anchor) => (anchor && anchor.page ? `p.\u00A0${anchor.page}` : ''));
+const buildStoryBridgeHintHtml = window.GrapheStoryHelpers?.buildStoryBridgeHintHtml || ((bridges = [], escHtmlFn = (v) => String(v)) => {
+  const chips = (bridges || []).slice(0, 3).map((bridgeEntityLabel) => {
+    const chipLabel = String(bridgeEntityLabel || '').split(' / ')[0];
+    return `<span class="story-bridge-chip">${escHtmlFn(chipLabel)}</span>`;
+  }).join('');
+  return `<span style="opacity:0.5">\u2192</span>\u00A0${chips}`;
+});
+const getStoryPanelEmptyStateText = window.GrapheStoryHelpers?.getStoryPanelEmptyStateText || (() => ({ meta: 'Choisissez un récit pour démarrer.', title: '—', body: '—' }));
+const formatStoryStepMetaText = window.GrapheStoryHelpers?.formatStoryStepMetaText || ((activeStoryStepIndex, totalSteps) => `Étape ${activeStoryStepIndex + 1}/${totalSteps}`);
+const shouldShowStoryBridgeHint = window.GrapheStoryHelpers?.shouldShowStoryBridgeHint || ((bridges, isLastStep) => Boolean((bridges || []).length) && !isLastStep);
 
 // ─────────────────────────────────────────────────────────
 //  CYTOSCAPE GRAPH
@@ -5277,98 +5299,16 @@ const StoryMode = (() => {
     currentStepRuntime: null
   };
 
-  const normalizeText = (s) => String(s || '')
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-  const STORY_FOCUS_ALIASES = {
-    'Monétisation': 'Monétisation des cryptomonnaies',
-    'Fonctions monétaires': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
-    'Critiques instrumentales': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
-    'Critiques chartalistes': 'Théorie chartaliste',
-    'Épreuve d’explicitation de la monnaie': 'Quote — CM comme épreuve d’explicitation de la monnaie',
-    'Nominalisme non étatiste': 'Nominalisme monetaire non etatiste',
-    'Monetary Institutionalism FR (IMF)': 'Institutionnalisme Monetaire Francophone (IMF)',
-    'Usages monétaires': "Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages",
-    'Usage en compte': 'Archetypal monetary functions',
-    'Usage en paiement': 'Systeme de paiement',
-    'Liquidité': 'Concept — Liquidité du marché Bitcoin',
-    'Convertibilité': 'Dilemme de la poule et de l\'œuf (bootstrapping monétaire)',
-    'Passerelles': 'Services Marchands & Passerelles',
-    'Infrastructures de marché': 'Infrastructure monétaire crypto-monétaire',
-    'Intermédiation': "Chaîne d'intermédiation sociotechnique",
-    'Communauté de paiement': 'Communaute de paiement / Groupe monetaire',
-    'Paiement': 'Systeme de paiement',
-    'Dette': 'Monnaie dette / Monnaie crédit',
-    'Confiance': 'Confiance monetaire',
-    'Institutions': 'Institutionnalisme Monetaire Francophone (IMF)',
-    'Souveraineté monétaire': 'Souverainete monetaire',
-    'Crises': 'Crises comme épreuves d’explicitation',
-    'Mise en crise': 'Mise en crise / Remise en ordre',
-    'Remise en ordre': 'Mise en crise / Remise en ordre',
-    'Gouvernance des cryptomonnaies': 'A. La gouvernance des cryptomonnaies : construction de notre objet de recherche',
-    "Crise d’évolution": "Crise d'évolution",
-    'Gouvernance publique': 'Gouvernance publique et ouverte',
-    'Responsible disclosure': 'Responsible Disclosure',
-    'Consensus local': 'Gouvernance de huis clos',
-    'Consensus global': 'Gouvernance publique et ouverte',
-    'Patch': 'CVE-2018-17144 — Remise en ordre par patch',
-    'Esprit communautaire': 'Esprit du code vs Lettre du code',
-    'Ethereum Classic': 'Ethereum Classic (ETHC)',
-    'Ethereum DAO Hard Fork': 'Ethereum Hard Fork (juillet 2016)',
-    'Conception politique': 'I.3.3 Ethereum : différences architecturales et normativité politique des designs',
-    'Choix architecturaux': "Normativité de l'architecture et des paramètres Bitcoin",
-    'STS': 'Sociology of Science & Technology (STS)',
-    'Développement infrastructurel carnavalesque': 'Dynamique carnavalesque du développement infrastructurel',
-    'Usages': 'Institutionnalisme intéressé aux usages',
-    'Usages monétaires': "Chapitre II - Dépasser la controverse du statut monétaire des CM par un institutionnalisme intéressé aux usages",
-    'Monetary Institutionalism FR (IMF)': 'Institutionnalisme Monetaire Francophone (IMF)'
-  };
-
   function getStoryPresetById(storyId) {
     return (storyRegistry.stories || []).find(s => s.id === storyId) || null;
   }
 
   async function loadRegistry() {
-    try {
-      const mod = await import('./story-presets.mjs');
-      if (mod && mod.STORY_PRESETS) {
-        storyRegistry = mod.STORY_PRESETS;
-      }
-    } catch (err) {
-      console.warn('[story-mode] registre non chargé, fallback vide', err);
-    }
+    storyRegistry = await loadStoryRegistry('./story-presets.mjs');
   }
 
   function resolveFocusNodes(focusNodes = []) {
-    if (!State.data || !Array.isArray(focusNodes)) return [];
-    const entities = State.data.entities || [];
-    const byId = new Map(entities.map(e => [e.id, e]));
-    const byName = new Map(entities.map(e => [e.name, e]));
-    const byNorm = new Map();
-    entities.forEach(e => {
-      const key = normalizeText(e.name);
-      if (!byNorm.has(key)) byNorm.set(key, []);
-      byNorm.get(key).push(e);
-    });
-    const resolved = [];
-    focusNodes.forEach(raw => {
-      const canonicalRaw = STORY_FOCUS_ALIASES[raw] || raw;
-      let found = byId.get(canonicalRaw) || byName.get(canonicalRaw) || byId.get(raw) || byName.get(raw) || null;
-      if (!found) {
-        const candidates = byNorm.get(normalizeText(canonicalRaw)) || byNorm.get(normalizeText(raw));
-        if (candidates && candidates.length) {
-          found = candidates[0];
-          if (candidates.length > 1) {
-            console.warn('[story-mode] ambiguïté focusNode:', raw, '→', candidates.map(c => c.name));
-          }
-        }
-      }
-      if (!found) {
-        console.warn('[story-mode] focusNode introuvable:', raw);
-        return;
-      }
-      resolved.push(found.id);
-    });
-    return [...new Set(resolved)];
+    return resolveStoryFocusNodes(State.data, focusNodes);
   }
 
   function getEdgeType(edge) {
@@ -5609,19 +5549,20 @@ const StoryMode = (() => {
     const t = document.getElementById('story-step-title');
     const b = document.getElementById('story-step-body');
     if (!story || storyState.activeStoryStepIndex < 0) {
-      meta.textContent = 'Choisissez un récit pour démarrer.';
-      t.textContent = '—';
-      b.textContent = '—';
+      const emptyState = getStoryPanelEmptyStateText();
+      meta.textContent = emptyState.meta;
+      t.textContent = emptyState.title;
+      b.textContent = emptyState.body;
       return;
     }
     const step = story.steps[storyState.activeStoryStepIndex];
-    meta.textContent = `Étape ${storyState.activeStoryStepIndex + 1}/${story.steps.length}`;
+    meta.textContent = formatStoryStepMetaText(storyState.activeStoryStepIndex, story.steps.length);
     t.textContent = step.title;
     b.textContent = step.body;
     const revealBtn = document.getElementById('btn-story-reveal');
     if (revealBtn) {
       const phase = storyState.currentStepRuntime?.phase || step.initialState || 'primaryEdges';
-      revealBtn.textContent = phase === 'nodesOnly' ? 'Révéler liens' : 'Masquer liens';
+      revealBtn.textContent = getStoryRevealButtonLabel(phase);
     }
 
     // ── Citation block: show anchor quote if available ────────────────────
@@ -5635,11 +5576,8 @@ const StoryMode = (() => {
         ? anchors.find(a => a.id === anchorId || a.sourceQuoteId === anchorId)
         : null;
       if (anchor) {
-        const qt = anchor.quoteText.length > 210
-          ? anchor.quoteText.slice(0, 207) + '\u2026'
-          : anchor.quoteText;
-        citationTextEl.textContent = `\u00AB\u202F${qt}\u202F\u00BB`;
-        if (citationPageEl) citationPageEl.textContent = anchor.page ? `p.\u00A0${anchor.page}` : '';
+        citationTextEl.textContent = formatStoryCitationText(anchor, 210);
+        if (citationPageEl) citationPageEl.textContent = formatStoryCitationPage(anchor);
         citationEl.classList.add('visible');
       } else {
         citationEl.classList.remove('visible');
@@ -5651,11 +5589,8 @@ const StoryMode = (() => {
     if (bridgeHintEl) {
       const bridges = step.bridgeEntityIds || [];
       const isLastStep = storyState.activeStoryStepIndex >= story.steps.length - 1;
-      if (bridges.length && !isLastStep) {
-        const chips = bridges.slice(0, 3).map(b =>
-          `<span class="story-bridge-chip">${escHtml(b.split(' / ')[0])}</span>`
-        ).join('');
-        bridgeHintEl.innerHTML = `<span style="opacity:0.5">\u2192</span>\u00A0${chips}`;
+      if (shouldShowStoryBridgeHint(bridges, isLastStep)) {
+        bridgeHintEl.innerHTML = buildStoryBridgeHintHtml(bridges, escHtml);
         bridgeHintEl.style.display = 'flex';
       } else {
         bridgeHintEl.style.display = 'none';
@@ -5666,10 +5601,7 @@ const StoryMode = (() => {
   function applyStoryStep(step) {
     if (!step) return;
     const story = getStoryPresetById(storyState.activeStoryId);
-    const mergedStep = {
-      ...(story?.defaultStepOptions || {}),
-      ...step
-    };
+    const mergedStep = mergeStoryStepOptions(story?.defaultStepOptions, step);
     if (mergedStep.filters && mergedStep.filters.column) {
       document.getElementById('fp-col-sel').value = mergedStep.filters.column;
     }
@@ -5686,10 +5618,7 @@ const StoryMode = (() => {
   function toggleStoryReveal() {
     const story = getStoryPresetById(storyState.activeStoryId);
     if (!story || storyState.activeStoryStepIndex < 0 || !storyState.currentStepRuntime) return;
-    const step = {
-      ...(story.defaultStepOptions || {}),
-      ...(story.steps[storyState.activeStoryStepIndex] || {})
-    };
+    const step = mergeStoryStepOptions(story.defaultStepOptions, story.steps[storyState.activeStoryStepIndex]);
     storyState.currentStepRuntime.phase = storyState.currentStepRuntime.phase === 'nodesOnly' ? 'primaryEdges' : 'nodesOnly';
     applyStoryFocus(storyState.currentStepRuntime.resolvedTargets || [], step, storyState.currentStepRuntime);
     updateStoryPanel();
@@ -5698,10 +5627,7 @@ const StoryMode = (() => {
   function maybeExpandFromNode(nodeId, node) {
     const story = getStoryPresetById(storyState.activeStoryId);
     if (!story || storyState.activeStoryStepIndex < 0 || !storyState.currentStepRuntime) return;
-    const step = {
-      ...(story.defaultStepOptions || {}),
-      ...(story.steps[storyState.activeStoryStepIndex] || {})
-    };
+    const step = mergeStoryStepOptions(story.defaultStepOptions, story.steps[storyState.activeStoryStepIndex]);
     const opts = buildStoryFocusOptions(step);
     if (!opts.expandOnClick || !node) return;
     const canExpandFromNode = node.hasClass('story-secondary') || (opts.expandFromPrimary && node.hasClass('story-primary'));
