@@ -2409,6 +2409,10 @@ const Graph = (() => {
       State.selectedId = id;
       UI.renderPanel(id);
       highlightNeighbors(id);
+      if (typeof StoryMode !== 'undefined' && StoryMode?.buildExpandFromNodeRequestedPayload) {
+        const expandPayload = StoryMode.buildExpandFromNodeRequestedPayload(id, e.target, e.type === 'click' ? 'click' : 'tap');
+        if (expandPayload) GrapheEventBus.emit('story:expand-from-node-requested', expandPayload);
+      }
       if (typeof StoryMode !== 'undefined' && StoryMode?.maybeExpandFromNode) {
         StoryMode.maybeExpandFromNode(id, e.target);
       }
@@ -5440,6 +5444,7 @@ function showGuidedOverlay() {
 // ─────────────────────────────────────────────────────────
 const StoryMode = (() => {
   let storyRegistry = { stories: [], viewToStoryId: {} };
+  let _expandShadowRequestedBound = false;
   const storyState = {
     activeStoryId: null,
     activeStoryStepIndex: -1,
@@ -5499,6 +5504,152 @@ const StoryMode = (() => {
       bridgeEntityIds: Array.isArray(step.bridgeEntityIds) ? step.bridgeEntityIds : [],
       anchorId: step.anchorId || step.sourceQuoteId || null
     };
+  }
+
+  function getStoryNodeRoleFromClasses(classNames = []) {
+    if (classNames.includes('story-primary')) return 'primary';
+    if (classNames.includes('story-secondary')) return 'secondary';
+    if (classNames.includes('story-bridge')) return 'bridge';
+    if (classNames.includes('story-muted')) return 'muted';
+    if (classNames.includes('story-hidden')) return 'hidden';
+    return 'unknown';
+  }
+
+  function buildExpandFromNodeRequestedPayload(nodeId, node, selectionFrom = 'tap') {
+    if (!nodeId || !node) return null;
+    const story = getStoryPresetById(storyState.activeStoryId);
+    const runtime = storyState.currentStepRuntime;
+    const step = story && storyState.activeStoryStepIndex >= 0
+      ? mergeStoryStepOptions(story.defaultStepOptions, story.steps[storyState.activeStoryStepIndex])
+      : {};
+    const opts = buildStoryFocusOptions(step);
+
+    const nodeClassSnapshot = Array.from(node.classes ? node.classes() : []);
+    const nodeRole = getStoryNodeRoleFromClasses(nodeClassSnapshot);
+    const connectedEdgeSnapshot = [];
+    const candidateEdges = [];
+    node.connectedEdges().forEach(edge => {
+      const sourceId = edge.source().id();
+      const targetId = edge.target().id();
+      const other = sourceId === node.id() ? edge.target() : edge.source();
+      const otherNodeId = other.id();
+      const otherNodeClassSnapshot = Array.from(other.classes ? other.classes() : []);
+      const relationTypeCanonical = canonicalizeRelationName(getEdgeType(edge));
+      connectedEdgeSnapshot.push({
+        edgeId: edge.id(),
+        sourceId,
+        targetId,
+        otherNodeId,
+        relationTypeCanonical,
+        otherNodeClassSnapshot
+      });
+      candidateEdges.push({
+        edgeId: edge.id(),
+        sourceId,
+        targetId,
+        otherNodeId,
+        relationTypeCanonical,
+        otherNodeRole: getStoryNodeRoleFromClasses(otherNodeClassSnapshot)
+      });
+    });
+
+    return {
+      eventVersion: 1,
+      storyId: storyState.activeStoryId || null,
+      stepIndex: storyState.activeStoryStepIndex,
+      nodeId,
+      nodeRole,
+      nodeClassSnapshot,
+      connectedEdgeSnapshot,
+      selectionContext: { from: selectionFrom === 'click' ? 'click' : 'tap' },
+      expandOptionsSnapshot: {
+        expandOnClick: Boolean(opts.expandOnClick),
+        expandFromPrimary: Boolean(opts.expandFromPrimary),
+        maxAutoEdges: Number.isFinite(opts.maxAutoEdges) ? Math.max(0, opts.maxAutoEdges) : 0,
+        allowedRelationTypes: Array.isArray(opts.allowedRelationTypes) ? [...opts.allowedRelationTypes] : []
+      },
+      runtimeSnapshot: {
+        phase: runtime?.phase || step.initialState || 'primaryEdges',
+        expandedSecondaryIds: runtime?.expandedSecondaryIds ? Array.from(runtime.expandedSecondaryIds) : [],
+        expandedEdgeIds: runtime?.expandedEdgeIds ? Array.from(runtime.expandedEdgeIds) : []
+      },
+      candidateEdges
+    };
+  }
+
+  function computeExpectedExpansionFromPayload(payload) {
+    const opts = payload?.expandOptionsSnapshot || {};
+    const allowed = Array.isArray(opts.allowedRelationTypes) ? opts.allowedRelationTypes : [];
+    const maxAutoEdges = Number.isFinite(opts.maxAutoEdges) ? Math.max(0, opts.maxAutoEdges) : 0;
+    const canExpandFromNode = payload?.nodeRole === 'secondary'
+      || (Boolean(opts.expandFromPrimary) && payload?.nodeRole === 'primary');
+    if (!Boolean(opts.expandOnClick) || !canExpandFromNode) {
+      return { expectedAddedSecondaryIds: [], expectedAddedEdgeIds: [], expectedAcceptedCount: 0 };
+    }
+
+    const baseSecondary = new Set(payload?.runtimeSnapshot?.expandedSecondaryIds || []);
+    const baseEdges = new Set(payload?.runtimeSnapshot?.expandedEdgeIds || []);
+    const expectedSecondary = new Set(baseSecondary);
+    const expectedEdges = new Set(baseEdges);
+    let accepted = 0;
+
+    (payload?.candidateEdges || []).forEach(edge => {
+      if (accepted >= maxAutoEdges) return;
+      if (allowed.length && !allowed.includes(edge.relationTypeCanonical)) return;
+      if (edge.otherNodeRole === 'muted') expectedSecondary.add(edge.otherNodeId);
+      expectedEdges.add(edge.edgeId);
+      accepted += 1;
+    });
+
+    const expectedAddedSecondaryIds = [...expectedSecondary].filter(id => !baseSecondary.has(id)).sort();
+    const expectedAddedEdgeIds = [...expectedEdges].filter(id => !baseEdges.has(id)).sort();
+    return { expectedAddedSecondaryIds, expectedAddedEdgeIds, expectedAcceptedCount: accepted };
+  }
+
+  function bindExpandShadowRequested() {
+    if (_expandShadowRequestedBound) return;
+    GrapheEventBus.on('story:expand-from-node-requested', (payload) => {
+      if (!payload || payload.eventVersion !== 1) return;
+      const expected = computeExpectedExpansionFromPayload(payload);
+
+      window.setTimeout(() => {
+        const liveRuntime = storyState.currentStepRuntime;
+        if (!liveRuntime) return;
+        if ((payload.storyId || null) !== (storyState.activeStoryId || null)) return;
+        if (payload.stepIndex !== storyState.activeStoryStepIndex) return;
+
+        const beforeSecondary = new Set(payload.runtimeSnapshot?.expandedSecondaryIds || []);
+        const beforeEdges = new Set(payload.runtimeSnapshot?.expandedEdgeIds || []);
+        const liveAddedSecondaryIds = [...(liveRuntime.expandedSecondaryIds || new Set())]
+          .filter(id => !beforeSecondary.has(id))
+          .sort();
+        const liveAddedEdgeIds = [...(liveRuntime.expandedEdgeIds || new Set())]
+          .filter(id => !beforeEdges.has(id))
+          .sort();
+
+        const secondaryParity = JSON.stringify(liveAddedSecondaryIds) === JSON.stringify(expected.expectedAddedSecondaryIds);
+        const edgeParity = JSON.stringify(liveAddedEdgeIds) === JSON.stringify(expected.expectedAddedEdgeIds);
+        if (secondaryParity && edgeParity) {
+          console.info('[StoryExpandShadow] parity ok', {
+            storyId: payload.storyId,
+            stepIndex: payload.stepIndex,
+            nodeId: payload.nodeId,
+            acceptedEdgeCount: expected.expectedAcceptedCount
+          });
+          return;
+        }
+        console.warn('[StoryExpandShadow] parity mismatch', {
+          storyId: payload.storyId,
+          stepIndex: payload.stepIndex,
+          nodeId: payload.nodeId,
+          expectedAddedSecondaryIds: expected.expectedAddedSecondaryIds,
+          liveAddedSecondaryIds,
+          expectedAddedEdgeIds: expected.expectedAddedEdgeIds,
+          liveAddedEdgeIds
+        });
+      }, 0);
+    });
+    _expandShadowRequestedBound = true;
   }
 
   function clearStoryFocusClasses(cy) {
@@ -5815,13 +5966,14 @@ const StoryMode = (() => {
         if (inferred) document.getElementById('story-select').value = inferred;
       }
     });
+    bindExpandShadowRequested();
   }
 
   function getActiveStoryId() {
     return storyState.activeStoryId;
   }
 
-  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus, maybeExpandFromNode, getActiveStoryId };
+  return { init, getStoryPresetById, openStory, closeStory, goToStoryStep, nextStoryStep, prevStoryStep, applyStoryStep, resolveFocusNodes, applyStoryFocus, clearStoryFocus, maybeExpandFromNode, buildExpandFromNodeRequestedPayload, getActiveStoryId };
 })();
 
 // ─────────────────────────────────────────────────────────
