@@ -1379,7 +1379,10 @@ function buildChapterMap(data) {
 
   // Build entity type lookup for BFS exclusions
   const entityTypeMap = {};
-  for (const e of (data.entities || [])) entityTypeMap[e.id] = e.type;
+  for (const e of (data.entities || [])) {
+    const names = (e.types || []).map(tid => typeIdToName[tid]).filter(Boolean);
+    entityTypeMap[e.id] = names;
+  }
   // Types that should NOT propagate via BFS — only assigned via direct appears_in_section
   const BFS_EXCLUDED = new Set([
     'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureSegment',
@@ -1403,7 +1406,8 @@ function buildChapterMap(data) {
     if (hops >= 2) continue;
     for (const nb of (adj[id] || [])) {
       if (!visited.has(nb)) {
-        if (BFS_EXCLUDED.has(entityTypeMap[nb])) continue;
+        const nbTypes = entityTypeMap[nb] || [];
+        if (nbTypes.some(tn => BFS_EXCLUDED.has(tn))) continue;
         visited.add(nb);
         result[nb] = chapterIdx;
         queue.push({ id: nb, chapterIdx, hops: hops + 1 });
@@ -1846,9 +1850,24 @@ const Graph = (() => {
   let _nebulaZoomedIdx = -1;
   let _matrixMode = false; // true = Matrice layout active
 
+  function applyDegreeGlow(nodes, isMobile = false) {
+    if (!nodes || !nodes.length) return;
+    nodes.style({
+      'z-index': 1,
+      'shadow-color': 'data(color)',
+      // Degree-aware glow via node size (size already derived from degree in entityToNode)
+      'shadow-blur': isMobile
+        ? 'mapData(size, 22, 90, 6, 14)'
+        : 'mapData(size, 22, 90, 6, 12)',
+      'shadow-opacity': isMobile
+        ? 'mapData(size, 22, 90, 0.08, 0.26)'
+        : 'mapData(size, 22, 90, 0.07, 0.22)',
+    });
+  }
+
   function getNodeLabel(entity) {
     const name = entity.name || '?';
-    return name.length > 28 ? name.slice(0, 26) + '…' : name;
+    return name.length > 40 ? name.slice(0, 38) + '…' : name;
   }
 
   function entityToNode(entity) {
@@ -2073,10 +2092,10 @@ const Graph = (() => {
         selector: 'node.in-matrix',
         style: {
           'width': 'data(msize)', 'height': 'data(msize)', // msize = adaptatif mobile/desktop
-          'shadow-blur': 30, 'shadow-opacity': 0.80,
+          'shadow-blur': 8, 'shadow-opacity': 0.18,
           'shadow-color': 'data(color)',
           'shadow-offset-x': 0, 'shadow-offset-y': 0,
-          'background-opacity': 0.95,
+          'background-opacity': 0.92,
           'z-index': 2,
         }
       },
@@ -2533,13 +2552,13 @@ const Graph = (() => {
 
     // ── Géométrie responsive ─────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    // V3 mobile: 7 colonnes à 52px chacune (≈364px total) — pas de collapse
+    // V3 mobile: 8 colonnes à 52px chacune (≈416px total) — rendu plus aéré
     // V2 mobile: 4 macro-colonnes à 90px (strates conservées)
-    const COL_W      = isMobile ? (useStrata ? 90 : 44)   : (useStrata ? 280 : 280);
-    const ROW_H      = isMobile ? 160  : 540;
-    const OX         = isMobile ? (useStrata ? 120 : 40)  : 400;
+    const COL_W      = isMobile ? (useStrata ? 90 : 52)   : (useStrata ? 280 : 280);
+    const ROW_H      = isMobile ? 174  : 540;
+    const OX         = isMobile ? (useStrata ? 120 : 64)  : 400;
     const OY         = isMobile ? 100  : 360;
-    const NODE_H     = isMobile ? 10   : 16;
+    const NODE_H     = isMobile ? 9    : 16;
     const CELL_W_FRAC = 0.78;
 
     // ── Mobile col map / labels / halo colors ────────────
@@ -2565,12 +2584,29 @@ const Graph = (() => {
       'InfrastructureEvent', 'DevelopmentPhase', 'InfrastructureDomain',
       'InfrastructureSegment', 'Capability', 'PriceWindow',
     ]);
+    const CRISIS_LINK_RT = new Set([
+      'reveals', 'revealed by', 'triggers', 'triggered by', 'part of',
+      'resolves', 'resolved by', 'participates in', 'documents', 'documented by'
+    ]);
+    const crisisLinked = new Set();
+    const idToTypeName = {};
+    for (const e of (State.data.entities || [])) idToTypeName[e.id] = State.getEntityTypeName(e);
+    for (const rel of (State.data.relations || [])) {
+      const rt = State.maps.relTypes[rel.type]?.name;
+      const fromType = idToTypeName[rel.from];
+      const toType = idToTypeName[rel.to];
+      if (!rt || !CRISIS_LINK_RT.has(rt)) continue;
+      if (fromType === 'CrisisEvent' || fromType === 'CrisisPhase' || toType === 'CrisisEvent' || toType === 'CrisisPhase') {
+        crisisLinked.add(rel.from);
+        crisisLinked.add(rel.to);
+      }
+    }
     const cells = {};
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const ci  = n.data('chapterIdx');
       let row = ci >= 0 && ci < 5 ? ci : 5;
       // Infrastructure objects belong to Chap. I (index 1) unless explicitly anchored earlier
-      if (!useStrata && INFRA_CHAP_I_TYPES.has(n.data('typeName')) && row >= 3) row = 1;
+      if (!useStrata && INFRA_CHAP_I_TYPES.has(n.data('typeName')) && row >= 3 && !crisisLinked.has(n.data('id'))) row = 1;
       let col;
       if (useStrata) {
         const s = _displayStratumMap[n.data('id')] || 'analytic_frameworks';
@@ -2650,7 +2686,7 @@ const Graph = (() => {
     // ── Taille mobile-aware + classe in-matrix ────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      const mobileSize = Math.max(8, Math.min(raw, 22));
+      const mobileSize = Math.max(6, Math.min(raw, 16));
       n.data('msize', isMobile ? mobileSize : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
@@ -2658,7 +2694,7 @@ const Graph = (() => {
 
     if (isMobile) {
       cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 14, 'shadow-opacity': 0.80,
+        'shadow-blur': 6, 'shadow-opacity': 0.20,
       });
     }
 
@@ -2710,7 +2746,7 @@ const Graph = (() => {
     // ── Labels ───────────────────────────────────────────
     cy.$('.chapter-label, .type-label').remove();
 
-    const rowLabelX = isMobile ? OX - 28 : OX - 230;
+    const rowLabelX = isMobile ? OX - 38 : OX - 230;
     const hasRow5   = isMobile && Object.keys(cells).some(k => parseInt(k.split('_')[0]) >= 5);
     const mobileRowLabels = ['Intro.', 'Chap. I', 'Chap. II', 'Chap. III', 'Concl.'];
     if (hasRow5) mobileRowLabels.push('Multi.');
@@ -2727,10 +2763,10 @@ const Graph = (() => {
       });
     });
 
-    const colLabelY   = isMobile ? OY - 133 : OY - 240;
+    const colLabelY   = isMobile ? OY - 152 : OY - 240;
     // V3 mobile: rotation douce (15°) pour lisibilité; V2 mobile: 45° (labels longs)
     const colRotation = isMobile ? (useStrata ? -Math.PI / 4 : -Math.PI / 12) : 0;
-    const colSize     = isMobile ? (useStrata ? '33px' : '20px') : '28px';
+    const colSize     = isMobile ? (useStrata ? '34px' : '24px') : '28px';
     if (isMobile) {
       MOBILE_COL_LABELS.forEach((label, j) => {
         cy.add({
@@ -2783,9 +2819,7 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
-      'z-index': 1,
-    });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
@@ -3075,11 +3109,11 @@ const Graph = (() => {
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
     // 7 cols: mobile 60px → 420px total; desktop 260px
-    const COL_W  = isMobile ? 60  : 260;
-    const ROW_H  = isMobile ? 130 : 420;
-    const OX     = isMobile ? 60  : 320;
+    const COL_W  = isMobile ? 64  : 260;
+    const ROW_H  = isMobile ? 148 : 420;
+    const OX     = isMobile ? 70  : 320;
     const OY     = isMobile ? 100 : 280;
-    const NODE_H = isMobile ? 10  : 14;
+    const NODE_H = isMobile ? 9   : 14;
     const CELL_W_FRAC = 0.82;
 
     // ── Build name→id + id→placement ─────────────────────
@@ -3154,13 +3188,13 @@ const Graph = (() => {
     // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? Math.max(8, Math.min(raw, 22)) : raw);
+      n.data('msize', isMobile ? Math.max(6, Math.min(raw, 16)) : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
     if (isMobile) {
       cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({
-        'shadow-blur': 14, 'shadow-opacity': 0.80,
+        'shadow-blur': 6, 'shadow-opacity': 0.20,
       });
     }
 
@@ -3235,9 +3269,7 @@ const Graph = (() => {
         'z-index':            0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({
-      'z-index': 1,
-    });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     // ── Fit ───────────────────────────────────────────────
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
@@ -3301,7 +3333,7 @@ const Graph = (() => {
     // Type → column
     const TYPE_COL_QG = {
       'ThesisSection': 0, 'ChapterSection': 0, 'Argument': 0, 'NarrativeCluster': 0, 'AnalyticClaim': 0,
-      'GovernanceProcess': 1, 'GovernanceConflict': 1, 'ProtocolProposal': 1, 'CrisisPhase': 1,
+      'GovernanceProcess': 1, 'GovernanceConflict': 1, 'ProtocolProposal': 1,
       'StakeholderCategory': 2,
       'Institution': 3, 'Organization': 3,
       'StakeholderGroup': 4, 'ActorGroup': 4,
@@ -3368,9 +3400,9 @@ const Graph = (() => {
 
     // ── Geometry ──────────────────────────────────────────
     const isMobile = (cy.width() || window.innerWidth) < 600;
-    const COL_W  = isMobile ? 44  : 240;
-    const ROW_H  = isMobile ? 120 : 420;
-    const OX     = isMobile ? 44  : 300;
+    const COL_W  = isMobile ? 52  : 240;
+    const ROW_H  = isMobile ? 138 : 420;
+    const OX     = isMobile ? 58  : 300;
     const OY     = isMobile ? 90  : 260;
     const NODE_H = isMobile ? 9   : 14;
     const CELL_W_FRAC = 0.82;
@@ -3456,12 +3488,12 @@ const Graph = (() => {
     // ── Node sizing + classes ─────────────────────────────
     cy.nodes(':visible').not('.chapter-label').not('.type-label').forEach(n => {
       const raw = n.data('size') || 22;
-      n.data('msize', isMobile ? Math.max(8, Math.min(raw, 22)) : raw);
+      n.data('msize', isMobile ? Math.max(6, Math.min(raw, 16)) : raw);
     });
     cy.nodes(':visible').not('.chapter-label').not('.type-label').addClass('in-matrix');
     cy.edges().addClass('in-matrix');
     if (isMobile) {
-      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({ 'shadow-blur': 14, 'shadow-opacity': 0.80 });
+      cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').style({ 'shadow-blur': 6, 'shadow-opacity': 0.20 });
     }
 
     // ── Always-visible labels ─────────────────────────────
@@ -3521,7 +3553,7 @@ const Graph = (() => {
         'z-index': 0,
       });
     });
-    cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo').style({ 'z-index': 1 });
+    applyDegreeGlow(cy.nodes('.in-matrix').not('.chapter-label').not('.type-label').not('.col-halo'), isMobile);
 
     const dataNodes = cy.nodes(':visible').not('.chapter-label').not('.type-label').not('.col-halo');
     cy.layout({ name: 'preset', fit: false }).run();
@@ -3589,9 +3621,9 @@ const Graph = (() => {
         const sh = cellH  * zoom;
         const [r,g,b] = rgb(color);
         const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, 1);
-        grad.addColorStop(0,    `rgba(${r},${g},${b},0.70)`);
-        grad.addColorStop(0.40, `rgba(${r},${g},${b},0.35)`);
-        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.10)`);
+        grad.addColorStop(0,    `rgba(${r},${g},${b},0.56)`);
+        grad.addColorStop(0.35, `rgba(${r},${g},${b},0.30)`);
+        grad.addColorStop(0.75, `rgba(${r},${g},${b},0.12)`);
         grad.addColorStop(1,    `rgba(${r},${g},${b},0)`);
         ctx.save();
         ctx.translate(sx, sy);
