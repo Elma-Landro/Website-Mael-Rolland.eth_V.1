@@ -107,24 +107,71 @@ def audit_graph(data):
     r["duplicate_ids"] = {k: v for k, v in id_counts.items() if v > 1}
 
     # --- 7 & 8. Relations avec endpoint manquant ---
+    # On garde broken_from / broken_to (compatibilité) + on construit
+    # broken_relations_details avec le maximum d'information pour audit.
     r["broken_from"] = []
     r["broken_to"] = []
-    for rel in relations:
+    r["broken_relations_details"] = []
+
+    def _label_of(eid):
+        """Retourne le label (name) d'une entité si elle existe, sinon None."""
+        e = ent_by_id.get(eid)
+        if e is None:
+            return None
+        return e.get("name", eid)
+
+    for idx, rel in enumerate(relations):
         fid = rel.get("from")
         tid = rel.get("to")
-        if fid not in entity_id_set:
+        rt_id = rel.get("type")
+        rt_name = rtype_id_to_name.get(rt_id, rt_id)
+        rel_id = rel.get("id") or "NO_RELATION_ID"
+
+        fid_ok = fid in entity_id_set
+        tid_ok = tid in entity_id_set
+
+        # broken_from (compat)
+        if not fid_ok:
             r["broken_from"].append({
-                "relation_id": rel.get("id", "?"),
+                "relation_id": rel_id,
                 "missing_from": fid,
                 "to": tid,
-                "type": rtype_id_to_name.get(rel.get("type"), rel.get("type")),
+                "type": rt_name,
             })
-        if tid not in entity_id_set:
+        # broken_to (compat)
+        if not tid_ok:
             r["broken_to"].append({
-                "relation_id": rel.get("id", "?"),
+                "relation_id": rel_id,
                 "from": fid,
                 "missing_to": tid,
-                "type": rtype_id_to_name.get(rel.get("type"), rel.get("type")),
+                "type": rt_name,
+            })
+
+        # --- Détail enrichi ---
+        if not fid_ok or not tid_ok:
+            if not fid_ok and not tid_ok:
+                problem = "missing_both"
+                diagnostic = "both endpoints missing"
+            elif not fid_ok:
+                problem = "missing_from"
+                diagnostic = "source entity does not exist"
+            else:
+                problem = "missing_to"
+                diagnostic = "target entity does not exist"
+
+            r["broken_relations_details"].append({
+                "index": idx,
+                "relation_id": rel_id,
+                "relation_type_id": rt_id,
+                "relation_type_name": rt_name,
+                "from": fid,
+                "from_exists": fid_ok,
+                "from_label": _label_of(fid) if fid_ok else None,
+                "to": tid,
+                "to_exists": tid_ok,
+                "to_label": _label_of(tid) if tid_ok else None,
+                "problem": problem,
+                "diagnostic": diagnostic,
             })
 
     # --- Usage des types d'entités ---
@@ -387,6 +434,41 @@ def render_markdown(r, graph_path):
         w(f"### Entités orphelines (degré 0) : 0 ✓")
         w(f"")
 
+    # --- Broken relations details ---
+    if r["broken_relations_details"]:
+        w(f"### Broken relations details : {len(r['broken_relations_details'])}")
+        w(f"")
+        w(f"| # | index | relation type | `from` | from exists | from label "
+          f"| `to` | to exists | to label | problem |")
+        w(f"| --- | ---: | --- | --- | :---: | --- | --- | :---: | --- | --- |")
+        for i, br in enumerate(r["broken_relations_details"], 1):
+            f_label = br["from_label"] if br["from_label"] else "MISSING"
+            t_label = br["to_label"] if br["to_label"] else "MISSING"
+            # Tronquer les labels longs
+            if len(f_label) > 40:
+                f_label = f_label[:37] + "…"
+            if len(t_label) > 40:
+                t_label = t_label[:37] + "…"
+            w(f"| {i} | {br['index']} | {br['relation_type_name']} | "
+              f"`{br['from']}` | {'✓' if br['from_exists'] else '✗'} | "
+              f"{f_label} | `{br['to']}` | "
+              f"{'✓' if br['to_exists'] else '✗'} | {t_label} | "
+              f"{br['problem']} |")
+        w(f"")
+        # Diagnostic compact
+        w(f"<details><summary>Diagnostics détaillés</summary>")
+        w(f"")
+        for br in r["broken_relations_details"]:
+            w(f"- **index {br['index']}** ({br['relation_type_name']}): "
+              f"{br['diagnostic']} — "
+              f"from `{br['from']}` "
+              f"({'✓ ' + (br['from_label'] or '?') if br['from_exists'] else '✗ missing'})"
+              f" → to `{br['to']}` "
+              f"({'✓ ' + (br['to_label'] or '?') if br['to_exists'] else '✗ missing'})")
+        w(f"")
+        w(f"</details>")
+        w(f"")
+
     w(f"---")
     w(f"")
 
@@ -558,6 +640,7 @@ def build_json_report(r, graph_path, json_ok=True):
             "duplicate_ids": r["duplicate_ids"],
             "broken_from": r["broken_from"],
             "broken_to": r["broken_to"],
+            "broken_relations_details": r["broken_relations_details"],
             "orphans": r["orphans"],
         },
         "warnings": {
