@@ -1,0 +1,158 @@
+{
+  "patch_id": "grc20_v97_remove_15_truncated_broken_relations",
+  "source_graph": "grc20-these-mael-rolland-v96.json",
+  "target_graph": "grc20-these-mael-rolland-v97.json",
+  "operation": "remove_relations",
+  "status": "prepared_and_applied_to_v97",
+  "reason": "Remove 15 broken duplicate relations caused by truncated/missing from IDs; keep the sensitive Ostrom contributes-to relation for human review.",
+  "removed_count": 15,
+  "kept_for_human_review_count": 1,
+  "removed_relations": [
+    {
+      "v96_index": 19455,
+      "relation_id": "d65f683129e8e3cf9baea9ab24d5d6eb",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "0170870141524d46",
+      "to": "89663a261c1545c1941ab7f871314a53",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19456,
+      "relation_id": "0c0b8086cb614819f9bfcec0dafa5bce",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "c0c1bec510f54099",
+      "to": "89663a261c1545c1941ab7f871314a53",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19457,
+      "relation_id": "bd4b971b2742ec4e2b8b7045c5ef3ccd",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "f87e9246cf2b407b",
+      "to": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19458,
+      "relation_id": "22ede694643bf5af857e7d92b2fecce8",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "f07878254e144095",
+      "to": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19459,
+      "relation_id": "4e14f846951e84903daf635e595a4d2e",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "f07878254e144095",
+      "to": "38e637cc84f14883b96d064b8e387c0f",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19460,
+      "relation_id": "2dac7554e5c235f19e71dfd48580cb8c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "71908f95dad74d9a",
+      "to": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19461,
+      "relation_id": "8126fb055e2221061fbbcad41a45112f",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "71908f95dad74d9a",
+      "to": "38e637cc84f14883b96d064b8e387c0f",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19462,
+      "relation_id": "58539588d1f6a155093c9c01705a2318",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "2af42270c40746e2",
+      "to": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19464,
+      "relation_id": "d04e21e114674ea2dc6f6da98b28887c",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "571934eb6d074fb8",
+      "to": "89663a261c1545c1941ab7f871314a53",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19465,
+      "relation_id": "8903672c5563db32d2c6c3a1995b7416",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "633ccadaea354e76",
+      "to": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19466,
+      "relation_id": "0576eede6a5ecd7ebbd4ba56cc2bcda0",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from_truncated": "20b8c4f053744b01",
+      "to": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19467,
+      "relation_id": "f040b502d65d1175ef583f86d1cfab8f",
+      "type": "adaac51ada17446785f6d0fdf5b15425",
+      "from_truncated": "53525938440543a5",
+      "to": "df405dcd975b406486a260da72f1ad4a",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19468,
+      "relation_id": "64190d3ebb4bb47f7d79f063690db5d2",
+      "type": "adaac51ada17446785f6d0fdf5b15425",
+      "from_truncated": "53525938440543a5",
+      "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19469,
+      "relation_id": "98c8b43048f4fff4bbda35109c631909",
+      "type": "adaac51ada17446785f6d0fdf5b15425",
+      "from_truncated": "fb692ce5f716443f",
+      "to": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    },
+    {
+      "v96_index": 19470,
+      "relation_id": "2b000439e05165325ab7802dbbdbb382",
+      "type": "adaac51ada17446785f6d0fdf5b15425",
+      "from_truncated": "a985149b43e34a43",
+      "to": "89663a261c1545c1941ab7f871314a53",
+      "attributes": [],
+      "reason": "Truncated UUID (16/32 chars) with valid duplicate relation already present in graph."
+    }
+  ],
+  "kept_for_human_review": [
+    {
+      "v96_index": 19463,
+      "relation_id": "9dee2daa2afa4212f6369b059e0cf78c",
+      "type": "e279d673d83443bc95f641070d3a012e",
+      "from_missing": "72d182705407492c",
+      "to": "e3b7d91585004ef7a392934a0b37292f",
+      "to_label": "",
+      "reason": "Genuine orphan — no matching entity or duplicate found. Potential analytical value (contributes to → Ostrom 1990). Requires human review to identify the missing source entity."
+    }
+  ]
+}
