@@ -64,7 +64,8 @@ def ids_distinctifs(nom):
     return acr | num
 
 # ---------- chargement ----------
-g = json.load(open(GRAPH))
+with open(GRAPH, encoding='utf-8') as f:
+    g = json.load(f)
 tid = {t['id']: t.get('name') for t in g['types']}
 inv = {v: k for k, v in tid.items()}
 rtn = {r['id']: r.get('name') for r in g['relation_types']}
@@ -201,27 +202,78 @@ CORR = [
             "le 12/2010 de la these (ch.I n.74 l.607) ne sont confirmes. Validation manuelle requise."},
 ]
 
-# ---------- patch (SET_ATTRIBUTE uniquement) ----------
-ops = []
+# ---------- regroupement transitif des FUSION_SURE ----------
+# Une entite ne peut porter qu'un seul duplicateOf. Traiter les paires
+# independamment produirait des affectations contradictoires (A -> B puis A -> C,
+# derniere ecriture gagnante) et des chaines de doublons. On ferme donc les paires
+# par transitivite (union-find) et on n'emet qu'un canonique par grappe.
+par_id = {e['id']: e for e in evts}
+parent = {}
+
+def trouver(x):
+    parent.setdefault(x, x)
+    while parent[x] != x:
+        parent[x] = parent[parent[x]]
+        x = parent[x]
+    return x
+
+def unir(a, b):
+    ra, rb = trouver(a), trouver(b)
+    if ra != rb: parent[ra] = rb
+
+raison_paire = {}
 for r in resultats:
     if r['statut'] != 'FUSION_SURE': continue
-    ops.append({'op': 'SET_ATTRIBUTE', 'entityId': r['doublon_id'], 'attributeId': 'duplicateOf',
-                'value': {'type': 'TEXT', 'value': r['canonique_id']},
-                '_comment': f"doublon de « {r['canonique']} » — {r['raison']}"})
-    ops.append({'op': 'SET_ATTRIBUTE', 'entityId': r['doublon_id'], 'attributeId': 'reviewStatus',
-                'value': {'type': 'TEXT', 'value': 'duplicate-pending-merge'}})
+    unir(r['canonique_id'], r['doublon_id'])
+    raison_paire[frozenset((r['canonique_id'], r['doublon_id']))] = r['raison']
+
+grappes = collections.defaultdict(list)
+for x in parent: grappes[trouver(x)].append(x)
+
+# Meme regle de canonicite que pour les paires : la fiche la mieux dotee
+# (attributs, puis relations, puis nom). Appliquee a la grappe entiere.
+def rang(eid):
+    e = par_id[eid]
+    return (-e['nattr'], -e['nrel'], e['name'])
+
+# ---------- patch (SET_ATTRIBUTE uniquement) ----------
+# Format : dialecte de patch_2c_definitions.json — enveloppe `schemaVersion` + `ops`,
+# operations `{type, entityId, attributeId, value:{type,value}}`. C'est le dialecte que
+# le graphe lui-meme journalise dans sa cle de tete `ops`. Les cles `_comment` sont
+# des annotations de tracabilite, ignorables par un applicateur.
+ops = []
+for membres in sorted(grappes.values(), key=lambda m: sorted(m)):
+    if len(membres) < 2: continue
+    membres = sorted(membres, key=rang)
+    canon = membres[0]
+    for dup in membres[1:]:
+        raison = raison_paire.get(frozenset((canon, dup)), 'lien transitif dans la grappe')
+        ops.append({'type': 'SET_ATTRIBUTE', 'entityId': dup, 'attributeId': 'duplicateOf',
+                    'value': {'type': 'TEXT', 'value': canon},
+                    '_comment': f"doublon de « {par_id[canon]['name']} » — grappe de "
+                                f"{len(membres)} entites — {raison}"})
+        ops.append({'type': 'SET_ATTRIBUTE', 'entityId': dup, 'attributeId': 'reviewStatus',
+                    'value': {'type': 'TEXT', 'value': 'duplicate-pending-merge'}})
+
+CORR_PAR_CLE = {c['cle']: c for c in CORR}
 
 for e in evts:
     n = sa(e['name']).lower()
     if 'litecoin' in n and e['date'] and e['date'] != '2011-10-07':
-        c = CORR[0]
-        ops.append({'op': 'SET_ATTRIBUTE', 'entityId': e['id'], 'attributeId': 'date',
-                    'value': {'type': 'TEXT', 'value': '2011-10-07'},
+        c = CORR_PAR_CLE['litecoin']
+        ops.append({'type': 'SET_ATTRIBUTE', 'entityId': e['id'], 'attributeId': 'date',
+                    'value': {'type': 'TEXT', 'value': c['date_cible']},
                     '_comment': f"correction ; ancienne valeur « {e['date']} » ; {c['preuve'][:120]}"})
-        ops.append({'op': 'SET_ATTRIBUTE', 'entityId': e['id'], 'attributeId': 'dateAuthority',
-                    'value': {'type': 'TEXT', 'value': 'Verification externe 02/08/2026 ; these ch.I l.359'}})
+        # Convention etablie en v97 : `dateAuthority` porte une valeur controlee
+        # (37 entites : TIMELINE_FIGURE) et la preuve va dans `dateSource`.
+        ops.append({'type': 'SET_ATTRIBUTE', 'entityId': e['id'], 'attributeId': 'dateAuthority',
+                    'value': {'type': 'TEXT', 'value': 'EXTERNAL_VERIFICATION'}})
+        ops.append({'type': 'SET_ATTRIBUTE', 'entityId': e['id'], 'attributeId': 'dateSource',
+                    'value': {'type': 'TEXT', 'value': 'Vérification externe 02/08/2026 ; '
+                                                       'thèse ch.I l.359'}})
 
 patch = {
+    'schemaVersion': 1,
     'description': "Dedoublonnage conservateur des evenements + correction de date verifiee en externe",
     'source_graph': 'grc20-these-mael-rolland-v97.json',
     'generated': '2026-08-02',
@@ -229,10 +281,10 @@ patch = {
     'policy': "Aucune suppression, aucune fusion destructive. Les doublons sont MARQUES "
               "(duplicateOf + reviewStatus) et restent interrogeables. La fusion effective reste "
               "une decision humaine posterieure.",
-    'operations': ops,
+    'ops': ops,
 }
-json.dump(patch, open(PATCH, 'w', encoding='utf-8'),
-          ensure_ascii=False, indent=1)
+with open(PATCH, 'w', encoding='utf-8') as f:
+    json.dump(patch, f, ensure_ascii=False, indent=1)
 
 import csv
 with open(f'{OUT}/doublons-verifies.csv', 'w', encoding='utf-8', newline='') as f:

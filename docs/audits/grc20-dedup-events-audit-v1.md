@@ -30,11 +30,15 @@ Trois **vetos** (bloquants, aucune fusion possible) puis deux **confirmations** 
 
 ## Le patch — non destructif par construction
 
-`patch_10_dedup_events.json`, **10 opérations, toutes `SET_ATTRIBUTE`**. La convention du dépôt (`patch_1a`, `patch_1b`, `patch_2b`, `patch_2c`) ne comporte que `SET_ATTRIBUTE`, `ADD_RELATION`, `REMOVE_RELATION` — aucune opération de suppression d'entité. Le patch s'y tient et n'en invente pas.
+`patch_10_dedup_events.json`, **9 opérations, toutes `SET_ATTRIBUTE`**. La convention du dépôt (`patch_1a`, `patch_1b`, `patch_2b`, `patch_2c`) ne comporte que `SET_ATTRIBUTE`, `ADD_RELATION`, `REMOVE_RELATION` — aucune opération de suppression d'entité. Le patch s'y tient et n'en invente pas.
+
+**Format** : dialecte de `patch_2c_definitions.json` — enveloppe `schemaVersion` + `ops`, opérations `{type, entityId, attributeId, value:{type,value}}`. C'est le dialecte que le graphe journalise lui-même dans sa clé de tête `ops`. Les clés `_comment` sont des annotations de traçabilité, ignorables par un applicateur.
 
 Chaque doublon reçoit `duplicateOf` (id de l'entité canonique) et `reviewStatus = duplicate-pending-merge`. **Rien n'est effacé** : les deux entités restent dans le graphe et restent interrogeables ; la fusion effective demeure une décision humaine ultérieure. La canonique est l'entité la mieux dotée (attributs, puis relations).
 
-Contenu : 3 paires « mining pools » (4 opérations ×2) + Scaling Debate + la correction de date Litecoin.
+**Les paires `FUSION_SURE` sont fermées par transitivité avant émission** (union-find), et un seul canonique est retenu par grappe. Sans cela, une entité appartenant à plusieurs paires recevrait plusieurs `duplicateOf` contradictoires et le patch produirait des chaînes de doublons. Les 4 paires forment 2 grappes : `{Mining pools, Mining pools emergence, InfrastructureEvent — Mining pools}` → canonique `15864ab2cd…`, et `{Scaling Debate, Bitcoin Scaling Debate}` → canonique `e3742113c4…`.
+
+Contenu : 3 doublons marqués (2 grappes) + la correction de date Litecoin (`date`, `dateAuthority`, `dateSource`).
 
 ## Vérifications externes des 5 conflits de dates
 
@@ -53,7 +57,7 @@ Contenu : 3 paires « mining pools » (4 opérations ×2) + Scaling Debate + la 
 3. Les 13 `A_VERIFIER` incluent des cas nets (halving 2012-11-28 vs 2012-11 ; « Nakamoto réserve » vs « Dépôt du nom de domaine ») et des cas parasites (Bitcoin-Qt sans date, apparié à trois entités différentes).
 
 ## Livrables
-- `patch_10_dedup_events.json` — patch, 10 opérations, format du dépôt
+- `patch_10_dedup_events.json` — patch, 9 opérations, dialecte `patch_2c`
 - `doublons-verifies.csv` — 73 paires, statut + motif de chaque décision
 - `dates-verification-externe.csv` — les 5 conflits avec preuve et statut
 - `verif_doublons.py` — mécanisme rejouable
@@ -104,16 +108,22 @@ Le patch a été présenté comme conforme aux conventions de `patch_1a`, `patch
 | `patch_2c_definitions.json` | `schemaVersion` + `ops` | `type` / `entityId` / `attributeId` / `value:{type,value}` |
 | `patch_2b_central_arguments.json` | `patch_id` + `description` + `operations` | `op` / `entity_id` / `attribute_name` / valeur nue |
 
-`patch_10_dedup_events.json` combine l'enveloppe du premier dialecte (`operations`, clé `op`) avec les champs du second (`entityId` / `attributeId` / `value:{type,value}`). Il ne correspond exactement à aucun des deux. Sans conséquence tant qu'aucun applicateur ne le consomme (cf. C1), **mais à trancher avant toute application**.
+Dans sa version initiale, `patch_10_dedup_events.json` combinait l'enveloppe du second dialecte (`operations`, clé `op`) avec les champs du premier (`entityId` / `attributeId` / `value:{type,value}`). Il ne correspondait exactement à aucun des deux.
 
-### C4 — Deux opérations du patch se contredisent
+**Résolu (revue de PR)** — le patch est réémis dans le dialecte de `patch_2c` : enveloppe `schemaVersion` + `ops`, clé d'opération `type`. Ce dialecte a été retenu parce que c'est celui que le graphe journalise lui-même dans sa clé de tête `ops` (293 entrées, reprise verbatim de `patch_2c_definitions.json`), et parce que les champs du patch y étaient déjà conformes : la conversion se limite à l'enveloppe. Les clés de provenance (`description`, `source_graph`, `generated`, `author`, `policy`) sont conservées en supplément — additives, ignorables par un applicateur, elles portent la traçabilité exigée par la charte. Vérifié : l'ensemble des clés d'opération est **exactement identique** à celui de `patch_2c_definitions.json`.
 
-L'entité `ee7277478ddc4c0886e8d73a4e2ce00d` (« Mining pools ») reçoit `duplicateOf` **deux fois, avec deux valeurs différentes** :
+### C4 — Deux opérations du patch se contredisaient
+
+Dans sa version initiale, l'entité `ee7277478ddc4c0886e8d73a4e2ce00d` (« Mining pools ») recevait `duplicateOf` **deux fois, avec deux valeurs différentes** :
 
 - opération 1 → `15864ab2cdcd41348eecc0daba8eb11d`
 - opération 5 → `7f80094676fd44a785c6483dbee4f8c5`
 
-En dernière écriture gagnante, la première est silencieusement écrasée. Le triplet « mining pools » produit alors une **chaîne** (`ee7277…` → `7f8009…` → `15864ab2…`) là où le patch semble viser un pointage direct vers un canonique unique. C'est la conséquence mécanique d'avoir traité trois entités par paires indépendantes sans réconciliation transitive.
+En dernière écriture gagnante, la première était silencieusement écrasée. Le triplet « mining pools » produisait alors une **chaîne** (`ee7277…` → `7f8009…` → `15864ab2…`) là où le patch vise un pointage direct vers un canonique unique. Conséquence mécanique d'avoir traité trois entités par paires indépendantes, sans réconciliation transitive.
+
+**Résolu (revue de PR)** — les paires `FUSION_SURE` sont désormais fermées par transitivité (union-find) avant émission, et un seul canonique est retenu par grappe. Les 4 paires forment 2 grappes ; `ee7277…` et `7f8009…` pointent maintenant tous deux vers `15864ab2…`. Le patch passe de 10 à 9 opérations. Deux invariants sont vérifiés à chaque rejeu : **aucune entité ne reçoit plus d'une valeur de `duplicateOf`**, et **aucun canonique n'est lui-même marqué doublon** (pas de chaîne).
+
+La **règle de canonicité est inchangée** : la fiche la mieux dotée (attributs, puis relations, puis nom), simplement appliquée à la grappe entière au lieu de la paire. Changer ce critère relèverait d'un arbitrage scientifique — voir C5, qui reste ouvert.
 
 ### C5 — Le canonique retenu est parfois le moins relié
 
@@ -125,6 +135,10 @@ Le mécanisme choisit le canonique par tri sur (nombre d'attributs, nombre de re
 
 L'entité `94ce188ef0534c1e8601226fc60163dd` porte `date = "19/11/2011"` (format `DD/MM/YYYY`), alors que **sa propre `description` énonce « Lancement du Litecoin (LTC) par Charlie Lee le 7 octobre 2011 »**. La date `2011-10-07` retenue par le patch ne repose donc pas seulement sur la vérification externe : elle lève une contradiction interne au graphe. C'est l'opération la mieux étayée du patch.
 
-**Réserve sur l'opération jointe** : `dateAuthority` est **déjà utilisé par 37 entités de v97, toutes avec la valeur `TIMELINE_FIGURE`**, systématiquement adossée à un `dateSource` du type « Thèse — Chronologie 2 (p.88) ». Le patch y écrit du texte libre (`"Verification externe 02/08/2026 ; these ch.I l.359"`), ce qui s'écarte de cet usage établi. Deux voies possibles, non tranchées : suivre la convention existante (valeur codée + `dateSource` séparé), ou assumer un second registre de valeurs pour cet attribut.
+**Réserve sur l'opération jointe** : `dateAuthority` est **déjà utilisé par 37 entités de v97, toutes avec la valeur `TIMELINE_FIGURE`**, systématiquement adossée à un `dateSource` du type « Thèse — Chronologie 2 (p.88) ». Le patch y écrivait du texte libre (`"Verification externe 02/08/2026 ; these ch.I l.359"`), ce qui s'écartait de cet usage établi.
+
+**Résolu (revue de PR)** — la convention existante est suivie : `dateAuthority` reçoit une **valeur contrôlée**, `EXTERNAL_VERIFICATION`, et la preuve part dans un `dateSource` distinct (`"Vérification externe 02/08/2026 ; thèse ch.I l.359"`). La correction Litecoin compte donc 3 opérations au lieu de 2.
+
+> **Seul point de vocabulaire nouveau de ce patch** : le jeton `EXTERNAL_VERIFICATION` n'existe pas encore dans le graphe — v97 n'utilise que `TIMELINE_FIGURE`. Il est construit sur le même moule (jeton en majuscules désignant la nature de l'autorité de datation) et se renomme d'un seul `SET_ATTRIBUTE` s'il ne convient pas. À valider.
 
 **Contexte de format** : sur les 219 entités portant une `date` en v97, 55 utilisent `DD/MM/YYYY`, 52 l'ISO `YYYY-MM-DD`, 33 `YYYY-MM`, 41 l'année nue, 38 autre chose. Les 37 entités `dateAuthority: TIMELINE_FIGURE` sont toutes dans le groupe ISO — l'attribut marque aujourd'hui des dates *déjà normalisées et sourcées*.
