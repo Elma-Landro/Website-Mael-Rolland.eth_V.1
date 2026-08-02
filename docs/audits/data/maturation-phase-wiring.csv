@@ -1,0 +1,90 @@
+id_entite;nom;date;precision;type;decision;motif
+3198fc1ff3d748b78f220b5699264a44;InfrastructureEvent — Chine interdit les institutions d'utiliser Bitcoin (décembre 2013);2013-12-05;jour;InfrastructureEvent;CABLER;
+09746caaab9347219a82b622960f3b49;InfrastructureEvent — Incident Ghash.io : dépassement 51% (janvier 2014);2014-01;mois;InfrastructureEvent;CABLER;
+f5161f664dbd43929b59d560548ddd87;InfrastructureEvent — Lancement Darkcoin / Dash (2014);2014-01-18;jour;InfrastructureEvent;CABLER;
+3952cb540d924df7a70f267da5d5009b;BIP-0042 — Bitcoin Fixed Monetary Supply (Inflation Bug);2014-04-01;jour;CrisisEvent;CABLER;
+fcddab6ea50c4380a94c2d5dc8b00480;InfrastructureEvent — BitGo lève 12 millions $ (portefeuille multi-sig, 2014);2014-05-13;jour;InfrastructureEvent;CABLER;
+ca278d213d804294a2c5a672d52808e4;CVE-2014-0160 — Remote memory leak via payment protocol (Heartbleed);2014-07-04;jour;CrisisEvent;CABLER;
+d7fdcd25ac024e799bbaa6c9bda0a607;InfrastructureEvent — France rapport TraFin et régime fiscal du Bitcoin (2014);2014-07-11;jour;InfrastructureEvent;CABLER;
+3dd742f499c64c5ba60e874c0435e859;InfrastructureEvent — eBay / PayPal intègre Bitcoin (2014-2015);2014-09-08;jour;InfrastructureEvent;CABLER;
+544943d3d87a4c898c5e706622b2df97;InfrastructureEvent — France audition Commission des Finances sur les cryptomonnaies (2015);2014-11-07;jour;InfrastructureEvent;CABLER;
+d02f0c0a011a4ca09cf826f684f10222;InfrastructureEvent — ASIC Antminer S5 (1 TH/s) par Bitmain (2014);2014-12-01;jour;InfrastructureEvent;CABLER;
+e3742113c4674c52930e54ff203f0ac6;Bitcoin Scaling Debate;2015;annee_deduite;CrisisEvent;CABLER;
+5062acdef7964498a764823149c32127;CVE-2015-3641 — OOM via p2p — Unspecified yet;2015-06-27;jour;CrisisEvent;CABLER;
+d1961d60a3fc43bb996bf52e14c24193;BIP-66 — Strict DER signatures — Fake Conf & Chain Split;2015-07-04;jour;CrisisEvent;CABLER;
+3c3d4fec977c4e788b850a0ea5cbebfa;InfrastructureEvent — Lancement d'Ethereum (Frontier, 30 juillet 2015);2015-07-30;jour;InfrastructureEvent;CABLER;
+170ed4f7fcfb4531b7c872cb84cc8f80;CVE-2015-6031 — MiniUPnPc buffer overflow (LAN);2015-09-15;jour;CrisisEvent;CABLER;
+6daefcd122a24b3589c41fcddd3732aa;BIP-65 — Soft fork: OP_CHECKLOCKTIMEVERIFY;2015-11-12;jour;CrisisEvent;CABLER;
+1aa79f912b8c4aadb5bde9c7435b32d0;BIPs 68, 112 & 113 — Soft forks: Rel locktime, CSV & MTP locktime;2016-04-11;jour;CrisisEvent;CABLER;
+07715d5ff1d647e88fa6a2f94be1a102;InfrastructureEvent — ASIC Antminer S9 (14 TH/s) par Bitmain (2016);2016-06-12;jour;InfrastructureEvent;CABLER;
+c4eab4f4b3f54162b2404b3da684b840;Attaque de The DAO;2016-06-17;jour;CrisisEvent;CABLER;
+55f0a933c1f6483f80adda294c744961;InfrastructureEvent — Lancement bourse d'échange Bitcoin en Inde (2016);2016-07-01;jour;InfrastructureEvent;CABLER;
+75ca941e17f4489fa47ced4aeafdd2f8;InfrastructureEvent — BitGo lève 49 millions $ (octobre 2016);2016-10-06;jour;InfrastructureEvent;CABLER;
+5656bd5a2f974bbdb8d82530cdf936f3;CVE-2016-8889 — Debug console history storing sensitive info;2016-10-27;jour;CrisisEvent;CABLER;
+d25e5ffe06df4701bfc3755bdc9d1b31;BIPs 141, 143 & 147 — Soft fork: SegWit;2016-10-27;jour;CrisisEvent;CABLER;
+6159fc6febc14b1fa512e41f7a6308b6;CVE-2017-9230 (ASICboost);2017;annee;CrisisEvent;CABLER;
+cd6241f420a940b6904326b1fa207646;Congestion du mempool et hausse des frais (2017);2017;annee_deduite;InfrastructureEvent;CABLER;
+fc5ad50cc59d417c9afd05b437a42366;Parity Multisig Freeze (novembre 2017);2017;annee_deduite;CrisisEvent;CABLER;
+bcadca2adf144ddbb061b722a8c85a80;InfrastructureEvent — Coinbase atteint 5 millions utilisateurs (2017);2017-01-08;jour;InfrastructureEvent;CABLER;
+f979ff6cc3cd4861b1de30ec72463c7c;BIP-148 — Soft fork: SegWit UASF;2017-03-12;jour;CrisisEvent;CABLER;
+b3e21da76d6548fda0625c0410af758c;InfrastructureEvent — Lancement Binance (plateforme d'échange mondiale, 2017);2017-07-14;jour;InfrastructureEvent;CABLER;
+fb4d19f9cec5420fbadd1b074d7872a4;InfrastructureEvent — Annulation du New York Agreement / SegWit2x (novembre 2017);2017-11-11;jour;InfrastructureEvent;CABLER;
+c6389ffe8f7a48668883b4845808c388;CVE-2018-20587 (Vol, Luke Dashjr);2018;annee;CrisisEvent;CABLER;
+19907a993e6c4b2392f503ec1863df9e;CVE-2018-20586 (Tromperie, injection journal);2018;annee;CrisisEvent;CABLER;
+232fdda1778043d9b168884c0caad3a5;CVE-2017-12842 — No commitment to block merkle tree depth;2018-06-09;jour;CrisisEvent;CABLER;
+cfdb999d9b1c4989b7424a931fef16c4;CVE-2016-10724 & CVE-2016-10725 — Alert system — Memory exhaustion & Final alert cancellation;2018-07-02;jour;CrisisEvent;CABLER;
+db9a125c4c7a4d03bd19d3dc8c474a9e;Bitcoin CVE 2018-17144;2018-09-01;jour;CrisisEvent;CABLER;
+52825e0addb24136bf45eace9724984b;InfrastructureEvent — Braiins / Stratum V2 (protocole communication hashers/pools);2019;annee;InfrastructureEvent;CABLER;
+fc33fb06d95b42a09a1e08dae5fe8c87;CVE-2017-18350 — Buffer overflow from SOCKS proxy;2019-06-22;jour;CrisisEvent;CABLER;
+273237e8600e4e289cd76da835a82e67;Bitcoin CVE 2010-5139 (Value Overflow);2010-08-15;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+6b444dfd2cfe4786a214e3edef593d35;The DAO ICO;;;;ECARTER;date absente
+e2cdb978bbdd4119aa946a271051a753;Ethereum Hard Fork (juillet 2016);;;;ECARTER;date absente
+4d915f21188945fbb8c5b856f1362640;Secession Ethereum Classic;;;;ECARTER;date absente
+0423dfbdf0904305b1d7e48c3df78ae2;CVE-2010-5141 (Vol de clés privées);2010;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+2e5d597d1add45de83a060caea9a05c3;Bogue Bitcoin-Qt Windows 2012 (Crash nœuds);2012;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+1204a4726caa4f95801cbb04aa5a1d3c;Crise BIP-0016 (Attaque P2SH);;;;ECARTER;date absente
+72ed5cce1e98494385ca4eb091d6707c;CVE-2013-3220 (Netsplit BIP-0050);2013;;;ECARTER;annee 2013 seule : peche ou maturation, indecidable
+4e1a794249594b368e13e558174dea38;Attaque DDoS MtGox (mai 2013);2013;;;ECARTER;annee 2013 seule : peche ou maturation, indecidable
+272f2d17b89d4912aca1c4f7b77b7332;Fermeture Silk Road par le FBI (octobre 2013);2013;;;ECARTER;annee 2013 seule : peche ou maturation, indecidable
+86b6f7211dc94792b7efa288317a811e;Séries China BAN (2013-2021);;;;ECARTER;date absente
+c8b77447d55c4ff08810620dc9370f67;Genesis Block — Lancement du protocole Bitcoin;2009-01-03;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+dddeabcb23464ee48e9524a6ac71c6eb;CVE-2010-5137 — OP_LSHIFT crash;2010-07-28;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+d6af94403c654e33a826339a6d612463;CVE-2010-5138 — Unlimited SigOp DoS via OP_CHECKSIG;2010-07-29;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+7246b452d71d4416b146f62f42a2bb64;CVE-2010-5140 — Never confirming transactions;2010-09-29;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+3c57e750960e4e97bf6cb2ba79e9f2cd;CVE-2011-4447 — Wallet non-encryption;2011-11-11;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+a9f76f92c83143479499d10b87c6fe77;CVE-2012-1909 — Transaction overwriting;2012-03-07;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+522baf7957ec403bb149dd90adb1ba6e;CVE-2012-3789 — (Lack of) orphan txn resource limits;2012-05-12;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+69b8894ae6764333a270770b1fd661f3;CVE-2012-2459 — Block hash collision (via merkle root);2012-05-14;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+07328e2856b1462d882bd1a6a7dfdafa;CVE-2012-4683 — Targeted DoS by CPU exhaustion using alerts;2012-08-23;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+f5fd3b0f03fa4e11af9b54455a81cdd7;CVE-2012-4684 — Network-wide DoS using malleable signatures in alerts;2012-08-24;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+65b41c49b2244a85ab136ed849d95b6b;CVE-2012-4682 — DOS (manque d'informations);2012-09-16;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+ce0f6a5e811447c8ba4674075a6cf057;CVE-2013-2293 — Continuous hard disk seek;2013-01-09;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+ee9911c3aa4c435582ccca09979c5000;CVE-2013-2272 — Remote discovery of node's wallet addresses;2013-01-11;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+896936e6d50b46f89947a60e01aa584a;CVE-2013-2292 — A transaction that takes at least 3 minutes to verify;2013-01-30;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+580caacd80b14170b0d6dc071106071b;CVE-2013-2273 — Predictable change output;2013-01-30;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+0d3e806ee1f94421b7ff458eedc65ffa;CVE-2013-3219 — Unenforced block protocol rule;2013-03-11;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+eb0766a0711945a08d6e4c526615bfd7;CVE-2013-4627 — Memory exhaustion with excess tx message data;2013-02-08;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+78dcb8a0af094eb0a1cea842f7f97212;CVE-2013-4165 — Timing leak in RPC authentication;2013-07-20;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+00586d082e964abab5d9f45c73948400;CVE-2013-5700 — Remote p2p crash via bloom filters;2013-09-04;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+eeece02d7bd2411f94b4cffa2d816367;BIP-0034 — Mandatory block protocol update (Height in coinbase);2013-03-24;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+4d131ce65c0e4ed4ac4da539f21979a2;Multisig wallet;;;;ECARTER;date absente
+ee7277478ddc4c0886e8d73a4e2ce00d;Mining pools;;;;ECARTER;date absente
+6ce7c70a40f34ef3bf06889bc177511b;InfrastructureEvent — Crise chypriote (référence dans la monétisation);;;;ECARTER;date absente
+673e389578a2423ea211086b2dfcdb05;InfrastructureEvent — Fermeture de SilkRoad (FBI);;;;ECARTER;date absente
+39fdc0aac1f74b8daad7a5227b99c8a5;InfrastructureEvent — Démantèlement de Silk Road;2013-10-02;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+da2c1b40ca374770836b98990bb6d55a;Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs;2024;;;ECARTER;hors periode de la these (2008-2020)
+3a7d7850c35842dc9127080eb7d30db3;InfrastructureEvent — Article PCWorld sur Bitcoin (décembre 2009);2009-12-22;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+94ce188ef0534c1e8601226fc60163dd;InfrastructureEvent — Lancement Litecoin (LTC) par Charlie Lee (2011);2011-11-19;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+2a82b098ae8c4ec2ba420111cfe9493d;InfrastructureEvent — Colored Coins (protocole méta-token sur Bitcoin, 2012);2012-09-27;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+af85b2621cb14132a88ffcb4e8185ac9;InfrastructureEvent — Lancement Peercoin (PoS) par Sunny King / Scott Nadal (2012);2012-08-19;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+04de601cb8024a0a9e9f81974f1c8116;InfrastructureEvent — WordPress accepte les paiements en Bitcoin (2012);2012-11-15;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+75f5c97d0a2648aea297475fa514300a;InfrastructureEvent — Rapport BCE sur les monnaies virtuelles (octobre 2012);2012-10-01;;;ECARTER;anterieur au 01/11/2013, borne de la maturation
+c501df1a0cb5496588d3806003d6f6d3;Migration DApps Counterparty vers Ethereum (2014-2015);;;;ECARTER;date absente
+c5b853a4aa0447ed88bc11828a8c805c;The Merge (transition Ethereum PoW → PoS, septembre 2022);2022;;;ECARTER;hors periode de la these (2008-2020)
+bc083765c6c20c4840d5eef4873c9814;Crise bancaire et financière de 2008;;;;ECARTER;date absente
+344cef0c6643488946ab489f73e2e97f;North American Bitcoin Conference (Miami 2014);;;;ECARTER;date absente
+d0f3f4e1a1796c486a136d142127c321;Ether Genesis Sale (ICO Ethereum 2014);;;;ECARTER;date absente
+647cfd915fa09e9703fa8cbd1e60e819;Campagne de financement Ethereum (ICO 2014);;;;ECARTER;date absente
+6cbe860718afbd70507b3dc92aba5973;Frontier (lancement mainnet Ethereum, juillet 2015);;;;ECARTER;date absente
+43188ec45e15dbb64adc77e81b89dacd;Op_Return War;;;;ECARTER;date absente
+22c507bdaa874229b5a4a145e23d123c;Scaling Debate;;;;ECARTER;date absente
