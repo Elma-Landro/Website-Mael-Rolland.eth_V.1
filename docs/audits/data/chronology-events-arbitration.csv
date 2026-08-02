@@ -1,0 +1,20 @@
+id_csv;verdict_verification;type_couverture;entite_couverture;decision;motif
+E003;REFUTE;InfrastructureEvent;InfrastructureEvent — Genesis Block / lancement du protocole (70d79dda…);NE_PAS_AJOUTER;"deja present comme evenement ; barriere de langue FR/EN"
+E025;REFUTE;InfrastructureEvent;BIP-0001 : institutionnalisation du processus (fda844ff…) + Standardisation des propositions protocolaires (008274f2…);NE_PAS_AJOUTER;"deja present EN DOUBLE ; l'ajout ferait un triplet"
+E044;REFUTE;InfrastructureEvent;BIP 16 : Pay-to-Script-Hash (1eb70d76…) date 2012-04;NE_PAS_AJOUTER;"present ; la date du CSV (2013-04) est fausse d'un an, celle du graphe est sourcee O'Brien 2014"
+E047;REFUTE;InfrastructureEvent;Digital Asset Transfer Authority, juillet 2013 (61c00091…);NE_PAS_AJOUTER;"present ; DATA est l'acronyme developpe dans le graphe"
+E051;REFUTE;CrisisEvent;BIP-0042 — Bitcoin Fixed Monetary Supply (3952cb54…);NE_PAS_AJOUTER;present comme CrisisEvent, typage correct
+E038;PARTIEL;Concept;Changement de regime transactionnel, phase de peche (de0b904e…);NE_PAS_AJOUTER;"propriete d'un regime, pas un evenement ; ajouter amplifierait l'« effet loupe » dont la these avertit (ch.I l.281)"
+E043;PARTIEL;Concept;Regime transactionnel de la phase de maturation (b609ad6d…);NE_PAS_AJOUTER;"idem ; attribut illegalShare deja porte"
+E050;PARTIEL;PriceWindow;PriceWindow — Pic decembre 2013 (~1000$) (4d2430ba…);NE_PAS_AJOUTER;"doublon de fond ; la convention du graphe pour les cours est PriceWindow"
+E074;PARTIEL;PriceWindow;PriceWindow — Pic decembre 2017 (~20 000$) (ee7d24e8…);NE_PAS_AJOUTER;idem
+E076;PARTIEL;PriceWindow;PriceWindow — Point bas 2018-2019 (~3300$) (95116994…);NE_PAS_AJOUTER;idem
+E078;PARTIEL;PriceWindow;PriceWindow — Stabilisation 2019-2020 (~8000$) (d7b4845b…);NE_PAS_AJOUTER;idem
+E070;ABSENT;;aucune;NE_PAS_AJOUTER_HORS_PERIMETRE;reellement absent, mais son type correct est PriceWindow, hors du perimetre declare (InfrastructureEvent/CrisisEvent). A ajouter separement
+E022;PARTIEL;MediaOutlet;Bitcoin Magazine, founded 2012 (aa6405e3…);NE_PAS_AJOUTER;fondation absente comme evenement, mais date contestee : le CSV dit 2011, le graphe dit 2012 (Castillo 2013). A trancher avant ajout
+E034;PARTIEL;Organization;Coinbase, foundedYear 2012 (8991d9f0…);AJOUTER;fondation absente comme evenement alors que Kraken, Ripple, Binance et MtGox ont la leur. Date issue de la figure n°6, non narree par le texte
+E036;PARTIEL;Reference;Willett 2012 Mastercoin WP (59c7ed8a…);AJOUTER;"publication absente comme evenement ; le WP Bitcoin est precedent (Reference + InfrastructureEvent)"
+E040;PARTIEL;Reference;Buterin 2013 Ethereum Whitepaper (12c586ca…);AJOUTER;"idem ; date corrigee a 2013-11 d'apres ch.I l.393 (« fin novembre 2013 »), plus precis que la l.399 citee par le CSV"
+E060;PARTIEL;Concept;Narrative 'blockchain sans Bitcoin' (2015) (03f93467…);AJOUTER;"concepts presents mais aucun ancrage evenementiel ; portee materielle (des entreprises pivotent effectivement)"
+E061;ABSENT;Reference;Slacknation 2017 — Ethereum Olympic testnet history (15aec650…);AJOUTER;seule trace : une reference bibliographique. Date precise donnee verbatim ch.I l.399
+E069;PARTIEL;attribut;chaine « PR #9049 » dans l'attribut inseminationPR de Bitcoin CVE 2018-17144 (db9a125c…);AJOUTER;consigne mais non navigable : aucun noeud, aucune date, aucune relation. Coeur demonstratif du ch.III
