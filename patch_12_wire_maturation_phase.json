@@ -1,0 +1,280 @@
+{
+  "_meta": {
+    "patch_id": "12",
+    "description": "Cablage des evenements de la periode de maturation sur la DevelopmentPhase homonyme.",
+    "source_graph": "grc20-these-mael-rolland-v98.json",
+    "target_graph": "grc20-these-mael-rolland-v99.json",
+    "generated": "2026-08-02",
+    "policy": "Ajout de relations seul. Aucune entite creee, modifiee ou supprimee. Aucune relation existante retiree.",
+    "target_phase": {
+      "id": "eed0b89cd2e740718059c16591f9bfb7",
+      "name": "Phase de maturation",
+      "type": "DevelopmentPhase",
+      "rationale": "Les phases 'preuve de concept' et 'peche' sont toutes deux des DevelopmentPhase. Cabler la maturation sur la DevelopmentPhase homonyme rend les trois phases comparables. Le Concept 'Phase de maturation / Phase 3 Bitcoin' (645079ad66ee41b689112d383dd54798, 25 usages, dateRange 01/11/2013 — 01/01/2020) est un DOUBLON a arbitrer separement : il porte la periodisation mais pas le type."
+    },
+    "criteres": "Evenement (InfrastructureEvent ou CrisisEvent) non deja rattache a une phase, date normalisee comprise entre 2013-11 et 2020-12. Exclus : dates absentes, annee 2013 seule (indecidable entre peche et maturation), hors periode, artefacts de figure.",
+    "id_derivation": "md5('grc20-wire-maturation-v1|occ|<from>|<to>') -> 32 hex minuscules. Deterministe."
+  },
+  "new_entities": [],
+  "new_relations": [
+    {
+      "id": "df566d5441aa50352e1b1b02a4db2b5b",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "3198fc1ff3d748b78f220b5699264a44",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "ae4f3dfc453e52572fa7f92f7c009fdd",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "09746caaab9347219a82b622960f3b49",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "85d304aa0ddf320bce4b3fc4b77b23f8",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "f5161f664dbd43929b59d560548ddd87",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "c4a1a19d5a81222ba19f5be4c11b5fa2",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "3952cb540d924df7a70f267da5d5009b",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "fb03a005ca11c5f9ff6372b8a3b31bb6",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "fcddab6ea50c4380a94c2d5dc8b00480",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "68e80aaeef88a3a7aefabb9430246048",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "ca278d213d804294a2c5a672d52808e4",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "296197fcb05e48a29da653d8fb08e1a3",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "d7fdcd25ac024e799bbaa6c9bda0a607",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "595057286a6ce506cb05b5e47242a93a",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "3dd742f499c64c5ba60e874c0435e859",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "06c807251ef84a225294fdb7aab199c6",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "544943d3d87a4c898c5e706622b2df97",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "eb9ec578eebda2f988bd6c756e82bdce",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "d02f0c0a011a4ca09cf826f684f10222",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "872d440f0f3b8a3eaa137bbc53c29fe9",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "e3742113c4674c52930e54ff203f0ac6",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "0cc1db03c53a2a45eb5fd15feb3bddd1",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "5062acdef7964498a764823149c32127",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "83cfa9adb097f5419332ba565fb725cd",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "d1961d60a3fc43bb996bf52e14c24193",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "5b67677f18f94dd0e1318cc312892aa4",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "3c3d4fec977c4e788b850a0ea5cbebfa",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "11717c93517c6b3eb1708f74c29dc274",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "170ed4f7fcfb4531b7c872cb84cc8f80",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "5b1d6d4b426066196f78b0c351189c22",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "6daefcd122a24b3589c41fcddd3732aa",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "0114ee8b061c408988bbdcfc2a3c24de",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "1aa79f912b8c4aadb5bde9c7435b32d0",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "8273fa2b9ae33222f4301d438c59a769",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "07715d5ff1d647e88fa6a2f94be1a102",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "0208416a7f5db5654fe45b280e2341ec",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "c4eab4f4b3f54162b2404b3da684b840",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "e047c6251e308522a916babc24c4e1d9",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "55f0a933c1f6483f80adda294c744961",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "1b741bc5bb688611129c057fca3d204c",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "75ca941e17f4489fa47ced4aeafdd2f8",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "09567bd2c6df2f5fc17ef73a21c27e68",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "5656bd5a2f974bbdb8d82530cdf936f3",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "39d7c14e4bbdd1b626f81a10137c9438",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "d25e5ffe06df4701bfc3755bdc9d1b31",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "edd080c5632538bb0280e1821adbbbe0",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "6159fc6febc14b1fa512e41f7a6308b6",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "e21a3c447d724bec568bf8347f7a9ec7",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "cd6241f420a940b6904326b1fa207646",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "3b410ea946020377c9dca2f86f63d54a",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "fc5ad50cc59d417c9afd05b437a42366",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "889690718fde646863c0efae592d93c7",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "bcadca2adf144ddbb061b722a8c85a80",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "01c731a76c0b0052fa7cda7082742d94",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "f979ff6cc3cd4861b1de30ec72463c7c",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "a2d1a26ae51cc5c6825a1a55bbc4f340",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "b3e21da76d6548fda0625c0410af758c",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "f4ec6f8121e3e0ae6c1b62b0eca2dee9",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "fb4d19f9cec5420fbadd1b074d7872a4",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "c0b928e1b55ef2658684ebd8a408eef6",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "c6389ffe8f7a48668883b4845808c388",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "3690d69a0af72947309a000b9230c93e",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "19907a993e6c4b2392f503ec1863df9e",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "8a70a7545885e4ed44521c26c62f13c9",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "232fdda1778043d9b168884c0caad3a5",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "0842e8b3f7ee377b017f8bc016591228",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "cfdb999d9b1c4989b7424a931fef16c4",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "9ddf81199e618e1aaedd05ae5bb968e4",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "db9a125c4c7a4d03bd19d3dc8c474a9e",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "94c0a870bc6cac328c2224b8ac9fa85f",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "52825e0addb24136bf45eace9724984b",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "48d0344e00b8eb74034c1debb79319dc",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "fc33fb06d95b42a09a1e08dae5fe8c87",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    }
+  ]
+}
