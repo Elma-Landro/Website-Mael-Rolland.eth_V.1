@@ -1,0 +1,594 @@
+{
+  "_meta": {
+    "patch_id": "11",
+    "description": "Ajout des evenements de la chronologie CSV absents du graphe, priorite aux phases 'peche' et 'maturation'.",
+    "source_graph": "grc20-these-mael-rolland-v97.json",
+    "target_graph": "grc20-these-mael-rolland-v98.json",
+    "source_csv": "docs/research/catalogue-evenements/catalogue-evenements-v1.csv",
+    "generated": "2026-08-02",
+    "policy": "Ajout seul. Aucune entite existante modifiee, aucune fusion, aucune suppression, aucune relation existante retiree. Le patch de dedoublonnage (patch_10) n'est pas applique.",
+    "id_derivation": "md5('grc20-chronology-v1|' + '|'.join(parts)) -> 32 hex minuscules. Entites : parts = ('event', id_csv, date, nom). Relations : parts = ('rel', id_csv, role, cible). Deterministe : rejouer la generation redonne les memes identifiants.",
+    "selection": "6 lignes sur 78. Les 72 autres sont ecartees : 61 deja presentes comme evenements, 10 portees par une entite d'un autre type (PriceWindow, Concept, Reference, Organization, MediaOutlet), 1 sans date exploitable. Voir docs/audits/data/chronology-events-classification.csv et docs/audits/grc20-add-missing-events/."
+  },
+  "new_entities": [
+    {
+      "id": "549dedd53b84b0f870d09e03ac9fbceb",
+      "name": "InfrastructureEvent — PR 9049 : insémination du bogue CVE-2018-17144 (octobre 2016)",
+      "description": {
+        "type": "TEXT",
+        "value": "Fusion de la PR n°9049 (Matt Corallo) dans Bitcoin Core : acte de maintenance ordinaire qui introduit, sans que nul ne s'en aperçoive, le bogue divulgué en 2018 sous CVE-2018-17144.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": {
+        "date": {
+          "type": "TEXT",
+          "value": "2016-10",
+          "options": {
+            "language": "en"
+          }
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Thèse ch.III l.87",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "description": {
+          "type": "TEXT",
+          "value": "Matt Corallo propose de retirer une vérification jugée redondante, en postulant à tort que la vérification précédente subsiste (elle a disparu depuis la PR n°2224). Les mesures montrent un gain d'environ 0,5 à 0,7 ms. L'optimisation est examinée, acceptée et fusionnée au répertoire principal. La première itération du bogue CVE-2018-17144 est introduite ainsi, dans Bitcoin Core 0.14.0 : sans qu'aucun acteur n'y prête attention, les nœuds concernés deviennent vulnérables. Événement d'insémination — au sens de la périodisation des crises protocolaires — et non crise : au moment de l'acte, aucune crise n'existe socialement. Source : ch.III l.87.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "chapter": {
+          "type": "TEXT",
+          "value": "Chapitre III",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "sourceChronologyCsvRow": {
+          "type": "TEXT",
+          "value": "E069",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "4538f97bb85b07ecd652fb2bf6bede0c",
+      "name": "InfrastructureEvent — Publication du WP d'Ethereum (Buterin, fin novembre 2013)",
+      "description": {
+        "type": "TEXT",
+        "value": "Rédaction et publication de la première version du livre blanc d'Ethereum par Vitalik Buterin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": {
+        "date": {
+          "type": "TEXT",
+          "value": "2013-11",
+          "options": {
+            "language": "en"
+          }
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Thèse ch.I l.393",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "description": {
+          "type": "TEXT",
+          "value": "Vitalik Buterin rédige la première version du WP d'Ethereum fin novembre 2013. Acte fondateur du second terrain de la thèse, qui pose le principe d'une chaîne généraliste programmable, distincte de la stratégie des altcoins construits « à côté » de Bitcoin. Le document existe déjà dans le graphe comme Reference (Buterin 2013 Ethereum Whitepaper) ; le présent événement modélise l'acte de publication, sur le modèle de « Publication du WP Bitcoin (mailing list) ». Source : ch.I l.393.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "chapter": {
+          "type": "TEXT",
+          "value": "Chapitre I",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "sourceChronologyCsvRow": {
+          "type": "TEXT",
+          "value": "E040",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "name": "InfrastructureEvent — Testnet Olympic, neuvième itération (9 mai 2015)",
+      "description": {
+        "type": "TEXT",
+        "value": "Mise en service d'« Olympic », neuvième itération du testnet Ethereum et dernière preuve de concept avant le lancement du réseau principal.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": {
+        "date": {
+          "type": "TEXT",
+          "value": "2015-05-09",
+          "options": {
+            "language": "en"
+          }
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Thèse ch.I l.399",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "description": {
+          "type": "TEXT",
+          "value": "« Olympic », dénomination de la neuvième itération du testnet, en date du 9 mai 2015, établit la dernière preuve de concept avant le lancement d'Ethereum Frontier le 30 juillet 2015. Jalon de développement : ni crise, ni controverse. Source : ch.I l.399.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "chapter": {
+          "type": "TEXT",
+          "value": "Chapitre I",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "sourceChronologyCsvRow": {
+          "type": "TEXT",
+          "value": "E061",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "e2157aa27a83bd481000c494d7f869e8",
+      "name": "InfrastructureEvent — Pivot « blockchain sans les UCN » des acteurs financiers et des médias (2015)",
+      "description": {
+        "type": "TEXT",
+        "value": "Année charnière où acteurs financiers et grands médias dissocient la « technologie blockchain » des unités de compte natives, et où de nombreuses entreprises de l'écosystème pivotent.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": {
+        "date": {
+          "type": "TEXT",
+          "value": "2015",
+          "options": {
+            "language": "en"
+          }
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Thèse ch.I l.289",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "description": {
+          "type": "TEXT",
+          "value": "En 2015, des acteurs financiers et de grands médias soutiennent que l'important ne serait pas les UCN (BTC) mais une « technologie de blockchain » qui en serait détachable. De nombreuses entreprises de l'écosystème pivotent en conséquence. Acte de qualification publique à portée matérielle — les réorientations d'entreprises sont effectives — et non crise protocolaire. Source : ch.I l.289.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "chapter": {
+          "type": "TEXT",
+          "value": "Chapitre I",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "sourceChronologyCsvRow": {
+          "type": "TEXT",
+          "value": "E060",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "eee2478423515dbe3553e41d9d635fb0",
+      "name": "InfrastructureEvent — Coinbase : fondation (2012)",
+      "description": {
+        "type": "TEXT",
+        "value": "Fondation de Coinbase, plateforme d'échange et de garde qui devient l'un des principaux intermédiaires de l'écosystème.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": {
+        "date": {
+          "type": "TEXT",
+          "value": "2012",
+          "options": {
+            "language": "en"
+          }
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Thèse fig. n°6 ; ch.I l.287",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "description": {
+          "type": "TEXT",
+          "value": "Fondation en 2012 de Coinbase, bourse d'échange doublée d'un service de portefeuille custodial. Relève du mouvement de réintermédiation caractéristique de la phase de péché. Le graphe porte déjà l'organisation Coinbase et trois jalons ultérieurs (levée de 75 M$ en 2015, cap des 5 millions d'utilisateurs en 2017, intégration eBay/PayPal en 2014) mais pas l'acte de fondation. Réserve : la date provient de la figure n°6, le texte ne narre pas la fondation — il ne mentionne Coinbase que comme indicateur (« le nombre de comptes ouverts »). Source : fig. n°6 ; ch.I l.287.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "chapter": {
+          "type": "TEXT",
+          "value": "Chapitre I",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "sourceChronologyCsvRow": {
+          "type": "TEXT",
+          "value": "E034",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    },
+    {
+      "id": "f1927b1b6c9371e1df03b058f3d8c408",
+      "name": "InfrastructureEvent — Publication de « The Second Bitcoin Whitepaper » (Willett, janvier 2012)",
+      "description": {
+        "type": "TEXT",
+        "value": "Publication par J.R. Willett du livre blanc proposant un métaprotocole bâti sur Bitcoin, origine de Mastercoin.",
+        "options": {
+          "language": "fr"
+        }
+      },
+      "types": [
+        "49a98b36b4a94099a4d35ee6ca46f629"
+      ],
+      "attributes": {
+        "date": {
+          "type": "TEXT",
+          "value": "2012-01",
+          "options": {
+            "language": "en"
+          }
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Thèse ch.I l.373",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "description": {
+          "type": "TEXT",
+          "value": "J.R. Willett publie dès janvier 2012 le WP modestement intitulé « The Second Bitcoin Whitepaper », qui conçoit un métaprotocole adossé à la chaîne Bitcoin. Origine de la séquence Mastercoin — première ICO en juillet 2013, puis Tether via Omni — déjà présente dans le graphe. Le document existe comme Reference (Willett 2012 Mastercoin WP) ; le présent événement modélise l'acte de publication. Source : ch.I l.373.",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "chapter": {
+          "type": "TEXT",
+          "value": "Chapitre I",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "sourceChronologyCsvRow": {
+          "type": "TEXT",
+          "value": "E036",
+          "options": {
+            "language": "en"
+          }
+        }
+      }
+    }
+  ],
+  "new_relations": [
+    {
+      "id": "c27d9f259fd5644171d125ec396831e5",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "549dedd53b84b0f870d09e03ac9fbceb",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "12bcac331413be49a6c1541ded66a67d",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "549dedd53b84b0f870d09e03ac9fbceb",
+      "to": "3b17f5b612b54376963e5aa7fe13fff8",
+      "attributes": []
+    },
+    {
+      "id": "9a0703ec8bb0c55d3f8c21cb54705d70",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "549dedd53b84b0f870d09e03ac9fbceb",
+      "to": "ac859fd14006e379e55373d31090b6c6",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "III.1.1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 227
+        }
+      }
+    },
+    {
+      "id": "34460b53dfe3ea48eddc867e91228e86",
+      "type": "98142520f9304dbea0a3027f375d97f7",
+      "from": "549dedd53b84b0f870d09e03ac9fbceb",
+      "to": "db9a125c4c7a4d03bd19d3dc8c474a9e",
+      "attributes": []
+    },
+    {
+      "id": "b018af285b26a9c45a1944658738f866",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "4538f97bb85b07ecd652fb2bf6bede0c",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "232cd979e379cc4ed05843de8366712e",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "4538f97bb85b07ecd652fb2bf6bede0c",
+      "to": "bb565b2132f5430eac529b953711be41",
+      "attributes": []
+    },
+    {
+      "id": "e8ad4a2ed8ce87dd94765bc8b704bef0",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4538f97bb85b07ecd652fb2bf6bede0c",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.3",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 96
+        }
+      }
+    },
+    {
+      "id": "91991fee66132e291c21d93765275822",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "4538f97bb85b07ecd652fb2bf6bede0c",
+      "to": "ed2c565cbede474da7b6144bcb22d753",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.3.2",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 98
+        }
+      }
+    },
+    {
+      "id": "9f0de0e1ab242cd65b69af8ca63ca3a7",
+      "type": "d8a4252d50c6428282d32a0c9566d899",
+      "from": "12c586ca60d94526a01963a1252861cf",
+      "to": "4538f97bb85b07ecd652fb2bf6bede0c",
+      "attributes": []
+    },
+    {
+      "id": "53b7f35691da626f47feb8207fbe0a95",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "ad63efa3348d63f354ae39e62bd4807e",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "to": "bb565b2132f5430eac529b953711be41",
+      "attributes": []
+    },
+    {
+      "id": "c4e1e4379fb501629a6bcbe9cbd39c0c",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "to": "3b17f5b612b54376963e5aa7fe13fff8",
+      "attributes": []
+    },
+    {
+      "id": "daa90511993d3cb6d218a5b1a5d746a2",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.3",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 96
+        }
+      }
+    },
+    {
+      "id": "cc6d6b1c29d34b3da4027d9ca56d66e9",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "to": "ed2c565cbede474da7b6144bcb22d753",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.3.2",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 98
+        }
+      }
+    },
+    {
+      "id": "acd5a4a2d74dd0230a196a51a622462a",
+      "type": "98142520f9304dbea0a3027f375d97f7",
+      "from": "bb7e8e8fd76be2b3ace23007e6faed3f",
+      "to": "3c3d4fec977c4e788b850a0ea5cbebfa",
+      "attributes": []
+    },
+    {
+      "id": "9a8c42f98cc2c3877c35e3ce06053a3e",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "e2157aa27a83bd481000c494d7f869e8",
+      "to": "eed0b89cd2e740718059c16591f9bfb7",
+      "attributes": []
+    },
+    {
+      "id": "f69413f3ca450938b41decf3076a2de9",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "e2157aa27a83bd481000c494d7f869e8",
+      "to": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "attributes": []
+    },
+    {
+      "id": "065135c932cbaafee190ccba35d92dc1",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "e2157aa27a83bd481000c494d7f869e8",
+      "to": "93f13f18c6da412292eba80dcd630ac7",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.2.1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 88
+        }
+      }
+    },
+    {
+      "id": "12238a63dee23c4f62f20e2a611bb75c",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "eee2478423515dbe3553e41d9d635fb0",
+      "to": "019689c1ce06489a84768c51637eb9ed",
+      "attributes": []
+    },
+    {
+      "id": "d1c33e994bdec3a377a92ee922d4020c",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "eee2478423515dbe3553e41d9d635fb0",
+      "to": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributes": []
+    },
+    {
+      "id": "d6a2cfd841333fcef68eb83e9d9a9335",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "eee2478423515dbe3553e41d9d635fb0",
+      "to": "93f13f18c6da412292eba80dcd630ac7",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.2.1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 88
+        }
+      }
+    },
+    {
+      "id": "951126985e32fc445d0a40514361852c",
+      "type": "d3b2d5c9c2194536be63dc04dfa1daf8",
+      "from": "f1927b1b6c9371e1df03b058f3d8c408",
+      "to": "6414d87541f941a0b428c536ce72e032",
+      "attributes": []
+    },
+    {
+      "id": "c8dee560435a1c1c2f6472deea5b1120",
+      "type": "f7f1c5e7b4604f2cbecaca60e8dbada9",
+      "from": "f1927b1b6c9371e1df03b058f3d8c408",
+      "to": "bb565b2132f5430eac529b953711be41",
+      "attributes": []
+    },
+    {
+      "id": "6fa7b840f6acbe4fb15c2aba34df0887",
+      "type": "f004d0e68f0964e8787d19b350e3ca24",
+      "from": "f1927b1b6c9371e1df03b058f3d8c408",
+      "to": "93f13f18c6da412292eba80dcd630ac7",
+      "attributes": {
+        "section_key": {
+          "type": "TEXT",
+          "value": "I.2.1",
+          "options": {
+            "language": "fr"
+          }
+        },
+        "page_approx": {
+          "type": "NUMBER",
+          "value": 88
+        }
+      }
+    },
+    {
+      "id": "ae7beca3cc1649a7d47739ecb0e30664",
+      "type": "d8a4252d50c6428282d32a0c9566d899",
+      "from": "59c7ed8a91e34014b89c4afcfa04abcd",
+      "to": "f1927b1b6c9371e1df03b058f3d8c408",
+      "attributes": []
+    }
+  ]
+}
