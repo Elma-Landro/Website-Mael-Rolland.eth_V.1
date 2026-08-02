@@ -1,0 +1,6 @@
+id_cal;intitule;date_catalogue;source_catalogue;date_graphe;source_graphe;entite_graphe
+E005;Fondation du forum Bitcointalk;2009-01;ch.I l.113;2009-11-22;Thèse — Chronologie (figure) Chapitre I.2;InfrastructureEvent — Nakamoto crée le forum Bitcointalk
+E007;Premier echange BTC/dollar (Malmi - NewLibertyStandard);2009-10-12;ch.I n.75 l.609;2009-10-05;Thèse — Chronologie (figure) Chapitre I.2;InfrastructureEvent — Premier échange BTC/$ (NewLibertyStandard)
+E017;BitLaundry - premier service de mixage;2010-12;ch.I n.74 l.607;2010-09-01;Thèse — Chronologie (figure) Chapitre I.2;InfrastructureEvent — Service d’anonymisation BitLaundry
+E031;Lancement de Litecoin (C. Lee);2011-10;ch.I l.359;2011-11-19;;InfrastructureEvent — Lancement Litecoin (LTC) par Charlie Lee (2011)
+E062;Lancement d'Ethereum Frontier (mainnet);2015-07-20;ch.I l.399;2015-07-30;;InfrastructureEvent — Lancement d'Ethereum (Frontier, 30 juillet 2015)
