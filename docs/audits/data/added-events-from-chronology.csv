@@ -1,0 +1,7 @@
+id_csv;id_graphe_nouveau;nom;date;phase;domaine;source_these
+E069;549dedd53b84b0f870d09e03ac9fbceb;InfrastructureEvent — PR 9049 : insémination du bogue CVE-2018-17144 (octobre 2016);2016-10;maturation;Chapitre III;Thèse ch.III l.87
+E040;4538f97bb85b07ecd652fb2bf6bede0c;InfrastructureEvent — Publication du WP d'Ethereum (Buterin, fin novembre 2013);2013-11;maturation;Chapitre I;Thèse ch.I l.393
+E061;bb7e8e8fd76be2b3ace23007e6faed3f;InfrastructureEvent — Testnet Olympic, neuvième itération (9 mai 2015);2015-05-09;maturation;Chapitre I;Thèse ch.I l.399
+E060;e2157aa27a83bd481000c494d7f869e8;InfrastructureEvent — Pivot « blockchain sans les UCN » des acteurs financiers et des médias (2015);2015;maturation;Chapitre I;Thèse ch.I l.289
+E034;eee2478423515dbe3553e41d9d635fb0;InfrastructureEvent — Coinbase : fondation (2012);2012;peche;Chapitre I;"Thèse fig. n°6 ; ch.I l.287"
+E036;f1927b1b6c9371e1df03b058f3d8c408;InfrastructureEvent — Publication de « The Second Bitcoin Whitepaper » (Willett, janvier 2012);2012-01;poc;Chapitre I;Thèse ch.I l.373

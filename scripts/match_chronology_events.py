@@ -138,22 +138,32 @@ def attr(e, k):
     a = (e.get('attributes') or {}).get(k)
     return (a.get('value') if a else '') or ''
 
-evenements = []
+TYPES_EVENEMENT = {'InfrastructureEvent', 'CrisisEvent'}
+
+evenements = []   # index 1 : les evenements, cibles d'un ajout eventuel
+couverture = []   # index 2 : TOUTES les entites, pour detecter une couverture
+                  #           hors typage evenementiel
 for e in g['entities']:
     ts = [nom_type.get(t, t) for t in (e.get('types') or [])]
-    if not ({'InfrastructureEvent', 'CrisisEvent'} & set(ts)):
-        continue
     nom = e.get('name', '')
-    d, prec = normaliser_date(attr(e, 'date') or attr(e, 'year'))
-    evenements.append({
-        'id': e['id'], 'nom': nom,
-        'kind': 'CrisisEvent' if 'CrisisEvent' in ts else 'InfrastructureEvent',
+    desc = attr(e, 'description')
+    d, prec = normaliser_date(attr(e, 'date') or attr(e, 'year') or attr(e, 'period'))
+    # Le libelle seul ne suffit pas : « Digital Asset Transfer Authority » ne
+    # rejoint « Comite interprofessionnel DATA » que par sa description. On
+    # indexe donc nom + description.
+    fiche = {
+        'id': e['id'], 'nom': nom, 'types': ts,
         'date': d, 'precision': prec,
         'toks': tokens(nom, False), 'toks_full': tokens(nom, True),
-        'ancres': ancres(nom),
-        'desc': attr(e, 'description'),
-        'degre': degre[e['id']],
-    })
+        'ancres': ancres(nom) | ancres(desc[:400]),
+        'toks_desc': tokens(desc[:400], True),
+        'desc': desc, 'degre': degre[e['id']],
+    }
+    couverture.append(fiche)
+    if TYPES_EVENEMENT & set(ts):
+        fiche = dict(fiche)
+        fiche['kind'] = 'CrisisEvent' if 'CrisisEvent' in ts else 'InfrastructureEvent'
+        evenements.append(fiche)
 
 # ---------- chargement du CSV ----------
 
@@ -202,6 +212,26 @@ for c in lignes:
     exploitable = (bool(c['_date']) and len(c['_toks']) >= 2 and bool(c['phase'])
                    and not reserve_date)
 
+    # Deuxieme passe, sur TOUTES les entites du graphe. Un fait peut etre porte
+    # par un Concept, une PriceWindow, un MediaOutlet ou une Reference sans
+    # exister comme evenement. Ne comparer qu'aux evenements produit alors un
+    # « manquant » qui n'en est pas un : c'est ce qui a fait echouer la
+    # premiere version de ce script sur 10 candidats sur 12.
+    couv, couv_score = None, 0.0
+    for e in couverture:
+        if TYPES_EVENEMENT & set(e['types']):
+            continue
+        jt = max(jaccard(c['_toks'], e['toks']), jaccard(c['_toks_full'], e['toks_full']))
+        jd = jaccard(c['_toks_full'], e['toks_desc'])
+        communes = c['_ancres'] & e['ancres']
+        s = max(jt, 0.75 * jd)
+        if communes:
+            s = max(s, 0.45 + 0.10 * min(len(communes), 3))
+        if s > couv_score:
+            couv, couv_score = e, s
+    couverture_type = '|'.join(couv['types']) if (couv and couv_score >= 0.45) else ''
+    couverture_nom = couv['nom'] if couverture_type else ''
+
     if score_max >= SEUIL_FORT:
         if detail.get('date_ok') is False:
             statut = 'POSSIBLE_DUPLICATE'
@@ -228,10 +258,16 @@ for c in lignes:
         if reserve_date:
             manque.append(f'reserve du CSV : {reserve}')
         motif = 'donnees CSV insuffisantes : ' + ', '.join(manque)
+    elif couverture_type:
+        statut = 'POSSIBLE_DUPLICATE'
+        motif = (f"aucun equivalent evenementiel, mais le fait est deja porte par "
+                 f"une entite de type {couverture_type} : « {couverture_nom[:52]} » "
+                 f"— ajouter un evenement ferait doublon de fond")
     else:
         statut = 'CONFIRMED_MISSING'
         motif = (f"aucun equivalent (meilleur score {round(score_max, 2)} — "
-                 f"« {meilleur['nom'][:50] if meilleur else 'aucun'} »)")
+                 f"« {meilleur['nom'][:50] if meilleur else 'aucun'} »), et aucune "
+                 f"couverture par un autre type")
 
     resultats.append({
         'id_csv': c['id'], 'statut': statut, 'score': round(score_max, 2),
@@ -239,6 +275,7 @@ for c in lignes:
         'precision': c['precision'], 'phase': c['phase'], 'nature': c['nature'],
         'crise': c['crise'], 'systeme': c['systeme'], 'domaine_8': c['domaine_8'],
         'source': c['source'], 'reserve_csv': reserve,
+        'couverture_type': couverture_type, 'couverture_entite': couverture_nom,
         'entite_graphe': meilleur['nom'] if meilleur else '',
         'id_graphe': meilleur['id'] if meilleur else '',
         'date_graphe': meilleur['date'] if meilleur else '',
@@ -251,7 +288,8 @@ resultats.sort(key=lambda r: (ORDRE[r['statut']], r['id_csv']))
 
 CHAMPS = ['id_csv', 'statut', 'score', 'intitule', 'date_csv', 'date_iso', 'precision',
           'phase', 'nature', 'crise', 'systeme', 'domaine_8', 'entite_graphe',
-          'id_graphe', 'date_graphe', 'motif', 'reserve_csv', 'source']
+          'id_graphe', 'date_graphe', 'couverture_type', 'couverture_entite',
+          'motif', 'reserve_csv', 'source']
 
 with open(os.path.join(args.out, 'chronology-events-classification.csv'), 'w',
           encoding='utf-8', newline='') as f:

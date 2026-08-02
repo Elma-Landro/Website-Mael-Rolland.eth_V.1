@@ -1,0 +1,14 @@
+id_csv;intitule;phase;decision;motif
+E003;Enregistrement de genese;poc;NE_PAS_AJOUTER;"deja present comme evenement ; barriere de langue FR/EN"
+E025;Creation de la procedure BIP (Taaki);poc;NE_PAS_AJOUTER;"deja present EN DOUBLE ; l'ajout ferait un triplet"
+E044;BIP16 (P2SH) implementee - multi-signatures;peche;NE_PAS_AJOUTER;"present ; la date du CSV (2013-04) est fausse d'un an, celle du graphe est sourcee O'Brien 2014"
+E047;Comite interprofessionnel DATA cree;peche;NE_PAS_AJOUTER;"present ; DATA est l'acronyme developpe dans le graphe"
+E051;Fixation effective du cap des 21 M (2e crise faux monnayage);maturation;NE_PAS_AJOUTER;present comme CrisisEvent, typage correct
+E038;Pic des activites pecheresses (env. 51 pct on chain);peche;NE_PAS_AJOUTER;"propriete d'un regime, pas un evenement ; ajouter amplifierait l'« effet loupe » dont la these avertit (ch.I l.281)"
+E043;Transactions illegales sous 1 pct (fin 2013-2018);maturation;NE_PAS_AJOUTER;"idem ; attribut illegalShare deja porte"
+E050;Cours proche de 1000 dollars;maturation;NE_PAS_AJOUTER;"doublon de fond ; la convention du graphe pour les cours est PriceWindow"
+E074;Cours proche de 20000 dollars (fin 2017);maturation;NE_PAS_AJOUTER;idem
+E076;Point bas vers 3300 dollars (2018-2019);maturation;NE_PAS_AJOUTER;idem
+E078;Stabilisation vers 8000 dollars (2019-2020);maturation;NE_PAS_AJOUTER;idem
+E070;Franchissement durable des 1000 dollars (debut 2017);maturation;NE_PAS_AJOUTER_HORS_PERIMETRE;reellement absent, mais son type correct est PriceWindow, hors du perimetre declare (InfrastructureEvent/CrisisEvent). A ajouter separement
+E022;Creation de Bitcoin Magazine (Buterin et Alisie);poc;NE_PAS_AJOUTER;fondation absente comme evenement, mais date contestee : le CSV dit 2011, le graphe dit 2012 (Castillo 2013). A trancher avant ajout
