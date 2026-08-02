@@ -1,0 +1,95 @@
+{
+ "schemaVersion": 1,
+ "description": "Dedoublonnage conservateur des evenements + correction de date verifiee en externe",
+ "source_graph": "grc20-these-mael-rolland-v97.json",
+ "generated": "2026-08-02",
+ "author": "Catalogue d evenements (chantier valorisation)",
+ "policy": "Aucune suppression, aucune fusion destructive. Les doublons sont MARQUES (duplicateOf + reviewStatus) et restent interrogeables. La fusion effective reste une decision humaine posterieure.",
+ "ops": [
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "7f80094676fd44a785c6483dbee4f8c5",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "15864ab2cdcd41348eecc0daba8eb11d"
+   },
+   "_comment": "doublon de « InfrastructureEvent — Mining pools (coopératives de minage) » — grappe de 3 entites — nom 0.67, structure 0.50, desc 1.00"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "7f80094676fd44a785c6483dbee4f8c5",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "duplicate-pending-merge"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ee7277478ddc4c0886e8d73a4e2ce00d",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "15864ab2cdcd41348eecc0daba8eb11d"
+   },
+   "_comment": "doublon de « InfrastructureEvent — Mining pools (coopératives de minage) » — grappe de 3 entites — nom 1.00, structure 0.67, desc 1.00"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ee7277478ddc4c0886e8d73a4e2ce00d",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "duplicate-pending-merge"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "22c507bdaa874229b5a4a145e23d123c",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "e3742113c4674c52930e54ff203f0ac6"
+   },
+   "_comment": "doublon de « Bitcoin Scaling Debate » — grappe de 2 entites — nom 0.67, structure 0.10, desc 0.00"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "22c507bdaa874229b5a4a145e23d123c",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "duplicate-pending-merge"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "94ce188ef0534c1e8601226fc60163dd",
+   "attributeId": "date",
+   "value": {
+    "type": "TEXT",
+    "value": "2011-10-07"
+   },
+   "_comment": "correction ; ancienne valeur « 2011-11-19 » ; Client publie sur GitHub et bloc de genese mine le 07/10/2011 ; reseau actif le 13/10/2011 (Wikipedia Litecoin ; CoinMar"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "94ce188ef0534c1e8601226fc60163dd",
+   "attributeId": "dateAuthority",
+   "value": {
+    "type": "TEXT",
+    "value": "EXTERNAL_VERIFICATION"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "94ce188ef0534c1e8601226fc60163dd",
+   "attributeId": "dateSource",
+   "value": {
+    "type": "TEXT",
+    "value": "Vérification externe 02/08/2026 ; thèse ch.I l.359"
+   }
+  }
+ ]
+}
