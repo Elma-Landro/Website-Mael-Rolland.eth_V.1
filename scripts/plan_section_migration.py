@@ -163,11 +163,34 @@ def main(argv=None):
                   f"{r['nom_graphe'][:46]}")
             print(f"                 {r['motif'][:88]}")
 
+    # Deux collisions distinctes, et la seconde est celle qui compte : une cle
+    # cible peut etre LIBRE entre les renumerotations et pourtant DEJA OCCUPEE
+    # par un noeud existant. Ne verifier que la premiere donne une fausse
+    # assurance — c'est l'erreur que ce controle repare.
     collisions = collections.Counter(r['cle_cible'] for r in plan
                                      if r['decision'] == 'RENUMEROTER' and r['cle_cible'])
-    doublons = {k: n for k, n in collisions.items() if n > 1}
+    entre_cibles = {k: n for k, n in collisions.items() if n > 1}
+
+    occupees = {r['cle_actuelle']: r for r in plan if r['cle_actuelle']}
+    bloquees = []
+    for r in plan:
+        if r['decision'] != 'RENUMEROTER' or not r['cle_cible']:
+            continue
+        tenant = occupees.get(r['cle_cible'])
+        if tenant and tenant['id'] != r['id']:
+            bloquees.append((r, tenant))
+
     print()
-    print(f"collisions de cle cible : {doublons or 'aucune'}")
+    print(f"collisions entre cibles      : {entre_cibles or 'aucune'}")
+    print(f"cibles deja occupees         : {len(bloquees)}")
+    for r, tenant in bloquees:
+        print(f"  {r['cle_actuelle']:9s} -> {r['cle_cible']:9s} tenue par "
+              f"« {tenant['nom_graphe'][:44]} » [{tenant['decision']}]")
+    if bloquees:
+        print()
+        print("  => la renumerotation n'est PAS applicable seule : chaque cle cible")
+        print("     doit d'abord etre liberee par la decision de son tenant.")
+        print("     La migration est atomique.")
 
     if args.csv:
         os.makedirs(os.path.dirname(args.csv), exist_ok=True)
