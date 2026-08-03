@@ -49,13 +49,13 @@ III.3.1;2;chap3;Une mise en crise brutale, publique et tapageuse;513;PRESENTE;cf
 III.3.2;2;chap3;Une remise en ordre complexe, contrainte et controversée : moyens et enjeux d'un consensus multi-acteur;563;PRESENTE;123b661853db78e3660f05f73d9ab081;III.3.2 — Une remise en ordre complexe, contrainte et controversée
 III.3.3;2;chap3;Gouvernance ouverte et publique pour des *forks* controversés;657;PRESENTE;7b9eff43f3726247610d73a7fcbd0e06;III.3.3 — Gouvernance ouverte et publique pour des forks controversés
 III.3.4;2;chap3;« Fork You ?! » : une scission surprise fondatrice et ses enseignements;721;PRESENTE_TITRE_DIVERGENT;83985da6c275abd60faf4dbe9f08f332;III.3.4 — « Fork You ?! » : scission surprise fondatrice et ses enseignements
-;;;;;GRAPHE_SANS_EQUIVALENT_MD;711fe2aa7c734731bccb42ccd5843924;A. Décrypter la crypto par l’approche infrastructurelle
-;;;;;GRAPHE_SANS_EQUIVALENT_MD;b5386fe92a5b4cac94888ffc298469bf;B. Les CM, comme “en plus” dans la théorie monétaire et l’analyse des systèmes monétaires
-;;;;;GRAPHE_SANS_EQUIVALENT_MD;11fe6aacd1c440bdb795f073d9572b34;C. Le travail de traduction : prolongements pour les acteurs
-;;;;;GRAPHE_SANS_EQUIVALENT_MD;45b91ae1d82a40ab8029f3b8835b3af4;De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises
+conclu_resume;2;conclu;Résumé de la thèse;10;PRESENTE;9c72c7227c3e0cee55b8b4820e7492d8;Conclusion — Résumé de la thèse
+conclu_infra;2;conclu;Décrypter la Crypto par l'approche infrastructurelle;28;PRESENTE;711fe2aa7c734731bccb42ccd5843924;A. Décrypter la crypto par l’approche infrastructurelle
+conclu_aceph;2;conclu;De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises;38;PRESENTE;45b91ae1d82a40ab8029f3b8835b3af4;De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises
+conclu_theo_mon;2;conclu;Une intégration cohérente des CM dans le champ de la théorie monétaire;46;PRESENTE_TITRE_DIVERGENT;b5386fe92a5b4cac94888ffc298469bf;B. Les CM, comme “en plus” dans la théorie monétaire et l’analyse des systèmes monétaires
+conclu_traduction;2;conclu;Un effort de traduction *attentif aux* et à *l'attention* des acteurs;54;PRESENTE_TITRE_DIVERGENT;11fe6aacd1c440bdb795f073d9572b34;C. Le travail de traduction : prolongements pour les acteurs
+conclu_boucs;2;conclu;Les CM : boucs émissaires commodes d'un système monétaire en crise ? »;64;PRESENTE_TITRE_DIVERGENT;d9f534f9f849a3c54eac31746ed11222;Conclusion — Les CM : boucs émissaires d'un système monétaire en crise ?
 ;;;;;GRAPHE_SANS_SECTION_KEY;3ce505bcd3e74def8b78094b4cc06b6e;I.2.1b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques
-;;;;;GRAPHE_SANS_EQUIVALENT_MD;d9f534f9f849a3c54eac31746ed11222;Conclusion — Les CM : boucs émissaires d'un système monétaire en crise ?
-;;;;;GRAPHE_SANS_EQUIVALENT_MD;9c72c7227c3e0cee55b8b4820e7492d8;Conclusion — Résumé de la thèse
 ;;;;;GRAPHE_SANS_EQUIVALENT_MD;79a77b4aa63fd0cde00e4769b174455d;B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante
 ;;;;;GRAPHE_SANS_EQUIVALENT_MD;1ef9935001830b38166ebb62a144f513;B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier
 ;;;;;GRAPHE_SANS_EQUIVALENT_MD;6359b66f7d234e7d159cf71f4667157d;B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages

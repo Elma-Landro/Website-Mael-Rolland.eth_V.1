@@ -1,4 +1,4 @@
-Conclusion de la thèse
+# Conclusion de la thèse
 
 > « La méconnaissance des mécanismes de croissance des coquilles Saint-Jacques est totale. La communauté scientifique ne s\'y est jamais vraiment intéressée ; les marins-pêcheurs n\'étant héritiers d\'aucune tradition puisque l\'exploitation intensive est récente, ne savent rien des premiers instants des coquilles Saint-Jacques qu\'ils ne connaissent qu\'à l\'état adulte lorsqu\'ils les remontent dans leurs dragues. Au début \[, \] il n\'existe donc aucune relation directe entre les larves de coquilles et les marins-pêcheurs \[et\] c\'est par l\'entremise des chercheurs que ce lien sera progressivement construit. »
 >
@@ -7,7 +7,7 @@ Conclusion de la thèse
 
 Cette thèse aborde divers enjeux liés à notre intérêt pour la monnaie et à l'étonnement suscité par les ambitions monétaires des promoteurs les plus en vue des crypto-monnaies. En réactivant de manière unique le débat entre règle et discrétion, ces ambitions, qualifiées de libérales-technicistes, se présentent sous la forme d'un syllogisme dont la validation ou la réfutation des prémisses et de leurs connexions constitue le fil conducteur de nos chapitres. Ce syllogisme postule que, puisque (i) la technique est autonome et neutre vis-à-vis du monde social et que (ii) les CM sont des monnaies purement techniques ; alors (iii) elles sont immunisées de la gouvernance humaine et de ses intérêts socio-politiques, ce qui en fait (iv) de « meilleures » monnaies que les monnaies nationales. L'objectif premier de cette thèse était d'étudier les CM Bitcoin et Ethereum pour contribuer à enrichir un champ de recherche émergent sur les CM encore peu exploré, notamment en sciences humaines. Nous nous proposions de dépasser deux écueils. Le premier est le « technologisme » majoritairement présent dans les analyses -- indigènes, grises ou académiques - présentant les CM comme des entités purement techniques, neutres, autonomes et stabilisées, en se concentrant uniquement sur leurs caractéristiques techniques et protocolaires. Le second est le « sociologisme », qui, à l'inverse, réduit les CM à leur origine libertarienne. Pour ce faire, nous avons appréhendé les CM comme des objets, des infrastructures socio-techniques même, en perpétuelle recomposition, nécessitant d'en restituer le contexte relationnel et socio-historique.
 
-### Résumé de la thèse
+## Résumé de la thèse
 
 **Le premier chapitre** a proposé une présentation circonstanciée de nos deux objets d'étude permettant d'expliciter : le contexte et les caractéristiques de leur conception, les composants et processus clefs de leurs fonctionnements, leur développement par étape, les acteurs (humains ou non) et les domaines de développement participant de leur infrastructure, comme les ressources et contraintes de ce développement. C'est au travers de la restitution de l'épaisseur socio-historique de l\'émergence du pionnier Bitcoin d'abord, de certains Altcoins\* ensuite et d'Ethereum enfin, qu'il nous a été permis de questionner l'apolitisme, la neutralité et l'autonomie prétendument « techniques » des CM.
 
@@ -25,7 +25,7 @@ Le cas de la crise du *Hard Fork* d'Ethereum après l'attaque de « The DAO » m
 
 À la suite de ce résumé, nous proposons de mettre en avant ce qui nous apparaît être les principales contributions de cette thèse en cinq points.
 
-### Décrypter la Crypto par l'approche infrastructurelle
+## Décrypter la Crypto par l'approche infrastructurelle
 
 L'inscription de notre recherche dans le champ des *études infrastructurelles* initié par Leigh Star et Ruhleder (2010 ; Star 1999) est la source selon nous de plusieurs contributions. La transposition de ce cadre d'analyse aux CM a permis de mettre en lumière les aspects invisibles et négligés soutenant leurs usages et leur monétisation.
 
@@ -35,7 +35,7 @@ Enfin, notre travail contribue directement à la partie de ce corpus des *infras
 
 Ces éléments rendent les CM particulièrement intéressantes, car loin d'un énième cas de *e-infrastructure*, elles intègrent une perspective monétaire peu étudiée, offrant des enseignements sur les questions de signification et de valeurs partagées.
 
-### De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises
+## De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises
 
 Ce travail contribue aussi à la sociologie des crises à partir des cas de Bitcoin et d'Ethereum. Nous ajoutons tout d'abord l'objet CM à la richesse des études de cas qui constituent ce corpus. La volonté de dévoiler la gouvernance socio-politique des CM, à partir de l'étude des crises traversées par Bitcoin, Ethereum et leurs communautés, a permis de valider à nouveau (en les épousant) les enjeux théoriques et méthodologiques, ainsi que les outils développés par ce corpus. Le chapitre III démontre l'intérêt heuristique d'analyser « la politique de la crise » et « son gouvernement » de *la mise en crise* à la *remise en ordre* (Aguiton, Cabane et Cornilleau 2019, p. 4) : cette approche nous permet de réfuter les prétentions libérales-technicistes présentant les CM comme des monnaies acéphales et apolitiques, régulées uniquement par le code, en visibilisant la complexité et la diversité des mécanismes de gouvernance de Bitcoin et d'Ethereum.
 
@@ -43,7 +43,7 @@ Partant du hiatus entre l\'état routinier et le phénomène critique que dessin
 
 Ce travail a offert un point de vue privilégié sur l'hétérogénéité des représentations des CM et de leurs propriétés désirées, éprouvées et renégociées en temps de crise. Nous avons étudié comment ces communautés s'organisent pour remédier à ces crises et réguler les activités critiques que cela implique. De ce fait, nous avons identifié les acteurs, institutions, arènes de débats et dispositifs participant à la fabrique et à la gouvernance des crises. Ainsi, nous avons mis au jour une gouvernance de crise à deux volets - de *huis clos* et *publique* -- reflétant des relations d'autorité, de pouvoir et de contre-pouvoir différenciés et évolutifs. Nous avons montré comment la gouvernance polycentrique des CM relève de différents modes de gouvernement de crises, impliquant différents groupes de parties prenantes, arènes de débats, outils et dispositifs, renvoyant à des attendus communautaires variés et susceptibles de soutenir la formation de consensus entre des individus aux intérêts divers (De Filippi et Loveluck 2016, p. 15). Pris ensemble, ils permettent aux CM de s'adapter à un environnement changeant. La résolution de la crise d'Ethereum, qui a conduit à la sécession d'Ethereum Classic, illustre comment la pratique du *fork* apparaît comme une garantie qu'aucun groupe ne peut imposer des modifications au code sans l'accord de la communauté. En fin de compte, cette démarche de sociologie des crises nous a permis de montrer que, en dernier ressort, dans le cas des CM, le consensus social prime sur les règles protocolaires, comme l'attestent toutes les crises, quel que soit leur type (de *vulnérabilité* ou *d'évolution*) et leur gouvernance (*de huis clos* ou *publique*).
 
-### Une intégration cohérente des CM dans le champ de la théorie monétaire 
+## Une intégration cohérente des CM dans le champ de la théorie monétaire 
 
 Le chapitre II contribue à la théorie de la monnaie, en particulier à l'institutionnalisme monétaire, en intégrant en son sein les CM sans compromettre la cohérence de ce corpus. Nous y avons proposé une revue critique de la littérature sur les CM, présentant les principales critiques et les replaçant dans leur corpus théorique et épistémologique. Les CM, en tant qu'innovation monétaire, constituent pour la théorie monétaire une épreuve d'explicitation. Nous avons montré que ces objets monétaires s'intègrent plus facilement au sein d'une approche institutionnaliste monétaire intéressée par les usages. Cet appareillage nominaliste non étatiste nous a permis de souligner les incohérences et les angles morts des analyses dominantes des CM : ni les fonctions canoniques de la monnaie, ni l'exclusivité étatique ne peuvent reléguer les CM hors du champ de la monnaie. Les pratiques des communautés Bitcoin et Ethereum montrent que les CM présentent les caractéristiques minimales de la monnaie : elles sont usées en compte et en paiement.
 
@@ -51,7 +51,7 @@ Nos données empiriques constituent en soi une contribution puisque nous proposo
 
 Les CM, en tant que tentatives radicales d'instituer une monnaie protégée du politique et de la délibération citoyenne, apportent une contribution paradoxale : si elles réussissent en tant que monnaie, c'est « *en contradiction directe avec l\'idéologie politique et la théorie de la monnaie qui les sous-tendent* » (Dodd 2017, p.1). Loin de dépolitiser la monnaie, elles la re-politisent de manière singulière : même crypto, la monnaie est une institution co-produite par les membres de sa communauté de paiement. Les CM invitent à la négociation de leurs propriétés, ce que révèlent les *crises d'évolution* à gouvernance *publique*.
 
-### Un effort de traduction *attentif aux* et à *l'attention* des acteurs
+## Un effort de traduction *attentif aux* et à *l'attention* des acteurs
 
 Le positionnement de cette thèse dans le champ de la sociologie des sciences et techniques et de la sociologie des controverses technologiques a soulevé des questions formelles en termes de « traduction » pour nos « acteurs-réseaux ».
 
@@ -61,7 +61,7 @@ Notre travail, par le choix (évalué et discuté) d'une forme « encyclopédiqu
 
 À l'instar des larves de coquilles Saint-Jacques et des marins-pêcheurs de la baie de Saint- Brieuc étudiés par Callon (en exergue de cette conclusion générale), nous avons voulu être de ces chercheurs permettant l'entremise entre les *coiners* et les professionnels de l'argent.
 
-### Les CM : boucs émissaires commodes d'un système monétaire en crise ? »
+## Les CM : boucs émissaires commodes d'un système monétaire en crise ? »
 
 Nous conclurons ce travail par une question ouverte, qui nous a accompagné depuis le début de nos réflexions sur les CM jusqu'à la fin de cette thèse. Cette question explique en partie pourquoi le lecteur ne trouvera pas ici de réponse définitive sur la qualité « bonne » ou « mauvaise » des CM par rapport aux monnaies nationales, ni de critiques sur leur dangerosité, soulignée par les professionnels de la finance.
 
