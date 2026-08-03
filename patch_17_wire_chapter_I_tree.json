@@ -1,0 +1,122 @@
+{
+ "_meta": {
+  "patch_id": "17",
+  "description": "Cable les sections du chapitre I restees hors de l'arborescence section of / has section.",
+  "source_graph": "grc20-these-mael-rolland-v106.json",
+  "policy": "Ne cree que des relations section of / has section, sur le motif reciproque deja employe par les 80 autres sections. Aucune entite creee, modifiee ou supprimee. Aucun attribut touche. Aucune relation existante retiree."
+ },
+ "new_relations": [
+  {
+   "id": "c4a91041945da2a7283ccc3d74ac45d3",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "93f13f18c6da412292eba80dcd630ac7",
+   "to": "596826c3187e4f8cb9034357477eb14c",
+   "attributes": []
+  },
+  {
+   "id": "de0e2f795a9ac874743dc5945069b57f",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "596826c3187e4f8cb9034357477eb14c",
+   "to": "93f13f18c6da412292eba80dcd630ac7",
+   "attributes": []
+  },
+  {
+   "id": "88c02f3473fc55359a9930c0dc7a30c2",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "93f13f18c6da412292eba80dcd630ac7",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "3e2bc9442f6ae8b7500fd08ba3322f59",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "93f13f18c6da412292eba80dcd630ac7",
+   "attributes": []
+  },
+  {
+   "id": "6f6aebedaf9c9b300d198f202cb72e48",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "c5eef5d754c64a30a9d163e59e1d5c88",
+   "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "attributes": []
+  },
+  {
+   "id": "ac50b846f7d99ba935937ba2565532e5",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "to": "c5eef5d754c64a30a9d163e59e1d5c88",
+   "attributes": []
+  },
+  {
+   "id": "3520471d450839facde91913f3fd9519",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "c5eef5d754c64a30a9d163e59e1d5c88",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "b331d2816a8eefea0d2dc5825d503803",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "c5eef5d754c64a30a9d163e59e1d5c88",
+   "attributes": []
+  },
+  {
+   "id": "e35cbb61af2564d438461837ea05ecc1",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "ed2c565cbede474da7b6144bcb22d753",
+   "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "attributes": []
+  },
+  {
+   "id": "62bff0651ac7ee4c49cdb0747c95f668",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "to": "ed2c565cbede474da7b6144bcb22d753",
+   "attributes": []
+  },
+  {
+   "id": "b2745f6c8438aa21274f9c4ff43538d9",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "ed2c565cbede474da7b6144bcb22d753",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "f7fb55c740e3bce960fe6cbf957a8cf0",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "ed2c565cbede474da7b6144bcb22d753",
+   "attributes": []
+  },
+  {
+   "id": "c0e637800240e0d08d35b9ecfde6186b",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "46111186b53041829a0a98218f9611fe",
+   "to": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "attributes": []
+  },
+  {
+   "id": "c4de086f3c7f4ba0ff04459bdab3caea",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "to": "46111186b53041829a0a98218f9611fe",
+   "attributes": []
+  },
+  {
+   "id": "a24083f8dd6901f373f3f77e58df26e2",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "46111186b53041829a0a98218f9611fe",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "52b80e5dcac3532fe90e7a587e0756e8",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "46111186b53041829a0a98218f9611fe",
+   "attributes": []
+  }
+ ]
+}
