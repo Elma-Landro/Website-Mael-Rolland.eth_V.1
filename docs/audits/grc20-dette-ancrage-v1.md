@@ -14,7 +14,7 @@ elles se répartissent ainsi :
 
 | n | catégorie | nature réelle |
 |---:|---|---|
-| 26 | entité de `section_entities_map` absente du graphe | en cours d'instruction |
+| 26 | entité de `section_entities_map` absente du graphe | **17 résolus**, 9 en arbitrage |
 | 25 | `ThesisSection` sans entrée dans `section_entities_map` | **écart de granularité**, pas un défaut |
 | 13 | entité épinglée hors de la liste de sa section | 9 listes incomplètes, 3 épinglages faux, 1 cas structurel |
 | 2 | `story-presets` : `relation_type` inexistant | **jetons morts** — corrigés |
@@ -87,6 +87,65 @@ avril. Ils restaient parce qu'aucun équivalent n'était évident. Mesuré :
   « relations génériques » qu'il traque comme anti-pattern.
 
 ---
+
+### Les 26 identifiants morts : 17 résolus, 9 en arbitrage
+
+**L'origine est datée et unique.** `section_entities_map.json` a été généré
+une fois, à partir d'un graphe ≤ v81, et **jamais régénéré**. Deux refontes
+ont depuis fait disparaître les entités qu'il cite : v81→v82 (les doublons de
+`ThesisSection`) et surtout **v90→v91**, la « refonte ontologique complète ».
+**Aucun de ces 26 identifiants ne disparaît entre v96 et v100** : la migration
+des sections n'y est pour rien.
+
+Deux traitements, selon ce que devient l'ancrage — `scripts/fix_dead_ids_in_section_map.py` :
+
+| traitement | n | critère |
+|---|---:|---|
+| **supprimer la ligne** | 8 | le jumeau vivant est **déjà présent dans chacune des mêmes sections**, compteurs identiques. Réécrire l'id créerait un doublon dans la même liste |
+| **réécrire l'id** | 9 | le vivant est absent des sections concernées : supprimer perdrait l'ancrage |
+
+Vérifié après application : **132 lignes supprimées, 75 identifiants
+réécrits, 4 collisions fusionnées** (compteur maximum conservé), et surtout
+**zéro entité vivante perdue**, 54 clés inchangées.
+
+Les 9 réécritures sont des variantes orthographiques ou des formes longues
+abandonnées par v91 : Eric → **Erik** Voorhees, Gregory → **Greg** Maxwell,
+J.R. Willet → **Willett**, Shaoling → **Shaolin** Fry, Jeff → **Jeffrey**
+Wilcke, plus Mastercoin / Omni Layer, OP_RETURN, Theymos, Empreinte
+numérique.
+
+#### Les 9 restants relèvent d'une décision de modélisation
+
+- **6 domaines Ethereum.** v90 modélisait 16 `InfrastructureDomain` : des
+  génériques et leurs jumeaux « … Ethereum ». v91 n'en garde que 8, en
+  rendant les génériques agnostiques. Réécrire « Du protocole Ethereum » vers
+  « Protocole et couche de base » revient à **effacer la partition
+  Bitcoin/Ethereum** que v90 posait explicitement. Deux options défendables :
+  réécrire en fusionnant les compteurs, ou supprimer les entrées puisque
+  l'ontologie v100 ne porte plus de domaine par protocole. Le fait que ces
+  lignes soient générées en bloc — rangs consécutifs, `occurrence_count` = 2
+  uniforme — plaide pour la suppression, mais c'est ton choix.
+- **2 sans successeur** : « De l'activité de traitement des transactions »
+  (générique et Ethereum), seuls des domaines de v90 à n'avoir aucun
+  survivant. Le `Concept` homonyme n'en est **pas** le successeur : les deux
+  coexistaient déjà depuis v81.
+- **1 ambigu** : « Omni Layer (meta-protocole Bitcoin) ». v90 comptait deux
+  `Protocol` et deux `ActorNonHuman` sur ce thème, v91 n'en garde qu'un de
+  chaque : impossible de dire lequel des morts va vers lequel des vivants.
+
+## Deux angles morts découverts en réparant
+
+**44 doublons préexistants** dans `section_entities_map.json` — un même
+`entity_id` listé deux fois dans une même section, sur 35 sections. Mon
+script les compte et **les laisse intacts** : les fusionner au passage
+aurait effacé un défaut distinct sous couvert d'en réparer un autre. Le
+contrôle ne les voit pas.
+
+**19 opérations orphelines** dans le bloc `ops` de `grc20-these-mael-rolland-v100.json` :
+des `SET_ATTRIBUTE` (`definition`) visant des entités inexistantes, héritées
+de `patch_2c_definitions.json` et transportées de v96 à v100. `check_anchoring`
+n'inspecte pas ce bloc, `audit_graph` non plus. Aucune relation pendante en
+revanche : le dégât est confiné.
 
 ## Ce que le contrôle élargi a découvert
 
@@ -163,9 +222,22 @@ Il faut soit une table d'alias dans le générateur, soit une saisie manuelle.
 
 ## Baseline
 
-**67 → 70.** Quatre problèmes réellement résolus (2 jetons, 2 épinglages),
-sept découverts par l'élargissement du contrôle. Un filet qui s'élargit fait
-monter le compteur : c'est le comportement attendu, pas une régression.
+**67 → 70 → 53.**
+
+| étape | effet |
+|---|---|
+| 2 jetons morts retirés, 2 épinglages faux retirés | −4 |
+| contrôle F élargi aux listes d'ossature et de masquage | +7 |
+| 17 identifiants morts résolus | −17 |
+
+Un filet qui s'élargit fait monter le compteur avant de le faire baisser :
+c'est le comportement attendu, pas une régression.
+
+État restant : 25 sections sans entrée (dont 22 relèvent d'un écart de
+granularité, pas d'un défaut), 11 épinglages hors liste (9 listes
+incomplètes, 2 arbitrages), 9 identifiants morts en arbitrage, 7 jetons
+d'ossature et de masquage, 1 section absente du graphe (`III.3`, qui se
+réglera au chapitre III).
 
 ## Une mise en garde issue du diagnostic
 
