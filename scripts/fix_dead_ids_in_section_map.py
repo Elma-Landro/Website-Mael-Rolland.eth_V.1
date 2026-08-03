@@ -64,11 +64,6 @@ RETIRER = {
     '748d653bea9f4f20a5abcb6f61949f3d',  # De conformite aux reglementations nationales — Ethereum
     'd80e3f1d494f4257a2d2a63e0051f967',  # De l'information et de la connaissance — Ethereum
     '63def9d54a3d4747add20e5d608e68f0',  # Des Altcoins et tokens — ecosysteme Ethereum
-    # Les deux seuls domaines de v90 sans AUCUN survivant en v100. Le Concept
-    # homonyme n'en est pas le successeur : les deux coexistaient depuis v81,
-    # la these distinguait donc le domaine d'infrastructure et le concept.
-    '6b979b61416c4eb288f79f6053924afe',  # De l'activite de traitement des transactions
-    '510c14a93e6c423982a96586d1e8bd9c',  # ... Ethereum
 }
 
 # Variantes orthographiques et formes longues, disparues a la refonte v91.
@@ -87,6 +82,12 @@ REECRIRE = {
     # des morts va vers lequel des vivants. Choix retenu : le plus proche par
     # le nom, quitte a ce que les deux morts convergent vers la meme cible.
     '5a341f8c7e6141d9a1449b252f4cef89': 'f4b9aff00c1976c266295ed020e3c8e2',  # Omni Layer
+    # Les deux seuls domaines de v90 sans survivant du meme type. Le Concept
+    # « Traitement des transactions » n'est pas leur heritier au sens strict
+    # — les deux coexistaient depuis v81 — mais l'arbitrage retenu prefere
+    # conserver l'ancrage sur l'objet le plus proche plutot que le perdre.
+    '6b979b61416c4eb288f79f6053924afe': '8fc8b0d7aa1a4510acea6831021bb4ac',
+    '510c14a93e6c423982a96586d1e8bd9c': '8fc8b0d7aa1a4510acea6831021bb4ac',
 }
 
 

@@ -103,32 +103,34 @@ Trois traitements, selon ce que devient l'ancrage —
 | traitement | n | critère |
 |---|---:|---|
 | **supprimer la ligne** | 8 | le jumeau vivant est **déjà présent dans chacune des mêmes sections**, compteurs identiques. Réécrire l'id créerait un doublon dans la même liste |
-| **réécrire l'id** | 10 | le vivant est absent des sections concernées : supprimer perdrait l'ancrage |
-| **retirer** | 8 | aucun successeur : l'ontologie v100 ne porte plus l'entité du tout |
+| **réécrire l'id** | 12 | le vivant est absent des sections concernées : supprimer perdrait l'ancrage |
+| **retirer** | 6 | aucun successeur, et rien d'assez proche pour rattacher |
 
 Vérifié après application : **zéro entité vivante perdue**, 54 clés
 inchangées, et **plus aucun identifiant mort dans la carte**.
 
-Les 9 réécritures sont des variantes orthographiques ou des formes longues
-abandonnées par v91 : Eric → **Erik** Voorhees, Gregory → **Greg** Maxwell,
-J.R. Willet → **Willett**, Shaoling → **Shaolin** Fry, Jeff → **Jeffrey**
-Wilcke, plus Mastercoin / Omni Layer, OP_RETURN, Theymos, Empreinte
-numérique.
+Neuf des réécritures sont des variantes orthographiques ou des formes
+longues abandonnées par v91 : Eric → **Erik** Voorhees, Gregory → **Greg**
+Maxwell, J.R. Willet → **Willett**, Shaoling → **Shaolin** Fry, Jeff →
+**Jeffrey** Wilcke, plus Mastercoin / Omni Layer, OP_RETURN, Theymos,
+Empreinte numérique. Les trois autres relèvent des arbitrages ci-dessous.
 
 #### Les 9 cas de modélisation, tranchés
 
 - **6 domaines Ethereum → retirés.** v90 modélisait 16 `InfrastructureDomain` : des
   génériques et leurs jumeaux « … Ethereum ». v91 n'en garde que 8, en
   rendant les génériques agnostiques. Réécrire « Du protocole Ethereum » vers
-  « Protocole et couche de base » revient à **effacer la partition
-  Bitcoin/Ethereum** que v90 posait explicitement. Deux options défendables :
+  « Protocole et couche de base » reviendrait à **effacer la partition
+  Bitcoin/Ethereum** que v90 posait explicitement.
   Ce qui a emporté la décision : ces lignes sont générées **en bloc** —
   rangs consécutifs dans `intro_B`, `occurrence_count` = 2 partout — donc du
   remplissage automatique, pas des occurrences réelles dans le texte.
-- **2 sans successeur → retirés** : « De l'activité de traitement des
-  transactions » (générique et Ethereum), seuls domaines de v90 sans aucun
-  survivant. Le `Concept` homonyme n'en est **pas** le successeur : les deux
-  coexistaient déjà depuis v81.
+- **2 sans successeur → rattachés au `Concept` homonyme.** « De l'activité
+  de traitement des transactions » (générique et Ethereum) sont les seuls
+  domaines de v90 sans survivant du même type. Le `Concept` « Traitement des
+  transactions » n'en est pas l'héritier au sens strict — les deux
+  coexistaient depuis v81 — mais l'arbitrage rendu préfère **conserver
+  l'ancrage sur l'objet le plus proche plutôt que le perdre**.
 - **1 ambigu → réécrit** : « Omni Layer (meta-protocole Bitcoin) ». v90
   comptait deux `Protocol` et deux `ActorNonHuman` sur ce thème, v91 n'en
   garde qu'un de chaque. Choix retenu : le plus proche par le nom, quitte à
@@ -210,6 +212,9 @@ Il faut soit une table d'alias dans le générateur, soit une saisie manuelle.
 2. **« Ethereum » épinglé dans `intro_A` → gardé**, comme choix éditorial
    assumé. Consigné ici pour qu'aucune passe ultérieure ne le retire comme
    une anomalie.
+   **« Au-delà des codes » → épinglage retiré.** Le nœud racine de la thèse
+   n'appartient à aucune liste de section et n'y appartiendra jamais ; plutôt
+   que d'exempter le cas dans le contrôle, l'épinglage lui-même part.
 3. **Les récits `s6` et `s7` → `contributes to` ajouté.** Mesuré
    indépendamment avant écriture : s6 passe de 0 à 3 arêtes, s7 de 0 à 4.
    C'est un **élargissement éditorial**, pas un renommage — `contributes to`
@@ -217,13 +222,9 @@ Il faut soit une table d'alias dans le générateur, soit une saisie manuelle.
 
 ### Restent ouverts
 
-1. **« Au-delà des codes »** (le nœud racine de la thèse) épinglé dans
-   `intro_A` — il n'appartient à aucune liste de section et n'y appartiendra
-   jamais. La correction n'est pas dans une carte mais dans le contrôle C,
-   qui devrait exempter ce cas.
-2. **« Proposition de Hard Fork — The DAO »** sur `III.3.2` — défendable,
+1. **« Proposition de Hard Fork — The DAO »** sur `III.3.2` — défendable,
    mais la section où la proposition est réellement débattue est III.3.3.
-3. **Les 9 listes incomplètes** — les compléter demanderait un
+2. **Les 9 listes incomplètes** — les compléter demanderait un
    `occurrence_count` que rien ne permet de deviner, et aucun script du dépôt
    ne génère cette carte. Trois d'entre elles ne pourront de toute façon
    jamais être retrouvées par un appariement de noms sur le texte français :

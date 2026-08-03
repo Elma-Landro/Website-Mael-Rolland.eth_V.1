@@ -1,7 +1,7 @@
 {
- "_comment": "Dette d'ancrage connue au moment du gel. Le controle n'echoue que sur les codes ABSENTS de cette liste. Retirer un code ici quand il est reellement corrige. 2026-08-03 : 67 -> 37, apres arbitrage complet. Il ne reste AUCUN identifiant mort ni jeton de relation inexistant. Les 37 restants sont : 22 sous-sections de l'introduction inconnues des deux cartes (ecart de granularite, pas un defaut, et le sommaire du site ne descend pas a ce niveau) ; 3 sections creees par patch_14, vides et assumees ; 11 epinglages hors liste, dont 9 listes incompletes qui demanderaient un occurrence_count non devinable et 2 derogations volontaires ; 1 section III.3 absente du graphe, qui se reglera au chapitre III.",
+ "_comment": "Dette d'ancrage connue au moment du gel. Le controle n'echoue que sur les codes ABSENTS de cette liste. Retirer un code ici quand il est reellement corrige. 2026-08-03 : 67 -> 36, apres arbitrage complet. Plus AUCUN identifiant mort ni jeton de relation inexistant. Les 36 restants : 22 sous-sections de l'introduction inconnues des deux cartes (ecart de granularite, pas un defaut) ; 3 sections creees vides a dessein par patch_14 ; 10 epinglages hors liste, dont 9 demandent un occurrence_count non devinable et 1 est une derogation assumee (« Ethereum » dans intro_A) ; 1 section III.3 absente du graphe, a regler au chapitre III.",
  "graph": "grc20-these-mael-rolland-v101.json",
- "count": 37,
+ "count": 36,
  "known": [
   "B:graph:I.1.1",
   "B:graph:I.1.3",
@@ -38,7 +38,6 @@
   "C:hors:III.3.4:5ea44d21a07d4d13a6f1d6677936b8e7",
   "C:hors:III.3:e2cdb978bbdd4119aa946a271051a753",
   "C:hors:intro_A:2956b3b87db1448f8a2ddde82d39e9c9",
-  "C:hors:intro_A:a078b1b274f74818a8c7f1abcfb3097f",
   "C:hors:intro_A:a444085b9b2d4ea1aa734f7e25db6a6c"
  ]
 }

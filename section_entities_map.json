@@ -3930,6 +3930,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
         "entity_id": "750fdaa27a5d4030a626673d3110ddf2",
         "entity_name": "Akrich 1989 — Construction d'un système socio-technique",
         "occurrence_count": 2
@@ -5461,6 +5466,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
         "entity_id": "b666ecd130b24eb3be67d61460d5a47e",
         "entity_name": "Andolfatto 2016 — Is Bitcoin a Safe Asset",
         "occurrence_count": 2
@@ -6188,11 +6198,6 @@
       {
         "entity_id": "1a0786075553472a87cdd071f6441538",
         "entity_name": "Maximaliste Bitcoiner",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
-        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -7747,6 +7752,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
         "entity_id": "2c773020f5214d0aab99737d494ef2c8",
         "entity_name": "Bitcoin Core 2014 — version 0.9.0 released",
         "occurrence_count": 2
@@ -9025,6 +9035,11 @@
       {
         "entity_id": "3ecc025a3f6745ba85e3b46ecd90901b",
         "entity_name": "Communauté épistémique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -17581,6 +17596,11 @@
         "occurrence_count": 1
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 6
+      },
+      {
         "entity_id": "bcb6224ca258462e815df9678e1992b1",
         "entity_name": "Russo 2020 — The Infinite Machine Ethereum",
         "occurrence_count": 1
@@ -17794,11 +17814,6 @@
         "entity_id": "ffdc27d9e9c7485a81c0482017ed9246",
         "entity_name": "Counterparty",
         "occurrence_count": 8
-      },
-      {
-        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
-        "entity_name": "Traitement des transactions",
-        "occurrence_count": 6
       },
       {
         "entity_id": "6baa805952d145bc9c4b1b14eede3c33",
@@ -19605,6 +19620,11 @@
       {
         "entity_id": "a1135fa80cde427d9d7ca42e4b494a04",
         "entity_name": "InfrastructureEvent — Bitcoin Core 0.9.0 : OP_RETURN limité à 40 octets (mars 2014)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -24527,6 +24547,11 @@
         "occurrence_count": 1
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
         "entity_id": "c33c1251f58f47b3b0762b5054c43834",
         "entity_name": "Alary 2009 — Genèse de la monnaie",
         "occurrence_count": 1
@@ -26495,6 +26520,11 @@
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
         "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -31617,6 +31647,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
         "entity_id": "621555b126f4496c94f5ea08a904603e",
         "entity_name": "Blanc 2008 — Usages de l'argent pratiques monétaires",
         "occurrence_count": 2
@@ -32119,11 +32154,6 @@
       {
         "entity_id": "1a0786075553472a87cdd071f6441538",
         "entity_name": "Maximaliste Bitcoiner",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
-        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -34118,6 +34148,11 @@
         "occurrence_count": 1
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
         "entity_id": "3960e7b3294c4364bca1b046734ef886",
         "entity_name": "De conformité aux réglementations nationales",
         "occurrence_count": 1
@@ -34125,11 +34160,6 @@
       {
         "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
         "entity_name": "De l'information et de la connaissance",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
-        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -35967,6 +35997,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
         "entity_id": "c9331bbe47b548ae9237c5f31c277b60",
         "entity_name": "Allard 2018 — Cryptomonnaies usages et pratiques",
         "occurrence_count": 2
@@ -36299,11 +36334,6 @@
       {
         "entity_id": "7f4f018391584e708ee2a97f76d35c2b",
         "entity_name": "Algorithme de consensus",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
-        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -40955,6 +40985,11 @@
         "occurrence_count": 1
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
         "entity_id": "c90459607fca4768b307d096e3e05378",
         "entity_name": "Rauchs et al. 2018 — Distributed Ledger Systems Conceptual Framework",
         "occurrence_count": 1
@@ -42219,6 +42254,11 @@
       {
         "entity_id": "39a4c914ab2342818739598102c19499",
         "entity_name": "Autorité algorithmique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -45036,6 +45076,11 @@
         "occurrence_count": 1
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
         "entity_id": "9e885649ad6e4b53bdd7ec9161236f2d",
         "entity_name": "Daian 2016 — Analysis of the DAO exploit",
         "occurrence_count": 1
@@ -45589,6 +45634,11 @@
       {
         "entity_id": "da2c1b40ca374770836b98990bb6d55a",
         "entity_name": "Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -46896,6 +46946,11 @@
       {
         "entity_id": "6f6b4ab6f46a460797b9a489ff13c9a1",
         "entity_name": "Monnaie numérique",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -48718,6 +48773,11 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 2
       },
       {
@@ -51022,6 +51082,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 2
+      },
+      {
         "entity_id": "bcb6224ca258462e815df9678e1992b1",
         "entity_name": "Russo 2020 — The Infinite Machine Ethereum",
         "occurrence_count": 2
@@ -53200,6 +53265,11 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "occurrence_count": 2
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 2
       },
       {
@@ -55956,6 +56026,11 @@
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
         "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "occurrence_count": 1
+      },
+      {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -61039,6 +61114,11 @@
         "occurrence_count": 2
       },
       {
+        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
+        "entity_name": "Traitement des transactions",
+        "occurrence_count": 1
+      },
+      {
         "entity_id": "5d696ac4f7aa4645baa0e5f88e2b190d",
         "entity_name": "Régulations transactionnelles",
         "occurrence_count": 1
@@ -61046,11 +61126,6 @@
       {
         "entity_id": "e1a7b06839404dbdacba7f00782a5450",
         "entity_name": "Infrastructure sociotechnique",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "8fc8b0d7aa1a4510acea6831021bb4ac",
-        "entity_name": "Traitement des transactions",
         "occurrence_count": 1
       },
       {
