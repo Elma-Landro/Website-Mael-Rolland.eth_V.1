@@ -9,7 +9,7 @@ surtout v90->v91 (« refonte ontologique complete »). Aucun de ces
 identifiants ne disparait entre v96 et v100 : la migration des sections n'y
 est pour rien.
 
-Deux traitements, selon ce que devient l'ancrage :
+Trois traitements, selon ce que devient l'ancrage :
 
   SUPPRIMER  le jumeau vivant est DEJA present dans chacune des memes
              sections, avec les memes compteurs. Reecrire l'id creerait un
@@ -17,15 +17,16 @@ Deux traitements, selon ce que devient l'ancrage :
   REECRIRE   le vivant est absent des sections concernees. Supprimer
              perdrait l'ancrage ; on reecrit l'id, en FUSIONNANT le compteur
              la ou les deux se rencontrent (on garde le maximum).
+  RETIRER    aucun successeur : l'ontologie v100 ne porte plus l'entite du
+             tout. On retire la ligne, sans rien rattacher de force.
 
-Ne sont traites ici que les cas ou la preuve est complete. Les 9 autres
-(6 domaines Ethereum absorbes par la refonte, 2 entites sans successeur,
-1 ambigu) relevent d'un arbitrage de modelisation, pas d'une correction
-mecanique — voir docs/audits/grc20-dette-ancrage-v1.md.
+Les 9 cas qui demandaient un arbitrage de modelisation ont ete tranches
+(voir docs/audits/grc20-dette-ancrage-v1.md) : les 8 domaines partent en
+RETIRER, l'Omni Layer ambigu en REECRIRE vers le plus proche par le nom.
 
 Usage:
     python3 scripts/fix_dead_ids_in_section_map.py --dry-run
-    python3 scripts/fix_dead_ids_in_section_map.py
+    python3 scripts/fix_dead_ids_in_section_map.py --dedoublonner
 """
 import argparse
 import collections
@@ -63,6 +64,11 @@ RETIRER = {
     '748d653bea9f4f20a5abcb6f61949f3d',  # De conformite aux reglementations nationales — Ethereum
     'd80e3f1d494f4257a2d2a63e0051f967',  # De l'information et de la connaissance — Ethereum
     '63def9d54a3d4747add20e5d608e68f0',  # Des Altcoins et tokens — ecosysteme Ethereum
+    # Les deux seuls domaines de v90 sans AUCUN survivant en v100. Le Concept
+    # homonyme n'en est pas le successeur : les deux coexistaient depuis v81,
+    # la these distinguait donc le domaine d'infrastructure et le concept.
+    '6b979b61416c4eb288f79f6053924afe',  # De l'activite de traitement des transactions
+    '510c14a93e6c423982a96586d1e8bd9c',  # ... Ethereum
 }
 
 # Variantes orthographiques et formes longues, disparues a la refonte v91.
@@ -76,6 +82,11 @@ REECRIRE = {
     'f75e5203926b4cd38bce44c2225bf069': '8db449e7a01f49589f19abd510071e97',  # Theymos
     'bf07dcda83d84da7a0a34452762c5eed': '3ba20dcf685d4e708cd990cb721e409b',  # Empreinte numerique / Hash
     '4c9b3ebf4d344807bd65f386b17d59b7': '49ce14952768472a9fe4c0c8f712e2e9',  # Jeff -> Jeffrey Wilcke
+    # Arbitrage rendu. v90 portait 4 noeuds Omni/Mastercoin (2 Protocol,
+    # 2 ActorNonHuman), v91 n'en garde qu'un de chaque : rien ne dit lequel
+    # des morts va vers lequel des vivants. Choix retenu : le plus proche par
+    # le nom, quitte a ce que les deux morts convergent vers la meme cible.
+    '5a341f8c7e6141d9a1449b252f4cef89': 'f4b9aff00c1976c266295ed020e3c8e2',  # Omni Layer
 }
 
 
@@ -88,6 +99,9 @@ def main(argv=None):
     p = argparse.ArgumentParser(description="Repare les ids morts de la carte.")
     p.add_argument('--graph', default=None)
     p.add_argument('--carte', default=os.path.join(REPO, 'section_entities_map.json'))
+    p.add_argument('--dedoublonner', action='store_true',
+                   help="Fusionne aussi les doublons deja presents dans la carte "
+                        "(meme id liste deux fois dans une meme section).")
     p.add_argument('--dry-run', action='store_true')
     args = p.parse_args(argv)
 
@@ -156,6 +170,16 @@ def main(argv=None):
                                                 for e, _ in membres)
                 fusionnes += len(membres) - 1
                 neuf.append(garde)
+            elif args.dedoublonner:
+                # Doublon deja present dans la carte, sans rapport avec les
+                # ids morts. Arbitrage rendu : fusionner, compteur maximum.
+                # Sans effet a l'ecran — le lecteur deduplique deja par
+                # identifiant — mais la carte cesse de se contredire.
+                garde = dict(membres[0][0])
+                garde['occurrence_count'] = max(e['occurrence_count']
+                                                for e, _ in membres)
+                doublons_preexistants += len(membres) - 1
+                neuf.append(garde)
             else:
                 doublons_preexistants += len(membres) - 1
                 neuf.extend(e for e, _ in membres)
@@ -169,7 +193,8 @@ def main(argv=None):
     print(f"  identifiants reecrits  : {reecrits}")
     print(f"  collisions fusionnees  : {fusionnes} (creees par la reecriture)")
     print(f"  ids morts restants     : {len(restants)} (arbitrage humain)")
-    print(f"  doublons preexistants  : {doublons_preexistants} — SIGNALES, non touches")
+    etat = "fusionnes" if args.dedoublonner else "SIGNALES, non touches"
+    print(f"  doublons preexistants  : {doublons_preexistants} — {etat}")
 
     if args.dry_run:
         print("--dry-run : rien ecrit.")

@@ -1,11 +1,8 @@
 {
- "_comment": "Dette d'ancrage connue au moment du gel. Le controle n'echoue que sur les codes ABSENTS de cette liste. Retirer un code ici quand il est reellement corrige. 2026-08-03 : 67 -> 40. Etapes : +3 B:sem (sections creees par patch_14, vides assume) ; -2 F:rel et -2 C:hors (jetons morts et epinglages faux) ; +7 F:backbone/F:hide decouverts en elargissant le controle F, puis -7 apres arbitrage (proprietes mortes retirees) ; -17 puis -6 A:sem (identifiants morts des refontes v81->v82 et v90->v91, resolus par scripts/fix_dead_ids_in_section_map.py). Restent 3 A:sem en arbitrage, et 22 B:sem qui relevent d'un ecart de granularite des cartes, pas d'un defaut.",
- "graph": "grc20-these-mael-rolland-v100.json",
- "count": 40,
+ "_comment": "Dette d'ancrage connue au moment du gel. Le controle n'echoue que sur les codes ABSENTS de cette liste. Retirer un code ici quand il est reellement corrige. 2026-08-03 : 67 -> 37, apres arbitrage complet. Il ne reste AUCUN identifiant mort ni jeton de relation inexistant. Les 37 restants sont : 22 sous-sections de l'introduction inconnues des deux cartes (ecart de granularite, pas un defaut, et le sommaire du site ne descend pas a ce niveau) ; 3 sections creees par patch_14, vides et assumees ; 11 epinglages hors liste, dont 9 listes incompletes qui demanderaient un occurrence_count non devinable et 2 derogations volontaires ; 1 section III.3 absente du graphe, qui se reglera au chapitre III.",
+ "graph": "grc20-these-mael-rolland-v101.json",
+ "count": 37,
  "known": [
-  "A:sem:510c14a93e6c423982a96586d1e8bd9c",
-  "A:sem:5a341f8c7e6141d9a1449b252f4cef89",
-  "A:sem:6b979b61416c4eb288f79f6053924afe",
   "B:graph:I.1.1",
   "B:graph:I.1.3",
   "B:graph:I.2.1",

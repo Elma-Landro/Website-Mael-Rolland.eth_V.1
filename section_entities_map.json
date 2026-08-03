@@ -49,11 +49,6 @@
         "occurrence_count": 3
       },
       {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 3
-      },
-      {
         "entity_id": "1b74ff180cc847e6900941cb93fa4006",
         "entity_name": "Preuve de concept / Phase 1 Bitcoin",
         "occurrence_count": 3
@@ -1119,8 +1114,8 @@
         "occurrence_count": 3
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 3
       },
       {
@@ -2295,11 +2290,6 @@
         "occurrence_count": 3
       },
       {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 3
-      },
-      {
         "entity_id": "1b74ff180cc847e6900941cb93fa4006",
         "entity_name": "Preuve de concept / Phase 1 Bitcoin",
         "occurrence_count": 3
@@ -3395,8 +3385,8 @@
         "occurrence_count": 3
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 3
       },
       {
@@ -3657,11 +3647,6 @@
       {
         "entity_id": "d518be4403df44229c0af50f6c3ebc87",
         "entity_name": "GAS (Ethereum)",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
         "occurrence_count": 2
       },
       {
@@ -3942,11 +3927,6 @@
       {
         "entity_id": "5d5a5c91468f4bcc8d078001a5abc240",
         "entity_name": "CM Bitcoin-Like",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -5261,11 +5241,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "d1dd82174b304af3a93ea3a86186a661",
         "entity_name": "Ammous 2018 Bitcoin Standard",
         "occurrence_count": 2
@@ -5483,11 +5458,6 @@
       {
         "entity_id": "5d5a5c91468f4bcc8d078001a5abc240",
         "entity_name": "CM Bitcoin-Like",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -6123,11 +6093,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -7261,8 +7226,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -7597,11 +7562,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "6b444dfd2cfe4786a214e3edef593d35",
         "entity_name": "The DAO ICO",
         "occurrence_count": 2
@@ -7784,11 +7744,6 @@
       {
         "entity_id": "a1135fa80cde427d9d7ca42e4b494a04",
         "entity_name": "InfrastructureEvent — Bitcoin Core 0.9.0 : OP_RETURN limité à 40 octets (mars 2014)",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -8768,11 +8723,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "4510632442f34a1c8ad6f3fe0f17ad05",
         "entity_name": "Nakamoto 2008 Bitcoin WP",
         "occurrence_count": 1
@@ -9075,11 +9025,6 @@
       {
         "entity_id": "3ecc025a3f6745ba85e3b46ecd90901b",
         "entity_name": "Communauté épistémique",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -9934,11 +9879,6 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 5
-      },
-      {
         "entity_id": "1b74ff180cc847e6900941cb93fa4006",
         "entity_name": "Preuve de concept / Phase 1 Bitcoin",
         "occurrence_count": 5
@@ -10964,8 +10904,8 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 5
       },
       {
@@ -11645,11 +11585,6 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 5
-      },
-      {
         "entity_id": "1b74ff180cc847e6900941cb93fa4006",
         "entity_name": "Preuve de concept / Phase 1 Bitcoin",
         "occurrence_count": 5
@@ -12675,8 +12610,8 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 5
       },
       {
@@ -14253,11 +14188,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "d1dd82174b304af3a93ea3a86186a661",
         "entity_name": "Ammous 2018 Bitcoin Standard",
         "occurrence_count": 1
@@ -14480,11 +14410,6 @@
       {
         "entity_id": "5d5a5c91468f4bcc8d078001a5abc240",
         "entity_name": "CM Bitcoin-Like",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -16039,11 +15964,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "eb7ef87dec2248569a8caeb2aeed6687",
         "entity_name": "Jeff Garzik",
         "occurrence_count": 1
@@ -16256,11 +16176,6 @@
       {
         "entity_id": "5f06214e17074a14874220ed7195ded9",
         "entity_name": "InfrastructureEvent — Levee de fonds Ethereum en BTC (2014)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -16807,11 +16722,6 @@
       {
         "entity_id": "a9848140eab84d8783554af31477a6dd",
         "entity_name": "Entretien n°17",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "6b979b61416c4eb288f79f6053924afe",
-        "entity_name": "De l'activité de traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -17571,11 +17481,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "e2cdb978bbdd4119aa946a271051a753",
         "entity_name": "Ethereum Hard Fork (juillet 2016)",
         "occurrence_count": 1
@@ -17673,11 +17578,6 @@
       {
         "entity_id": "3246bf2cec9e45b18d9799ba6c64c9fe",
         "entity_name": "Dréan 2013",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -18198,11 +18098,6 @@
       {
         "entity_id": "288fbc98cb6b424ea3598bbaa5957b6f",
         "entity_name": "Cohérence",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "6b979b61416c4eb288f79f6053924afe",
-        "entity_name": "De l'activité de traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -19528,11 +19423,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "826c32caed754ecfabee8368e4819bff",
         "entity_name": "Monnayage",
         "occurrence_count": 1
@@ -19715,11 +19605,6 @@
       {
         "entity_id": "a1135fa80cde427d9d7ca42e4b494a04",
         "entity_name": "InfrastructureEvent — Bitcoin Core 0.9.0 : OP_RETURN limité à 40 octets (mars 2014)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -20314,11 +20199,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "826c32caed754ecfabee8368e4819bff",
         "entity_name": "Monnayage",
         "occurrence_count": 1
@@ -20424,11 +20304,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "6b979b61416c4eb288f79f6053924afe",
-        "entity_name": "De l'activité de traitement des transactions",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "5f06214e17074a14874220ed7195ded9",
         "entity_name": "InfrastructureEvent — Levee de fonds Ethereum en BTC (2014)",
         "occurrence_count": 1
@@ -20446,11 +20321,6 @@
       {
         "entity_id": "09fcce1d9ae8400bbe50931845ded369",
         "entity_name": "Bitmain",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -21355,11 +21225,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "e4b95e6a7ec94ac18025381781bb547e",
         "entity_name": "Protocole GHOST",
         "occurrence_count": 1
@@ -21697,11 +21562,6 @@
       {
         "entity_id": "144d0cb97ace4d729d080510b48c7c81",
         "entity_name": "Estrada 2014",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -22358,11 +22218,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -23531,8 +23386,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -23999,16 +23854,6 @@
       {
         "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
         "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -24679,11 +24524,6 @@
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
         "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -25607,8 +25447,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -26025,16 +25865,6 @@
       {
         "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
         "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -26665,11 +26495,6 @@
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
         "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -27628,8 +27453,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -28352,11 +28177,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -29615,8 +29435,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -29943,11 +29763,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -31146,8 +30961,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -31727,11 +31542,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "e2cdb978bbdd4119aa946a271051a753",
         "entity_name": "Ethereum Hard Fork (juillet 2016)",
         "occurrence_count": 2
@@ -31804,11 +31614,6 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -32219,11 +32024,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -33457,8 +33257,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -34315,11 +34115,6 @@
       {
         "entity_id": "7fe4e4f0462445de98bfb76b16e7c4b9",
         "entity_name": "Mervyn King",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "6b979b61416c4eb288f79f6053924afe",
-        "entity_name": "De l'activité de traitement des transactions",
         "occurrence_count": 1
       },
       {
@@ -35616,11 +35411,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "6b979b61416c4eb288f79f6053924afe",
-        "entity_name": "De l'activité de traitement des transactions",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
         "entity_name": "De l'information et de la connaissance",
         "occurrence_count": 1
@@ -36122,11 +35912,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "41714811849844938debb935f0609cda",
         "entity_name": "Banque de France",
         "occurrence_count": 2
@@ -36179,11 +35964,6 @@
       {
         "entity_id": "3ecc025a3f6745ba85e3b46ecd90901b",
         "entity_name": "Communauté épistémique",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -37108,11 +36888,6 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 5
-      },
-      {
         "entity_id": "1b74ff180cc847e6900941cb93fa4006",
         "entity_name": "Preuve de concept / Phase 1 Bitcoin",
         "occurrence_count": 5
@@ -38218,8 +37993,8 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 5
       },
       {
@@ -38949,11 +38724,6 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 5
-      },
-      {
         "entity_id": "1b74ff180cc847e6900941cb93fa4006",
         "entity_name": "Preuve de concept / Phase 1 Bitcoin",
         "occurrence_count": 5
@@ -40059,8 +39829,8 @@
         "occurrence_count": 5
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 5
       },
       {
@@ -40995,11 +40765,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "2cc2e87266524c59bfd887bd0280661a",
         "entity_name": "Awemany",
         "occurrence_count": 1
@@ -41187,11 +40952,6 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -42227,11 +41987,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "4510632442f34a1c8ad6f3fe0f17ad05",
         "entity_name": "Nakamoto 2008 Bitcoin WP",
         "occurrence_count": 1
@@ -42464,11 +42219,6 @@
       {
         "entity_id": "39a4c914ab2342818739598102c19499",
         "entity_name": "Autorité algorithmique",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -45066,11 +44816,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "4d76a2feec394612976423c178b00a53",
         "entity_name": "Vlad Zamfir",
         "occurrence_count": 1
@@ -45288,11 +45033,6 @@
       {
         "entity_id": "6f6b4ab6f46a460797b9a489ff13c9a1",
         "entity_name": "Monnaie numérique",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -45717,11 +45457,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "3fd42e66b6da429980f7b184078bb4bc",
         "entity_name": "Taylor Gerring",
         "occurrence_count": 1
@@ -45854,11 +45589,6 @@
       {
         "entity_id": "da2c1b40ca374770836b98990bb6d55a",
         "entity_name": "Figure 5 — Division sociale du travail protocolaire et spécialisation des acteurs",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -46193,11 +45923,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "49ce14952768472a9fe4c0c8f712e2e9",
         "entity_name": "Jeffrey Wilcke",
         "occurrence_count": 1
@@ -46400,11 +46125,6 @@
       {
         "entity_id": "5f06214e17074a14874220ed7195ded9",
         "entity_name": "InfrastructureEvent — Levee de fonds Ethereum en BTC (2014)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -47044,11 +46764,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "7a9e233da168419fad3af4573a1038e5",
         "entity_name": "Fabian Vogelsteller",
         "occurrence_count": 1
@@ -47181,11 +46896,6 @@
       {
         "entity_id": "6f6b4ab6f46a460797b9a489ff13c9a1",
         "entity_name": "Monnaie numérique",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -47855,11 +47565,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "4d76a2feec394612976423c178b00a53",
         "entity_name": "Vlad Zamfir",
         "occurrence_count": 1
@@ -48207,11 +47912,6 @@
       {
         "entity_id": "39a4c914ab2342818739598102c19499",
         "entity_name": "Autorité algorithmique",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 1
       },
       {
@@ -48926,11 +48626,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "6b444dfd2cfe4786a214e3edef593d35",
         "entity_name": "The DAO ICO",
         "occurrence_count": 2
@@ -49023,11 +48718,6 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -49508,11 +49198,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -50966,8 +50651,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -51277,11 +50962,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "e2cdb978bbdd4119aa946a271051a753",
         "entity_name": "Ethereum Hard Fork (juillet 2016)",
         "occurrence_count": 2
@@ -51339,11 +51019,6 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -51689,11 +51364,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -53187,8 +52857,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -53478,11 +53148,6 @@
         "occurrence_count": 2
       },
       {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
-        "occurrence_count": 2
-      },
-      {
         "entity_id": "e2cdb978bbdd4119aa946a271051a753",
         "entity_name": "Ethereum Hard Fork (juillet 2016)",
         "occurrence_count": 2
@@ -53535,11 +53200,6 @@
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
         "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
-        "occurrence_count": 2
-      },
-      {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
         "occurrence_count": 2
       },
       {
@@ -53875,11 +53535,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -55308,8 +54963,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -55616,16 +55271,6 @@
       {
         "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
         "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "dea76780ff6843e4a12e9604a117baac",
-        "entity_name": "EIP (Ethereum Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -56314,11 +55959,6 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "510c14a93e6c423982a96586d1e8bd9c",
-        "entity_name": "De l'activité de traitement des transactions Ethereum",
-        "occurrence_count": 1
-      },
-      {
         "entity_id": "e82afd03ea514828a61d96054971f6e0",
         "entity_name": "Andolfatto 2013 — Why gold and bitcoin make lousy money",
         "occurrence_count": 1
@@ -57389,8 +57029,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -57762,11 +57402,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -59200,8 +58835,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -59518,11 +59153,6 @@
       {
         "entity_id": "95550536862b49a19ca7625cbd6487b1",
         "entity_name": "Bitcoin Script",
-        "occurrence_count": 1
-      },
-      {
-        "entity_id": "05dae3dc59784e53bf5f7eb6a4d8030e",
-        "entity_name": "BIP (Bitcoin Improvement Proposal)",
         "occurrence_count": 1
       },
       {
@@ -60981,8 +60611,8 @@
         "occurrence_count": 1
       },
       {
-        "entity_id": "5a341f8c7e6141d9a1449b252f4cef89",
-        "entity_name": "Omni Layer (meta-protocole Bitcoin)",
+        "entity_id": "f4b9aff00c1976c266295ed020e3c8e2",
+        "entity_name": "Mastercoin / Omni Layer",
         "occurrence_count": 1
       },
       {
@@ -61407,11 +61037,6 @@
         "entity_id": "bed4df005c7ce36030703bd68cb521d1",
         "entity_name": "cryptomonnaie",
         "occurrence_count": 2
-      },
-      {
-        "entity_id": "6b979b61416c4eb288f79f6053924afe",
-        "entity_name": "De l'activité de traitement des transactions",
-        "occurrence_count": 1
       },
       {
         "entity_id": "5d696ac4f7aa4645baa0e5f88e2b190d",

@@ -1,7 +1,7 @@
-# Dette d'ancrage — diagnostic et premier lot de corrections
+# Dette d'ancrage — diagnostic et résorption
 
 **Date** : 2026-08-03
-**Graphe** : `grc20-these-mael-rolland-v100.json`
+**Graphe** : `grc20-these-mael-rolland-v100.json` → **`v101`**
 **Branche** : `agent/grc20-section-migration-ch2-v1`
 **Mode agent** : audit (A) puis correctif (C), corrections prouvées seulement
 
@@ -14,7 +14,7 @@ elles se répartissent ainsi :
 
 | n | catégorie | nature réelle |
 |---:|---|---|
-| 26 | entité de `section_entities_map` absente du graphe | **17 résolus**, 9 en arbitrage |
+| 26 | entité de `section_entities_map` absente du graphe | **26 résolus** |
 | 25 | `ThesisSection` sans entrée dans `section_entities_map` | **écart de granularité**, pas un défaut |
 | 13 | entité épinglée hors de la liste de sa section | 9 listes incomplètes, 3 épinglages faux, 1 cas structurel |
 | 2 | `story-presets` : `relation_type` inexistant | **jetons morts** — corrigés |
@@ -88,7 +88,7 @@ avril. Ils restaient parce qu'aucun équivalent n'était évident. Mesuré :
 
 ---
 
-### Les 26 identifiants morts : 17 résolus, 9 en arbitrage
+### Les 26 identifiants morts : tous résolus
 
 **L'origine est datée et unique.** `section_entities_map.json` a été généré
 une fois, à partir d'un graphe ≤ v81, et **jamais régénéré**. Deux refontes
@@ -97,16 +97,17 @@ ont depuis fait disparaître les entités qu'il cite : v81→v82 (les doublons d
 **Aucun de ces 26 identifiants ne disparaît entre v96 et v100** : la migration
 des sections n'y est pour rien.
 
-Deux traitements, selon ce que devient l'ancrage — `scripts/fix_dead_ids_in_section_map.py` :
+Trois traitements, selon ce que devient l'ancrage —
+`scripts/fix_dead_ids_in_section_map.py` :
 
 | traitement | n | critère |
 |---|---:|---|
 | **supprimer la ligne** | 8 | le jumeau vivant est **déjà présent dans chacune des mêmes sections**, compteurs identiques. Réécrire l'id créerait un doublon dans la même liste |
-| **réécrire l'id** | 9 | le vivant est absent des sections concernées : supprimer perdrait l'ancrage |
+| **réécrire l'id** | 10 | le vivant est absent des sections concernées : supprimer perdrait l'ancrage |
+| **retirer** | 8 | aucun successeur : l'ontologie v100 ne porte plus l'entité du tout |
 
-Vérifié après application : **132 lignes supprimées, 75 identifiants
-réécrits, 4 collisions fusionnées** (compteur maximum conservé), et surtout
-**zéro entité vivante perdue**, 54 clés inchangées.
+Vérifié après application : **zéro entité vivante perdue**, 54 clés
+inchangées, et **plus aucun identifiant mort dans la carte**.
 
 Les 9 réécritures sont des variantes orthographiques ou des formes longues
 abandonnées par v91 : Eric → **Erik** Voorhees, Gregory → **Greg** Maxwell,
@@ -114,38 +115,42 @@ J.R. Willet → **Willett**, Shaoling → **Shaolin** Fry, Jeff → **Jeffrey**
 Wilcke, plus Mastercoin / Omni Layer, OP_RETURN, Theymos, Empreinte
 numérique.
 
-#### Les 9 restants relèvent d'une décision de modélisation
+#### Les 9 cas de modélisation, tranchés
 
-- **6 domaines Ethereum.** v90 modélisait 16 `InfrastructureDomain` : des
+- **6 domaines Ethereum → retirés.** v90 modélisait 16 `InfrastructureDomain` : des
   génériques et leurs jumeaux « … Ethereum ». v91 n'en garde que 8, en
   rendant les génériques agnostiques. Réécrire « Du protocole Ethereum » vers
   « Protocole et couche de base » revient à **effacer la partition
   Bitcoin/Ethereum** que v90 posait explicitement. Deux options défendables :
-  réécrire en fusionnant les compteurs, ou supprimer les entrées puisque
-  l'ontologie v100 ne porte plus de domaine par protocole. Le fait que ces
-  lignes soient générées en bloc — rangs consécutifs, `occurrence_count` = 2
-  uniforme — plaide pour la suppression, mais c'est ton choix.
-- **2 sans successeur** : « De l'activité de traitement des transactions »
-  (générique et Ethereum), seuls des domaines de v90 à n'avoir aucun
+  Ce qui a emporté la décision : ces lignes sont générées **en bloc** —
+  rangs consécutifs dans `intro_B`, `occurrence_count` = 2 partout — donc du
+  remplissage automatique, pas des occurrences réelles dans le texte.
+- **2 sans successeur → retirés** : « De l'activité de traitement des
+  transactions » (générique et Ethereum), seuls domaines de v90 sans aucun
   survivant. Le `Concept` homonyme n'en est **pas** le successeur : les deux
   coexistaient déjà depuis v81.
-- **1 ambigu** : « Omni Layer (meta-protocole Bitcoin) ». v90 comptait deux
-  `Protocol` et deux `ActorNonHuman` sur ce thème, v91 n'en garde qu'un de
-  chaque : impossible de dire lequel des morts va vers lequel des vivants.
+- **1 ambigu → réécrit** : « Omni Layer (meta-protocole Bitcoin) ». v90
+  comptait deux `Protocol` et deux `ActorNonHuman` sur ce thème, v91 n'en
+  garde qu'un de chaque. Choix retenu : le plus proche par le nom, quitte à
+  ce que les deux morts convergent vers la même cible.
 
-## Deux angles morts découverts en réparant
+## Deux angles morts découverts en réparant — traités
 
 **44 doublons préexistants** dans `section_entities_map.json` — un même
-`entity_id` listé deux fois dans une même section, sur 35 sections. Mon
-script les compte et **les laisse intacts** : les fusionner au passage
-aurait effacé un défaut distinct sous couvert d'en réparer un autre. Le
-contrôle ne les voit pas.
+`entity_id` listé deux fois dans une même section, sur 35 sections. Ils ont
+d'abord été **comptés sans être touchés** : les fusionner au passage aurait
+effacé un défaut distinct sous couvert d'en réparer un autre. Arbitrage
+rendu ensuite, ils sont fusionnés (compteur maximum) sous
+`--dedoublonner`. Sans effet à l'écran : le lecteur déduplique déjà par
+identifiant.
 
-**19 opérations orphelines** dans le bloc `ops` de `grc20-these-mael-rolland-v100.json` :
-des `SET_ATTRIBUTE` (`definition`) visant des entités inexistantes, héritées
-de `patch_2c_definitions.json` et transportées de v96 à v100. `check_anchoring`
-n'inspecte pas ce bloc, `audit_graph` non plus. Aucune relation pendante en
-revanche : le dégât est confiné.
+**19 opérations orphelines** dans le bloc `ops` — des `SET_ATTRIBUTE`
+(`definition`) visant des entités inexistantes, héritées de
+`patch_2c_definitions.json` et transportées de v96 à v100. Retirées en v101,
+et surtout : `check_graph_integrity.py` inspecte désormais ce bloc, ce
+qu'aucun outil ne faisait — ni lui, ni `audit_graph.py`, ni
+`check_anchoring.py`. C'est ainsi qu'elles avaient voyagé sur cinq
+versions.
 
 ## Ce que le contrôle élargi a découvert
 
@@ -170,11 +175,10 @@ normalisation : lui aussi entièrement mort.
 **Conséquence : `hideBackbone: true` ne masque rien, et n'a jamais rien
 masqué.** Deux récits le déclarent.
 
-Ce n'est **pas corrigé ici**, délibérément : rétablir le masquage change ce
-qui s'affiche à l'écran, dans un sens que personne n'a jamais vu. Le
-remappage serait mécanique (`partOf` → `part of`, `citedIn` → `cited in`,
-suppression de `source` et `relatedTo`), mais l'effet est éditorial.
-**À arbitrer.**
+**Arbitrage rendu : les jetons morts sont retirés, le masquage n'est pas
+rétabli.** Le réparer aurait été mécanique (`partOf` → `part of`, `citedIn`
+→ `cited in`) mais aurait masqué d'un coup 374 arêtes `part of` et 763
+`cited in` que le lecteur a toujours vues.
 
 ---
 
@@ -197,47 +201,74 @@ générateur, qui apparie des noms sur le texte français :
 
 Il faut soit une table d'alias dans le générateur, soit une saisie manuelle.
 
-### À arbitrer
+### Arbitrages rendus
 
-1. **`hideBackbone`** (ci-dessus) — rétablir le masquage, ou retirer les
-   jetons morts et assumer l'affichage actuel ?
-2. **« Ethereum » épinglé dans `intro_A`** — les données sont unanimement
-   négatives (0 mention dans le texte de A, aucune relation, aucune entrée de
-   carte), mais afficher le duo Bitcoin/Ethereum en ouverture peut être un
-   choix assumé.
-3. **« Au-delà des codes »** (le nœud racine de la thèse) épinglé dans
+1. **`hideBackbone` → jetons morts retirés.** Le masquage n'est pas rétabli :
+   le réparer aurait masqué d'un coup 374 arêtes `part of` et 763 `cited in`
+   que le lecteur a toujours vues. Comportement identique, sans le mensonge.
+   Le défaut codé en dur de `graphe.html` est vidé, avec l'explication.
+2. **« Ethereum » épinglé dans `intro_A` → gardé**, comme choix éditorial
+   assumé. Consigné ici pour qu'aucune passe ultérieure ne le retire comme
+   une anomalie.
+3. **Les récits `s6` et `s7` → `contributes to` ajouté.** Mesuré
+   indépendamment avant écriture : s6 passe de 0 à 3 arêtes, s7 de 0 à 4.
+   C'est un **élargissement éditorial**, pas un renommage — `contributes to`
+   est directionnel et argumentatif, il ne « traduit » pas `relatedTo`.
+
+### Restent ouverts
+
+1. **« Au-delà des codes »** (le nœud racine de la thèse) épinglé dans
    `intro_A` — il n'appartient à aucune liste de section et n'y appartiendra
    jamais. La correction n'est pas dans une carte mais dans le contrôle C,
    qui devrait exempter ce cas.
-4. **« Proposition de Hard Fork — The DAO »** sur `III.3.2` — défendable,
+2. **« Proposition de Hard Fork — The DAO »** sur `III.3.2` — défendable,
    mais la section où la proposition est réellement débattue est III.3.3.
-5. **Les récits `s6` et `s7`** (« la vraie charnière de la thèse »)
-   n'affichent **aucune arête**. Le seul levier qui change quelque chose est
-   d'ajouter `contributes to` (+15 arêtes sur 20 étapes, dont s6 : 0→3,
-   s7 : 0→4). C'est un **élargissement éditorial**, pas un renommage :
-   `contributes to` est directionnel et argumentatif, il ne « traduit » pas
-   `relatedTo`. À ne pas faire passer pour une correction mécanique.
+3. **Les 9 listes incomplètes** — les compléter demanderait un
+   `occurrence_count` que rien ne permet de deviner, et aucun script du dépôt
+   ne génère cette carte. Trois d'entre elles ne pourront de toute façon
+   jamais être retrouvées par un appariement de noms sur le texte français :
+   « Responsible Disclosure » (le texte écrit « divulgation responsable »),
+   « Robin Hood Group » (ajoutée à la main), « Gouvernance polycentrique ».
 
 ---
 
 ## Baseline
 
-**67 → 70 → 53.**
+**67 → 37**, après arbitrage complet.
 
 | étape | effet |
 |---|---|
 | 2 jetons morts retirés, 2 épinglages faux retirés | −4 |
-| contrôle F élargi aux listes d'ossature et de masquage | +7 |
+| contrôle F élargi aux listes d'ossature et de masquage | **+7** |
 | 17 identifiants morts résolus | −17 |
+| arbitrages rendus : 8 domaines retirés, Omni Layer réécrit | −9 |
+| jetons d'ossature et de masquage retirés | −7 |
+| 44 doublons de carte fusionnés | (hors compteur) |
 
-Un filet qui s'élargit fait monter le compteur avant de le faire baisser :
-c'est le comportement attendu, pas une régression.
+Un filet qui s'élargit fait monter le compteur avant de le faire baisser.
 
-État restant : 25 sections sans entrée (dont 22 relèvent d'un écart de
-granularité, pas d'un défaut), 11 épinglages hors liste (9 listes
-incomplètes, 2 arbitrages), 9 identifiants morts en arbitrage, 7 jetons
-d'ossature et de masquage, 1 section absente du graphe (`III.3`, qui se
-réglera au chapitre III).
+**Il ne reste aucun identifiant mort, ni aucun jeton de relation
+inexistant.** Les 37 restants se répartissent ainsi :
+
+- **22** sous-sections de l'introduction inconnues des deux cartes — écart de
+  granularité, pas un défaut, et le sommaire du site ne descend pas là ;
+- **3** sections créées par `patch_14`, vides et assumées ;
+- **11** épinglages hors liste : 9 listes incomplètes qui demanderaient un
+  `occurrence_count` non devinable, et 2 dérogations volontaires
+  (« Ethereum » dans `intro_A`, et le nœud racine de la thèse) ;
+- **1** section `III.3` absente du graphe, qui se réglera au chapitre III.
+
+## v101 — les opérations orphelines
+
+Les 19 `SET_ATTRIBUTE` visant des entités disparues sont retirées.
+`grc20-these-mael-rolland-v101.json` : 293 → 274 ops, entités et relations
+strictement inchangées (2 272 / 20 116). Le site bascule sur v101.
+
+Elles étaient **inertes** — ni le site ni `grc20-publish.mjs`, qui
+reconstruit ses propres ops depuis `entities` et `relations`, ne lisent ce
+bloc. Le vrai gain est le contrôle : `check_graph_integrity.py` inspecte
+désormais le bloc `ops`, ce qu'aucun outil ne faisait. C'est ainsi que ces
+19 avaient voyagé de v96 à v100 sans être vues.
 
 ## Une mise en garde issue du diagnostic
 

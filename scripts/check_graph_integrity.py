@@ -70,9 +70,28 @@ def main(argv=None):
                   if r.get('relation_id') not in TOLEREES]
         dups = len(critique['duplicate_ids'])
         orph = len(critique['orphans'])
+
+        # Le bloc `ops` transporte des operations heritees des patchs
+        # successifs. Personne ne le lisait, donc personne ne le verifiait :
+        # 19 SET_ATTRIBUTE visant des entites disparues ont voyage de v96
+        # jusqu'a v100 sans etre vues. `audit_graph.py` ne l'inspecte pas.
+        with open(f, encoding='utf-8') as fh:
+            g = json.load(fh)
+        ids_entites = {e['id'] for e in g.get('entities', [])}
+        ops_mortes = [o for o in g.get('ops', [])
+                      if o.get('entityId') and o['entityId'] not in ids_entites]
+
         marque = '<- courant, bloquant' if f == courant else '(gele, rapport seul)'
         print(f"  {os.path.basename(f)}: {len(casses)} endpoint(s) casse(s) hors "
-              f"tolerance · {dups} id(s) duplique(s) · {orph} orphelin(s)  {marque}")
+              f"tolerance · {dups} id(s) duplique(s) · {orph} orphelin(s) · "
+              f"{len(ops_mortes)} op(s) orpheline(s)  {marque}")
+        # Detail seulement pour le graphe bloquant : les instantanes geles
+        # portent tous les memes 19, et les lister cinq fois rendrait la
+        # sortie CI illisible pour un etat que personne ne compte reparer.
+        if f == courant:
+            for o in ops_mortes[:5]:
+                print(f"      op {o.get('type')} {o.get('attributeId')} "
+                      f"-> entite absente {o.get('entityId')}")
 
         # Les cles sont celles que `audit_graph.py` emet reellement :
         # `problem` vaut « missing_from » / « missing_to », et le type porte
@@ -82,7 +101,7 @@ def main(argv=None):
                   f"from={r.get('from')} to={r.get('to')} "
                   f"type={r.get('relation_type_name')}")
 
-        if f == courant and (casses or dups or orph):
+        if f == courant and (casses or dups or orph or ops_mortes):
             echec = True
 
     return 1 if echec else 0
