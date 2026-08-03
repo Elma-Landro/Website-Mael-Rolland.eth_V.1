@@ -9204,7 +9204,7 @@
     ]
   },
   "1b713b5b8ed045b09cd9e8ad988950e8": {
-    "name": "Chaincode Lab",
+    "name": "Chaincode Labs",
     "type": "ActorGroup",
     "sections": [
       {
@@ -15384,7 +15384,7 @@
     ]
   },
   "41e14735f0af4e9a832041a8168cc4e9": {
-    "name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+    "name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
     "type": "Concept",
     "sections": [
       {
@@ -16110,7 +16110,7 @@
     ]
   },
   "596826c3187e4f8cb9034357477eb14c": {
-    "name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+    "name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
     "type": "ThesisSection",
     "sections": [
       {
@@ -16350,7 +16350,7 @@
     ]
   },
   "6c2bbf0e45bc44ffa1d65b186df700c0": {
-    "name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+    "name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
     "type": "ThesisSection",
     "sections": [
       {
@@ -22596,7 +22596,7 @@
     ]
   },
   "d47c813a4d0c424cb80422ff6e6109f9": {
-    "name": "De la sphère d'usage (financière & réelle)",
+    "name": "Sphère d’usage",
     "type": "InfrastructureDomain",
     "sections": [
       {
@@ -22608,7 +22608,7 @@
     ]
   },
   "d8b2aecc33714e7dbe6864d9c18b6763": {
-    "name": "De l'information et de la connaissance",
+    "name": "Information et connaissance",
     "type": "InfrastructureDomain",
     "sections": [
       {
@@ -22632,7 +22632,7 @@
     ]
   },
   "3960e7b3294c4364bca1b046734ef886": {
-    "name": "De conformité aux réglementations nationales",
+    "name": "Conformité réglementaire",
     "type": "InfrastructureDomain",
     "sections": [
       {
@@ -22644,7 +22644,7 @@
     ]
   },
   "3b17f5b612b54376963e5aa7fe13fff8": {
-    "name": "Du protocole Bitcoin (couche 1 et 2)",
+    "name": "Protocole et couche de base",
     "type": "InfrastructureDomain",
     "sections": [
       {
@@ -43098,7 +43098,7 @@
     ]
   },
   "c5eef5d754c64a30a9d163e59e1d5c88": {
-    "name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+    "name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
     "type": "ThesisSection",
     "sections": [
       {
@@ -43338,7 +43338,7 @@
     ]
   },
   "ed2c565cbede474da7b6144bcb22d753": {
-    "name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+    "name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
     "type": "ThesisSection",
     "sections": [
       {
@@ -43566,7 +43566,7 @@
     ]
   },
   "46111186b53041829a0a98218f9611fe": {
-    "name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+    "name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
     "type": "ThesisSection",
     "sections": [
       {

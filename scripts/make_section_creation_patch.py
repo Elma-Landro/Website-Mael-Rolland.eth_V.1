@@ -294,9 +294,18 @@ def main(argv=None):
     compteur = collections.Counter(n['id'] for n in nouvelles)
     collisions = [k for k, v in compteur.items() if v > 1]
 
+    m_id = re.match(r'patch_(\d+)', os.path.basename(args.out))
+    if not m_id:
+        print(f"ECHEC (invocation) : --out doit se nommer patch_<numero>_... , "
+              f"recu {os.path.basename(args.out)}", file=sys.stderr)
+        return 2
     patch = {
         '_meta': {
-            'patch_id': '14',
+            # Deduit du nom de sortie, comme dans le generateur de migration :
+            # le meme script sert plusieurs paliers, et deux patchs ne peuvent
+            # pas porter le meme numero. patch_16 a porte « 14 » jusqu'au
+            # 03/08/2026, herite de patch_14 par copie.
+            'patch_id': m_id.group(1),
             'description': "Creation des ThesisSection canoniques absentes du graphe.",
             'source_graph': os.path.basename(chemin),
             'depends_on': os.path.basename(args.migration),

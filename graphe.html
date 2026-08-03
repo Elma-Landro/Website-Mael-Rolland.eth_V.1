@@ -6316,7 +6316,13 @@ document.addEventListener('DOMContentLoaded', () => {
     State.data.entities.forEach(e => {
       const brut = e.attributes && e.attributes.section_key;
       const key = brut && (brut.value || brut);
-      if (key === sectionKey || (key && key.indexOf(sectionKey + '.') === 0)) ids.push(e.id);
+      // Deux separateurs : les chapitres numerotent au point (`II.1.1.a`),
+      // l'introduction au souligne (`intro_A_1`). Ne tester que le point
+      // laissait 22 sections de l'introduction — la partie la plus lue —
+      // hors de portee des 5 entrees `intro_*` du sommaire.
+      if (key === sectionKey ||
+          (key && (key.indexOf(sectionKey + '.') === 0 ||
+                   key.indexOf(sectionKey + '_') === 0))) ids.push(e.id);
     });
     return ids;
   }
