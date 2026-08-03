@@ -1,0 +1,21 @@
+# Secrets — grc20-publish.mjs demande une cle privee dans un .env.
+# Rien de tout cela ne doit jamais entrer dans l'historique.
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+
+# Artefacts du pipeline de publication, ecrits a cote de leurs entrees
+*.ops.json
+*.manifest.json
+*.published.json
+
+# Compilation et dependances
+__pycache__/
+*.py[cod]
+node_modules/
+
+# Systeme
+.DS_Store
+Thumbs.db
