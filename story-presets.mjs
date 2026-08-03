@@ -112,7 +112,7 @@ export const STORY_PRESETS = {
           id: 'q1',
           title: 'Le mythe du code seul',
           body: 'Le récit coiner radical présente un système régulé uniquement par le code, sans gouvernance humaine légitime.',
-          focusNodes: ['Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !', 'Neutralité de la monnaie'],
+          focusNodes: ['Code is Law', "II.3 Au‑delà de la revendication d'une absence de gouvernance !", 'Neutralité de la monnaie'],
           cameraPreset: 'tight',
           bridgeEntityIds: []
         },
@@ -435,7 +435,7 @@ export const STORY_PRESETS = {
           id: 'fp2',
           title: 'Le syllogisme libéral-techniciste',
           body: `« Les ambitions technicistes des coiners qu'interroge cette thèse peuvent se traduire en un syllogisme. » — L'hypothèse réfutée : le code serait la loi, la gouvernance serait absente.`,
-          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !'],
+          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', "II.3 Au‑delà de la revendication d'une absence de gouvernance !"],
           cameraPreset: 'tight',
           sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · ch1 p. 53,
           bridgeEntityIds: ['cryptomonnaie', 'Crises comme épreuves d\'explicitation'],

@@ -1,0 +1,1096 @@
+{
+ "_meta": {
+  "patch_id": "14",
+  "description": "Creation des ThesisSection canoniques absentes du graphe.",
+  "source_graph": "grc20-these-mael-rolland-v105.json",
+  "depends_on": "patch_15_section_migration_chap23.json",
+  "perimetre": "chap2,chap3",
+  "policy": "Ajout d'entites et de leur place dans l'arborescence. Aucune entite existante modifiee, aucune fusion, aucune suppression, aucune relation retiree. Seule exception declaree : les rebranchements ci-dessous, qui redirigent des relations `section of` / `has section` existantes vers la parente immediate desormais creee.",
+  "id_derivation": "md5('grc20-section-migration-v1|' + '|'.join(parts)) -> 32 hex minuscules. parts = ('section', chapitre, cle_canonique). Deterministe.",
+  "contenu": "Titre FR/EN depuis les markdown, page depuis le sommaire de graphe.html, position dans l'arborescence. Ni summary ni central_argument : les rediger serait ecrire a la place de l'auteur."
+ },
+ "new_entities": [
+  {
+   "id": "2d09c424cad590c4128840b9443ff853",
+   "name": "II.1.1 La critique des CM depuis les grands courants de théorie monétaire",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 115 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.1.1",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "La critique des CM depuis les grands courants de théorie monétaire",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.1.1 Criticism of Commodity Money from Major Monetary Theory Traditions",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "148"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "e70632a4b3ef19a155ae8cdbfb87ed25",
+   "name": "II.1.2 Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 157 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.1.2",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.1.2 Cryptocurrencies as a Test of the Explication of Money: “Monetary Monsters” Difficult to Classify",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "154"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "8bc0fad78be816797b71877433c4a8b8",
+   "name": "II.2.1 Des chimères monétaires inédites, reléguées à des usages spéculatifs",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 197 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.2.1",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Des chimères monétaires inédites, reléguées à des usages spéculatifs",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.2.1 Novel Monetary Chimeras, Relegated to Speculative Uses",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "161"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "42f154e655e3c61c6d754a82f5dc4356",
+   "name": "II.2.2 L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 217 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.2.2",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.2.2 Francophone Monetary Institutionalism: a Non-State Nominalism Capable of Encompassing Cryptocurrencies",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "165"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "e85916ada95e869443674c77f1f541eb",
+   "name": "II.2.3 Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 247 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.2.3",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.2.3 Beyond Instrumentalist and Chartalist Critiques: Cryptocurrencies Neither Unitary nor Exclusive",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "173"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "d493c4ac2fcab69f599877d7607ee86f",
+   "name": "II.3.1 D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 309 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.3.1",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.3.1 From a Problematic Concept of Governance to the Problematic of Cryptocurrencies’ Governance",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "186"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "15830fdda2ac359d0858aa7b2f8aa2be",
+   "name": "II.3.3 Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre II, titre de niveau 2 a la ligne 389 de 02_chapitre_II.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "II.3.3",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre II",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "II.3.3 Characterizing the Governance of CMs Beyond Overarching Normativity: Theoretical and Practical Stakes of a Crucial Categorical Clarification",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "202"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "a7a69bb2e68199be4432ae3d2476ead8",
+   "name": "III.1.1 Présentation périodisée de la crise Bitcoin CVE 2018",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre III, titre de niveau 2 a la ligne 45 de 03_chapitre_III.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "III.1.1",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Présentation périodisée de la crise Bitcoin CVE 2018",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre III",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "III.1.1 Periodized Presentation of the Bitcoin CVE 2018 Crisis",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "225"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "f54e436de2b4736f249f52544967daa2",
+   "name": "III.1.2 Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre III, titre de niveau 2 a la ligne 155 de 03_chapitre_III.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "III.1.2",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre III",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "III.1.2 Situating this Crisis within the History of Those Experienced by Bitcoin",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "241"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "d594820ae6b8041fa7c4964d47fb9475",
+   "name": "III.2.2 Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre III, titre de niveau 2 a la ligne 323 de 03_chapitre_III.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "III.2.2",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre III",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "III.2.2 Where to Modify Bitcoin? A Regulated and Hierarchical “Bitcoin Core Repo”",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "265"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "c0467f14e398a272fec4936abcea39e3",
+   "name": "III.2.3 Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre III, titre de niveau 2 a la ligne 435 de 03_chapitre_III.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "III.2.3",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre III",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "III.2.3 Bitcoin CVE 2018: a closed-door governance suspended on the absence of public dissensus",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "277"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  }
+ ],
+ "new_relations": [
+  {
+   "id": "b853d5ccfb64bed97b90fbd6c9fafaee",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "2d09c424cad590c4128840b9443ff853",
+   "to": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "attributes": []
+  },
+  {
+   "id": "cd2d3edb1fab0cdf1f8ec5dabe2b77ec",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "to": "2d09c424cad590c4128840b9443ff853",
+   "attributes": []
+  },
+  {
+   "id": "9e1911a2624abf4f6cf083a8eadbdd31",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "2d09c424cad590c4128840b9443ff853",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "eb3f73f00d64a879b65dfe5418f46661",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "2d09c424cad590c4128840b9443ff853",
+   "attributes": []
+  },
+  {
+   "id": "18d85f7ddb4862e31a6f250d77120136",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "e70632a4b3ef19a155ae8cdbfb87ed25",
+   "to": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "attributes": []
+  },
+  {
+   "id": "567e9295efdaa80871232dfbffd1c89f",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "to": "e70632a4b3ef19a155ae8cdbfb87ed25",
+   "attributes": []
+  },
+  {
+   "id": "838c35c7c48cc3db3aac84cd61fc299b",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "e70632a4b3ef19a155ae8cdbfb87ed25",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "1a21d10b6a3741ebb606bbfaefd46dc1",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "e70632a4b3ef19a155ae8cdbfb87ed25",
+   "attributes": []
+  },
+  {
+   "id": "c3547dbea2b69b6c628fe1710e92ed8b",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "8bc0fad78be816797b71877433c4a8b8",
+   "to": "38e637cc84f14883b96d064b8e387c0f",
+   "attributes": []
+  },
+  {
+   "id": "c8d787563d8a74028a1acc65e6a5ed07",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "38e637cc84f14883b96d064b8e387c0f",
+   "to": "8bc0fad78be816797b71877433c4a8b8",
+   "attributes": []
+  },
+  {
+   "id": "6691a60d602da55375f591e62cd8304e",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "8bc0fad78be816797b71877433c4a8b8",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "f7db18d5139b4b96c9ed599a1e7019dd",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "8bc0fad78be816797b71877433c4a8b8",
+   "attributes": []
+  },
+  {
+   "id": "7e597a18d06b3a8f7abcec6d1090da9c",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "42f154e655e3c61c6d754a82f5dc4356",
+   "to": "38e637cc84f14883b96d064b8e387c0f",
+   "attributes": []
+  },
+  {
+   "id": "a8062465e5aa99f6a6f60a140cf10822",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "38e637cc84f14883b96d064b8e387c0f",
+   "to": "42f154e655e3c61c6d754a82f5dc4356",
+   "attributes": []
+  },
+  {
+   "id": "511f53de4d7ec4aa3f24b8bdafe42af4",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "42f154e655e3c61c6d754a82f5dc4356",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "4fa8e3ba976132da1b4e8a6d796a5417",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "42f154e655e3c61c6d754a82f5dc4356",
+   "attributes": []
+  },
+  {
+   "id": "1e2e5f1eb5741b4940727232321f872c",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "e85916ada95e869443674c77f1f541eb",
+   "to": "38e637cc84f14883b96d064b8e387c0f",
+   "attributes": []
+  },
+  {
+   "id": "a0c83bd0365f9c162480e78c67f771af",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "38e637cc84f14883b96d064b8e387c0f",
+   "to": "e85916ada95e869443674c77f1f541eb",
+   "attributes": []
+  },
+  {
+   "id": "e109bc71db3147f677341a73f9e82105",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "e85916ada95e869443674c77f1f541eb",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "8d2513616346cee675db0a77c3c35af7",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "e85916ada95e869443674c77f1f541eb",
+   "attributes": []
+  },
+  {
+   "id": "7594c9c4e89e83b8199853d361819334",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "d493c4ac2fcab69f599877d7607ee86f",
+   "to": "d622d318825741cda43212d7831a88c7",
+   "attributes": []
+  },
+  {
+   "id": "72191a82ded1b693d212e3029b6e15ee",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "d622d318825741cda43212d7831a88c7",
+   "to": "d493c4ac2fcab69f599877d7607ee86f",
+   "attributes": []
+  },
+  {
+   "id": "1018eed2b0ee49d483e95925f825b0e1",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "d493c4ac2fcab69f599877d7607ee86f",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "22f33e0ef2e0616807cd8e182fce3a78",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "d493c4ac2fcab69f599877d7607ee86f",
+   "attributes": []
+  },
+  {
+   "id": "c1b4602890de86e16e119c63dffea531",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "15830fdda2ac359d0858aa7b2f8aa2be",
+   "to": "d622d318825741cda43212d7831a88c7",
+   "attributes": []
+  },
+  {
+   "id": "057b814317806459f6e3f9994397ca94",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "d622d318825741cda43212d7831a88c7",
+   "to": "15830fdda2ac359d0858aa7b2f8aa2be",
+   "attributes": []
+  },
+  {
+   "id": "7b07bc501d00b9bb5df1826b50c50b51",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "15830fdda2ac359d0858aa7b2f8aa2be",
+   "to": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "attributes": []
+  },
+  {
+   "id": "17bdff92ef8ea892807278748784e611",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+   "to": "15830fdda2ac359d0858aa7b2f8aa2be",
+   "attributes": []
+  },
+  {
+   "id": "fa05b24d9db067d74b1b4302d06bddbc",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "a7a69bb2e68199be4432ae3d2476ead8",
+   "to": "5a5684979bf84b37af3771f915f677e2",
+   "attributes": []
+  },
+  {
+   "id": "d153b2b5861bd02966b8a1ed1146a773",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5a5684979bf84b37af3771f915f677e2",
+   "to": "a7a69bb2e68199be4432ae3d2476ead8",
+   "attributes": []
+  },
+  {
+   "id": "c2560ec7b73eca2759639d439837b357",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "a7a69bb2e68199be4432ae3d2476ead8",
+   "to": "444d654ce38c41c7a277d883c77ba41b",
+   "attributes": []
+  },
+  {
+   "id": "4ce06ce6fbb2746168ae5b804eff3876",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "444d654ce38c41c7a277d883c77ba41b",
+   "to": "a7a69bb2e68199be4432ae3d2476ead8",
+   "attributes": []
+  },
+  {
+   "id": "b58709fb84f5d93aef60cb64e4abca15",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "f54e436de2b4736f249f52544967daa2",
+   "to": "5a5684979bf84b37af3771f915f677e2",
+   "attributes": []
+  },
+  {
+   "id": "1525a30d8bca7f01ddaa3afc3a5b41ea",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "5a5684979bf84b37af3771f915f677e2",
+   "to": "f54e436de2b4736f249f52544967daa2",
+   "attributes": []
+  },
+  {
+   "id": "41cffa1d047f9a6072a526bc0f529e0f",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "f54e436de2b4736f249f52544967daa2",
+   "to": "444d654ce38c41c7a277d883c77ba41b",
+   "attributes": []
+  },
+  {
+   "id": "d5db3347652e77cc4913159cf2c91e57",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "444d654ce38c41c7a277d883c77ba41b",
+   "to": "f54e436de2b4736f249f52544967daa2",
+   "attributes": []
+  },
+  {
+   "id": "f2cc8563c277ff09942f1f293e882b89",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "d594820ae6b8041fa7c4964d47fb9475",
+   "to": "89663a261c1545c1941ab7f871314a53",
+   "attributes": []
+  },
+  {
+   "id": "795df21692cfcfe8a9a8cb40b3d41266",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "89663a261c1545c1941ab7f871314a53",
+   "to": "d594820ae6b8041fa7c4964d47fb9475",
+   "attributes": []
+  },
+  {
+   "id": "c356802145743cca26a2bb551d9eb91e",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "d594820ae6b8041fa7c4964d47fb9475",
+   "to": "444d654ce38c41c7a277d883c77ba41b",
+   "attributes": []
+  },
+  {
+   "id": "87d1d2e02ed304faf9127e1fd75ec6d1",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "444d654ce38c41c7a277d883c77ba41b",
+   "to": "d594820ae6b8041fa7c4964d47fb9475",
+   "attributes": []
+  },
+  {
+   "id": "e18a8751f1a1dac7aca8380a370a3003",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "c0467f14e398a272fec4936abcea39e3",
+   "to": "89663a261c1545c1941ab7f871314a53",
+   "attributes": []
+  },
+  {
+   "id": "4074f3536562012b63feb4770884c4ac",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "89663a261c1545c1941ab7f871314a53",
+   "to": "c0467f14e398a272fec4936abcea39e3",
+   "attributes": []
+  },
+  {
+   "id": "c64f1895a90133f65deba1b716c888b9",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "c0467f14e398a272fec4936abcea39e3",
+   "to": "444d654ce38c41c7a277d883c77ba41b",
+   "attributes": []
+  },
+  {
+   "id": "d8b287d15241707d9a63d8a1c7427a67",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "444d654ce38c41c7a277d883c77ba41b",
+   "to": "c0467f14e398a272fec4936abcea39e3",
+   "attributes": []
+  }
+ ],
+ "rewire_relations": [
+  {
+   "relation_id": "5c777b759a270d1e8687148a60fc042e",
+   "from": "f07c8415a468b6c900bd14b3cefa24fb",
+   "to_avant": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "to_apres": "2d09c424cad590c4128840b9443ff853",
+   "_comment": "II.1.1.a pointait II.1, son grand-parent ; sa parente II.1.1 existe desormais"
+  },
+  {
+   "relation_id": "0e68892d6fd51692fa4938fdda74531e",
+   "to": "f07c8415a468b6c900bd14b3cefa24fb",
+   "from_avant": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "from_apres": "2d09c424cad590c4128840b9443ff853",
+   "_comment": "reciproque de « II.1.1.a section of II.1.1 »"
+  },
+  {
+   "relation_id": "9b87b75a374e69fb478ca2880fa9ac01",
+   "from": "eda05ae2f601e62bf53294a2be373d2a",
+   "to_avant": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "to_apres": "2d09c424cad590c4128840b9443ff853",
+   "_comment": "II.1.1.b pointait II.1, son grand-parent ; sa parente II.1.1 existe desormais"
+  },
+  {
+   "relation_id": "1adfd16630d7364ce13a2b33b7bc32a8",
+   "to": "eda05ae2f601e62bf53294a2be373d2a",
+   "from_avant": "87a54f067fbb44f7b32c4207fa23a3b2",
+   "from_apres": "2d09c424cad590c4128840b9443ff853",
+   "_comment": "reciproque de « II.1.1.b section of II.1.1 »"
+  },
+  {
+   "relation_id": "810832fa541c51b39a476553f74d322d",
+   "from": "0b521ac19a2f5ee0cdd07d7460ebdfd0",
+   "to_avant": "38e637cc84f14883b96d064b8e387c0f",
+   "to_apres": "42f154e655e3c61c6d754a82f5dc4356",
+   "_comment": "II.2.2.c pointait II.2, son grand-parent ; sa parente II.2.2 existe desormais"
+  },
+  {
+   "relation_id": "9c4f1811703bd29d6457d04cc071dbcb",
+   "to": "0b521ac19a2f5ee0cdd07d7460ebdfd0",
+   "from_avant": "38e637cc84f14883b96d064b8e387c0f",
+   "from_apres": "42f154e655e3c61c6d754a82f5dc4356",
+   "_comment": "reciproque de « II.2.2.c section of II.2.2 »"
+  },
+  {
+   "relation_id": "83f939f7d98f5c91364b1251592442dc",
+   "from": "f8a8acbfa05a53c07498346df21f6808",
+   "to_avant": "38e637cc84f14883b96d064b8e387c0f",
+   "to_apres": "42f154e655e3c61c6d754a82f5dc4356",
+   "_comment": "II.2.2.a pointait II.2, son grand-parent ; sa parente II.2.2 existe desormais"
+  },
+  {
+   "relation_id": "16d8b7e0dfa66674683709daba427d46",
+   "to": "f8a8acbfa05a53c07498346df21f6808",
+   "from_avant": "38e637cc84f14883b96d064b8e387c0f",
+   "from_apres": "42f154e655e3c61c6d754a82f5dc4356",
+   "_comment": "reciproque de « II.2.2.a section of II.2.2 »"
+  },
+  {
+   "relation_id": "f9a72361430f618b4bf8c4aeb0413876",
+   "from": "f34ad8e32d22d905708d07fc6f0e8150",
+   "to_avant": "38e637cc84f14883b96d064b8e387c0f",
+   "to_apres": "42f154e655e3c61c6d754a82f5dc4356",
+   "_comment": "II.2.2.b pointait II.2, son grand-parent ; sa parente II.2.2 existe desormais"
+  },
+  {
+   "relation_id": "fb4a859ae91f9d906bb2bb4923d377f1",
+   "to": "f34ad8e32d22d905708d07fc6f0e8150",
+   "from_avant": "38e637cc84f14883b96d064b8e387c0f",
+   "from_apres": "42f154e655e3c61c6d754a82f5dc4356",
+   "_comment": "reciproque de « II.2.2.b section of II.2.2 »"
+  },
+  {
+   "relation_id": "1d5e85a5162e576bfc17eb68ca0f9fa6",
+   "from": "515088f012136277d7375fa65d7a3e3f",
+   "to_avant": "d622d318825741cda43212d7831a88c7",
+   "to_apres": "d493c4ac2fcab69f599877d7607ee86f",
+   "_comment": "II.3.1.a pointait II.3, son grand-parent ; sa parente II.3.1 existe desormais"
+  },
+  {
+   "relation_id": "977cfa8fceedd196723806c7526a5643",
+   "to": "515088f012136277d7375fa65d7a3e3f",
+   "from_avant": "d622d318825741cda43212d7831a88c7",
+   "from_apres": "d493c4ac2fcab69f599877d7607ee86f",
+   "_comment": "reciproque de « II.3.1.a section of II.3.1 »"
+  },
+  {
+   "relation_id": "36c07032a8789532209f2bfb1f3354ae",
+   "from": "d93cb2ceee6dea674fecc4f44d113643",
+   "to_avant": "d622d318825741cda43212d7831a88c7",
+   "to_apres": "d493c4ac2fcab69f599877d7607ee86f",
+   "_comment": "II.3.1.b pointait II.3, son grand-parent ; sa parente II.3.1 existe desormais"
+  },
+  {
+   "relation_id": "91363c14f2bcba4e8cc67c80dba220d4",
+   "to": "d93cb2ceee6dea674fecc4f44d113643",
+   "from_avant": "d622d318825741cda43212d7831a88c7",
+   "from_apres": "d493c4ac2fcab69f599877d7607ee86f",
+   "_comment": "reciproque de « II.3.1.b section of II.3.1 »"
+  },
+  {
+   "relation_id": "ba6e9f0d8f30245bf53ea630523cdc03",
+   "from": "ac859fd14006e379e55373d31090b6c6",
+   "to_avant": "5a5684979bf84b37af3771f915f677e2",
+   "to_apres": "a7a69bb2e68199be4432ae3d2476ead8",
+   "_comment": "III.1.1.a pointait III.1, son grand-parent ; sa parente III.1.1 existe desormais"
+  },
+  {
+   "relation_id": "994140f6a49757feac06ee59427d30ce",
+   "to": "ac859fd14006e379e55373d31090b6c6",
+   "from_avant": "5a5684979bf84b37af3771f915f677e2",
+   "from_apres": "a7a69bb2e68199be4432ae3d2476ead8",
+   "_comment": "reciproque de « III.1.1.a section of III.1.1 »"
+  },
+  {
+   "relation_id": "767139787fa96dc708b8fef8d54b81b8",
+   "from": "0420e53c4c8fd12fef6dcee451a50f61",
+   "to_avant": "5a5684979bf84b37af3771f915f677e2",
+   "to_apres": "a7a69bb2e68199be4432ae3d2476ead8",
+   "_comment": "III.1.1.b pointait III.1, son grand-parent ; sa parente III.1.1 existe desormais"
+  },
+  {
+   "relation_id": "7398acbdc3180ce1dc2337a549f20984",
+   "to": "0420e53c4c8fd12fef6dcee451a50f61",
+   "from_avant": "5a5684979bf84b37af3771f915f677e2",
+   "from_apres": "a7a69bb2e68199be4432ae3d2476ead8",
+   "_comment": "reciproque de « III.1.1.b section of III.1.1 »"
+  },
+  {
+   "relation_id": "621b049c21c10b3f456a1196647280ad",
+   "from": "9fbdbbc3f81ee08fb89b5c5dfbcd2929",
+   "to_avant": "89663a261c1545c1941ab7f871314a53",
+   "to_apres": "f54e436de2b4736f249f52544967daa2",
+   "_comment": "III.1.2.a pointait III.2, son grand-parent ; sa parente III.1.2 existe desormais"
+  },
+  {
+   "relation_id": "03a49b78d3dc8320d1afc0c87eb8824d",
+   "to": "9fbdbbc3f81ee08fb89b5c5dfbcd2929",
+   "from_avant": "89663a261c1545c1941ab7f871314a53",
+   "from_apres": "f54e436de2b4736f249f52544967daa2",
+   "_comment": "reciproque de « III.1.2.a section of III.1.2 »"
+  },
+  {
+   "relation_id": "1716d59ceef5426b093e05cbb611b934",
+   "from": "5a82e90b2cc17baf91baa9102bd48034",
+   "to_avant": "89663a261c1545c1941ab7f871314a53",
+   "to_apres": "f54e436de2b4736f249f52544967daa2",
+   "_comment": "III.1.2.b pointait III.2, son grand-parent ; sa parente III.1.2 existe desormais"
+  },
+  {
+   "relation_id": "27061ada45e029958b8ad68b2cc6a47c",
+   "to": "5a82e90b2cc17baf91baa9102bd48034",
+   "from_avant": "89663a261c1545c1941ab7f871314a53",
+   "from_apres": "f54e436de2b4736f249f52544967daa2",
+   "_comment": "reciproque de « III.1.2.b section of III.1.2 »"
+  }
+ ]
+}

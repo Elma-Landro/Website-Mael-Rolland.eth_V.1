@@ -23742,7 +23742,7 @@
       }
     ]
   },
-  "II.1.1": {
+  "II.1.1.a": {
     "chapter_key": "chap2",
     "page_start": 148,
     "entities": [
@@ -25793,7 +25793,7 @@
       }
     ]
   },
-  "II.1.2": {
+  "II.1.1.b": {
     "chapter_key": "chap2",
     "page_start": 154,
     "entities": [
@@ -28130,7 +28130,7 @@
       }
     ]
   },
-  "II.2.1": {
+  "II.2.2.a": {
     "chapter_key": "chap2",
     "page_start": 161,
     "entities": [
@@ -29726,7 +29726,7 @@
       }
     ]
   },
-  "II.2.2": {
+  "II.2.2.b": {
     "chapter_key": "chap2",
     "page_start": 165,
     "entities": [
@@ -31247,7 +31247,7 @@
       }
     ]
   },
-  "II.2.3": {
+  "II.2.2.c": {
     "chapter_key": "chap2",
     "page_start": 173,
     "entities": [
@@ -34274,7 +34274,7 @@
       }
     ]
   },
-  "II.3.1": {
+  "II.3.1.a": {
     "chapter_key": "chap2",
     "page_start": 186,
     "entities": [
@@ -34415,7 +34415,7 @@
       }
     ]
   },
-  "II.3.2": {
+  "II.3.1.b": {
     "chapter_key": "chap2",
     "page_start": 190,
     "entities": [
@@ -34741,7 +34741,7 @@
       }
     ]
   },
-  "II.3.3": {
+  "II.3.2": {
     "chapter_key": "chap2",
     "page_start": 202,
     "entities": [
@@ -38709,7 +38709,7 @@
       }
     ]
   },
-  "III.1.1": {
+  "III.1.1.a": {
     "chapter_key": "chap3",
     "page_start": 225,
     "entities": [
@@ -40360,7 +40360,7 @@
       }
     ]
   },
-  "III.1.2": {
+  "III.1.1.b": {
     "chapter_key": "chap3",
     "page_start": 241,
     "entities": [
@@ -41677,7 +41677,7 @@
       }
     ]
   },
-  "III.2.1": {
+  "III.1.2.a": {
     "chapter_key": "chap3",
     "page_start": 255,
     "entities": [
@@ -42618,7 +42618,7 @@
       }
     ]
   },
-  "III.2.2": {
+  "III.1.2.b": {
     "chapter_key": "chap3",
     "page_start": 265,
     "entities": [
@@ -42709,7 +42709,7 @@
       }
     ]
   },
-  "III.2.3": {
+  "III.2.1": {
     "chapter_key": "chap3",
     "page_start": 277,
     "entities": [
