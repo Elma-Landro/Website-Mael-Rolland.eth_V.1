@@ -61,7 +61,7 @@ Notre travail, par le choix (évalué et discuté) d'une forme « encyclopédiqu
 
 À l'instar des larves de coquilles Saint-Jacques et des marins-pêcheurs de la baie de Saint- Brieuc étudiés par Callon (en exergue de cette conclusion générale), nous avons voulu être de ces chercheurs permettant l'entremise entre les *coiners* et les professionnels de l'argent.
 
-## Les CM : boucs émissaires commodes d'un système monétaire en crise ? »
+## Les CM : boucs émissaires commodes d'un système monétaire en crise ?
 
 Nous conclurons ce travail par une question ouverte, qui nous a accompagné depuis le début de nos réflexions sur les CM jusqu'à la fin de cette thèse. Cette question explique en partie pourquoi le lecteur ne trouvera pas ici de réponse définitive sur la qualité « bonne » ou « mauvaise » des CM par rapport aux monnaies nationales, ni de critiques sur leur dangerosité, soulignée par les professionnels de la finance.
 

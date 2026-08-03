@@ -82,6 +82,37 @@ def main(argv=None):
         print(f"  {a:10s} -> {b}")
     print()
 
+    # --- le remappage a-t-il DEJA ete applique ? ---
+    # Ce controle n'est pas une precaution de principe : ce remappage n'est
+    # PAS idempotent. `I.1.2` et `I.2.2` sont a la fois cibles et sources
+    # (I.1.3 -> I.1.2 et I.1.2 -> I.1.1.b). Le rejouer deplacerait une
+    # seconde fois ce que la premiere passe vient d'ecrire, et melangerait
+    # silencieusement des milliers d'epinglages.
+    #
+    # On le detecte par les cibles PURES — celles qui ne sont source de rien.
+    # Leur presence dans les cartes ne peut venir que d'un remappage deja fait.
+    cibles_pures = {b for b in remap.values() if b not in remap}
+    deja = []
+    for nom in CARTES:
+        chemin = os.path.join(REPO, nom)
+        if not os.path.exists(chemin):
+            continue
+        with open(chemin, encoding='utf-8') as f:
+            contenu = f.read()
+        presentes = sorted(c for c in cibles_pures if f'"{c}"' in contenu)
+        if presentes:
+            deja.append((nom, presentes))
+    if deja:
+        print("Le remappage semble DEJA applique :")
+        for nom, presentes in deja:
+            print(f"  {nom} porte deja {', '.join(presentes)}")
+        echec("ce remappage n'est pas idempotent — le rejouer deplacerait une "
+              "seconde fois les cles qui sont a la fois cible et source "
+              f"({', '.join(sorted(k for k in remap if k in remap.values()))}). "
+              "Repartez des cartes d'avant migration (git checkout) si vous "
+              "voulez le rejouer.")
+
+
     # On opere sur le TEXTE, pas sur l'objet re-serialise. Re-serialiser
     # reecrirait les 127 000 lignes des cartes pour cinq cles changees, et
     # detruirait la mise en forme manuelle de section_overrides.json (lignes
@@ -90,10 +121,29 @@ def main(argv=None):
     # Les deux motifs sont disjoints, verifie sur les fichiers : les cartes
     # indexees par section ne contiennent aucun `"section_key"`, et
     # entity_section_map n'a aucune cle de tete de section.
+    # Chaque motif repose sur un invariant precis. Ils ne sont pas seulement
+    # commentes : ils sont VERIFIES a l'execution, plus bas, contre le fichier
+    # reel. Une reindentation du depot, ou l'apparition d'un `section_key`
+    # imbrique, ferait echouer le controle au lieu de corrompre les donnees.
     MOTIFS = {
+        # Invariant : les cles de section sont les cles de PREMIER niveau,
+        # donc indentees de deux espaces exactement, et le fichier ne
+        # contient aucun champ `"section_key"` imbrique.
         'section_entities_map.json': re.compile(r'(?m)^(  ")([^"]+)(":)'),
         'section_overrides.json': re.compile(r'(?m)^(  ")([^"]+)(":)'),
+        # Invariant symetrique : les cles de section n'apparaissent QUE comme
+        # valeur d'un champ `section_key`, jamais comme cle de premier niveau
+        # (celles-ci sont des identifiants d'entite).
         'entity_section_map.json': re.compile(r'("section_key":\s*")([^"]+)(")'),
+    }
+
+    # Les deux formes doivent rester disjointes : si un fichier indexe par
+    # section se mettait a porter des `section_key`, ou l'inverse, le motif
+    # choisi manquerait la moitie des occurrences — silencieusement.
+    ATTENDU_SECTION_KEY = {
+        'section_entities_map.json': False,
+        'section_overrides.json': False,
+        'entity_section_map.json': True,
     }
 
     total = collections.Counter()
@@ -106,6 +156,25 @@ def main(argv=None):
             continue
         with open(chemin, encoding='utf-8') as f:
             texte = f.read()
+
+        # --- verification des invariants, avant toute substitution ---
+        porte_section_key = '"section_key"' in texte
+        if porte_section_key != ATTENDU_SECTION_KEY[nom]:
+            echec(f"{nom} : invariant rompu — le fichier "
+                  f"{'porte' if porte_section_key else 'ne porte pas'} de champ "
+                  f"`section_key`, l'inverse de ce que le motif suppose. "
+                  f"Le format a change ; le remappage manquerait des occurrences.")
+
+        objet_avant = json.loads(texte)
+        if not ATTENDU_SECTION_KEY[nom]:
+            # Les cles de premier niveau doivent TOUTES etre atteignables par
+            # le motif : sinon l'indentation n'est pas celle qu'on croit.
+            vues = {m.group(2) for m in MOTIFS[nom].finditer(texte)}
+            manquantes = set(objet_avant) - vues
+            if manquantes:
+                echec(f"{nom} : {len(manquantes)} cle(s) de premier niveau hors "
+                      f"de portee du motif ({sorted(manquantes)[:3]}). "
+                      f"L'indentation du fichier n'est plus celle attendue.")
 
         touches = [0]
 

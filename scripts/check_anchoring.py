@@ -45,39 +45,28 @@ Codes de sortie :
 """
 import argparse
 import collections
-import glob
 import json
 import os
-import re
 import shutil
 import subprocess
 import sys
-import unicodedata
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from grc20_commun import (  # noqa: E402,F401
+    REPO, graphe_le_plus_recent, normalise_doux, sans_accents,
+)
+
 BASELINE_DEFAUT = os.path.join(REPO, 'docs', 'audits', 'data', 'anchoring-baseline.json')
 
 
 # ---------------------------------------------------------------- utilitaires
 
-def sans_accents(s):
-    s = unicodedata.normalize('NFD', s or '')
-    return ''.join(c for c in s if unicodedata.category(c) != 'Mn')
-
-
-def normalise(s):
-    return sans_accents(s).lower().replace('’', "'").strip()
-
-
-def graphe_le_plus_recent(repo=REPO):
-    """Le plus grand numero de version present a la racine, ou None."""
-    fichiers = glob.glob(os.path.join(repo, 'grc20-these-mael-rolland-v*.json'))
-
-    def num(f):
-        m = re.search(r'-v(\d+)\.json$', f)
-        return int(m.group(1)) if m else -1
-
-    return max(fichiers, key=num) if fichiers else None
+# Ici la ponctuation compte : on compare des noms d'entites, ou « CM : boucs »
+# et « CM boucs » ne doivent pas se confondre. C'est la variante douce, celle
+# qui n'ecrase pas la ponctuation — a ne pas confondre avec celle de
+# derive_section_tree, qui l'ecrase pour apparier des titres.
+normalise = normalise_doux
 
 
 def charger_json(chemin, obligatoire=True):

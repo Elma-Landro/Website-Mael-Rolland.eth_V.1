@@ -1,11 +1,6 @@
 decision;cle_actuelle;cle_cible;contenu;types;id;nom_graphe;motif
-RENUMEROTER;I.1.3;I.1.2;121;ThesisSection;1168d4e0c868c27a81ac371cb6879359;I.1.3 — Bitcoin : une chimère théorico-pratique très politique;libelle apparie au titre l.137 (niveau 2)
-RENUMEROTER;I.2.1;I.2.2;397;ThesisSection;93f13f18c6da412292eba80dcd630ac7;I.2.1 Un protocole deborde de carnavalesques improvisations d acteurs;libelle apparie au titre l.297 (niveau 2)
 RENUMEROTER;II.3.3;II.3.2;203;ThesisSection;7b3312fed875cffb74320f0a579763c7;II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance;libelle apparie au titre l.331 (niveau 2)
 RENUMEROTER;III.2.3;III.2.1;168;ThesisSection;da7e8dda9cacdb8cddfbab73bb6ecd0b;III.2.3 — Des acteurs au cœur de la gouvernance sur le protocole : gouvernance de huis clos;libelle apparie au titre l.261 (niveau 2)
-ARBITRER;I.2.2;;177;ThesisSection;97eb62676b0052c4ab3652fc2bd15535;I.2.2 — Un protocole Bitcoin qui s'adapte : régulations transactionnelles très politiques;aucun titre correspondant, mais 177 entites attachees
-ARBITRER;I.3.2;;210;ThesisSection;ed2c565cbede474da7b6144bcb22d753;I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée;aucun titre correspondant, mais 210 entites attachees
-ARBITRER;I.3.3;;146;ThesisSection;46111186b53041829a0a98218f9611fe;I.3.3 Ethereum : différences architecturales et normativité politique des designs;aucun titre correspondant, mais 146 entites attachees
 ARBITRER;I.4;;280;ThesisSection;3268b571c4ce4389bf99a35c93ed287b;I.4 Conclusion du Chapitre I;aucun titre correspondant, mais 280 entites attachees
 ARBITRER;II.1.1;;411;ThesisSection;f07c8415a468b6c900bd14b3cefa24fb;II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques;aucun titre correspondant, mais 411 entites attachees
 ARBITRER;II.1.2;;405;ThesisSection;eda05ae2f601e62bf53294a2be373d2a;II.1.2 — La monnaie « créature de l'État » : critiques nominalistes et chartalistes;aucun titre correspondant, mais 405 entites attachees
@@ -19,8 +14,9 @@ ARBITRER;conclu_traduction;;341;ThesisSection;11fe6aacd1c440bdb795f073d9572b34;C
 ARBITRER;intro_A;;543;ThesisSection;0fcc7028560c47cc9b82309f469b700c;A. La gouvernance des cryptomonnaies : construction de notre objet de recherche;aucun titre correspondant, mais 543 entites attachees
 ARBITRER;intro_E;;260;ThesisSection;280a842a11bd4101b743f6527821c04e;E. Déclaration d'intérêts;aucun titre correspondant, mais 260 entites attachees
 RETROGRADER;;;0;ThesisSection;3ce505bcd3e74def8b78094b4cc06b6e;I.2.1b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques;libelle apparie a un titre de niveau 3 (l.321) — sous le niveau canonique
-RETROGRADER;I.1.1;;353;ThesisSection;4ec3224a44f06315d26d3cac111e5efc;I.1.1 — Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques;libelle apparie a un titre de niveau 3 (l.111) — sous le niveau canonique
-RETROGRADER;I.1.2;;39;ThesisSection;439782308b5dedb9c5da7022bc2b82ef;I.1.2 — Une création hétérodoxe, entre recherche académique et recherche appliquée;libelle apparie a un titre de niveau 3 (l.125) — sous le niveau canonique
+RETROGRADER;I.1.1.a;;353;ThesisSection;4ec3224a44f06315d26d3cac111e5efc;I.1.1.a Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques;libelle apparie a un titre de niveau 3 (l.111) — sous le niveau canonique
+RETROGRADER;I.1.1.b;;39;ThesisSection;439782308b5dedb9c5da7022bc2b82ef;I.1.1.b Une création hétérodoxe, entre recherche académique et recherche appliquée;libelle apparie a un titre de niveau 3 (l.125) — sous le niveau canonique
+RETROGRADER;I.2.2.b;;177;ThesisSection;97eb62676b0052c4ab3652fc2bd15535;I.2.2.b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques;libelle apparie a un titre de niveau 3 (l.321) — sous le niveau canonique
 RETROGRADER;II.2.1;;318;ThesisSection;f8a8acbfa05a53c07498346df21f6808;II.2.1 — Au-delà de la monnaie, l'argent : questionner la monétisation à l'aune des usages;libelle apparie a un titre de niveau 3 (l.221) — sous le niveau canonique
 RETROGRADER;II.2.2;;306;ThesisSection;f34ad8e32d22d905708d07fc6f0e8150;II.2.2 — La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes;libelle apparie a un titre de niveau 3 (l.229) — sous le niveau canonique
 RETROGRADER;II.3.1;;27;ThesisSection;515088f012136277d7375fa65d7a3e3f;II.3.1 — Du concept de gouvernance et de sa polysémie : un concept normatif;libelle apparie a un titre de niveau 3 (l.313) — sous le niveau canonique
@@ -44,9 +40,16 @@ RETIRER;intro_C_2b;;0;ThesisSection;ce5164aaecea4aaec0f9d754ad8d84c4;C.2.b. « C
 RETIRER;intro_C_2e;;0;ThesisSection;ee02c5c55eac9cd1fe26d13e8427cc50;C.2.e. Observations participantes hors ligne;aucun contenu attache, aucun titre correspondant
 RETIRER;intro_C_2f;;0;ThesisSection;c55b4bb54aa5817904f907248c78ce8a;C.2.f. Entretiens;aucun contenu attache, aucun titre correspondant
 CONFORME;I.1;I.1;348;ThesisSection;179eaeedc85c47a09b7a4ada23fc825b;I.1 Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière;
-CONFORME;I.2;I.2;220;ThesisSection;596826c3187e4f8cb9034357477eb14c;I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque;
-CONFORME;I.3;I.3;126;ThesisSection;6c2bbf0e45bc44ffa1d65b186df700c0;I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins;
-CONFORME;I.3.1;I.3.1;187;ThesisSection;c5eef5d754c64a30a9d163e59e1d5c88;I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin;
+CONFORME;I.1.1;I.1.1;0;ThesisSection;3b652bdef05925924c4683ae384a70d2;I.1.1 Du terreau matériel et idéel aux racines de Bitcoin;
+CONFORME;I.1.2;I.1.2;121;ThesisSection;1168d4e0c868c27a81ac371cb6879359;I.1.2 Bitcoin : une chimère théorico-pratique très politique;
+CONFORME;I.1.3;I.1.3;0;ThesisSection;3f2a9945f3856123c823b24f025e438e;I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto;
+CONFORME;I.2;I.2;220;ThesisSection;596826c3187e4f8cb9034357477eb14c;I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque;
+CONFORME;I.2.1;I.2.1;0;ThesisSection;9cee8e18f8f9f0dd9853e9ecd1cf0855;I.2.1 Un développement infrastructurel au-delà du protocole Bitcoin;
+CONFORME;I.2.2;I.2.2;397;ThesisSection;93f13f18c6da412292eba80dcd630ac7;I.2.2 Un protocole débordé de « carnavalesques » improvisations d'acteurs;
+CONFORME;I.3;I.3;126;ThesisSection;6c2bbf0e45bc44ffa1d65b186df700c0;I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins;
+CONFORME;I.3.1;I.3.1;187;ThesisSection;c5eef5d754c64a30a9d163e59e1d5c88;I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin;
+CONFORME;I.3.2;I.3.2;210;ThesisSection;ed2c565cbede474da7b6144bcb22d753;I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées;
+CONFORME;I.3.3;I.3.3;146;ThesisSection;46111186b53041829a0a98218f9611fe;I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin;
 CONFORME;II.1;II.1;288;ThesisSection;87a54f067fbb44f7b32c4207fa23a3b2;II.1 « Les CM ne sont pas monnaie ! » : arguments contre le caractère monétaire des CM;
 CONFORME;II.2;II.2;31;ThesisSection;38e637cc84f14883b96d064b8e387c0f;II.2 « Pourtant, elles font monnaie ! » : à l'aune d'un nominalisme « non étatiste » attentif aux usages;
 CONFORME;II.3;II.3;77;Concept|ThesisSection;d622d318825741cda43212d7831a88c7;II.3 Au‑delà de la revendication d’une absence de gouvernance !;

@@ -68,7 +68,17 @@ GROUPE_C = {
 def nettoie_titre(t):
     t = (t or '').replace("\\'", "'").replace('\\"', '"')
     t = re.sub(r'(\*{1,3})(.+?)\1', r'\2', t)
-    return ' '.join(t.split())
+    t = ' '.join(t.split())
+    # Guillemets ORPHELINS seulement. Les titres de la these en portent
+    # beaucoup de legitimes — « carnavalesques », « sur » ou « a cote » —
+    # qu'il ne faut surtout pas toucher. Mais la conversion PDF -> Markdown
+    # a laisse au moins un « » » de fin sans ouvrant (conclusion, l.64).
+    # On ne retire un guillemet que s'il n'a pas de pendant.
+    while t.count('»') > t.count('«'):
+        t = t[::-1].replace('»', '', 1)[::-1].strip()
+    while t.count('«') > t.count('»'):
+        t = t.replace('«', '', 1).strip()
+    return t.strip()
 
 
 def chapitre_de(cle):
@@ -125,7 +135,25 @@ def main(argv=None):
                         "restent en l'etat et sont comptes dans les collisions.")
     args = p.parse_args(argv)
 
-    chemin = args.graph or graphe_le_plus_recent()
+    # Le graphe de reference est ancre sur ce que le patch declare deja, PAS
+    # sur le plus recent. Sans cela, une fois v100 produit, regenerer le patch
+    # le lirait lui-meme — donc contre un graphe qui porte deja la
+    # renumerotation — et produirait un patch vide, silencieusement different.
+    # Un generateur doit redonner le meme resultat quel que soit ce que ses
+    # propres sorties ont depose dans le depot.
+    chemin = args.graph
+    if not chemin and os.path.exists(args.out):
+        try:
+            with open(args.out, encoding='utf-8') as f:
+                declare = json.load(f).get('_meta', {}).get('source_graph')
+        except (json.JSONDecodeError, OSError):
+            declare = None
+        if declare and os.path.exists(os.path.join(REPO, declare)):
+            chemin = os.path.join(REPO, declare)
+    chemin = chemin or graphe_le_plus_recent()
+    if not chemin:
+        print('aucun graphe a la racine', file=sys.stderr)
+        return 2
     with open(chemin, encoding='utf-8') as f:
         g = json.load(f)
     entites = {e['id']: e for e in g['entities']}

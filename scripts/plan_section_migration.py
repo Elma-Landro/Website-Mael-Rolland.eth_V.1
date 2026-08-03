@@ -22,23 +22,17 @@ Usage:
 import argparse
 import collections
 import csv
-import glob
 import json
 import os
 import re
 import sys
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402,F401
 from derive_section_tree import (  # noqa: E402
     FICHIERS, MD, cles_equivalentes, normalise, numerote, titres,
 )
-
-
-def graphe_le_plus_recent():
-    c = glob.glob(os.path.join(REPO, 'grc20-these-mael-rolland-v*.json'))
-    return max(c, key=lambda f: int(re.search(r'-v(\d+)\.json$', f).group(1)))
 
 
 def sans_numero(t):

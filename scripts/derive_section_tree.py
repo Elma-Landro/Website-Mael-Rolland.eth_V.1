@@ -23,9 +23,13 @@ import json
 import os
 import re
 import sys
-import unicodedata
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from grc20_commun import (  # noqa: E402
+    REPO, graphe_le_plus_recent, normalise_appariement, sans_accents,
+)
+
 MD = os.path.join(REPO, 'assets', 'MD')
 
 FICHIERS = [
@@ -37,15 +41,11 @@ FICHIERS = [
 ]
 
 
-def sans_accents(s):
-    s = unicodedata.normalize('NFD', s or '')
-    return ''.join(c for c in s if unicodedata.category(c) != 'Mn')
-
-
-def normalise(s):
-    s = sans_accents(s).lower().replace('’', "'")
-    s = re.sub(r'[^a-z0-9 ]', ' ', s)
-    return ' '.join(s.split())
+# Cette normalisation-ci ecrase la ponctuation : elle sert a apparier des
+# titres dont la graphie varie d'une source a l'autre. Voir grc20_commun,
+# qui garde aussi la variante douce — les deux ont coexiste sous le meme
+# nom `normalise` dans deux fichiers, ce qui etait un piege.
+normalise = normalise_appariement
 
 
 def titres(chemin):
@@ -165,9 +165,11 @@ def main(argv=None):
 
     graphe = args.graph
     if not graphe:
-        import glob
-        c = glob.glob(os.path.join(REPO, 'grc20-these-mael-rolland-v*.json'))
-        graphe = max(c, key=lambda f: int(re.search(r'-v(\d+)\.json$', f).group(1)))
+        graphe = graphe_le_plus_recent()
+        if not graphe:
+            print('aucun graphe grc20-these-mael-rolland-v*.json a la racine',
+                  file=sys.stderr)
+            return 2
 
     toutes = []
     print('=== arborescence des titres, par fichier ===')

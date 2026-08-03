@@ -101,6 +101,19 @@ def cles_occupees_apres(graphe, patch_migration):
         p = json.load(f)
     deplaces = [o for o in p.get('ops', [])
                 if o['type'] == 'SET_ATTRIBUTE' and o['attributeId'] == 'section_key']
+
+    # Un patch qui vise une entite absente du graphe signale une derive entre
+    # les deux — patch regenere contre une version, applique contre une autre.
+    # Echouer nommement vaut mieux qu'un KeyError nu, et bien mieux que de
+    # sauter l'operation en silence : la cle qu'elle devait liberer resterait
+    # occupee, et le calcul des sections manquantes serait faux sans le dire.
+    inconnues = [o['entityId'] for o in deplaces if o['entityId'] not in entites]
+    if inconnues:
+        raise ValueError(
+            f"{os.path.basename(patch_migration)} vise {len(inconnues)} entite(s) "
+            f"absente(s) de {os.path.basename(graphe)} : {', '.join(inconnues[:5])}"
+            f"{'…' if len(inconnues) > 5 else ''}. Le patch et le graphe ont derive.")
+
     for o in deplaces:
         vieux = ((entites[o['entityId']].get('attributes') or {})
                  .get('section_key') or {}).get('value', '')
@@ -128,7 +141,11 @@ def main(argv=None):
         if declare and os.path.exists(os.path.join(REPO, declare)):
             chemin = os.path.join(REPO, declare)
     chemin = chemin or graphe_le_plus_recent()
-    occ, g = cles_occupees_apres(chemin, args.migration)
+    try:
+        occ, g = cles_occupees_apres(chemin, args.migration)
+    except ValueError as err:
+        print(f"ECHEC (donnees) : {err}", file=sys.stderr)
+        return 1
 
     _, _, lignes_fr = arbre_md()
     _, _, lignes_en = arbre_md('_EN')

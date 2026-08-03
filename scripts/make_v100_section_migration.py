@@ -23,9 +23,18 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def echec(msg):
-    print(f"ECHEC : {msg}", file=sys.stderr)
-    sys.exit(1)
+# Deux familles d'echec, deux codes de sortie. Lire « ECHEC (invocation) »
+# dit tout de suite qu'il faut corriger la ligne de commande ou les fichiers
+# fournis ; « ECHEC (donnees) » qu'il faut corriger un patch ou le graphe.
+# Confondre les deux fait perdre le premier quart d'heure de diagnostic.
+CODE_DONNEES = 1
+CODE_INVOCATION = 2
+
+
+def echec(msg, code=CODE_DONNEES):
+    famille = 'invocation' if code == CODE_INVOCATION else 'donnees'
+    print(f"ECHEC ({famille}) : {msg}", file=sys.stderr)
+    sys.exit(code)
 
 
 def main(argv=None):
@@ -38,16 +47,21 @@ def main(argv=None):
     p.add_argument('--dry-run', action='store_true')
     args = p.parse_args(argv)
 
-    for chemin in (args.source, args.migration, args.creation):
+    def lire(chemin, quoi):
         if not os.path.exists(chemin):
-            echec(f"fichier introuvable : {chemin}")
+            echec(f"{quoi} introuvable : {chemin}", CODE_INVOCATION)
+        try:
+            with open(chemin, encoding='utf-8') as f:
+                return json.load(f)
+        except json.JSONDecodeError as err:
+            echec(f"{quoi} illisible ({os.path.basename(chemin)}) : {err}",
+                  CODE_INVOCATION)
+        except OSError as err:
+            echec(f"{quoi} inaccessible : {err}", CODE_INVOCATION)
 
-    with open(args.source, encoding='utf-8') as f:
-        g = json.load(f)
-    with open(args.migration, encoding='utf-8') as f:
-        p13 = json.load(f)
-    with open(args.creation, encoding='utf-8') as f:
-        p14 = json.load(f)
+    g = lire(args.source, 'graphe source')
+    p13 = lire(args.migration, 'patch de migration')
+    p14 = lire(args.creation, 'patch de creation')
 
     base = os.path.basename(args.source)
     print(f"source : {base} ({len(g['entities'])} entites, {len(g['relations'])} relations)")
@@ -59,10 +73,12 @@ def main(argv=None):
         declare = patch.get('_meta', {}).get('source_graph')
         if declare and declare != base:
             echec(f"{os.path.basename(nom)} declare source_graph={declare}, "
-                  f"incompatible avec {base}")
+                  f"incompatible avec {base} — verifiez --source, ou regenerez "
+                  f"le patch contre ce graphe", CODE_INVOCATION)
     if p13.get('_meta', {}).get('perimetre') != p14.get('_meta', {}).get('perimetre'):
         echec("les deux patchs ne couvrent pas le meme perimetre : "
-              f"{p13['_meta'].get('perimetre')} vs {p14['_meta'].get('perimetre')}")
+              f"{p13['_meta'].get('perimetre')} vs {p14['_meta'].get('perimetre')} "
+              f"— regenerez-les avec le meme --chapitre", CODE_INVOCATION)
 
     entites = {e['id']: e for e in g['entities']}
     nom_type = {t['id']: t.get('name') for t in g['types']}
