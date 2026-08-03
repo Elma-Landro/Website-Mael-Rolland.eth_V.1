@@ -5497,9 +5497,17 @@ const StoryMode = (() => {
       maxPrimaryEdges: Number.isFinite(step.maxPrimaryEdges) ? Math.max(0, step.maxPrimaryEdges) : Infinity,
       maxSecondaryEdges: Number.isFinite(step.maxSecondaryEdges) ? Math.max(0, step.maxSecondaryEdges) : Infinity,
       hideBackbone: step.hideBackbone !== undefined ? Boolean(step.hideBackbone) : true,
+      // Ce defaut valait ['partof', 'source', 'citedin', 'relatedto'], et
+      // n'a jamais rien masque : la comparaison passe par
+      // normalizeRelationName, qui minuscule SANS supprimer les espaces, donc
+      // « partof » ne vaut pas « part of » et « citedin » pas « cited in ».
+      // Aucun des 130 relation_types du graphe n'a jamais correspondu.
+      // Il est mis a vide plutot que corrige : le corriger masquerait d'un
+      // coup 374 aretes « part of » et 763 « cited in » que le lecteur a
+      // toujours vues. Comportement identique, sans le mensonge.
       backboneRelationTypes: Array.isArray(step.backboneRelationTypes)
         ? step.backboneRelationTypes.map(normalizeRelationName)
-        : ['partof', 'source', 'citedin', 'relatedto'].map(normalizeRelationName),
+        : [],
       fitTargets: step.fitTargets || 'primary',
       bridgeEntityIds: Array.isArray(step.bridgeEntityIds) ? step.bridgeEntityIds : [],
       anchorId: step.anchorId || step.sourceQuoteId || null

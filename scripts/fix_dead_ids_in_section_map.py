@@ -48,6 +48,23 @@ SUPPRIMER = {
     '12242085c21141b2b39a3a93f79854a7': 'acd16826920c47f4afc5e6ea59a3c56a',
 }
 
+# Les 6 jumeaux « … Ethereum » des InfrastructureDomain. v90 modelisait des
+# domaines par protocole (un generique, un « … Ethereum ») ; v91 n'en garde
+# qu'un, rendu agnostique. Les reecrire vers le generique reviendrait a
+# affirmer « le segment Ethereum du domaine X » = « le domaine X », donc a
+# effacer une partition que v90 posait explicitement. Arbitrage rendu :
+# supprimer. L'indice qui a emporte la decision est que ces lignes sont
+# generees en bloc — rangs consecutifs dans intro_B, occurrence_count = 2
+# partout — donc du remplissage automatique, pas des occurrences reelles.
+RETIRER = {
+    'f6edb4c437324b699d600e5bff2acf8e',  # Du protocole Ethereum (couche 1 et 2)
+    '8d122cfc7b9d4bd88380172edaee9b3a',  # Des services de portefeuille et de paiements Ethereum
+    'd79fb4d0604a46af888889cb5ac5bf4b',  # De la sphere d'usage Ethereum
+    '748d653bea9f4f20a5abcb6f61949f3d',  # De conformite aux reglementations nationales — Ethereum
+    'd80e3f1d494f4257a2d2a63e0051f967',  # De l'information et de la connaissance — Ethereum
+    '63def9d54a3d4747add20e5d608e68f0',  # Des Altcoins et tokens — ecosysteme Ethereum
+}
+
 # Variantes orthographiques et formes longues, disparues a la refonte v91.
 REECRIRE = {
     '4707641d2b42439c8ae9f9ed27a20a13': '75bcbab5bf17490bb6a742c27fd29df3',  # Eric -> Erik Voorhees
@@ -112,7 +129,7 @@ def main(argv=None):
         intermediaire = []
         for e in entites:
             eid = e['entity_id']
-            if eid in SUPPRIMER:
+            if eid in SUPPRIMER or eid in RETIRER:
                 supprimes += 1
                 continue
             issu_reecriture = eid in REECRIRE

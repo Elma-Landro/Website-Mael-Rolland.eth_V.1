@@ -122,7 +122,6 @@ export const STORY_PRESETS = {
           body: 'Maintenance, publication, hiérarchie des accès et arbitrages structurent une gouvernance sur l’infrastructure.',
           focusNodes: ['Bitcoin Core (repo)', 'Core Developers (Ethereum)', 'Développeurs Core (mainteneurs avec accès commit)', 'Pull Request (PR)'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source'],
           bridgeEntityIds: ['GitHub Bitcoin Core', 'All Core Dev Meetings (Ethereum)'],
         },
         {
@@ -131,7 +130,6 @@ export const STORY_PRESETS = {
           body: 'La gouvernance se distribue dans des arènes multiples : forges, mailing lists, forums et réunions.',
           focusNodes: ['GitHub Bitcoin Core', 'Bitcoin-dev Mailing List', 'Bitcointalk Forum', 'All Core Dev Meetings (Ethereum)', 'Carbon Vote (DAO Fork, juin-juillet 2016)'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source', 'citedIn'],
           bridgeEntityIds: ['Gouvernance duale', 'Gouvernance polycentrique']
         },
         {
@@ -296,7 +294,6 @@ export const STORY_PRESETS = {
         maxSecondaryEdges: 4,
         hideBackbone: true,
         fitTargets: 'primary',
-        backboneRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
       },
       steps: [
         {
@@ -363,7 +360,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-dce8efe4',
           bridgeEntityIds: ['Gouvernance polycentrique', 'Gouvernance duale'],
-          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates', 'contributes to']
         },
         {
           id: 's7',
@@ -374,7 +371,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-59789411',
           bridgeEntityIds: ['Gouvernance duale', 'Bitcoin CVE 2018-17144'],
-          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates', 'contributes to']
         },
         {
           id: 's8',
