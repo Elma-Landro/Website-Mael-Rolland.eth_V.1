@@ -1,0 +1,75 @@
+cle_canonique;niveau;chapitre;titre_md;ligne_md;etat;id_graphe;nom_graphe
+A;1;intro;La gouvernance des CM : construction de notre objet de recherche;72;PRESENTE_TITRE_DIVERGENT;0fcc7028560c47cc9b82309f469b700c;A. La gouvernance des cryptomonnaies : construction de notre objet de recherche
+B;1;intro;La gouvernance des CM dévoilée par leurs crises : un institutionnalisme monétaire secondé d'une sociologie des sciences et techniques;108;PRESENTE;21ff5747290e4951a3b0b601ddbbe9d6;B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques
+C;1;intro;Une démarche ethnographique, pour un terrain d\'enquête multi-niveau;176;PRESENTE;018c87f7337246b99ab36add53a537e3;C. Une démarche ethnographique, pour un terrain d'enquête multi-niveau
+D;1;intro;Objectifs, Apports et Organisation générale de la thèse;274;PRESENTE;7a1965a429f1468180346e845d793eab;D. Objectifs, apports et organisation générale de la thèse
+E;1;intro;Déclaration d'intérêts;296;PRESENTE;280a842a11bd4101b743f6527821c04e;E. Déclaration d'intérêts
+I.1;1;chap1;Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière;95;PRESENTE;179eaeedc85c47a09b7a4ada23fc825b;I.1 Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière
+I.2;1;chap1;Quand le « *monde redéfinit* » Bitcoin de manière carnavalesque;225;PRESENTE;596826c3187e4f8cb9034357477eb14c;I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque
+I.3;1;chap1;Ethereum : une rupture assumée d'avec Bitcoin et les premiers *Altcoins*;333;PRESENTE;6c2bbf0e45bc44ffa1d65b186df700c0;I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins
+I.4;1;chap1;Conclusion du Chapitre I;453;PRESENTE;3268b571c4ce4389bf99a35c93ed287b;I.4 Conclusion du Chapitre I
+II.1;1;chap2;« Les CM ne sont pas monnaie ! » : arguments contre le caractère monétaire des CM;107;PRESENTE;87a54f067fbb44f7b32c4207fa23a3b2;II.1 « Les CM ne sont pas monnaie ! » : arguments contre le caractère monétaire des CM
+II.2;1;chap2;« Pourtant, elles font monnaie » ! à l'aune d'un nominalisme « non étatiste » attentif aux usages;191;PRESENTE;38e637cc84f14883b96d064b8e387c0f;II.2 « Pourtant, elles font monnaie ! » : à l'aune d'un nominalisme « non étatiste » attentif aux usages
+II.3;1;chap2;Au‑delà de la revendication d'une absence de gouvernance !;303;PRESENTE;d622d318825741cda43212d7831a88c7;II.3 Au‑delà de la revendication d’une absence de gouvernance !
+II.4;1;chap2;Conclusion du Chapitre II;449;PRESENTE;53461143c45d4413af3d6be003a34f27;II.4 Conclusion du Chapitre II
+III.1;1;chap3;Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…;37;PRESENTE;5a5684979bf84b37af3771f915f677e2;III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…
+III.2;1;chap3;Des marques d'une politique de crises : une gouvernance de huis clos routinière;253;PRESENTE;89663a261c1545c1941ab7f871314a53;III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière
+III.3;1;chap3;Une gouvernance publique d'exception : le *Hard Fork* d'Ethereum consécutif à l'attaque de « The DAO »;505;ABSENTE;;
+III.4;1;chap3;Conclusion du Chapitre III;751;PRESENTE;486a5848fb304465a19d3a28bafcb603;III.4 Conclusion du Chapitre III
+A.1;2;intro;1) Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »;76;PRESENTE;707ffa8647a7acc3f95f8af261c4c77e;A.1. Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »
+A.2;2;intro;2) La controverse sur le caractère monétaire des crypto-monnaies;86;PRESENTE;4c8427cf88d26487ceeb26dc51dddafc;A.2. La controverse sur le caractère monétaire des cryptomonnaies
+A.3;2;intro;3) Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes;94;PRESENTE;29b2b4aff0e4ef2ae111f10d72a69dab;A.3. Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes
+B.1;2;intro;1) L'institutionnalisme monétaire pour caractériser les CM comme monnaie;112;PRESENTE;4a8d6940c30a34aada2553ed8febd6bb;B.1. L'institutionnalisme monétaire pour caractériser les CM comme monnaies
+B.2;2;intro;2) Gouvernance des CM : perspectives sociologiques;136;PRESENTE;600a5e7b08126f881793ff6696c244a0;B.2. Gouvernance des CM : perspectives sociologiques
+B.3;2;intro;3) La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises;158;PRESENTE;11892ab65226a8fde71e11d23dff672c;B.3. La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises
+C.1;2;intro;Enquêter sur la gouvernance des CM : contraintes et enjeux;180;PRESENTE;739e889ff25c2e6c60b4cb8e1c4fe169;C.1. Enquêter sur la gouvernance des CM : contraintes et enjeux
+C.2;2;intro;2) Stratégie d'accès et matériaux de terrain récoltés;200;PRESENTE;4615956ddad16a1de0c360886fa0932f;C.2. Stratégie d'accès et matériaux de terrain récoltés
+I.1.1;2;chap1;Du terreau matériel et idéel aux racines de Bitcoin;105;PRESENTE;3b652bdef05925924c4683ae384a70d2;I.1.1 Du terreau matériel et idéel aux racines de Bitcoin
+I.1.2;2;chap1;Bitcoin : une chimère théorico-pratique très politique;137;PRESENTE;1168d4e0c868c27a81ac371cb6879359;I.1.2 Bitcoin : une chimère théorico-pratique très politique
+I.1.3;2;chap1;Le fonctionnement de Bitcoin suivant le script original de Nakamoto;177;PRESENTE;3f2a9945f3856123c823b24f025e438e;I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto
+I.2.1;2;chap1;Un développement infrastructurel au-delà du protocole Bitcoin;259;PRESENTE;9cee8e18f8f9f0dd9853e9ecd1cf0855;I.2.1 Un développement infrastructurel au-delà du protocole Bitcoin
+I.2.2;2;chap1;Un protocole débordé de « carnavalesques » improvisations d'acteurs;297;PRESENTE;93f13f18c6da412292eba80dcd630ac7;I.2.2 Un protocole débordé de « carnavalesques » improvisations d'acteurs
+I.3.1;2;chap1;De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin;339;PRESENTE;c5eef5d754c64a30a9d163e59e1d5c88;I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin
+I.3.2;2;chap1;Ethereum : continuité et rupture d\'avec Bitcoin et les expériences passées;383;PRESENTE;ed2c565cbede474da7b6144bcb22d753;I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées
+I.3.3;2;chap1;Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin;403;PRESENTE;46111186b53041829a0a98218f9611fe;I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin
+II.1.1;2;chap2;La critique des CM depuis les grands courants de théorie monétaire;115;PRESENTE_TITRE_DIVERGENT;f07c8415a468b6c900bd14b3cefa24fb;II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques
+II.1.2;2;chap2;Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables;157;PRESENTE_TITRE_DIVERGENT;eda05ae2f601e62bf53294a2be373d2a;II.1.2 — La monnaie « créature de l'État » : critiques nominalistes et chartalistes
+II.2.1;2;chap2;Des chimères monétaires inédites, reléguées à des usages spéculatifs;197;PRESENTE_TITRE_DIVERGENT;f8a8acbfa05a53c07498346df21f6808;II.2.1 — Au-delà de la monnaie, l'argent : questionner la monétisation à l'aune des usages
+II.2.2;2;chap2;L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM;217;PRESENTE_TITRE_DIVERGENT;f34ad8e32d22d905708d07fc6f0e8150;II.2.2 — La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes
+II.2.3;2;chap2;Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives;247;PRESENTE_TITRE_DIVERGENT;0b521ac19a2f5ee0cdd07d7460ebdfd0;II.2.3 — La monnaie à l'épreuve : dettes, confiance et souveraineté
+II.3.1;2;chap2;D'un concept de gouvernance problématique à la problématique de la gouvernance des CM;309;PRESENTE_TITRE_DIVERGENT;515088f012136277d7375fa65d7a3e3f;II.3.1 — Du concept de gouvernance et de sa polysémie : un concept normatif
+II.3.2;2;chap2;Quand les CM réactivent un débat monétaire ancien : conflit symbolique et matériel autour de la « bonne » gouvernance des CM;331;PRESENTE_TITRE_DIVERGENT;d93cb2ceee6dea674fecc4f44d113643;II.3.2 — Retournement positif du concept : réintégrer le pouvoir et la politique
+II.3.3;2;chap2;Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial;389;PRESENTE_TITRE_DIVERGENT;7b3312fed875cffb74320f0a579763c7;II.3.3 — Les CM réactivent un débat monétaire ancien : conflit autour de la « bonne » gouvernance
+III.1.1;2;chap3;Présentation périodisée de la crise Bitcoin CVE 2018;45;PRESENTE_TITRE_DIVERGENT;ac859fd14006e379e55373d31090b6c6;III.1.1 — Présentation périodisée : une mise en crise longue et silencieuse (CVE 2018)
+III.1.2;2;chap3;Restituer cette crise dans l'histoire de celles traversées par Bitcoin;155;PRESENTE_TITRE_DIVERGENT;0420e53c4c8fd12fef6dcee451a50f61;III.1.2 — Une remise en ordre rapide (CVE 2018)
+III.2.1;2;chap3;Des acteurs au cœur de la gouvernance sur le protocole;261;PRESENTE_TITRE_DIVERGENT;9fbdbbc3f81ee08fb89b5c5dfbcd2929;III.2.1 — De la diversité des crises aux crises protocolaires des CM
+III.2.2;2;chap3;Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé;323;PRESENTE_TITRE_DIVERGENT;5a82e90b2cc17baf91baa9102bd48034;III.2.2 — Enjeux des crises Bitcoin : labélisations indigènes et exemples historiques
+III.2.3;2;chap3;Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public;435;PRESENTE_TITRE_DIVERGENT;da7e8dda9cacdb8cddfbab73bb6ecd0b;III.2.3 — Des acteurs au cœur de la gouvernance sur le protocole : gouvernance de huis clos
+III.3.1;2;chap3;Une mise en crise brutale, publique et tapageuse;513;PRESENTE;cf7dfaf42b4f3caa74d2078a8eacc9e6;III.3.1 — Une mise en crise brutale, publique et tapageuse (The DAO)
+III.3.2;2;chap3;Une remise en ordre complexe, contrainte et controversée : moyens et enjeux d'un consensus multi-acteur;563;PRESENTE;123b661853db78e3660f05f73d9ab081;III.3.2 — Une remise en ordre complexe, contrainte et controversée
+III.3.3;2;chap3;Gouvernance ouverte et publique pour des *forks* controversés;657;PRESENTE;7b9eff43f3726247610d73a7fcbd0e06;III.3.3 — Gouvernance ouverte et publique pour des forks controversés
+III.3.4;2;chap3;« Fork You ?! » : une scission surprise fondatrice et ses enseignements;721;PRESENTE_TITRE_DIVERGENT;83985da6c275abd60faf4dbe9f08f332;III.3.4 — « Fork You ?! » : scission surprise fondatrice et ses enseignements
+conclu_resume;2;conclu;Résumé de la thèse;10;PRESENTE;9c72c7227c3e0cee55b8b4820e7492d8;Conclusion — Résumé de la thèse
+conclu_infra;2;conclu;Décrypter la Crypto par l'approche infrastructurelle;28;PRESENTE;711fe2aa7c734731bccb42ccd5843924;A. Décrypter la crypto par l’approche infrastructurelle
+conclu_aceph;2;conclu;De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises;38;PRESENTE;45b91ae1d82a40ab8029f3b8835b3af4;De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises
+conclu_theo_mon;2;conclu;Une intégration cohérente des CM dans le champ de la théorie monétaire;46;PRESENTE_TITRE_DIVERGENT;b5386fe92a5b4cac94888ffc298469bf;B. Les CM, comme “en plus” dans la théorie monétaire et l’analyse des systèmes monétaires
+conclu_traduction;2;conclu;Un effort de traduction *attentif aux* et à *l'attention* des acteurs;54;PRESENTE_TITRE_DIVERGENT;11fe6aacd1c440bdb795f073d9572b34;C. Le travail de traduction : prolongements pour les acteurs
+conclu_boucs;2;conclu;Les CM : boucs émissaires commodes d'un système monétaire en crise ?;64;PRESENTE_TITRE_DIVERGENT;d9f534f9f849a3c54eac31746ed11222;Conclusion — Les CM : boucs émissaires d'un système monétaire en crise ?
+;;;;;GRAPHE_SANS_SECTION_KEY;3ce505bcd3e74def8b78094b4cc06b6e;I.2.1b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;4ec3224a44f06315d26d3cac111e5efc;I.1.1.a Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;439782308b5dedb9c5da7022bc2b82ef;I.1.1.b Une création hétérodoxe, entre recherche académique et recherche appliquée
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;97eb62676b0052c4ab3652fc2bd15535;I.2.2.b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;79a77b4aa63fd0cde00e4769b174455d;B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;1ef9935001830b38166ebb62a144f513;B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;6359b66f7d234e7d159cf71f4667157d;B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;d4807871cddce677c374549b5f3dc98e;B.2.b. Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures »
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;985d5ee38de80ff547c153939f00c294;B.3.a. Les fonctions heuristiques et herméneutiques des « crises »
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;92eccc1b5de0f983abd5f49cf462752e;B.3.b. Du périmètre de nos terrains : deux crises différenciées touchant Bitcoin et Ethereum
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;9a51476586060f9220b1f4977a5ddbde;C.1.a. Enjeux méthodologiques
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;0cf63080533e87d5bc747f09d72505a0;C.1.b. La relation enquêteur-enquêtés
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;533f166041015681506e5003366ba9d5;C.2.a. La face « en ligne » des CM : de la recherche documentaire à l'immersion participante
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;ce5164aaecea4aaec0f9d754ad8d84c4;C.2.b. « Creuser au fond du terrier » : les recherches documentaires
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;63b87660eedea4c59423d7f2537e5d78;C.2.c. S'approcher des acteurs non humains : des immersions participantes fructueuses
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;f99a9cb9e9ca7b29a73efdcae8212a77;C.2.d. L'envers « hors ligne » : observations et entretiens
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;ee02c5c55eac9cd1fe26d13e8427cc50;C.2.e. Observations participantes hors ligne
+;;;;;GRAPHE_SANS_EQUIVALENT_MD;c55b4bb54aa5817904f907248c78ce8a;C.2.f. Entretiens

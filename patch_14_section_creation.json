@@ -1,0 +1,312 @@
+{
+ "_meta": {
+  "patch_id": "14",
+  "description": "Creation des ThesisSection canoniques absentes du graphe.",
+  "source_graph": "grc20-these-mael-rolland-v99.json",
+  "depends_on": "patch_13_section_migration.json",
+  "perimetre": "chap1",
+  "policy": "Ajout d'entites et de leur place dans l'arborescence. Aucune entite existante modifiee, aucune fusion, aucune suppression, aucune relation retiree. Seule exception declaree : les rebranchements ci-dessous, qui redirigent des relations `section of` / `has section` existantes vers la parente immediate desormais creee.",
+  "id_derivation": "md5('grc20-section-migration-v1|' + '|'.join(parts)) -> 32 hex minuscules. parts = ('section', chapitre, cle_canonique). Deterministe.",
+  "contenu": "Titre FR/EN depuis les markdown, page depuis le sommaire de graphe.html, position dans l'arborescence. Ni summary ni central_argument : les rediger serait ecrire a la place de l'auteur."
+ },
+ "new_entities": [
+  {
+   "id": "3b652bdef05925924c4683ae384a70d2",
+   "name": "I.1.1 Du terreau matériel et idéel aux racines de Bitcoin",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre I, titre de niveau 2 a la ligne 105 de 01_chapitre_I.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "I.1.1",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Du terreau matériel et idéel aux racines de Bitcoin",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre I",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "I.1.1 From Material and Ideational Groundwork to the Roots of Bitcoin",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "58"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "3f2a9945f3856123c823b24f025e438e",
+   "name": "I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre I, titre de niveau 2 a la ligne 177 de 01_chapitre_I.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "I.1.3",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Le fonctionnement de Bitcoin suivant le script original de Nakamoto",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre I",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "I.1.3 The Functioning of Bitcoin According to Nakamoto’s Original Script",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "78"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  },
+  {
+   "id": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+   "name": "I.2.1 Un développement infrastructurel au-delà du protocole Bitcoin",
+   "description": {
+    "type": "TEXT",
+    "value": "Section canonique de la these (Chapitre I, titre de niveau 2 a la ligne 259 de 01_chapitre_I.md). Son contenu n'est pas encore rattache au graphe.",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "types": [
+    "4674ab9a271a425b9d5ba06504d32b9c"
+   ],
+   "attributes": {
+    "section_key": {
+     "type": "TEXT",
+     "value": "I.2.1",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "labelFr": {
+     "type": "TEXT",
+     "value": "Un développement infrastructurel au-delà du protocole Bitcoin",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "chapter": {
+     "type": "TEXT",
+     "value": "Chapitre I",
+     "options": {
+      "language": "fr"
+     }
+    },
+    "evidenceStatus": {
+     "type": "TEXT",
+     "value": "thesis section — structure only, content not yet anchored",
+     "options": {
+      "language": "en"
+     }
+    },
+    "labelEn": {
+     "type": "TEXT",
+     "value": "I.2.1 An Infrastructural Development Beyond the Bitcoin Protocol",
+     "options": {
+      "language": "en"
+     }
+    },
+    "page_start": {
+     "type": "NUMBER",
+     "value": "89"
+    }
+   },
+   "_comment": "absente du graphe ; annoncee par le sommaire de graphe.html"
+  }
+ ],
+ "new_relations": [
+  {
+   "id": "84c52a902cb89f13bcce646647a48f1e",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "3b652bdef05925924c4683ae384a70d2",
+   "to": "179eaeedc85c47a09b7a4ada23fc825b",
+   "attributes": []
+  },
+  {
+   "id": "fef9b4cfc3f63a7b0ed1dcc3000ea43f",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "179eaeedc85c47a09b7a4ada23fc825b",
+   "to": "3b652bdef05925924c4683ae384a70d2",
+   "attributes": []
+  },
+  {
+   "id": "e1a7ea8a0a0408c3223c7cc851ad0303",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "3b652bdef05925924c4683ae384a70d2",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "d84186236f4d38fd4edd1ff2b34da6f1",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "3b652bdef05925924c4683ae384a70d2",
+   "attributes": []
+  },
+  {
+   "id": "51402320dce803774109bf7e19cc5a82",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "3f2a9945f3856123c823b24f025e438e",
+   "to": "179eaeedc85c47a09b7a4ada23fc825b",
+   "attributes": []
+  },
+  {
+   "id": "b39297198a1cb27b50b091eeeeff4519",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "179eaeedc85c47a09b7a4ada23fc825b",
+   "to": "3f2a9945f3856123c823b24f025e438e",
+   "attributes": []
+  },
+  {
+   "id": "2b0bf396bcd8db533d3e6d6a4ef446e4",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "3f2a9945f3856123c823b24f025e438e",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "e0bf59b9bbcb1045ebd0fdf0b48901a1",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "3f2a9945f3856123c823b24f025e438e",
+   "attributes": []
+  },
+  {
+   "id": "255af0f2a0edbe18d51bd71118b01c4a",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+   "to": "596826c3187e4f8cb9034357477eb14c",
+   "attributes": []
+  },
+  {
+   "id": "e5cb1d645cacd9e170b604fca5edd171",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "596826c3187e4f8cb9034357477eb14c",
+   "to": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+   "attributes": []
+  },
+  {
+   "id": "b7629257b40779b277aeb78933e2c75e",
+   "type": "c02699b7f7894133a4ba7572dc5e69c7",
+   "from": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+   "to": "a2c452a77b394a9d836eed0e16ed5851",
+   "attributes": []
+  },
+  {
+   "id": "7fcc2784c4d7fcb15c149d716fd3ba18",
+   "type": "7398ebba05754ab0977d1bf8146786aa",
+   "from": "a2c452a77b394a9d836eed0e16ed5851",
+   "to": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+   "attributes": []
+  }
+ ],
+ "rewire_relations": [
+  {
+   "relation_id": "ad2d956c6af8d629572011f1dc44b44d",
+   "from": "97eb62676b0052c4ab3652fc2bd15535",
+   "to_avant": "596826c3187e4f8cb9034357477eb14c",
+   "to_apres": "93f13f18c6da412292eba80dcd630ac7",
+   "_comment": "I.2.2.b pointait I.2, son grand-parent ; sa parente I.2.2 existe desormais"
+  },
+  {
+   "relation_id": "b8b73b22dda11e89d0dbd377b88cdff0",
+   "to": "97eb62676b0052c4ab3652fc2bd15535",
+   "from_avant": "596826c3187e4f8cb9034357477eb14c",
+   "from_apres": "93f13f18c6da412292eba80dcd630ac7",
+   "_comment": "reciproque de « I.2.2.b section of I.2.2 »"
+  },
+  {
+   "relation_id": "d2c45b1b1534f0d52583d429e3b85bf4",
+   "from": "4ec3224a44f06315d26d3cac111e5efc",
+   "to_avant": "179eaeedc85c47a09b7a4ada23fc825b",
+   "to_apres": "3b652bdef05925924c4683ae384a70d2",
+   "_comment": "I.1.1.a pointait I.1, son grand-parent ; sa parente I.1.1 existe desormais"
+  },
+  {
+   "relation_id": "c86a978f010ec434bce09679792cbab7",
+   "to": "4ec3224a44f06315d26d3cac111e5efc",
+   "from_avant": "179eaeedc85c47a09b7a4ada23fc825b",
+   "from_apres": "3b652bdef05925924c4683ae384a70d2",
+   "_comment": "reciproque de « I.1.1.a section of I.1.1 »"
+  },
+  {
+   "relation_id": "56ade722f261c15f5598f9b4183240f5",
+   "from": "439782308b5dedb9c5da7022bc2b82ef",
+   "to_avant": "179eaeedc85c47a09b7a4ada23fc825b",
+   "to_apres": "3b652bdef05925924c4683ae384a70d2",
+   "_comment": "I.1.1.b pointait I.1, son grand-parent ; sa parente I.1.1 existe desormais"
+  },
+  {
+   "relation_id": "58c402b068cf82fdd18470c950bb7e44",
+   "to": "439782308b5dedb9c5da7022bc2b82ef",
+   "from_avant": "179eaeedc85c47a09b7a4ada23fc825b",
+   "from_apres": "3b652bdef05925924c4683ae384a70d2",
+   "_comment": "reciproque de « I.1.1.b section of I.1.1 »"
+  }
+ ]
+}

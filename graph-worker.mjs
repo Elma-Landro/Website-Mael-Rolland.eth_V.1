@@ -419,7 +419,7 @@ export default {
  * # Après publication IPFS :
  * # IPFS_CID = "bafyrei..."
  * # WALLET_ADDRESS = "0x..."
- * # GRAPH_URL_FALLBACK = "https://raw.githubusercontent.com/Elma-Landro/Website-Mael-Rolland.eth_V.1/main/grc20-these-mael-rolland-v96.json"
+ * # GRAPH_URL_FALLBACK = "https://raw.githubusercontent.com/Elma-Landro/Website-Mael-Rolland.eth_V.1/main/grc20-these-mael-rolland-v100.json"
  * 
  * # Cache KV (optionnel mais recommandé)
  * [[kv_namespaces]]

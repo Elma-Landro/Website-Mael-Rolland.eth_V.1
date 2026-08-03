@@ -22,7 +22,7 @@ export const STORY_PRESETS = {
         maxSecondaryEdges: 4,
         hideBackbone: true,
         fitTargets: 'primary',
-        allowedRelationTypes: ['hasConcept', 'monetaryObject', 'governance', 'relatedTo', 'demonstrates', 'opposedTo', 'refutedBy', 'source']
+        allowedRelationTypes: ['has concept', 'monetary object', 'governance', 'relatedTo', 'demonstrates', 'opposed to', 'refuted by', 'source']
       },
       steps: [
         {
@@ -308,7 +308,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'tight',
           sourceQuoteId: 'anchor-7c595e5b',
           bridgeEntityIds: ['Bitcoin', 'Gouvernance polycentrique'],
-          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'source', 'opposed to']
         },
         {
           id: 's2',
@@ -319,7 +319,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-251c8c2b',
           bridgeEntityIds: ['Institutionnalisme Monetaire Francophone (IMF)', 'Sociology of Science & Technology (STS)'],
-          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'source', 'opposed to']
         },
         {
           id: 's3',
@@ -330,7 +330,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-4934a3d8',
           bridgeEntityIds: ['Bitcoin', 'Ethnographie'],
-          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'source', 'opposed to']
         },
         {
           id: 's4',
@@ -341,7 +341,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-88c15dbe',
           bridgeEntityIds: ['Ethereum', 'Bitcoin'],
-          allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
+          allowedRelationTypes: ['created', 'inspired by', 'part of', 'layer above', 'fork of', 'precursor of']
         },
         {
           id: 's5',
@@ -352,7 +352,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-45c0739a',
           bridgeEntityIds: ['Monétisation des cryptomonnaies', 'Monetary Institutionalism FR (IMF)'],
-          allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
+          allowedRelationTypes: ['created', 'inspired by', 'part of', 'layer above', 'fork of', 'precursor of']
         },
         {
           id: 's6',
@@ -363,7 +363,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-dce8efe4',
           bridgeEntityIds: ['Gouvernance polycentrique', 'Gouvernance duale'],
-          allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'relatedTo', 'demonstrates']
         },
         {
           id: 's7',
@@ -374,7 +374,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-59789411',
           bridgeEntityIds: ['Gouvernance duale', 'Bitcoin CVE 2018-17144'],
-          allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'relatedTo', 'demonstrates']
         },
         {
           id: 's8',
@@ -386,7 +386,7 @@ export const STORY_PRESETS = {
           sourceQuoteId: 'anchor-0b39eeba',
           maxPrimaryEdges: 6,
           bridgeEntityIds: ['Gouvernance polycentrique'],
-          allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
+          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance', 'relatedTo']
         },
         {
           id: 's9',
@@ -398,7 +398,7 @@ export const STORY_PRESETS = {
           sourceQuoteId: 'anchor-fb610652',
           maxPrimaryEdges: 6,
           bridgeEntityIds: [],
-          allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
+          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance', 'relatedTo']
         }
       ]
     },
@@ -422,7 +422,7 @@ export const STORY_PRESETS = {
         maxPrimaryEdges: 5,
         hideBackbone: true,
         fitTargets: 'primary',
-        allowedRelationTypes: ['hasConcept', 'demonstrates', 'source', 'relatedTo', 'refutedBy', 'opposedTo', 'governance', 'hasCrisis']
+        allowedRelationTypes: ['has concept', 'demonstrates', 'source', 'relatedTo', 'refuted by', 'opposed to', 'governance', 'has crisis']
       },
       steps: [
         {

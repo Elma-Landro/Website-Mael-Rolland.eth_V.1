@@ -27,9 +27,11 @@ Usage:
     python3 scripts/match_chronology_events.py
     python3 scripts/match_chronology_events.py --graph ... --csv ... --out ...
 """
-import argparse, csv, json, os, re, sys, unicodedata, collections
+import argparse, csv, json, os, re, sys, collections
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from grc20_commun import REPO, sans_accents  # noqa: E402
 
 _p = argparse.ArgumentParser(description="Appariement chronologie CSV x graphe GRC-20.")
 _p.add_argument('--graph', default=os.path.join(REPO, 'grc20-these-mael-rolland-v97.json'))
@@ -42,10 +44,8 @@ args = _p.parse_args()
 os.makedirs(args.out, exist_ok=True)
 
 # ---------- normalisation ----------
-
-def sans_accents(s):
-    s = unicodedata.normalize('NFD', s or '')
-    return ''.join(c for c in s if unicodedata.category(c) != 'Mn')
+# `sans_accents` vient de grc20_commun : les trois copies du depot etaient
+# identiques au caractere pres.
 
 MOTS_VIDES = {
     'de', 'du', 'des', 'le', 'la', 'les', 'un', 'une', 'd', 'l', 'en', 'et', 'a', 'au',
