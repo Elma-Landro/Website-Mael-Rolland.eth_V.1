@@ -47,6 +47,7 @@ import argparse
 import collections
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -225,9 +226,28 @@ def collecter_problemes(graphe, esm, sem, ovr, anc, presets):
                 continue
             signale(f'E:focus:{r}', 'story-presets : focusNode non resolu', r)
 
+        # `allowedRelationTypes` est une liste BLANCHE : un nom mort y retire
+        # silencieusement des aretes qu'on croyait montrer. graphe.html le
+        # compare apres `canonicalizeRelationName` — minuscules PUIS
+        # suppression de tout non-alphanumerique — donc « part of » et
+        # « partOf » s'y confondent.
+        canon = {re.sub(r'[^a-z0-9]', '', t.lower()) for t in types_relation}
         for rt in presets.get('allowedRelationTypes', []):
-            if rt not in types_relation:
+            if re.sub(r'[^a-z0-9]', '', rt.lower()) not in canon:
                 signale(f'F:rel:{rt}', 'story-presets : relation_type inexistant', rt)
+
+        # Les listes d'ossature et de masquage passent, elles, par
+        # `normalizeRelationName` : minuscules SANS suppression des espaces.
+        # « partOf » n'y vaut donc PAS « part of ». Ce controle manquait, et
+        # ce que la mesure a montre en le posant : les quatre jetons de
+        # `backboneRelationTypes` sont morts, y compris le defaut code en dur
+        # dans graphe.html (l.5502) — `hideBackbone` ne masque donc rien.
+        noms_relation = {t.lower() for t in types_relation}
+        for cle in ('backboneRelationTypes', 'hideRelationTypes', 'showRelationTypes'):
+            for rt in presets.get(cle, []):
+                if rt.lower() not in noms_relation:
+                    signale(f'F:{cle}:{rt}',
+                            f'story-presets : {cle} inexistant', rt)
 
     return problemes
 

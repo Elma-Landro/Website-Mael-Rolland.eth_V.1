@@ -1,0 +1,105 @@
+8ee54c0be14a1eb6860bac573bb81c7eK2:01/11/2013:31/12/2021:A:M:1:C:true:true:1:A3:40:616:BF:C:1:1:G:255,41,39,35:255,236,148,16:11:Arial:255,255,255,255:bab1dd41-9179-4fbf-bf4e-bcded4dafb55::|E3:30/07/2015:[1]
+"Genesis Block"
+
+Lancement du protocole Ethereum "Frontier"
+Les blocs sont minés mais pas de transactions traitées
+"Thawing" = gas limit hardcoded
+Lancement du "mainnet" Ethereum 
+Hard Fork
+Block - 1
+:255,34,121,214:255,255,255,255:C:220:191:279:145:255,34,121,214:12:1:G:0:false:0:C:1:false:false:.:b6889732-de76-4490-8f3a-c9750e113ac6:T:C:F:A:::|E3:09/05/2015: [0]
+"Olympic Frontier pre-release"
+Lancement du premier réseau Testnet (10ème itération de la Preuve de Concept)
+Récompense offerte pour stress test ; permet le lancement graduel de clients Ethereum compatibles
+https#deuxpoint#//blog.ethereum.org/2015/05/09/olympic-frontier-pre-release/:255,34,121,214:255,255,255,255:C:155:99:326:85:255,34,121,214:9:1:N:0:false:0:C:1:false:false:.:5e60b261-4bc5-4e7a-b651-f5c45ba636be:T:C:F:A:::|E3:14/03/2016:[3]
+"Homestead"
+Première version considérée comme stable par les Développeurs
+Changement important dans le protocole et le réseau (EIP-2 ; EIP-7, EIP-8)
+Hard Fork
+Block - 	1150000
+
+Changement prévus #deuxpoint# EIP-2.1 ; EIP-2.2 ; EIP-2.4 ; :255,34,121,214:255,255,255,255:G:474:462:279:145:255,34,121,214:12:1:N:1:false:0:C:1:false:false:.:6fc5fe3c-9d45-4475-a0d6-1d2ac2bc772b:T:C:F:A:::|E3:04/08/2015:[2]
+"Frontier Thawind"
+Hard Fork
+Block - 200000
+
+Le "gas limit" est relevé à 5 million de Gas / Bloc
++ Canary contract = ...
+Mise en place de la "Difficulty Bomb":255,34,121,214:255,255,255,255:C:217:341:289:117:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:02585142-ac6c-44a7-b863-9a2df6971741:T:C:F:A:::|E3:20/07/2016:[4]
+"DAO Fork"
+Hard Fork
+Block 1920000
+
+Réponse à l'attaque de la DAO; tout les fonds contenus dans "The DAO" et les "Child DAO" se retrouve intégré à un script auto-executoire qui ne permet aux investisseurs de répurer les sommes qu'ils avaient investi
+
+:255,221,12,12:255,255,255,255:C:299:961:479:158:255,221,12,12:14:1:G:10:false:0:C:1:false:false:.:08085e0c-a2f6-49af-9546-777d950d0a54:T:C:F:A:::|E3:18/10/2016:[5]
+Tangerine Whistle 
+Hard Fork
+Block 2463000
+(premier HF en réponse aux attaques DOS du réseau Ethereum entre sept. et oct. 2016)
+Changement prévu #deuxpoint# EIP-150 (modification des coûts en gas des différente fonction pour lutter contre le spam) ; EIP-158 ("State clearing"  = suppression de vieux compte afin de libérer de l'espace disque et réduire le temps de synchronisation des nœuds):255,221,12,12:255,255,255,255:G:584:840:572:131:255,221,12,12:12:1:N:1:false:0:C:1:false:false:.:ee5679da-fc99-46af-b245-b07faa971a64:T:C:F:A:::|E3:22/11/2016:[6]
+"Spurious Dragon"
+(deuxième HF en réponse aux attaques DOS du réseau Ethereum entre sept. et oct. 2016)
+Hard Fork
+Block 2675000
+
+Changement prévus #deuxpoint# 
+EIP- 155 #deuxpoint# Replay Attack protection
+EIP-160 #deuxpoint# Augmentation du coût de la fonction 'EXP'
+EIP-161 #deuxpoint# State trie clearing, permet de supprimer un grand nombre de compte vide et de réduire la taille de base de donnée
+EIP170 #deuxpoint# Taille limite de code contrat #deuxpoint# modification de la taille limite max. que peut avoir un contrat (Max 24576 bytes) 
+
+:255,221,12,12:255,255,255,255:G:601:669:666:173:255,221,12,12:12:1:N:0:false:0:C:1:false:false:.:02953ff9-8235-48d6-aab4-ec2be9ca5be8:T:C:F:A:::|E3:16/10/2017:[7]
+"Byzantium"
+
+Hard Fork
+Block 4370000
+
+Changement prévu #deuxpoint#
+EIP-140 #deuxpoint# ajout de l'opcode 'REVERT' 
+EIP-658 #deuxpoint# Ajout d'un champ statut dans les transactions reçues
+EIP-196 & EIP-197 #deuxpoint# Ajout de courbe elliptique, multiplication scalaire et contrôle d’appariement permettant les ZK-Snarks et autres techniques cryptographiques
+EIP-198 #deuxpoint# Support pour exponentiation modulaire à grand nombre entier
+EIP-211 #deuxpoint#Support pour des retours de valeurs de taille variable
+EIP-214 #deuxpoint# Ajout de l'opcode 'STATICCALL'
+EIP-100 #deuxpoint# Modification de la formule d'ajustement de la difficulté pour prendre en compte les "oncle"
+EIP-449 #deuxpoint# retardement de la "Difficulty Bomb":255,34,121,214:255,255,255,255:C:576:206:380:257:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:c3019369-aa5b-4402-8e5f-3485764fe17a:T:C:F:A:::|E3:28/02/2019:[8]
+St. Petersburg (ex Constantinople) 
+Block #deuxpoint# 7 280 000
+EIP-145 ; EIP-1014 ; EIP61052 ; EIP-1234:255,34,121,214:255,255,255,255:D:806:475:212:89:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:6042a439-34ae-450d-98d8-e72476913677:T:C:F:A:::|E3:08/12/2019:[9]
+"Istanbul" 
+Block #deuxpoint# 9 069 000 
+EIP 1679#deuxpoint# alignement des cout de certains opcode sur ceux de leur computation ; optimisation pour SNARK STARK ; 
+EIP 152 #deuxpoint# 
+EIP 1679#deuxpoint#
+EIP 152 #deuxpoint# 
+EIP 1108 ; EIP 1344 ; EIP 1884 ; EIP2028 ; EIP 2200 ; 
+ :255,34,121,214:255,255,255,255:D:963:262:197:201:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:44424e5d-2ba5-4e75-8f5c-de3f71cd10f9:T:C:F:A:::|E3:05/08/2021:[12]
+"London"
+Block #deuxpoint# 12 965 000
+EIP-1559#deuxpoint# Fee market change for ETH 1.0 chain
+EIP-3198#deuxpoint# ajout d'une fonction qui donne acces au faris de base de block à l'EVM (BASEFEE opcode)
+EIP-3529#deuxpoint# Réduction dans certains fonctions de remboursement
+EIP-3541#deuxpoint# Rejet des nouveaux contrat commençant par les bytes "0xEF"
+EIP-3554#deuxpoint# Retardement de la "Difficulty Bomb" jusqu'au 1/12/2021:255,34,121,214:255,255,255,255:D:1181:253:284:187:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:2d0df812-282d-4979-9c78-fea5f48b5f71:T:C:F:A:::|E3:09/12/2021:[13]
+"Arrow Glacier"
+Block #deuxpoint# 13 773 000
+EIP-4345#deuxpoint# retardement de la "Difficulty Bomb" jusqu'à Juin 2022.:255,34,121,214:255,255,255,255:D:1370:464:158:103:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:037eaafb-7048-4e94-9958-97a2134213d7:T:C:F:A:::|E3:02/01/2020:[10]
+Muir Glacier
+Block #deuxpoint# 9 200 000
+EIP 2384 #deuxpoint# Retardement de la "Difficulty Bomb" (de 4 000 000 de block)
+:255,34,121,214:255,255,255,255:D:1025:484:148:103:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:9146b97f-fec6-4571-8e47-9c5fe06ba412:T:C:F:A:::|H1:― Mise à jours planifiées :255,34,121,214:255,255,255,255:255,34,121,214:12:1:1424:1024:98:33:N:0:G:66a36d46-9fba-496e-8c72-8db12f112776|H1:― Mise à jours non planifiées:255,221,12,12:255,255,255,255:255,221,12,12:12:1:1424:1062:98:33:N:0:G:b7bf1d9e-13a9-454a-9e54-518c2fb5db50|E3:15/04/2021:[11]
+"Berlin"
+Block #deuxpoint# 12 244 000
+Nombreuses optimisations/ modifications des coûts en gas de fonctions de l'EVM (EIP-2565, ModExp; EIP-2929#deuxpoint# Gas cost increases for state access opcodes,
+Increases gas cost for SLOAD, *CALL, BALANCE, EXT* and SELFEDESTRUCT when used for the first time in a transaction;
+EIP-2718#deuxpoint# Introduces a new transaction type that is an envelope to enable easier support for multiple transaction types; EIP-2930#deuxpoint# Optional access list:255,34,121,214:255,255,255,255:D:1100:50:309:187:255,34,121,214:12:1:N:0:false:0:C:1:false:false:.:beff33b8-53f5-4e87-a73b-d6a3d8920d18:T:C:F:A:::|H1:Légende #deuxpoint# 
+
+
+
+
+ 
+ 
+ 
+ 
+  :B:255,255,255,255:B:12:1:1358:1010:169:89:N:0:G:cad2038f-f13a-482b-ba5b-26de2d388530

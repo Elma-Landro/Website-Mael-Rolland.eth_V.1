@@ -41,7 +41,24 @@ if (!presets?.stories) echec('story-presets.mjs n\'expose pas STORY_PRESETS.stor
 
 const focusRefs = new Set();
 const allowedRelationTypes = new Set();
+// Ces trois listes-la ne passent PAS par la meme normalisation que
+// allowedRelationTypes cote graphe.html : `normalizeRelationName` minuscule
+// sans supprimer les espaces, la ou `canonicalizeRelationName` les supprime.
+// « partOf » n'y vaut donc pas « part of ». On les emet a part pour que le
+// controle applique a chacune la regle qui la concerne vraiment.
+const autresListes = {
+  backboneRelationTypes: new Set(),
+  hideRelationTypes: new Set(),
+  showRelationTypes: new Set(),
+};
 let nbSteps = 0;
+
+const ramasseListes = (o) => {
+  if (!o) return;
+  for (const cle of Object.keys(autresListes)) {
+    for (const t of o[cle] ?? []) autresListes[cle].add(t);
+  }
+};
 
 const collecte = (v) => {
   if (typeof v === 'string') focusRefs.add(v);
@@ -54,11 +71,14 @@ for (const story of presets.stories) {
   for (const rt of story.defaultStepOptions?.allowedRelationTypes ?? []) {
     allowedRelationTypes.add(rt);
   }
+  ramasseListes(story);
+  ramasseListes(story.defaultStepOptions);
   for (const step of story.steps ?? []) {
     nbSteps += 1;
     collecte(step.centralNode);
     collecte(step.focusNodes);
     for (const rt of step.allowedRelationTypes ?? []) allowedRelationTypes.add(rt);
+    ramasseListes(step);
   }
 }
 
@@ -94,6 +114,7 @@ process.stdout.write(JSON.stringify({
   steps: nbSteps,
   focusRefs: [...focusRefs].sort(),
   allowedRelationTypes: [...allowedRelationTypes].sort(),
+  ...Object.fromEntries(Object.entries(autresListes).map(([k, v]) => [k, [...v].sort()])),
   aliases,
   aliasesOk,
 }, null, 1) + '\n');
