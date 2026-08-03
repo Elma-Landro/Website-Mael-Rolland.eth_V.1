@@ -22,7 +22,7 @@ export const STORY_PRESETS = {
         maxSecondaryEdges: 4,
         hideBackbone: true,
         fitTargets: 'primary',
-        allowedRelationTypes: ['has concept', 'monetary object', 'governance', 'relatedTo', 'demonstrates', 'opposed to', 'refuted by', 'source']
+        allowedRelationTypes: ['has concept', 'monetary object', 'governance', 'demonstrates', 'opposed to', 'refuted by']
       },
       steps: [
         {
@@ -308,7 +308,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'tight',
           sourceQuoteId: 'anchor-7c595e5b',
           bridgeEntityIds: ['Bitcoin', 'Gouvernance polycentrique'],
-          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'source', 'opposed to']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'opposed to']
         },
         {
           id: 's2',
@@ -319,7 +319,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-251c8c2b',
           bridgeEntityIds: ['Institutionnalisme Monetaire Francophone (IMF)', 'Sociology of Science & Technology (STS)'],
-          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'source', 'opposed to']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'opposed to']
         },
         {
           id: 's3',
@@ -330,7 +330,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-4934a3d8',
           bridgeEntityIds: ['Bitcoin', 'Ethnographie'],
-          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'source', 'opposed to']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'opposed to']
         },
         {
           id: 's4',
@@ -363,7 +363,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-dce8efe4',
           bridgeEntityIds: ['Gouvernance polycentrique', 'Gouvernance duale'],
-          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'relatedTo', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates']
         },
         {
           id: 's7',
@@ -374,7 +374,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-59789411',
           bridgeEntityIds: ['Gouvernance duale', 'Bitcoin CVE 2018-17144'],
-          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'relatedTo', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates']
         },
         {
           id: 's8',
@@ -386,7 +386,7 @@ export const STORY_PRESETS = {
           sourceQuoteId: 'anchor-0b39eeba',
           maxPrimaryEdges: 6,
           bridgeEntityIds: ['Gouvernance polycentrique'],
-          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance', 'relatedTo']
+          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance']
         },
         {
           id: 's9',
@@ -398,7 +398,7 @@ export const STORY_PRESETS = {
           sourceQuoteId: 'anchor-fb610652',
           maxPrimaryEdges: 6,
           bridgeEntityIds: [],
-          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance', 'relatedTo']
+          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance']
         }
       ]
     },
@@ -422,7 +422,7 @@ export const STORY_PRESETS = {
         maxPrimaryEdges: 5,
         hideBackbone: true,
         fitTargets: 'primary',
-        allowedRelationTypes: ['has concept', 'demonstrates', 'source', 'relatedTo', 'refuted by', 'opposed to', 'governance', 'has crisis']
+        allowedRelationTypes: ['has concept', 'demonstrates', 'refuted by', 'opposed to', 'governance', 'has crisis']
       },
       steps: [
         {
