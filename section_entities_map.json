@@ -180,7 +180,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 3
       },
       {
@@ -220,7 +220,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 3
       },
       {
@@ -245,7 +245,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 3
       },
       {
@@ -320,7 +320,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 3
       },
       {
@@ -360,12 +360,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 3
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 3
       },
       {
@@ -375,7 +375,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 3
       },
       {
@@ -420,7 +420,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 3
       },
       {
@@ -440,12 +440,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 3
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 3
       },
       {
@@ -460,17 +460,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 3
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 3
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 3
       },
       {
@@ -500,7 +500,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 3
       },
       {
@@ -1240,12 +1240,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 3
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 3
       },
       {
@@ -1265,7 +1265,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 3
       },
       {
@@ -1275,7 +1275,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 3
       },
       {
@@ -1400,7 +1400,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -1470,7 +1470,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -2426,7 +2426,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 3
       },
       {
@@ -2466,7 +2466,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 3
       },
       {
@@ -2491,7 +2491,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 3
       },
       {
@@ -2566,7 +2566,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 3
       },
       {
@@ -2606,12 +2606,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 3
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 3
       },
       {
@@ -2621,7 +2621,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 3
       },
       {
@@ -2666,7 +2666,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 3
       },
       {
@@ -2686,12 +2686,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 3
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 3
       },
       {
@@ -2706,17 +2706,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 3
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 3
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 3
       },
       {
@@ -2746,7 +2746,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 3
       },
       {
@@ -3511,12 +3511,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 3
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 3
       },
       {
@@ -3536,7 +3536,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 3
       },
       {
@@ -3546,7 +3546,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 3
       },
       {
@@ -3801,7 +3801,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -3871,7 +3871,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -5387,7 +5387,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -5407,7 +5407,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -6277,7 +6277,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -6317,7 +6317,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -6342,7 +6342,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -6417,7 +6417,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -6457,12 +6457,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -6472,7 +6472,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -6517,7 +6517,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -6537,12 +6537,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -6557,17 +6557,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -6597,7 +6597,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -7357,12 +7357,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -7382,7 +7382,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -7392,7 +7392,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -8949,7 +8949,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -8969,7 +8969,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -10015,7 +10015,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 5
       },
       {
@@ -10055,7 +10055,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 5
       },
       {
@@ -10080,7 +10080,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 5
       },
       {
@@ -10155,7 +10155,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 5
       },
       {
@@ -10195,12 +10195,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 5
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -10210,7 +10210,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 5
       },
       {
@@ -10255,7 +10255,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 5
       },
       {
@@ -10275,12 +10275,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 5
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 5
       },
       {
@@ -10295,17 +10295,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 5
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 5
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 5
       },
       {
@@ -10335,7 +10335,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 5
       },
       {
@@ -11045,12 +11045,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 5
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -11070,7 +11070,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 5
       },
       {
@@ -11080,7 +11080,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 5
       },
       {
@@ -11721,7 +11721,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 5
       },
       {
@@ -11761,7 +11761,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 5
       },
       {
@@ -11786,7 +11786,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 5
       },
       {
@@ -11861,7 +11861,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 5
       },
       {
@@ -11901,12 +11901,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 5
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -11916,7 +11916,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 5
       },
       {
@@ -11961,7 +11961,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 5
       },
       {
@@ -11981,12 +11981,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 5
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 5
       },
       {
@@ -12001,17 +12001,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 5
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 5
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 5
       },
       {
@@ -12041,7 +12041,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 5
       },
       {
@@ -12751,12 +12751,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 5
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -12776,7 +12776,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 5
       },
       {
@@ -12786,7 +12786,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 5
       },
       {
@@ -13538,7 +13538,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -13558,7 +13558,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -14299,7 +14299,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -14369,7 +14369,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -15425,7 +15425,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -15445,7 +15445,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -16746,7 +16746,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -16816,7 +16816,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -18268,7 +18268,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -18288,7 +18288,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -22402,7 +22402,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -22442,7 +22442,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -22467,7 +22467,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -22542,7 +22542,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -22582,12 +22582,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -22597,7 +22597,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -22642,7 +22642,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -22662,12 +22662,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -22687,17 +22687,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -22727,7 +22727,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -23537,12 +23537,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -23562,7 +23562,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -23577,7 +23577,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -24093,7 +24093,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -24103,7 +24103,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -24193,7 +24193,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -24218,7 +24218,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -24248,7 +24248,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -24323,7 +24323,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -24388,12 +24388,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -24403,7 +24403,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -24448,7 +24448,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -24468,12 +24468,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -24498,17 +24498,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -24543,7 +24543,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -25618,12 +25618,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -25653,7 +25653,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -25688,7 +25688,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -26124,7 +26124,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -26214,7 +26214,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -26239,7 +26239,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -26319,7 +26319,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -26364,12 +26364,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -26379,7 +26379,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -26424,7 +26424,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -26454,12 +26454,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -26479,17 +26479,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -26519,7 +26519,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -27619,12 +27619,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -27654,7 +27654,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -27699,7 +27699,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -28376,7 +28376,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -28466,7 +28466,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -28491,7 +28491,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -28566,7 +28566,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -28606,12 +28606,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -28631,7 +28631,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -28676,7 +28676,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -28696,12 +28696,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -28721,17 +28721,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -28771,7 +28771,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -29596,12 +29596,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -29626,7 +29626,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -29641,7 +29641,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -29967,7 +29967,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -30057,7 +30057,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -30082,7 +30082,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -30157,7 +30157,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -30197,12 +30197,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -30212,7 +30212,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -30257,7 +30257,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -30277,12 +30277,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -30297,17 +30297,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -30337,7 +30337,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -31117,12 +31117,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -31147,7 +31147,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -31157,7 +31157,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -31318,7 +31318,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 3
       },
       {
@@ -31338,7 +31338,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 3
       },
       {
@@ -32238,7 +32238,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -32328,7 +32328,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -32353,7 +32353,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -32428,7 +32428,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -32468,12 +32468,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -32483,7 +32483,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -32528,7 +32528,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -32548,12 +32548,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -32568,17 +32568,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -32613,7 +32613,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -33418,12 +33418,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -33448,7 +33448,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -33458,7 +33458,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -35713,7 +35713,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 3
       },
       {
@@ -35733,7 +35733,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 3
       },
       {
@@ -37054,7 +37054,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 5
       },
       {
@@ -37094,7 +37094,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 5
       },
       {
@@ -37119,7 +37119,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 5
       },
       {
@@ -37194,7 +37194,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 5
       },
       {
@@ -37234,12 +37234,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 5
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -37249,7 +37249,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 5
       },
       {
@@ -37294,7 +37294,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 5
       },
       {
@@ -37314,12 +37314,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 5
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 5
       },
       {
@@ -37339,17 +37339,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 5
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 5
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 5
       },
       {
@@ -37379,7 +37379,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 5
       },
       {
@@ -38154,12 +38154,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 5
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -38179,7 +38179,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 5
       },
       {
@@ -38194,7 +38194,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 5
       },
       {
@@ -38294,7 +38294,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -38314,7 +38314,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -38890,7 +38890,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 5
       },
       {
@@ -38930,7 +38930,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 5
       },
       {
@@ -38955,7 +38955,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 5
       },
       {
@@ -39030,7 +39030,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 5
       },
       {
@@ -39070,12 +39070,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 5
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -39085,7 +39085,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 5
       },
       {
@@ -39130,7 +39130,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 5
       },
       {
@@ -39150,12 +39150,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 5
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 5
       },
       {
@@ -39175,17 +39175,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 5
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 5
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 5
       },
       {
@@ -39215,7 +39215,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 5
       },
       {
@@ -39990,12 +39990,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 5
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 5
       },
       {
@@ -40015,7 +40015,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 5
       },
       {
@@ -40030,7 +40030,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 5
       },
       {
@@ -40476,7 +40476,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -40496,7 +40496,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -46580,7 +46580,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -46600,7 +46600,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -47306,7 +47306,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 2
       },
       {
@@ -47326,7 +47326,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -49462,7 +49462,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -49472,7 +49472,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -49512,7 +49512,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -49537,7 +49537,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -49567,7 +49567,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -49642,7 +49642,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -49702,12 +49702,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -49717,7 +49717,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -49762,7 +49762,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -49782,12 +49782,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -49812,17 +49812,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -49852,7 +49852,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -50857,12 +50857,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -50882,7 +50882,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -50897,7 +50897,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -51623,7 +51623,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -51633,7 +51633,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -51723,7 +51723,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -51748,7 +51748,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -51778,7 +51778,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -51853,7 +51853,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -51913,12 +51913,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -51928,7 +51928,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -51973,7 +51973,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -51993,12 +51993,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -52023,17 +52023,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -52063,7 +52063,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -53073,12 +53073,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -53103,7 +53103,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -53118,7 +53118,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -53789,7 +53789,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -53799,7 +53799,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -53839,7 +53839,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -53864,7 +53864,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -53894,7 +53894,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -53969,7 +53969,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -54029,12 +54029,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -54044,7 +54044,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -54089,7 +54089,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -54109,12 +54109,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -54139,17 +54139,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -54179,7 +54179,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -55179,12 +55179,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -55204,7 +55204,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -55219,7 +55219,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -55565,7 +55565,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -55575,7 +55575,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -55665,7 +55665,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -55690,7 +55690,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -55720,7 +55720,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -55795,7 +55795,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -55860,12 +55860,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -55875,7 +55875,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -55920,7 +55920,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -55950,12 +55950,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -55980,17 +55980,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -56025,7 +56025,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -57255,12 +57255,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -57290,7 +57290,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -57335,7 +57335,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -57666,7 +57666,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -57676,7 +57676,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -57716,7 +57716,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -57741,7 +57741,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -57771,7 +57771,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -57846,7 +57846,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -57906,12 +57906,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -57921,7 +57921,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -57966,7 +57966,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -57986,12 +57986,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -58016,17 +58016,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -58056,7 +58056,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -59056,12 +59056,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -59081,7 +59081,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -59096,7 +59096,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
@@ -59442,7 +59442,7 @@
       },
       {
         "entity_id": "4c335587eb4e430996890cb179d9052c",
-        "entity_name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+        "entity_name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
         "occurrence_count": 1
       },
       {
@@ -59452,7 +59452,7 @@
       },
       {
         "entity_id": "a090e5b466eb424fa0635ff40f2854e1",
-        "entity_name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+        "entity_name": "Quote — Bitcoin-Qt (client lourd) — p.90",
         "occurrence_count": 1
       },
       {
@@ -59492,7 +59492,7 @@
       },
       {
         "entity_id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-        "entity_name": "SourceQuote — Bitcoin Faucet — p.91",
+        "entity_name": "Quote — Bitcoin Faucet — p.91",
         "occurrence_count": 1
       },
       {
@@ -59517,7 +59517,7 @@
       },
       {
         "entity_id": "d7006b89518c45e18f8a508ca26c7080",
-        "entity_name": "SourceQuote — Bitcoin Foundation — p.95",
+        "entity_name": "Quote — Bitcoin Foundation — p.95",
         "occurrence_count": 1
       },
       {
@@ -59547,7 +59547,7 @@
       },
       {
         "entity_id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-        "entity_name": "SourceQuote — WikiLeaks accepts Bitcoin",
+        "entity_name": "Quote — WikiLeaks accepts Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -59622,7 +59622,7 @@
       },
       {
         "entity_id": "dabee09337c6468aaeecf8ca0d09af31",
-        "entity_name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+        "entity_name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
         "occurrence_count": 1
       },
       {
@@ -59682,12 +59682,12 @@
       },
       {
         "entity_id": "f2f68c90422e4157a8b92e8c446a7b7a",
-        "entity_name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+        "entity_name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
         "occurrence_count": 1
       },
       {
         "entity_id": "98a7cd02fb9d4a768d1ff1a241121309",
-        "entity_name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+        "entity_name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -59697,7 +59697,7 @@
       },
       {
         "entity_id": "3a4b300469f84f4387aed576c229556a",
-        "entity_name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+        "entity_name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
         "occurrence_count": 1
       },
       {
@@ -59742,7 +59742,7 @@
       },
       {
         "entity_id": "444c5eb734724b4d97943972ab814f14",
-        "entity_name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+        "entity_name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
         "occurrence_count": 1
       },
       {
@@ -59762,12 +59762,12 @@
       },
       {
         "entity_id": "55bf8adce794447c8e18b7b6d2c4c411",
-        "entity_name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+        "entity_name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
         "occurrence_count": 1
       },
       {
         "entity_id": "a36cef7f19444a64b0f0b7f61e9bf214",
-        "entity_name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+        "entity_name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
         "occurrence_count": 1
       },
       {
@@ -59792,17 +59792,17 @@
       },
       {
         "entity_id": "cc93220d19dd4c33b995e331a587ec75",
-        "entity_name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+        "entity_name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
         "occurrence_count": 1
       },
       {
         "entity_id": "5d0fb91b1da1469a91acd1ef11487f0f",
-        "entity_name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+        "entity_name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
         "occurrence_count": 1
       },
       {
         "entity_id": "4baeca786d084a3cb86bbed6dfe1c812",
-        "entity_name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+        "entity_name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
         "occurrence_count": 1
       },
       {
@@ -59832,7 +59832,7 @@
       },
       {
         "entity_id": "c66401d7a86f407e8258dae7b0e1ad2c",
-        "entity_name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+        "entity_name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
         "occurrence_count": 1
       },
       {
@@ -60832,12 +60832,12 @@
       },
       {
         "entity_id": "08bd15507ef34ba0b88f3eb682ec66c6",
-        "entity_name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+        "entity_name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
         "occurrence_count": 1
       },
       {
         "entity_id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-        "entity_name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+        "entity_name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
         "occurrence_count": 1
       },
       {
@@ -60857,7 +60857,7 @@
       },
       {
         "entity_id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-        "entity_name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+        "entity_name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
         "occurrence_count": 1
       },
       {
@@ -60872,7 +60872,7 @@
       },
       {
         "entity_id": "19dc9498d7b941a785ea505fedc0c265",
-        "entity_name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+        "entity_name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
         "occurrence_count": 1
       },
       {
