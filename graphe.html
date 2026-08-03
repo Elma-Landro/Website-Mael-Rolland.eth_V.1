@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js" crossorigin="anonymous"></script>
+<script src="sections.helpers.js"></script>
 <script src="graphe.helpers.js"></script>
 <script src="graphe.event-bus.js"></script>
 <script src="graphe.story-helpers.js"></script>
@@ -6312,17 +6313,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // graphe, cela rend seulement joignable ce qu'il porte déjà.
   function sectionNodeIdsFor(sectionKey) {
     if (!State.data || !sectionKey) return [];
+    const estDescendant = (window.GRC20Sections || {}).estDescendant;
     const ids = [];
     State.data.entities.forEach(e => {
       const brut = e.attributes && e.attributes.section_key;
       const key = brut && (brut.value || brut);
-      // Deux separateurs : les chapitres numerotent au point (`II.1.1.a`),
-      // l'introduction au souligne (`intro_A_1`). Ne tester que le point
-      // laissait 22 sections de l'introduction — la partie la plus lue —
-      // hors de portee des 5 entrees `intro_*` du sommaire.
-      if (key === sectionKey ||
-          (key && (key.indexOf(sectionKey + '.') === 0 ||
-                   key.indexOf(sectionKey + '_') === 0))) ids.push(e.id);
+      if (key === sectionKey || (key && estDescendant(key, sectionKey))) ids.push(e.id);
     });
     return ids;
   }

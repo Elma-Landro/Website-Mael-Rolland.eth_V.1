@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script src="sections.helpers.js"></script>
 <style>
 /* ═══════════════════════════════════════════════════════
    VARIABLES — charte mael-rolland.eth
@@ -1203,68 +1204,48 @@ async function loadGraph() {
     // ── Sections parentes : agrégation des descendants ─────────────────
     // La migration v100/v106 a rendu leur rang réel aux titres de niveau 3
     // de la thèse : ils portent désormais des clés comme « II.1.1.a ». Or le
-    // sommaire suit la table des matières de la thèse, qui s'arrête au
-    // niveau 2 : « II.1.1 » y figure, « II.1.1.a » non. Sans agrégation,
-    // 3 103 lignes d'entités — 2 151 entités distinctes — sur 6 sections
-    // devenaient inatteignables depuis le sommaire.
+    // sommaire suit la table des matières, qui s'arrête au niveau 2 :
+    // « II.1.1 » y figure, « II.1.1.a » non. Sans agrégation, 3 103 lignes
+    // d'entités — 2 151 entités distinctes — sur 6 sections devenaient
+    // inatteignables depuis le sommaire.
     //
     // Une section CONTIENT ses sous-parties : toute entité citée dans
-    // « II.1.1.a » est citée dans « II.1.1 ». La règle est donc l'union de la
-    // section ET DE TOUS ses descendants — la même que `sectionNodeIdsFor()`
-    // dans graphe.html. Deux règles différentes, c'étaient deux pages qui
-    // annonçaient des périmètres différents pour la même entrée de sommaire,
-    // sur 16 des 48 entrées ; et une parente déjà pourvue ignorait purement
-    // ses enfants (I.2.2 montrait ses 265 entités et taisait les 142 de
-    // I.2.2.b).
-    //
-    // Deux séparateurs : le point pour les chapitres, le souligné pour
-    // l'introduction (`intro_A_1`). Ne tester que le point laissait
-    // 22 sections de l'introduction hors de portée.
+    // « II.1.1.a » est citée dans « II.1.1 ». La lecture des clés vit dans
+    // `sections.helpers.js`, partagée avec `sectionNodeIdsFor()` de
+    // graphe.html : deux implémentations de la même règle, c'étaient deux
+    // pages qui annonçaient des périmètres différents pour la même entrée de
+    // sommaire, sur 16 des 48.
     //
     // Fait APRÈS le calcul de df/idf, et non avant : ajouter les parentes au
     // corpus ferait compter deux fois chaque entité de rang subordonné et
     // affaisserait son IDF dans TOUTES les sections. On réutilise donc le df
     // réel, avec la même formule.
-    // Les parentes candidates ne sont PAS seulement les clés présentes dans la
-    // carte : la plupart en sont absentes, c'est précisément le problème —
-    // « II.1.1 » n'y a pas d'entrée alors que « II.1.1.a » en a une. On dérive
-    // donc les ancêtres de chaque clé en retirant son dernier segment, et on
-    // ne garde que ceux qui portent encore un séparateur (« II » n'est pas une
-    // section, « I.1 » et « intro_A » en sont).
-    const candidates = new Set(allSections);
-    for (const cle of allSections) {
-      let c = cle;
-      for (;;) {
-        const i = Math.max(c.lastIndexOf('.'), c.lastIndexOf('_'));
-        if (i <= 0) break;
-        c = c.slice(0, i);
-        if (/[._]/.test(c)) candidates.add(c); else break;
-      }
-    }
-    const descendantsDe = {};
-    for (const parente of candidates) {
-      const enfants = allSections.filter(c => c !== parente &&
-        (c.indexOf(parente + '.') === 0 || c.indexOf(parente + '_') === 0));
-      if (enfants.length) descendantsDe[parente] = enfants.sort();
-    }
+    const descendantsDe = window.GRC20Sections.arbreDescendants(allSections);
     let parentesAgregees = 0;
     for (const [parente, enfants] of Object.entries(descendantsDe)) {
+      // On saute uniquement si AUCUN descendant n'apporte quoi que ce soit.
+      // Se fier au nombre d'identifiants distincts serait faux : un enfant
+      // peut ne citer que des entités déjà présentes chez la parente, et
+      // n'ajouter que des occurrences. Le compte d'entités ne bougerait pas,
+      // le poids si — et il commande le classement du panneau.
+      const contributeurs = enfants.filter(c => sectionMap[c]?.entities?.length);
+      if (!contributeurs.length) continue;
       const cumul = new Map();
-      for (const cle of [parente, ...enfants]) {
+      for (const cle of [parente, ...contributeurs]) {
         for (const e of (sectionMap[cle]?.entities || [])) {
           const vu = cumul.get(e.entity_id);
           if (vu) vu.occurrence_count += e.occurrence_count;
           else cumul.set(e.entity_id, { ...e });
         }
       }
+      if (!cumul.size) continue;
       const propres = sectionMap[parente]?.entities?.length || 0;
-      if (!cumul.size || cumul.size === propres) continue;
-      const modele = sectionMap[parente] || sectionMap[enfants[0]];
+      const modele = sectionMap[parente] || sectionMap[contributeurs[0]];
       sectionMap[parente] = {
         chapter_key: modele.chapter_key,
         page_start:  modele.page_start,
         entities:    [...cumul.values()],
-        _agrege_de:  enfants,
+        _agrege_de:  contributeurs,
         _propres:    propres,
       };
       tfidf[parente] = {};
