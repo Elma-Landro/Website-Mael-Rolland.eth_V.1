@@ -1,10 +1,11 @@
 # Migration des sections — chapitre I
 
 **Date** : 2026-08-03
-**Graphe audité** : `grc20-these-mael-rolland-v98.json`
-**Branche** : `agent/grc20-safety-net-v1`
-**Mode agent** : C (patch déposé, non appliqué)
-**Patch** : `patch_13_section_migration.json` — 22 opérations, 12 sections
+**Graphe source** : `grc20-these-mael-rolland-v99.json` → **`v100`**
+**Branche** : `agent/grc20-section-migration-v1`
+**Mode agent** : C (patchs déposés **et appliqués**, graphe candidat produit)
+**Patchs** : `patch_13` — 22 opérations, 12 sections · `patch_14` — 3 entités,
+12 relations, 6 rebranchements
 
 ---
 
@@ -72,9 +73,12 @@ des nœuds que le patch déplace lui-même. Appliqué en bloc : aucune collision
 Appliqué par morceaux : deux écrasements silencieux. **Il n'y a pas de
 sous-ensemble sûr.**
 
-## Ce que le patch ne fait pas — et qui doit suivre
+## Pourquoi le lot est indivisible
 
-### 1. Trois sections canoniques restent sans nœud
+Le patch de renumérotation **seul** dégraderait le site. Trois pièces
+doivent voyager ensemble, et une quatrième s'impose par voie de conséquence.
+
+### 1. Trois sections canoniques n'avaient aucun nœud — `patch_14`
 
 | clé | markdown | titre | page (sommaire) |
 |---|---|---|---|
@@ -82,13 +86,35 @@ sous-ensemble sûr.**
 | `I.1.3` | `##` l. 177 | Le fonctionnement de Bitcoin suivant le script original de Nakamoto | 78 |
 | `I.2.1` | `##` l. 259 | Un développement infrastructurel au-delà du protocole Bitcoin | 89 |
 
-Ce sont exactement trois entrées du sommaire de `graphe.html`. Aujourd'hui
-elles surlignent un nœud — le mauvais. Après le patch seul, elles n'en
-surligneraient aucun. **La migration doit donc être appliquée en même temps
-que la création de ces trois nœuds**, sans quoi on troque une erreur
-silencieuse contre un trou visible.
+Ce sont exactement trois entrées du sommaire de `graphe.html`. Avant, elles
+surlignaient un nœud — le mauvais. Après la renumérotation seule, elles n'en
+surligneraient aucun : on troquerait une erreur silencieuse contre un trou
+visible. `patch_14` les crée.
 
-### 2. Les cartes satellites doivent être remappées dans le même mouvement
+Ce que ces nœuds portent : titre FR et EN depuis les markdown, page depuis le
+sommaire, place dans l'arborescence. **Ni `summary` ni `central_argument`** —
+les rédiger serait écrire à la place de l'auteur. Ils n'ont **aucune relation
+de contenu**, et c'est un constat d'audit à part entière : le chapitre I
+compte trois sections dont le texte n'est pas représenté dans le graphe.
+
+#### Un défaut que la création rend visible
+
+Les sous-sections de second rang — `I.1.1.a`, `I.1.1.b`, `I.2.2.b` — portaient
+`section of` vers `I.1` / `I.2`, leur **grand-parent**, faute de parente
+existante. Créer les parentes en aurait fait les sœurs du nœud dont elles sont
+filles. `patch_14` les rebranche : 6 relations redirigées, seule chose qu'il
+modifie d'existant, et conséquence directe de la création.
+
+L'arborescence du chapitre I est désormais close :
+
+```
+I.1 ── I.1.1 ── I.1.1.a        I.2 ── I.2.1          I.3 ── I.3.1
+       │        I.1.1.b               I.2.2 ── I.2.2.b      I.3.2
+       ├─ I.1.2                                             I.3.3
+       └─ I.1.3                                       I.4
+```
+
+### 2. Les cartes satellites remappées dans le même mouvement
 
 `section_key` est la clé de jointure de trois fichiers que le lecteur charge :
 
@@ -100,14 +126,42 @@ silencieuse contre un trou visible.
 | `I.2.1` | `I.2.2` | 1 entrée | 469 épinglages |
 | `I.2.2` | `I.2.2.b` | 1 entrée | 195 épinglages |
 
-Soit **2 240 épinglages** à réécrire. Le remappage doit être **simultané**,
-pas séquentiel : appliquer `I.2.1 → I.2.2` puis `I.2.2 → I.2.2.b` déplacerait
-deux fois le même lot.
+Soit **2 245 remappages**, appliqués par `scripts/remap_section_keys.py`. Le
+remappage est **simultané**, jamais séquentiel : appliquer `I.2.1 → I.2.2`
+puis `I.2.2 → I.2.2.b` déplacerait deux fois le même lot. Le script détecte
+ces deux chaînes de lui-même et les signale.
+
+La table de correspondance n'est pas saisie à la main : elle est **dérivée de
+`patch_13`**, seule source de vérité.
 
 `section_overrides.json` n'est pas concerné (sa seule clé de chapitre I est
-`I.1`, inchangée).
+`I.1`, inchangée). Vérification d'après : les épinglages ont suivi leurs
+sections — 1 398 sur `I.1.1.a`, 55 sur `I.1.1.b`, 123 sur `I.1.2`, 469 sur
+`I.2.2`, 195 sur `I.2.2.b` — et le remappage n'a introduit **aucun** nouveau
+problème d'ancrage.
 
-### 3. Un nœud vide reste en l'état
+### 3. Le site devait basculer sur le graphe migré — le « dernier mètre »
+
+C'est la contrainte qui rend le lot indivisible. Les cartes sont **partagées**
+entre le graphe servi et les clés de section. Le site servait **v96** partout
+(`graphe.html`, `lecteur.html`, `graph-worker.mjs`, `narrative-anchors-build.mjs`,
+`grc20-publish.mjs`), alors que v99 existait — et les clés de section de v96 et
+v99 sont identiques, donc l'ensemble était cohérent.
+
+Remapper les cartes sans basculer le site aurait cassé le lecteur
+immédiatement : il aurait cherché dans v96 des sections renumérotées. Il n'y a
+pas d'état intermédiaire cohérent — seulement `v96 + anciennes clés`, ou
+`v100 + nouvelles clés`. Cette PR livre le second.
+
+Effet de bord bienvenu : le site cessait de servir **le pire des trois
+graphes**. v96 porte 15 endpoints cassés, corrigés dès v97.
+
+**Laissé en v96, délibérément** : `export/scripts/export-workshop-to-public.mjs`
+(valeur par défaut de `--canonical`). C'est un pipeline de publication publique
+avec ses propres règles de visibilité ; changer sa source sans les examiner
+serait imprudent.
+
+### 4. Un nœud vide reste en l'état
 
 `I.2.1b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles
 très politiques` — aucune clé, aucune entité rattachée — vise le même titre
@@ -128,8 +182,14 @@ lève. Il relève de la passe de dédoublonnage, pas de celle-ci.
   fichier est par ailleurs déjà périmé (`generated_from: v96`). Aucune action
   requise ici ; sa régénération est un chantier distinct.
 - **`graphe.html`** — aucune modification. Voir plus haut.
-- **`check_anchoring.py`** — 64 problèmes distincts, identiques à la
-  baseline. Aucune régression.
+- **`check_anchoring.py`** — 67 problèmes, baseline portée de 64 à **67**.
+  Les 3 ajoutés sont les 3 sections créées sans contenu rattaché : pas des
+  régressions, un constat consigné dans la donnée. Les 64 autres sont
+  inchangés — le remappage de 2 245 clés n'en a introduit aucun.
+- **CI, intégrité structurelle** — v100 : 0 endpoint cassé, 0 doublon,
+  0 orphelin. Le câblage d'arborescence était nécessaire : sans lui, les
+  3 nouveaux nœuds étaient orphelins et la CI refusait le graphe, à juste
+  titre.
 
 ## Reproduire
 
@@ -137,15 +197,31 @@ lève. Il relève de la passe de dédoublonnage, pas de celle-ci.
 python3 scripts/derive_section_tree.py --csv docs/audits/data/section-tree.csv
 python3 scripts/plan_section_migration.py --csv docs/audits/data/section-migration.csv
 python3 scripts/make_section_migration_patch.py --chapitre chap1
+python3 scripts/make_section_creation_patch.py  --chapitre chap1
+python3 scripts/make_v100_section_migration.py --dry-run
+python3 scripts/make_v100_section_migration.py
+python3 scripts/remap_section_keys.py --dry-run
 python3 scripts/check_anchoring.py
 ```
 
-Le générateur **refuse d'écrire un patch utile en cas de collision** sur
-l'état final : il sort en code 1 et nomme les clés en conflit.
+Trois garde-fous, chacun ayant servi au moins une fois pendant ce chantier :
+
+- le générateur **refuse d'écrire** en cas de collision sur l'état final, et
+  nomme les clés en conflit ;
+- l'applicateur **vérifie l'état de départ** de chaque relation rebranchée —
+  rebrancher une relation déjà déplacée serait écraser en aveugle — et refuse
+  de laisser une entité sans arête ;
+- `check_anchoring.py` **a signalé de lui-même** les 3 sections vides.
 
 ## Reste à traiter
 
 Chapitres II et III, introduction, conclusion — 58 sections écartées ici par
-`--chapitre chap1`. Trois placements de niveau 3 y restent à désigner à la
+`--chapitre chap1`. Quatre placements de niveau 3 y restent à désigner à la
 main (`II.1.1`, `II.1.2`, `II.2.3`, `III.3.4` — voir `GROUPE_C` dans le
 générateur, valeurs à `None`).
+
+Signalé, non traité — **dette antérieure, pas conséquence de ce lot** :
+`I.2.2`, `I.3.1`, `I.3.2` et `I.3.3` n'ont pas de relation `section of` vers
+leur section parente, seulement vers le chapitre. Huit relations la
+combleraient. Ce lot ne rebranche que ce que la création des parentes rend
+incohérent ; corriger au-delà élargirait une PR déjà dense.
