@@ -1,6 +1,6 @@
 {
- "_comment": "Dette d'ancrage connue au moment du gel. Le controle n'echoue que sur les codes ABSENTS de cette liste. Retirer un code ici quand il est reellement corrige. 2026-08-03 : 67 -> 36. Plus aucun identifiant mort, aucun jeton de relation inexistant, aucune op orpheline. Les 36 restants : 22 sous-sections de l'introduction inconnues des deux cartes (ecart de granularite) ; 3 sections creees vides a dessein par patch_14 ; 10 epinglages hors liste ; 1 section III.3 absente du graphe, a regler au chapitre III.",
- "graph": "grc20-these-mael-rolland-v102.json",
+ "_comment": "Dette d'ancrage connue au moment du gel. Le controle n'echoue que sur les codes ABSENTS de cette liste. Retirer un code ici quand il est reellement corrige.",
+ "graph": "grc20-these-mael-rolland-v103.json",
  "count": 36,
  "known": [
   "B:graph:I.1.1",
