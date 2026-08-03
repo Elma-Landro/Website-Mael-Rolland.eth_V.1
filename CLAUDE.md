@@ -43,7 +43,7 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
 ├── grc20-publish.mjs                           # GRC-20 publication pipeline (Node.js ES module)
 ├── graph-worker.mjs                            # Cloudflare Worker API (Node.js ES module)
 │
-├── grc20-these-mael-rolland-v96.json           # Current authoritative knowledge graph (canonical)
+├── grc20-these-mael-rolland-v104.json          # Current authoritative knowledge graph (canonical)
 │
 ├── entity_section_map.json                     # Entity ID → thesis subsection mapping
 ├── section_entities_map.json                   # Thesis section → entity list mapping
@@ -118,7 +118,7 @@ npm run worker-dev       # Local dev server for Cloudflare Worker
 npm run worker-deploy    # Deploy Worker to Cloudflare
 ```
 
-> **Note**: `package.json` scripts reference `v96.json`. Always pass `--input ./grc20-these-mael-rolland-v96.json` explicitly, or increment the version filename when publishing a new snapshot.
+> **Note**: `package.json` scripts reference the current canonical graph. When publishing a new snapshot, increment the filename **and** update `package.json`, `these.html`, `graphe.html`, `lecteur.html`, `graph-worker.mjs`, `narrative-anchors-build.mjs` — `scripts/check_graph_integrity.py` verifies that each graph's `space.version` matches its filename, but not that the site points at the right one.
 
 ---
 
@@ -208,9 +208,9 @@ A fully client-side force-directed + matrix visualization of the GRC-20 knowledg
 
 ## GRC-20 Knowledge Graph
 
-The file `grc20-these-mael-rolland-v96.json` is the current authoritative knowledge graph (v96, 2,263 entities, 20,057 relations, `generated_at: 2026-03-28`). All previous versions have been removed from the repo.
+The file `grc20-these-mael-rolland-v104.json` is the current authoritative knowledge graph (v104, 2,282 entities, 20,147 relations). Snapshots v96 through v104 are kept in the repo; only the most recent is blocking in CI.
 
-### Entity Types (v96 — 55 types)
+### Entity Types (v104 — 55 types)
 
 | Type | Description |
 |------|-------------|
@@ -251,7 +251,7 @@ The file `grc20-these-mael-rolland-v96.json` is the current authoritative knowle
 
 ### Knowledge Graph Versioning
 
-The graph has evolved significantly across 96 versions. Key milestones: v72 added the `ThesisSection` layer (23 subsection nodes, 11,884 `appears_in_section` relations); v88–v90 added `appears_in_section` relations for frameworks, arguments, and concepts; v96 is the current canonical snapshot.
+The graph has evolved across 104 versions. Key milestones: v72 added the `ThesisSection` layer (23 subsection nodes, 11,884 `appears_in_section` relations); v88–v90 added `appears_in_section` relations for frameworks, arguments, and concepts; v97 repaired 15 truncated relation endpoints; v98–v99 added missing chronology events and wired the maturation phase; v100 renumbered the chapter I sections onto the thesis's own numbering; v101 dropped 19 orphan ops; v102 restored the thesis's 8 development domains; v103 wired events to domains from the v2 catalogue; v104 added Ethereum's hard forks. **v104 is the current canonical snapshot.**
 
 ### Patch Files
 
@@ -374,7 +374,7 @@ The Markdown files in `assets/MD/` are the full text of the PhD thesis. When wor
 - French originals: `01_chapitre_I.md`, etc.
 - English translations: `01_chapitre_I_EN.md`, etc.
 - `style.css` in this directory styles the `lecteur.html` reader
-- The knowledge graph JSON (`grc20-these-mael-rolland-v96.json`) is derived from these texts
+- The knowledge graph JSON (`grc20-these-mael-rolland-v104.json`) is derived from these texts
 
 Do not modify thesis text content unless explicitly asked — these are archival academic documents.
 

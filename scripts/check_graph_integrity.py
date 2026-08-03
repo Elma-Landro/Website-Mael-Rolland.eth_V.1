@@ -81,10 +81,21 @@ def main(argv=None):
         ops_mortes = [o for o in g.get('ops', [])
                       if o.get('entityId') and o['entityId'] not in ids_entites]
 
+        # Les metadonnees `space` sont ce que le pipeline GRC-20 publie
+        # on-chain. Les scripts de construction v100 a v104 recopiaient le
+        # bloc du graphe source sans le mettre a jour : les cinq annoncaient
+        # « v99 ». Un graphe qui ment sur sa propre version trompe tout
+        # consommateur, et rien ne le verifiait.
+        m = re.search(r'-v(\d+)\.json$', f)
+        attendu = f'v{m.group(1)}' if m else None
+        version = (g.get('space') or {}).get('version')
+        version_ok = version == attendu
+
         marque = '<- courant, bloquant' if f == courant else '(gele, rapport seul)'
         print(f"  {os.path.basename(f)}: {len(casses)} endpoint(s) casse(s) hors "
               f"tolerance · {dups} id(s) duplique(s) · {orph} orphelin(s) · "
-              f"{len(ops_mortes)} op(s) orpheline(s)  {marque}")
+              f"{len(ops_mortes)} op(s) orpheline(s) · "
+              f"version {'OK' if version_ok else f'FAUSSE ({version})'}  {marque}")
         # Detail seulement pour le graphe bloquant : les instantanes geles
         # portent tous les memes 19, et les lister cinq fois rendrait la
         # sortie CI illisible pour un etat que personne ne compte reparer.
@@ -101,7 +112,7 @@ def main(argv=None):
                   f"from={r.get('from')} to={r.get('to')} "
                   f"type={r.get('relation_type_name')}")
 
-        if f == courant and (casses or dups or orph or ops_mortes):
+        if f == courant and (casses or dups or orph or ops_mortes or not version_ok):
             echec = True
 
     return 1 if echec else 0
