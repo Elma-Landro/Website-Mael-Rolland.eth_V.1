@@ -890,7 +890,19 @@ body::before {
   .reader-content h2 { font-size: 0.55em; }
   .reader-content h3 { font-size: 0.45em; }
 }
-</style>
+
+    .figure-absente {
+      /* Repli d'une figure absente du depot : lisible et discret, plutot
+         qu'un pictogramme d'image cassee. */
+      font-family: 'VT323', monospace;
+      font-size: 0.95rem;
+      opacity: 0.55;
+      border: 1px dashed currentColor;
+      padding: 0.6rem 0.9rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -1589,7 +1601,20 @@ async function loadChapter(chapterId) {
 function renderMarkdown(md) {
   let cleaned = md
     .replace(/\{[^}]*width=[^}]*\}/g, '')
-    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](assets/figures/$2)')
+    // Les 42 figures de la conversion Word (`media/imageN.png`) n'ont jamais
+    // ete versees : `assets/figures/` contient 16 exports aux noms
+    // descriptifs, dont 2 seulement se rapprochent d'une legende. La
+    // reecriture ci-dessous pointait donc 81 images vers le vide, et le
+    // lecteur affichait 81 icones cassees — dont toutes les chronologies.
+    // En attendant que les fichiers soient verses, on remplace la figure
+    // manquante par sa reference, lisible, plutot que par un pictogramme
+    // d'erreur. Le jour ou les images arrivent sous `assets/figures/`, la
+    // balise <img> les affiche et le repli ne se declenche plus.
+    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g,
+             (m, alt, fichier) =>
+               `<img src="assets/figures/${fichier}" alt="${alt}" class="figure-these" ` +
+               `onerror="this.replaceWith(Object.assign(document.createElement('p'),` +
+               `{className:'figure-absente',textContent:'[Figure ${fichier} — non versee dans le depot]'}))">`)
     .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
 
   // Extract footnote definitions
