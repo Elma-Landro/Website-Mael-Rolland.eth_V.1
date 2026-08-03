@@ -19897,7 +19897,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "II.3 Au‑delà de la revendication d’une absence de gouvernance !",
+          "value": "II.3 Au‑delà de la revendication d'une absence de gouvernance !",
           "options": {
             "language": "fr"
           }
@@ -20159,7 +20159,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+          "value": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
           "options": {
             "language": "fr"
           }
@@ -87450,7 +87450,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Du terreau matériel et idéel aux racines de Bitcoin",
+          "value": "I.1.1 Du terreau matériel et idéel aux racines de Bitcoin",
           "options": {
             "language": "fr"
           }
@@ -87505,7 +87505,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Le fonctionnement de Bitcoin suivant le script original de Nakamoto",
+          "value": "I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto",
           "options": {
             "language": "fr"
           }
@@ -87560,7 +87560,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Un développement infrastructurel au-delà du protocole Bitcoin",
+          "value": "I.2.1 Un développement infrastructurel au-delà du protocole Bitcoin",
           "options": {
             "language": "fr"
           }
@@ -88253,7 +88253,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "La critique des CM depuis les grands courants de théorie monétaire",
+          "value": "II.1.1 La critique des CM depuis les grands courants de théorie monétaire",
           "options": {
             "language": "fr"
           }
@@ -88308,7 +88308,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
+          "value": "II.1.2 Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
           "options": {
             "language": "fr"
           }
@@ -88363,7 +88363,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Des chimères monétaires inédites, reléguées à des usages spéculatifs",
+          "value": "II.2.1 Des chimères monétaires inédites, reléguées à des usages spéculatifs",
           "options": {
             "language": "fr"
           }
@@ -88418,7 +88418,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
+          "value": "II.2.2 L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
           "options": {
             "language": "fr"
           }
@@ -88473,7 +88473,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
+          "value": "II.2.3 Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
           "options": {
             "language": "fr"
           }
@@ -88528,7 +88528,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
+          "value": "II.3.1 D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
           "options": {
             "language": "fr"
           }
@@ -88583,7 +88583,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
+          "value": "II.3.3 Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
           "options": {
             "language": "fr"
           }
@@ -88638,7 +88638,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Présentation périodisée de la crise Bitcoin CVE 2018",
+          "value": "III.1.1 Présentation périodisée de la crise Bitcoin CVE 2018",
           "options": {
             "language": "fr"
           }
@@ -88693,7 +88693,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
+          "value": "III.1.2 Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
           "options": {
             "language": "fr"
           }
@@ -88748,7 +88748,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
+          "value": "III.2.2 Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
           "options": {
             "language": "fr"
           }
@@ -88803,7 +88803,7 @@
         },
         "labelFr": {
           "type": "TEXT",
-          "value": "Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
+          "value": "III.2.3 Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
           "options": {
             "language": "fr"
           }

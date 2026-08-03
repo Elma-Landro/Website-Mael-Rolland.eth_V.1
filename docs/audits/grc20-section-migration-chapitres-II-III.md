@@ -4,7 +4,7 @@
 **Graphe audité** : `grc20-these-mael-rolland-v105.json` → **`v106`**
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mode agent** : A
-**Patchs** : `patch_15_section_migration_chap23.json`, `patch_16_section_creation_chap23.json`
+**Patchs** : `patch_15_section_migration_corps.json`, `patch_16_section_creation_corps.json`
 
 Second et dernier palier de la migration entamée en v100 pour le chapitre I.
 Même arbitrage, même mécanisme, mêmes scripts.
@@ -110,7 +110,7 @@ Les 11 codes correspondants sont inscrits dans
 
 ---
 
-## Deux défauts trouvés en chemin, hors périmètre initial
+## Trois constats faits en chemin, hors périmètre initial
 
 ### 1. `III.3` est l'unique `ChapterSection` du graphe
 
@@ -202,3 +202,85 @@ Et le contrôle qui donne son sens à tout le chantier :
 `space.version` est désormais **dérivée du nom du fichier écrit** par
 l'applicateur, et non recopiée de la source : c'est ce qui avait laissé v100 à
 v104 annoncer « v99 ».
+
+---
+
+## Suite : rendre le contenu joignable depuis le sommaire
+
+La migration a révélé un défaut qu'elle rendait mesurable, et qui la
+précédait : **le sommaire ne pouvait plus atteindre 3 195 relations.**
+
+Le sommaire suit la table des matières de la thèse, qui s'arrête au niveau 2 :
+`II.1.1` y figure, `II.1.1.a` non. Or c'est vers les rangs subordonnés que
+pointe désormais le contenu. Six entrées du sommaire — `I.1.1` (depuis v100),
+`II.1.1`, `II.2.2`, `II.3.1`, `III.1.1`, `III.1.2` — affichaient donc un
+panneau vide alors que leurs sous-parties portaient des centaines d'entités.
+
+**Une section contient ses sous-parties.** Les réunir n'ajoute rien au graphe :
+cela rend joignable ce qu'il porte déjà. Les deux pages le font désormais.
+
+| Entrée | Avant | Après |
+|---|---|---|
+| `I.1.1` | 0 | 392 relations · 363 entités |
+| `II.1.1` | 0 | 816 · 472 |
+| `II.2.2` | 0 | 1 089 · 513 |
+| `II.3.1` | 0 | 93 · 89 |
+| `III.1.1` | 0 | 594 · 515 |
+| `III.1.2` | 0 | 211 · 199 |
+
+Entrées de sommaire au panneau vide : **14 → 8**. Les 8 restantes n'ont de
+contenu nulle part — c'est la dette d'ancrage, pas un défaut de navigation.
+
+Dans `lecteur.html`, l'agrégation est faite **après** le calcul du df/idf, et
+non avant : ajouter les parentes au corpus ferait compter deux fois chaque
+entité de rang subordonné et affaisserait son IDF dans *toutes* les sections.
+Le tf-idf des parentes est calculé avec le df réel et la même formule.
+
+Dans `graphe.html`, `sectionNodeIdsFor()` réunit la section et ses rangs
+subordonnés ; les comptes du sommaire et le focus au clic s'en servent tous
+les deux.
+
+## `labelFr` : le titre affiché avait décroché du nom du nœud
+
+C'est `labelFr`, non `name`, que `lecteur.html` affiche en tête du panneau.
+La convention du graphe est nette : `labelFr` porte le titre **numéroté**
+partout où la clé est une numérotation (`I.4`, `II.1`, `III.3`).
+
+Deux écarts, corrigés ensemble :
+
+- les **14 sections créées** (3 en v100, 11 ici) recevaient un `labelFr` sans
+  numéro — le lecteur perdait le rang de la section qu'il consultait ;
+- le patch de migration **ne réalignait pas `labelFr`**, laissant le titre
+  affiché diverger du nom sur la section même qu'on venait de renuméroter.
+
+Le générateur applique désormais à `labelFr` la même règle qu'à `name`, et la
+liste blanche de l'applicateur l'admet explicitement. Le périmètre du patch
+s'étend au chapitre I pour les trois sections héritées de v100 : y laisser
+3 cas sur 14 aurait été arbitraire.
+
+**Divergences `labelFr` / `name` restantes : 0** (sur 50 sections qui portent
+l'attribut).
+
+## Vérification en navigateur
+
+Les deux pages ont été ouvertes dans Chromium sur le dépôt servi en local,
+avec Cytoscape servi depuis le disque — le bac à sable bloque les CDN, et sans
+cela `graphe.html` n'initialise pas son graphe et les compteurs du sommaire ne
+sont jamais calculés.
+
+```
+graphe.html   I.1.1 (392) · II.1.1 (816) · II.2.2 (1089)
+              II.3.1 (93) · III.1.1 (594) · III.1.2 (211)
+              8 entrées sans compte — les 8 réellement vides
+              aucune pageerror
+
+lecteur.html  « [lecteur] 6 section(s) parente(s) reconstituée(s) »
+              II.1.1  top 12/472 entités  « II.1.1 La critique des CM… »
+              II.1.2  0 nœud — « Contenu de cette section pas encore rattaché »
+              aucune pageerror
+```
+
+Les panneaux à 12 nœuds et 0 lien ne sont pas un effet de l'agrégation :
+`I.3.2`, section jamais touchée, se comporte de même. La sélection top-12 par
+tf-idf retient des entités distinctives, donc peu reliées entre elles — trait
+antérieur, non traité ici.

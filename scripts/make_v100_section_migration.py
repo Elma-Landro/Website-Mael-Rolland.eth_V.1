@@ -99,7 +99,12 @@ def main(argv=None):
         e = entites[o['entityId']]
         if not est_section(e, nom_type):
             erreurs.append(f"{o['entityId']} n'est ni ThesisSection ni ChapterSection")
-        if o['type'] == 'SET_ATTRIBUTE' and o['attributeId'] not in ('section_key', 'labelEn'):
+        # Liste blanche : un patch de migration n'a aucune raison d'ecrire
+        # ailleurs. `labelFr` en fait partie depuis v106 — c'est lui que
+        # `lecteur.html` affiche en tete du panneau, et le laisser derriere
+        # faisait diverger le titre affiche du nom du noeud.
+        if o['type'] == 'SET_ATTRIBUTE' and o['attributeId'] not in (
+                'section_key', 'labelFr', 'labelEn'):
             erreurs.append(f"attribut hors politique : {o['attributeId']}")
 
     # ---------- validations : patch_14 ----------

@@ -279,6 +279,20 @@ def main(argv=None):
                         '_comment': motif})
             change.append('name')
 
+        # `labelFr` porte le meme libelle que `name` — c'est lui que
+        # `lecteur.html` affiche en tete du panneau. Le laisser derriere ferait
+        # diverger le titre affiche du nom du noeud, sur la section meme qu'on
+        # vient de renumeroter.
+        label_fr = (ent.get('attributes') or {}).get('labelFr')
+        if label_fr and nouveau_nom and nouveau_nom != label_fr.get('value'):
+            ops.append({'type': 'SET_ATTRIBUTE', 'entityId': eid,
+                        'attributeId': 'labelFr',
+                        'value': {'type': 'TEXT', 'value': nouveau_nom,
+                                  'options': label_fr.get('options',
+                                                          {'language': 'fr'})},
+                        '_comment': motif + ' — libelle francais realigne'})
+            change.append('labelFr')
+
         # `labelEn` n'existe que sur une partie des sections. On le realigne
         # la ou il existe ; on ne le cree pas la ou il manque — ce serait
         # enrichir, pas migrer.
@@ -322,7 +336,7 @@ def main(argv=None):
                            "de la these, second rang subordonne, libelles realignes.",
             'source_graph': os.path.basename(chemin),
             'perimetre': args.chapitre or 'toute la these',
-            'policy': "Ne modifie que section_key, name et labelEn. Aucune "
+            'policy': "Ne modifie que section_key, name, labelFr et labelEn. Aucune "
                       "entite creee, fusionnee ou supprimee. Aucune relation "
                       "touchee. Les noeuds sans section_key sont laisses en "
                       "l'etat ; labelEn n'est realigne que la ou il existe.",

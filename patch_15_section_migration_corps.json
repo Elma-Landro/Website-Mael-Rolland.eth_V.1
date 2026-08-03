@@ -3,8 +3,8 @@
   "patch_id": "15",
   "description": "Migration des ThesisSection au niveau canonique ## de la these, second rang subordonne, libelles realignes.",
   "source_graph": "grc20-these-mael-rolland-v105.json",
-  "perimetre": "chap2,chap3",
-  "policy": "Ne modifie que section_key, name et labelEn. Aucune entite creee, fusionnee ou supprimee. Aucune relation touchee. Les noeuds sans section_key sont laisses en l'etat ; labelEn n'est realigne que la ou il existe.",
+  "perimetre": "chap1,chap2,chap3",
+  "policy": "Ne modifie que section_key, name, labelFr et labelEn. Aucune entite creee, fusionnee ou supprimee. Aucune relation touchee. Les noeuds sans section_key sont laisses en l'etat ; labelEn n'est realigne que la ou il existe.",
   "arbitrages": {
    "niveau_canonique": "##, celui que la these emploie (ch. I l.99)",
    "niveau_3": "second rang subordonne (I.1.1.a, I.1.1.b...)",
@@ -293,6 +293,45 @@
   },
   {
    "type": "SET_ATTRIBUTE",
+   "entityId": "3b652bdef05925924c4683ae384a70d2",
+   "attributeId": "labelFr",
+   "value": {
+    "type": "TEXT",
+    "value": "I.1.1 Du terreau matériel et idéel aux racines de Bitcoin",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle francais realigne"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3f2a9945f3856123c823b24f025e438e",
+   "attributeId": "labelFr",
+   "value": {
+    "type": "TEXT",
+    "value": "I.1.3 Le fonctionnement de Bitcoin suivant le script original de Nakamoto",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle francais realigne"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+   "attributeId": "labelFr",
+   "value": {
+    "type": "TEXT",
+    "value": "I.2.1 Un développement infrastructurel au-delà du protocole Bitcoin",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle francais realigne"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
    "entityId": "87a54f067fbb44f7b32c4207fa23a3b2",
    "attributeId": "labelEn",
    "value": {
@@ -328,6 +367,19 @@
    "entityId": "d622d318825741cda43212d7831a88c7",
    "value": "II.3 Au‑delà de la revendication d'une absence de gouvernance !",
    "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d622d318825741cda43212d7831a88c7",
+   "attributeId": "labelFr",
+   "value": {
+    "type": "TEXT",
+    "value": "II.3 Au‑delà de la revendication d'une absence de gouvernance !",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle francais realigne"
   },
   {
    "type": "SET_ATTRIBUTE",
@@ -373,6 +425,19 @@
    "entityId": "41e14735f0af4e9a832041a8168cc4e9",
    "value": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
    "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "41e14735f0af4e9a832041a8168cc4e9",
+   "attributeId": "labelFr",
+   "value": {
+    "type": "TEXT",
+    "value": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle francais realigne"
   },
   {
    "type": "SET_ATTRIBUTE",

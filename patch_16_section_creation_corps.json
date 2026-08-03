@@ -3,8 +3,8 @@
   "patch_id": "14",
   "description": "Creation des ThesisSection canoniques absentes du graphe.",
   "source_graph": "grc20-these-mael-rolland-v105.json",
-  "depends_on": "patch_15_section_migration_chap23.json",
-  "perimetre": "chap2,chap3",
+  "depends_on": "patch_15_section_migration_corps.json",
+  "perimetre": "chap1,chap2,chap3",
   "policy": "Ajout d'entites et de leur place dans l'arborescence. Aucune entite existante modifiee, aucune fusion, aucune suppression, aucune relation retiree. Seule exception declaree : les rebranchements ci-dessous, qui redirigent des relations `section of` / `has section` existantes vers la parente immediate desormais creee.",
   "id_derivation": "md5('grc20-section-migration-v1|' + '|'.join(parts)) -> 32 hex minuscules. parts = ('section', chapitre, cle_canonique). Deterministe.",
   "contenu": "Titre FR/EN depuis les markdown, page depuis le sommaire de graphe.html, position dans l'arborescence. Ni summary ni central_argument : les rediger serait ecrire a la place de l'auteur."
@@ -33,7 +33,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "La critique des CM depuis les grands courants de théorie monétaire",
+     "value": "II.1.1 La critique des CM depuis les grands courants de théorie monétaire",
      "options": {
       "language": "fr"
      }
@@ -89,7 +89,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
+     "value": "II.1.2 Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
      "options": {
       "language": "fr"
      }
@@ -145,7 +145,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Des chimères monétaires inédites, reléguées à des usages spéculatifs",
+     "value": "II.2.1 Des chimères monétaires inédites, reléguées à des usages spéculatifs",
      "options": {
       "language": "fr"
      }
@@ -201,7 +201,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
+     "value": "II.2.2 L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
      "options": {
       "language": "fr"
      }
@@ -257,7 +257,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
+     "value": "II.2.3 Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
      "options": {
       "language": "fr"
      }
@@ -313,7 +313,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
+     "value": "II.3.1 D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
      "options": {
       "language": "fr"
      }
@@ -369,7 +369,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
+     "value": "II.3.3 Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
      "options": {
       "language": "fr"
      }
@@ -425,7 +425,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Présentation périodisée de la crise Bitcoin CVE 2018",
+     "value": "III.1.1 Présentation périodisée de la crise Bitcoin CVE 2018",
      "options": {
       "language": "fr"
      }
@@ -481,7 +481,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
+     "value": "III.1.2 Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
      "options": {
       "language": "fr"
      }
@@ -537,7 +537,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
+     "value": "III.2.2 Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
      "options": {
       "language": "fr"
      }
@@ -593,7 +593,7 @@
     },
     "labelFr": {
      "type": "TEXT",
-     "value": "Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
+     "value": "III.2.3 Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
      "options": {
       "language": "fr"
      }

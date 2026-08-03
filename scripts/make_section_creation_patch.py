@@ -181,7 +181,11 @@ def main(argv=None):
         attrs = {
             'section_key': {'type': 'TEXT', 'value': cle,
                             'options': {'language': 'fr'}},
-            'labelFr': {'type': 'TEXT', 'value': titre,
+            # Numerote, comme `name` et comme les `labelFr` deja presents sur
+            # les sections a cle numerique (I.4, II.1, III.3...). C'est
+            # `labelFr` que `lecteur.html` affiche en tete du panneau : sans
+            # le numero, la section creee y perdait son rang.
+            'labelFr': {'type': 'TEXT', 'value': f'{cle} {titre}',
                         'options': {'language': 'fr'}},
             'chapter': {'type': 'TEXT', 'value': NOM_CHAPITRE.get(l['chapitre'], ''),
                         'options': {'language': 'fr'}},
