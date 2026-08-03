@@ -51,43 +51,16 @@ jobs:
       # pas un defaut a masquer. On l'inscrit donc nommement en tolerance.
       #
       # Seul le graphe le plus recent est bloquant. Les versions anterieures
-      # sont des instantanes geles : v96 porte encore 16 endpoints casses,
+      # sont des instantanes geles : v96 porte encore 15 endpoints casses,
       # corriges des v97. Les faire echouer rendrait la CI rouge pour un etat
       # que personne ne compte reparer. Elles restent verifiees, en rapport.
+      #
+      # Ce controle vivait ici, en Python embarque. Il en est sorti : du code
+      # qui n'existe que dans un YAML ne s'execute qu'en CI, donc ne se
+      # verifie jamais avant d'etre pousse — et il a livre une KeyError sur
+      # une ligne d'affichage. Un fichier appelable se rejoue en local.
       - name: Integrite structurelle du graphe
-        run: |
-          python3 - <<'PY'
-          import glob, json, os, re, subprocess, sys
-
-          TOLEREES = {'9dee2daa2afa4212f6369b059e0cf78c'}   # orpheline Ostrom, tenue exprès
-
-          graphes = sorted(glob.glob('grc20-these-mael-rolland-v*.json'),
-                           key=lambda f: int(re.search(r'-v(\d+)\.json$', f).group(1)))
-          if not graphes:
-              print('aucun graphe'); sys.exit(0)
-          courant = graphes[-1]
-          echec = False
-
-          for f in graphes:
-              rapport = f'/tmp/{os.path.basename(f)[:-5]}.audit.json'
-              subprocess.run([sys.executable, 'scripts/audit_graph.py',
-                              '--input', f, '--json', rapport, '-q'],
-                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-              c = json.load(open(rapport, encoding='utf-8'))['critical']
-              casses = [r for r in c['broken_relations_details']
-                        if r['relation_id'] not in TOLEREES]
-              dups, orph = len(c['duplicate_ids']), len(c['orphans'])
-              marque = '<- courant, bloquant' if f == courant else '(gele, rapport seul)'
-              print(f"  {f}: {len(casses)} endpoint(s) casse(s) hors tolerance · "
-                    f"{dups} id(s) duplique(s) · {orph} orphelin(s)  {marque}")
-              for r in casses[:5]:
-                  print(f"      {r['relation_id']} : from={r['missing_from']} "
-                        f"type={r['type']}")
-              if f == courant and (casses or dups or orph):
-                  echec = True
-
-          sys.exit(1 if echec else 0)
-          PY
+        run: python3 scripts/check_graph_integrity.py
 
       - name: Coherence de la couche d'ancrage
         run: python3 scripts/check_anchoring.py

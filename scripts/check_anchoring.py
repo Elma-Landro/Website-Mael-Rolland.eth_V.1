@@ -109,22 +109,51 @@ def index_graphe(graphe):
 
 
 def lire_story_presets(repo=REPO):
-    """Delegue a Node la lecture de story-presets.mjs. -> dict, ou None."""
+    """Delegue a Node la lecture de story-presets.mjs.
+
+    -> (presets | None, raison). `raison` est vide en cas de succes, et
+    porte sinon le motif exact. Le retour nu ne suffisait pas : un
+    story-presets.mjs casse, un plantage de Node et une table d'alias
+    illisible produisaient tous `None`, donc le meme message a l'ecran —
+    alors qu'une table d'alias vide transforme des references parfaitement
+    resolues en fausses regressions `E:focus:`. L'operateur doit pouvoir
+    distinguer les trois.
+    """
     node = shutil.which('node')
+    if not node:
+        return None, 'Node introuvable dans le PATH'
     helper = os.path.join(repo, 'scripts', 'dump_story_presets.mjs')
-    if not node or not os.path.exists(helper):
-        return None
+    if not os.path.exists(helper):
+        return None, f'{os.path.relpath(helper, REPO)} absent'
+
+    # Aucune des trois valeurs ne vient d'une entree externe : `node` est
+    # resolu par shutil.which, `helper` est derive de __file__, `repo` est
+    # une constante ou un chemin passe en ligne de commande par l'operateur
+    # qui execute deja ce script. Pas de shell, liste d'arguments explicite.
+    commande = [node, helper, '--repo', repo]
     try:
-        r = subprocess.run([node, helper, '--repo', repo],
-                           capture_output=True, text=True, timeout=60)
-    except (subprocess.TimeoutExpired, OSError):
-        return None
-    if r.returncode != 0 or not r.stdout.strip():
-        return None
+        r = subprocess.run(commande, capture_output=True, text=True,  # noqa: S603
+                           timeout=60, shell=False)
+    except subprocess.TimeoutExpired:
+        return None, 'le lecteur Node a depasse 60 s'
+    except OSError as err:
+        return None, f'lancement impossible : {err}'
+
+    erreur = (r.stderr or '').strip()
+    if r.returncode != 0:
+        return None, f'Node a echoue (code {r.returncode}) : {erreur or "sans message"}'
+    if not r.stdout.strip():
+        return None, f'sortie vide{" ; " + erreur if erreur else ""}'
     try:
-        return json.loads(r.stdout)
-    except json.JSONDecodeError:
-        return None
+        presets = json.loads(r.stdout)
+    except json.JSONDecodeError as err:
+        return None, f'sortie illisible : {err}'
+
+    # Une table d'alias vide *par echec* ne se voit pas autrement : le
+    # helper la signale explicitement.
+    if not presets.get('aliasesOk', True):
+        return presets, f'table d\'alias illisible — {erreur or "motif non precise"}'
+    return presets, ''
 
 
 # ------------------------------------------------------------------ controles
@@ -246,7 +275,7 @@ def main(argv=None):
         print(f"ERREUR : JSON invalide ({e}).", file=sys.stderr)
         return 2
 
-    presets = lire_story_presets()
+    presets, raison_presets = lire_story_presets()
     problemes = collecter_problemes(graphe, esm, sem, ovr, anc, presets)
 
     # Un meme code peut etre signale plusieurs fois : on compte les problemes
@@ -291,9 +320,10 @@ def main(argv=None):
             print(f"stories  : {presets['stories']} recits, {presets['steps']} etapes, "
                   f"{len(presets['focusRefs'])} references, "
                   f"{len(presets['aliases'])} alias (lus via Node)")
+            if raison_presets:
+                print(f"           ATTENTION : {raison_presets}")
         else:
-            print("stories  : NON VERIFIEES — Node indisponible ou "
-                  "scripts/dump_story_presets.mjs illisible")
+            print(f"stories  : NON VERIFIEES — {raison_presets}")
         print()
         par_cat = collections.Counter(cat_par_code.values())
         if par_cat:

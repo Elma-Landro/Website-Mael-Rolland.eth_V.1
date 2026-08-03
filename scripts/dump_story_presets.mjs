@@ -65,6 +65,10 @@ for (const story of presets.stories) {
 // ---------- la table d'alias ----------
 
 let aliases = {};
+// Une table d'alias vide PAR ECHEC et une table vide PAR ABSENCE se
+// ressemblent une fois serialisees — et la premiere transforme des
+// references parfaitement resolues en fausses regressions. On distingue.
+let aliasesOk = true;
 try {
   const src = readFileSync(resolve(REPO, 'graphe.story-helpers.js'), 'utf8');
   const faux = { window: undefined, self: undefined, globalThis: undefined };
@@ -72,8 +76,15 @@ try {
   faux.self = faux;
   faux.globalThis = faux;
   runInNewContext(src, faux, { timeout: 5000 });
-  aliases = faux.GrapheStoryHelpers?.STORY_FOCUS_ALIASES ?? {};
+  const table = faux.GrapheStoryHelpers?.STORY_FOCUS_ALIASES;
+  if (!table) {
+    aliasesOk = false;
+    console.error("AVERTISSEMENT : graphe.story-helpers.js n'expose pas " +
+                  'STORY_FOCUS_ALIASES — les references seront verifiees sans elle.');
+  }
+  aliases = table ?? {};
 } catch (err) {
+  aliasesOk = false;
   console.error(`AVERTISSEMENT : table d'alias illisible (${err.message}) — ` +
                 'les references seront verifiees sans elle.');
 }
@@ -84,4 +95,5 @@ process.stdout.write(JSON.stringify({
   focusRefs: [...focusRefs].sort(),
   allowedRelationTypes: [...allowedRelationTypes].sort(),
   aliases,
+  aliasesOk,
 }, null, 1) + '\n');
