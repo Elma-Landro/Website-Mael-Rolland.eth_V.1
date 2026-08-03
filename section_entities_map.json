@@ -120,7 +120,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 3
       },
       {
@@ -175,7 +175,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 3
       },
       {
@@ -435,7 +435,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 3
       },
       {
@@ -1850,7 +1850,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -2366,7 +2366,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 3
       },
       {
@@ -2421,7 +2421,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 3
       },
       {
@@ -2681,7 +2681,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 3
       },
       {
@@ -3741,7 +3741,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -3756,7 +3756,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -3911,12 +3911,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -5307,7 +5307,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -5322,7 +5322,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -5447,12 +5447,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -6202,7 +6202,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
@@ -6272,7 +6272,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -6532,7 +6532,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -7633,7 +7633,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -7643,7 +7643,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -7738,12 +7738,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -8829,7 +8829,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 1
       },
       {
@@ -8849,7 +8849,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -9019,12 +9019,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 1
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -9955,7 +9955,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 5
       },
       {
@@ -10010,7 +10010,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 5
       },
       {
@@ -10270,7 +10270,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 5
       },
       {
@@ -11661,7 +11661,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 5
       },
       {
@@ -11716,7 +11716,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 5
       },
       {
@@ -11976,7 +11976,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 5
       },
       {
@@ -13934,7 +13934,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -13944,7 +13944,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -13954,12 +13954,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -14284,12 +14284,12 @@
       },
       {
         "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
-        "entity_name": "De l'information et de la connaissance",
+        "entity_name": "Information et connaissance",
         "occurrence_count": 1
       },
       {
         "entity_id": "3960e7b3294c4364bca1b046734ef886",
-        "entity_name": "De conformité aux réglementations nationales",
+        "entity_name": "Conformité réglementaire",
         "occurrence_count": 1
       },
       {
@@ -15395,7 +15395,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -15410,7 +15410,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -15505,12 +15505,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -16075,7 +16075,7 @@
       },
       {
         "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
-        "entity_name": "De l'information et de la connaissance",
+        "entity_name": "Information et connaissance",
         "occurrence_count": 1
       },
       {
@@ -17247,7 +17247,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -17257,7 +17257,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -17267,12 +17267,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -17952,7 +17952,7 @@
       },
       {
         "entity_id": "bb565b2132f5430eac529b953711be41",
-        "entity_name": "Des \"Altcoins\"",
+        "entity_name": "Altcoins, tokens et surcouches",
         "occurrence_count": 1
       },
       {
@@ -19104,7 +19104,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -19114,7 +19114,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -19139,12 +19139,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -22337,7 +22337,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
@@ -22397,7 +22397,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -22657,7 +22657,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -24023,7 +24023,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
@@ -24088,7 +24088,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -24463,7 +24463,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -26034,7 +26034,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 1
       },
       {
@@ -26044,12 +26044,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -26119,7 +26119,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -26439,17 +26439,17 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 1
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -28311,7 +28311,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
@@ -28371,7 +28371,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -28691,7 +28691,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -29902,7 +29902,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
@@ -29962,7 +29962,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -30272,7 +30272,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -31608,7 +31608,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -31618,7 +31618,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -31638,12 +31638,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -32163,7 +32163,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
@@ -32233,7 +32233,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -32543,7 +32543,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -33574,7 +33574,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 1
       },
       {
@@ -33584,7 +33584,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -33644,12 +33644,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 1
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -34154,12 +34154,12 @@
       },
       {
         "entity_id": "3960e7b3294c4364bca1b046734ef886",
-        "entity_name": "De conformité aux réglementations nationales",
+        "entity_name": "Conformité réglementaire",
         "occurrence_count": 1
       },
       {
         "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
-        "entity_name": "De l'information et de la connaissance",
+        "entity_name": "Information et connaissance",
         "occurrence_count": 1
       },
       {
@@ -34244,7 +34244,7 @@
       },
       {
         "entity_id": "bb565b2132f5430eac529b953711be41",
-        "entity_name": "Des \"Altcoins\"",
+        "entity_name": "Altcoins, tokens et surcouches",
         "occurrence_count": 1
       },
       {
@@ -34857,7 +34857,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -34867,7 +34867,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -34907,12 +34907,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -35437,12 +35437,12 @@
       },
       {
         "entity_id": "d47c813a4d0c424cb80422ff6e6109f9",
-        "entity_name": "De la sphère d'usage (financière & réelle)",
+        "entity_name": "Sphère d’usage",
         "occurrence_count": 1
       },
       {
         "entity_id": "d8b2aecc33714e7dbe6864d9c18b6763",
-        "entity_name": "De l'information et de la connaissance",
+        "entity_name": "Information et connaissance",
         "occurrence_count": 1
       },
       {
@@ -36994,7 +36994,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 5
       },
       {
@@ -37049,7 +37049,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 5
       },
       {
@@ -37309,7 +37309,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 5
       },
       {
@@ -38830,7 +38830,7 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 5
       },
       {
@@ -38885,7 +38885,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 5
       },
       {
@@ -39145,7 +39145,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 5
       },
       {
@@ -40140,7 +40140,7 @@
       },
       {
         "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
-        "entity_name": "Chaincode Lab",
+        "entity_name": "Chaincode Labs",
         "occurrence_count": 2
       },
       {
@@ -40866,7 +40866,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 1
       },
       {
@@ -40876,7 +40876,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -40976,12 +40976,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 1
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -41718,7 +41718,7 @@
       },
       {
         "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
-        "entity_name": "Chaincode Lab",
+        "entity_name": "Chaincode Labs",
         "occurrence_count": 2
       },
       {
@@ -41738,7 +41738,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -41748,7 +41748,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -41758,12 +41758,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -42770,7 +42770,7 @@
       },
       {
         "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
-        "entity_name": "Chaincode Lab",
+        "entity_name": "Chaincode Labs",
         "occurrence_count": 2
       },
       {
@@ -42800,7 +42800,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -42810,7 +42810,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -42895,12 +42895,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -43571,7 +43571,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -43581,7 +43581,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -43616,12 +43616,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -44442,7 +44442,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -44452,7 +44452,7 @@
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 2
       },
       {
@@ -44492,12 +44492,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -47266,7 +47266,7 @@
       },
       {
         "entity_id": "1b713b5b8ed045b09cd9e8ad988950e8",
-        "entity_name": "Chaincode Lab",
+        "entity_name": "Chaincode Labs",
         "occurrence_count": 2
       },
       {
@@ -48521,7 +48521,7 @@
       },
       {
         "entity_id": "bb565b2132f5430eac529b953711be41",
-        "entity_name": "Des \"Altcoins\"",
+        "entity_name": "Altcoins, tokens et surcouches",
         "occurrence_count": 1
       },
       {
@@ -48722,7 +48722,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -48767,12 +48767,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -49382,12 +49382,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -49447,7 +49447,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -49777,7 +49777,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -51053,7 +51053,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -51073,12 +51073,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -51558,12 +51558,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -51618,7 +51618,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -51988,7 +51988,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -53239,7 +53239,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 2
       },
       {
@@ -53259,12 +53259,12 @@
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 2
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 2
       },
       {
@@ -53724,12 +53724,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -53784,7 +53784,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -54104,7 +54104,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -55475,7 +55475,7 @@
       },
       {
         "entity_id": "41e14735f0af4e9a832041a8168cc4e9",
-        "entity_name": "III.3 Une gouvernance publique d’exception : le hard fork d’Ethereum consécutif à l’attaque de “The DAO”",
+        "entity_name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
         "occurrence_count": 1
       },
       {
@@ -55490,12 +55490,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -55560,7 +55560,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -55935,17 +55935,17 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
         "entity_id": "ed2c565cbede474da7b6144bcb22d753",
-        "entity_name": "I.3.2 Ethereum : conditions d'émergence d'une stratégie différenciée",
+        "entity_name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
         "occurrence_count": 1
       },
       {
         "entity_id": "46111186b53041829a0a98218f9611fe",
-        "entity_name": "I.3.3 Ethereum : différences architecturales et normativité politique des designs",
+        "entity_name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -57601,12 +57601,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -57661,7 +57661,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -57981,7 +57981,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -59362,12 +59362,12 @@
       },
       {
         "entity_id": "596826c3187e4f8cb9034357477eb14c",
-        "entity_name": "I.2 Quand le 'monde redéfinit' Bitcoin de manière carnavalesque",
+        "entity_name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
         "occurrence_count": 1
       },
       {
         "entity_id": "6c2bbf0e45bc44ffa1d65b186df700c0",
-        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers altcoins",
+        "entity_name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
         "occurrence_count": 1
       },
       {
@@ -59437,7 +59437,7 @@
       },
       {
         "entity_id": "3b17f5b612b54376963e5aa7fe13fff8",
-        "entity_name": "Du protocole Bitcoin (couche 1 et 2)",
+        "entity_name": "Protocole et couche de base",
         "occurrence_count": 1
       },
       {
@@ -59757,7 +59757,7 @@
       },
       {
         "entity_id": "c5eef5d754c64a30a9d163e59e1d5c88",
-        "entity_name": "I.3.1 De la constellation des Altcoins : construire 'sur' ou 'à côté' de Bitcoin",
+        "entity_name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
         "occurrence_count": 1
       },
       {
@@ -61175,7 +61175,7 @@
       },
       {
         "entity_id": "bb565b2132f5430eac529b953711be41",
-        "entity_name": "Des \"Altcoins\"",
+        "entity_name": "Altcoins, tokens et surcouches",
         "occurrence_count": 1
       },
       {
@@ -62106,7 +62106,7 @@
       },
       {
         "entity_id": "bb565b2132f5430eac529b953711be41",
-        "entity_name": "Des \"Altcoins\"",
+        "entity_name": "Altcoins, tokens et surcouches",
         "occurrence_count": 1
       },
       {

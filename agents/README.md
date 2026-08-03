@@ -58,18 +58,28 @@ Every agent file must record *why* this agent exists: what audit, what repeated 
 |-------|------|--------|
 | Hermes (GRC-20 orchestrator) | [`Hermes.md`](Hermes.md) | Active |
 | Codex (code/patch executor) | [`Codex.md`](Codex.md) | Active |
+| Reviewer-Hostile (adversarial reader) | [`.claude/skills/grc20-reviewer-hostile/`](../.claude/skills/grc20-reviewer-hostile/SKILL.md) | **Proposed** — awaiting validation |
+| Thesis-Archivist (thesis fidelity) | [`.claude/skills/grc20-thesis-archivist/`](../.claude/skills/grc20-thesis-archivist/SKILL.md) | **Proposed** — awaiting validation |
+| Semantic-Event-Classifier (typing) | [`.claude/skills/grc20-semantic-classifier/`](../.claude/skills/grc20-semantic-classifier/SKILL.md) | **Proposed** — awaiting validation |
+| Visual-Coherence-Reviewer (runtime) | [`.claude/skills/grc20-visual-coherence/`](../.claude/skills/grc20-visual-coherence/SKILL.md) | **Proposed** — awaiting validation |
+
+The four **Proposed** entries are specified in
+[`../docs/agents/grc20-agent-skills-architecture-v1.md`](../docs/agents/grc20-agent-skills-architecture-v1.md)
+and implemented as invocable skills under `.claude/skills/`. Rule 2 reserves
+their activation to human validation: they exist and can be invoked, but the
+charter does not yet list them as Active.
 
 ## Deferred candidates
 
 The following agents are **not yet active**. Each has a plausible function, but none has a measured pain justifying creation today. They are listed in [`Agent_Creation_Rules.md`](Agent_Creation_Rules.md) with their potential function, the pain that would justify them, and the reason they are deferred.
 
-- **Evidence** — verifies thesis fidelity
-- **Schema** — validates JSON / GRC-20 schema compliance
-- **Aeon** — event-driven GitHub surveillance
-- **Story** — validates narrative runtime
-- **Visual** — validates visualisation layer
-- **Ontology** — checks conceptual coherence
-- **Publisher** — prepares exports
+- ~~**Evidence** — verifies thesis fidelity~~ → **promoted** as Thesis-Archivist (03/08/2026). Pain observed: a section reported at 3 931 words against 134 real, footnotes counted as body.
+- **Schema** — validates JSON / GRC-20 schema compliance. *Still deferred, and deliberately*: the pain was observed (five snapshots announcing the wrong `space.version`, 19 orphan ops carried across four versions) but it was answered by a **deterministic script**, `scripts/check_graph_integrity.py`, run in CI. A reproducible control belongs in a callable file, not in an agent.
+- **Aeon** — event-driven GitHub surveillance. *Still deferred*: the pain was observed (eight commits pushed to a branch whose PR was already merged) but it is answered by a checklist, not by continuous surveillance of a repository whose rhythm is driven by decisions.
+- ~~**Story** — validates narrative runtime~~ → **promoted**, merged into Visual-Coherence-Reviewer. The stated reason for deferral — "audits have shown that all focusNodes currently resolve" — became false on 03/08/2026: four alias references died after a rename, and the anchoring check saw only two of them.
+- ~~**Visual** — validates visualisation layer~~ → **promoted** as Visual-Coherence-Reviewer. The stated reason — "no visualisation regression has been observed" — became false: 14 table-of-contents entries loaded the wrong section, 3 195 relations were unreachable, and `crisis.html` called `data.filter` on a variable that did not exist.
+- ~~**Ontology** — checks conceptual coherence~~ → **promoted** as Semantic-Event-Classifier. Pain observed three times: `III.3` as the graph's only `ChapterSection`, domain (ii) as a near-duplicate across two types, and the unresolved semantics of `appears in section` (~6 000 relations).
+- **Publisher** — prepares exports. *Still deferred*: no publication milestone is scheduled.
 
 ## Reflexive note
 
