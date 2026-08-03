@@ -82,10 +82,12 @@ REECRIRE = {
     # des morts va vers lequel des vivants. Choix retenu : le plus proche par
     # le nom, quitte a ce que les deux morts convergent vers la meme cible.
     '5a341f8c7e6141d9a1449b252f4cef89': 'f4b9aff00c1976c266295ed020e3c8e2',  # Omni Layer
-    # Les deux seuls domaines de v90 sans survivant du meme type. Le Concept
-    # « Traitement des transactions » n'est pas leur heritier au sens strict
-    # — les deux coexistaient depuis v81 — mais l'arbitrage retenu prefere
-    # conserver l'ancrage sur l'objet le plus proche plutot que le perdre.
+    # Le domaine (ii) de la these, « du traitement des transactions » (en
+    # jaune, segment « minage »). Ces deux entrees n'etaient pas des
+    # references mortes a nettoyer : elles designaient un domaine que la
+    # refonte v91 a cesse de typer comme tel. Le noeud existe toujours, avec
+    # ses 30 `belongs to domain` (Mining pools, GHash.io, ASIC mining...) ;
+    # v102 lui rend le type InfrastructureDomain.
     '6b979b61416c4eb288f79f6053924afe': '8fc8b0d7aa1a4510acea6831021bb4ac',
     '510c14a93e6c423982a96586d1e8bd9c': '8fc8b0d7aa1a4510acea6831021bb4ac',
 }
