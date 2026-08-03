@@ -46,6 +46,11 @@ from plan_section_migration import graphe_le_plus_recent, sans_numero  # noqa: E
 GROUPE_A = {            # meme section, libelle reformule -> cle conservee
     'intro_A', 'intro_E', 'conclu_boucs', 'conclu_theo_mon',
     'conclu_traduction', 'I.3.2', 'I.3.3',
+    # III.3.4 : le plan le classe ARBITRER pour cause de libelle, pas de rang.
+    # Le `##` l.721 du chapitre III — « Fork You ?! » : une scission surprise
+    # fondatrice et ses enseignements — lui correspond exactement et porte
+    # deja le 4e rang. Cle conservee, libelle realigne.
+    'III.3.4',
 }
 GROUPE_B = {'I.4', 'II.4', 'III.4'}      # conclusions de chapitre
 # En realite de niveau 3. La valeur est la LIGNE du `###` vise dans le
@@ -56,11 +61,19 @@ GROUPE_B = {'I.4', 'II.4', 'III.4'}      # conclusions de chapitre
 # on designe la ligne plutot que de faire semblant de la deviner.
 GROUPE_C = {
     'I.2.2': 321,       # 01_chapitre_I.md — 2e ### sous le ## l.297 (I.2.2)
-    'II.1.1': None,     # a designer quand le chapitre II sera traite
-    'II.1.2': None,
-    'II.2.3': None,
-    'III.3.4': None,
+    # 02_chapitre_II.md — les deux premiers ### sous le ## l.115 (II.1.1),
+    # et le 3e ### sous le ## l.217 (II.2.2).
+    'II.1.1': 119,      # « Les critiques instrumentales fondees sur des fonctions… »
+    'II.1.2': 137,      # « Une monnaie "creature de l'Etat" : critiques nominalistes… »
+    'II.2.3': 237,      # « La monnaie a l'epreuve : quand dettes, confiance… »
+    # III.3.4 n'est PAS de niveau 3 : le ## l.721 « Fork You ?! » lui
+    # correspond exactement. Il releve du GROUPE_A — cle conservee, libelle
+    # realigne. Le plan le classait ARBITRER a cause du libelle, pas du rang.
 }
+
+# Numerotations de la these : « I.2.2 », « II.1.1.a », « B.3.b », « A ».
+# Tout le reste (`conclu_aceph`, `intro_C_2f`) est un identifiant technique.
+EST_NUMERO = re.compile(r'(?:[IVX]+|[A-E])(?:\.\d+)*(?:\.[a-z])?')
 
 # Le markdown de la these porte des artefacts d'edition : emphase `*...*`,
 # apostrophes echappees `\'`, espaces de fin. Ils ont leur place dans le
@@ -130,10 +143,16 @@ def main(argv=None):
     p.add_argument('--plan', default=os.path.join(REPO, 'docs', 'audits', 'data',
                                                   'section-migration.csv'))
     p.add_argument('--out', default=os.path.join(REPO, 'patch_13_section_migration.json'))
-    p.add_argument('--chapitre', default=None, choices=[c for c, _ in FICHIERS],
-                   help="Ne traite qu'un fichier de la these. Les autres noeuds "
+    p.add_argument('--chapitre', default=None,
+                   help="Liste de fichiers de la these, separes par des virgules "
+                        f"({', '.join(c for c, _ in FICHIERS)}). Les autres noeuds "
                         "restent en l'etat et sont comptes dans les collisions.")
     args = p.parse_args(argv)
+    connus = {c for c, _ in FICHIERS}
+    perimetre = {c.strip() for c in args.chapitre.split(',')} if args.chapitre else None
+    if perimetre and not perimetre <= connus:
+        print(f"chapitre(s) inconnu(s) : {sorted(perimetre - connus)}", file=sys.stderr)
+        return 2
 
     # Le graphe de reference est ancre sur ce que le patch declare deja, PAS
     # sur le plus recent. Sans cela, une fois v100 produit, regenerer le patch
@@ -187,8 +206,18 @@ def main(argv=None):
     ops, decisions, non_resolus = [], [], []
 
     def libelle(cle, titre):
-        """Libelle final : cle + titre de la these, sans reformulation."""
-        return f'{cle} {nettoie_titre(titre)}'.strip()
+        """Libelle final : cle + titre de la these, sans reformulation.
+
+        La cle n'est prefixee QUE si elle est une numerotation de la these
+        (I.2.2, II.1.1.a, B.3.b). Les cles opaques — `conclu_aceph`,
+        `intro_B_1a` — sont des identifiants de namespace, pas des numeros :
+        les prefixer produirait « conclu_aceph De l'acephalisme… », soit un
+        jeton technique affiche a un lecteur.
+        """
+        t = nettoie_titre(titre)
+        if EST_NUMERO.fullmatch(cle or ''):
+            return f'{cle} {t}'.strip()
+        return t
 
     ecartes = collections.Counter()
     for r in plan:
@@ -200,7 +229,7 @@ def main(argv=None):
         if not cle_act:
             ecartes['sans section_key — affectation, pas migration'] += 1
             continue
-        if args.chapitre and chapitre_de(cle_act) != args.chapitre:
+        if perimetre and chapitre_de(cle_act) not in perimetre:
             ecartes[f'hors du perimetre --chapitre {args.chapitre}'] += 1
             continue
         cible, titre, motif = None, None, ''
@@ -282,9 +311,13 @@ def main(argv=None):
             final.setdefault(r['cle_actuelle'], []).append(r['id'] + ' (non traite)')
     doublons = {k: v for k, v in final.items() if k and len(v) > 1}
 
+    # L'identifiant suit le nom du fichier de sortie plutot qu'une constante :
+    # le meme generateur sert deux paliers (chap. I, puis le reste), et deux
+    # patchs distincts ne peuvent pas porter le meme numero.
+    m_id = re.match(r'patch_(\d+)', os.path.basename(args.out))
     patch = {
         '_meta': {
-            'patch_id': '13',
+            'patch_id': m_id.group(1) if m_id else '13',
             'description': "Migration des ThesisSection au niveau canonique ## "
                            "de la these, second rang subordonne, libelles realignes.",
             'source_graph': os.path.basename(chemin),

@@ -14,7 +14,7 @@ Artefacts controles :
 
 Controles :
     A. tout entity_id des cartes existe dans le graphe
-    B. toute cle de section des cartes correspond a un ThesisSection
+    B. toute cle de section des cartes correspond a une section du graphe
     C. tout id epingle existe ET figure dans la liste de sa section
     D. tout id et tout focusNode de narrative-anchors resout
     E. toute reference de story resout (table d'alias appliquee)
@@ -55,7 +55,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from grc20_commun import (  # noqa: E402,F401
-    REPO, graphe_le_plus_recent, normalise_doux, sans_accents,
+    REPO, est_section, graphe_le_plus_recent, normalise_doux, sans_accents,
 )
 
 BASELINE_DEFAUT = os.path.join(REPO, 'docs', 'audits', 'data', 'anchoring-baseline.json')
@@ -90,7 +90,9 @@ def index_graphe(graphe):
 
     cles_section = {}
     for e in graphe.get('entities', []):
-        if 'ThesisSection' in [nom_type.get(t, t) for t in (e.get('types') or [])]:
+        # Les deux types de section : III.3 est l'unique `ChapterSection` du
+        # graphe et passait pour absente, d'ou le B:sem:III.3 de la baseline.
+        if est_section(e, nom_type):
             a = (e.get('attributes') or {}).get('section_key')
             cle = (a.get('value') if a else '') or ''
             if cle:
@@ -174,10 +176,10 @@ def collecter_problemes(graphe, esm, sem, ovr, anc, presets):
     # B. cles de section
     for cle in (sem or {}):
         if cle not in cles_section and not cle.endswith('_preamble'):
-            signale(f'B:sem:{cle}', 'cle de section_entities_map sans ThesisSection', cle)
+            signale(f'B:sem:{cle}', 'cle de section_entities_map sans section dans le graphe', cle)
     for cle in cles_section:
         if cle not in (sem or {}):
-            signale(f'B:graph:{cle}', 'ThesisSection sans entree dans section_entities_map',
+            signale(f'B:graph:{cle}', 'section du graphe sans entree dans section_entities_map',
                     cle)
 
     # C. epinglages
@@ -321,7 +323,7 @@ def main(argv=None):
         _, _, cles_section, _ = index_graphe(graphe)
         print(f"graphe   : {os.path.basename(chemin_graphe)} "
               f"({len(graphe.get('entities', []))} entites, "
-              f"{len(cles_section)} ThesisSection avec section_key)")
+              f"{len(cles_section)} sections avec section_key)")
         print(f"artefacts: entity_section_map {len(esm)} · section_entities_map {len(sem)} · "
               f"overrides {sum(1 for k in ovr if not k.startswith('_'))} · "
               f"narrative-anchors {len(anc.get('anchors', []))}")

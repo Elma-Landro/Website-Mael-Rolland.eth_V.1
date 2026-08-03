@@ -18,9 +18,13 @@ import argparse
 import collections
 import json
 import os
+import re
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from grc20_commun import est_section  # noqa: E402
 
 
 # Deux familles d'echec, deux codes de sortie. Lire « ECHEC (invocation) »
@@ -93,8 +97,8 @@ def main(argv=None):
             erreurs.append(f"entite inconnue : {o['entityId']}")
             continue
         e = entites[o['entityId']]
-        if 'ThesisSection' not in [nom_type.get(t, t) for t in (e.get('types') or [])]:
-            erreurs.append(f"{o['entityId']} n'est pas une ThesisSection")
+        if not est_section(e, nom_type):
+            erreurs.append(f"{o['entityId']} n'est ni ThesisSection ni ChapterSection")
         if o['type'] == 'SET_ATTRIBUTE' and o['attributeId'] not in ('section_key', 'labelEn'):
             erreurs.append(f"attribut hors politique : {o['attributeId']}")
 
@@ -172,7 +176,7 @@ def main(argv=None):
     # ---------- verifications d'apres ----------
     cles = collections.Counter()
     for e in g['entities']:
-        if 'ThesisSection' not in [nom_type.get(t, t) for t in (e.get('types') or [])]:
+        if not est_section(e, nom_type):
             continue
         k = ((e.get('attributes') or {}).get('section_key') or {}).get('value', '')
         if k:
@@ -215,7 +219,17 @@ def main(argv=None):
         print("\n--dry-run : rien ecrit.")
         return 0
 
-    g.setdefault('space', {})
+    # La version se deduit du nom du fichier ecrit. Recopier `space` tel quel
+    # est ce qui a laisse v100 a v104 annoncer « v99 » : le graphe mentait sur
+    # sa propre version, et la CI le controle desormais.
+    espace = g.setdefault('space', {})
+    m_v = re.search(r'-(v\d+)\.json$', os.path.basename(args.target))
+    if not m_v:
+        echec(f"nom de sortie sans numero de version : {os.path.basename(args.target)}",
+              CODE_INVOCATION)
+    espace['version'] = m_v.group(1)
+    espace['entity_count'] = len(g['entities'])
+    espace['relation_count'] = len(g['relations'])
     with open(args.target, 'w', encoding='utf-8') as f:
         json.dump(g, f, ensure_ascii=False, indent=2)
     print(f"\ngraphe ecrit : {os.path.relpath(args.target, REPO)}")
