@@ -2,7 +2,7 @@
  "_meta": {
   "patch_id": "13",
   "description": "Migration des ThesisSection au niveau canonique ## de la these, second rang subordonne, libelles realignes.",
-  "source_graph": "grc20-these-mael-rolland-v98.json",
+  "source_graph": "grc20-these-mael-rolland-v99.json",
   "perimetre": "chap1",
   "policy": "Ne modifie que section_key, name et labelEn. Aucune entite creee, fusionnee ou supprimee. Aucune relation touchee. Les noeuds sans section_key sont laisses en l'etat ; labelEn n'est realigne que la ou il existe.",
   "arbitrages": {
