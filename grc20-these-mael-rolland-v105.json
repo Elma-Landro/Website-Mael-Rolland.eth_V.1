@@ -2,13 +2,13 @@
   "space": {
     "id": "PLACEHOLDER_DEPLOY_ON_GEO_XYZ",
     "name": "Mael Rolland -- Research",
-    "description": "Knowledge graph issu de la these de doctorat soutenue a l'EHESS le 13 decembre 2024. Gouvernance des cryptomonnaies, institutionnalisme monetaire, STS.",
+    "description": "Knowledge graph issu de la thèse de doctorat soutenue à l'EHESS le 13 décembre 2024. Gouvernance des cryptomonnaies, institutionnalisme monétaire, STS.",
     "controller_ens": "mael-rolland.eth",
     "website": "https://mael-rolland.eth.limo",
     "standard": "GRC-20 v0.1.0",
     "generated": "2026-03-15T00:00:00.000Z",
     "note": "V99 — 37 relations « occurs in » rattachant les evenements de la periode de maturation a la DevelopmentPhase homonyme. Aucune entite creee, modifiee ou supprimee. V98 — 6 evenements de la chronologie absents de v97, ajoutes avec 25 relations. Aucune fusion, aucune suppression, aucune entite existante modifiee. V90 — 3 new entities: Monnaie (Concept), Monnaie marchandise (TF), Monnaie dette/crédit (TF) + 21 relations. V89 — +3 supplementary fixes (Tether/XRP→ChapII, cryptomonnaie→Intro). V89 — patch_5: +147 section assignments for DLT concepts, CrisisEvents, Methods, governance theory. V88 — patch_4: +111 appears_in_section relations for TheoreticFramework/Argument/Concept → intro sections. V72 — Couche de navigation par sous-section : 23 nœuds ThesisSection créés (I.1.1–III.3.4, conclu_boucs, conclu_resume), 11884 relations appears_in_section injectées. Généré 2026-03-15.",
-    "version": "v104",
+    "version": "v105",
     "generated_at_source": "2026-03-28T22:35:35.850Z",
     "entity_count": 2282,
     "relation_count": 20147
@@ -1717,7 +1717,7 @@
   "entities": [
     {
       "id": "a078b1b274f74818a8c7f1abcfb3097f",
-      "name": "Au-dela des codes",
+      "name": "Au-delà des codes",
       "description": {
         "type": "TEXT",
         "value": "These de doctorat EHESS (2024) : gouvernance polycentrique de Bitcoin et Ethereum revelee par leurs crises.",
@@ -34957,7 +34957,7 @@
     },
     {
       "id": "4c007966650f45708b5d6065a25d94bc",
-      "name": "SourceQuote — Chapitre I — 53",
+      "name": "Quote — Chapitre I — 53",
       "description": {
         "type": "TEXT",
         "value": "Citation exacte (preuve).",
@@ -35022,7 +35022,7 @@
     },
     {
       "id": "5efd9565343d4719ad0961211c8c1b40",
-      "name": "SourceQuote — Chapitre III — 223",
+      "name": "Quote — Chapitre III — 223",
       "description": {
         "type": "TEXT",
         "value": "Citation exacte (preuve).",
@@ -35554,7 +35554,7 @@
     },
     {
       "id": "e35c45d17a7f41cf97a124e2638fcced",
-      "name": "SourceQuote — 8 domaines infrastructurels — p.87",
+      "name": "Quote — 8 domaines infrastructurels — p.87",
       "description": {
         "type": "TEXT",
         "value": "Citation exacte structurante des 8 domaines.",
@@ -35722,7 +35722,7 @@
     },
     {
       "id": "82813457681d44d09f136eeb4aeed690",
-      "name": "SourceQuote — Faucet — p.91",
+      "name": "Quote — Faucet — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -35845,7 +35845,7 @@
     },
     {
       "id": "633e33174ee34a7591e998f36a8f05f4",
-      "name": "SourceQuote — Mt. Gox — p.91",
+      "name": "Quote — Mt. Gox — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -35940,7 +35940,7 @@
     },
     {
       "id": "3a75f8de77b0423bb2dd7ac504ac0471",
-      "name": "SourceQuote — Multisig wallet — p.91",
+      "name": "Quote — Multisig wallet — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36005,7 +36005,7 @@
     },
     {
       "id": "4c335587eb4e430996890cb179d9052c",
-      "name": "SourceQuote — MyBitcoin (custodial wallet) — p.91 (note 133)",
+      "name": "Quote — MyBitcoin (custodial wallet) — p.91 (note 133)",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36139,7 +36139,7 @@
     },
     {
       "id": "5b5d18205ead4d7f9b4ebf918c6d85e5",
-      "name": "SourceQuote — WikiLeaks — p.92",
+      "name": "Quote — WikiLeaks — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36204,7 +36204,7 @@
     },
     {
       "id": "ce6fe9864b844c58bf7629fb851fa30b",
-      "name": "SourceQuote — Mt. Gox — p.92",
+      "name": "Quote — Mt. Gox — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36269,7 +36269,7 @@
     },
     {
       "id": "f2c6c6b8357f43c6a8e31602ededa7cb",
-      "name": "SourceQuote — Silk Road — p.93",
+      "name": "Quote — Silk Road — p.93",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36334,7 +36334,7 @@
     },
     {
       "id": "ffcde6fc46474f5e9d93b81e1104bef1",
-      "name": "SourceQuote — WikiLeaks — p.93",
+      "name": "Quote — WikiLeaks — p.93",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36399,7 +36399,7 @@
     },
     {
       "id": "6a68a10cd6cf4257a33acf0ea830175c",
-      "name": "SourceQuote — Silk Road — p.94",
+      "name": "Quote — Silk Road — p.94",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36494,7 +36494,7 @@
     },
     {
       "id": "4797931e56df4fd6a07499c766a77a23",
-      "name": "SourceQuote — Satoshi Dice — p.94",
+      "name": "Quote — Satoshi Dice — p.94",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36559,7 +36559,7 @@
     },
     {
       "id": "2a26ad43fcbb49d281259c2aa5263428",
-      "name": "SourceQuote — Silk Road — p.95",
+      "name": "Quote — Silk Road — p.95",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36624,7 +36624,7 @@
     },
     {
       "id": "678c996d2e61469098e70dff9112caa7",
-      "name": "SourceQuote — Satoshi Dice — p.95",
+      "name": "Quote — Satoshi Dice — p.95",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36689,7 +36689,7 @@
     },
     {
       "id": "665cb1403ac54ece8c123092aa32a268",
-      "name": "SourceQuote — Mt. Gox — p.95",
+      "name": "Quote — Mt. Gox — p.95",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36754,7 +36754,7 @@
     },
     {
       "id": "c5d53d216cfc4cd4ad224e9d2919fd64",
-      "name": "SourceQuote — Silk Road — p.96",
+      "name": "Quote — Silk Road — p.96",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36819,7 +36819,7 @@
     },
     {
       "id": "7489c26d6eb3435c91b9d0258e8e45b9",
-      "name": "SourceQuote — Mt. Gox — p.96",
+      "name": "Quote — Mt. Gox — p.96",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36884,7 +36884,7 @@
     },
     {
       "id": "274c5a83399f4ec8a24e1046caba680e",
-      "name": "SourceQuote — WikiLeaks — p.98",
+      "name": "Quote — WikiLeaks — p.98",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -36974,12 +36974,20 @@
           "options": {
             "language": "fr"
           }
+        },
+        "duplicateOf": {
+          "type": "TEXT",
+          "value": "15864ab2cdcd41348eecc0daba8eb11d"
+        },
+        "reviewStatus": {
+          "type": "TEXT",
+          "value": "duplicate-pending-merge"
         }
       }
     },
     {
       "id": "93f6e0a576ee445e8d37735e55dd6ae5",
-      "name": "SourceQuote — Mining pools — p.105",
+      "name": "Quote — Mining pools — p.105",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -37044,7 +37052,7 @@
     },
     {
       "id": "2825bf6e414944459a0a9164283025c2",
-      "name": "SourceQuote — Mining pools — p.106",
+      "name": "Quote — Mining pools — p.106",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -37109,7 +37117,7 @@
     },
     {
       "id": "3ac0291d10b147f0a53559a7a4f0a1d8",
-      "name": "SourceQuote — Ghash.io — p.106",
+      "name": "Quote — Ghash.io — p.106",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) pour un événement infrastructurel de la section I.2.",
@@ -37174,7 +37182,7 @@
     },
     {
       "id": "4cd0f3aed4bf4dbfb1c34170098715c6",
-      "name": "SourceQuote — Phase de preuve de concept — p.89",
+      "name": "Quote — Phase de preuve de concept — p.89",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37239,7 +37247,7 @@
     },
     {
       "id": "64a6b86e34a14879b273b47748745518",
-      "name": "SourceQuote — Faucet (Gavin Andresen) — p.91",
+      "name": "Quote — Faucet (Gavin Andresen) — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37334,7 +37342,7 @@
     },
     {
       "id": "47dfac1479884cf795db905e67191153",
-      "name": "SourceQuote — WikiLeaks accepte le BTC — p.93",
+      "name": "Quote — WikiLeaks accepte le BTC — p.93",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37399,7 +37407,7 @@
     },
     {
       "id": "43058b2c519748f6ba2f54840d6342d3",
-      "name": "SourceQuote — MtGox (bourse centrale) — p.92",
+      "name": "Quote — MtGox (bourse centrale) — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37494,7 +37502,7 @@
     },
     {
       "id": "a090e5b466eb424fa0635ff40f2854e1",
-      "name": "SourceQuote — Bitcoin-Qt (client lourd) — p.90",
+      "name": "Quote — Bitcoin-Qt (client lourd) — p.90",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37559,7 +37567,7 @@
     },
     {
       "id": "c80f819dcb99461daccbd6220853d816",
-      "name": "SourceQuote — Premier minage GPU — p.91",
+      "name": "Quote — Premier minage GPU — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37654,7 +37662,7 @@
     },
     {
       "id": "6e7c968895604e7e87538b6972007fb7",
-      "name": "SourceQuote — Mining pools (coopératives de minage) — p.105",
+      "name": "Quote — Mining pools (coopératives de minage) — p.105",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37749,7 +37757,7 @@
     },
     {
       "id": "deb832f4b72c49ce8a1063223b4ae56d",
-      "name": "SourceQuote — ASICs (spécialisation du minage) — p.104",
+      "name": "Quote — ASICs (spécialisation du minage) — p.104",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37888,7 +37896,7 @@
     },
     {
       "id": "bec4bc9b9d814dd0bb9a02471138645d",
-      "name": "SourceQuote — WikiLeaks — médiatisation et valeur du cours — p.92",
+      "name": "Quote — WikiLeaks — médiatisation et valeur du cours — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -37953,7 +37961,7 @@
     },
     {
       "id": "110bdfda074c49da92e7a47077700a13",
-      "name": "SourceQuote — MtGox — volumes d’échange — p.91",
+      "name": "Quote — MtGox — volumes d’échange — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38048,7 +38056,7 @@
     },
     {
       "id": "62d98ffc1447440f9abe547b637c0ee5",
-      "name": "SourceQuote — Valeur des UCN — « poule et de l’œuf » — p.92",
+      "name": "Quote — Valeur des UCN — « poule et de l’œuf » — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38113,7 +38121,7 @@
     },
     {
       "id": "a98ea8f0d1e34f51af41c320c1b6b7ec",
-      "name": "SourceQuote — Crise chypriote — bond du cours — p.96",
+      "name": "Quote — Crise chypriote — bond du cours — p.96",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38396,7 +38404,7 @@
     },
     {
       "id": "f70acf9aa0994418ab59cf9ae505d5b2",
-      "name": "SourceQuote — Prix/cours — Forbes & WikiLeaks — p.92",
+      "name": "Quote — Prix/cours — Forbes & WikiLeaks — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38461,7 +38469,7 @@
     },
     {
       "id": "073d0e18acd649b68cefa69e72257288",
-      "name": "SourceQuote — Prix/cours — MtGox flash crack — p.92",
+      "name": "Quote — Prix/cours — MtGox flash crack — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38526,7 +38534,7 @@
     },
     {
       "id": "251e08cd9b804f479d4275aa56dda32c",
-      "name": "SourceQuote — Prix/cours — Chypre / DDOS / SilkRoad — p.96",
+      "name": "Quote — Prix/cours — Chypre / DDOS / SilkRoad — p.96",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38591,7 +38599,7 @@
     },
     {
       "id": "df8fc86848824886811e45c873cebc75",
-      "name": "SourceQuote — Prix/cours — Pic décembre 2013 — p.98",
+      "name": "Quote — Prix/cours — Pic décembre 2013 — p.98",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38686,7 +38694,7 @@
     },
     {
       "id": "5b23d0d68517432385ec2374149773f1",
-      "name": "SourceQuote — Demande — WikiLeaks — p.92",
+      "name": "Quote — Demande — WikiLeaks — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38781,7 +38789,7 @@
     },
     {
       "id": "b1d76aa0f223458eadd2a019dc2e7e73",
-      "name": "SourceQuote — Offre — MtGox — p.92",
+      "name": "Quote — Offre — MtGox — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -38982,7 +38990,7 @@
     },
     {
       "id": "d9e57b9d278a49959fc9c2409f7f226c",
-      "name": "SourceQuote — SegWit + Lightning Network — p.205",
+      "name": "Quote — SegWit + Lightning Network — p.205",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39047,7 +39055,7 @@
     },
     {
       "id": "83a5e30a7c3347f78f0fadf9a8289577",
-      "name": "SourceQuote — UASF (activation SegWit) + redistribution pouvoir — p.205",
+      "name": "Quote — UASF (activation SegWit) + redistribution pouvoir — p.205",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39158,7 +39166,7 @@
     },
     {
       "id": "bf8a3b2e6722400091b7218e6d248843",
-      "name": "SourceQuote — P2SH / HTLC — p.81",
+      "name": "Quote — P2SH / HTLC — p.81",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39276,7 +39284,7 @@
     },
     {
       "id": "a75fc819d1c64aa6805c470c93fba2bc",
-      "name": "SourceQuote — Multi-signature / séquestre non centralisé — p.70",
+      "name": "Quote — Multi-signature / séquestre non centralisé — p.70",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39401,7 +39409,7 @@
     },
     {
       "id": "3b2a9710e0734ec4bd818be5a80fd6e6",
-      "name": "SourceQuote — WikiLeaks — système de paiement alternatif / canal auxiliaire — p.93",
+      "name": "Quote — WikiLeaks — système de paiement alternatif / canal auxiliaire — p.93",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39466,7 +39474,7 @@
     },
     {
       "id": "5ba83db911454b9d8b492ff97e21c8bd",
-      "name": "SourceQuote — WikiLeaks — médiatisation et cours (x8) — p.92",
+      "name": "Quote — WikiLeaks — médiatisation et cours (x8) — p.92",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39667,7 +39675,7 @@
     },
     {
       "id": "4e5dca7fa0a8440bb1c78b7b688a2580",
-      "name": "SourceQuote — Silk Road (phase charnière) — p.96",
+      "name": "Quote — Silk Road (phase charnière) — p.96",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39732,7 +39740,7 @@
     },
     {
       "id": "ae08b7bf612b415585ff3b2a8fb50dc8",
-      "name": "SourceQuote — Silk Road (revenus/commissions) — p.94",
+      "name": "Quote — Silk Road (revenus/commissions) — p.94",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -39864,7 +39872,7 @@
     },
     {
       "id": "fbfe3506451e4559aaa8cd540f2f1765",
-      "name": "SourceQuote — Démantèlement de Silk Road — p.95",
+      "name": "Quote — Démantèlement de Silk Road — p.95",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -40026,7 +40034,7 @@
     },
     {
       "id": "1615e03f3cea4fc5ada25cdbf9c07fdd",
-      "name": "SourceQuote — Bitcoin Faucet — p.91",
+      "name": "Quote — Bitcoin Faucet — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -40220,6 +40228,14 @@
           "options": {
             "language": "fr"
           }
+        },
+        "duplicateOf": {
+          "type": "TEXT",
+          "value": "15864ab2cdcd41348eecc0daba8eb11d"
+        },
+        "reviewStatus": {
+          "type": "TEXT",
+          "value": "duplicate-pending-merge"
         }
       }
     },
@@ -40353,7 +40369,7 @@
     },
     {
       "id": "d44b5cf9679a472a840943a48410e666",
-      "name": "SourceQuote — Electrum (portefeuille léger) — p.91 (note 133)",
+      "name": "Quote — Electrum (portefeuille léger) — p.91 (note 133)",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -40418,7 +40434,7 @@
     },
     {
       "id": "86325317e4e948df8f3d7ff228969196",
-      "name": "SourceQuote — date — Electrum wallet launch — p.91",
+      "name": "Quote — date — Electrum wallet launch — p.91",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -40483,7 +40499,7 @@
     },
     {
       "id": "d7006b89518c45e18f8a508ca26c7080",
-      "name": "SourceQuote — Bitcoin Foundation — p.95",
+      "name": "Quote — Bitcoin Foundation — p.95",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -40548,7 +40564,7 @@
     },
     {
       "id": "cfba4dfb28a14b3cabb0ab89dafef9e6",
-      "name": "SourceQuote — Crise chypriote (cours 230$) — p.96",
+      "name": "Quote — Crise chypriote (cours 230$) — p.96",
       "description": {
         "type": "TEXT",
         "value": "Preuve textuelle (extrait minimal) issue de la thèse.",
@@ -41009,7 +41025,7 @@
     },
     {
       "id": "59e9ff9d8a4f4c10a5e3643f9e24e75a",
-      "name": "SourceQuote — WikiLeaks accepts Bitcoin",
+      "name": "Quote — WikiLeaks accepts Bitcoin",
       "description": {
         "type": "TEXT",
         "value": "Citation de preuve issue du texte de la thèse.",
@@ -41046,7 +41062,7 @@
     },
     {
       "id": "49c9c524d6ec482099c958bef788fb96",
-      "name": "SourceQuote — Silk Road marketplace launch",
+      "name": "Quote — Silk Road marketplace launch",
       "description": {
         "type": "TEXT",
         "value": "Citation de preuve issue du texte de la thèse.",
@@ -45017,7 +45033,7 @@
     },
     {
       "id": "2d0b344055f6441789ef8f0265ab4f01",
-      "name": "SourceQuote — Nakamoto : developpement progressif (2010f)",
+      "name": "Quote — Nakamoto : developpement progressif (2010f)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -45089,7 +45105,7 @@
     },
     {
       "id": "c6a6336fbafa466788d636d490c6a140",
-      "name": "SourceQuote — Nakamoto : 10 ans niches etroites (Champagne 2014 p.94)",
+      "name": "Quote — Nakamoto : 10 ans niches etroites (Champagne 2014 p.94)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -45161,7 +45177,7 @@
     },
     {
       "id": "3353b0f3d77544ea8e55c4505507d352",
-      "name": "SourceQuote — Nakamoto : boucle retroaction positive (Champagne 2014 p.106)",
+      "name": "Quote — Nakamoto : boucle retroaction positive (Champagne 2014 p.106)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -45233,7 +45249,7 @@
     },
     {
       "id": "adcee8496adb426db05d7aacdf1746e5",
-      "name": "SourceQuote — Nakamoto : coup de pied au nid de frelons (2010g)",
+      "name": "Quote — Nakamoto : coup de pied au nid de frelons (2010g)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -45305,7 +45321,7 @@
     },
     {
       "id": "3fdeea6de4544052b1de8b154fe51bd7",
-      "name": "SourceQuote — Nakamoto : ne pas mettre en peril le reseau (2010f)",
+      "name": "Quote — Nakamoto : ne pas mettre en peril le reseau (2010f)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -46747,7 +46763,7 @@
     },
     {
       "id": "dabee09337c6468aaeecf8ca0d09af31",
-      "name": "SourceQuote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
+      "name": "Quote — May 2018 : Bitcoin 'cool et nerveux, pas un autre PayPal'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -49315,7 +49331,7 @@
     },
     {
       "id": "f2f68c90422e4157a8b92e8c446a7b7a",
-      "name": "SourceQuote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
+      "name": "Quote — Blythe Masters : 'Forget Bitcoin, embrace blockchain'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -49353,7 +49369,7 @@
     },
     {
       "id": "98a7cd02fb9d4a768d1ff1a241121309",
-      "name": "SourceQuote — Assange : '50 000% de rendement sur le bitcoin'",
+      "name": "Quote — Assange : '50 000% de rendement sur le bitcoin'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -49391,7 +49407,7 @@
     },
     {
       "id": "d8b3649c745841a297f1d55f5eeee714",
-      "name": "SourceQuote — Nakamoto : tous types de transactions (Champagne 2014 p.159-160)",
+      "name": "Quote — Nakamoto : tous types de transactions (Champagne 2014 p.159-160)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50590,7 +50606,7 @@
     },
     {
       "id": "6ccd02611a624e10b9e5756dacfb01de",
-      "name": "SourceQuote — 'Not your keys, not your coins'",
+      "name": "Quote — 'Not your keys, not your coins'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50633,7 +50649,7 @@
     },
     {
       "id": "a446bbdc6ce344cfaedfbd5a5915a735",
-      "name": "SourceQuote — Nakamoto : vérifier paiements sans nœud complet (2008 WP p.5)",
+      "name": "Quote — Nakamoto : vérifier paiements sans nœud complet (2008 WP p.5)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50676,7 +50692,7 @@
     },
     {
       "id": "b965c10b863441a7abd8dd4238f2520a",
-      "name": "SourceQuote — Nakamoto : faire confiance à un nœud tiers (Champagne 2014 p.178)",
+      "name": "Quote — Nakamoto : faire confiance à un nœud tiers (Champagne 2014 p.178)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50719,7 +50735,7 @@
     },
     {
       "id": "2f3052182833490ea3a04a5fabf65df9",
-      "name": "SourceQuote — Nakamoto : fermes de serveurs spécialisées (Champagne 2014 p.36)",
+      "name": "Quote — Nakamoto : fermes de serveurs spécialisées (Champagne 2014 p.36)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50762,7 +50778,7 @@
     },
     {
       "id": "3a4b300469f84f4387aed576c229556a",
-      "name": "SourceQuote — Bitcoiner : le minage coopératif comme 'communisme'",
+      "name": "Quote — Bitcoiner : le minage coopératif comme 'communisme'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50805,7 +50821,7 @@
     },
     {
       "id": "c877b2341b56438f8c88094ab7237747",
-      "name": "SourceQuote — Antoine Le Calvez : le SPV 'ça va pas marcher'",
+      "name": "Quote — Antoine Le Calvez : le SPV 'ça va pas marcher'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -50848,7 +50864,7 @@
     },
     {
       "id": "8fb6db820d86471897ef0cdcbe337a78",
-      "name": "SourceQuote — Mineur individuel : GPU contre les 'riches bâtards'",
+      "name": "Quote — Mineur individuel : GPU contre les 'riches bâtards'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52481,7 +52497,7 @@
     },
     {
       "id": "b88f2525f0e348898375203dfc203cda",
-      "name": "SourceQuote — Nakamoto : 'entre de bonnes mains avec Gavin [Andresen]'",
+      "name": "Quote — Nakamoto : 'entre de bonnes mains avec Gavin [Andresen]'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52524,7 +52540,7 @@
     },
     {
       "id": "b214bf1d05804daf992cb65a2079433a",
-      "name": "SourceQuote — Nakamoto : 'mystérieuse figure d'ombre'",
+      "name": "Quote — Nakamoto : 'mystérieuse figure d'ombre'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52567,7 +52583,7 @@
     },
     {
       "id": "1c0f4b0d8a314f5ea7c38835582136a9",
-      "name": "SourceQuote — Nakamoto : 'frais de transaction si nécessaire' (Champagne 2014, p. 91)",
+      "name": "Quote — Nakamoto : 'frais de transaction si nécessaire' (Champagne 2014, p. 91)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52610,7 +52626,7 @@
     },
     {
       "id": "a49967a693af4032a04eb4c15bff6aa3",
-      "name": "SourceQuote — Jeff Garzik : deux seuils frais relais / frais de transaction (Bradbury 2014)",
+      "name": "Quote — Jeff Garzik : deux seuils frais relais / frais de transaction (Bradbury 2014)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52653,7 +52669,7 @@
     },
     {
       "id": "8057b83d66de4edfbb261237a66817e7",
-      "name": "SourceQuote — Andresen : 'blocs intentionnellement coûteux à valider' (2016)",
+      "name": "Quote — Andresen : 'blocs intentionnellement coûteux à valider' (2016)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52696,7 +52712,7 @@
     },
     {
       "id": "444c5eb734724b4d97943972ab814f14",
-      "name": "SourceQuote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
+      "name": "Quote — Lopp : 'les transactions spam bitcoin n'existent pas' (2021)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -52739,7 +52755,7 @@
     },
     {
       "id": "a8d6adc75f72408bb3b4159bb3fb91c3",
-      "name": "SourceQuote — Keir : frais comme 'offre du marché libre' (2022)",
+      "name": "Quote — Keir : frais comme 'offre du marché libre' (2022)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -53864,7 +53880,7 @@
     },
     {
       "id": "55bf8adce794447c8e18b7b6d2c4c411",
-      "name": "SourceQuote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
+      "name": "Quote — Nakamoto : Bitcoin et BitDNS auront des 'destins distincts' (2010b)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -53907,7 +53923,7 @@
     },
     {
       "id": "a36cef7f19444a64b0f0b7f61e9bf214",
-      "name": "SourceQuote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
+      "name": "Quote — Nakamoto : invention du merge mining (BitDNS et Bitcoin partagent la PoW)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -53950,7 +53966,7 @@
     },
     {
       "id": "f28872b50db54393aa148b4a43f6da65",
-      "name": "SourceQuote — DeNardis et Musiani : DNS comme 'lutte de pouvoir mondiale' (2014, p. 10-14)",
+      "name": "Quote — DeNardis et Musiani : DNS comme 'lutte de pouvoir mondiale' (2014, p. 10-14)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -53993,7 +54009,7 @@
     },
     {
       "id": "0e639d8466ab452e9dd430e671e4bf0d",
-      "name": "SourceQuote — Dréan : 'processus de sélection naturelle des monnaies' de Hayek (2013)",
+      "name": "Quote — Dréan : 'processus de sélection naturelle des monnaies' de Hayek (2013)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56380,7 +56396,7 @@
     },
     {
       "id": "cc93220d19dd4c33b995e331a587ec75",
-      "name": "SourceQuote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
+      "name": "Quote — Willet : 'réseau de monnaies au-dessus du Bitcoin lui-même' (2012)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56423,7 +56439,7 @@
     },
     {
       "id": "68d8c0d57cbe4c6e9a1dc642fa33354b",
-      "name": "SourceQuote — Buterin : peur que les règles changent 'sous ses pieds' (2017)",
+      "name": "Quote — Buterin : peur que les règles changent 'sous ses pieds' (2017)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56466,7 +56482,7 @@
     },
     {
       "id": "d0bc18a3794a44c9983eaf4c02e5b52f",
-      "name": "SourceQuote — Garzik : 'abuser d'une ressource réseau bénévole' (Russo 2020, p. 56)",
+      "name": "Quote — Garzik : 'abuser d'une ressource réseau bénévole' (Russo 2020, p. 56)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56509,7 +56525,7 @@
     },
     {
       "id": "435c3eec9f434582afdc1072c5b183e8",
-      "name": "SourceQuote — Duffield : 'les développeurs veulent que le protocole de base reste le même' (2014)",
+      "name": "Quote — Duffield : 'les développeurs veulent que le protocole de base reste le même' (2014)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56552,7 +56568,7 @@
     },
     {
       "id": "5d0fb91b1da1469a91acd1ef11487f0f",
-      "name": "SourceQuote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
+      "name": "Quote — Charlie Lee : 'créer une véritable monnaie alternative similaire à Bitcoin' (2011)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56595,7 +56611,7 @@
     },
     {
       "id": "45c0739a6a284ac59c2abb709cb68488",
-      "name": "SourceQuote — Sunny King & Nadal : PoS et dépendance énergétique de la PoW (2012, p. 2)",
+      "name": "Quote — Sunny King & Nadal : PoS et dépendance énergétique de la PoW (2012, p. 2)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56638,7 +56654,7 @@
     },
     {
       "id": "7c7bf025a9bf4e18b2c4aca1857fb9ea",
-      "name": "SourceQuote — Buterin : 'la couche fondamentale abstraite ultime' (2013d)",
+      "name": "Quote — Buterin : 'la couche fondamentale abstraite ultime' (2013d)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56681,7 +56697,7 @@
     },
     {
       "id": "ca81bca55f21444798d9d35f683966b3",
-      "name": "SourceQuote — Buterin : protocole 'aussi généralisé que possible' (2014j)",
+      "name": "Quote — Buterin : protocole 'aussi généralisé que possible' (2014j)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56724,7 +56740,7 @@
     },
     {
       "id": "6b1a40ec612241d3afc1abc1cfd29713",
-      "name": "SourceQuote — Buterin : dépendances au sentier (Russo 2020, p. 57)",
+      "name": "Quote — Buterin : dépendances au sentier (Russo 2020, p. 57)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56767,7 +56783,7 @@
     },
     {
       "id": "ab4249424b6c4df5a051763a8c757eca",
-      "name": "SourceQuote — Buterin : 'distribution en loi de puissance' des usages (2013d)",
+      "name": "Quote — Buterin : 'distribution en loi de puissance' des usages (2013d)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56810,7 +56826,7 @@
     },
     {
       "id": "0923cb0e478e40eb9f8c9cd23359d7c2",
-      "name": "SourceQuote — Gerring : développeurs sans rémunération six mois (2016)",
+      "name": "Quote — Gerring : développeurs sans rémunération six mois (2016)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -56853,7 +56869,7 @@
     },
     {
       "id": "4baeca786d084a3cb86bbed6dfe1c812",
-      "name": "SourceQuote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
+      "name": "Quote — Dréan : paradoxe du maximalisme Bitcoin (2013)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -58390,7 +58406,7 @@
     },
     {
       "id": "597894115b8d44aeb51b8abd72ac78bd",
-      "name": "SourceQuote — Corallo : 'allez-vous faire foutre' (Scaling Debate, entretien n°15)",
+      "name": "Quote — Corallo : 'allez-vous faire foutre' (Scaling Debate, entretien n°15)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -58428,7 +58444,7 @@
     },
     {
       "id": "c66401d7a86f407e8258dae7b0e1ad2c",
-      "name": "SourceQuote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
+      "name": "Quote — Ammous : Bitcoin 'premier exemple opérationnel de monnaie forte numérique' (2018)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -58466,7 +58482,7 @@
     },
     {
       "id": "c8b6701bb8d0405dae7750212d4c0b2a",
-      "name": "SourceQuote — Friedman : anticipation d'un 'ecash' anonyme (1999)",
+      "name": "Quote — Friedman : anticipation d'un 'ecash' anonyme (1999)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -58504,7 +58520,7 @@
     },
     {
       "id": "c1ca75bbe39a432c94ca82b41fc8808c",
-      "name": "SourceQuote — Zamfir : la loi de Szabo est 'profondément anti-juridique' (2019)",
+      "name": "Quote — Zamfir : la loi de Szabo est 'profondément anti-juridique' (2019)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -58542,7 +58558,7 @@
     },
     {
       "id": "3e8cd949f5d246b6ae0b516045474ac2",
-      "name": "SourceQuote — Mervyn King : l'immutabilité monétaire est impossible (2004)",
+      "name": "Quote — Mervyn King : l'immutabilité monétaire est impossible (2004)",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -58580,7 +58596,7 @@
     },
     {
       "id": "0d1ec2559d804cf4bc6a587f6cc926a3",
-      "name": "SourceQuote — Camus : 'mal nommer un objet c'est ajouter au malheur du monde'",
+      "name": "Quote — Camus : 'mal nommer un objet c'est ajouter au malheur du monde'",
       "types": [
         "27227d288d1244399b6b4dc9e48923fc"
       ],
@@ -65120,10 +65136,15 @@
         },
         "date": {
           "type": "TEXT",
-          "value": "19/11/2011",
-          "options": {
-            "language": "fr"
-          }
+          "value": "2011-10-07"
+        },
+        "dateAuthority": {
+          "type": "TEXT",
+          "value": "EXTERNAL_VERIFICATION"
+        },
+        "dateSource": {
+          "type": "TEXT",
+          "value": "Vérification externe 02/08/2026 ; thèse ch.I l.359"
         }
       },
       "description": {
@@ -71412,7 +71433,7 @@
     },
     {
       "id": "a717370833b048c2b32b4ce3b4bc5e5c",
-      "name": "SourceQuote — Nakamoto 2010b — 'nid de frelons' (WikiLeaks)",
+      "name": "Quote — Nakamoto 2010b — 'nid de frelons' (WikiLeaks)",
       "description": {
         "type": "TEXT",
         "value": "Avant-dernier message public de Nakamoto (décembre 2010), réponse à l'article PC World sur WikiLeaks/Bitcoin : 'Il aurait été bon d'attirer cette attention dans un autre contexte. WikiLeaks a donné un coup de pied au nid de frelons, et l'essaim se dirige vers nous.' Source: Nakamoto 2010b.",
@@ -73048,7 +73069,7 @@
     },
     {
       "id": "a197e3a007e74165af81aaa785d1faed",
-      "name": "SourceQuote — Nakamoto 2011 : 'entre de bonnes mains avec Gavin'",
+      "name": "Quote — Nakamoto 2011 : 'entre de bonnes mains avec Gavin'",
       "description": {
         "type": "TEXT",
         "value": "Dernier mail privé de Nakamoto connu (avril 2011, à Mike Hearn) : 'Je suis passé à autre chose' mais 'l'important reste que le projet est entre de bonnes mains avec Gavin [Andresen] et tous les autres'. Confirme le retrait volontaire de Nakamoto et la passation à la communauté de développeurs. Source : Nakamoto 2011 ; section I.2.1.",
@@ -73092,7 +73113,7 @@
     },
     {
       "id": "2a326df566e841dfac836f168751c860",
-      "name": "SourceQuote — Sedgwick 2019c : pool de minage 'communisme fondamentalement défectueux'",
+      "name": "Quote — Sedgwick 2019c : pool de minage 'communisme fondamentalement défectueux'",
       "description": {
         "type": "TEXT",
         "value": "Réaction de bitcoiners critiques à la constitution des pools de minage (Slush Pool, 2010) : ils y voient 'une forme de communisme fondamentalement défectueux'. Illustre la résistance idéologique à la coopération de minage au sein de la communauté cypherpunk. Source : Sedgwick 2019c ; section I.2.1.",
@@ -73422,7 +73443,7 @@
     },
     {
       "id": "08bd15507ef34ba0b88f3eb682ec66c6",
-      "name": "SourceQuote — Formule altcoin : 'le problème du Bitcoin est...'",
+      "name": "Quote — Formule altcoin : 'le problème du Bitcoin est...'",
       "description": {
         "type": "TEXT",
         "value": "Formule récurrente identifiée dans la section I.3 de la thèse : les concepteurs et promoteurs d'altcoins introduisent systématiquement leur projet par 'le problème du Bitcoin est...', suivi d'une description des solutions à implémenter. Révèle la dimension politique et critique de chaque choix architectural. Source : section I.3.",
@@ -73542,7 +73563,7 @@
     },
     {
       "id": "2fe0b8dcf33246298ee8c09f10cd09d1",
-      "name": "SourceQuote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
+      "name": "Quote — Evan Duffield : 'compris que mon code ne sera jamais ajouté à Bitcoin'",
       "description": {
         "type": "TEXT",
         "value": "Evan Duffield (fondateur Dash) explique pourquoi il a créé Dash indépendamment de Bitcoin : 'compris que [son] code ne ser[ait] jamais ajouté à Bitcoin [car] les développeurs veulent vraiment que le protocole de base reste le même [...] et que tout le reste soit implémenté par-dessus'. Illustre la normativité infrastructurelle de Bitcoin qui génère des forks. Source : Duffield 2014 ; section I.3.",
@@ -73831,7 +73852,7 @@
     },
     {
       "id": "3422d90c510a4fd4a2801505d6fd3cac",
-      "name": "SourceQuote — Buterin : 'dans un monde idéal le concept d'\"abus\" n'existerait pas'",
+      "name": "Quote — Buterin : 'dans un monde idéal le concept d'\"abus\" n'existerait pas'",
       "description": {
         "type": "TEXT",
         "value": "Vitalik Buterin critique la limitation OP_RETURN : 'dans un monde idéal où le code serait vraiment loi, le concept d'\"abus\" n'existerait même pas ; les frais seraient obligatoires et soigneusement structurés pour correspondre au coût réel qu'une transaction donnée impose au réseau'. Formule la critique libérale/cypherpunk de la restriction discrétionnaire. Source : Buterin cité par BitMEXResearch 2022 ; section I.3.",
@@ -73861,7 +73882,7 @@
     },
     {
       "id": "b9120b79d88747ca9b2bc99f19bbf8db",
-      "name": "SourceQuote — Dashjr : 'mineurs doivent filtrer les abus'",
+      "name": "Quote — Dashjr : 'mineurs doivent filtrer les abus'",
       "description": {
         "type": "TEXT",
         "value": "Luke Dashjr (développeur Bitcoin, opérateur de pool) sur les transactions métaprotocole : les 'mineurs [doivent] filtrer ces abus' et 'prendre leurs propres décisions en matière de politique' sans 'jamais se contenter du code minier par défaut de Bitcoin Core'. Illustre la gouvernance discrétionnaire des mineurs comme contrepoint à la gouvernance protocolaire. Source : Dashjr 2014a ; section I.3.",
@@ -73891,7 +73912,7 @@
     },
     {
       "id": "fac7acbf209340f8ac1906756fb985df",
-      "name": "SourceQuote — Garzik : métaprotocoles = 'pure paresse intellectuelle'",
+      "name": "Quote — Garzik : métaprotocoles = 'pure paresse intellectuelle'",
       "description": {
         "type": "TEXT",
         "value": "Jeff Garzik critique techniquement les métaprotocoles : il faut y voir une 'pure paresse intellectuelle' car il était possible de remplacer leur donnée lourde par un simple 'horodatage de hash (données) [...] tout aussi sûr, tout en étant plus efficace', voire d'implémenter une sidechain. Source : Garzik 2014a ; section I.3.",
@@ -74447,7 +74468,7 @@
     },
     {
       "id": "8e5dc34ffefa4c6699aedcf5d442ea32",
-      "name": "SourceQuote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
+      "name": "Quote — Argument central : 'Bitcoin devient monnaie par accumulation infrastructurelle'",
       "description": {
         "type": "TEXT",
         "value": "Argument synthétique de la thèse de Maël Rolland : Bitcoin n'est pas monnaie parce que son protocole le définit comme tel, mais parce qu'une infrastructure sociotechnique composite (mining, wallets, exchanges, stablecoins, marchands, L2...) s'est accumulée autour de lui, le rendant pratiquement utilisable comme instrument monétaire dans des sphères d'usage diversifiées. Cette thèse s'oppose aux visions 'code is law' et aux approches purement protocolaires. Source : argument de la thèse, chapitres I, II, III.",
@@ -74890,7 +74911,7 @@
     },
     {
       "id": "90d58fbba87e4e2c8abc5e433e5e25da",
-      "name": "SourceQuote — De Tychet : 'Le Yellow Paper décrit spécifiquement comment chaque fonction doit être implémentée'",
+      "name": "Quote — De Tychet : 'Le Yellow Paper décrit spécifiquement comment chaque fonction doit être implémentée'",
       "description": {
         "type": "TEXT",
         "value": "'Le Yellow Paper décrit spécifiquement comment chaque fonction doit être implémentée, comment elles doivent se comporter et ce qu'elles doivent donner. Et donc, si on suit le Yellow Paper pour créer un logiciel, bah normalement, il est rétrocompatible avec le reste.' [De Tychet, Entretien n°4]",
@@ -74920,7 +74941,7 @@
     },
     {
       "id": "19dc9498d7b941a785ea505fedc0c265",
-      "name": "SourceQuote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
+      "name": "Quote — Summerwill : 'le problème que vous avez c'est que le Core client de Bitcoin c'est le standard'",
       "description": {
         "type": "TEXT",
         "value": "'Le problème que vous avez, c'est que le Core client de Bitcoin, c'est le standard. C'est comme si Bitcoin est décentralisé, mais il ne l'est pas, puisque vous n'avez qu'un groupe de développeurs principaux qui vont décider de ce qui se passe.' [Summerwill, Entretien n°26]",
@@ -74950,7 +74971,7 @@
     },
     {
       "id": "9bf7254cfa144884a8664987bc3a47e6",
-      "name": "SourceQuote — Zamfir : 'tout opérateur de nœuds doit décider consciemment d'installer un hard fork'",
+      "name": "Quote — Zamfir : 'tout opérateur de nœuds doit décider consciemment d'installer un hard fork'",
       "description": {
         "type": "TEXT",
         "value": "'Tout opérateur de nœuds doit décider consciemment s'il doit installer un hard fork pour que son nœud soit compatible avec les nœuds des opérateurs qui ont également décidé d'installer ce hard fork.' [Zamfir 2017]",
@@ -84886,6 +84907,14 @@
           "options": {
             "language": "fr"
           }
+        },
+        "duplicateOf": {
+          "type": "TEXT",
+          "value": "e3742113c4674c52930e54ff203f0ac6"
+        },
+        "reviewStatus": {
+          "type": "TEXT",
+          "value": "duplicate-pending-merge"
         }
       }
     },
@@ -87046,19 +87075,28 @@
       "id": "e94facdafe5a431e83e96a6060c5c862",
       "name": "Monnaie",
       "type": "ca07150c01414fbdaa4917d6a0344d0b",
-      "description": "Objet théorique central de la thèse : la monnaie comme institution sociale, objet de controverses et cadre d'analyse des cryptomonnaies."
+      "description": "Objet théorique central de la thèse : la monnaie comme institution sociale, objet de controverses et cadre d'analyse des cryptomonnaies.",
+      "types": [
+        "ca07150c01414fbdaa4917d6a0344d0b"
+      ]
     },
     {
       "id": "60c4811e04af4ee5b7fdbff055e9fdbe",
       "name": "Monnaie marchandise",
       "type": "7609d307e70546c0b350bbb09d200fad",
-      "description": "Paradigme metallist / commodity money (Menger, Mises, Hayek) : la monnaie émerge spontanément comme marchandise la plus échangeable. Base de la prétention libérale-techniciste appliquée aux CM."
+      "description": "Paradigme metallist / commodity money (Menger, Mises, Hayek) : la monnaie émerge spontanément comme marchandise la plus échangeable. Base de la prétention libérale-techniciste appliquée aux CM.",
+      "types": [
+        "7609d307e70546c0b350bbb09d200fad"
+      ]
     },
     {
       "id": "27360a2100034d8b869844e64dc869c5",
       "name": "Monnaie dette / Monnaie crédit",
       "type": "7609d307e70546c0b350bbb09d200fad",
-      "description": "Paradigme credit/debt money (Keynes, Chartalism, post-Keynesian, institutionnalisme monétaire francophone) : la monnaie comme dette, lien social et institution souveraine. Cadre théorique central de la thèse."
+      "description": "Paradigme credit/debt money (Keynes, Chartalism, post-Keynesian, institutionnalisme monétaire francophone) : la monnaie comme dette, lien social et institution souveraine. Cadre théorique central de la thèse.",
+      "types": [
+        "7609d307e70546c0b350bbb09d200fad"
+      ]
     },
     {
       "id": "de6da7fa28334c408e51269ba447a482",

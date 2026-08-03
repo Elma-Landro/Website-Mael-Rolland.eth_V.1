@@ -1,5 +1,5 @@
 {
-  "_comment": "Pinned entities per section. Keys = section keys from section_entities_map.json. Values = ordered list of entity_id strings (shown first in graph, largest nodes, regardless of TF-IDF score). IDs from grc20-these-mael-rolland-v96.json. Updated to add Robin Hood Group (DAO 2016), Inversion infrastructurelle, Ethereum Classic as primary, and dense-page-informed priorities.",
+  "_comment": "Pinned entities per section. Keys = section keys from section_entities_map.json. Values = ordered list of entity_id strings (shown first in graph, largest nodes, regardless of TF-IDF score). IDs verified against grc20-these-mael-rolland-v104.json. Updated to add Robin Hood Group (DAO 2016), Inversion infrastructurelle, Ethereum Classic as primary, and dense-page-informed priorities.",
 
   "intro_A": [
     "d35d720e1fa24d9fbe665a90ac0abc73",

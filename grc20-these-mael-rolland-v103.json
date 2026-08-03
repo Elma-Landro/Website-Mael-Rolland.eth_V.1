@@ -8,8 +8,10 @@
     "standard": "GRC-20 v0.1.0",
     "generated": "2026-03-15T00:00:00.000Z",
     "note": "V99 — 37 relations « occurs in » rattachant les evenements de la periode de maturation a la DevelopmentPhase homonyme. Aucune entite creee, modifiee ou supprimee. V98 — 6 evenements de la chronologie absents de v97, ajoutes avec 25 relations. Aucune fusion, aucune suppression, aucune entite existante modifiee. V90 — 3 new entities: Monnaie (Concept), Monnaie marchandise (TF), Monnaie dette/crédit (TF) + 21 relations. V89 — +3 supplementary fixes (Tether/XRP→ChapII, cryptomonnaie→Intro). V89 — patch_5: +147 section assignments for DLT concepts, CrisisEvents, Methods, governance theory. V88 — patch_4: +111 appears_in_section relations for TheoreticFramework/Argument/Concept → intro sections. V72 — Couche de navigation par sous-section : 23 nœuds ThesisSection créés (I.1.1–III.3.4, conclu_boucs, conclu_resume), 11884 relations appears_in_section injectées. Généré 2026-03-15.",
-    "version": "v99",
-    "generated_at": "2026-03-28T22:35:35.850Z"
+    "version": "v103",
+    "generated_at_source": "2026-03-28T22:35:35.850Z",
+    "entity_count": 2271,
+    "relation_count": 20123
   },
   "types": [
     {

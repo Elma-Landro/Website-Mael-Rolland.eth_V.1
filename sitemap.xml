@@ -4,136 +4,136 @@
   
   <!-- Main Pages -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/index-fr.html" />
+    <loc>https://mael-rolland.eth.limo/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/index-fr.html" />
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/index-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/index.html" />
+    <loc>https://mael-rolland.eth.limo/index-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/index.html" />
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Academic & Professional -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/curriculum.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/curriculum-fr.html" />
+    <loc>https://mael-rolland.eth.limo/curriculum.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/curriculum-fr.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/cv.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/cv-fr.html" />
+    <loc>https://mael-rolland.eth.limo/cv.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/cv-fr.html" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/curriculum-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/curriculum.html" />
+    <loc>https://mael-rolland.eth.limo/curriculum-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/curriculum.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/cv-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/cv.html" />
+    <loc>https://mael-rolland.eth.limo/cv-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/cv.html" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/these.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/these-fr.html" />
+    <loc>https://mael-rolland.eth.limo/these.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/these-fr.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/these-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/these.html" />
+    <loc>https://mael-rolland.eth.limo/these-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/these.html" />
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/lecteur.html</loc>
+    <loc>https://mael-rolland.eth.limo/lecteur.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/graphe.html</loc>
+    <loc>https://mael-rolland.eth.limo/graphe.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Publications & Research -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/talks.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/talks-fr.html" />
+    <loc>https://mael-rolland.eth.limo/talks.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/talks-fr.html" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/talks-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/talks.html" />
+    <loc>https://mael-rolland.eth.limo/talks-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/talks.html" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Collaboration & Workshops -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/collaborate.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/collaborate-fr.html" />
+    <loc>https://mael-rolland.eth.limo/collaborate.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/collaborate-fr.html" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/collaborate-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/collaborate.html" />
+    <loc>https://mael-rolland.eth.limo/collaborate-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/collaborate.html" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/atelier.html</loc>
+    <loc>https://mael-rolland.eth.limo/atelier.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Contact & Lab -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/contact-fr.html" />
+    <loc>https://mael-rolland.eth.limo/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/contact-fr.html" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/contact-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/contact.html" />
+    <loc>https://mael-rolland.eth.limo/contact-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/contact.html" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Analysis & Tools -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/crisis.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/crisis-fr.html" />
+    <loc>https://mael-rolland.eth.limo/crisis.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/crisis-fr.html" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/crisis-fr.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/crisis.html" />
+    <loc>https://mael-rolland.eth.limo/crisis-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/crisis.html" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -141,17 +141,61 @@
 
   <!-- Technical -->
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/sitemap.html</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://elma-landro.github.io/Mael-Rolland-Landing/plan-du-site.html" />
+    <loc>https://mael-rolland.eth.limo/sitemap.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/plan-du-site.html" />
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   
   <url>
-    <loc>https://elma-landro.github.io/Mael-Rolland-Landing/plan-du-site.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://elma-landro.github.io/Mael-Rolland-Landing/sitemap.html" />
+    <loc>https://mael-rolland.eth.limo/plan-du-site.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/sitemap.html" />
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+
+  <!-- Pages ajoutees : presentes dans le depot, absentes du sitemap -->
+  <url>
+    <loc>https://mael-rolland.eth.limo/soutenance.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/soutenance-fr.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mael-rolland.eth.limo/soutenance-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/soutenance.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mael-rolland.eth.limo/soutenance-edition.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/soutenance-edition-fr.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mael-rolland.eth.limo/soutenance-edition-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/soutenance-edition.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mael-rolland.eth.limo/rare-pepe.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mael-rolland.eth.limo/rare-pepe-fr.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mael-rolland.eth.limo/rare-pepe-fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mael-rolland.eth.limo/rare-pepe.html" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mael-rolland.eth.limo/workshop.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

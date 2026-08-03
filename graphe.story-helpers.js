@@ -7,8 +7,8 @@
 
   const STORY_FOCUS_ALIASES = {
     'Monétisation': 'Monétisation des cryptomonnaies',
-    'Fonctions monétaires': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
-    'Critiques instrumentales': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
+    'Fonctions monétaires': 'II.1.1.a Les critiques instrumentales fondées sur des fonctions monétaires canoniques',
+    'Critiques instrumentales': 'II.1.1.a Les critiques instrumentales fondées sur des fonctions monétaires canoniques',
     'Critiques chartalistes': 'Théorie chartaliste',
     'Épreuve d’explicitation de la monnaie': 'Quote — CM comme épreuve d’explicitation de la monnaie',
     'Nominalisme non étatiste': 'Nominalisme monetaire non etatiste',

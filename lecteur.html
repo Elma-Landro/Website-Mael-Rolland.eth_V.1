@@ -890,7 +890,19 @@ body::before {
   .reader-content h2 { font-size: 0.55em; }
   .reader-content h3 { font-size: 0.45em; }
 }
-</style>
+
+    .figure-absente {
+      /* Repli d'une figure absente du depot : lisible et discret, plutot
+         qu'un pictogramme d'image cassee. */
+      font-family: 'VT323', monospace;
+      font-size: 0.95rem;
+      opacity: 0.55;
+      border: 1px dashed currentColor;
+      padding: 0.6rem 0.9rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -1026,7 +1038,7 @@ body::before {
 //  CONFIGURATION
 // ═══════════════════════════════════════════════════════
 const BASE            = './assets/MD/';
-const GRAPH_FILE      = './grc20-these-mael-rolland-v104.json';
+const GRAPH_FILE      = './grc20-these-mael-rolland-v106.json';
 const SECTION_MAP_FILE= './section_entities_map.json';
 const MAX_GRAPH_NODES = 12;   // max nodes in graph (paragraph-level scrollytelling)
 const MAX_HIGHLIGHT   = 150;  // max entity names for DOM highlighting
@@ -1188,6 +1200,57 @@ async function loadGraph() {
         tfidf[secKey][entity_id] = occurrence_count * idf;
       }
     }
+    // ── Sections parentes : agrégation des rangs subordonnés ───────────
+    // La migration v100/v106 a rendu leur rang réel aux titres de niveau 3
+    // de la thèse : ils portent désormais des clés comme « II.1.1.a ». Or le
+    // sommaire suit la table des matières de la thèse, qui s'arrête au
+    // niveau 2 : « II.1.1 » y figure, « II.1.1.a » non. Le contenu des rangs
+    // subordonnés — 3 103 entités sur 6 sections — devenait donc
+    // inatteignable depuis le sommaire.
+    //
+    // On reconstitue la section parente comme l'union de ses enfants. Ce
+    // n'est pas une invention : une section CONTIENT ses sous-parties, donc
+    // toute entité citée dans « II.1.1.a » est citée dans « II.1.1 ».
+    //
+    // Fait APRÈS le calcul de df/idf, et non avant : ajouter les parentes au
+    // corpus ferait compter deux fois chaque entité de rang subordonné et
+    // affaisserait son IDF dans TOUTES les sections. On réutilise donc le df
+    // réel, avec la même formule.
+    const parentesDe = {};
+    for (const cle of allSections) {
+      const m = /^(.+)\.[a-z]$/.exec(cle);
+      if (m) (parentesDe[m[1]] ||= []).push(cle);
+    }
+    let parentesSynthetisees = 0;
+    for (const [parente, enfants] of Object.entries(parentesDe)) {
+      if (sectionMap[parente]?.entities?.length) continue;   // déjà pourvue
+      const cumul = new Map();
+      for (const enfant of enfants.sort()) {
+        for (const e of (sectionMap[enfant].entities || [])) {
+          const vu = cumul.get(e.entity_id);
+          if (vu) vu.occurrence_count += e.occurrence_count;
+          else cumul.set(e.entity_id, { ...e });
+        }
+      }
+      if (!cumul.size) continue;
+      const premier = sectionMap[enfants[0]];
+      sectionMap[parente] = {
+        chapter_key: premier.chapter_key,
+        page_start:  premier.page_start,
+        entities:    [...cumul.values()],
+        _agrege_de:  enfants,
+      };
+      tfidf[parente] = {};
+      for (const { entity_id, occurrence_count } of cumul.values()) {
+        tfidf[parente][entity_id] = occurrence_count * Math.log(totalSections / (df[entity_id] || 1));
+      }
+      parentesSynthetisees++;
+    }
+    if (parentesSynthetisees) {
+      console.info(`[lecteur] ${parentesSynthetisees} section(s) parente(s) reconstituée(s) ` +
+                   `depuis leurs rangs subordonnés`);
+    }
+
     state.tfidfScores   = tfidf;
     state.entityDf      = df;           // document frequency — used for IDF-ranked neighbor expansion
     state.totalSections = totalSections;
@@ -1442,7 +1505,12 @@ function updateGraph(sectionKey) {
     state.cy.elements().remove();
     document.getElementById('stat-nodes').textContent      = '0 nœuds';
     document.getElementById('stat-edges').textContent      = '0 liens';
-    document.getElementById('graph-section-total').textContent = '';
+    // Depuis la migration des sections, le sommaire couvre des sections dont
+    // le contenu n'est pas encore rattaché au graphe : elles existent comme
+    // nœuds de structure, sans entités. Un panneau vide sans explication se
+    // lit comme une panne ; on dit ce qu'il en est.
+    document.getElementById('graph-section-total').textContent =
+      'Contenu de cette section pas encore rattaché au graphe';
     return;
   }
 
@@ -1589,7 +1657,20 @@ async function loadChapter(chapterId) {
 function renderMarkdown(md) {
   let cleaned = md
     .replace(/\{[^}]*width=[^}]*\}/g, '')
-    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g, '![$1](assets/figures/$2)')
+    // Les 42 figures de la conversion Word (`media/imageN.png`) n'ont jamais
+    // ete versees : `assets/figures/` contient 16 exports aux noms
+    // descriptifs, dont 2 seulement se rapprochent d'une legende. La
+    // reecriture ci-dessous pointait donc 81 images vers le vide, et le
+    // lecteur affichait 81 icones cassees — dont toutes les chronologies.
+    // En attendant que les fichiers soient verses, on remplace la figure
+    // manquante par sa reference, lisible, plutot que par un pictogramme
+    // d'erreur. Le jour ou les images arrivent sous `assets/figures/`, la
+    // balise <img> les affiche et le repli ne se declenche plus.
+    .replace(/!\[([^\]]*)\]\(media\/(image\d+\.\w+)\)/g,
+             (m, alt, fichier) =>
+               `<img src="assets/figures/${fichier}" alt="${alt}" class="figure-these" ` +
+               `onerror="this.replaceWith(Object.assign(document.createElement('p'),` +
+               `{className:'figure-absente',textContent:'[Figure ${fichier} — non versee dans le depot]'}))">`)
     .replace(/^\[.*?\]\(#.*?\)\n/gm, '');
 
   // Extract footnote definitions

@@ -10,7 +10,7 @@
     <meta name="robots" content="index, follow">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_32x32.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -974,8 +974,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
     <script>
         const vulnerabilities = [
             { year: 2009, month: 1, cve: "Bloc Genèse", type: "genesis", title: "Lancement du Protocole Bitcoin", description: "Lancement du réseau Bitcoin", date: "03/01/2009" },
@@ -1524,7 +1522,7 @@
                 'unknown': 'Inconnu'
             };
 
-            data.filter(v => v.type !== 'genesis').forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
                 if (vuln.additionalTypes) {
                     vuln.additionalTypes.forEach(type => {
@@ -1581,7 +1579,7 @@
 
         function generateBarChartFiltered(data) {
             const yearCounts = {};
-            data.filter(v => v.type !== 'genesis').forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 yearCounts[vuln.year] = (yearCounts[vuln.year] || 0) + 1;
             });
 
@@ -1657,7 +1655,7 @@
                 'unknown': 'Inconnu'
             };
 
-            data.filter(v => v.type !== 'genesis').forEach(vuln => {
+            vulnerabilities.filter(v => v.type !== 'genesis').forEach(vuln => {
                 typeCounts[vuln.type] = (typeCounts[vuln.type] || 0) + 1;
                 if (vuln.additionalTypes) {
                     vuln.additionalTypes.forEach(type => {

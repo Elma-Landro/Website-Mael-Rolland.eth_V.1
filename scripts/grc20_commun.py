@@ -80,3 +80,21 @@ def graphe_le_plus_recent(repo=REPO):
     """Le plus grand numero de version present, ou None si le depot n'en a aucun."""
     tries = graphes_tries(repo)
     return tries[-1] if tries else None
+
+
+# Les sections de la these ne portent pas toutes le meme type. 73 sont des
+# `ThesisSection` ; une seule — III.3, « Une gouvernance publique
+# d'exception » — porte `ChapterSection`, type dont elle est l'unique
+# occurrence du graphe. Tout outil qui ne regarde que `ThesisSection` la tient
+# pour absente : `make_section_creation_patch.py` s'appretait a la recreer, a
+# cote d'un noeud existant et deja relie.
+#
+# On ne retype rien ici — ce serait un arbitrage, pas une correction — mais
+# aucun outil ne doit plus raisonner sur un seul des deux noms.
+TYPES_SECTION = ('ThesisSection', 'ChapterSection')
+
+
+def est_section(entite, nom_type):
+    """`nom_type` : {id de type -> nom}. Vrai si l'entite est une section."""
+    noms = [nom_type.get(t, t) for t in (entite.get('types') or [])]
+    return any(t in noms for t in TYPES_SECTION)

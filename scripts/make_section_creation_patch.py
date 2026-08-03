@@ -47,6 +47,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from derive_section_tree import FICHIERS  # noqa: E402
 from make_section_migration_patch import arbre_md, chapitre_de, nettoie_titre  # noqa: E402
+from grc20_commun import est_section  # noqa: E402
 from plan_section_migration import graphe_le_plus_recent  # noqa: E402
 
 # Meme convention que patch_11 : md5(sel + '|' + '|'.join(parts)), 32 hex
@@ -90,7 +91,10 @@ def cles_occupees_apres(graphe, patch_migration):
     entites = {e['id']: e for e in g['entities']}
     occ = {}
     for e in g['entities']:
-        if 'ThesisSection' not in [nom_type.get(t, t) for t in (e.get('types') or [])]:
+        # Les deux types de section, pas seulement `ThesisSection` : sans cela
+        # III.3 (unique `ChapterSection`) passe pour absente et se fait
+        # recreer en double.
+        if not est_section(e, nom_type):
             continue
         k = ((e.get('attributes') or {}).get('section_key') or {}).get('value', '')
         if k:
@@ -128,8 +132,15 @@ def main(argv=None):
     p.add_argument('--graph', default=None)
     p.add_argument('--migration', default=os.path.join(REPO, 'patch_13_section_migration.json'))
     p.add_argument('--out', default=os.path.join(REPO, 'patch_14_section_creation.json'))
-    p.add_argument('--chapitre', default=None, choices=[c for c, _ in FICHIERS])
+    p.add_argument('--chapitre', default=None,
+                   help="Liste de fichiers de la these, separes par des virgules "
+                        f"({', '.join(c for c, _ in FICHIERS)}).")
     args = p.parse_args(argv)
+    connus = {c for c, _ in FICHIERS}
+    perimetre = {c.strip() for c in args.chapitre.split(',')} if args.chapitre else None
+    if perimetre and not perimetre <= connus:
+        print(f"chapitre(s) inconnu(s) : {sorted(perimetre - connus)}", file=sys.stderr)
+        return 2
 
     # Le graphe de reference est celui que patch_13 declare, PAS le plus
     # recent : une fois v100 produit, le prendre reviendrait a lire le
@@ -156,7 +167,7 @@ def main(argv=None):
     for l in lignes_fr:
         if l['niveau'] > 2 or not l['cle']:
             continue
-        if args.chapitre and l['chapitre'] != args.chapitre:
+        if perimetre and l['chapitre'] not in perimetre:
             continue
         if l['cle'] in occ:
             continue
@@ -170,7 +181,11 @@ def main(argv=None):
         attrs = {
             'section_key': {'type': 'TEXT', 'value': cle,
                             'options': {'language': 'fr'}},
-            'labelFr': {'type': 'TEXT', 'value': titre,
+            # Numerote, comme `name` et comme les `labelFr` deja presents sur
+            # les sections a cle numerique (I.4, II.1, III.3...). C'est
+            # `labelFr` que `lecteur.html` affiche en tete du panneau : sans
+            # le numero, la section creee y perdait son rang.
+            'labelFr': {'type': 'TEXT', 'value': f'{cle} {titre}',
                         'options': {'language': 'fr'}},
             'chapter': {'type': 'TEXT', 'value': NOM_CHAPITRE.get(l['chapitre'], ''),
                         'options': {'language': 'fr'}},
