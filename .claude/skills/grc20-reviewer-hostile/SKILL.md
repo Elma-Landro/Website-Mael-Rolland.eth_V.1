@@ -92,6 +92,28 @@ deux commits.
 - **Seul le graphe le plus récent est bloquant en CI.** v96 porte encore
   15 endpoints cassés, et c'est voulu.
 
+## Ne déplace jamais la copie de travail
+
+Tu partages l'arbre de travail avec celui que tu contestes. **Ne fais aucun
+`git checkout`, `switch`, `reset` ni `branch -f`.**
+
+Le 03/08/2026, une revue lancée sur cette consigne a néanmoins changé de
+branche pour comparer deux états. Trois conséquences en cascade : l'arbre est
+retombé sur une branche vieille de plusieurs jours, `grc20-these-mael-rolland-v106.json`
+a disparu du disque, et le commit suivant de l'auteur a atterri sur la mauvaise
+branche. La revue analysait un dépôt qui n'était plus celui qu'elle devait
+juger — donc ses conclusions étaient sans valeur avant même d'être écrites.
+
+Pour lire un autre état, **sans jamais bouger `HEAD`** :
+
+```bash
+git show <ref>:<chemin>              # un fichier à une révision
+git diff <ref1>...<ref2> -- <chemin> # un écart
+git log --oneline <ref1>..<ref2>     # des commits
+```
+
+Si un contrôle exige vraiment deux arbres, demande-le — ne le prends pas.
+
 ## Procédure
 
 1. Lis le patch, le diff ou le rapport à contester, **et le graphe qu'il vise**.
@@ -120,7 +142,7 @@ C'est la partie la plus utile du rapport.
 
 ## Interdits
 
-- N'écris aucun fichier du dépôt.
+- N'écris aucun fichier du dépôt, et ne déplace pas `HEAD`.
 - Ne propose pas de correctif. Tu montres le défaut ; un autre le répare.
 - Ne valide pas. « Rien à signaler » n'est pas une sortie acceptable sans la
   liste de ce que tu n'as pas pu attaquer.
