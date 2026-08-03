@@ -17,7 +17,7 @@
  *   - story-presets.mjs — can reference anchors by ID in story steps
  *
  * Usage:
- *   node narrative-anchors-build.mjs [--input ./grc20-these-mael-rolland-v103.json] [--out ./narrative-anchors.json]
+ *   node narrative-anchors-build.mjs [--input ./grc20-these-mael-rolland-v104.json] [--out ./narrative-anchors.json]
  */
 
 import fs from 'fs';
@@ -27,7 +27,7 @@ import path from 'path';
 const args = process.argv.slice(2);
 const inputFlag  = args.indexOf('--input');
 const outputFlag = args.indexOf('--out');
-const INPUT  = inputFlag  !== -1 ? args[inputFlag + 1]  : './grc20-these-mael-rolland-v103.json';
+const INPUT  = inputFlag  !== -1 ? args[inputFlag + 1]  : './grc20-these-mael-rolland-v104.json';
 const OUTPUT = outputFlag !== -1 ? args[outputFlag + 1] : './narrative-anchors.json';
 
 console.log(`Reading ${INPUT}…`);

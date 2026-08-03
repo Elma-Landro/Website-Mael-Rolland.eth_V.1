@@ -63,6 +63,21 @@ même dans la chronologie Altcoin, qui est en V0.1 et réutilise le code
 couleur de la frise Bitcoin sans en introduire un propre. À signaler : c'est
 un manque de la figure, pas du graphe.
 
+## Une troisième frise, d'un autre statut
+
+`Chronologie_des_HF_dEthereum_V1.bin` — 14 hard forks d'Ethereum — **n'emploie
+pas le code couleur des domaines** : tous ses événements sont en blanc. C'est
+cohérent, et c'est un signal utile : cette frise n'est pas une déclinaison de
+la chronologie n° 6, c'est une source distincte, **constituée et vérifiée par
+l'auteur et non mobilisée dans la thèse**.
+
+Il est donc **normal** que ses événements ne figurent pas dans la frise
+carnavalesque : celle-ci porte le développement infrastructurel de Bitcoin
+jusqu'au début 2020, et six de ces forks lui sont postérieurs. Voir
+`grc20-ethereum-hard-forks-v1.md` — les entités créées portent ce constat
+dans leur description et leurs attributs de provenance, pour qu'aucun audit
+ne les compte comme une lacune.
+
 ## Ce que ces données apportent au graphe — et ce qu'elles n'apportent pas
 
 Confrontation des 128 événements datés au graphe v103 :
