@@ -30,6 +30,10 @@ import re
 import subprocess
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from grc20_commun import TYPES_SECTION  # noqa: E402
+
 # Relation orpheline portee exprès : `from` tronque a 16 caracteres, signalee
 # depuis mai 2026 et laissee en l'etat en attente d'arbitrage. C'est une
 # preuve de conservatisme, pas un defaut a masquer.
@@ -91,15 +95,47 @@ def main(argv=None):
         version = (g.get('space') or {}).get('version')
         version_ok = version == attendu
 
+        # Une cle de section vit a TROIS endroits : sur l'entite section, dans
+        # les cartes d'ancrage, et dans l'attribut `section_key` porte par
+        # chaque relation `appears in section`. Les migrations v100 et v106 ont
+        # renumerote le premier et remappe le second ; personne n'a jamais
+        # touche le troisieme, et aucun controle ne le regardait — celui-ci ne
+        # lit pas les attributs de relation, `check_anchoring.py` ne lit que
+        # les cartes. 3 970 relations ont ainsi declare une cle qui ne nommait
+        # plus leur propre cible. L'attribut est denormalise : la verite est du
+        # cote de `to`, et l'ecart se constate sans arbitrage.
+        nom_type = {t['id']: t.get('name') for t in g.get('types', [])}
+        cle_de = {}
+        for e in g.get('entities', []):
+            noms = [nom_type.get(t, t) for t in (e.get('types') or [])]
+            if any(t in noms for t in TYPES_SECTION):
+                k = ((e.get('attributes') or {}).get('section_key') or {}).get('value')
+                if k:
+                    cle_de[e['id']] = k
+        cles_perimees = []
+        for r in g.get('relations', []):
+            attrs = r.get('attributes')
+            if not isinstance(attrs, dict) or 'section_key' not in attrs:
+                continue
+            vraie = cle_de.get(r.get('to'))
+            val = attrs['section_key']
+            portee = val.get('value') if isinstance(val, dict) else val
+            if vraie and portee and portee != vraie:
+                cles_perimees.append((r.get('id'), portee, vraie))
+
         marque = '<- courant, bloquant' if f == courant else '(gele, rapport seul)'
         print(f"  {os.path.basename(f)}: {len(casses)} endpoint(s) casse(s) hors "
               f"tolerance · {dups} id(s) duplique(s) · {orph} orphelin(s) · "
               f"{len(ops_mortes)} op(s) orpheline(s) · "
-              f"version {'OK' if version_ok else f'FAUSSE ({version})'}  {marque}")
+              f"version {'OK' if version_ok else f'FAUSSE ({version})'} · "
+              f"{len(cles_perimees)} cle(s) de relation perimee(s)  {marque}")
         # Detail seulement pour le graphe bloquant : les instantanes geles
         # portent tous les memes 19, et les lister cinq fois rendrait la
         # sortie CI illisible pour un etat que personne ne compte reparer.
         if f == courant:
+            for rid, portee, vraie in cles_perimees[:5]:
+                print(f"      relation {rid} : section_key « {portee} » "
+                      f"mais la cible est « {vraie} »")
             for o in ops_mortes[:5]:
                 print(f"      op {o.get('type')} {o.get('attributeId')} "
                       f"-> entite absente {o.get('entityId')}")
@@ -112,7 +148,8 @@ def main(argv=None):
                   f"from={r.get('from')} to={r.get('to')} "
                   f"type={r.get('relation_type_name')}")
 
-        if f == courant and (casses or dups or orph or ops_mortes or not version_ok):
+        if f == courant and (casses or dups or orph or ops_mortes or not version_ok
+                             or cles_perimees):
             echec = True
 
     return 1 if echec else 0
