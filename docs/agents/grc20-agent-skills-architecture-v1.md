@@ -649,7 +649,7 @@ et figurent au sommaire, sans aucun contenu rattaché — `I.1.3`, `I.2.1`,
 
 | # | Étape | Instance | Sortie | Bloque la suite si… |
 |---|---|---|---|---|
-| 1 | **Archéologie de la méthode** | Inventory + Hostile | la règle exacte qui a produit `occurrence_count`, ou le constat qu'elle n'est pas reproductible | la méthode n'est pas reproductible → on s'arrête, on ne l'approxime pas |
+| 1 | **Archéologie de la méthode** | Inventory + Hostile | la règle exacte qui a produit `occurrence_count`, ou le constat qu'elle n'est pas reproductible | la méthode n'est pas reproductible → on s'arrête, on ne l'approxime pas — **c'est ce qui s'est produit le 03/08/2026, le chantier est arrêté ici** |
 | 2 | **Prospection du contenu** | Thesis-Archivist | volume réel de chaque section, corps **et notes séparés** | une section est vide dans la thèse → rien à rattacher, on le dit |
 | 3 | **Validation contradictoire** | Hostile | la méthode reproduit-elle les sections déjà connues ? | le taux de reproduction est faible → retour à l'étape 1 |
 | 4 | **Classification** | Semantic | ce qui est rattachable, ce qui demande arbitrage | — |
@@ -680,7 +680,8 @@ redécouvrir.
 | 4 | **La relation orpheline Ostrom** | mai 2026 | `from` tronqué renvoyant à Ostrom 1990 ; tolérance nommée en CI |
 | 5 | **Fusion effective des doublons marqués** | 02/08/2026 | `patch_10` marque, ne fusionne pas — délibérément |
 | 6 | **PR #95 et #96** | 28/06/2026 | mémo d'arbitrage de représentation, E1–E7 / D1–D6 |
-| 7 | **Les 8 sections vides doivent-elles être rattachées ?** | 03/08/2026 | ou la thèse est-elle mince à ces endroits ? |
+| 7 | **Les 8 sections vides doivent-elles être rattachées ?** | 03/08/2026 | la thèse n'est PAS mince : 5 sur 8 au-dessus de la médiane, dont la plus longue section du corpus. Le vide est un défaut d'outillage — mais voir la décision 9, qui le bloque |
+| 9 | **Que faire d'`occurrence_count` ?** | 03/08/2026 | **non reproductible**, et 66 % des entités y portent le poids d'un mot qui n'est pas le leur. Voie A (tout recalculer, listes divisées par 5) ou voie B (cesser de le traiter comme une mesure). `docs/audits/grc20-ancrage-poids-mandataires-v1.md` |
 | 8 | **Dérive de libellé de l'introduction** | 03/08/2026 | le graphe écrit « cryptomonnaies », le texte « CM » |
 
 ---
