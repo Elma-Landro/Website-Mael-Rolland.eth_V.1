@@ -100,13 +100,29 @@ def numerote(arbre, cle_chapitre):
                                'note': 'h2 portant un numero de tete'})
                 continue
             compteur += 1
-            cle = f'{prefixe_courant}.{compteur}' if prefixe_courant else ''
+            if cle_chapitre == 'conclu' and compteur <= len(CLES_CONCLUSION):
+                cle = CLES_CONCLUSION[compteur - 1]
+            else:
+                cle = f'{prefixe_courant}.{compteur}' if prefixe_courant else ''
             lignes.append({'niveau': 2, 'cle': cle, 'titre': texte,
                            'ligne': ligne, 'chapitre': cle_chapitre})
         else:
             lignes.append({'niveau': niveau, 'cle': '', 'titre': texte,
                            'ligne': ligne, 'chapitre': cle_chapitre})
     return lignes
+
+
+# La conclusion ne porte ni lettre ni numero dans son markdown : ses six
+# sections sont nommees. Les cles du graphe leur correspondent deja, dans
+# l'ordre du texte. On l'ecrit ici plutot que de le rededuire ailleurs.
+CLES_CONCLUSION = [
+    'conclu_resume',       # Resume de la these
+    'conclu_infra',        # Decrypter la Crypto par l'approche infrastructurelle
+    'conclu_aceph',        # De l'acephalisme apolitique des CM...
+    'conclu_theo_mon',     # Une integration coherente des CM... theorie monetaire
+    'conclu_traduction',   # Un effort de traduction attentif aux... acteurs
+    'conclu_boucs',        # Les CM : boucs emissaires commodes...
+]
 
 
 def cles_equivalentes(cle, chapitre):
@@ -120,7 +136,7 @@ def cles_equivalentes(cle, chapitre):
     if chapitre == 'intro':
         out.add('intro_' + cle.replace('.', '_'))
     if chapitre == 'conclu':
-        out.add('conclu_' + cle.replace('.', '_').lower())
+        out.add(cle)   # deja nommee par CLES_CONCLUSION
     return out
 
 

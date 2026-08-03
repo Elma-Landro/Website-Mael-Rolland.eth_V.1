@@ -29,9 +29,6 @@ RETROGRADER;III.1.1;;356;ThesisSection;ac859fd14006e379e55373d31090b6c6;III.1.1 
 RETROGRADER;III.1.2;;238;ThesisSection;0420e53c4c8fd12fef6dcee451a50f61;III.1.2 — Une remise en ordre rapide (CVE 2018);libelle apparie a un titre de niveau 3 (l.105) — sous le niveau canonique
 RETROGRADER;III.2.1;;194;ThesisSection;9fbdbbc3f81ee08fb89b5c5dfbcd2929;III.2.1 — De la diversité des crises aux crises protocolaires des CM;libelle apparie a un titre de niveau 3 (l.161) — sous le niveau canonique
 RETROGRADER;III.2.2;;17;ThesisSection;5a82e90b2cc17baf91baa9102bd48034;III.2.2 — Enjeux des crises Bitcoin : labélisations indigènes et exemples historiques;libelle apparie a un titre de niveau 3 (l.179) — sous le niveau canonique
-RETROGRADER;conclu_aceph;;424;ThesisSection;45b91ae1d82a40ab8029f3b8835b3af4;De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises;libelle apparie a un titre de niveau 3 (l.38) — sous le niveau canonique
-RETROGRADER;conclu_infra;;447;ThesisSection;711fe2aa7c734731bccb42ccd5843924;A. Décrypter la crypto par l’approche infrastructurelle;libelle apparie a un titre de niveau 3 (l.28) — sous le niveau canonique
-RETROGRADER;conclu_resume;;482;ThesisSection;9c72c7227c3e0cee55b8b4820e7492d8;Conclusion — Résumé de la thèse;libelle apparie a un titre de niveau 3 (l.10) — sous le niveau canonique
 RETROGRADER;intro_B_1a;;0;ThesisSection;79a77b4aa63fd0cde00e4769b174455d;B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante;libelle apparie a un titre de niveau 3 (l.116) — sous le niveau canonique
 RETROGRADER;intro_B_1b;;0;ThesisSection;1ef9935001830b38166ebb62a144f513;B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier;libelle apparie a un titre de niveau 3 (l.124) — sous le niveau canonique
 RETROGRADER;intro_B_2a;;0;ThesisSection;6359b66f7d234e7d159cf71f4667157d;B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages;libelle apparie a un titre de niveau 3 (l.140) — sous le niveau canonique
@@ -59,6 +56,9 @@ CONFORME;III.3;III.3;94;ChapterSection;41e14735f0af4e9a832041a8168cc4e9;III.3 Un
 CONFORME;III.3.1;III.3.1;213;ThesisSection;cf7dfaf42b4f3caa74d2078a8eacc9e6;III.3.1 — Une mise en crise brutale, publique et tapageuse (The DAO);
 CONFORME;III.3.2;III.3.2;109;ThesisSection;123b661853db78e3660f05f73d9ab081;III.3.2 — Une remise en ordre complexe, contrainte et controversée;
 CONFORME;III.3.3;III.3.3;128;ThesisSection;7b9eff43f3726247610d73a7fcbd0e06;III.3.3 — Gouvernance ouverte et publique pour des forks controversés;
+CONFORME;conclu_aceph;conclu_aceph;424;ThesisSection;45b91ae1d82a40ab8029f3b8835b3af4;De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises;
+CONFORME;conclu_infra;conclu_infra;447;ThesisSection;711fe2aa7c734731bccb42ccd5843924;A. Décrypter la crypto par l’approche infrastructurelle;
+CONFORME;conclu_resume;conclu_resume;482;ThesisSection;9c72c7227c3e0cee55b8b4820e7492d8;Conclusion — Résumé de la thèse;
 CONFORME;intro_A_1;intro_A_1;38;ThesisSection;707ffa8647a7acc3f95f8af261c4c77e;A.1. Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »;
 CONFORME;intro_A_2;intro_A_2;1;ThesisSection;4c8427cf88d26487ceeb26dc51dddafc;A.2. La controverse sur le caractère monétaire des cryptomonnaies;
 CONFORME;intro_A_3;intro_A_3;0;ThesisSection;29b2b4aff0e4ef2ae111f10d72a69dab;A.3. Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes;
