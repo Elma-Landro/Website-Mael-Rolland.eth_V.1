@@ -22,7 +22,7 @@ export const STORY_PRESETS = {
         maxSecondaryEdges: 4,
         hideBackbone: true,
         fitTargets: 'primary',
-        allowedRelationTypes: ['hasConcept', 'monetaryObject', 'governance', 'relatedTo', 'demonstrates', 'opposedTo', 'refutedBy', 'source']
+        allowedRelationTypes: ['has concept', 'monetary object', 'governance', 'demonstrates', 'opposed to', 'refuted by']
       },
       steps: [
         {
@@ -112,7 +112,7 @@ export const STORY_PRESETS = {
           id: 'q1',
           title: 'Le mythe du code seul',
           body: 'Le récit coiner radical présente un système régulé uniquement par le code, sans gouvernance humaine légitime.',
-          focusNodes: ['Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !', 'Neutralité de la monnaie'],
+          focusNodes: ['Code is Law', "II.3 Au‑delà de la revendication d'une absence de gouvernance !", 'Neutralité de la monnaie'],
           cameraPreset: 'tight',
           bridgeEntityIds: []
         },
@@ -122,7 +122,6 @@ export const STORY_PRESETS = {
           body: 'Maintenance, publication, hiérarchie des accès et arbitrages structurent une gouvernance sur l’infrastructure.',
           focusNodes: ['Bitcoin Core (repo)', 'Core Developers (Ethereum)', 'Développeurs Core (mainteneurs avec accès commit)', 'Pull Request (PR)'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source'],
           bridgeEntityIds: ['GitHub Bitcoin Core', 'All Core Dev Meetings (Ethereum)'],
         },
         {
@@ -131,7 +130,6 @@ export const STORY_PRESETS = {
           body: 'La gouvernance se distribue dans des arènes multiples : forges, mailing lists, forums et réunions.',
           focusNodes: ['GitHub Bitcoin Core', 'Bitcoin-dev Mailing List', 'Bitcointalk Forum', 'All Core Dev Meetings (Ethereum)', 'Carbon Vote (DAO Fork, juin-juillet 2016)'],
           cameraPreset: 'cluster',
-          hideRelationTypes: ['partOf', 'source', 'citedIn'],
           bridgeEntityIds: ['Gouvernance duale', 'Gouvernance polycentrique']
         },
         {
@@ -296,7 +294,6 @@ export const STORY_PRESETS = {
         maxSecondaryEdges: 4,
         hideBackbone: true,
         fitTargets: 'primary',
-        backboneRelationTypes: ['partOf', 'source', 'citedIn', 'relatedTo']
       },
       steps: [
         {
@@ -308,7 +305,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'tight',
           sourceQuoteId: 'anchor-7c595e5b',
           bridgeEntityIds: ['Bitcoin', 'Gouvernance polycentrique'],
-          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'opposed to']
         },
         {
           id: 's2',
@@ -319,7 +316,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-251c8c2b',
           bridgeEntityIds: ['Institutionnalisme Monetaire Francophone (IMF)', 'Sociology of Science & Technology (STS)'],
-          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'opposed to']
         },
         {
           id: 's3',
@@ -330,7 +327,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-4934a3d8',
           bridgeEntityIds: ['Bitcoin', 'Ethnographie'],
-          allowedRelationTypes: ['hasConcept', 'mobilizes', 'studiesCase', 'source', 'opposedTo']
+          allowedRelationTypes: ['has concept', 'mobilizes', 'studies case', 'opposed to']
         },
         {
           id: 's4',
@@ -341,7 +338,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-88c15dbe',
           bridgeEntityIds: ['Ethereum', 'Bitcoin'],
-          allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
+          allowedRelationTypes: ['created', 'inspired by', 'part of', 'layer above', 'fork of', 'precursor of']
         },
         {
           id: 's5',
@@ -352,7 +349,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'cluster',
           sourceQuoteId: 'anchor-45c0739a',
           bridgeEntityIds: ['Monétisation des cryptomonnaies', 'Monetary Institutionalism FR (IMF)'],
-          allowedRelationTypes: ['created', 'inspiredBy', 'partOf', 'layerAbove', 'forkOf', 'precursorOf']
+          allowedRelationTypes: ['created', 'inspired by', 'part of', 'layer above', 'fork of', 'precursor of']
         },
         {
           id: 's6',
@@ -363,7 +360,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-dce8efe4',
           bridgeEntityIds: ['Gouvernance polycentrique', 'Gouvernance duale'],
-          allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates', 'contributes to']
         },
         {
           id: 's7',
@@ -374,7 +371,7 @@ export const STORY_PRESETS = {
           cameraPreset: 'wide',
           sourceQuoteId: 'anchor-59789411',
           bridgeEntityIds: ['Gouvernance duale', 'Bitcoin CVE 2018-17144'],
-          allowedRelationTypes: ['monetaryObject', 'governance', 'hasConcept', 'opposedTo', 'refutedBy', 'relatedTo', 'demonstrates']
+          allowedRelationTypes: ['monetary object', 'governance', 'has concept', 'opposed to', 'refuted by', 'demonstrates', 'contributes to']
         },
         {
           id: 's8',
@@ -386,7 +383,7 @@ export const STORY_PRESETS = {
           sourceQuoteId: 'anchor-0b39eeba',
           maxPrimaryEdges: 6,
           bridgeEntityIds: ['Gouvernance polycentrique'],
-          allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
+          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance']
         },
         {
           id: 's9',
@@ -398,7 +395,7 @@ export const STORY_PRESETS = {
           sourceQuoteId: 'anchor-fb610652',
           maxPrimaryEdges: 6,
           bridgeEntityIds: [],
-          allowedRelationTypes: ['hasCrisis', 'demonstrates', 'debatedIn', 'usedIn', 'governance', 'relatedTo']
+          allowedRelationTypes: ['has crisis', 'demonstrates', 'debated in', 'used in', 'governance']
         }
       ]
     },
@@ -422,7 +419,7 @@ export const STORY_PRESETS = {
         maxPrimaryEdges: 5,
         hideBackbone: true,
         fitTargets: 'primary',
-        allowedRelationTypes: ['hasConcept', 'demonstrates', 'source', 'relatedTo', 'refutedBy', 'opposedTo', 'governance', 'hasCrisis']
+        allowedRelationTypes: ['has concept', 'demonstrates', 'refuted by', 'opposed to', 'governance', 'has crisis']
       },
       steps: [
         {
@@ -438,7 +435,7 @@ export const STORY_PRESETS = {
           id: 'fp2',
           title: 'Le syllogisme libéral-techniciste',
           body: `« Les ambitions technicistes des coiners qu'interroge cette thèse peuvent se traduire en un syllogisme. » — L'hypothèse réfutée : le code serait la loi, la gouvernance serait absente.`,
-          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', 'II.3 Au‑delà de la revendication d’une absence de gouvernance !'],
+          focusNodes: ['Syllogisme libéral-techniciste', 'Code is Law', "II.3 Au‑delà de la revendication d'une absence de gouvernance !"],
           cameraPreset: 'tight',
           sourceQuoteId: 'anchor-4c007966',   // Syllogisme libéral-techniciste · ch1 p. 53,
           bridgeEntityIds: ['cryptomonnaie', 'Crises comme épreuves d\'explicitation'],

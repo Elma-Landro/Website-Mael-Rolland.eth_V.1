@@ -1,0 +1,232 @@
+{
+ "_meta": {
+  "patch_id": "13",
+  "description": "Migration des ThesisSection au niveau canonique ## de la these, second rang subordonne, libelles realignes.",
+  "source_graph": "grc20-these-mael-rolland-v99.json",
+  "perimetre": "chap1",
+  "policy": "Ne modifie que section_key, name et labelEn. Aucune entite creee, fusionnee ou supprimee. Aucune relation touchee. Les noeuds sans section_key sont laisses en l'etat ; labelEn n'est realigne que la ou il existe.",
+  "arbitrages": {
+   "niveau_canonique": "##, celui que la these emploie (ch. I l.99)",
+   "niveau_3": "second rang subordonne (I.1.1.a, I.1.1.b...)",
+   "libelles": "realignes sur la these ; les reformulations du graphe sont abandonnees"
+  }
+ },
+ "ops": [
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "1168d4e0c868c27a81ac371cb6879359",
+   "attributeId": "section_key",
+   "value": {
+    "type": "TEXT",
+    "value": "I.1.2",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "renumerotation I.1.3 -> I.1.2"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "1168d4e0c868c27a81ac371cb6879359",
+   "value": "I.1.2 Bitcoin : une chimère théorico-pratique très politique",
+   "_comment": "renumerotation I.1.3 -> I.1.2"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "93f13f18c6da412292eba80dcd630ac7",
+   "attributeId": "section_key",
+   "value": {
+    "type": "TEXT",
+    "value": "I.2.2",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "renumerotation I.2.1 -> I.2.2"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "93f13f18c6da412292eba80dcd630ac7",
+   "value": "I.2.2 Un protocole débordé de « carnavalesques » improvisations d'acteurs",
+   "_comment": "renumerotation I.2.1 -> I.2.2"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "97eb62676b0052c4ab3652fc2bd15535",
+   "attributeId": "section_key",
+   "value": {
+    "type": "TEXT",
+    "value": "I.2.2.b",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "second rang subordonne (### l.321, parent I.2.2)"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "97eb62676b0052c4ab3652fc2bd15535",
+   "value": "I.2.2.b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques",
+   "_comment": "second rang subordonne (### l.321, parent I.2.2)"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "ed2c565cbede474da7b6144bcb22d753",
+   "value": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
+   "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ed2c565cbede474da7b6144bcb22d753",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.3.2 Ethereum: Continuity and Rupture with Bitcoin and Past Experiments",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "46111186b53041829a0a98218f9611fe",
+   "value": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
+   "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "46111186b53041829a0a98218f9611fe",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.3.3 Ethereum: Reconfigurations of Alliances Against Bitcoin’s Rigidities",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3268b571c4ce4389bf99a35c93ed287b",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.4 Conclusion of Chapter I",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4ec3224a44f06315d26d3cac111e5efc",
+   "attributeId": "section_key",
+   "value": {
+    "type": "TEXT",
+    "value": "I.1.1.a",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "second rang subordonne (### l.111, parent I.1.1)"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "4ec3224a44f06315d26d3cac111e5efc",
+   "value": "I.1.1.a Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques",
+   "_comment": "second rang subordonne (### l.111, parent I.1.1)"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "439782308b5dedb9c5da7022bc2b82ef",
+   "attributeId": "section_key",
+   "value": {
+    "type": "TEXT",
+    "value": "I.1.1.b",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "second rang subordonne (### l.125, parent I.1.1)"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "439782308b5dedb9c5da7022bc2b82ef",
+   "value": "I.1.1.b Une création hétérodoxe, entre recherche académique et recherche appliquée",
+   "_comment": "second rang subordonne (### l.125, parent I.1.1)"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "179eaeedc85c47a09b7a4ada23fc825b",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.1 When Bitcoin Defines Its World…: The Political Alloy of a Pioneering Cryptocurrency",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "596826c3187e4f8cb9034357477eb14c",
+   "value": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
+   "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "596826c3187e4f8cb9034357477eb14c",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.2 When the “world redefines” Bitcoin in a carnivalesque manner",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "value": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
+   "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6c2bbf0e45bc44ffa1d65b186df700c0",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.3 Ethereum: A Deliberate Break with Bitcoin and the Early Altcoins",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  },
+  {
+   "type": "SET_NAME",
+   "entityId": "c5eef5d754c64a30a9d163e59e1d5c88",
+   "value": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
+   "_comment": "libelle realigne sur la these"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c5eef5d754c64a30a9d163e59e1d5c88",
+   "attributeId": "labelEn",
+   "value": {
+    "type": "TEXT",
+    "value": "I.3.1 On the Constellation of Altcoins: Building “On” or “Beside” Bitcoin",
+    "options": {
+     "language": "fr"
+    }
+   },
+   "_comment": "libelle realigne sur la these — libelle anglais realigne"
+  }
+ ]
+}

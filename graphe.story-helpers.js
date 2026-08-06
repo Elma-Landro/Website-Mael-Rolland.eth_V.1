@@ -7,8 +7,8 @@
 
   const STORY_FOCUS_ALIASES = {
     'Monétisation': 'Monétisation des cryptomonnaies',
-    'Fonctions monétaires': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
-    'Critiques instrumentales': 'II.1.1 — Critiques instrumentales fondées sur les fonctions monétaires canoniques',
+    'Fonctions monétaires': 'II.1.1.a Les critiques instrumentales fondées sur des fonctions monétaires canoniques',
+    'Critiques instrumentales': 'II.1.1.a Les critiques instrumentales fondées sur des fonctions monétaires canoniques',
     'Critiques chartalistes': 'Théorie chartaliste',
     'Épreuve d’explicitation de la monnaie': 'Quote — CM comme épreuve d’explicitation de la monnaie',
     'Nominalisme non étatiste': 'Nominalisme monetaire non etatiste',
@@ -40,7 +40,12 @@
     'Esprit communautaire': 'Esprit du code vs Lettre du code',
     'Ethereum Classic': 'Ethereum Classic (ETHC)',
     'Ethereum DAO Hard Fork': 'Ethereum Hard Fork (juillet 2016)',
-    'Conception politique': 'I.3.3 Ethereum : différences architecturales et normativité politique des designs',
+    // Designe par identifiant, et non par libelle : la migration des sections
+    // (patch_13) renomme ce noeud. Un alias par nom serait casse le jour de
+    // l'application du patch, et casse aujourd'hui si on l'ecrivait deja au
+    // nom d'apres. L'identifiant vaut avant comme apres.
+    // = I.3.3 « Ethereum, des recompositions d'alliances contre les rigidites de Bitcoin »
+    'Conception politique': '46111186b53041829a0a98218f9611fe',
     'Choix architecturaux': "Normativité de l'architecture et des paramètres Bitcoin",
     'STS': 'Sociology of Science & Technology (STS)',
     'Développement infrastructurel carnavalesque': 'Dynamique carnavalesque du développement infrastructurel',

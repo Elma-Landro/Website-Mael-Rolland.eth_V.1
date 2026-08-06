@@ -1,0 +1,7 @@
+gid;entite;domaine_csv;domaine_graphe;attribution;source;id_catalogue
+6c92b4f54bb54499b7e2d2c0625fccf7;InfrastructureEvent — Publication du code Bitcoin v0.1;iii;ii|vi;code a la main;ch.I l.269;E004
+babc9f23c57446c88626709f94707d80;InfrastructureEvent — Service de séquestre (escrow) offert par Theymos;iii;i;par definition;ch.I n.75 l.609;E011
+64a49803ef464d83a7ae3a674d180ca8;InfrastructureEvent — Service d’anonymisation BitLaundry;iii;v|viii;code a la main;ch.I n.74 l.607;E017
+f9f289de35d14463999022184a680479;InfrastructureEvent — Fondation Bitcoin (fin 2012);viii;v;par definition;ch.I l.281 + n.84 l.627;E035
+63ef4f3d8f584d9b90e351ab7c7c4b39;Hack et faillite MtGox (février 2014);viii;i;par definition;fig. n 6 + ch.I l.313;E055
+e2cdb978bbdd4119aa946a271051a753;Ethereum Hard Fork (juillet 2016);vii;i|vi;code a la main;ch.III section III.3 (l.657-731);E067

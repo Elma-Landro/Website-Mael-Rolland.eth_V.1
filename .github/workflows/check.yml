@@ -1,0 +1,74 @@
+name: check
+
+# Filet de securite minimal, sans dependance : syntaxe JS, validite JSON,
+# integrite structurelle du graphe, coherence de la couche d'ancrage.
+#
+# Motive par l'historique reel du depot :
+#   - deux commits de reparation de syntaxe sur story-presets.mjs
+#     (apostrophes typographiques dans des chaines a quotes simples) ;
+#   - 15 relations a identifiant tronque ayant survecu cinq versions du graphe ;
+#   - 26 identifiants morts dans section_entities_map passes a travers
+#     quatre versions sans que rien ne les remarque ;
+#   - un __pycache__ commite par inadvertance.
+#
+# Rien ici n'installe quoi que ce soit : Node et Python 3 suffisent.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntaxe JavaScript
+        run: |
+          set -e
+          shopt -s nullglob
+          fichiers=(*.mjs *.js scripts/*.mjs export/scripts/*.mjs)
+          echo "${#fichiers[@]} fichier(s) a verifier"
+          for f in "${fichiers[@]}"; do
+            node --check "$f" && echo "  OK  $f"
+          done
+
+      - name: Validite JSON
+        run: |
+          set -e
+          for f in *.json docs/audits/data/*.json patches/*.json; do
+            [ -e "$f" ] || continue
+            python3 -c "import json,sys; json.load(open(sys.argv[1],encoding='utf-8'))" "$f" \
+              && echo "  OK  $f"
+          done
+
+      # Une seule relation cassee est connue et DELIBEREMENT conservee :
+      # `9dee2daa…`, dont le `from` `72d182705407492c` est un identifiant
+      # tronque renvoyant a Ostrom 1990. Elle est portee, signalee, depuis mai
+      # 2026 en attente d'arbitrage humain — c'est une preuve de conservatisme,
+      # pas un defaut a masquer. On l'inscrit donc nommement en tolerance.
+      #
+      # Seul le graphe le plus recent est bloquant. Les versions anterieures
+      # sont des instantanes geles : v96 porte encore 15 endpoints casses,
+      # corriges des v97. Les faire echouer rendrait la CI rouge pour un etat
+      # que personne ne compte reparer. Elles restent verifiees, en rapport.
+      #
+      # Ce controle vivait ici, en Python embarque. Il en est sorti : du code
+      # qui n'existe que dans un YAML ne s'execute qu'en CI, donc ne se
+      # verifie jamais avant d'etre pousse — et il a livre une KeyError sur
+      # une ligne d'affichage. Un fichier appelable se rejoue en local.
+      - name: Integrite structurelle du graphe
+        run: python3 scripts/check_graph_integrity.py
+
+      - name: Coherence de la couche d'ancrage
+        run: python3 scripts/check_anchoring.py
+
+      - name: Recapitulatif
+        if: always()
+        run: |
+          echo "audit_graph.py et check_anchoring.py sont rejouables en local :"
+          echo "  python3 scripts/audit_graph.py --input <graphe>"
+          echo "  python3 scripts/check_anchoring.py"
+          echo "  python3 scripts/check_anchoring.py --no-baseline   # dette comprise"
