@@ -86,7 +86,10 @@ NOTES = {
 
 
 def cle_id(key):
-    return hashlib.md5(('grc20-property-v1|' + key).encode('utf-8')).hexdigest()
+    # usedforsecurity=False : identifiant deterministe, pas de la cryptographie
+    # (Python >= 3.9 ; la toolchain du depot est 3.11).
+    return hashlib.md5(('grc20-property-v1|' + key).encode('utf-8'),
+                       usedforsecurity=False).hexdigest()
 
 
 def attrs(e):

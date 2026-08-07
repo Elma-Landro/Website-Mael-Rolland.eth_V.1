@@ -102,7 +102,7 @@ def main(argv=None):
     if len(set(CHARGE_VERS_BLOC.values())) != len(CHARGE_VERS_BLOC):
         echec("la table charge->bloc n'est pas injective")
 
-    nom_type = {t['id']: t.get('name') for t in g['types']}
+    nom_type = {t['id']: t.get('name') or t['id'] for t in g['types']}
     rt_id = {r.get('name'): r['id'] for r in g['relation_types']}
     if 'appears in section' not in rt_id:
         echec("type de relation « appears in section » absent")
@@ -132,7 +132,7 @@ def main(argv=None):
     avant_e, avant_r = len(g['entities']), len(g['relations'])
 
     rebranchees = collections.Counter()
-    attribut_seul, conformes, sans_oracle, hors_table = 0, 0, 0, 0
+    conformes, sans_oracle, hors_table = 0, 0, 0
     for r in g['relations']:
         if r.get('type') != T_APP:
             continue

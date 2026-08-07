@@ -80,7 +80,7 @@ def main(argv=None):
                   CODE_INVOCATION)
 
     E = {e['id']: e for e in g['entities']}
-    nom_type = {t['id']: t.get('name') for t in g['types']}
+    nom_type = {t['id']: t.get('name') or t['id'] for t in g['types']}
     avant_e, avant_r = len(g['entities']), len(g['relations'])
     erreurs = []
 

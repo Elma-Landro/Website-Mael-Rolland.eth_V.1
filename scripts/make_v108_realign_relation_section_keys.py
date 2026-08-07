@@ -59,7 +59,7 @@ def main(argv=None):
     with open(args.source, encoding='utf-8') as f:
         g = json.load(f)
 
-    nom_type = {t['id']: t.get('name') for t in g['types']}
+    nom_type = {t['id']: t.get('name') or t['id'] for t in g['types']}
     E = {e['id']: e for e in g['entities']}
     cle_de = {}
     for e in g['entities']:
