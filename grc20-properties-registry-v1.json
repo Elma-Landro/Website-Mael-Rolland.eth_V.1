@@ -1,0 +1,5962 @@
+{
+  "_meta": {
+    "source_graph": "grc20-these-mael-rolland-v109.json",
+    "date": "2026-08-06",
+    "generated_by": "scripts/build_properties_registry.py",
+    "id_scheme": "md5('grc20-property-v1|' + key), 32 hexa minuscules",
+    "entry_count": 338,
+    "conventions": "Le registre decrit v109 tel qu'il est : `count` et `domain` sont mesures sur le graphe source. `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de patch_19_attribute_normalisation.json (etat normatif) ; les trois cles que ce patch fait disparaitre restent inscrites avec status='deprecated' et `supersedes` nommant la cle qui les remplace. `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
+  },
+  "entries": [
+    {
+      "key": "slug",
+      "id": "d9813ada15e6d2be9bd56bf5ae4773f6",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "ActorGroup",
+        "ActorNonHuman",
+        "Chapter",
+        "ChapterSection",
+        "CodeRepository",
+        "Concept",
+        "CoreConcept",
+        "CrisisEvent",
+        "DevelopmentPhase",
+        "DoctoralThesis",
+        "InfrastructureDomain",
+        "InfrastructureEvent",
+        "Institution",
+        "Marketplace",
+        "Method",
+        "MonetaryObject",
+        "NativeFormula",
+        "Organization",
+        "Person",
+        "PrimarySource",
+        "Protocol",
+        "Reference",
+        "SecondaryConcept",
+        "SmartContract",
+        "SoftwareClient",
+        "TechnicalConcept",
+        "TheoreticFramework",
+        "ThesisSection"
+      ],
+      "count": 541,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "chapter",
+      "id": "bc3e85a3ab76314b89463a0fcab7f8c1",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "CoreConcept",
+        "Corpus",
+        "CrisisEvent",
+        "InfrastructureEvent",
+        "NarrativeCluster",
+        "NativeFormula",
+        "Organization",
+        "Person",
+        "PriceWindow",
+        "PrimarySource",
+        "Reference",
+        "SourceQuote",
+        "ThesisSection"
+      ],
+      "count": 487,
+      "status": "structural",
+      "readBy": [
+        "curriculum-fr.html",
+        "curriculum.html",
+        "graphe.html",
+        "lecteur.html",
+        "narrative-anchors-build.mjs",
+        "scripts/build_section_headings_map.py",
+        "scripts/make_section_creation_patch.py",
+        "scripts/sourcequote-migration/normalize.mjs",
+        "scripts/verif_doublons.py",
+        "soutenance-edition-fr.html",
+        "soutenance-edition.html",
+        "soutenance-fr.html",
+        "soutenance.html",
+        "these-fr.html",
+        "these.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "patch_19 replie chap1/chap2/chap3/I sur Chapitre I/II/III ; « intro » est conserve tel quel (graphie majoritaire : 68 contre 1 « Introduction générale ») ; les formes composites (« Chapitre II / Chapitre III », etc.) restent intouchees."
+    },
+    {
+      "key": "year",
+      "id": "65e67d4c7333637c307eb873499268f2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "Concept",
+        "CrisisEvent",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "InfrastructureEvent",
+        "ProtocolProposal",
+        "Reference",
+        "SmartContract"
+      ],
+      "count": 386,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "scripts/match_chronology_events.py",
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "definition",
+      "id": "0eb4e87e6af8eee24a8fdfb77bf55267",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AnalyticClaim",
+        "ChapterSection",
+        "Concept",
+        "CoreConcept",
+        "InfrastructureDomain",
+        "NativeFormula",
+        "SecondaryConcept",
+        "TechnicalConcept",
+        "ThesisSection"
+      ],
+      "count": 365,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v101_drop_orphan_ops.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "sourcePage",
+      "id": "5a6936693f1c8f78140aca6463247c5e",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "ActorGroup",
+        "ActorNonHuman",
+        "ChapterSection",
+        "CodeRepository",
+        "Concept",
+        "ConceptTechnical",
+        "CoreConcept",
+        "CrisisEvent",
+        "DevelopmentPhase",
+        "GovernanceArena",
+        "HardwareDevice",
+        "InfrastructureDomain",
+        "Institution",
+        "Marketplace",
+        "MediaOutlet",
+        "NativeFormula",
+        "Organization",
+        "Person",
+        "PlatformService",
+        "Protocol",
+        "Reference",
+        "SecondaryConcept",
+        "SmartContract",
+        "TechnicalConcept",
+        "TheoreticFramework",
+        "ThesisSection"
+      ],
+      "count": 332,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "lecteur.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": [
+        "sourcePages"
+      ],
+      "notes": ""
+    },
+    {
+      "key": "sourcePages",
+      "id": "6ce5c03645a2ed286f6585c851b0278a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorGroup",
+        "ActorNonHuman",
+        "ChapterSection",
+        "CodeRepository",
+        "Concept",
+        "ConceptTechnical",
+        "CoreConcept",
+        "CrisisEvent",
+        "DevelopmentPhase",
+        "GovernanceArena",
+        "HardwareDevice",
+        "InfrastructureDomain",
+        "Institution",
+        "Marketplace",
+        "MediaOutlet",
+        "NativeFormula",
+        "Organization",
+        "Person",
+        "PlatformService",
+        "Protocol",
+        "Reference",
+        "SecondaryConcept",
+        "SmartContract",
+        "TechnicalConcept",
+        "TheoreticFramework",
+        "ThesisSection"
+      ],
+      "count": 332,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Source de derivation de `sourcePage` (premier numero de page) ; porte en plus les pages multiples."
+    },
+    {
+      "key": "thesisLocation",
+      "id": "1a6b1b2577d1ce0f8ff180a42b5cc838",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorGroup",
+        "Argument",
+        "Capability",
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "CoreConcept",
+        "CrisisPhase",
+        "DevelopmentPhase",
+        "InfrastructureDomain",
+        "InfrastructureEvent",
+        "PriceSeries",
+        "PriceWindow",
+        "PrimarySource",
+        "ProtocolChange",
+        "SourceQuote",
+        "ThesisSection"
+      ],
+      "count": 292,
+      "status": "structural",
+      "readBy": [
+        "narrative-anchors-build.mjs",
+        "scripts/sourcequote-migration/normalize.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "title",
+      "id": "2de15887b53db9c32c26bea504c1a154",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "Reference",
+        "ThesisSection"
+      ],
+      "count": 263,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "graphe.html",
+        "graphe.panels.js",
+        "lecteur.html",
+        "scripts/build_section_headings_map.py",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/normalize.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "description",
+      "id": "0aa87405bb6f44397763f9ece0893c2e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "DevelopmentPhase",
+        "InfrastructureDomain",
+        "InfrastructureEvent",
+        "Organization",
+        "Person",
+        "PrimarySource",
+        "Protocol",
+        "Reference"
+      ],
+      "count": 237,
+      "status": "structural",
+      "readBy": [
+        "collaborate-fr.html",
+        "collaborate.html",
+        "crisis-fr.html",
+        "crisis.html",
+        "curriculum-fr.html",
+        "curriculum.html",
+        "cv-fr.html",
+        "cv.html",
+        "graph-worker.mjs",
+        "graphe.html",
+        "graphe.state.js",
+        "graphe.ui-entity-forms.js",
+        "grc20-publish.mjs",
+        "index-fr.html",
+        "index.html",
+        "lecteur.html",
+        "plan-du-site.html",
+        "rare-pepe-fr.html",
+        "rare-pepe.html",
+        "scripts/audit_graph.py",
+        "scripts/generate_chapter_patch.mjs",
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/make_v107_wire_chapter_I_tree.py",
+        "scripts/match_chronology_events.py",
+        "scripts/polish_v105_editorial.py",
+        "scripts/verif_doublons.py",
+        "sitemap.html",
+        "these.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Collision avec le champ d'enveloppe `description` de l'entite GRC-20 et avec la propriete systeme homonyme de grc20-publish.mjs ; les occurrences code comptees dans readBy designent le plus souvent l'enveloppe, pas cet attribut."
+    },
+    {
+      "key": "date",
+      "id": "3c74ce3c6643a40248da903054b13712",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "GreyLiterature",
+        "InfrastructureEvent",
+        "Organization",
+        "PriceWindow",
+        "PrimarySource",
+        "ProtocolChange",
+        "Reference",
+        "SourceQuote"
+      ],
+      "count": 236,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/match_chronology_events.py",
+        "scripts/verif_doublons.py",
+        "workshop/scripts/lint-workshop-artifacts.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "quoteText",
+      "id": "451224b53124700ebab445f879dbd5d4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "SourceQuote"
+      ],
+      "count": 236,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "graphe.story-helpers.js",
+        "lecteur.html",
+        "narrative-anchors-build.mjs",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/normalize.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "page",
+      "id": "cb2a462511fb0fa18421dca2be0edda9",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "PriceWindow",
+        "SourceQuote"
+      ],
+      "count": 233,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "graphe.story-helpers.js",
+        "lecteur.html",
+        "narrative-anchors-build.mjs",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/normalize.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "evidenceStatus",
+      "id": "40dd1d2b10c4c52883ab8077e45006df",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "Argument",
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "CrisisPhase",
+        "PriceSeries",
+        "PriceWindow",
+        "PrimarySource",
+        "ProtocolChange",
+        "Reference",
+        "SourceQuote",
+        "ThesisSection"
+      ],
+      "count": 200,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_v104_ethereum_hard_forks.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "language",
+      "id": "50a7a79c9ddfd680c75c3746779a1317",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "PrimarySource",
+        "SoftwareClient",
+        "SourceQuote"
+      ],
+      "count": 198,
+      "status": "structural",
+      "readBy": [
+        "atelier.html",
+        "collaborate-fr.html",
+        "collaborate.html",
+        "graphe.ui-entity-forms.js",
+        "index-fr.html",
+        "index.html",
+        "plan-du-site.html",
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "scripts/make_v102_restore_domain_ii.py",
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/make_v108_realign_relation_section_keys.py",
+        "scripts/make_v109_realign_anchoring_charges.py",
+        "scripts/make_v98_add_missing_chronology_events.py",
+        "soutenance-edition-fr.html",
+        "soutenance-edition.html",
+        "talks-fr.html",
+        "talks.html",
+        "workshop.html"
+      ],
+      "vocabulary": [
+        "Solidity",
+        "en",
+        "fr"
+      ],
+      "derivedFrom": null,
+      "notes": "Collision avec la cle d'options `language` de l'enveloppe de valeur ; readBy surestime donc son usage reel."
+    },
+    {
+      "key": "sourceFormat",
+      "id": "ee4dfd22416b0c9c5641aa544f5d1b87",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Concept",
+        "PriceSeries",
+        "PriceWindow",
+        "ProtocolChange",
+        "SourceQuote"
+      ],
+      "count": 197,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "HTML",
+        "PDF",
+        "PNG",
+        "book",
+        "online post",
+        "online post / BitcoinTalk"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "source",
+      "id": "2b51d0b266b0921df540d60704bde6b9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "CoreConcept",
+        "DevelopmentPhase",
+        "InfrastructureDomain",
+        "InfrastructureEvent",
+        "InfrastructureSegment",
+        "Organization",
+        "Person",
+        "PriceSeries",
+        "PriceWindow",
+        "ProtocolChange",
+        "SecondaryConcept",
+        "SourceQuote"
+      ],
+      "count": 144,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "scripts/decode_chronologie.py",
+        "scripts/make_v100_section_migration.py",
+        "scripts/make_v101_drop_orphan_ops.py",
+        "scripts/make_v102_restore_domain_ii.py",
+        "scripts/make_v103_wire_events_to_domains.py",
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/make_v105_dedup_events.py",
+        "scripts/make_v107_wire_chapter_I_tree.py",
+        "scripts/make_v108_realign_relation_section_keys.py",
+        "scripts/make_v109_realign_anchoring_charges.py",
+        "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v98_add_missing_chronology_events.py",
+        "scripts/make_v99_wire_maturation_phase.py",
+        "scripts/match_chronology_events.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "cited_in_chapters",
+      "id": "372f38d668a1eda3ded77a1e871e3adc",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "Reference"
+      ],
+      "count": 141,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "disciplinaryOrigin",
+      "id": "b3130c90d280541eb708327ce69dd0f1",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "NativeFormula",
+        "SecondaryConcept"
+      ],
+      "count": 129,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "author",
+      "id": "aed09c3187894a4bd4b2517640e0eb46",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "Capability",
+        "Concept",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "ProtocolProposal",
+        "Reference"
+      ],
+      "count": 115,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "curriculum.html",
+        "cv-fr.html",
+        "cv.html",
+        "grc20-publish.mjs",
+        "index-fr.html",
+        "index.html",
+        "plan-du-site.html",
+        "rare-pepe-fr.html",
+        "rare-pepe.html",
+        "scripts/verif_doublons.py",
+        "sitemap.html",
+        "these.html",
+        "workshop/scripts/lint-workshop-artifacts.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nameEn",
+      "id": "de7db16fde2f8243885d0b0e247be755",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Concept",
+        "CoreConcept",
+        "Institution",
+        "Method",
+        "NativeFormula",
+        "TheoreticFramework"
+      ],
+      "count": 115,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "communityRole",
+      "id": "502f837e9b870d11c33d0fb88cc46ee7",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Organization",
+        "Person",
+        "PrimarySource",
+        "Reference"
+      ],
+      "count": 105,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "type",
+      "id": "d18f929994cdb9392a966ee74ed15e84",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "ActorNonHuman",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "Reference",
+        "SoftwareClient"
+      ],
+      "count": 98,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "graph-worker.mjs",
+        "graphe.html",
+        "graphe.ui-filters.js",
+        "graphe.ui-panel-actions.js",
+        "graphe.ui-panel.js",
+        "grc20-publish.mjs",
+        "lecteur.html",
+        "narrative-anchors-build.mjs",
+        "scripts/audit_graph.py",
+        "scripts/check_graph_integrity.py",
+        "scripts/generate_chapter_patch.mjs",
+        "scripts/generate_corrective_patch.mjs",
+        "scripts/generate_corrective_patch_batch1.mjs",
+        "scripts/generate_corrective_patch_batch2.mjs",
+        "scripts/generate_corrective_patch_batch3.mjs",
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "scripts/make_v100_section_migration.py",
+        "scripts/make_v102_restore_domain_ii.py",
+        "scripts/make_v103_wire_events_to_domains.py",
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/make_v105_dedup_events.py",
+        "scripts/make_v107_wire_chapter_I_tree.py",
+        "scripts/make_v108_realign_relation_section_keys.py",
+        "scripts/make_v109_realign_anchoring_charges.py",
+        "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v97_remove_truncated_broken_relations.py",
+        "scripts/make_v98_add_missing_chronology_events.py",
+        "scripts/make_v99_wire_maturation_phase.py",
+        "scripts/plan_section_migration.py",
+        "scripts/remap_section_keys.py",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Collision avec le champ `type` de l'enveloppe de valeur GRC-20 et avec le champ `type` des ops ; readBy surestime son usage reel."
+    },
+    {
+      "key": "dateSource",
+      "id": "2bb03125830514440c63eab644defe3d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent",
+        "Organization",
+        "PrimarySource",
+        "ProtocolChange"
+      ],
+      "count": 95,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "relevance",
+      "id": "6be99305f9f91ce396f88f67a777b21c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "Reference"
+      ],
+      "count": 94,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "pseudonymous",
+      "id": "1c49cb0328aeddb3a6479ba85e5af3eb",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "Person",
+        "Reference"
+      ],
+      "count": 92,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        false,
+        true
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "url",
+      "id": "d29ce08812014752df68b9ef359cdc91",
+      "valueType": "URL",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman",
+        "CodeRepository",
+        "CrisisEvent",
+        "DoctoralThesis",
+        "GovernanceArena",
+        "GreyLiterature",
+        "Institution",
+        "PrimarySource",
+        "Reference"
+      ],
+      "count": 85,
+      "status": "structural",
+      "readBy": [
+        "graph-worker.mjs",
+        "graphe.panel-render.js",
+        "index.html",
+        "scripts/dump_story_presets.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "section_key",
+      "id": "86c5a84574fa2cc8f680f92b5bf268e8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ChapterSection",
+        "Concept",
+        "ThesisSection"
+      ],
+      "count": 84,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "lecteur.html",
+        "scripts/build_section_headings_map.py",
+        "scripts/check_anchoring.py",
+        "scripts/check_graph_integrity.py",
+        "scripts/derive_section_tree.py",
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "scripts/make_v100_section_migration.py",
+        "scripts/make_v107_wire_chapter_I_tree.py",
+        "scripts/make_v108_realign_relation_section_keys.py",
+        "scripts/make_v109_realign_anchoring_charges.py",
+        "scripts/plan_section_migration.py",
+        "scripts/remap_section_keys.py",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/normalize.mjs",
+        "scripts/sourcequote-migration/resolve.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "authors",
+      "id": "a93838d25fb402b9ad3b875915738cb5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent",
+        "ProtocolProposal",
+        "Reference"
+      ],
+      "count": 83,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "labelEn",
+      "id": "89eb1607cafe2d73e9445bbdcc4898b5",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Argument",
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "NarrativeCluster",
+        "ThesisSection"
+      ],
+      "count": 77,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "scripts/make_v100_section_migration.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "labelFr",
+      "id": "47781f9d0f18d36a8d54270865065225",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Argument",
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "CrisisPhase",
+        "NarrativeCluster",
+        "ThesisSection"
+      ],
+      "count": 70,
+      "status": "structural",
+      "readBy": [
+        "lecteur.html",
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "scripts/make_v100_section_migration.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "regimeDePreuve",
+      "id": "458053b5ec3e078277f676cb6fd01e9b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 66,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Cas limite : parole d'acteur partielle, censurée. Valeur documentaire sur la fermeture de la gouvernance de huis clos Bitcoin Core. À distinguer des entretiens semi-directifs.",
+        "Immersion participante en ligne — source primaire emic. Expérience directe du chercheur.",
+        "Observation participante — source primaire emic. Notes de terrain du chercheur.",
+        "Parole d'acteur — source primaire emic. À distinguer des références académiques secondaires (References)."
+      ],
+      "derivedFrom": null,
+      "notes": "Doublon semantique non tranche avec `sourceType` (66/66 co-portes, valeurs correlees) — non fusionne, decision humaine requise."
+    },
+    {
+      "key": "sourceType",
+      "id": "86d963c8527225d588c04de279539620",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 66,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Entretien semi-directif (terrain primary source)",
+        "Immersion participante online (terrain primary source)",
+        "Non-entretien (échange censuré) — terrain primary source",
+        "Observation participante (terrain primary source)"
+      ],
+      "derivedFrom": null,
+      "notes": "Doublon semantique non tranche avec `regimeDePreuve` (66/66 co-portes, valeurs correlees) — non fusionne, decision humaine requise."
+    },
+    {
+      "key": "cited_pages",
+      "id": "7713327c7b02fe3aecf032b9525f88a4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "AcademicWork",
+        "GreyLiterature",
+        "IndigenousLiterature",
+        "Reference"
+      ],
+      "count": 65,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "summary",
+      "id": "42e2b4e1661697b9b432ec8a1e566172",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Argument",
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "NarrativeCluster",
+        "ThesisSection"
+      ],
+      "count": 59,
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_graph.py",
+        "scripts/make_section_creation_patch.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "slugPreferred",
+      "id": "6179b7bc07cf1b708f80ce8a272e872c",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Argument",
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "NarrativeCluster",
+        "ThesisSection"
+      ],
+      "count": 51,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "central_argument",
+      "id": "e520240f82acd98307abf7644f1c2c5d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ChapterSection",
+        "Concept",
+        "ThesisSection"
+      ],
+      "count": 49,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_section_creation_patch.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateAuthority",
+      "id": "9144367eb1660a0e10192e062fed5e73",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "InfrastructureEvent",
+        "ProtocolChange"
+      ],
+      "count": 49,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v104_ethereum_hard_forks.py",
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": [
+        "AUTHOR_VERIFIED",
+        "EXTERNAL_VERIFICATION",
+        "TIMELINE_FIGURE"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "order",
+      "id": "6f8f2471301b7ab12ce1934660d3dd6f",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Chapter",
+        "ChapterSection",
+        "Concept",
+        "CrisisPhase",
+        "ThesisSection"
+      ],
+      "count": 49,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Cle mixte : 45 valeurs NUMBER, 4 valeurs TEXT entieres ('0'..'3') hors perimetre du repli tout-TEXT de patch_19 (point 3) — a convertir lors d'un arbitrage ulterieur."
+    },
+    {
+      "key": "crisisType",
+      "id": "c18f0afa017bd4e441664fec9274cfae",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 46,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "crisisNumber",
+      "id": "f07e8c931096c5e72449983de66f5c43",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 42,
+      "status": "structural",
+      "readBy": [
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "indigeneLabel",
+      "id": "4962e29694a88f0bd032b843c202cd86",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Concept",
+        "NativeFormula",
+        "SecondaryConcept"
+      ],
+      "count": 42,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "contestedMeaning",
+      "id": "55fc31e7747c3c87d0fda9be2c51f3f1",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "Concept",
+        "NativeFormula",
+        "SecondaryConcept"
+      ],
+      "count": 40,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        false,
+        true
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "role",
+      "id": "16d466c4b903649e73fd420b4715eb4e",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "ActorGroup",
+        "Argument",
+        "CodeRepository",
+        "Concept",
+        "Organization",
+        "Person",
+        "Protocol",
+        "StakeholderCategory",
+        "StakeholderGroup"
+      ],
+      "count": 40,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "wikiUrl",
+      "id": "d605fb48a8937a48b49c86268141b33c",
+      "valueType": "URL",
+      "language": null,
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 38,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "page_start",
+      "id": "9a51004e4755b22b82877f5d55d59a7c",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "ThesisSection"
+      ],
+      "count": 37,
+      "status": "structural",
+      "readBy": [
+        "lecteur.html",
+        "scripts/make_section_creation_patch.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "cveId",
+      "id": "f8bdf46a8709ecec241e95f6cc12df3e",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 31,
+      "status": "structural",
+      "readBy": [
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "aliases",
+      "id": "8a47364df465bdc8feb7f80f736958d2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "CoreConcept",
+        "CrisisEvent",
+        "GovernanceConflict",
+        "Organization",
+        "Person",
+        "Protocol",
+        "TechnicalConcept",
+        "TheoreticFramework"
+      ],
+      "count": 30,
+      "status": "structural",
+      "readBy": [
+        "scripts/check_anchoring.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "observationNumber",
+      "id": "455d014a6763a194daa4aafd3c4e5b09",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Method",
+        "PrimarySource"
+      ],
+      "count": 28,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "anonymized",
+      "id": "deed69387e8f8bdba9c70841b9f9d6f4",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        false,
+        true
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "biographieSynth",
+      "id": "6d1eb48a67c9477fdf182fa4f3d5b46b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "communaute",
+      "id": "3c34bbd8c08d12c7f7d1817900a1438a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Bitcoin",
+        "Bitcoin & Ethereum",
+        "Ethereum",
+        "Ethereum & Ethereum Classic"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateEvenement",
+      "id": "c6a18ea4d14ef799d847cc8f8eb808c8",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateInterview",
+      "id": "ead81eb8e1647d037da9726394e332fa",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "durationMinutes",
+      "id": "f1de3516bdd669614ee85a24fb1ec8a7",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dureeHeures",
+      "id": "46cc46a54bbbb386108815e0a5ed1402",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        12,
+        16,
+        2,
+        24,
+        3,
+        4,
+        6
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "formationEnquete",
+      "id": "44bb7abba8a4242f90557672535efba3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "interviewName",
+      "id": "1a1331d77a5c72fb2f83153a97dccf87",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "interviewNumber",
+      "id": "c3ac150f852b55d5d50d0ea1658e0581",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "lieu",
+      "id": "bc0eeee46004ece9e175a3b0e4fd879c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Amsterdam",
+        "Conflans-Sainte-Honorine",
+        "Paris"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "modalite",
+      "id": "3c29d5eed05f84fc70fed68483238ad7",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Face-à-face",
+        "Face-à-face (x2)",
+        "Vidéoconférence",
+        "Échange mail + forum"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nomEvenement",
+      "id": "e2abc385b971a38057a0b3f11b3a86be",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "organisateur",
+      "id": "6c243da87b7edcc14d776d7779284fec",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Asseth",
+        "Bitcoin",
+        "Bitcoin-Paris",
+        "Cercle du Coin",
+        "Chaintech",
+        "Ethereum"
+      ],
+      "derivedFrom": null,
+      "notes": "patch_19 supprime 1 valeur vide ; la cle reste active (26 porteurs)."
+    },
+    {
+      "key": "rolesEcosysteme",
+      "id": "490743f6c33f7237c84c86ce54805f67",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "typeEvenement",
+      "id": "c6837a52badcff2909a96a0d80f7913b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 27,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Conférence",
+        "Meet Up",
+        "Présentation",
+        "Repas"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "consultedDate",
+      "id": "ceac1f5062a4cd202560c7f058f86b8b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GreyLiterature",
+        "Reference"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "21 juillet 2020"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fullTitle",
+      "id": "309556b632325a1b10b33ac0302e964e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GreyLiterature",
+        "Reference"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governanceStance",
+      "id": "621f31239e9635edee78dcc06e24554b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person",
+        "Reference"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "journal",
+      "id": "32e914b329f731159b93d09b9131ad5e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GreyLiterature",
+        "Reference"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Altcoins Bitcoin News",
+        "Bitcoin News / news.bitcoin.com",
+        "Featured Bitcoin News",
+        "Featured Bitcoin News / news.bitcoin.com",
+        "News Bitcoin News",
+        "Wallets Bitcoin News / news.bitcoin.com"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "seriesNumber",
+      "id": "a14c57c0575afb224d7b2887d42605c1",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GreyLiterature",
+        "Reference"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "seriesTitle",
+      "id": "23725aa6b2c01fafbd38dc026216480c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GreyLiterature",
+        "Reference"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Bitcoin History Series (news.bitcoin.com)"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nomEnquete",
+      "id": "134cf435f11611558250866fb00d939f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 23,
+      "status": "deprecated",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `interviewName`.",
+      "supersedes": "interviewName"
+    },
+    {
+      "key": "period",
+      "id": "82743da2222808b9e7c50bc2eba3c75f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman",
+        "Capability",
+        "Concept",
+        "CrisisEvent",
+        "GovernanceConflict",
+        "InfrastructureEvent"
+      ],
+      "count": 23,
+      "status": "structural",
+      "readBy": [
+        "scripts/match_chronology_events.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "rauchsSegmentNumber",
+      "id": "4114336924172e9b237cad07b80a9e21",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "InfrastructureSegment"
+      ],
+      "count": 22,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "severity",
+      "id": "047e34c123524ccc1977745b92fcd168",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 18,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Critical -- potential double-spend / out-of-consensus monetary issuance",
+        "Critique",
+        "Critique (RED)",
+        "Faible",
+        "Inconnue",
+        "Indéterminée",
+        "Modérée"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "exploited",
+      "id": "148840b41845fcc08d6731868a842374",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 17,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Inconnu",
+        "Non",
+        "Non (corrigé avant exploitation)",
+        "Non (démonstration testnet seulement)",
+        "Non confirmé",
+        "Oui (double dépense ~10 000£ sur OKPAY)",
+        "Oui (involontaire, perturbation réseau)",
+        "Oui (théoriquement, coûteux)"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governancePhilosophy",
+      "id": "dcbd5bd4a7ac9e6f4247a0b4aff0bd26",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman",
+        "Protocol",
+        "SoftwareClient"
+      ],
+      "count": 17,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "launchYear",
+      "id": "6fdcfbe567f39e14a66b074c05a8eb81",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "ActorNonHuman",
+        "Protocol",
+        "SoftwareClient"
+      ],
+      "count": 17,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "wikidataId",
+      "id": "cd06271aa0c42e64cbc28fcd990406b6",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Person",
+        "Reference"
+      ],
+      "count": 17,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "origin",
+      "id": "e9eabd89fbd74434c9a0fc85da9b68e8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "InfrastructureEvent",
+        "Protocol"
+      ],
+      "count": 15,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Figure 7 — Cartographie parties prenantes (Rolland 2024)",
+        "France",
+        "Scaling Debate / Fork contentieux"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "protocol",
+      "id": "8b9f597f97ad470398b07cb3c8e29158",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisPhase",
+        "ProtocolChange"
+      ],
+      "count": 15,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v104_ethereum_hard_forks.py"
+      ],
+      "vocabulary": [
+        "Bitcoin",
+        "Ethereum"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nature",
+      "id": "c6f9baddea6d175f51e79406cbba12ad",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Corpus",
+        "GovernanceConflict"
+      ],
+      "count": 14,
+      "status": "structural",
+      "readBy": [
+        "scripts/match_chronology_events.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "founded",
+      "id": "dff2f6b43bc113e486b2cfc202563fe3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorGroup",
+        "ActorNonHuman",
+        "GovernanceArena",
+        "MediaOutlet",
+        "Organization",
+        "PlatformService"
+      ],
+      "count": 13,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "status",
+      "id": "26d9593472405463ac33d317429477c5",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Concept",
+        "Organization",
+        "Person",
+        "ProtocolProposal"
+      ],
+      "count": 13,
+      "status": "structural",
+      "readBy": [
+        "export/scripts/export-workshop-to-public.mjs",
+        "graphe.html",
+        "grc20-publish.mjs",
+        "lecteur.html",
+        "scripts/apply-sourcequote-phases.mjs",
+        "scripts/check_graph_integrity.py",
+        "scripts/generate_corrective_patch_batch3.mjs",
+        "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v97_remove_truncated_broken_relations.py",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/resolve.mjs",
+        "workshop/scripts/build-export-dry-run.mjs",
+        "workshop/scripts/lint-workshop-artifacts.mjs"
+      ],
+      "vocabulary": [
+        "Claim / contested",
+        "Dissoute / Marginalisée après 2014",
+        "Pseudonym / Identity unknown",
+        "activated",
+        "active",
+        "implemented",
+        "rejected"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "cmImpliquee",
+      "id": "f458bac91f3bdb803c34bbb4108619b5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 12,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Bitcoin",
+        "Bitcoin et autres",
+        "Bitcoin, Dash, Ethereum, Zcash",
+        "Bitcoin, Ethereum, Zcash etc.",
+        "Bitcoin/Counterparty",
+        "Ethereum (surtout), Bitcoin",
+        "Ethereum, Polygon, Cosmos, Solana, L2"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "critical",
+      "id": "70010acd73e1bbd1df166ad9f91e477c",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 12,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "scripts/audit_graph.py",
+        "scripts/check_graph_integrity.py"
+      ],
+      "vocabulary": [
+        true
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateDebut",
+      "id": "f5ce83b72fb54c34abda0903d21cc5e4",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 12,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "2015-01-01T00:00:00.000Z",
+        "2015-06-01T00:00:00.000Z",
+        "2016-01-01T00:00:00.000Z",
+        "2016-01-15T00:00:00.000Z",
+        "2016-02-10T00:00:00.000Z",
+        "2016-05-01T00:00:00.000Z",
+        "2016-06-01T00:00:00.000Z",
+        "2016-10-01T00:00:00.000Z"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "implementationType",
+      "id": "b8e7e09f02887e079710cc54a73d6563",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman",
+        "SoftwareClient"
+      ],
+      "count": 12,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "programmingLanguage",
+      "id": "22a24ab1a1b22b5954eef9fd402e24a2",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "ActorNonHuman",
+        "SoftwareClient"
+      ],
+      "count": 12,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "C# / .NET",
+        "C++",
+        "Go",
+        "Java",
+        "JavaScript (Electron)",
+        "Python",
+        "Rust"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "typeInteraction",
+      "id": "338604fed0428e9886bfafba872aa91d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 12,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Hors-protocole",
+        "Hors-protocole et au sein du protocole"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "wikiSeverity",
+      "id": "13fdcaaa5747126d0d6c52739fa68243",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 12,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "RED (Critical)"
+      ],
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "bipId",
+      "id": "14f7d7bae673d8e3d12d2a38dee8d050",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 11,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "speaker",
+      "id": "761f669904c0e48abb714ab64b1c2101",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "SourceQuote"
+      ],
+      "count": 11,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "mechanism",
+      "id": "6db4335d491a09f1a291aa647020f36b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability",
+        "Concept",
+        "SecondaryConcept"
+      ],
+      "count": 10,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "publisher",
+      "id": "e504b2ccc8d20f83b98115bcfafa1c22",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Reference"
+      ],
+      "count": 10,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "color",
+      "id": "7b234f373818bf5281e669d3d64da8ed",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "InfrastructureDomain"
+      ],
+      "count": 8,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "lecteur.html",
+        "scripts/make_v102_restore_domain_ii.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "phaseKind",
+      "id": "391e6124059f44777702b29b6dcb9556",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisPhase"
+      ],
+      "count": 8,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "timeEnd",
+      "id": "d16636ef9daa6bda58fb24ae23a61698",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisPhase"
+      ],
+      "count": 8,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "timeStart",
+      "id": "1b31b2ca45b191509a82e7646f1029a2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisPhase"
+      ],
+      "count": 8,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "annexe",
+      "id": "ef03265e8c1649a400e9485cca29c670",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Corpus",
+        "Method"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateStart",
+      "id": "35bdff75364bb4eca535de7b00754655",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DevelopmentPhase",
+        "DoctoralThesis",
+        "GovernanceProcess"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "discipline",
+      "id": "5529a71af2b042c82340620f1c9f1b8d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "example",
+      "id": "7732701b3910b8a647ac032ee072cf63",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability",
+        "Concept"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "foundedYear",
+      "id": "c070ac7f1a2a6c2194a36e99004d692b",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "ActorNonHuman",
+        "Organization"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fromRauchs",
+      "id": "719ca02738e8086dbf7f27722ae6d63e",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "InfrastructureDomain"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "launch",
+      "id": "37f3fdc8818e1585bd0da65aca3b6fac",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "priceUSD",
+      "id": "2dc4dcfb9f9cc714a43cc3b4e4c5703a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "taxonomyOrigin",
+      "id": "7cfd32031d90380cc8bf65645d520f08",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "InfrastructureDomain"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "tradingPair",
+      "id": "f0f2bf63d96849dad9f9d7309ee66240",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman",
+        "Organization"
+      ],
+      "count": 7,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateEnd",
+      "id": "4d4eed26d139d1005f48b45a72442f0d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DevelopmentPhase",
+        "GovernanceProcess"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "founder",
+      "id": "c77b31eb25867f945c08236d63a56c12",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "Marketplace",
+        "Organization",
+        "PlatformService",
+        "Protocol"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fullName",
+      "id": "4edc715ecf5e39ab541d52a2dae5193a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Institution",
+        "MonetaryObject",
+        "TheoreticFramework"
+      ],
+      "count": 6,
+      "status": "structural",
+      "readBy": [
+        "graphe.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governanceMode",
+      "id": "cefd02544fdaa575ca24f924a75dbd82",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "GovernanceProcess"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "note",
+      "id": "6b6b70c72e57f623e22e21d61e1841f3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "GreyLiterature",
+        "Reference"
+      ],
+      "count": 6,
+      "status": "structural",
+      "readBy": [
+        "scripts/derive_section_tree.py",
+        "scripts/make_v107_wire_chapter_I_tree.py",
+        "scripts/make_v108_realign_relation_section_keys.py",
+        "scripts/make_v109_realign_anchoring_charges.py",
+        "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v98_add_missing_chronology_events.py",
+        "scripts/make_v99_wire_maturation_phase.py",
+        "scripts/polish_v105_editorial.py",
+        "workshop/scripts/build-export-dry-run.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "quote",
+      "id": "c778832479c4a019589470c4d8209189",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Argument"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "sourceChronologyCsvRow",
+      "id": "479ab5cd37fcacdd4eafb5f1179de7c9",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "statementFr",
+      "id": "2a172a9fc323e2a23789cba4dfc3de37",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Argument"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "ticker",
+      "id": "5323c730824f0a7894d898f6d802d52d",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 6,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "website",
+      "id": "b16fc8d99a958403b0a96224d4dce5e0",
+      "valueType": "URL",
+      "language": null,
+      "domain": [
+        "Institution",
+        "Person"
+      ],
+      "count": 6,
+      "status": "structural",
+      "readBy": [
+        "cv-fr.html",
+        "cv.html",
+        "graphe.panel-render.js",
+        "index-fr.html",
+        "index.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "clientDiversity",
+      "id": "6fa8dc253985af8889f197f92ad9fe6f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 5,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "consensusMechanism",
+      "id": "5522a60690a2a522496f4fb50378e3e1",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 5,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "context",
+      "id": "e95b8b4094544cd0e57fba06f839d953",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent",
+        "PriceWindow",
+        "SourceQuote"
+      ],
+      "count": 5,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "decisionType",
+      "id": "7957aa39eec2c770ff9eb3562824abc8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceProcess"
+      ],
+      "count": 5,
+      "status": "structural",
+      "readBy": [
+        "workshop/scripts/lint-workshop-artifacts.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "forkHistory",
+      "id": "bd38f3c3e462a4e29ce743238e3268d4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 5,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "whyItMatters",
+      "id": "1a36530face0958e0fbf574eadd3feab",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "Method"
+      ],
+      "count": 5,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "consequence",
+      "id": "fc5e294b1f60c401fc5f940caa97759e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "InfrastructureEvent",
+        "SourceQuote"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "crisisDomain",
+      "id": "67bf159ad3d9bc4d46f022047942c8fd",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "positioningFr",
+      "id": "f57c67822d5c5f52bc8c176204770895",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "publicDisclosure",
+      "id": "cab292fd9caa5e696e0a7a1a6a983080",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "rauchs2016Ref",
+      "id": "d09df3d2853c4c45924a09395d02f2b5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureDomain"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "rauchs2016Segments",
+      "id": "88fddcf23614f94257485adf005dd31b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureDomain"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "rauchs2016SegmentsCount",
+      "id": "cadfc647f82e66eaaaf3f5b9489a9527",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "InfrastructureDomain"
+      ],
+      "count": 4,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": [
+        "rauchs2016Segments"
+      ],
+      "notes": ""
+    },
+    {
+      "key": "resolution",
+      "id": "d86e629ebba4e93cf0df4b132f3fd296",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceConflict"
+      ],
+      "count": 4,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "scripts/sourcequote-migration/resolve.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "actor",
+      "id": "93e0b00fd0c1a254f5d017a787934f1c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "InfrastructureEvent"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "affectedVersions",
+      "id": "d3b7a110d0aeae11a6997de9ebea70ea",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent",
+        "ThesisSection"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "creator",
+      "id": "d54190abb7bd7498deafb7e12ae27ce2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman",
+        "Capability",
+        "InfrastructureEvent"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateRange",
+      "id": "93901b457a1a126122ebab9f4807d371",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "DevelopmentPhase"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "domain",
+      "id": "422f93d7a6678446cabe34b6a18f76c3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent",
+        "StakeholderGroup"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "duplicateOf",
+      "id": "26a1cb779802d673fe8ed4e11c8b380e",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "CrisisEvent",
+        "InfrastructureEvent"
+      ],
+      "count": 3,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v105_dedup_events.py",
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fixDeployment",
+      "id": "d6c0f4932a5328ca8fd2a12fd9204bb7",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "infrastructuralPhase",
+      "id": "cc4edf1acd9d051aabc70347c73dc976",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "DevelopmentPhase"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nationality",
+      "id": "32287e6730aae56f8fc69f9ca18781a0",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "outcome",
+      "id": "26c3242b4090f7fadbdd6e30b06280d8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "CrisisEvent"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "reference",
+      "id": "b7c44a8220d85067c33db1114078bf05",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "reviewStatus",
+      "id": "519fdfcc579905e7bab12918df1e6f2b",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "CrisisEvent",
+        "InfrastructureEvent"
+      ],
+      "count": 3,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v105_dedup_events.py",
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "risk",
+      "id": "44c2d02222da306180b1916932ce33b8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "significance",
+      "id": "7cc015a0b0d571ad532410eefeead81f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability",
+        "GovernanceConflict",
+        "InfrastructureEvent"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "thesisLocationConfirmed",
+      "id": "6ddebc773c33bf440ab125386e8201a1",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Argument",
+        "CoreConcept"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "transactionalRegime",
+      "id": "1e0d38e6ec9fe011a0f1d94abe22c709",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "DevelopmentPhase"
+      ],
+      "count": 3,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "trigger",
+      "id": "9c44709ed53ff914bb685aba84bf48e4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "CrisisEvent",
+        "PriceWindow"
+      ],
+      "count": 3,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "accessLevel",
+      "id": "cd75d6b6f137da738add1fc5f86a94be",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "activationMechanism",
+      "id": "54207780a7897f2a3501c3132cbd1f4c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "active",
+      "id": "ae5ce91914bfc83078702b88e85e241d",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Marketplace",
+        "Protocol"
+      ],
+      "count": 2,
+      "status": "structural",
+      "readBy": [
+        "atelier.html",
+        "crisis-fr.html",
+        "crisis.html",
+        "curriculum-fr.html",
+        "curriculum.html",
+        "graphe.html",
+        "lecteur.html",
+        "soutenance-edition-fr.html",
+        "soutenance-edition.html",
+        "soutenance-fr.html",
+        "soutenance.html",
+        "these-fr.html",
+        "these.html",
+        "workshop.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "amount",
+      "id": "d1a04696b7fef8b9104ab9e54214d22b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "InfrastructureEvent"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "bip",
+      "id": "2b4db2a1297184e4691ae56473803d3d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability",
+        "InfrastructureEvent"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "closedYear",
+      "id": "09796905c8b0fbe30c3322531e6a3705",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Organization"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "consensus",
+      "id": "3ebba693d3071ec75aeb167531e31eac",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "count",
+      "id": "12ce9a75544bd6a01ba344bef64d30dd",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Corpus"
+      ],
+      "count": 2,
+      "status": "structural",
+      "readBy": [
+        "scripts/apply-sourcequote-phases.mjs",
+        "scripts/audit_graph.py",
+        "scripts/check_anchoring.py",
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_section_migration_patch.py",
+        "workshop/scripts/build-export-dry-run.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "created",
+      "id": "33dc1d056dae1004200683f9d720ecc6",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "Protocol"
+      ],
+      "count": 2,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "scripts/apply-sourcequote-phases.mjs",
+        "scripts/sourcequote-migration/apply.mjs",
+        "scripts/sourcequote-migration/report.mjs",
+        "story-presets.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "discoverer",
+      "id": "ef054ab8bd203cd32047fcfacd94228f",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "endDateText",
+      "id": "50d1d916764043a0fdfcad3595f465e9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "examples",
+      "id": "565e8bf8137f9dfcc2248abb2f377f19",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Corpus",
+        "InfrastructureEvent"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fixedVersions",
+      "id": "1fb124353632bd5b961cc7e95f24f7f6",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent",
+        "ThesisSection"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "impact",
+      "id": "52298720d39a4ffad6d2214539646e30",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent",
+        "ThesisSection"
+      ],
+      "count": 2,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "inseminationPR",
+      "id": "071631c360b9cacc60fce7cf218ba4cf",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent",
+        "ThesisSection"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "institution",
+      "id": "edf7265f54f09c882a90d0deba33bbb5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "issuance",
+      "id": "671693d8d50709093e6077612898c85c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "MonetaryObject"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keyAuthors",
+      "id": "df3558159a1a2aa7ea0830101d4d199c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "limit",
+      "id": "de3f45230287a8afc5e3a85bef083106",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "marker",
+      "id": "137b3d3e2c84c300d99a12bc2965bced",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "monetaryUniqueness",
+      "id": "d0800e36742233854e872cabfbe8be55",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "MonetaryObject"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "monetaryUses",
+      "id": "04a2c8fcb2e00f4a335967cafa90f8f2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "MonetaryObject"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "operator",
+      "id": "cfa6e65e0a15883250dc67a234c18a5a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "pages",
+      "id": "8adfb1d6e099aad6b49e22270c228776",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Reference"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "paradox",
+      "id": "35c0e3a6e7737083a1d59f4ced650507",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "phase",
+      "id": "c4138f32f9eb9c63764d159559b3a076",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability",
+        "Concept"
+      ],
+      "count": 2,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "graphe.html",
+        "scripts/apply-sourcequote-phases.mjs",
+        "scripts/match_chronology_events.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "priceImpact",
+      "id": "329497c781139a6fb699163f100c9bdb",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent",
+        "Organization"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "privacy_tech",
+      "id": "06b8463a21904bd1cea378cb47f9f758",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "proponents",
+      "id": "6526b7adf985637bf69bba3bcbe88b53",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "resolutionAuthors",
+      "id": "f5c4bc1e42f9e2c722e9441ea6f76a56",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent",
+        "ThesisSection"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "resolutionPR",
+      "id": "2d7d19e923caee124b47800bf0678d49",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent",
+        "ThesisSection"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "scope",
+      "id": "56bed03276a66fd4c7bd3b6b12b9766a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "sourceSection",
+      "id": "f4974513e93f8ea0488367ead31e948c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "startDateText",
+      "id": "ef7ca64ee6d5f97099ec1e0ab4e9dada",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "subtype",
+      "id": "2c65823be4cf27dd8aba10158a6994cf",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "CrisisEvent",
+        "DoctoralThesis"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "symbol",
+      "id": "b38f258669dcebf817e698fc689ed782",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "MonetaryObject"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "temporalScale",
+      "id": "21607649b824de8103ed996d844a80f7",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "windowType",
+      "id": "1a059b5188bab14fac60f200227fe2bd",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "accountType",
+      "id": "23745436462803470f54f7412ea20ce5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "activities",
+      "id": "4738b79b61c61e9dd3f82d90f0c23e33",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "affiliation",
+      "id": "a336ec07d91f458c31a5c86341217405",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "algorithm",
+      "id": "42f33e5ca9f2c7e477c1d092cde04c51",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "amountFrozen",
+      "id": "cafa1b5fe45ae0bf0e5a9e6a9046bb44",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "attackCondition",
+      "id": "286851f0f06323c52bd570fa7205cb4e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "attackVector",
+      "id": "d66a118cf370fa11d6b33124853ea224",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "basis",
+      "id": "977b900ea551a59344cff7e921e5f172",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "beneficiaries",
+      "id": "620388a9da08c68747e4a2565ad68c26",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "builder",
+      "id": "96e82bfce6b07bba719742bba47d52d5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "SmartContract"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "cause",
+      "id": "9b51f73c4668cc1a4129d4c6463f00ff",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "centralArgument",
+      "id": "a2d2004109194a6ca01a483416934ffa",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "deprecated",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `central_argument`.",
+      "supersedes": "central_argument"
+    },
+    {
+      "key": "clients",
+      "id": "43bd679b0c63e22c0593e57b2964d486",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "closed",
+      "id": "1f74fd69f973954bce859125e7274805",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Organization"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "closureMechanism",
+      "id": "c944c045313a37888dc3bac8fd626a23",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "companies",
+      "id": "9d369f99bfcffc74b8c9456bfe3c22a9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "company",
+      "id": "e3ff61a0cf6fdc12ee93f2ed205852cd",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "concept",
+      "id": "717f46a423b26bc37bf906e7c32f3a5b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "conceptSource",
+      "id": "91d269606d473902378851943bf31aa2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method"
+      ],
+      "count": 1,
+      "status": "deprecated",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `concept_source`.",
+      "supersedes": "concept_source"
+    },
+    {
+      "key": "concept_source",
+      "id": "92e234d20c526bf1b9a3d26ffa79f3f0",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "NarrativeCluster"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "conflictOfInterest",
+      "id": "e9e138e6337cd5b473e35caff3ab04a9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "conflictOfInterestGenerated",
+      "id": "abb94d39db3051800ff18ca24bc3fd35",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "Method"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "consensusCurrent",
+      "id": "0a6740312f81f3e4e6e45cc24bc47955",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "consensusOriginal",
+      "id": "67221fb41320e8a2097a49557f7e1f82",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "contrastWith",
+      "id": "07bcdba442a1e2ddf4225af21336047a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "contribution",
+      "id": "e69694a76203929f4d686c4397e291bb",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "controversy",
+      "id": "53f4d914167c1990aefc398583b34b6b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "rare-pepe-fr.html",
+        "rare-pepe.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "coveragePeriod",
+      "id": "db795c8439b1533d9c945349bb5e09a4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "createdAfter",
+      "id": "e8d271eb13825b0672b77dbc34bb189b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceArena"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "critique",
+      "id": "3fc674706d58e59b7acbaff1b293417e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceArena"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "currency",
+      "id": "a4cf7f58fb3aa102e0b2c7fe65e40cb9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "cveId2",
+      "id": "2375ee7ece89c6e053510e0adafecd24",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "cveReference",
+      "id": "bb9286ed5a25f20d6b845bff362aafea",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "scripts/verif_doublons.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateDefense",
+      "id": "5d6d407eed5af1a187e61080ac278066",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dateIntroduced",
+      "id": "b91176f07902ffbf241688d655129076",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "decision",
+      "id": "769abab2dca7c3732e10c258d22f82ed",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ProtocolProposal"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_section_migration_patch.py",
+        "scripts/plan_section_migration.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "delegatedTo",
+      "id": "9ca222c70ff9883cc35a95355b21a7a8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "destination",
+      "id": "6d14326d511c0d5681608cb12c9436d0",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "developmentPhases",
+      "id": "7eb8a591187dbba6b85c6be0e78751af",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "devices",
+      "id": "4261415573951c415f553ab06d91d922",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dissolved",
+      "id": "03fd5a8c6533138b43873e12d0eb9097",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Organization"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "distribution",
+      "id": "7bc55331879fcf56b45fb3d04e6f6f9b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "doi",
+      "id": "77be65226ea515bd88d1cd1d640fe2fb",
+      "valueType": "URL",
+      "language": null,
+      "domain": [
+        "Reference"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "domain_index",
+      "id": "47dac701081031f387302e0ab7094646",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept",
+        "InfrastructureDomain"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "scripts/make_v102_restore_domain_ii.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "dominance",
+      "id": "e05a101aa57866046cf332a32f685c8d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "effect",
+      "id": "5a698bcf8331e7c1398e6073f6563cb5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "emblematicCase",
+      "id": "f5d12301acbab467b47cccba23743a2b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "energyReduction",
+      "id": "45eef7a3b04403cd2c85ba11ff47c6a3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "ens",
+      "id": "674f6f78df1e51417ce41292ad0637c4",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "index-fr.html",
+        "index.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "epistemologicalChoice",
+      "id": "141e7d36addb568fa947e2d42e242079",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "evidence",
+      "id": "6694bcf4499c657e4757486e98028377",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fieldQuote",
+      "id": "253d71ee0c835337b428ac056171e8b0",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CoreConcept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "first",
+      "id": "c51eed163502b2ed43ba4bff4be5b44a",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "scripts/match_chronology_events.py"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "firstContactCM",
+      "id": "69ef83e5a5c17acea765da9d254e0543",
+      "valueType": "TIME",
+      "language": null,
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "firstPublication",
+      "id": "5ad79ca9877d69a8dade1abd95a3d758",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "fork_date",
+      "id": "b22e5fb2f2bc7c47dac9004da6542b92",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "formalized",
+      "id": "b801045be72c30266bdce90939008a60",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "format",
+      "id": "3adca0a214424ed389cc885a204c2160",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceArena"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "founders",
+      "id": "bebd3da19f45c9490adb9e539980ccaf",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "MediaOutlet"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "generalThesis",
+      "id": "30df1a4f92575b336a4a2c6a26b80313",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "generalThesisNuancedEn",
+      "id": "9df8edcb7bb8390f97d513252d32faec",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "generalThesisNuancedFr",
+      "id": "117a55a8ff3dca16f9c42329a267de87",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "genesisBlockInscription",
+      "id": "7fa37895065c128f98091af46434c4be",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governance",
+      "id": "78c895150c56e659ec2e225f3ce46388",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "StakeholderCategory"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "story-presets.mjs"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governanceCharacter",
+      "id": "3a7f2f5a04dafb711e2603c34929417c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CodeRepository"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governanceLayer",
+      "id": "b0f9477461393c1bd7719b320a4ee5af",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorGroup"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "governanceType",
+      "id": "65f6fa1c023eb3a1e87cdef1c4c3c5cb",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "hackMethod",
+      "id": "809cfd1610cc64306f4a87b0b7791585",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "SmartContract"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "hardware",
+      "id": "a3a4e1a7624cabf9cc41c21e1165f803",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "hierarchyPrinciple",
+      "id": "0b03a54fc858380d4f1a93eba373c6fa",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CodeRepository"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "illegalShare",
+      "id": "09e1c3295c98551566e3ba3a10ef3ef7",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "initial_protocol",
+      "id": "9d8136bfb190cba519b180e9808422de",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Organization"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "innovation",
+      "id": "6caba3d03043c0dea38605848f52d2c2",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "instrument",
+      "id": "f0e6c512754ee4e0776e447bb22841c8",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "introduced",
+      "id": "db0834fd99a145f3ff548ecec423f130",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "inventor",
+      "id": "2c1a85903e8ed98b5d640a05989c50f3",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "isDefunct",
+      "id": "24a483686e96cf582f5c87795ec8c259",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "Institution"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "isFictional",
+      "id": "dca18d4b645ca5cb3bcb2de52c019572",
+      "valueType": "CHECKBOX",
+      "language": null,
+      "domain": [
+        "Method"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "jurisdiction",
+      "id": "0408cff2ac34ea43eb282b2ef34ad337",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Organization"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keyArgument",
+      "id": "8c6d8438bb49e9258c0cbcbb6447d80f",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keyIdea1",
+      "id": "9205465f1263646d084e00fa435753d5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keyIdea2",
+      "id": "4a0d174f5ea06a3c05fb02ba17a95e46",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keyIdea3",
+      "id": "ef91fb7787a62b8b34bd9ab5b7915598",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keyIdea4",
+      "id": "05ffcb848524e74b38a798493155b698",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "key_members",
+      "id": "ed45bae493d716444ab40b8ca69ed152",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "ActorGroup"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "key_property",
+      "id": "33f65a5c442c9206c3703dd8598f9042",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "SoftwareClient"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "key_text",
+      "id": "10333ac21cded2a6d0ef8d1bfe1a574d",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "ActorGroup"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "keywords",
+      "id": "2f1e6e44c1351a5fc94c8245fd774c13",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "curriculum.html",
+        "cv-fr.html",
+        "cv.html",
+        "index-fr.html",
+        "index.html",
+        "plan-du-site.html",
+        "rare-pepe-fr.html",
+        "rare-pepe.html",
+        "sitemap.html",
+        "these.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "launched",
+      "id": "54b7e4541589b3b28c1f55c682b5ebc4",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "leadResearcher",
+      "id": "7b08df7591f79ebdf5a460f09a9c17c4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "levels",
+      "id": "d487bd6acaa6fbf471c0c49b2bdf47a4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "license",
+      "id": "e586b91d19439908fb1b337403042457",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "managedBy",
+      "id": "635bb2c8d26c41ae7db74acb374dcd63",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "marketShare",
+      "id": "dfe754a612ed8ae64b17df3c2cd0c3be",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "masterNodeCollateral",
+      "id": "e2ae3604e38471e095bae9d0a3637867",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "material",
+      "id": "743f83a3fc8174fb77b13953c68dac72",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "maussianTriple",
+      "id": "469fc2839488454f21c31f8aab82445e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "monetaryLimit",
+      "id": "4bc5fbf05d855e202297926c64aa293a",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "motivation",
+      "id": "ff29fd86753101ca0c764b2df21cac82",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "multiplier",
+      "id": "7fbf3e0de55e262b2cfcf8452c29dfde",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PriceWindow"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nakamatoQuote",
+      "id": "f4bb48d6d15915365d97eaed8792abc5",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "nodes",
+      "id": "9fff29f9e1cead1f75842e8f41ec2ecf",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "graphe.html",
+        "lecteur.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "pageConfirmed",
+      "id": "54b39dce44cafd724664b8d38a5e517c",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "ThesisSection"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "parallelWith",
+      "id": "9d69b215cd3d31f6636bca3c10833326",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "peakFee",
+      "id": "2fefc59dce4a985c4bba8bc4a52ba948",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "peak_hashrate",
+      "id": "c8ab70be457a0beef823a463eee10a19",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorNonHuman"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "peak_volume",
+      "id": "d5aaab162d51f9d74a1fa89dc3b02e9e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Marketplace"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "phases",
+      "id": "a89c69bd1375d489914650feda488bad",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "pitfall_sociologism",
+      "id": "94c1396830c31410d1f3f12777575622",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "pitfall_technologism",
+      "id": "2b8e6fd83f678de602c419afcf4523f9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "platform",
+      "id": "88655aebc6f4669190877896208cdb35",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "polanyiDistinction",
+      "id": "994de690f6006ad89163c957f7a9032e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "politicalPhilosophy",
+      "id": "e470a679f17378127d4cd571e9cbe91f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "priorWork",
+      "id": "748e9afc165c914b5bdbda5ebdcc0153",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "product",
+      "id": "55dd5906d7d5313b5e0f8b82efea505d",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "ActorGroup"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "propertiesCount",
+      "id": "42622fab7fdaba4e6815f1411a4c36e5",
+      "valueType": "NUMBER",
+      "language": null,
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "property",
+      "id": "3a525f4d049984bb4d77929253195cc7",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "proposal",
+      "id": "861fe8c486a531ba9be861851a4e75e3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "pseudonym",
+      "id": "b8f47ac4e4bf9a5a0ceca7d7a8c58e00",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "purpose",
+      "id": "8677faaa1cfa8f824dab01ccb1e4a8b3",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "recipient",
+      "id": "2c8459dac527066717c957eb9b7d59fd",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "SourceQuote"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "regulatoryEnd",
+      "id": "c725d4fe862ea7e4841a029b1ba57712",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "relation_to_bitcoin",
+      "id": "6f4d03c912d2e25e1f9aacb34538a7c9",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "released",
+      "id": "e71a7b5721f4c2e8bcd5979aa2d46c8b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "SoftwareClient"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "resolutionProcedure",
+      "id": "76d0e43317d894497748b039c0b8dc8b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "resolvedBy",
+      "id": "578a766199ea6cbe55c268f06ddc60fc",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "result",
+      "id": "04ee17a4e54b416c15753cee99bd23dc",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceArena"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "graphe.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "risk_case",
+      "id": "bfb218df99b5d892c61b8d3e4b3cb42b",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Capability"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "sector",
+      "id": "98f840ad3b0c0e52f9e8ffff22cb8f89",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "InfrastructureEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "segmentsFrom",
+      "id": "11b157b2a42921152a664e8b39d3518c",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "segmentsTo",
+      "id": "0f50a015e0997f802f2ac640b6fafc77",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "services",
+      "id": "5be1b005ef1fe9ac3810b2a6e6cfce92",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PlatformService"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "sharedBy",
+      "id": "246e160f93752c9f70968bb5a23cba69",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "shortDefinition",
+      "id": "017cdcfe5455f49167b98571ebd26ad0",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "sources",
+      "id": "ac9ef3072ec6268e737ab53cd7aae844",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Corpus"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "crisis-fr.html",
+        "crisis.html",
+        "rare-pepe-fr.html",
+        "rare-pepe.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "stablecoin",
+      "id": "3bf8f2ee3a3036c4920aca51a28d049e",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Organization"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "statementEn",
+      "id": "adfb3f664cb322c0711b3d3c6eb7da48",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Argument"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "succeededBy",
+      "id": "33aed97553a6b0d425f219ac056c9421",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "theoreticAnchor",
+      "id": "78ec2beb61354e9d6302188d5385cae2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "theoreticSignificance",
+      "id": "aa539addd6c7d65ddf594446fdd5fdc4",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "thesisCoverage",
+      "id": "933e1bbc4015504519aeffffc8e67cad",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "throughput",
+      "id": "10fcbfdf3166f38d34425ea5fc1bd855",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "titleEn",
+      "id": "0e66ce9da7bc1f0ba8312c3bf820e691",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "lecteur.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "titleFr",
+      "id": "e6a075b6f20fe5eca9f5ae407c73ef74",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "DoctoralThesis"
+      ],
+      "count": 1,
+      "status": "structural",
+      "readBy": [
+        "lecteur.html"
+      ],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "triggerMode",
+      "id": "2bd825ad27bb6d208091f4cd51bd07f4",
+      "valueType": "TEXT",
+      "language": null,
+      "domain": [
+        "CrisisEvent"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "uptime",
+      "id": "f3d1087def916c52720c0052bbac4e29",
+      "valueType": "TEXT",
+      "language": "en",
+      "domain": [
+        "Protocol"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "usedBy",
+      "id": "5f55d45250f880e53eefe59ad0202daa",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "usedFor",
+      "id": "7cf4c141bfdc561bac993a3feac47b99",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "GovernanceArena"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "whitepaper",
+      "id": "5ffc5da739cb3d36f86a0578c1725483",
+      "valueType": "URL",
+      "language": null,
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "writings",
+      "id": "f8201aa50725ec66201635442fc52a54",
+      "valueType": "URL",
+      "language": null,
+      "domain": [
+        "Person"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
+      "key": "zelizer5Hypotheses",
+      "id": "489ffd2c520c2b51d385102b4922c54f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "TheoreticFramework"
+      ],
+      "count": 1,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    }
+  ]
+}

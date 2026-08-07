@@ -1,0 +1,3848 @@
+{
+  "_meta": {
+    "patch_id": "19",
+    "source_graph": "grc20-these-mael-rolland-v109.json",
+    "description": "Normalisation mecanique des attributs d'entites, sans arbitrage semantique : (1) page_start NUMBER a valeur chaine → entier ; (2) order NUMBER sans options.language ; (3) cles TEXT dont toutes les valeurs sont des entiers → NUMBER (balayage exhaustif : closed, closedYear, dureeHeures, foundedYear, interviewNumber, introduced, launched, observationNumber, pageConfirmed, propertiesCount, rauchs2016SegmentsCount, rauchsSegmentNumber) ; (4) nameEn/labelEn etiquetes language=fr alors que le contenu est anglais → language=en ; (5) nomEnquete supprime la ou interviewName porte la meme valeur sur la meme entite (23/23 identiques, 0 divergence) ; (6) centralArgument → central_argument et conceptSource → concept_source (deplacement de valeur, aucune collision) ; (7) critical ('true') et fromRauchs ('True'/'False') → CHECKBOX ; (8) chapter : chap1/chap2/chap3/I replies sur Chapitre I/II/III, « intro » conserve tel quel (graphie majoritaire : 68 contre 1 « Introduction générale »), formes composites intouchees ; (9) organisateur vide supprime.",
+    "policy": "Patch DEPOSE, non applique. SET_ATTRIBUTE ecrase la valeur complete {type,value,options} ; DELETE_ATTRIBUTE retire la cle. Chaque op a ete verifiee sur le graphe source au moment de la generation. Les conversions vers NUMBER et CHECKBOX ne reportent pas options.language : une valeur non textuelle ne porte pas de langue (aucune autre cle d'options n'existe dans le graphe). Aucune fusion semantique : sourceType/regimeDePreuve et les graphies composites de chapter restent en l'etat."
+  },
+  "ops": [
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3b652bdef05925924c4683ae384a70d2",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 58
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3f2a9945f3856123c823b24f025e438e",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 78
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9cee8e18f8f9f0dd9853e9ecd1cf0855",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 89
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2d09c424cad590c4128840b9443ff853",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 148
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e70632a4b3ef19a155ae8cdbfb87ed25",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 154
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8bc0fad78be816797b71877433c4a8b8",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 161
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "42f154e655e3c61c6d754a82f5dc4356",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 165
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e85916ada95e869443674c77f1f541eb",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 173
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d493c4ac2fcab69f599877d7607ee86f",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 186
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "15830fdda2ac359d0858aa7b2f8aa2be",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 202
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a7a69bb2e68199be4432ae3d2476ead8",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 225
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f54e436de2b4736f249f52544967daa2",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 241
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d594820ae6b8041fa7c4964d47fb9475",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 265
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c0467f14e398a272fec4936abcea39e3",
+      "attributeId": "page_start",
+      "value": {
+        "type": "NUMBER",
+        "value": 277
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "df405dcd975b406486a260da72f1ad4a",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7a1965a429f1468180346e845d793eab",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3268b571c4ce4389bf99a35c93ed287b",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "87a54f067fbb44f7b32c4207fa23a3b2",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d622d318825741cda43212d7831a88c7",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "53461143c45d4413af3d6be003a34f27",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "444d654ce38c41c7a277d883c77ba41b",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "41e14735f0af4e9a832041a8168cc4e9",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "486a5848fb304465a19d3a28bafcb603",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6b64e26836434471917262334655952c",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 4
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0fcc7028560c47cc9b82309f469b700c",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "018c87f7337246b99ab36add53a537e3",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "711fe2aa7c734731bccb42ccd5843924",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b5386fe92a5b4cac94888ffc298469bf",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "11fe6aacd1c440bdb795f073d9572b34",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "45b91ae1d82a40ab8029f3b8835b3af4",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "707ffa8647a7acc3f95f8af261c4c77e",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4c8427cf88d26487ceeb26dc51dddafc",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "29b2b4aff0e4ef2ae111f10d72a69dab",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4a8d6940c30a34aada2553ed8febd6bb",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "79a77b4aa63fd0cde00e4769b174455d",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1ef9935001830b38166ebb62a144f513",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "600a5e7b08126f881793ff6696c244a0",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6359b66f7d234e7d159cf71f4667157d",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d4807871cddce677c374549b5f3dc98e",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "11892ab65226a8fde71e11d23dff672c",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "985d5ee38de80ff547c153939f00c294",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "92eccc1b5de0f983abd5f49cf462752e",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "739e889ff25c2e6c60b4cb8e1c4fe169",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9a51476586060f9220b1f4977a5ddbde",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0cf63080533e87d5bc747f09d72505a0",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4615956ddad16a1de0c360886fa0932f",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "533f166041015681506e5003366ba9d5",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 0
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ce5164aaecea4aaec0f9d754ad8d84c4",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "63b87660eedea4c59423d7f2537e5d78",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f99a9cb9e9ca7b29a73efdcae8212a77",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ee02c5c55eac9cd1fe26d13e8427cc50",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 4
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c55b4bb54aa5817904f907248c78ce8a",
+      "attributeId": "order",
+      "value": {
+        "type": "NUMBER",
+        "value": 5
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1a4cccd801224a8fa0ef8b8af372538c",
+      "attributeId": "closed",
+      "value": {
+        "type": "NUMBER",
+        "value": 2017
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ad19591afb62496e90aba4dd1d65d1ef",
+      "attributeId": "closedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2014
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1a4cccd801224a8fa0ef8b8af372538c",
+      "attributeId": "closedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2017
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b2b1bc2732184f8c9368e50aa3f28412",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "656e53ef5fe740f99fb217681994ab8b",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e11c07ae34744a76b2cdd6c321943a40",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "af4e2b6bcb13467184b17c485c5c7d83",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6bc24441d4f64cf7a4c41af641f8bd85",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8fcc95d1db2f4637bb6e6acc380c6551",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "71cc784b7ac94ad4a965da5b1ce2182a",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e7bf585ac0a8494c85afdc8eaedcc944",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e7f6e3104c584a81847083ffe7626d5f",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d88c40faf9194283a804b6539d71815a",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fc4e9effdd7b4f34b8286637a2ec0dd8",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "36366cf3ad94451e88a69fa42f87965b",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 4
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5c4ba2b8434640739a29b6b91a6706f7",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "380c6ee628ca4bfaae124a6004f932b3",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 6
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "be54e2821684475897a0bd64609d7bfd",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d5cd3bf2e33746cbaab706c287c88624",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "98a5b9d6dbb24de483138f09b873d256",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f5dab651c4eb4593bd35faf54bf9a33a",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 12
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d76c3f7844234a438d8d89518a8994b4",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "56c0c0aa6ad142d4b98312e9dab7a7cf",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ddd858210ac149f28eebfef5fe73eed5",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0e9e7f0ba0a04261b0bc5d7e8d363a68",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c1f2c85a7fe1418f98ec012274b23d0e",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 24
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "703b700ac82843b298cc946f5f478455",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bc94730b6e2c40a2b0ff4525e699f0a7",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 16
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "50099e850578442faa7127ce0c51bb53",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "baa994fe1ff74366a06837316315af5c",
+      "attributeId": "dureeHeures",
+      "value": {
+        "type": "NUMBER",
+        "value": 24
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ad19591afb62496e90aba4dd1d65d1ef",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2010
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e1891c0de0654e0697d722f8421f40f7",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2011
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8991d9f05d234b6d876d16334f60af63",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2012
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0235afb12219443c9fd0580e7b5a07a1",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2011
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bf886a7f94454c48829b2eb7989f6e53",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2011
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5b6c1bb3fb734c53899662612f54242a",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2012
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1a4cccd801224a8fa0ef8b8af372538c",
+      "attributeId": "foundedYear",
+      "value": {
+        "type": "NUMBER",
+        "value": 2011
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1cc05cda94054b9a856a339468eb1a74",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "aebb75383af64537878d1d3266a35b57",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8c94227dfffa40bbac7e65cecddc01fd",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7e4da9c927db40f7aa641bbc5f636f80",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 4
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2ed22e66326c468a9a6403507ae5404d",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 5
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "299e4b39c96a4ae3b8b60a602aae111f",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 6
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f1ac6b2f9f9e4aa8a2d897d46f17a9d8",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 7
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ece035efeb7e43e499c794e8b168e1d6",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 8
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f8deca339df74733b7fbba18a90de6f0",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 9
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0e846ffeb3614e4b834379420cf5700e",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 10
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "156444b8fffe4cab99b2aefdbb7edd7c",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 11
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "174d9ec7d8404d439e92a380d4c5a5a2",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 12
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4714eee14a3441f59c65e6c1184a2098",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 13
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "437720ccbf8544bf9021181d3b3ba289",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 14
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9490d22bd0b84fd492f1f203642cfdf1",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 15
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f3eb0531dc0d43e89545e0458f26a59e",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 16
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a9848140eab84d8783554af31477a6dd",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 17
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "158f575e39ed42a4becf4499c54539d3",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 18
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d5ba79b06d404e4e92f3876057be65a7",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 19
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8a7bae687d81490b9eb3d16da8b5a7f1",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 20
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "192522d290774234a82baac5bf2c70cc",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 21
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c5d82d5b8e38402a94728be1c08e9b47",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 22
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f61b74d4d7a244adbbff304f96829bcc",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 23
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "333163801b6c4f5c9aecfd7c4f69dace",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 24
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4e6ed42ae4d34771928eb19339e86dc7",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 25
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e6e850b7b08d425cb99d3571fb995458",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 26
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dddfed6be12844d687d2647a36c77fb0",
+      "attributeId": "interviewNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 27
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f9ba782f32be439fa2b04f2cf0751e03",
+      "attributeId": "introduced",
+      "value": {
+        "type": "NUMBER",
+        "value": 2015
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "16356e60caba44d2977a5f66b58ec84d",
+      "attributeId": "launched",
+      "value": {
+        "type": "NUMBER",
+        "value": 2020
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "76bf70a0eca54b4f9cacb21410881e41",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 28
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b2b1bc2732184f8c9368e50aa3f28412",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "656e53ef5fe740f99fb217681994ab8b",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e11c07ae34744a76b2cdd6c321943a40",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "af4e2b6bcb13467184b17c485c5c7d83",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 4
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6bc24441d4f64cf7a4c41af641f8bd85",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 5
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8fcc95d1db2f4637bb6e6acc380c6551",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 6
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "71cc784b7ac94ad4a965da5b1ce2182a",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 7
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e7bf585ac0a8494c85afdc8eaedcc944",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 8
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e7f6e3104c584a81847083ffe7626d5f",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 9
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d88c40faf9194283a804b6539d71815a",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 10
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fc4e9effdd7b4f34b8286637a2ec0dd8",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 11
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "36366cf3ad94451e88a69fa42f87965b",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 12
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5c4ba2b8434640739a29b6b91a6706f7",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 13
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "380c6ee628ca4bfaae124a6004f932b3",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 14
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "be54e2821684475897a0bd64609d7bfd",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 15
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d5cd3bf2e33746cbaab706c287c88624",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 16
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "98a5b9d6dbb24de483138f09b873d256",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 17
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f5dab651c4eb4593bd35faf54bf9a33a",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 18
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d76c3f7844234a438d8d89518a8994b4",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 19
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "56c0c0aa6ad142d4b98312e9dab7a7cf",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 20
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ddd858210ac149f28eebfef5fe73eed5",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 21
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0e9e7f0ba0a04261b0bc5d7e8d363a68",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 22
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c1f2c85a7fe1418f98ec012274b23d0e",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 23
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "703b700ac82843b298cc946f5f478455",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 24
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bc94730b6e2c40a2b0ff4525e699f0a7",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 25
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "50099e850578442faa7127ce0c51bb53",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 26
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "baa994fe1ff74366a06837316315af5c",
+      "attributeId": "observationNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 27
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "45b91ae1d82a40ab8029f3b8835b3af4",
+      "attributeId": "pageConfirmed",
+      "value": {
+        "type": "NUMBER",
+        "value": 336
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6baa805952d145bc9c4b1b14eede3c33",
+      "attributeId": "propertiesCount",
+      "value": {
+        "type": "NUMBER",
+        "value": 9
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributeId": "rauchs2016SegmentsCount",
+      "value": {
+        "type": "NUMBER",
+        "value": 14
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "55b5215088664257819b56a918ec67fd",
+      "attributeId": "rauchs2016SegmentsCount",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "attributeId": "rauchs2016SegmentsCount",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3960e7b3294c4364bca1b046734ef886",
+      "attributeId": "rauchs2016SegmentsCount",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "37930f7555284acdb82a1bb1c3eb6cbf",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 1
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "675ee75be7c741bbb29c38361cd3ee89",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 2
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f727abb04ac043728ac7e7e187013bbb",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 3
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5c0b61596a5e4586adfee1f08ec1546f",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 4
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "977c56bae40b4dfd8c7a05ac63aab2ef",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 5
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "768c5992ebac4518a4fcc36026356608",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 6
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "766d0d3b5e5d4ec5b1d2f92f1021fdb7",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 7
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3c8cfdc4f533435d9480cf6c6b8a5fc6",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 8
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3462bec91fc14f18bac9aff4e1d4c4ef",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 9
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d3dde8088b044953910cba15ef78b216",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 10
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "32ccbd7ff4d6469db9d5977db5ac112e",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 11
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c1ab699ac4d74dc8b99d1be764fa164d",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 12
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "58fca7ecf53d44fdb0b072d231dc85e5",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 13
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9e4e4669fa9f44bda5f592336e16a6bd",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 14
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1bdbc546f7344e1a9e030e926d286cbc",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 15
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "75d4386065054ed3a2303fe2acf6280d",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 16
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e3ce0e40a95a475285af2260bd24fc37",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 17
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7eb21ad05d634d8e92b32b39db8d3723",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 18
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0f3a5734b8bf4dcbbf4e923fa420e998",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 19
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "97020bb517874774bfa1045a9ee1128f",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 20
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0a41290de4744cad998b0fb6131b011d",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 21
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c689a3796fdb48e1adf7de9ca9189dbb",
+      "attributeId": "rauchsSegmentNumber",
+      "value": {
+        "type": "NUMBER",
+        "value": 22
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b8fbacf5839546a59b1d15bf1b574b51",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Self-fulfilling prophecy",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7b563a52de7f4beba9992a0d59e9092a",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Monetary bootstrapping",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c811ae9bc42d4760a9c39709076325ba",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Full node / SPV wallet",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5f9eebaf04334e24a113375193513c32",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Custodial / non-custodial",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0b9cd7376df04357a96268890ae17899",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Coin mixing / CoinJoin",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bcd35e44c5234474a0189ee94b9f43ee",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Price discovery",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "70682067f36b474787924786f541857a",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Core devs phase 1",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dfc60a0057714d94a954d125005fea4e",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Pseudonymity",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9ae9e177f05f4f93ac2fd735d8f67ae2",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Meta-protocol / overlay protocol",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "96e86584cc5d415e90895629a2c2e143",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Know Your Customer / Anti-Money Laundering",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4a401c802f5e46db936f983355e89f0c",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Transactional regime",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a21c66b68274423bb40731a57c4403b7",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Safe haven asset",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ebbde512a8e94218893b1500f2ae5225",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Libertarianism",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "94ddee14484b4e079465b39221fe9df4",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Early adopters",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ec670f2fe86d4981b20be3e45a79ed7e",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Last resort channel",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e641bd05a189425983b5a4197425e585",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Escape velocity",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c4f5fb32e66343fcb9f0fc10931aed7f",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Path dependency",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "45bdbea2b9ec4c43a21ed9596e1764f9",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Bull/bear cycle",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ea99bd4bf7954ae8b2965aa575fb0a4f",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "IOU / debt claim",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c5e86cf5eb2c468e9991b9f7e3604094",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Layer 2",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6328d2b9f86b4d7b976887349a7dc4f9",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Payment channel",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7ba4c97e124a433c8327223fdc25d400",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Centripetal/centrifugal forces",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e52429fb249e4dab8b4c4da12635163f",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Asset class",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3950b6a9bbb34056af6ede8c86b29a5e",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Pivot standard",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b92e4f953583499ea809b48c207471ff",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Blockchain-without-Bitcoin narrative",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ae354acce5c244c894e63ac8c6140df6",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Decentralisation",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "596f2b5ff3f24f478da71675656c7d58",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Not your keys, not your coins",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fb8e46a99f5e4b78892abed80d4c3cbd",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Be your own bank",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "eb3485078c86401994e17f6164d80fb0",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Full node",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c16722f93452416288a46caa05f59d9d",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Hasher / delegated miner",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a8ea3d0c7ae0420fbd5f8622d2ae4e5d",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Orphan block",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "95c11988d59b4616a27d234bea478ad3",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Individual sovereignty / self-custody",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "053d10d3a5b142778f078e3e2dfe79f4",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Mining barrier to entry",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "38560b44059a45bb8fd3a46cae2ff34c",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Block reward / coinbase reward",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "021c2a1e5ab743b48fc0105a6d5376bf",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "C++ programming language",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2bf8bd49f8aa4757a866a0fe9e945dd7",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Protocol ossification",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5bf9c25933cb44a8aaa8dd335a662f89",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Transaction fees",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5985284307454b0690293132fcdeb898",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Flood attack / transaction spam",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e30beed602fb4d60814946c70db0713b",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Poisoned block / DoS attack",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "01026b1b57374b52958ba35d70400a10",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Transaction spam",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5d696ac4f7aa4645baa0e5f88e2b190d",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Transactional regulations",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dd95bfa1b4164abd80472c249222f476",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Supply rationing of block space",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "fe8a3378adf04e81bd934293081daeb9",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin maximalism",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ed76fa7b8f0f4bff8201cb8223c1e09d",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Shitcoin / scamcoin",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d7c6d27fa6d94a239037409847db50f9",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Galaxy of altcoins",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9c0607981e304202945b2d06b5ca6863",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Build on vs build beside Bitcoin",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2bc86138ffe94ffebe818f257334bc9a",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "DNS decentralization",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8cb4dc3c7aeb415dbfd3339c9ac43ca7",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "The Denationalization of Money",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5d5a5c91468f4bcc8d078001a5abc240",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin-like cryptocurrency",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "68ffd2ccea7a4469ba1b46cd11ee22f7",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Scrypt (PoW algorithm)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "11f801cf039a4654a515ced9ab738368",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "X11 (PoW algorithm)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ee582934056343ae884c5c842aba2840",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Premine",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ddbbebfc25874995b60e8e94964d6e0e",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Master node (Dash)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8bf52a3e00d24a2b96aa4c511163df45",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Metaprotocol / overlay protocol",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "53771b149f174f46b011e1edc0414485",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Token / digital asset",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "094caf2b65fe4f7f80d813df0f960ebd",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Decentralized exchange",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a3d6a2783fae4c3bbf83f5e810cf085c",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Sidechain",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d63d0dbb4d6a453cbeb724bbb2adb28d",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Dollarization of Bitcoin",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "8db86c8e880e4e6a96bfc5d05fb1fd50",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Free rider (in metaprotocols)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ef2f7216f1e240638d724bfedcab0eb7",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Digital bimetallism",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7433329eb29f4702be6e32160f4341d5",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Coin age (PoS)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0c0929e6ef0140ad855052b0dd078f00",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Rules vs Discretion",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bfc36f985ef64226b2d554b8cf9d18cd",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Inflation Targeting",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "92b63798d91b4c99bef87aea0e76f63c",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "IAD / SES Framework",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0f71936ad797433b844c335ea226bd2f",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Bundle of Rights",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1fc737f7cde3481cad33cab26dc381e4",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Digital Commons",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "39a4c914ab2342818739598102c19499",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Algorithmic Authority",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "499e99e5d8cb4148a5d7a4dfef842c58",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Crypto Law (Zamfir)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4d42089eb94c47a483359aab9530bbe3",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Segregated Witness",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "e5be47cbc79b4d98b559857707881618",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "SegWit2X",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "08710506f749476a9effa93b34e2ce7f",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "New York Agreement",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f4fa0d2621154a349e948e275efdacd3",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Big Blockers",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7ac886525e3e40babdead4d8806f4653",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Small Blockers",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "1d1b45041cca495ba26776849494903e",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Second generation e-money",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "083e49d8b08d42c0b03f8aa2f81ade32",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Seigneuriage",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7cce18e885084cf5a5e7f48e71fac4d1",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Digital Metallism",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a1ca343331774a58a8a23fcda8a88f0b",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Gold Bug",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3ecc025a3f6745ba85e3b46ecd90901b",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Epistemic Community",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "124438f6ba3749adbe7e6caa86aabf99",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Digital Asset",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6f6b4ab6f46a460797b9a489ff13c9a1",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Digital Currency",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bd85576d26064a1a8a8b07176399c6f7",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Light Node / SPV",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bd2cd2705b874e70b9cae3f1c32fae80",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Mining Node",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7d4e6994bf1a4058a6142dcdf93b9563",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin XT",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "add9992e724044d4a4d9c9328c873fb2",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin Classic",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "87aee3c6c4e546ba825fc940fe964b41",
+      "attributeId": "nameEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Hyper-cryptomonetization",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "119915486da7457e8d6c841d419ac8e6",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Public governance of exception: the hard fork",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "df405dcd975b406486a260da72f1ad4a",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "General introduction",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7a1965a429f1468180346e845d793eab",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Objectives, contributions and organisation",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3268b571c4ce4389bf99a35c93ed287b",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.4 Conclusion of Chapter I",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "87a54f067fbb44f7b32c4207fa23a3b2",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "II.1 “Cryptocurrencies Are Not Money!”: Arguments Against the Monetary Nature of Cryptocurrencies",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d622d318825741cda43212d7831a88c7",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "II.3 Beyond the Claim of an Absence of Governance!",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "53461143c45d4413af3d6be003a34f27",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "II.4 Conclusion of Chapter II",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "444d654ce38c41c7a277d883c77ba41b",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapter III: Beyond the code — discretionary governance",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "41e14735f0af4e9a832041a8168cc4e9",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "III.3 An Exceptional Public Governance: The Ethereum Hard Fork Following the “The DAO” Attack",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "486a5848fb304465a19d3a28bafcb603",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "III.4 Conclusion of Chapter III",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6b64e26836434471917262334655952c",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "General conclusion",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0fcc7028560c47cc9b82309f469b700c",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Governance of CM: theoretical construction",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "21ff5747290e4951a3b0b601ddbbe9d6",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "CM governance revealed by crises",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "018c87f7337246b99ab36add53a537e3",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Ethnographic approach and fieldwork",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "280a842a11bd4101b743f6527821c04e",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Declaration of interests",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a2c452a77b394a9d836eed0e16ed5851",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapter I: emergence of the CM phenomenon",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "179eaeedc85c47a09b7a4ada23fc825b",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.1 When Bitcoin Defines Its World…: The Political Alloy of a Pioneering Cryptocurrency",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "596826c3187e4f8cb9034357477eb14c",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.2 When the “world redefines” Bitcoin in a carnivalesque manner",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6c2bbf0e45bc44ffa1d65b186df700c0",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.3 Ethereum: A Deliberate Break with Bitcoin and the Early Altcoins",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5b5935bc3ede49028b7dfbdaa4f34b6d",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapter II: beyond the monetary status controversy",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "38e637cc84f14883b96d064b8e387c0f",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "II.2 “Yet, they function as money!” through the lens of a non-statist nominalism attentive to practices",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "5a5684979bf84b37af3771f915f677e2",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "III.1 Bitcoin CVE 2018 Crisis: from one crisis to many others…",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "89663a261c1545c1941ab7f871314a53",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "III.2 Signs of a Crisis Policy: Routine Closed-Door Governance",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "711fe2aa7c734731bccb42ccd5843924",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Decrypting crypto through the infrastructural approach",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b5386fe92a5b4cac94888ffc298469bf",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "CM as 'something more' in monetary theory",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "11fe6aacd1c440bdb795f073d9572b34",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Translation work: extensions for actors and research",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ad524a773a994df59d4c229ab8c5c18a",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Rule/discretion tension (unstable boundary)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "923f4b0fd9894482a767e69a115b2799",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Crises as trials of explicitation",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "51ddbdfd70254c0490411f8e6b736927",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Symmetric critique of substantive monetary ontologies",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "82b2387dbb644f2ca00fc7b0b272c1d1",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Maintenance governance (routine closed-door)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a4bbdf3c65394e31bcbb33cc00c64303",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Central thesis (infrastructures, crises, governance)",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "615f6147214c43ab830a98ca866779c3",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Rule as situated normative crystallisation",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6ba73da9cdff4ca0bd94e11b314f2b4b",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Crises as non-teleological trials of explicitation",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4a05617467244587823b1aad93f05e11",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Polycentricity as dynamics of arenas and legitimation",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "7c752c3cc7be4528baddec7660f39c1a",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Symmetric critique of monetary essentialisms",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4ab7376c307f4268a02ee135b023001a",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "Carnivalesque as analytical reading",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "45b91ae1d82a40ab8029f3b8835b3af4",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "From apolitical acephalism to political governance",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3ce505bcd3e74def8b78094b4cc06b6e",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "A Bitcoin protocol that adapts: very political transactional regulations",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c5eef5d754c64a30a9d163e59e1d5c88",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.3.1 On the Constellation of Altcoins: Building “On” or “Beside” Bitcoin",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ed2c565cbede474da7b6144bcb22d753",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.3.2 Ethereum: Continuity and Rupture with Bitcoin and Past Experiments",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "46111186b53041829a0a98218f9611fe",
+      "attributeId": "labelEn",
+      "value": {
+        "type": "TEXT",
+        "value": "I.3.3 Ethereum: Reconfigurations of Alliances Against Bitcoin’s Rigidities",
+        "options": {
+          "language": "en"
+        }
+      }
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "7e4da9c927db40f7aa641bbc5f636f80",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "2ed22e66326c468a9a6403507ae5404d",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "299e4b39c96a4ae3b8b60a602aae111f",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "f1ac6b2f9f9e4aa8a2d897d46f17a9d8",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "ece035efeb7e43e499c794e8b168e1d6",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "f8deca339df74733b7fbba18a90de6f0",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "156444b8fffe4cab99b2aefdbb7edd7c",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "174d9ec7d8404d439e92a380d4c5a5a2",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "4714eee14a3441f59c65e6c1184a2098",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "437720ccbf8544bf9021181d3b3ba289",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "9490d22bd0b84fd492f1f203642cfdf1",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "f3eb0531dc0d43e89545e0458f26a59e",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "a9848140eab84d8783554af31477a6dd",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "158f575e39ed42a4becf4499c54539d3",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "d5ba79b06d404e4e92f3876057be65a7",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "8a7bae687d81490b9eb3d16da8b5a7f1",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "192522d290774234a82baac5bf2c70cc",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "c5d82d5b8e38402a94728be1c08e9b47",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "f61b74d4d7a244adbbff304f96829bcc",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "333163801b6c4f5c9aecfd7c4f69dace",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "4e6ed42ae4d34771928eb19339e86dc7",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "e6e850b7b08d425cb99d3571fb995458",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "dddfed6be12844d687d2647a36c77fb0",
+      "attributeId": "nomEnquete"
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f6c7446fa0fe4f318142a09f4848f84f",
+      "attributeId": "central_argument",
+      "value": {
+        "type": "TEXT",
+        "value": "Bitcoin devient monnaie par accumulation infrastructurelle, pas par le protocole seul",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "f6c7446fa0fe4f318142a09f4848f84f",
+      "attributeId": "centralArgument"
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "17d7b62a00584fc19e04420bd3227672",
+      "attributeId": "concept_source",
+      "value": {
+        "type": "TEXT",
+        "value": "Amato 2008",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "17d7b62a00584fc19e04420bd3227672",
+      "attributeId": "conceptSource"
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "db9a125c4c7a4d03bd19d3dc8c474a9e",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "273237e8600e4e289cd76da835a82e67",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0423dfbdf0904305b1d7e48c3df78ae2",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "2e5d597d1add45de83a060caea9a05c3",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "72ed5cce1e98494385ca4eb091d6707c",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3c57e750960e4e97bf6cb2ba79e9f2cd",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a9f76f92c83143479499d10b87c6fe77",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "69b8894ae6764333a270770b1fd661f3",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0d3e806ee1f94421b7ff458eedc65ffa",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "78dcb8a0af094eb0a1cea842f7f97212",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ca278d213d804294a2c5a672d52808e4",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "170ed4f7fcfb4531b7c872cb84cc8f80",
+      "attributeId": "critical",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d47c813a4d0c424cb80422ff6e6109f9",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "55b5215088664257819b56a918ec67fd",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "d8b2aecc33714e7dbe6864d9c18b6763",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3960e7b3294c4364bca1b046734ef886",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": true
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "3b17f5b612b54376963e5aa7fe13fff8",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": false
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bb565b2132f5430eac529b953711be41",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": false
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "273dcf0b4f784d78afc99c800c4a3be6",
+      "attributeId": "fromRauchs",
+      "value": {
+        "type": "CHECKBOX",
+        "value": false
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "4f266d7e61da44689f7e0e82e08b7a94",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "453df06792868a5193dc47a849c03a30",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9bc52bccff9cc34ee75c3a30871d7642",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "98b94304ad4b34d8ba41dbb131febb31",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "9bd259bdb454c07ce33d107a5572b2aa",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "88c15dbe94a2dcf3cb5717f154543da7",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "cd6af248cce3b9dff788733c002c6b91",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "51cf731ae7cd1c02b959c1401ea3e63d",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "aa75dd5f4ab7b73440f5db4c9b389130",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "15f93043ba5415b38ee7c6c8bb667992",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a1b71293c9f22e3259e2f9420ba100da",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "58291df914d2e338f5d2544fee5944f4",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "839f852e9030c63aa5f9131f81f9354e",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ab989232c23d3587af9bdc4a8f846fce",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ad4b5695b4a7a472d7c05e6e8a94eef8",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "c2a1952bbe6183541452abb3c4cf71ba",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f22cf43a1b32f2caa862654431e1ffbd",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "032b9bf6912c438dbe30942a8d905982",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "30ef49c8c9fb883a2e24204ddd0f8629",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "f0197a1202d1a60d0741096d307cf7eb",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "da1955d12014df7049bee1a5799c255a",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ce7092bd41fe20328f98e31d745ca5f2",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "447bc91bbbb044d007d979a5805c0d77",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "580c6e3f209fdb23dabbe7dde804ae96",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "bcf93aafa885e1feeb7a5c46a6fcfb13",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "6bf464cdabd1057b7228d0f3021cb144",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "037a43098035654430fb89de6abe07a2",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre I",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ee9ea71439c46e10893edc53fad3aef6",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre II",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "dce8efe4f39bbd41f856b5f9cf67dbd0",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre II",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "882729d7425a5f6c338ace638bc74979",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre II",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "08c03bdf8fb114f1c221114458f15b16",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre II",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "a1ee97b5d441cc3d1f11998515c74d23",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre II",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "b5095c128a4949385ac8fe1c4f3bb753",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre III",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "SET_ATTRIBUTE",
+      "entityId": "941dc941ade6bc5578536908bb56d3d0",
+      "attributeId": "chapter",
+      "value": {
+        "type": "TEXT",
+        "value": "Chapitre III",
+        "options": {
+          "language": "fr"
+        }
+      }
+    },
+    {
+      "type": "DELETE_ATTRIBUTE",
+      "entityId": "ddd858210ac149f28eebfef5fe73eed5",
+      "attributeId": "organisateur"
+    }
+  ]
+}
