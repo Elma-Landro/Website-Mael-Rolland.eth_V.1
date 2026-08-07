@@ -41,8 +41,8 @@ champs.**
 moins un nœud non vérifié dans son top-12.
 
 **Ce qui lit `occurrence_count`** (périmètre d'impact exact) :
-`lecteur.html` — calcul TF-IDF (l. ~1197-1213) et agrégation des parentes
-(l. ~1249-1265) — et `scripts/fix_dead_ids_in_section_map.py` (historique,
+`lecteur.html` — calcul TF-IDF (l. ~1266-1295) et agrégation des parentes
+(l. ~1329-1350) — et `scripts/fix_dead_ids_in_section_map.py` (historique,
 fusion de doublons). **`graphe.html` ne le lit pas** : ses compteurs viennent
 des relations. Le problème est donc circonscrit au panneau du lecteur.
 

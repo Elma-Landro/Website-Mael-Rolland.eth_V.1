@@ -877,10 +877,14 @@ body::before {
   padding: 0 4px; font-size: 0.8em;
   color: var(--gold-dim);
 }
-.panel-lab-st-self       { color: var(--success); }
-.panel-lab-st-self-base  { color: #aaff66; }
+/* Palette VOLONTAIREMENT neutre : distinguer les statuts sans les juger.
+   success/danger constituaient une validation visuelle que le champ ne
+   porte pas — 576 des 918 lignes no-snippet ont une présence textuelle
+   mesurée (grc20-panel-policy-lab-v1.md § 4.d). */
+.panel-lab-st-self       { color: var(--gold); }
+.panel-lab-st-self-base  { color: var(--gold2); }
 .panel-lab-st-proxy      { color: var(--text2); }
-.panel-lab-st-no-snippet { color: var(--danger); }
+.panel-lab-st-no-snippet { color: var(--text2); border-style: dashed; }
 
 /* ═══ SCROLLBAR ═════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
@@ -1846,7 +1850,10 @@ function panelLabComparateur(scores) {
       || (aDirect(a) === 0 ? ((scoreD(b) - scoreD(a)) || parId(a, b)) : legacy(a, b));
   }
   if (panelLabMode === 'hybrid-cautious') {
-    const rang = e => (PANEL_LAB_RANG_STATUT[e.snippet_status] ?? 3);
+    // Statut inconnu : rang 4, APRÈS no-snippet — même convention que la
+    // fusion des parentes (panelLabFusionneLigne) et que la simulation
+    // Python (scripts/compare_panel_policies.py, CLASSE_STATUT).
+    const rang = e => (PANEL_LAB_RANG_STATUT[e.snippet_status] ?? 4);
     return (a, b) => (rang(a) - rang(b)) || legacy(a, b);
   }
   return null;
