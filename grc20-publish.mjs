@@ -17,19 +17,22 @@
  *  USAGE
  *  ─────
  *    # 1. Dry run — génère les ops sans rien publier
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v110.json --dry-run
+ *    npm run dry-run          # TOUJOURS avant testnet/mainnet
  *
  *    # 2. Publish — publie sur IPFS testnet, ancre onchain
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v110.json \
- *         --private-key 0xTON_CLE_PRIVEE --network TESTNET
+ *    GEO_PRIVATE_KEY=... GEO_SPACE_ID=... GEO_NETWORK=... \
+ *      GEO_INPUT=./grc20-these-mael-rolland-v110.json node grc20-publish.mjs
+ *          --network TESTNET
  *
  *    # 3. Mainnet (après validation sur testnet)
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v110.json \
- *         --private-key 0xTON_CLE_PRIVEE --network MAINNET
+ *    GEO_PRIVATE_KEY=... GEO_SPACE_ID=... GEO_NETWORK=... \
+ *      GEO_INPUT=./grc20-these-mael-rolland-v110.json node grc20-publish.mjs
+ *          --network MAINNET
  *
  *    # 4. Créer un nouveau Space (première fois seulement)
- *    node grc20-publish.mjs --input ./grc20-these-mael-rolland-v110.json \
- *         --private-key 0xTON_CLE_PRIVEE --network TESTNET --create-space
+ *    GEO_PRIVATE_KEY=... GEO_SPACE_ID=... GEO_NETWORK=... \
+ *      GEO_INPUT=./grc20-these-mael-rolland-v110.json node grc20-publish.mjs
+ *          --network TESTNET --create-space
  *
  *  VARIABLES D'ENVIRONNEMENT (alternative aux flags)
  *  ──────────────────────────────────────────────────

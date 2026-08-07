@@ -139,7 +139,7 @@ def main(argv=None):
         # les cartes. 3 970 relations ont ainsi declare une cle qui ne nommait
         # plus leur propre cible. L'attribut est denormalise : la verite est du
         # cote de `to`, et l'ecart se constate sans arbitrage.
-        nom_type = {t['id']: t.get('name') for t in g.get('types', [])}
+        nom_type = {t['id']: t.get('name') or t['id'] for t in g.get('types', [])}
         cle_de = {}
         for e in g.get('entities', []):
             noms = [nom_type.get(t, t) for t in (e.get('types') or [])]
@@ -160,7 +160,7 @@ def main(argv=None):
 
         # Le registre des proprietes decrit le graphe courant (depuis v110,
         # patch_19 applique : trois cles disparues y sont gardees en
-        # status='deprecated' avec leur champ supersedes). Deux sens de
+        # status='deprecated' avec leur champ supersededBy). Deux sens de
         # controle :
         #   - toute cle d'attribut d'entite du graphe courant doit avoir une
         #     entree au registre — bloquant, mais UNIQUEMENT si le registre
@@ -206,8 +206,7 @@ def main(argv=None):
                       f"bloquant) : {', '.join(absentes[:5])}"
                       f"{' ...' if len(absentes) > 5 else ''}")
             if registre:
-                disparues = sorted(cles_depreciees
-                                   - cles_attributs_entites(g))
+                disparues = sorted(cles_depreciees - cles_graphe)
                 if disparues:
                     print(f"      {len(disparues)} cle(s) depreciee(s) deja "
                           f"sorties du graphe (attendu apres patch_19) : "

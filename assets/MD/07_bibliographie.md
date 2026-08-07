@@ -139,7 +139,11 @@ BIER Jonathan, 2021e, « The Blocksize War – Chapter 4 – Scaling II – Hong
 
 BIER Jonathan, 2021f, « The Blocksize War – Chapter 18 – New York Agreement » dans The Blocksize War: The battle over who controls Bitcoin’s protocol rules, s.l., s.é., 227 p.
 
-BIER Jonathan, 2018, « BitMEX Research Sponsors Fork Monitoring Website », https://blog.bitmex.com/bitmex-research-sponsors-Fork-monitoring-website/, 5 novembre 2018, consulté le 4 octobre 2022. BIT2ME ACADEMY, « Qui est Martti Malmi ? », https://academy.bit2me.com/fr/qui-est-martti-malmi/, consulté le 12 octobre 2021. BIT2MEACADEMY, 2020, « Who Is Wladimir Van Der Laan? », https://academy.bit2me.com/en/who- is-wladimir-van-der-laan/, 7 juillet 2020, consulté le 3 janvier 2022.
+BIER Jonathan, 2018, « BitMEX Research Sponsors Fork Monitoring Website », https://blog.bitmex.com/bitmex-research-sponsors-Fork-monitoring-website/, 5 novembre 2018, consulté le 4 octobre 2022.
+
+BIT2ME ACADEMY, « Qui est Martti Malmi ? », https://academy.bit2me.com/fr/qui-est-martti-malmi/, consulté le 12 octobre 2021.
+
+BIT2MEACADEMY, 2020, « Who Is Wladimir Van Der Laan? », https://academy.bit2me.com/en/who- is-wladimir-van-der-laan/, 7 juillet 2020, consulté le 3 janvier 2022.
 
 BITCOIN CORE, 2018a, « CVE-2018-17144 Full Disclosure », https://bitcoincore.org/en/2018/09/20/notice/, 20 septembre 2018, consulté le 20 septembre 2019.
 
@@ -361,7 +365,9 @@ CRYPTOAST, 2022, « « HODL » – Un signe de ralliement de la communauté 
 
 CUEN Leigh, 2020, « Cypherpunk Myths and Bitcoin in Real Life with Udi Wetheimer », https://www.coindesk.com/cypherpunk-myths-and-bitcoin-in-real-life, 14 mars 2020, consulté le 19 mars 2020.
 
-CVLLR Jean, 2018, « The Value Overflow Incident in the Bitcoin Blockchain — 15th August, 2010 », https://medium.com/@jeancvllr/the-value-overflow-incident-in-the-bitcoin-blockchain-15th-august-2010- a59a516e03db, 30 août 2018, consulté le 14 juin 2019. D Lola, 2020, « Namecoin : la deuxième cryptomonnaie de Satoshi Nakamoto », https://journalducoin.com/altcoins/actualites-altcoins/namecoin-la-deuxieme-cryptomonnaie-de-satoshi- nakamoto/, 23 mai 2020, consulté le 22 juillet 2020.
+CVLLR Jean, 2018, « The Value Overflow Incident in the Bitcoin Blockchain — 15th August, 2010 », https://medium.com/@jeancvllr/the-value-overflow-incident-in-the-bitcoin-blockchain-15th-august-2010- a59a516e03db, 30 août 2018, consulté le 14 juin 2019.
+
+D Lola, 2020, « Namecoin : la deuxième cryptomonnaie de Satoshi Nakamoto », https://journalducoin.com/altcoins/actualites-altcoins/namecoin-la-deuxieme-cryptomonnaie-de-satoshi- nakamoto/, 23 mai 2020, consulté le 22 juillet 2020.
 
 DAI Wei, 1998, « B-money », https://nakamotoinstitute.org/library/b-money/, consulté le 12 février 2016.
 
@@ -371,9 +377,9 @@ DAOHUB, 2016, « DAOhub Verification of 0xbb9bc244d798123fde783fcc1c72d3bb8c1894
 
 DASHJR Luke, 2019, « CVE-2018–20587 Advisory and Full Disclosure (Bitcoin Core & Knots, on multiuser systems) », https://medium.com/@lukedashjr/cve-2018-20587-advisory-and-full-disclosure- a3105551e78b, 8 février 2019, consulté le 23 septembre 2019.
 
-DASHJR Luke, 2014a, « [ANN][XCP] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread 1/2 », https://bitcointalk.org/index.php?topic=395761.msg5816503#msg5816503, 21 mars 2014, consulté le 5 juin 2023.
+DASHJR Luke, 2014a, « \[ANN\]\[XCP\] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread 1/2 », https://bitcointalk.org/index.php?topic=395761.msg5816503#msg5816503, 21 mars 2014, consulté le 5 juin 2023.
 
-DASHJR Luke, 2014b, « [ANN][XCP] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread », https://bitcointalk.org/index.php?topic=395761.msg5817170#msg5817170, 21 mars 2014, consulté le 5 juin 2023.
+DASHJR Luke, 2014b, « \[ANN\]\[XCP\] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread », https://bitcointalk.org/index.php?topic=395761.msg5817170#msg5817170, 21 mars 2014, consulté le 5 juin 2023.
 
 DE FILIPPI Primavera, 2013, « Bitcoin: a regulatory nightmare to a libertarian dream », Internet Policy Review, 2013, vol. 3, no 2, p. 43.
 
@@ -495,7 +501,7 @@ GALBRAITH JK James K, 2008, « The Collapse of Monetarism and the Irrelevance of
 
 GALBRAITH John Kenneth, 1976, L’argent, Paris, Gallimard . (coll. « idée, Gallimard »), collection : idées, 366 p.
 
-GARZIK Jeff, 2014a, « [ANN][XCP] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread », https://bitcointalk.org/index.php?topic=395761.msg5796379#msg5796379, 20 mars 2014, consulté le 5 juin 2023.
+GARZIK Jeff, 2014a, « \[ANN\]\[XCP\] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread », https://bitcointalk.org/index.php?topic=395761.msg5796379#msg5796379, 20 mars 2014, consulté le 5 juin 2023.
 
 GARZIK Jeff, 2014b, « [Bitcoin-development] On OP_RETURN in upcoming 0.9 release ».
 
@@ -531,7 +537,9 @@ GREENBERG Andy, 2011, « Crypto Currency », https://www.forbes.com/forbes/2011/
 
 GÜN SIRER Emin, 2016, « Thoughts on The DAO Hack », http://hackingdistributed.com/2016/06/17/thoughts-on-the-dao-hack/, 17 juin 2016, consulté le 27 mars 2019.
 
-GÜN SIRER Emin, KEEFER River et HESS Tjaden, 2016, « Ethereum’s DAO Wars Soft Fork is a Potential DoS Vector », http://hackingdistributed.com/2016/06/28/ethereum-soft-Fork-dos-vector/, 28 juin 2016, consulté le 27 mars 2019. H Renaud, 2020, « Qui était Hal Finney, le premier à recevoir des bitcoins de Satoshi Nakamoto ? », https://journalducoin.com/bitcoin/actualites-bitcoin/qui-etait-hal-finney-premier-recevoir-bitcoins-satoshi- nakamoto/, 13 janvier 2020, consulté le 13 juillet 2020.
+GÜN SIRER Emin, KEEFER River et HESS Tjaden, 2016, « Ethereum’s DAO Wars Soft Fork is a Potential DoS Vector », http://hackingdistributed.com/2016/06/28/ethereum-soft-Fork-dos-vector/, 28 juin 2016, consulté le 27 mars 2019.
+
+H Renaud, 2020, « Qui était Hal Finney, le premier à recevoir des bitcoins de Satoshi Nakamoto ? », https://journalducoin.com/bitcoin/actualites-bitcoin/qui-etait-hal-finney-premier-recevoir-bitcoins-satoshi- nakamoto/, 13 janvier 2020, consulté le 13 juillet 2020.
 
 HACKER NEWS FORUM et APO, 2018, « From the commit that fixes the issue (CVE-2018-17144), the root cause was failur... | Hacker News », https://news.ycombinator.com/item?id=18031035, consulté le 8 février 2022.
 
@@ -573,7 +581,11 @@ HUEGLI Pascal, 2022, « Bitcoin’s Immaculate Conception Explained », https://
 
 HUGHES Eric, 1993, « A Cypherpunk’s Manifesto », https://www.activism.net/cypherpunk/manifesto.html, 9 mars 1993, consulté le 6 mai 2020.
 
-HUNT Shari, 2019 , « There are Two Uncle Rewards », https://medium.com/@ShariHunt/there-are- two-uncle-rewards-a67e06fa17de, 21 août 2019, consulté le 14 juin 2023. I3NIKOLAI (PSEUDONYME), 2016a, « r/ethereum - From the MAKER DAO slack: “Today we discovered a vulnerability in the ETH token wrapper which would let anyone drain it.” », Reddit, https://www.reddit.com/r/ethereum/comments/4nmohu/from_the_maker_dao_slack_today_we_discovered _a/, 11 juin 2016, consulté le 27 mars 2019. I3NIKOLAI (PSEUDONYME), 2016b, « Thanks a ton to Pete… », www.reddit.com/r/ethereum/comments/4nmohu/from_the_maker_dao_slack_today_we_discovered_a/d45 800p/, Reddit, 11 juin 2016, consulté le 30 mars 2022.
+HUNT Shari, 2019 , « There are Two Uncle Rewards », https://medium.com/@ShariHunt/there-are- two-uncle-rewards-a67e06fa17de, 21 août 2019, consulté le 14 juin 2023.
+
+I3NIKOLAI (PSEUDONYME), 2016a, « r/ethereum - From the MAKER DAO slack: “Today we discovered a vulnerability in the ETH token wrapper which would let anyone drain it.” », Reddit, https://www.reddit.com/r/ethereum/comments/4nmohu/from_the_maker_dao_slack_today_we_discovered _a/, 11 juin 2016, consulté le 27 mars 2019.
+
+I3NIKOLAI (PSEUDONYME), 2016b, « Thanks a ton to Pete… », www.reddit.com/r/ethereum/comments/4nmohu/from_the_maker_dao_slack_today_we_discovered_a/d45 800p/, Reddit, 11 juin 2016, consulté le 30 mars 2022.
 
 ICHIBA HOTCHKISS Griffin, 2020, « The 1.x Files: GHOST in the Stack Machine », https://blog.ethereum.org/2020/07/28/the-1x-files-ghost-in-the-stack-machine/, 28 juillet 2020, consulté le 20 octobre 2020.
 
@@ -617,7 +629,9 @@ KARAPETSAS Lefteris, 2016b, « White Hat Siphoning has Occurred. What Now? », h
 
 KARAPETSAS Lefteris, 2016c, « It seems attacker just targeted the WhiteHatDAOs », https://www.reddit.com/r/ethereum/comments/4p9z93/it_seems_attacker_just_targeted_the_whitehatdaos/, 22 juin 2016, consulté le 29 mai 2019.
 
-KARAPETSAS Lefteris, 2016d, « A DAO Counter-Attack », https://blog.slock.it/a-dao-counter-attack- 613548408dd7#.icv7euyzu, 19 juin 2016, consulté le 27 mars 2019. KARLSTRØM Henrik, 2014, « Do libertarians dream of electric coins? The material embeddedness of bitcoin », Distinktion, 2014, vol. 15, no 1, p. 23‑36.
+KARAPETSAS Lefteris, 2016d, « A DAO Counter-Attack », https://blog.slock.it/a-dao-counter-attack- 613548408dd7#.icv7euyzu, 19 juin 2016, consulté le 27 mars 2019.
+
+KARLSTRØM Henrik, 2014, « Do libertarians dream of electric coins? The material embeddedness of bitcoin », Distinktion, 2014, vol. 15, no 1, p. 23‑36.
 
 KAUSHAL Puneet Kumar, BAGGA Amandeep et SOBTI Rajeev, 2017, « Evolution of bitcoin and security risk in bitcoin wallets », Jaipur, India, IEEE.
 
@@ -679,7 +693,9 @@ KRUGMAN Paul, 2018a, « Opinion | Transaction Costs and Tethers: Why I’m a Cry
 
 KRUGMAN Paul, 2018b, « Opinion | Bubble, Bubble, Fraud and Trouble », The New York Times , 29 janv. 2018.
 
-KRUGMAN Paul, 2013, « Bitcoin is Evil », https://krugman.blogs.nytimes.com/2013/12/28/bitcoin-is- evil/?_r=1&, 28 décembre 2013, consulté le 4 février 2021. KUBÁT Max, 2015, « Virtual Currency Bitcoin in the Scope of Money Definition and Store of Value », Procedia Economics and Finance, 2015, vol. 30, p. 409‑416.
+KRUGMAN Paul, 2013, « Bitcoin is Evil », https://krugman.blogs.nytimes.com/2013/12/28/bitcoin-is- evil/?_r=1&, 28 décembre 2013, consulté le 4 février 2021.
+
+KUBÁT Max, 2015, « Virtual Currency Bitcoin in the Scope of Money Definition and Store of Value », Procedia Economics and Finance, 2015, vol. 30, p. 409‑416.
 
 KUMAR JAIN Manish, 2023, « Top Programming Language for Blockchain Development, https://www.knowledgehut.com/blog/blockchain/programming-language-for-blockchain-development, 7 septembre 2023, consulté le 19 septembre 2023.
 
@@ -877,9 +893,13 @@ NAKAMOTO Satoshi et HEARN Mike, 2009, « Gmail - Questions about BitCoin », htt
 
 NARAYANAN Arvind et CLARK Jeremy, 2017, « Bitcoin’s academic pedigree », Communications of the ACM, 2017, vol. 60, no 12, p. 36‑45.
 
-NEWBERY John et ROCHARD Pierre, « Jnewbery-cve-2018-17144-bug », https://diyhpl.us/wiki/transcripts/noded-podcast/jnewbery-cve-2018-17144-bug/, consulté le 6 février 2020. O’BRIEN Will, 2014, « How 2014 Became the Year of Multisig », https://www.coindesk.com/2014- became-year-multisig, 29 décembre 2014, consulté le 4 août 2020.
+NEWBERY John et ROCHARD Pierre, « Jnewbery-cve-2018-17144-bug », https://diyhpl.us/wiki/transcripts/noded-podcast/jnewbery-cve-2018-17144-bug/, consulté le 6 février 2020.
 
-OCONNELL Justin, 2016, « Bitcoin Enthusiast Al Gore to Star in “An Inconvenient Truth ” Follow- Up »,, https://www.ccn.com/bitcoin-enthusiast-al-gore-star-inconvenient-truth-follow/, 11 décembre 2016, consulté le 10 septembre 2021. O’LEARY Rachel-Rose, 2018, « Ethereum ASICs Are Here: What the New Miners Mean and What’s Next », https://www.coindesk.com/markets/2018/04/03/ethereum-asics-are-here-what-the-new-miners- mean-and-whats-next/, 3 avril 2018, consulté le 15 juin 2023.
+O’BRIEN Will, 2014, « How 2014 Became the Year of Multisig », https://www.coindesk.com/2014- became-year-multisig, 29 décembre 2014, consulté le 4 août 2020.
+
+OCONNELL Justin, 2016, « Bitcoin Enthusiast Al Gore to Star in “An Inconvenient Truth ” Follow- Up »,, https://www.ccn.com/bitcoin-enthusiast-al-gore-star-inconvenient-truth-follow/, 11 décembre 2016, consulté le 10 septembre 2021.
+
+O’LEARY Rachel-Rose, 2018, « Ethereum ASICs Are Here: What the New Miners Mean and What’s Next », https://www.coindesk.com/markets/2018/04/03/ethereum-asics-are-here-what-the-new-miners- mean-and-whats-next/, 3 avril 2018, consulté le 15 juin 2023.
 
 OPTECH Bitcoin, 2021, « Soft Fork activation », https://bitcoinops.org/en/topics/soft-Fork-activation/, 2021, consulté le 14 décembre 2021.
 
@@ -1179,7 +1199,9 @@ THÉRET Bruno, 2008, « Les trois états de la monnaie », Revue économique, 20
 
 THÉVENOT Laurent, 1986, « Les Investissement de forme », Presses Universitaires de France, 1986 p. 21‑71.
 
-THEYMOS, 2018, « The duplicate input vulnerability shouldn’t be forgotten », https://bitcointalk.org/index.php?topic=5035144.0, 22 septembre 2018, consulté le 31 mai 2021. TIMÓN Jorge, 2015, « BIP-0099 : Motivation and deployment of consensus rule changes ([soft/hard]Forks) », https://github.com/bitcoin/bips, 20 juin 2015, consulté le 11 décembre 2019.
+THEYMOS, 2018, « The duplicate input vulnerability shouldn’t be forgotten », https://bitcointalk.org/index.php?topic=5035144.0, 22 septembre 2018, consulté le 31 mai 2021.
+
+TIMÓN Jorge, 2015, « BIP-0099 : Motivation and deployment of consensus rule changes ([soft/hard]Forks) », https://github.com/bitcoin/bips, 20 juin 2015, consulté le 11 décembre 2019.
 
 TIROLE Jean, 2017, « There are many reasons to be cautious about bitcoin », https://www.ft.com/content/1c034898-d50f-11e7-a303-9060cb1e5f44, 30 novembre 2017, consulté le 14 mai 2020.
 
@@ -1251,7 +1273,9 @@ WHALEPANDA, 2016, « Ethereum: Chain of liars & thieves », Medium, https://medi
 
 WHITE Lawrence H., 2020, « Has Bitcoin Succeeded ? », Cato Institute Blog, https://www.cato.org/blog/has-bitcoin-succeeded, 28 décembre 2020, consulté le 19 février 2021.
 
-WHITE Lawrence H., 2018, « How a Bitcoin System is Like and Unlike a Gold Standard », https://fee.org/articles/how-a-bitcoin-system-is-like-and-unlike-a-gold-standard/, 12 janvier 2018, consulté le 4 septembre 2023. WHITERABBIT1111, 2022, « The origin digital antiquities market (NFTs) », https://whiterabbit1111.medium.com/the-origin-digital-antiquities-market-nfts-1ea9b69c03f9, 1 juin 2022, consulté le 23 mai 2023.
+WHITE Lawrence H., 2018, « How a Bitcoin System is Like and Unlike a Gold Standard », https://fee.org/articles/how-a-bitcoin-system-is-like-and-unlike-a-gold-standard/, 12 janvier 2018, consulté le 4 septembre 2023.
+
+WHITERABBIT1111, 2022, « The origin digital antiquities market (NFTs) », https://whiterabbit1111.medium.com/the-origin-digital-antiquities-market-nfts-1ea9b69c03f9, 1 juin 2022, consulté le 23 mai 2023.
 
 WILCKE Jeffrey, 2016, « To Fork or not to Fork », https://blog.ethereum.org/2016/07/15/to-Fork-or- not-to-Fork/, 15 juillet 2016, consulté le 27 mars 2019.
 

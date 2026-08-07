@@ -216,7 +216,7 @@ Deux nœuds sont dans la même famille lorsqu'ils s'apparient à la **même entr
 | 37 | FRIEDMAN Benjamin M., 2008, « Quels doivent être les objectifs de la politique monétaire. … | « Friedman Benjamin M. 2008 — Les objectifs de la politique monétaire » (`d49e7200…`, cited_in=4)<br>« Friedman 2008 » (`cfc5ccfe…`, cited_in=3) | « Friedman Benjamin M. 2008 — Les objectifs de la politique monétaire » |
 | 38 | FRIEDMAN Milton., 1999, “Land value tax and internet currencies ”, interview with Nobel La… | « Friedman Milton 1999 — Interview sur internet et monnaies privées » (`a7683381…`, cited_in=2)<br>« Friedman Milton 1999 — Video interview on internet and private currencies (land value tax) » (`8a86eb7f…`, cited_in=2) | « Friedman Milton 1999 — Video interview on internet and private currencies (land value tax) » |
 | 39 | GALBRAITH John Kenneth, 1976, L’argent, Paris, Gallimard . (coll. « idée, Gallimard »), co… | « Galbraith 1976 » (`ecfda0e5…`, cited_in=6)<br>« Galbraith 1976 — L'argent » (`569ea730…`, cited_in=6) | « Galbraith 1976 — L'argent » |
-| 40 | GARZIK Jeff, 2014a, « [ANN][XCP] Counterparty - Pioneering Peer -to-Peer Finance - Officia… | « Garzik 2014a » (`644de7a8…`, cited_in=1)<br>« Garzik 2014a — Counterparty and metacoins analysis » (`9e20ed50…`, cited_in=1) | « Garzik 2014a — Counterparty and metacoins analysis » |
+| 40 | GARZIK Jeff, 2014a, « \[ANN\]\[XCP\] Counterparty - Pioneering Peer -to-Peer Finance - Officia… | « Garzik 2014a » (`644de7a8…`, cited_in=1)<br>« Garzik 2014a — Counterparty and metacoins analysis » (`9e20ed50…`, cited_in=1) | « Garzik 2014a — Counterparty and metacoins analysis » |
 | 41 | GARZIK Jeff, 2014b, « [Bitcoin-development] On OP_RETURN in upcoming 0.9 release ».… | « Garzik 2014b » (`fdafe6e1…`, cited_in=1)<br>« Garzik 2014b — OP_RETURN and metadata in Bitcoin » (`a7d3cc7c…`, cited_in=5) | « Garzik 2014b — OP_RETURN and metadata in Bitcoin » |
 | 42 | GILBERT David, 2014, « \’Most Valuable Tweet in History\’ Donates $11,000 Worth of Dogecoi… | « David Gilbert 2014 » (`be56089c…`, cited_in=1)<br>« Gilbert David 2014 — Dogecoin cryptocurrency community » (`1d8a4c4a…`, cited_in=2) | « Gilbert David 2014 — Dogecoin cryptocurrency community » |
 | 43 | HUGHES Eric, 1993, « A Cypherpunk’s Manifesto », https://www.activism.net/cypherpunk/manif… | « Hughes 1993 Cypherpunk Manifesto » (`51061825…`, cited_in=3)<br>« Hughes 1993 — A Cypherpunk's Manifesto » (`c76bb3ae…`, cited_in=3) | « Hughes 1993 — A Cypherpunk's Manifesto » |
@@ -294,3 +294,27 @@ Le patch contient aussi l'unique `SET_NAME` : « Danzeis et Meiklejohn 2015 » �
 - L'**appariement fin au niveau des suffixes** a/b/c pour quelques familles où le graphe et le PDF numérotent différemment (ECB 2015, Buterin 2016–2017) : l'appariement par famille (auteur, année) est sûr, la lettre ne l'est pas.
 - Le **statut réel des 33 nœuds datés absents** : absents de la *bibliographie*, mais je n'ai pas vérifié s'ils sont mobilisés dans le corps de la thèse (`assets/MD/`) sans être bibliographiés — ce tri (parasite vs référence omise par la bibliographie du PDF) demande une passe texte dédiée.
 - La conversion repose sur l'extraction pypdf : la ponctuation fine (espaces insécables, tirets de justification « Sharding -Based ») reflète l'extraction, pas la mise en page originale ; le **compte de 652 entrées** dépend du découpage documenté ci-dessus (12 cas limites arbitrés à la main).
+
+
+---
+
+## Addendum — 2026-08-07 (retour de revue pré-merge)
+
+Douze entrées de la bibliographie étaient **cachées en fin de ligne d'une
+autre entrée** (artefact d'extraction pypdf : la seconde entrée commençait
+après le « consulté le … » de la première). Onze scissions faites : le fichier
+passe de 652 à **664 entrées**. Entrées révélées : BIT2ME ACADEMY (Malmi),
+BIT2MEACADEMY 2020 (van der Laan), D Lola 2020, H Renaud 2020, I3NIKOLAI
+2016a et 2016b, KARLSTRØM 2014, KUBÁT 2015, O'BRIEN 2014, TIMÓN 2015,
+WHITERABBIT1111 2022, plus une entrée OCONNELL en suite de ligne.
+
+**Deux conclusions du § « jamais cités » tombent** : « Renaud H. 2020 » et
+« Whiterabbit1111 2022 », classés *parasites* (absents du PDF), figurent en
+réalité au PDF — dans les concaténations. **Il n'y a donc aucun nœud
+parasite avéré** parmi les 11 datés jamais cités : 11/11 sont légitimes.
+Les comptes du § 2 (592/652 appariées, 60 sans nœud) sont des bornes basses
+à ±12 entrées et n'ont pas été recalculés ligne à ligne.
+
+Les marqueurs littéraux « \[ANN\]\[XCP\] » des titres BitcoinTalk sont
+échappés pour ne plus être interprétés comme références Markdown — le texte
+affiché est inchangé.

@@ -1167,8 +1167,16 @@ async function loadGraph() {
       graphRes.json(),
       sectionRes.json(),
     ]);
-    if (overrideRes?.ok) state.sectionOverrides = await overrideRes.json();
-    if (headingsRes?.ok) state.sectionHeadingsMap = await headingsRes.json();
+    // Fichiers OPTIONNELS : un corps malformé ne doit pas avorter le
+    // chargement du graphe — on retombe sur les heuristiques textuelles.
+    if (overrideRes?.ok) {
+      try { state.sectionOverrides = await overrideRes.json(); }
+      catch (e) { console.warn('[lecteur] section_overrides.json illisible :', e); }
+    }
+    if (headingsRes?.ok) {
+      try { state.sectionHeadingsMap = await headingsRes.json(); }
+      catch (e) { console.warn('[lecteur] section-headings-map.json illisible :', e); }
+    }
 
     // ── Index NarrativeAnchors by primary entity ───────────────────────
     if (anchorRes?.ok) {
@@ -1355,14 +1363,22 @@ function makePositionalSectionResolver(file) {
     const pos  = seen[level]++;          // position always advances
     const at   = pool[pos];
     const norm = normHeadingForMap(text);
-    // 1. position, confirmed by normalised text
+    // 1. position, confirmed by normalised text. A confirmed EMPTY key still
+    //    falls back to the text heuristics : les clés de préambule
+    //    (ccl_preamble…) n'ont pas de nœud de graphe, donc ne peuvent pas
+    //    passer par la carte — seul le repli les pose. Pour les ### de
+    //    chapitres (vides dans la carte), le repli rend null : inoffensif.
     if (at && at.text === norm) return at.key || fallbackKey;
     // 2. unique text match at the same level — recovers real headings when
     //    marked injects setext artefacts (Pandoc table remnants like
     //    « Source : Rolland Maël » + dashed line render as spurious h2 and
-    //    shift the position counter)
+    //    shift the position counter). Resync the position counter on the
+    //    matched heading so the NEXT heading is compared at the right index.
     const byText = pool.filter(h => h.text === norm);
-    if (byText.length === 1) return byText[0].key || fallbackKey;
+    if (byText.length === 1) {
+      seen[level] = pool.indexOf(byText[0]) + 1;
+      return byText[0].key || fallbackKey;
+    }
     // 3. text heuristics (old behaviour). NEVER trust an unconfirmed
     //    position: a spurious heading would steal the next section's key.
     return fallbackKey;

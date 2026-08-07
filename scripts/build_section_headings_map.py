@@ -95,6 +95,10 @@ def cles_intro(arbre, lignes):
     parent — c'est la numerotation que porte le graphe (intro_C_2a…f couvre
     des ### ET des #### entremeles, dans l'ordre du texte).
     """
+    if len(arbre) != len(lignes):
+        raise SystemExit(f"ERREUR : arbre ({len(arbre)}) et lignes "
+                         f"({len(lignes)}) desalignes — cles non attribuees.")
+
     out = []
     parent = ''   # cle intro_X_N du ## courant
     lettre = 0
@@ -121,11 +125,19 @@ def cles_conclusion(arbre):
     """
     niveaux = {n for n, _t, _l in arbre}
     niveau_sections = 2 if 2 in niveaux else 3
+    n_titres = sum(1 for n, _t, _l in arbre if n == niveau_sections)
+    # Un titre en plus ou en moins decalerait TOUTES les cles suivantes en
+    # silence — le meme accident que les h2 setext parasites du chapitre III.
+    if n_titres != len(CLES_CONCLUSION):
+        raise SystemExit(
+            f"ERREUR : la conclusion porte {n_titres} titre(s) de niveau "
+            f"{niveau_sections}, {len(CLES_CONCLUSION)} attendus — cles non "
+            f"attribuees plutot que decalees.")
     out = []
     i = 0
     for niveau_md, _texte, _ligne in arbre:
         cle = ''
-        if niveau_md == niveau_sections and i < len(CLES_CONCLUSION):
+        if niveau_md == niveau_sections:
             cle = CLES_CONCLUSION[i]
             i += 1
         out.append(cle)
@@ -140,6 +152,10 @@ def cles_chapitre(arbre, lignes):
     (currentSectionKey sans entites associees). On s'arrete au rang 2,
     comme le sommaire de la these.
     """
+    if len(arbre) != len(lignes):
+        raise SystemExit(f"ERREUR : arbre ({len(arbre)}) et lignes "
+                         f"({len(lignes)}) desalignes — cles non attribuees.")
+
     out = []
     for (niveau_md, _texte, _ligne), l in zip(arbre, lignes):
         out.append(l['cle'] if niveau_md <= 2 and l['cle'] else '')
@@ -154,6 +170,7 @@ def construit(chemin_graphe):
         chemin = os.path.join(MD, nom)
         if not os.path.exists(chemin):
             print(f'  ABSENT : {nom}', file=sys.stderr)
+            inconnues.append((nom, 0, '(fichier absent)', 'markdown introuvable'))
             continue
         # Le lecteur ne compte que h1-h4 (les ##### sont retires au rendu,
         # les rangs plus profonds ne sont pas observes).
@@ -210,10 +227,6 @@ def main(argv=None):
             print(f'  {nom} l.{ligne} {cle} — {texte}', file=sys.stderr)
         return 1
 
-    if args.check:
-        print('\n--check : rien ecrit.')
-        return 0
-
     doc = {
         '_comment': ('Cles de section par POSITION pour lecteur.html. Genere '
                      'par scripts/build_section_headings_map.py — ne pas '
@@ -223,6 +236,23 @@ def main(argv=None):
         'source_graph': os.path.basename(chemin_graphe),
         'files': fichiers,
     }
+
+    if args.check:
+        # --check compare la generation au fichier COMMIS : une carte perimee
+        # doit faire echouer, pas seulement se regenerer en silence.
+        if not os.path.exists(args.out):
+            print(f'--check : {os.path.relpath(args.out, REPO)} ABSENT — '
+                  f'carte jamais generee.', file=sys.stderr)
+            return 1
+        with open(args.out, encoding='utf-8') as f:
+            commis = json.load(f)
+        if commis != doc:
+            print(f'--check : {os.path.relpath(args.out, REPO)} PERIME — '
+                  f'regenerer avec ce script.', file=sys.stderr)
+            return 1
+        print('--check : la carte commise est a jour.')
+        return 0
+
     with open(args.out, 'w', encoding='utf-8') as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
         f.write('\n')

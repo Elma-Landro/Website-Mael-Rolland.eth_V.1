@@ -7,11 +7,13 @@ generateur avant application :
 
 - **patch_18** — 1 coquille de nom (« Danzeis » -> « Danezis », confirmee
   ABSENTE de la bibliographie de la these convertie le meme jour) et
-  39 retypages Reference -> Person : des fiches d'auteur sans millesime
+  21 retypages Reference -> Person : des fiches d'auteur sans millesime
   (« Paul Krugman », « Bruno Latour ») qu'aucune citation ne peut jamais
-  atteindre. Controle prealable : aucune ne porte de millesime, aucune n'a
-  d'homonyme Person (les 4 cas d'homonymie sont EXCLUS du patch et listes a
-  l'arbitrage dans docs/audits/grc20-bibliographie-reconciliation-v1.md).
+  atteindre, chacune CONFIRMEE par une entree d'auteur de la bibliographie
+  (patronyme + prenom). Les 22 entrees de `_meta.skipped` restent Reference :
+  4 cas d'homonymie ou de fiche multi-auteurs, et 18 noms que le PDF contredit
+  ou ne porte pas — les promouvoir graverait des personnes fausses (details
+  dans docs/audits/grc20-bibliographie-reconciliation-v1.md).
 
 - **patch_19** — 384 normalisations mecaniques d'attributs (types GRC-20,
   etiquettes de langue, cles en double a la casse pres, chaine vide), toutes
@@ -106,6 +108,9 @@ def main(argv=None):
         echec(f"{len(erreurs)} erreur(s) de validation")
 
     # ---------- application ----------
+    doubles_avant = {n for n, c in collections.Counter(
+        e['name'].strip().lower() for e in g['entities']
+        if 'Person' in [nom_type.get(t, t) for t in e.get('types') or []]).items() if c > 1}
     compte = collections.Counter()
     for o in p18['ops']:
         e = E[o['entityId']]
@@ -113,7 +118,7 @@ def main(argv=None):
             compte[f"renomme « {e['name'][:32]} »"] += 1
             e['name'] = o['value']
         else:
-            avant = [nom_type.get(t) for t in e.get('types') or []]
+            avant = [nom_type.get(t, t) for t in e.get('types') or []]
             e['types'] = list(o['value'])
             compte[f"retype {'+'.join(avant)} -> "
                    f"{'+'.join(nom_type.get(t, t) for t in o['value'])}"] += 1
@@ -148,16 +153,18 @@ def main(argv=None):
                 if x.get('status') == 'deprecated' and k in cles]
     if fantomes:
         echec(f"cles depreciees encore presentes : {fantomes}")
-    # Aucun retypage ne doit avoir cree d'homonymie Person.
-    noms_pers = collections.Counter(
+    # Aucun retypage ne doit avoir CREE d'homonymie Person : on compare a
+    # l'etat d'avant patch, pour ne pas echouer sur un doublon preexistant
+    # qui ne serait pas de notre fait.
+    doubles_apres = {n for n, c in collections.Counter(
         e['name'].strip().lower() for e in g['entities']
-        if 'Person' in [nom_type.get(t) for t in e.get('types') or []])
-    doubles = [n for n, c in noms_pers.items() if c > 1]
-    if doubles:
-        echec(f"homonymie Person apres retypage : {doubles[:5]}")
+        if 'Person' in [nom_type.get(t, t) for t in e.get('types') or []]).items() if c > 1}
+    nouveaux_doubles = doubles_apres - doubles_avant
+    if nouveaux_doubles:
+        echec(f"homonymie Person creee par le retypage : {sorted(nouveaux_doubles)[:5]}")
     print(f"\n  entites : {avant_e} (inchange) · relations : {avant_r} (inchange)")
     print(f"  cles d'attribut : {len(cles)} · toutes au registre · 0 depreciee restante")
-    print(f"  0 homonymie Person creee")
+    print("  0 homonymie Person creee")
 
     if args.dry_run:
         print("\n--dry-run : rien ecrit.")
@@ -171,12 +178,21 @@ def main(argv=None):
     espace['version'] = m_v.group(1)
     espace['entity_count'] = len(g['entities'])
     espace['relation_count'] = len(g['relations'])
-    espace['note'] = ("V110 — bibliographie et attributs : 1 coquille de nom corrigee "
-                      "(Danezis), 39 fiches d'auteur retypees Reference -> Person "
-                      "(injoignables par citation, zero homonymie), 384 normalisations "
-                      "d'attributs decrites par grc20-properties-registry-v1.json, "
-                      "desormais invariant de CI. "
-                      + espace.get('note', ''))
+    n_types = sum(1 for o in p18['ops'] if o['type'] == 'SET_TYPES')
+    n_noms = sum(1 for o in p18['ops'] if o['type'] == 'SET_NAME')
+    # La note heritee est bornee : chaque version prefixait l'historique
+    # entier, qui enflait sans limite. L'historique complet vit dans
+    # CLAUDE.md ; la note du graphe garde la version courante et un rappel
+    # tronque.
+    heritee = espace.get('note', '')
+    if len(heritee) > 1200:
+        heritee = heritee[:1200].rsplit(' ', 1)[0] + ' […]'
+    espace['note'] = (f"V110 — bibliographie et attributs : {n_noms} coquille de nom corrigee "
+                      f"(Danezis), {n_types} fiches d'auteur retypees Reference -> Person "
+                      "(injoignables par citation, confirmees par la bibliographie, zero "
+                      "homonymie creee), 384 normalisations d'attributs decrites par "
+                      "grc20-properties-registry-v1.json, desormais invariant de CI. "
+                      + heritee)
     with open(args.target, 'w', encoding='utf-8') as f:
         json.dump(g, f, ensure_ascii=False, indent=2)
     print(f"\ngraphe ecrit : {os.path.relpath(args.target, REPO)}")

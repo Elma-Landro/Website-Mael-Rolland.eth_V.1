@@ -123,11 +123,15 @@ def main(argv=None):
         vraie = cle_de.get(r.get('to'))
         val = attrs['section_key']
         actuelle = val.get('value') if isinstance(val, dict) else val
+        # meme tolerance que la boucle principale : une valeur absente est
+        # volontairement laissee en l'etat, elle n'est pas « perimee »
+        if actuelle is None:
+            continue
         if vraie and actuelle != vraie:
             restants += 1
     if restants:
         echec(f"{restants} relation(s) portent encore une cle perimee")
-    print(f"\n  cles perimees restantes : 0")
+    print("\n  cles perimees restantes : 0")
 
     if args.dry_run:
         print("\n--dry-run : rien ecrit.")
@@ -145,7 +149,7 @@ def main(argv=None):
                       f"attribut section_key perime, sequelle des migrations v100 et "
                       f"v106 : les cles avaient ete renumerotees sur les entites et "
                       f"remappees dans les cartes, jamais sur les relations. "
-                      + espace.get('note', ''))
+                      + (lambda h: h[:1200].rsplit(' ', 1)[0] + ' […]' if len(h) > 1200 else h)(espace.get('note', '')))
     with open(args.target, 'w', encoding='utf-8') as f:
         json.dump(g, f, ensure_ascii=False, indent=2)
     print(f"\ngraphe ecrit : {os.path.relpath(args.target, REPO)}")

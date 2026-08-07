@@ -5,7 +5,7 @@
     "generated_by": "scripts/build_properties_registry.py",
     "id_scheme": "md5('grc20-property-v1|' + key), 32 hexa minuscules",
     "entry_count": 338,
-    "conventions": "Le registre decrit v109 tel qu'il est : `count` et `domain` sont mesures sur le graphe source. `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de patch_19_attribute_normalisation.json (etat normatif) ; les trois cles que ce patch fait disparaitre restent inscrites avec status='deprecated' et `supersedes` nommant la cle qui les remplace. `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
+    "conventions": "Le registre decrit v109 tel qu'il est : `count` et `domain` sont mesures sur le graphe source. `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de patch_19_attribute_normalisation.json (etat normatif) ; les trois cles que ce patch fait disparaitre restent inscrites avec status='deprecated' et `supersededBy` nommant la cle qui les remplace. `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
   },
   "entries": [
     {
@@ -1663,7 +1663,7 @@
       "vocabulary": null,
       "derivedFrom": null,
       "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `interviewName`.",
-      "supersedes": "interviewName"
+      "supersededBy": "interviewName"
     },
     {
       "key": "period",
@@ -3170,7 +3170,7 @@
       ],
       "vocabulary": null,
       "derivedFrom": null,
-      "notes": ""
+      "notes": "Collision lexicale avec un identifiant generique frequent en code — les correspondances readBy sont a lire avec prudence."
     },
     {
       "key": "created",
@@ -3825,7 +3825,7 @@
       "vocabulary": null,
       "derivedFrom": null,
       "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `central_argument`.",
-      "supersedes": "central_argument"
+      "supersededBy": "central_argument"
     },
     {
       "key": "clients",
@@ -3931,7 +3931,7 @@
       "vocabulary": null,
       "derivedFrom": null,
       "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `concept_source`.",
-      "supersedes": "concept_source"
+      "supersededBy": "concept_source"
     },
     {
       "key": "concept_source",

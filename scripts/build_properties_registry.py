@@ -14,7 +14,7 @@ patch_19_attribute_normalisation.json (depose, non applique) corrige des
 VALEURS, pas des cles — sauf deux renommages (centralArgument →
 central_argument, conceptSource → concept_source) et une deduplication
 (nomEnquete, absorbee par interviewName). Ces trois cles sont donc gardees
-avec status='deprecated' et un champ `supersedes` qui nomme la cle
+avec status='deprecated' et un champ `supersededBy` qui nomme la cle
 survivante. Pour toutes les autres, `valueType`, `language` et
 `vocabulary` sont calcules APRES application en memoire de patch_19 :
 c'est l'etat normatif vers lequel le graphe converge. `count` et `domain`
@@ -43,7 +43,7 @@ DATE_AUDIT = '2026-08-06'
 
 # Renommages/absorptions portes par patch_19 : la cle depreciee → la cle
 # qui la remplace. C'est la seule connaissance non deduite du graphe.
-SUPERSEDES = {
+SUPERSEDED_BY = {
     'nomEnquete': 'interviewName',
     'centralArgument': 'central_argument',
     'conceptSource': 'concept_source',
@@ -52,6 +52,9 @@ SUPERSEDES = {
 # Anomalies constatees, notees sans etre tranchees. Le registre NE fusionne
 # rien : il documente.
 NOTES = {
+    'count': "Collision lexicale avec un identifiant generique frequent en code — "
+             "les correspondances readBy sont a lire avec prudence.",
+
     'description': "Collision avec le champ d'enveloppe `description` de "
                    "l'entite GRC-20 et avec la propriete systeme homonyme de "
                    "grc20-publish.mjs ; les occurrences code comptees dans "
@@ -92,11 +95,16 @@ def attrs(e):
 
 
 def appliquer_patch(entites, patch):
-    """Applique les ops de patch_19 sur une copie en memoire."""
+    """Applique les ops de patch_19 sur une copie en memoire.
+
+    Un patch malforme doit se VOIR : les ops de type inconnu et celles qui
+    visent une entite absente sont comptees et affichees, pas avalees."""
     par_id = {e['id']: e for e in entites}
+    inconnues, absentes = 0, 0
     for op in patch.get('ops', []):
         e = par_id.get(op.get('entityId'))
         if e is None:
+            absentes += 1
             continue
         a = e.get('attributes')
         if not isinstance(a, dict):
@@ -105,12 +113,17 @@ def appliquer_patch(entites, patch):
             a[op['attributeId']] = op['value']
         elif op['type'] == 'DELETE_ATTRIBUTE':
             a.pop(op['attributeId'], None)
+        else:
+            inconnues += 1
+    if inconnues or absentes:
+        print(f"  ATTENTION patch : {inconnues} op(s) de type inconnu, "
+              f"{absentes} op(s) vers une entite absente", file=sys.stderr)
 
 
 def fichiers_code(repo):
     """Fichiers de code scannes pour `status`/`readBy` : *.html, *.js, *.mjs
     du depot entier (hors node_modules et assets/MD) plus tout scripts/.
-    Ce script-ci est exclu : il nomme les cles depreciees dans SUPERSEDES et
+    Ce script-ci est exclu : il nomme les cles depreciees dans SUPERSEDED_BY et
     se marquerait lui-meme comme lecteur."""
     fs = []
     for pat in ('**/*.html', '**/*.js', '**/*.mjs'):
@@ -160,8 +173,12 @@ def langue_majoritaire(valeurs):
     return top[0][0]
 
 
-def type_majoritaire(valeurs):
+def type_majoritaire(valeurs, repli=None):
+    # `valeurs` peut etre vide (cle videe par patch_19) : dans ce cas le type
+    # normatif est celui d'AVANT le patch, pas un IndexError.
     c = collections.Counter(v.get('type') for v in valeurs)
+    if not c:
+        return type_majoritaire(repli) if repli else None
     return c.most_common(1)[0][0]
 
 
@@ -242,6 +259,10 @@ def main(argv=None):
     # etat apres patch_19 (en memoire, sur copie)
     chemin_patch = os.path.join(args.repo, PATCH)
     apres = avant
+    if not os.path.exists(chemin_patch):
+        print(f"ECHEC : {PATCH} introuvable — le registre decrirait l'etat "
+              f"AVANT patch en se donnant pour l'etat apres.", file=sys.stderr)
+        return 2
     if os.path.exists(chemin_patch):
         copie = json.loads(json.dumps(entites))
         with open(chemin_patch, encoding='utf-8') as fh:
@@ -262,7 +283,7 @@ def main(argv=None):
     entrees = []
     for k in avant:
         count = len(avant[k])
-        deprecie = k in SUPERSEDES and not apres.get(k)
+        deprecie = k in SUPERSEDED_BY and not apres.get(k)
         # cle depreciee : valeurs de v109 tel quel ; sinon etat post-patch
         valeurs = avant[k] if deprecie else apres[k]
         if deprecie:
@@ -285,9 +306,9 @@ def main(argv=None):
             'notes': NOTES.get(k, ''),
         }
         if deprecie:
-            entree['supersedes'] = SUPERSEDES[k]
+            entree['supersededBy'] = SUPERSEDED_BY[k]
             complement = ("Depreciee par patch_19 (deposee, non appliquee) : "
-                          "remplacee par `%s`." % SUPERSEDES[k])
+                          "remplacee par `%s`." % SUPERSEDED_BY[k])
             entree['notes'] = (entree['notes'] + ' ' + complement).strip()
         entrees.append(entree)
 
@@ -306,7 +327,7 @@ def main(argv=None):
                 "et `vocabulary` sont calcules apres application en memoire "
                 "de patch_19_attribute_normalisation.json (etat normatif) ; "
                 "les trois cles que ce patch fait disparaitre restent "
-                "inscrites avec status='deprecated' et `supersedes` nommant "
+                "inscrites avec status='deprecated' et `supersededBy` nommant "
                 "la cle qui les remplace. `language` est la langue "
                 "majoritaire des options (null si aucune ou egalite). "
                 "`vocabulary` est la liste close des valeurs si <= 8 valeurs "

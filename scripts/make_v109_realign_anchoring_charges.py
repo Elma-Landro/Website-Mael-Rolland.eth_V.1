@@ -170,6 +170,18 @@ def main(argv=None):
               f"— a examiner avant toute application")
 
     # ---------- les cartes, en remap SIMULTANE ----------
+    # Garde d'idempotence : 5 des 18 cles sont a la fois source et cible.
+    # Rejouer le script sur des cartes deja converties re-deplacerait le lot
+    # fraichement pose (« I.2.2 », devenu la charge de l'ex-« I.2.2.b »,
+    # repartirait vers « I.2.1 »). On exige la presence d'une cle qui
+    # n'existe QUE dans l'etat pre-conversion.
+    with open(os.path.join(REPO, 'section_entities_map.json'), encoding='utf-8') as f:
+        _sem_avant = json.load(f)
+    temoins = [k for k in CHARGE_VERS_BLOC if k not in CHARGE_VERS_BLOC.values()]
+    if not any(k in _sem_avant for k in temoins):
+        echec("les cartes semblent DEJA converties (aucune cle temoin "
+              f"pre-conversion presente : {temoins[:4]}...) — rejouer ce "
+              "script re-deplacerait les charges fraichement posees")
     remaps = {}
     for fichier in ('section_entities_map.json', 'entity_section_map.json'):
         chemin = os.path.join(REPO, fichier)
@@ -187,7 +199,7 @@ def main(argv=None):
                 nouveau[nk] = v
             remaps[fichier] = (nouveau, n)
         else:
-            for eid, rec in data.items():
+            for _eid, rec in data.items():
                 for s in rec.get('sections', []):
                     nk = CHARGE_VERS_BLOC.get(s.get('section_key'))
                     if nk:
@@ -196,7 +208,8 @@ def main(argv=None):
             remaps[fichier] = (data, n)
         print(f"  {fichier:28s} : {n} remappage(s)")
 
-    ov = json.load(open(os.path.join(REPO, 'section_overrides.json'), encoding='utf-8'))
+    with open(os.path.join(REPO, 'section_overrides.json'), encoding='utf-8') as f:
+        ov = json.load(f)
     touchees = [k for k in ov if k in CHARGE_VERS_BLOC]
     if touchees:
         echec(f"section_overrides.json porte des cles de la bijection : {touchees}")
@@ -217,7 +230,7 @@ def main(argv=None):
              if not (sem_nouveau.get(k) or {}).get('entities')]
     if vides:
         echec(f"sections censees etre remplies encore vides : {vides}")
-    print(f"  les 8 sections du sommaire jadis vides portent desormais une liste : OK")
+    print("  les 8 sections du sommaire jadis vides portent desormais une liste : OK")
 
     if args.dry_run:
         print("\n--dry-run : rien ecrit.")
@@ -242,7 +255,7 @@ def main(argv=None):
                       f"v100/v106 ; extraits localises a 100 % dans le bloc voisin). "
                       f"L'attribut section_key des relations redevient exact — v108 l'avait "
                       f"aligne sur des cibles alors erronees. Aucun poids recalcule. "
-                      + espace.get('note', ''))
+                      + (lambda h: h[:1200].rsplit(' ', 1)[0] + ' […]' if len(h) > 1200 else h)(espace.get('note', '')))
     with open(args.target, 'w', encoding='utf-8') as f:
         json.dump(g, f, ensure_ascii=False, indent=2)
     print(f"\ngraphe ecrit : {os.path.relpath(args.target, REPO)}")
