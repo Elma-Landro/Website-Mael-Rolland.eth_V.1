@@ -1,0 +1,403 @@
+{
+ "_meta": {
+  "description": "Simulation a blanc (en memoire) de l'application des 3 patchs candidats bibliographiques sur une copie de grc20-these-mael-rolland-v110.json, separement puis cumulativement. Aucun graphe ecrit, aucun patch applique : ce rapport est la seule ecriture.",
+  "discipline": "simulation memoire uniquement, aucun graphe ecrit",
+  "generated": "2026-08-07",
+  "patchs": [
+   "patch_candidate_bibliographie_duplicates_v1.json",
+   "patch_candidate_bibliographie_missing_nodes_v1.json",
+   "patch_candidate_bibliographie_retypes_v1.json"
+  ],
+  "registre": "grc20-properties-registry-v1.json",
+  "source_graph": "grc20-these-mael-rolland-v110.json"
+ },
+ "prises": [],
+ "simulations": {
+  "cumule": {
+   "analyse_creations": {
+    "creations_avec_relations_dans_le_patch": 0,
+    "entites_creees": 38,
+    "ids_preassignes": 0,
+    "orphelins_de_citation_a_la_creation": 38,
+    "orphelins_de_relations_a_la_creation": 38,
+    "risque_sequencement": "La justification du CSV entrees-sans-noeud atteste que les 38 oeuvres sont citees dans le corps de la these, mais le patch ne pose AUCUNE relation cited in / appears in section : a la creation, les 38 noeuds seraient orphelins de relations ET de citation. Un graphe publie entre la creation et la pose des relations exposerait 38 noeuds isoles ; la pose des cited in doit etre dans le MEME make_vNNN."
+   },
+   "analyse_doublons": {
+    "chaines_duplicateOf_A_B_C": [],
+    "cibles_duplicateOf_absentes_du_graphe": [],
+    "cibles_duplicateOf_v110_existantes": [
+     "15864ab2cdcd41348eecc0daba8eb11d",
+     "e3742113c4674c52930e54ff203f0ac6"
+    ],
+    "croisement_avec_les_3_duplicateOf_v110": {
+     "ids_communs_toutes_positions": [],
+     "porteurs_communs": [],
+     "verdict": "aucun croisement"
+    },
+    "entites_devenant_doublons_annotes": 78,
+    "porteurs_duplicateOf_v110_existants": [
+     "22c507bdaa874229b5a4a145e23d123c",
+     "7f80094676fd44a785c6483dbee4f8c5",
+     "ee7277478ddc4c0886e8d73a4e2ce00d"
+    ],
+    "porteurs_ecrases": [],
+    "valeurs_reviewStatus": {
+     "existantes_v110": [
+      "duplicate-pending-merge"
+     ],
+     "heterogeneite": true,
+     "nouvelles": [
+      "pending-author"
+     ]
+    }
+   },
+   "attributs_nouveaux": {
+    "duplicateOf": {
+     "delta_porteurs": 78,
+     "ecart_count": 78,
+     "porteurs_apres": 81,
+     "porteurs_avant": 3,
+     "registre_count_declare": 3,
+     "registre_count_reel_apres": 81,
+     "registre_deviendrait_menteur": true,
+     "registre_domain_declare": [
+      "CrisisEvent",
+      "InfrastructureEvent"
+     ],
+     "registre_domain_reel_apres": [
+      "AcademicWork",
+      "CrisisEvent",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "InfrastructureEvent",
+      "Reference"
+     ],
+     "registre_domaines_manquants": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ],
+     "statut_registre": "present-domaine-restreint",
+     "types_porteurs_nouveaux": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ]
+    },
+    "reviewStatus": {
+     "delta_porteurs": 78,
+     "ecart_count": 78,
+     "porteurs_apres": 81,
+     "porteurs_avant": 3,
+     "registre_count_declare": 3,
+     "registre_count_reel_apres": 81,
+     "registre_deviendrait_menteur": true,
+     "registre_domain_declare": [
+      "CrisisEvent",
+      "InfrastructureEvent"
+     ],
+     "registre_domain_reel_apres": [
+      "AcademicWork",
+      "CrisisEvent",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "InfrastructureEvent",
+      "Reference"
+     ],
+     "registre_domaines_manquants": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ],
+     "statut_registre": "present-domaine-restreint",
+     "types_porteurs_nouveaux": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ]
+    },
+    "source_entry": {
+     "delta_porteurs": 38,
+     "note": "cle ABSENTE du registre : scripts/check_graph_integrity.py bloquerait tout graphe la portant (CI bloquante)",
+     "porteurs_apres": 38,
+     "porteurs_avant": 0,
+     "registre_count_declare": null,
+     "registre_deviendrait_menteur": false,
+     "statut_registre": "absent",
+     "types_porteurs_nouveaux": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ]
+    }
+   },
+   "collisions_noms_creees": [],
+   "entites": {
+    "apres": 2331,
+    "avant": 2293,
+    "delta": 38
+   },
+   "entites_existantes_touchees": 84,
+   "ops_appliquees": 204,
+   "references_runtime": "aucune",
+   "relations": {
+    "apres": 20207,
+    "avant": 20207,
+    "delta": 0
+   },
+   "types": {
+    "delta_global_par_type": {
+     "AcademicWork": 4,
+     "GreyLiterature": 18,
+     "IndigenousLiterature": 16,
+     "Person": 6,
+     "Reference": 32
+    },
+    "distribution_entites_creees": {
+     "AcademicWork": 4,
+     "GreyLiterature": 18,
+     "IndigenousLiterature": 16,
+     "Reference": 38
+    },
+    "distribution_entites_touchees_apres": {
+     "AcademicWork": 24,
+     "GreyLiterature": 5,
+     "IndigenousLiterature": 9,
+     "Person": 6,
+     "Reference": 76
+    },
+    "distribution_entites_touchees_avant": {
+     "AcademicWork": 24,
+     "GreyLiterature": 5,
+     "IndigenousLiterature": 9,
+     "Reference": 82
+    },
+    "types_absents_du_graphe_references": []
+   }
+  },
+  "duplicates": {
+   "analyse_doublons": {
+    "chaines_duplicateOf_A_B_C": [],
+    "cibles_duplicateOf_absentes_du_graphe": [],
+    "cibles_duplicateOf_v110_existantes": [
+     "15864ab2cdcd41348eecc0daba8eb11d",
+     "e3742113c4674c52930e54ff203f0ac6"
+    ],
+    "croisement_avec_les_3_duplicateOf_v110": {
+     "ids_communs_toutes_positions": [],
+     "porteurs_communs": [],
+     "verdict": "aucun croisement"
+    },
+    "entites_devenant_doublons_annotes": 78,
+    "porteurs_duplicateOf_v110_existants": [
+     "22c507bdaa874229b5a4a145e23d123c",
+     "7f80094676fd44a785c6483dbee4f8c5",
+     "ee7277478ddc4c0886e8d73a4e2ce00d"
+    ],
+    "porteurs_ecrases": [],
+    "valeurs_reviewStatus": {
+     "existantes_v110": [
+      "duplicate-pending-merge"
+     ],
+     "heterogeneite": true,
+     "nouvelles": [
+      "pending-author"
+     ]
+    }
+   },
+   "attributs_nouveaux": {
+    "duplicateOf": {
+     "delta_porteurs": 78,
+     "ecart_count": 78,
+     "porteurs_apres": 81,
+     "porteurs_avant": 3,
+     "registre_count_declare": 3,
+     "registre_count_reel_apres": 81,
+     "registre_deviendrait_menteur": true,
+     "registre_domain_declare": [
+      "CrisisEvent",
+      "InfrastructureEvent"
+     ],
+     "registre_domain_reel_apres": [
+      "AcademicWork",
+      "CrisisEvent",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "InfrastructureEvent",
+      "Reference"
+     ],
+     "registre_domaines_manquants": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ],
+     "statut_registre": "present-domaine-restreint",
+     "types_porteurs_nouveaux": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ]
+    },
+    "reviewStatus": {
+     "delta_porteurs": 78,
+     "ecart_count": 78,
+     "porteurs_apres": 81,
+     "porteurs_avant": 3,
+     "registre_count_declare": 3,
+     "registre_count_reel_apres": 81,
+     "registre_deviendrait_menteur": true,
+     "registre_domain_declare": [
+      "CrisisEvent",
+      "InfrastructureEvent"
+     ],
+     "registre_domain_reel_apres": [
+      "AcademicWork",
+      "CrisisEvent",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "InfrastructureEvent",
+      "Reference"
+     ],
+     "registre_domaines_manquants": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ],
+     "statut_registre": "present-domaine-restreint",
+     "types_porteurs_nouveaux": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ]
+    }
+   },
+   "collisions_noms_creees": [],
+   "entites": {
+    "apres": 2293,
+    "avant": 2293,
+    "delta": 0
+   },
+   "entites_existantes_touchees": 78,
+   "ops_appliquees": 156,
+   "relations": {
+    "apres": 20207,
+    "avant": 20207,
+    "delta": 0
+   },
+   "types": {
+    "delta_global_par_type": {},
+    "distribution_entites_creees": {},
+    "distribution_entites_touchees_apres": {
+     "AcademicWork": 24,
+     "GreyLiterature": 5,
+     "IndigenousLiterature": 9,
+     "Reference": 76
+    },
+    "distribution_entites_touchees_avant": {
+     "AcademicWork": 24,
+     "GreyLiterature": 5,
+     "IndigenousLiterature": 9,
+     "Reference": 76
+    },
+    "types_absents_du_graphe_references": []
+   }
+  },
+  "missing_nodes": {
+   "analyse_creations": {
+    "creations_avec_relations_dans_le_patch": 0,
+    "entites_creees": 38,
+    "ids_preassignes": 0,
+    "orphelins_de_citation_a_la_creation": 38,
+    "orphelins_de_relations_a_la_creation": 38,
+    "risque_sequencement": "La justification du CSV entrees-sans-noeud atteste que les 38 oeuvres sont citees dans le corps de la these, mais le patch ne pose AUCUNE relation cited in / appears in section : a la creation, les 38 noeuds seraient orphelins de relations ET de citation. Un graphe publie entre la creation et la pose des relations exposerait 38 noeuds isoles ; la pose des cited in doit etre dans le MEME make_vNNN."
+   },
+   "attributs_nouveaux": {
+    "source_entry": {
+     "delta_porteurs": 38,
+     "note": "cle ABSENTE du registre : scripts/check_graph_integrity.py bloquerait tout graphe la portant (CI bloquante)",
+     "porteurs_apres": 38,
+     "porteurs_avant": 0,
+     "registre_count_declare": null,
+     "registre_deviendrait_menteur": false,
+     "statut_registre": "absent",
+     "types_porteurs_nouveaux": [
+      "AcademicWork",
+      "GreyLiterature",
+      "IndigenousLiterature",
+      "Reference"
+     ]
+    }
+   },
+   "collisions_noms_creees": [],
+   "entites": {
+    "apres": 2331,
+    "avant": 2293,
+    "delta": 38
+   },
+   "entites_existantes_touchees": 0,
+   "ops_appliquees": 38,
+   "relations": {
+    "apres": 20207,
+    "avant": 20207,
+    "delta": 0
+   },
+   "types": {
+    "delta_global_par_type": {
+     "AcademicWork": 4,
+     "GreyLiterature": 18,
+     "IndigenousLiterature": 16,
+     "Reference": 38
+    },
+    "distribution_entites_creees": {
+     "AcademicWork": 4,
+     "GreyLiterature": 18,
+     "IndigenousLiterature": 16,
+     "Reference": 38
+    },
+    "distribution_entites_touchees_apres": {},
+    "distribution_entites_touchees_avant": {},
+    "types_absents_du_graphe_references": []
+   }
+  },
+  "retypes": {
+   "attributs_nouveaux": {},
+   "collisions_noms_creees": [],
+   "entites": {
+    "apres": 2293,
+    "avant": 2293,
+    "delta": 0
+   },
+   "entites_existantes_touchees": 6,
+   "ops_appliquees": 10,
+   "references_runtime": "aucune",
+   "relations": {
+    "apres": 20207,
+    "avant": 20207,
+    "delta": 0
+   },
+   "types": {
+    "delta_global_par_type": {
+     "Person": 6,
+     "Reference": -6
+    },
+    "distribution_entites_creees": {},
+    "distribution_entites_touchees_apres": {
+     "Person": 6
+    },
+    "distribution_entites_touchees_avant": {
+     "Reference": 6
+    },
+    "types_absents_du_graphe_references": []
+   }
+  }
+ }
+}
