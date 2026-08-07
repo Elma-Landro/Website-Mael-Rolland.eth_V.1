@@ -1,0 +1,848 @@
+{
+ "_meta": {
+  "patch_id": "candidate-bibliographie-missing-nodes-v1",
+  "source_graph": "grc20-these-mael-rolland-v110.json",
+  "generated": "2026-08-07",
+  "description": "Candidats de création de nœuds bibliographiques pour les entrées du PDF sans aucun nœud dans v110, issus de docs/audits/data/bibliographie-entrees-sans-noeud-v1.csv. Critères d'inclusion STRICTS : vraiment_absente=oui ET niveau_preuve=entree-complete ET risque_ajout_inutile=faible (citation attestée dans le corps de la thèse). name = clé de citation + titre court, sur la convention majoritaire des nœuds existants (« Auteur Année — Titre », 502 nœuds sur 770 d'après l'audit source) ; types = type_propose du CSV traduit en ids de types EXACTS de v110 (Reference 51f53c59535b4e22b1dd0d83f6593fe1, GreyLiterature b6ff2981875a4027a8cbd56e26010732, IndigenousLiterature d62cf376f60449dfbdb1350c924231bc, AcademicWork 9a2fd04e026a410281686e02a6de3dcd) ; attribut source_entry = l'entrée complète de assets/MD/07_bibliographie.md (version scindée post-addendum du 2026-08-07, non tronquée).",
+  "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Format DESCRIPTIF : AUCUN applicateur du dépôt ne consomme CREATE_ENTITY (vérifié par balayage de scripts/ et des .mjs — les applicateurs existants ne traitent que SET_NAME/SET_TYPES/SET_ATTRIBUTE/DELETE_ATTRIBUTE). L'application exigerait un script dédié make_vNNN qui assigne les entityId (aucun id n'est préassigné ici), pose les relations cited in / appears in section correspondant aux appels du corps, et un arbitrage de Maël Rolland sur chaque création.",
+  "registry_note": "La clé d'attribut source_entry N'EXISTE PAS dans grc20-properties-registry-v1.json : en l'état, tout graphe portant cet attribut serait BLOQUÉ par scripts/check_graph_integrity.py (toute clé d'attribut d'entité hors registre est bloquante). L'application exigerait d'abord l'ajout de la clé au registre (régénération via scripts/build_properties_registry.py) ou le choix d'une clé existante.",
+  "candidate_count": 38,
+  "skipped_count": 22,
+  "skipped": [
+   {
+    "entree": "BIER 2018",
+    "category": "risque-ajout-inutile-moyen",
+    "reason": "ForkMonitor.info est décrit au chap. III mais sans appel (Bier 2018), seuls les chapitres Bier 2021a-f ont des nœuds"
+   },
+   {
+    "entree": "BUTERIN 2013D",
+    "category": "faux-absent",
+    "reason": "vraiment_absente=non — l'œuvre a déjà un nœud dans v110 (12c586ca60d94526a01963a1252861cf) : Le nœud existant décrit le whitepaper inaugural (A Next-Generation...), œuvre visée par cette entrée (trad. fr.), le corps cite (Buterin 2013d), l'audit avait apparié ce nœud à l'entrée 2013a — arbitrage de rattachement"
+   },
+   {
+    "entree": "FRIEDMAN 1999 (ENTREE ANONYME)",
+    "category": "faux-absent",
+    "reason": "vraiment_absente=non — l'œuvre a déjà un nœud dans v110 (8a86eb7f81364573848e43b03d391a89) : Doublon interne du PDF (même URL YouTube que l'entrée FRIEDMAN Milton 1999), l'interview a déjà deux nœuds, cités chap. II (Friedman 1999)"
+   },
+   {
+    "entree": "KONING 2013",
+    "category": "risque-ajout-inutile-eleve",
+    "reason": "jamais citée dans le corps — un nœud serait un orphelin : Aucun appel (Koning 2013) repéré dans le corps, un nœud serait un orphelin"
+   },
+   {
+    "entree": "KONING 2019B",
+    "category": "entree-partielle",
+    "reason": "Cité chap. II (J.P Koning 2019b) sur les gold bugs, mais l'URL du PDF pointe la racine du blog (lien non pérenne)"
+   },
+   {
+    "entree": "LEIGH STAR & RUHLEDER 2010",
+    "category": "faux-absent",
+    "reason": "vraiment_absente=non — l'œuvre a déjà deux nœuds dans v110 (famille de doublons 74 : canonique par degré « Star & Ruhleder 2010 » 940fa052d3004315bb56e5785d746fe7, deg=8 ; « Star & Ruhleder 2010 — Vers une écologie de l'infrastructure » a5f0ee04162d4434ba7329ac575da1e4, marqué duplicateOf dans le patch duplicates) : doublon interne du PDF (même article que l'entrée STAR & RUHLEDER 2010 p. 376), le corps cite (Leigh Star et Ruhleder 2010)"
+   },
+   {
+    "entree": "MANGOLTE 2013B",
+    "category": "faux-absent",
+    "reason": "vraiment_absente=non — l'œuvre a déjà un nœud dans v110 (e65f7257f8ce411299ced981df6f0380) : Les entrées 2013a et 2013b du PDF sont strictement identiques (doublon interne), l'article a déjà son nœud apparié à 2013a et le corps cite Mangolte"
+   },
+   {
+    "entree": "NAKAMOTO 2008B",
+    "category": "risque-ajout-inutile-moyen",
+    "reason": "Annonce metzdowd du WP, source primaire indigène, le corps cite (Nakamoto 2008b) mais avec la pagination du whitepaper (lettrage corps/bibliographie discordant) — arbitrage avant création"
+   },
+   {
+    "entree": "NAKAMOTO 2009B",
+    "category": "faux-absent",
+    "reason": "vraiment_absente=non — l'œuvre a déjà un nœud dans v110 (ce7047344df440e2d9758b023c94af29) : Même annonce P2P Foundation que l'entrée 2009a (URL miroir Nakamoto Institute) qui a déjà son nœud — doublon interne de fait dans le PDF"
+   },
+   {
+    "entree": "NAKAMOTO 2009C",
+    "category": "risque-ajout-inutile-moyen",
+    "reason": "L'annonce Bitcoin v0.1 released est racontée (chap. I et III) mais sans appel (Nakamoto 2009c) repéré"
+   },
+   {
+    "entree": "NAKAMOTO 2010C",
+    "category": "risque-ajout-inutile-moyen",
+    "reason": "Fil increase block size limit : l'épisode est noué (InfrastructureEvent 4f7fd6dcbdc349a0) et cité génériquement (Nakamoto 2010), sans clé 2010c"
+   },
+   {
+    "entree": "NAKAMOTO 2010D",
+    "category": "risque-ajout-inutile-eleve",
+    "reason": "jamais citée dans le corps — un nœud serait un orphelin : Fil sur la suppression de l'article Wikipedia : aucun appel ni trace de l'épisode repérés dans le corps"
+   },
+   {
+    "entree": "NAKAMOTO 2010E",
+    "category": "risque-ajout-inutile-eleve",
+    "reason": "jamais citée dans le corps — un nœud serait un orphelin : Fil Transactions and Scripts (DUP HASH160) : aucun appel repéré dans le corps"
+   },
+   {
+    "entree": "NAKAMOTO 2010F",
+    "category": "faux-absent",
+    "reason": "7e faux absent, découvert par la revue hostile : le nœud « Nakamoto 2010g » (34c52771cbcf9e7e7a941c4307055ee4, degré 13) porte déjà ce post (topic=1735, quote « nid de frelons »), mislabellisé 2010g alors que le lettrage du PDF s'arrête à 2010f ; le corps cite en outre ce contenu sous (Nakamoto 2010b) (313c66ac111542d3a47de4607949a807) — le rattachement des trois porteurs est un arbitrage (D16)"
+   },
+   {
+    "entree": "PEERCOIN S.D.",
+    "category": "entree-partielle",
+    "reason": "Entrée sans millésime (page de documentation), Peercoin est discuté chap. I mais via King & Nadal 2012, le protocole a son nœud (5fd4d8dcdc404c19)"
+   },
+   {
+    "entree": "POPPER 2016B",
+    "category": "faux-absent",
+    "reason": "vraiment_absente=non — l'œuvre a déjà un nœud dans v110 (37bcfcd5fb29436b846b4718268480c5) : Le nœud étiqueté 2016a porte en réalité le titre de cet article (fonds sans gestionnaires humains, NYT 22 mai) cité (Popper 2016b) chap. III, c'est l'entrée 2016a (Paper Points Up Flaws) qui reste sans nœud propre — arbitrage d'étiquette"
+   },
+   {
+    "entree": "ROUSSEL 2017B",
+    "category": "risque-ajout-inutile-moyen",
+    "reason": "L'extension du 30 janvier 2017 est racontée chap. III mais l'unique appel (Roussel 2017) semble viser 2017a, déjà noué"
+   },
+   {
+    "entree": "SONG 2018A",
+    "category": "risque-ajout-inutile-eleve",
+    "reason": "jamais citée dans le corps — un nœud serait un orphelin : Billet anti-Keynes jamais cité : les nombreux (Song 2018) du corps renvoient au post-mortem CVE (entrée 2018c, nœud existant)"
+   },
+   {
+    "entree": "SONG 2018B",
+    "category": "risque-ajout-inutile-eleve",
+    "reason": "jamais citée dans le corps — un nœud serait un orphelin : Crypto-Keynesian Lunacy jamais cité dans le corps, même situation que 2018a"
+   },
+   {
+    "entree": "THE IRS 2014",
+    "category": "preuve-douteuse",
+    "reason": "Cité une fois en note chap. II (The Internal Revenue Service (2014)) mais le titre de l'entrée est celui du guidance FinCEN 2013 déjà noué — attribution du PDF contradictoire à éclaircir avant création"
+   },
+   {
+    "entree": "TUAL 2016C",
+    "category": "risque-ajout-inutile-eleve",
+    "reason": "jamais citée dans le corps — un nœud serait un orphelin : Primer sur les DAO jamais cité dans le corps (aucun appel Tual 2016c), un nœud serait un orphelin"
+   },
+   {
+    "entree": "ZELIZER 2005",
+    "category": "risque-ajout-inutile-moyen",
+    "reason": "Article Argent circuits relations intimes : les appels (Zelizer 2005) du corps visent plutôt le livre homonyme de 2005 déjà noué — risque de collision de clé"
+   }
+  ]
+ },
+ "ops": [
+  {
+   "type": "CREATE_ENTITY",
+   "name": "BitMEX Research 2018a — The bitcoin flash crash to $0.01 in June 2011",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "BITMEX RESEARCH, 2018a, « The bitcoin flash crash to $0.01 in June 2011 », BitMEX Blog , https://blog.bitmex.com/the-june-2011-flash-crash-to-0-01/, 19 juillet 2018, consulté le 24 août 2020."
+    }
+   },
+   "_comment": "BITMEX RESEARCH 2018A (littérature-grise) — Le flash crash à 0,01$ est cité chap. I sous la clé (BitMEX Research 2018), distincte des nœuds 2018 Implementations (f6f684376ae14491) et 2018b Ripple"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "BitMEX Research 2020a — Who Funds Bitcoin Development?",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "BITMEX RESEARCH, 2020a, « Who Funds Bitcoin Development? », BitMEX Blog , https://blog.bitmex.com/who-funds-bitcoin-development/, 28 mars 2020, consulté le 21 août 2020."
+    }
+   },
+   "_comment": "BITMEX RESEARCH 2020A (littérature-grise) — Le financement des développeurs Bitcoin Core est cité chap. III (BitMEX Research 2020), seul 2020b a un nœud (308a84881f564614)"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Buterin 2021 — Why sharding is great",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "BUTERIN Vitalik, 2021, « Why sharding is great: demystifying the technical properties », https://vitalik.ca/general/2021/04/07/sharding.html , 7 avril 2021, consulté le 12 juin 2023."
+    }
+   },
+   "_comment": "BUTERIN 2021 (indigene) — Le billet sharding est cité chap. I (Buterin (2021)) pour le trilemme des blockchains, aucun nœud Buterin 2021"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Ethereum Classic et Arvicco 2016 — La déclaration d'indépendance d'Ethereum Classic",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "CLASSIC Ethereum et ARVICCO (PSEUDONYME), 2016, « La déclaration d’indépendance d’Ethereum Classic », https://ethereumclassic.org/fr/blog/2016 -08-13-declaration-of-independence, 13 août 2016, consulté le 6 août 2024."
+    }
+   },
+   "_comment": "CLASSIC ETHEREUM & ARVICCO 2016 (indigene) — La déclaration d'indépendance d'ETC est citée chap. III (Ethereum Classic et Arvicco 2016), document fondateur à valeur de source primaire, les nœuds Arvicco 2016a-c couvrent d'autres billets"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Dai 1998 — B-money",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "DAI Wei, 1998, « B-money », https://nakamotoinstitute.org/library/b-money/, consulté le 12 février 2016."
+    }
+   },
+   "_comment": "DAI 1998 (indigene) — B-money massivement discuté chap. I-II via le concept b-money (Dai 1998), mais aucun nœud bibliographique pour le texte cypherpunk de 1998, source primaire indigène | Le concept « b-money (Dai 1998) » (d2920ac9d599485c8ec06bcfb91dba1c) existe comme Concept — le nœud créé serait la référence bibliographique du texte de 1998, pas un doublon du concept."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Demirgüç-Kunt & Detragiache 1998 — Financial Liberalization and Financial Fragility",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "9a2fd04e026a410281686e02a6de3dcd"
+   ],
+   "typeNames": [
+    "Reference",
+    "AcademicWork"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "DEMIRGÜÇ-KUNTASLI Asli et DETRAGIACHE Enrica, 1998, Financial Liberalization and Financial Fragility, World Bank, Development Research Group and International Monetary Fund, Research Dept., Washington, DC, 48 p."
+    }
+   },
+   "_comment": "DEMIRGÜÇ-KUNT & DETRAGIACHE 1998 (academique) — Cité une fois chap. II, le nœud existant porte les mêmes auteurs et la même année mais un autre article de 1998 (cf. audit 2.a) — possible import mal titré à arbitrer | ATTENTION avant application : le nœud existant 0e1b15a0c0384dc59b546907c1940b0e porte les mêmes auteurs et la même année mais un AUTRE article de 1998 (possible import mal titré, cf. audit source § 2.a) — vérifier qu'on crée bien une seconde référence et non un doublon d'étiquette."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Felixa 2016b — The DAO is under attack — but Vitalik saved us",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "FELIXA pseudonyme, 2016b, « Update3: The DAO is under attack — but Vitalik saved us », https://blog.daohub.org/the-dao-is-under-attack-8d18ca45011b, 17 juin 2016, consulté le 27 mars 2019."
+    }
+   },
+   "_comment": "FELIXA 2016B (indigene) — Cité chap. III (FelixA 2016b), seul le billet 2016a a un nœud"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Orléan 2002 — La monnaie contre la marchandise",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "9a2fd04e026a410281686e02a6de3dcd"
+   ],
+   "typeNames": [
+    "Reference",
+    "AcademicWork"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "ORLÉAN A., 2002, « La monnaie contre la marchandise », L’Homme, 2002, no 2, p. 27‑48."
+    }
+   },
+   "_comment": "ORLEAN 2002 (academique) — Requalifié par la revue hostile : cité au corps, ch. II « (Orléan 2002, p. 27) » (pagination de l'article, pas du livre d'Aglietta & Orléan) plus trois appels « A. Orléan 2002 » (intro note ^27, ch. II) — la ligne initiale du CSV le disait à tort jamais cité"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Sirer 2016 — Thoughts on The DAO Hack",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "GÜN SIRER Emin, 2016, « Thoughts on The DAO Hack », http://hackingdistributed.com/2016/06/17/thoughts-on-the-dao-hack/, 17 juin 2016, consulté le 27 mars 2019."
+    }
+   },
+   "_comment": "GÜN SIRER 2016 (indigene) — « Thoughts on The DAO Hack » est cité chap. III (Sirer 2016), distinct du moratoire co-signé Mark/Zamfir/Sirer qui a ses nœuds | Distinct du moratoire co-signé Mark/Zamfir/Sirer qui a ses propres nœuds (dont 9774e3110cbd474fb708fc4aa092f7d5)."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Ingham 2007 — The Specificity of Money",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "9a2fd04e026a410281686e02a6de3dcd"
+   ],
+   "typeNames": [
+    "Reference",
+    "AcademicWork"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "INGHAM Geoffrey, 2007, « The Specificity of Money », European Journal of Sociology, 2007, vol. 48, no 02, p. 265‐272."
+    }
+   },
+   "_comment": "INGHAM 2007 (academique) — The Specificity of Money est cité chap. II (Ingham 2007), seul Ingham 2004 a un nœud (3d66b8ea06274e5a)"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Insider 2021 — The story of the DAO, and how it shaped Ethereum",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "INSIDER Coin, 2021, « The story of the DAO, and how it shaped Ethereum », https://www.coininsider.com/what-happened-to-the-dao/, 9 juillet 2021, consulté le 9 mai 2024."
+    }
+   },
+   "_comment": "INSIDER COIN 2021 (littérature-grise) — Cité chap. III (Insider 2021) sur la campagne de crowdfunding de The DAO, aucun nœud"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2012 — Bitcoin steps on the toes of a few popular monetary theories",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2012, « Moneyness: Bitcoin steps on the toes of a few popular monetary theories », https://jpkoning.blogspot.com/2012/10/bitcoin-steps-on-toes-of-few-popular.html, 18 octobre 2012, consulté le 2 février 2021."
+    }
+   },
+   "_comment": "KONING 2012 (koning) — Billet Moneyness cité 2 fois chap. II (J.P Koning 2012), la série n'a que la fiche d'auteur (0bb65ed8a7894205) et les millésimes 2015/2019a/2020 en nœuds"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2017 — The evolution of the Federal Reserve's promises as recorded on their banknotes",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING Jp, 2017, « Moneyness: The evolution of the Federal Reserve’s promises as recorded on their banknotes », https://jpkoning.blogspot.com/2017/10/the -evolution-of-federal-reserves.html, 27 octobre 2017, consulté le 9 novembre 2023."
+    }
+   },
+   "_comment": "KONING 2017 (koning) — Cité 2 fois chap. II (Koning 2017) sur les promesses portées par les billets de banque"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2018a — Can lottery tickets become money?",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2018a, « Moneyness: Can lottery tickets become money? », https://jpkoning.blogspot.com/2018/12/can-lottery-tickets-become-money.html, 12 décembre 2018, consulté le 13 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2018A (koning) — Cité chap. II (Koning 2018a) avec Andolfatto/Selgin sur les quasi-monnaies"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2018b — Bitcoin and the bubble theory of money",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2018b, « Moneyness: Bitcoin and the bubble theory of money », https://jpkoning.blogspot.com/2018/10/bitcoin-and-bubble-theory-of-money.html, 13 octobre 2018, consulté le 13 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2018B (koning) — Cité chap. II dans le bloc Koning (2018b, 2018d, 2018c, 2018a, 2019c, 2019a, 2020b) sur la théorie de la bulle monétaire"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2018c — Play Bitcoin: Remember, it's just a game",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2018c, « Play Bitcoin : Remember, it’s just a game », https://breakermag.com/play - bitcoin-remember-its-just-a-game/, 7 septembre 2018, consulté le 18 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2018C (koning) — Cité chap. II dans le bloc Koning (2018b-2020b), billet Play Bitcoin publié chez Breaker (presse crypto)"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2018d — Tainted money",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2018d, « Moneyness: Tainted money », https://jpkoning.blogspot.com/2018/07/tainted- money.html, 31 juillet 2018, consulté le 13 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2018D (koning) — Cité au moins 4 fois chap. II (Koning 2018d) sur l'argent marqué (tainted money)"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2018e — A case for bitcoin",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2018e, « Moneyness: A case for bitcoin », https://jpkoning.blogspot.com/2018/05/the- case-for-bitcoin.html, 10 mai 2018, consulté le 13 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2018E (koning) — Cité chap. II (Koning 2018e) sur les fonctions monétaires classiques"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2018f — Fiatsplainin'",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2018f, « Moneyness: Fiatsplainin’ », https://jpkoning.blogspot.com/2018/03/fiatsplainin.html, 21 mars 2018, consulté le 13 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2018F (koning) — Cité chap. II (J.P Koning 2018f) aux côtés de Velde et Weber"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Koning 2019c — Classifying cryptocurrencies",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KONING J.P, 2019c, « Moneyness: Classifying cryptocurrencies », https://jpkoning.blogspot.com/2019/07/classifying-cryptocurrencies.html, 5 juillet 2019, consulté le 13 janvier 2021."
+    }
+   },
+   "_comment": "KONING 2019C (koning) — Cité chap. II (Koning 2019c) sur la classification des cryptomonnaies"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Krugman 2013 — Bitcoin is Evil",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "KRUGMAN Paul, 2013, « Bitcoin is Evil », https://krugman.blogs.nytimes.com/2013/12/28/bitcoin-is- evil/?_r=1&, 28 décembre 2013, consulté le 4 février 2021."
+    }
+   },
+   "_comment": "KRUGMAN 2013 (littérature-grise) — Cité chap. II (Krugman 2013), le nœud Krugman 2018 existant porte à tort le titre du billet de 2013 (Bitcoin is Evil) — arbitrage année/titre avant création | ATTENTION avant application : le nœud existant « Krugman 2018 » (200e76ca3d1844b0a3d45f9fa10310d2) porte à tort le titre du billet de 2013 (Bitcoin is Evil) — l'arbitrage année/titre de ce nœud doit précéder la création, sous peine de deux nœuds au même titre."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Latour 2000 — La fin des moyens",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "9a2fd04e026a410281686e02a6de3dcd"
+   ],
+   "typeNames": [
+    "Reference",
+    "AcademicWork"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "LATOUR Bruno, 2000, « La fin des moyens », Réseaux, 2000, vol. 18, no 100, p. 39‐58."
+    }
+   },
+   "_comment": "LATOUR 2000 (academique) — La fin des moyens est cité en intro et chap. I (Latour 2000, p. 46), seul Latour 2006 a un nœud"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Ministère de l'Économie et des Finances 2011 — Rapport d'activité Tracfin",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "MINISTÈRE DE L’ÉCONOMIE ET DES FINANCES, 2011, Rapport d’activité 2011, Tracfin, s.l."
+    }
+   },
+   "_comment": "MINISTERE ECONOMIE 2011 (littérature-grise) — Le rapport Tracfin 2011 est cité en note chap. II (ministère de l'Économie et des Finances (2011)), le nœud TraFin 2014 (millésime sans entrée au PDF) pourrait provenir d'une confusion | Le nœud « TraFin 2014 » (6b3c8ba8b848425893f4b36acccfb90c), millésime sans entrée au PDF, provient peut-être d'une confusion avec ce rapport — arbitrage TraFin 2014 lié."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Ministère de l'Économie et des Finances 2017 — Tracfin: Traitement du Renseignement et Action contre les Circuits FINanciers clandestins",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "MINISTÈRE DE L’ÉCONOMIE ET DES FINANCES , 2017, Traitement du Renseignement et Action contre les Circuits FINanciers clandestins., https://www.economie.gouv.fr/files/TRACFIN_Rapport_Analyse_2017_2018_Web.pdf, 2018 2017, consulté le 29 janvier 2021."
+    }
+   },
+   "_comment": "MINISTERE ECONOMIE 2017 (littérature-grise) — Le rapport Tracfin 2017 est cité en note chap. II (ministère de l'Économie et des finances (2017)), même remarque sur le nœud TraFin 2014 | Même remarque que 2011 sur le nœud « TraFin 2014 » (6b3c8ba8b848425893f4b36acccfb90c)."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Ministère de l'Économie et des Finances 2019b — BNC: exploitation d'actifs numériques",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "MINISTÈRE DE L ’ÉCONOMIE ET DES FINANCES, 2019b, « BNC - Champ d’application - Activités et revenus imposables - Généralités - Exploitations lucratives et sources de profits - Professions ou activités dont la classification fiscale des revenus a donné lieu à des solutions administratives ou jurisprudentielles », Bulletin Officiel des Finances Publiques-Impôts, 2 septembre 2019."
+    }
+   },
+   "_comment": "MINISTERE ECONOMIE 2019B (littérature-grise) — Cité en note chap. II (Ministère de l'Économie et des Finances (2019b)), le nœud 2019 existant est apparié à l'entrée 2019a"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Polrot 2016b — Slock.it: la promesse des objets connectés sur la blockchain",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "POLROT Simon, 2016b, « Slock.it : la promesse des objets connectés sur la blockchain », https://www.ethereum-france.com/blog/slock-it-la-promesse-des-objets-connectes-sur-la-blockchain/, 4 avril 2016, consulté le 29 avril 2024."
+    }
+   },
+   "_comment": "POLROT 2016B (indigene) — Cité chap. III (Polrot 2016b) sur les promesses de Slock.it, seuls 2016a et 2017 ont des nœuds"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Polrot 2016c — The DAO mortem",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "POLROT Simon, 2016c, « The DAO mortem », https://www.ethereum-france.com/blog/the-dao-post- mortem/, consulté le 7 mai 2021."
+    }
+   },
+   "_comment": "POLROT 2016C (indigene) — Cité chap. III (Polrot 2016c), post-mortem de The DAO sur ethereum-france"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Schneider 2015 — En cavale avec le voleur de banque Enric Duran",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "SCHNEIDER Nathan, 2015, « En cavale avec le voleur de banque Enric Duran », https://www.vice.com/fr/article/ppnxg8/devenez-la-banque-que-vous-voulez-avoir-v9n5, 28 mai 2015, consulté le 6 octobre 2020."
+    }
+   },
+   "_comment": "SCHNEIDER 2015 (littérature-grise) — Reportage Vice sur Enric Duran cité chap. I (Schneider 2015, Russo 2020) à propos de Faircoin"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Teruzzi 2016b — Les consensus: Proof of work vs Proof of stake",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "TERUZZI David, 2016b, « Les consensus: Proof of work vs Proof of stake », blogchain café , https://blogchaincafe.com/les-consensus-proof-of-work-vs-proof-of-stake, 14 mars 2016, consulté le 13 juillet 2020."
+    }
+   },
+   "_comment": "TERUZZI 2016B (indigene) — L'appel (Teruzzi 2016) du chap. I sur PoW vs PoS correspond à ce billet, le nœud existant couvre 2016a (DAO Contractors) | L'appel (Teruzzi 2016) du chap. I correspond à ce billet ; le nœud existant couvre 2016a (10d56dd3d3854876b618268fee97b52d)."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Theymos 2018 — The duplicate input vulnerability shouldn't be forgotten",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "THEYMOS, 2018, « The duplicate input vulnerability shouldn’t be forgotten », https://bitcointalk.org/index.php?topic=5035144.0, 22 septembre 2018, consulté le 31 mai 2021."
+    }
+   },
+   "_comment": "THEYMOS 2018 (billet-forum) — Post Bitcointalk cité chap. III (theymos 2018) sur la CVE-2018-17144, le nœud Theymos 2015 est un autre fil (lui-même absent du PDF, cf. audit 2.a) | Le nœud « Theymos 2015 » (9c6092d4334640bca80190027bfbeef4) est un autre fil, lui-même absent du PDF (audit source § 2.a) — ne pas fusionner les deux."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Tual 2016a — The DAO Creation is now Live",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "TUAL Stephan, 2016a, « The DAO Creation is now Live », Slock.it Blog, https://archive.is/wOiUZ, 30 avril 2016, consulté le 3 mai 2024."
+    }
+   },
+   "_comment": "TUAL 2016A (tual) — Annonce du lancement de The DAO citée 2 fois chap. III (Tual 2016a), source primaire de la chronologie de crise, la fiche Person Stephane Tual existe (48b1526f065e40fa)"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Tual 2016b — Daohub.org gets a facelift, full scope of The DAO is revealed",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "TUAL Stephan, 2016b, « Daohub.org gets a facelift, full scope of The DAO is revealed », Medium, https://medium.com/ursium-blog/daohub-org-gets-a-facelift-full-scope-of-the-dao-is-revealed- 4d4c43eaf7b, 21 avril 2016, consulté le 29 avril 2024."
+    }
+   },
+   "_comment": "TUAL 2016B (tual) — Cité chap. III (Tual 2016b) sur le périmètre de The DAO révélé par Daohub"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Tual 2016d — Exceptional DAO Curators announced",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "TUAL Stephan, 2016d, « Vitalik Buterin, Gavin Wood, Alex van De Sande, Vlad Zamfir announced amongst exceptional DAO Curators », Medium, 25 avril 2016, https://medium.com/ursium-blog/vitalik- buterin-gavin-wood-alex-van-de-sande-vlad-zamfir-announced-amongst-stellar-dao-curators- 44be4d12dd6e, consulté le 20 juin 2016."
+    }
+   },
+   "_comment": "TUAL 2016D (tual) — Cité 2 fois chap. III (Tual 2016d) sur l'annonce des Curators de The DAO"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Tual 2016e — Announcing DAO.LINK",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "TUAL Stephan, 2016e, « Announcing DAO.LINK, the bridge between blockchain and brick -and- mortar companies », Slock.it Blog , https://blog.slock.it/announcing-dao-link-the-bridge-between- blockchain-and-brick-and-mortar-companies-9510ba04d236#.fg2c41d3k, consulté le 20 juin 2016."
+    }
+   },
+   "_comment": "TUAL 2016E (tual) — Cité 2 fois chap. III (Tual 2016e) sur DAO.LINK"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Tual 2016f — No DAO funds at risk following the 'recursive call' bug discovery",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "TUAL Stephan, 2016f, « No DAO funds at risk following the Ethereum smart contract ‘recursive call’ bug discovery », Slock.it Blog , https://blog.slock.it/no-dao-funds-at-risk-following-the-ethereum-smart- contract-recursive-call-bug-discovery-29f482d348b, consulté le 20 juin 2016."
+    }
+   },
+   "_comment": "TUAL 2016F (tual) — Cité chap. III (Tual 2016f), billet-clé « No DAO funds at risk » de la crise, valeur de source primaire"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Van Wirdum 2018 — The Genesis Files: How David Chaum's eCash Spawned a Cypherpunk Dream",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "b6ff2981875a4027a8cbd56e26010732"
+   ],
+   "typeNames": [
+    "Reference",
+    "GreyLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "VAN WIRDUM Aaron, 2018, « The Genesis Files: How David Chaum’s eCash Spawned a Cypherpunk Dream », Bitcoin Magazine, https://bitcoinmagazine.com/articles/genesis-files-how-david-chaums-ecash- spawned-cypherpunk-dream, 24 avril 2018, consulté le 2 juillet 2020."
+    }
+   },
+   "_comment": "VAN WIRDUM 2018 (littérature-grise) — Le corps cite (Van Wirdum 2018) pour deux articles distincts : eCash/Chaum (cette entrée, chap. I) et Gitian (nœud existant, absent du PDF) — création à coordonner avec ce dédoublement de clé | ATTENTION : le corps cite (Van Wirdum 2018) pour DEUX articles distincts — celui-ci (eCash/Chaum, chap. I) et le nœud existant « Van Wirdum 2018 — Gitian » (43ccc13a87df4656a4e9783a4725d5b9, absent du PDF). La création doit être coordonnée avec ce dédoublement de clé de citation."
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Wood 2014a — Gav's Ethereum ÐΞV Update II",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "WOOD Gavin, 2014a, « Gav’s Ethereum Ð ΞV Update II », Blog Etheruum , https://blog.ethereum.org/2014/11/01/gavs-ethereum-d%ce%bev-update-ii/, 1 novembre 2014, consulté le 11 octobre 2020."
+    }
+   },
+   "_comment": "WOOD 2014A (indigene) — Cité chap. I (Wood 2014b, Wood 2014a), seul le Yellow Paper (2014b) a des nœuds (canonique « Yellow Paper (Ethereum, Gavin Wood 2014) » 4d5634d4359646c9cd1ee839036724eb — « Wood 2014 Yellow Paper » 462ca3c2907a45f0a4ef51d3bddbf906 y est marqué duplicateOf)"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Zamfir 2016 — Would the community hard fork ethereum if there was a critical bug in the DAO?",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "d62cf376f60449dfbdb1350c924231bc"
+   ],
+   "typeNames": [
+    "Reference",
+    "IndigenousLiterature"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "ZAMFIR Vlad, 2016, « (2) Vlad Zamfir sur X : « @simondlr would the community hard Fork ethereum if there was a critical bug in the DAO? :p », X, https://x.com/VladZamfir/status/731510468695756800, 14 mai 2016, consulté le 10 juillet 2024."
+    }
+   },
+   "_comment": "ZAMFIR 2016 (billet-forum) — Tweet cité 3 fois chap. III (Zamfir 2016), distinct du moratoire Mark/Zamfir/Sirer déjà noué (2b6dd92a7ea0472b) | Tweet distinct du moratoire Mark/Zamfir/Sirer déjà noué (2b6dd92a7ea0472b)."
+  }
+ ]
+}

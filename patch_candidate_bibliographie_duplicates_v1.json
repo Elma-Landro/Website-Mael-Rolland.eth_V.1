@@ -1,0 +1,1797 @@
+{
+ "_meta": {
+  "patch_id": "candidate-bibliographie-duplicates-v1",
+  "source_graph": "grc20-these-mael-rolland-v110.json",
+  "generated": "2026-08-07",
+  "description": "Marquage candidat des doublons bibliographiques issus de docs/audits/data/bibliographie-doublons-familles-v1.csv : pour chacune des 71 familles classées fusion-sure (même auteur, même millésime, même œuvre, une seule entrée au PDF), chaque membre NON canonique reçoit duplicateOf = entity_id du canonique par degré et reviewStatus = pending-author. Aucune op pour les 6 familles doublon-probable ni les 12 homonymie-risque (voir skipped). Convention d'op reprise de patch_10_dedup_events.json (marquage non destructif, jamais de fusion).",
+  "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Aucune op appliquée. Marquage non destructif uniquement : aucun nœud supprimé, aucune relation déplacée, aucune fusion. La fusion effective (redirection des relations, suppression du doublon) reste une décision humaine postérieure, hors de ce patch.",
+  "canonical_semantics": "IMPORTANT — duplicateOf désigne la CIBLE DE FUSION proposée (le membre de plus haut degré dans v110, colonne canonique_propose du CSV), PAS le libellé final du nœud survivant. Ce sont deux questions distinctes et non tranchées : sur les 71 familles fusion-sure, 41 ont un canonique par degré dont le nom NE correspond PAS à la « forme à garder d'après le PDF » proposée par l'audit source (grc20-bibliographie-reconciliation-v1.md § 2.d) — typiquement le nœud le plus connecté porte le libellé court et l'audit préfère le libellé titré. Fusionner vers le canonique par degré n'implique donc PAS de garder son nom : un SET_NAME d'alignement sur la forme à garder resterait à arbitrer famille par famille.",
+  "registry_note": "Vérification faite dans grc20-properties-registry-v1.json : contrairement à l'hypothèse de travail du chantier, les clés duplicateOf (id 26a1cb779802d673fe8ed4e11c8b380e) et reviewStatus (id 519fdfcc579905e7bab12918df1e6f2b) EXISTENT déjà au registre — posées par patch_10_dedup_events.json sur 3 nœuds événements. MAIS leur domain enregistré est ['CrisisEvent', 'InfrastructureEvent'] (count=3, status=structural, readBy=scripts/make_v105_dedup_events.py et scripts/verif_doublons.py). Appliquer ce patch poserait ces clés sur ~78 nœuds Reference/AcademicWork/GreyLiterature/IndigenousLiterature : scripts/check_graph_integrity.py ne bloque que les clés ABSENTES du registre (il resterait donc vert), mais le registre — invariant de CI d'après CLAUDE.md — deviendrait factuellement faux (domain et count périmés). L'application exigerait donc de régénérer le registre (scripts/build_properties_registry.py) dans le même mouvement. Attention aussi : (1) la valeur reviewStatus='pending-author' est nouvelle — les 3 porteurs actuels utilisent 'duplicate-pending-merge' ; (2) scripts/verif_doublons.py, consommateur structurel de ces clés, raisonne sur les doublons d'ÉVÉNEMENTS et pose comme invariant qu'une entité ne porte qu'un seul duplicateOf — son comportement en présence de porteurs bibliographiques est à vérifier avant application.",
+  "op_count": 156,
+  "families_marked": 71,
+  "members_marked": 78,
+  "skipped_count": 18,
+  "skipped": [
+   {
+    "famille_id": 13,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "7094b28621af4595939c08525b718f39",
+      "name": "Blanc 1998 Monnaies paralleles"
+     },
+     {
+      "entityId": "a906b88366234d5d97901ee6cb3673d2",
+      "name": "Blanc 1998a — Les monnaies parallèles approches historiques"
+     },
+     {
+      "entityId": "c1ac22eb78bd1c844d95c0c13b2f57b7",
+      "name": "Blanc 1998a"
+     }
+    ],
+    "reason": "Le PDF porte 1998a (thèse Lyon II) et 1998b (article) aux titres quasi identiques « Les monnaies parallèles » : le membre sans suffixe « Blanc 1998 Monnaies paralleles » est ambigu entre les deux.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 14,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "38ffe3510ae04ff09cef5676920e4dc5",
+      "name": "Blanc 2009 IMF"
+     },
+     {
+      "entityId": "4df197e434614e35879f37a0c40d6679",
+      "name": "Blanc 2009a — Monnaies sociales contraintes organisationnelles"
+     }
+    ],
+    "reason": "Le PDF porte deux entrées Blanc 2009 (2009a et 2009b) : le membre « Blanc 2009 IMF » sans suffixe peut viser l'un ou l'autre - verification du texte cite requise.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 19,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "12c586ca60d94526a01963a1252861cf",
+      "name": "Buterin 2013 Ethereum Whitepaper"
+     },
+     {
+      "entityId": "7be95456e6fd4fee9f0595e3aff2bf25",
+      "name": "Buterin 2013a"
+     }
+    ],
+    "reason": "Le PDF distingue 2013a (« The Ultimate Smart Contract... ») et 2013d (« Ethereum Whitepaper », entrée sans nœud) : « Buterin 2013 Ethereum Whitepaper » correspond plutôt à 2013d qu'à 2013a - deux références possibles.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 21,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "31a81419d5414f378aa59f43eb4e2bc9",
+      "name": "Buterin 2013c"
+     },
+     {
+      "entityId": "50f03e74739b46fd88a4b6e55faa4a3e",
+      "name": "Buterin 2013c — Bootstrapping a decentralized autonomous corporation (gambling diaspora)"
+     }
+    ],
+    "reason": "« Bootstrapping a decentralized autonomous corporation » est un autre article de Buterin (sept. 2013, absent du PDF) : le nœud conflate ce titre avec « The Bitcoin Gambling Diaspora » (2013c) - deux textes possibles derrière le même suffixe.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 23,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "280036a113783d4eaaa0e4bb481c808c",
+      "name": "Buterin 2014j — On altcoins limits"
+     },
+     {
+      "entityId": "48d2ab7cbf774115b1f1de56e8e418d9",
+      "name": "Buterin 2014j — A next-generation smart contract and decentralized application platform"
+     }
+    ],
+    "reason": "Réserve explicite de l'audit source : deux titres différents (« next-generation platform » vs « On altcoins limits ») sous le même suffixe 2014j - possiblement deux textes distincts.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 24,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "c0f588f7fb3747ea9c964a94661d0027",
+      "name": "Buterin 2017"
+     },
+     {
+      "entityId": "7dc37a6c9b0b4116a2a01becfc45d7d1",
+      "name": "Buterin 2017a — On settlement finality (OP_RETURN)"
+     }
+    ],
+    "reason": "Réserve explicite de l'audit source : le titre « On settlement finality (OP_RETURN) » ne recoupe pas l'entrée 2017a du PDF (tweet metacoin), et « Buterin 2017 » sans suffixe peut viser 2017a, 2017b ou 2017c.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 36,
+    "classe": "doublon-probable",
+    "membres": [
+     {
+      "entityId": "117c1b4f6212439a832bb191383b4a7b",
+      "name": "European Central Bank 2012"
+     },
+     {
+      "entityId": "443e78b5d45a42ea93a283e6571912b0",
+      "name": "BCE 2012b — Virtual Currency Schemes (original report)"
+     },
+     {
+      "entityId": "896f386e155e4b77b108d4ecdeb375af",
+      "name": "BCE 2012 — Virtual Currency Schemes"
+     }
+    ],
+    "reason": "Les trois nœuds désignent le rapport original 2012, mais l'audit documente une numérotation a/b du graphe contradictoire avec le PDF pour la BCE (« BCE 2012b » n'existe pas au PDF) - convergence forte, lettre à vérifier."
+   },
+   {
+    "famille_id": 50,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "fa4fa618b73a418f9edb30ae70538f00",
+      "name": "Lee 2011 — Litecoin launch announcement"
+     },
+     {
+      "entityId": "6c31f72f6f6d4fca9f9512a7d66b7551",
+      "name": "Charli Lee 2011"
+     }
+    ],
+    "reason": "Le PDF n'a que le « Lite Coin White Paper » : « Lee 2011 - Litecoin launch announcement » (annonce Bitcointalk) est possiblement un texte distinct du whitepaper - à trancher avant fusion.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 55,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "8a6aba8ed0de404ea8648f2419d9f63e",
+      "name": "Möser & Böhme 2015 — Towards Bitcoin payment networks"
+     },
+     {
+      "entityId": "51cd9218082f4db7b393a6d84f2f7b00",
+      "name": "Moser et Bohme 2015"
+     }
+    ],
+    "reason": "« Towards Bitcoin Payment Networks » est un autre article co-signé Möser (McCorry et al., 2016), absent du PDF : le nœud ainsi titré peut désigner une référence distincte de « Trends, Tips, Tolls » (2015).",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 59,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "206ffb42b0204d808a0923a54b25d29e",
+      "name": "Orléan 1998 — La monnaie autoréférentielle"
+     },
+     {
+      "entityId": "a9340f8c0366860c9b2a0e96160a6766",
+      "name": "Orléan 1998"
+     },
+     {
+      "entityId": "2ae1182dd62c4e2691938b122812e2b2",
+      "name": "Orleans 1998 La monnaie entre violence et confiance"
+     }
+    ],
+    "reason": "Réserve explicite de l'audit : « Orleans 1998 La monnaie entre violence et confiance » porte le titre d'Aglietta & Orléan 2002 avec le millésime 1998 - probable doublon mal étiqueté d'une autre famille, à réaffecter plutôt qu'à fusionner ici.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 61,
+    "classe": "doublon-probable",
+    "membres": [
+     {
+      "entityId": "f4bf1b02802f4f91b607a50377f06114",
+      "name": "Polanyi 1944 / 2011"
+     },
+     {
+      "entityId": "1782b07fc7cc459e9636817b6350be4f",
+      "name": "Polanyi 1944 — La grande transformation"
+     }
+    ],
+    "reason": "Une seule entrée 1944 au PDF (La grande transformation, rééd. 2004) : « Polanyi 1944 / 2011 » désigne vraisemblablement la même œuvre sous une autre édition, à confirmer (le PDF a par ailleurs Polanyi 2011 = La subsistance, œuvre distincte)."
+   },
+   {
+    "famille_id": 63,
+    "classe": "doublon-probable",
+    "membres": [
+     {
+      "entityId": "c7bab4b241524b4a833a2869b6839dd5",
+      "name": "Pouliot 2018 — Bitcoin: l'histoire cachée"
+     },
+     {
+      "entityId": "a605c562dc792727eb4644dcc2c6ae50",
+      "name": "Pouliot 2018"
+     }
+    ],
+    "reason": "Une seule entrée Pouliot au PDF (« Catallaxy: the origins of Bitcoin and innovation ») mais le titre « Bitcoin: l'histoire cachée » ne la recoupe pas mot à mot - même auteur même année, titre à confirmer."
+   },
+   {
+    "famille_id": 71,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "adc1a4d09cfb4a6892dfc8fa49cad2fc",
+      "name": "Selgin 2013 Synthetic Commodity Money"
+     },
+     {
+      "entityId": "5680ab9e9b6a4a1f8f66964f7214266a",
+      "name": "Selgin 2013 — Quasi-Commodity Money"
+     }
+    ],
+    "reason": "Le PDF porte DEUX entrées Selgin distinctes (2013 « Quasi-Commodity Money » et 2014b « Synthetic Commodity Money ») : le nœud « Selgin 2013 Synthetic Commodity Money » chevauche les deux - risque de confusion entre deux références.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 72,
+    "classe": "doublon-probable",
+    "membres": [
+     {
+      "entityId": "1f8cc3add79945b5bbcb31e9e211880c",
+      "name": "Servet Dufresne 2021"
+     },
+     {
+      "entityId": "a6d5a701247c4ea196363a9b42b5c68e",
+      "name": "Servet & Dufrêne 2021 — Monnaie et société numérique"
+     }
+    ],
+    "reason": "Une seule entrée Servet & Dufrêne 2021 au PDF (tribune « Le bitcoin devient un danger... ») : le sous-titre « Monnaie et société numérique » du second nœud ne la recoupe pas - même duo d'auteurs même année, titre à confirmer."
+   },
+   {
+    "famille_id": 78,
+    "classe": "doublon-probable",
+    "membres": [
+     {
+      "entityId": "2f1fca7ac1ff4ab39e90612457ec8dad",
+      "name": "Tirole 2017 — Many reasons to be cautious about bitcoin"
+     },
+     {
+      "entityId": "f192347519d44d48934b740b73a73f27",
+      "name": "Tirole 2017 Enigma Bitcoin"
+     }
+    ],
+    "reason": "Une seule entrée Tirole 2017 au PDF (tribune FT) : « Enigma Bitcoin » renvoie plausiblement à la même tribune sous son intitulé français - convergence forte, titre à confirmer."
+   },
+   {
+    "famille_id": 82,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "d24f408be2c115da692d12c2ace24bdd",
+      "name": "Walch 2017"
+     },
+     {
+      "entityId": "21d453b14d7f4cdd9ff7e8afc9ba3acd",
+      "name": "Walch 2017a — Path of the Blockchain Lexicon"
+     }
+    ],
+    "reason": "Le PDF porte deux entrées Walch 2017 (a et b) : le membre « Walch 2017 » sans suffixe peut viser l'une ou l'autre - verification du texte cite requise.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 83,
+    "classe": "homonymie-risque",
+    "membres": [
+     {
+      "entityId": "9d1b623cb2a342108c12d4218294d708",
+      "name": "Walch 2017 Governance Blockchain"
+     },
+     {
+      "entityId": "8640638b2d78436d8b471f947583747e",
+      "name": "Walch 2017b — Open Source Operational Risk Blockchains"
+     }
+    ],
+    "reason": "Le PDF porte deux entrées Walch 2017 (a et b) : « Walch 2017 Governance Blockchain » ne porte ni suffixe ni le titre de 2017b - il peut viser 2017a, 2017b, voire un autre texte de Walch.",
+    "indicatif_seulement": "l'annotation reviewStatus=homonym-check portée par le CSV est listée à titre indicatif seulement — aucune op n'est émise tant que le texte cité n'a pas été vérifié référence par référence"
+   },
+   {
+    "famille_id": 86,
+    "classe": "doublon-probable",
+    "membres": [
+     {
+      "entityId": "7ebabc5db653f3a685220ae0bbde1c52",
+      "name": "Wray 2010"
+     },
+     {
+      "entityId": "9014e9b2177a48e9a334fa483f52ccea",
+      "name": "Randall Wray 2010 — Modern Monetary Theory and the origins of money"
+     }
+    ],
+    "reason": "Une seule entrée Wray 2010 au PDF (« Alternative Approaches to Money ») : le titre « Modern Monetary Theory and the origins of money » du second nœud est une paraphrase à confirmer (Wray 2004 existe aussi au PDF)."
+   }
+  ],
+  "degree_tie_note": "Dans 8 familles (8, 28, 33, 38, 42, 46, 58, 62), le degré du canonique est À ÉGALITÉ avec celui d'au moins un autre membre : le critère « le mieux relié » n'y discrimine pas, et la cible proposée y est un choix d'ordre, pas une mesure. La décision D11 (confirmation de chaque cible de fusion) couvre ces cas. Relevé par la revue hostile du 2026-08-07.",
+  "type_divergence_note": "Le canonique et ses doublons peuvent porter des TYPES différents (ex. famille 57 : canonique Reference nu, doublon AcademicWork) : une fusion naïve vers le canonique appauvrirait le typage. La conservation des types à la fusion est une décision distincte du choix de la cible et du libellé (cf. D11/D12). Relevé par la revue hostile du 2026-08-07."
+ },
+ "ops": [
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3b34cd1c6c37560d071ef4b881420fd8",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "02e004e015cc4982a33168f8d6432cab"
+   },
+   "_comment": "famille 1 — « Aglietta et Orléan 2002 » marqué doublon de « Aglietta & Orleans 2002 » (02e004e015cc4982a33168f8d6432cab, canonique par DEGRÉ, deg=13). Entrée PDF : AGLIETTA Michel et ORLÉAN André, 2002, La monnaie entre violence et confiance, Odile Jacob, Paris, 384 p."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3b34cd1c6c37560d071ef4b881420fd8",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "dfeba626b96846cf988d4020424196d5",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "02e004e015cc4982a33168f8d6432cab"
+   },
+   "_comment": "famille 1 — « Aglietta & Orléan 2002 — Violence et confiance » marqué doublon de « Aglietta & Orleans 2002 » (02e004e015cc4982a33168f8d6432cab, canonique par DEGRÉ, deg=13). Entrée PDF : AGLIETTA Michel et ORLÉAN André, 2002, La monnaie entre violence et confiance, Odile Jacob, Paris, 384 p."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "dfeba626b96846cf988d4020424196d5",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4568cc431bce437ba36f137dbafbc67e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "78c9029a9c61594936bd680163cb0f75"
+   },
+   "_comment": "famille 2 — « Aglietta & Cartelier 1998 — Ordre monétaire » marqué doublon de « Aglietta et Cartelier 1998 » (78c9029a9c61594936bd680163cb0f75, canonique par DEGRÉ, deg=9). Entrée PDF : AGLIETTA Michel et CARTELIER Jean, 1998, « Ordre monétaire des économies de marché » dans La monnaie souverain"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4568cc431bce437ba36f137dbafbc67e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "7e9c5d90afd24211b0d8ba706bdad15f",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "d1a9cf840d19b1564cd0157c785cee44"
+   },
+   "_comment": "famille 3 — « Aglietta Ponsot Ould-Ahmed 2014 — Entretien » marqué doublon de « Aglietta, Ponsot et Ould-Ahmed 2014 » (d1a9cf840d19b1564cd0157c785cee44, canonique par DEGRÉ, deg=5). Entrée PDF : AGLIETTA Michel, PONSOT Jean-François et OULD-AHMED Pepita, 2014, « La monnaie, la valeur et la règle - Entret"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "7e9c5d90afd24211b0d8ba706bdad15f",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "750fdaa27a5d4030a626673d3110ddf2",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "2528eba96a574f2491c28b0ab11b0974"
+   },
+   "_comment": "famille 4 — « Akrich 1989 — Construction d'un système socio-technique » marqué doublon de « Akrich 1989 » (2528eba96a574f2491c28b0ab11b0974, canonique par DEGRÉ, deg=15). Entrée PDF : AKRICH Madeleine, 1989, « La construction d’un système socio -technique – Esquisse pour une anthropologie des "
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "750fdaa27a5d4030a626673d3110ddf2",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "aff449b29cc249a281a508728901c18f",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "74f9134398d346a4b39be11431bc0baa"
+   },
+   "_comment": "famille 5 — « Andresen 2011 » marqué doublon de « Andresen 2011 — Bitcoin v0.3.20.01 released » (74f9134398d346a4b39be11431bc0baa, canonique par DEGRÉ, deg=29). Entrée PDF : ANDRESEN Gavin, 2011, « Bitcoin / [bitcoin-list] Bitcoin version 0.3.20.01 released »."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "aff449b29cc249a281a508728901c18f",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "f8fb83d515424bad916e03ff5956d56d",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "65b4ab9b69ac4a968d99e39e11ec3774"
+   },
+   "_comment": "famille 6 — « Andresen 2012 — Blockchain Rule Update Process » marqué doublon de « Andresen 2012 BIP Process » (65b4ab9b69ac4a968d99e39e11ec3774, canonique par DEGRÉ, deg=6). Entrée PDF : ANDRESEN Gavin, 2012, « Blockchain Rule Update Process », https://gist.github.com/gavinandresen/2355445 , 11 a"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "f8fb83d515424bad916e03ff5956d56d",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "63ed4d1a77544c98a047be919573aafb",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "f8d9b4f12815491ba6ad9d2caa0387db"
+   },
+   "_comment": "famille 7 — « Andresen 2016 — One-dollar lulz » marqué doublon de « Andresen 2016 » (f8d9b4f12815491ba6ad9d2caa0387db, canonique par DEGRÉ, deg=6). Entrée PDF : ANDRESEN Gavin, 2016, « One-dollar lulz • Gavin Andresen », http://gavinandresen.ninja/One - Dollar-Lulz , 3 m"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "63ed4d1a77544c98a047be919573aafb",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "30dca2569de464285604c4babb93c7d9",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "206f2addc41144a8abb84aff060fc00f"
+   },
+   "_comment": "famille 8 — « Bano et al. 2017 (Intro) » marqué doublon de « Bano et al. 2017 » (206f2addc41144a8abb84aff060fc00f, canonique par DEGRÉ, deg=6). Entrée PDF : BANO Shehar, ALBERTO Sonnino, AL-BASSAM Mustafa, AZOUVI Sarah, MCCORRY, Patrick, MEIKLEJOHN Sarah et DANEZIS G"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "30dca2569de464285604c4babb93c7d9",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ae73f326b85f491da28770ac6b6b9bc9",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "b4b693b0021941cfbfc70e4f4afe3c5b"
+   },
+   "_comment": "famille 9 — « Bartoletti & Pompianu 2017 » marqué doublon de « Bartoletti et Pompianu 2017 » (b4b693b0021941cfbfc70e4f4afe3c5b, canonique par DEGRÉ, deg=6). Entrée PDF : BARTOLETTI Massimo et POMPIANU Livio, 2017, « An analysis of Bitcoin OP RETURN metadata », arXiv preprint arXi"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ae73f326b85f491da28770ac6b6b9bc9",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3d0cbcef5e434da1adc012942e302113",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "dd3e2896aaa6408a84dded4e2922471e"
+   },
+   "_comment": "famille 10 — « Bitcoin Core 2018 Rapport divulgation » marqué doublon de « Bitcoin Core 2018a — CVE-2018-17144 Full Disclosure » (dd3e2896aaa6408a84dded4e2922471e, canonique par DEGRÉ, deg=29). Entrée PDF : BITCOIN CORE, 2018a, « CVE-2018-17144 Full Disclosure », https://bitcoincore.org/en/2018/09/20/notice/, 20 sep"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3d0cbcef5e434da1adc012942e302113",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "02ecb7bc25414f3391f3c67145607241",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a42a1798e79d47b7a9e3a02921b24cf7"
+   },
+   "_comment": "famille 11 — « Bitmex Research 2017 DAO Hard Fork » marqué doublon de « Bitmex Research 2017b — Revisiting The DAO » (a42a1798e79d47b7a9e3a02921b24cf7, canonique par DEGRÉ, deg=19). Entrée PDF : BITMEX RESEARCH, 2017b, « Revisiting “The DAO” », BitMEX Blog , https://blog.bitmex.com/revisiting-the-dao/ , "
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "02ecb7bc25414f3391f3c67145607241",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9131cfdb8b884b59a0ad14fc1d7ed92b",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "20c955b4d08b43238954a2ddc14020d6"
+   },
+   "_comment": "famille 12 — « BitMEXResearch 2022 — The OP_Return Wars » marqué doublon de « BitMEXResearch 2022 » (20c955b4d08b43238954a2ddc14020d6, canonique par DEGRÉ, deg=11). Entrée PDF : BITMEXRESEARCH, 2022, « The OP_Return Wars of 2014 - Dapps Vs Bitcoin Transactions », https://blog.bitmex.com/"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9131cfdb8b884b59a0ad14fc1d7ed92b",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "5c2cf7a5479d42bcaa2a9e3ee326ddf4",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "56dc412f484748a8a5dab8f7a0bfa9c8"
+   },
+   "_comment": "famille 15 — « Böhme et al. 2015 — Bitcoin Economics Technology Governance » marqué doublon de « Bohme et al 2015 Bitcoin Economics » (56dc412f484748a8a5dab8f7a0bfa9c8, canonique par DEGRÉ, deg=25). Entrée PDF : BÖHME Rainer, CHRISTIN Nicolas, EDELMAN Benjamin et MOORE Tyler, 2015, « Bitcoin: Economics, Technology, and G"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "5c2cf7a5479d42bcaa2a9e3ee326ddf4",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "762e6813527d4880b74075d23740679a",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "85ea3fbf6756411088682089319f9a25"
+   },
+   "_comment": "famille 16 — « Bonneau et al. 2015 » marqué doublon de « Bonneau et al. 2015 — SoK Bitcoin Cryptocurrencies » (85ea3fbf6756411088682089319f9a25, canonique par DEGRÉ, deg=23). Entrée PDF : BONNEAU Joseph, MILLER Andrew, CLARK Jeremy, NARAYANAN Arvind, KROLL Joshua A, FELTEN Edward W et FOUNDATION E"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "762e6813527d4880b74075d23740679a",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "f420ad44b02844fa853e4035b9ad224e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "1fd79ed6648e43538068fa4540bc12b7"
+   },
+   "_comment": "famille 17 — « Bowker 1996 — History of Information Infrastructures » marqué doublon de « Bowker 1996 Infrastructure Inversion » (1fd79ed6648e43538068fa4540bc12b7, canonique par DEGRÉ, deg=12). Entrée PDF : BOWKER Geoffrey C, 1996, « The history of information infrastructures: The case of the international classific"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "f420ad44b02844fa853e4035b9ad224e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "7dd91d459a3396b0205fdb0f1cf0064d",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "d55f89936d9a4709af8104450ff9a174"
+   },
+   "_comment": "famille 18 — « Brito et Castillo 2013 » marqué doublon de « Brito & Castillo 2013 — Bitcoin: A Primer for Policymakers » (d55f89936d9a4709af8104450ff9a174, canonique par DEGRÉ, deg=21). Entrée PDF : BRITO B Y Jerry et CASTILLO Andrea, 2013, « Bitcoin A Primer for Policymakers », Mercatus Center at George Mas"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "7dd91d459a3396b0205fdb0f1cf0064d",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "da969e43bf3346daa39a9a1aa4982cb9",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "876698e2a15d4e6da5912cb1c391e08b"
+   },
+   "_comment": "famille 20 — « Buterin 2013b — Mastercoin: A Second-Generation Protocol » marqué doublon de « Buterin 2013b » (876698e2a15d4e6da5912cb1c391e08b, canonique par DEGRÉ, deg=11). Entrée PDF : BUTERIN Vitalik, 2013b, « Mastercoin: A Second-Generation Protocol on the Bitcoin Blockchain », https://bitcoi"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "da969e43bf3346daa39a9a1aa4982cb9",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3ceaf75ad5dc44f8baa0813b954cb5eb",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "4412476da42c48028bcd9f57ef1a3962"
+   },
+   "_comment": "famille 22 — « Buterin 2013e » marqué doublon de « Buterin 2013e — Dagger: A memory-hard proof of work algorithm » (4412476da42c48028bcd9f57ef1a3962, canonique par DEGRÉ, deg=20). Entrée PDF : BUTERIN Vitalik, 2013e, « Dagger: A Memory-Hard to Compute, Memory -Easy to Verify Scrypt Alternative », http:"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "3ceaf75ad5dc44f8baa0813b954cb5eb",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2165a0e1e59e479098a71d3b4213a0ae",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a881071200dc48c19fdc5d3af054a7d5"
+   },
+   "_comment": "famille 25 — « Cartelier 1996 — La monnaie » marqué doublon de « Cartelier 1996 La monnaie » (a881071200dc48c19fdc5d3af054a7d5, canonique par DEGRÉ, deg=13). Entrée PDF : CARTELIER Jean, 1996, La monnaie, Dominos. Flammarion, Paris, 125 p."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2165a0e1e59e479098a71d3b4213a0ae",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "a1c097925afd4bd074ea2448f2e7e9e8",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a881071200dc48c19fdc5d3af054a7d5"
+   },
+   "_comment": "famille 25 — « Cartelier 1996 (Intro) » marqué doublon de « Cartelier 1996 La monnaie » (a881071200dc48c19fdc5d3af054a7d5, canonique par DEGRÉ, deg=13). Entrée PDF : CARTELIER Jean, 1996, La monnaie, Dominos. Flammarion, Paris, 125 p."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "a1c097925afd4bd074ea2448f2e7e9e8",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "81049b3899914142a40dd283772766c4",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "7a1b6b2b158f4dde997f66379fc73e89"
+   },
+   "_comment": "famille 26 — « Castillo 2013 » marqué doublon de « Castillo 2013 — Dark Wallet and Amir Taaki anarchist Bitcoin » (7a1b6b2b158f4dde997f66379fc73e89, canonique par DEGRÉ, deg=23). Entrée PDF : CASTILLO Michael del, 2013, « Dark Wallet: A Radical Way to Bitcoin », https://www.newyorker.com/business/curr"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "81049b3899914142a40dd283772766c4",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2e155d6cc3874a62b20de72700e34b27",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "0e225413a3db45f3934676e31efc9798"
+   },
+   "_comment": "famille 27 — « Chainalysis Team 2019 — Crypto Crime Report » marqué doublon de « Chainalysis Team 2019 » (0e225413a3db45f3934676e31efc9798, canonique par DEGRÉ, deg=4). Entrée PDF : CHAINALYSIS TEAM, 2019, « Chainalysis Crypto Crime Report (2019) », https://go.chainalysis.com/rs/503-FAP- 074"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2e155d6cc3874a62b20de72700e34b27",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "713a81a48e5143068ff221c6eec9c138",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "45c4a10053e84274966342ca3ecb5f12"
+   },
+   "_comment": "famille 28 — « Dashjr 2019 — CVE-2018-20587 Advisory » marqué doublon de « Dashjr 2019 CVE History » (45c4a10053e84274966342ca3ecb5f12, canonique par DEGRÉ, deg=6). Entrée PDF : DASHJR Luke, 2019, « CVE-2018–20587 Advisory and Full Disclosure (Bitcoin Core & Knots, on multiuser systems) "
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "713a81a48e5143068ff221c6eec9c138",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6cf3e50b5a65ce3ac4e3e1ba4b1d784e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "ceabad5e9c0e4c36b74925272eff2df7"
+   },
+   "_comment": "famille 29 — « De Filippi et Loveluck 2016 (Intro) » marqué doublon de « De Filippi & Loveluck 2016 — Invisible politics of Bitcoin » (ceabad5e9c0e4c36b74925272eff2df7, canonique par DEGRÉ, deg=26). Entrée PDF : DE FILIPPI Primavera et LOVELUCK Benjamin, 2016, « The invisible politics of Bitcoin: governance crisis of a d"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6cf3e50b5a65ce3ac4e3e1ba4b1d784e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "0b7bd88ab7580b4513c4ff0df722a1eb",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "5febe6121fed4c84aaf300065976a755"
+   },
+   "_comment": "famille 30 — « De Filippi 2013 » marqué doublon de « De Filippi 2013 — Bitcoin: a regulatory nightmare to a libertarian dream » (5febe6121fed4c84aaf300065976a755, canonique par DEGRÉ, deg=21). Entrée PDF : DE FILIPPI Primavera, 2013, « Bitcoin: a regulatory nightmare to a libertarian dream », Internet Policy Review"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "0b7bd88ab7580b4513c4ff0df722a1eb",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e0b40d91bb424defaa9acf37536f339e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "2272e5b8d44449d29f7429c2f59b5615"
+   },
+   "_comment": "famille 31 — « DeNardis & Musiani 2014 — Governance by Infrastructure » marqué doublon de « DeNardis et Musiani 2014 » (2272e5b8d44449d29f7429c2f59b5615, canonique par DEGRÉ, deg=12). Entrée PDF : DENARDIS Laura et MUSIANI Francesca, 2014, « Governance by Infrastructure: Introduction, “The Turn to Infrastr"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e0b40d91bb424defaa9acf37536f339e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "cde365fffc0140b2ae04ed6fd46b22d5",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a03d6533107d41568be5a09f65e91cdf"
+   },
+   "_comment": "famille 32 — « Dodd 2017 — The Social Life of Bitcoin » marqué doublon de « Dodd 2017 Social Life Bitcoin » (a03d6533107d41568be5a09f65e91cdf, canonique par DEGRÉ, deg=31). Entrée PDF : DODD Nigel, 2017, « The Social Life of Bitcoin », Theory, Culture & Society, 2017, p. 1‑27."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "cde365fffc0140b2ae04ed6fd46b22d5",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "47b8d7b7a80506dd7a7f0ae8db1d59c8",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a03d6533107d41568be5a09f65e91cdf"
+   },
+   "_comment": "famille 32 — « Dodd 2017 (Intro) » marqué doublon de « Dodd 2017 Social Life Bitcoin » (a03d6533107d41568be5a09f65e91cdf, canonique par DEGRÉ, deg=31). Entrée PDF : DODD Nigel, 2017, « The Social Life of Bitcoin », Theory, Culture & Society, 2017, p. 1‑27."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "47b8d7b7a80506dd7a7f0ae8db1d59c8",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4137356deade4efa9949582b186af808",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "3199c26556b344fd9261cfd10fbb4e12"
+   },
+   "_comment": "famille 33 — « Dupont 2018 — DAO Experiments in algorithmic governance » marqué doublon de « DuPont 2018 DAO Experiment » (3199c26556b344fd9261cfd10fbb4e12, canonique par DEGRÉ, deg=8). Entrée PDF : DUPONT Quinn, 2018, « 8. Experiments in algorithmic governance: A history and ethnography of “The DAO,” a fail"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4137356deade4efa9949582b186af808",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "67f3f453063feb8a51665d0f6da926b6",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "1716ed6bcad44771ad22101e932b843f"
+   },
+   "_comment": "famille 34 — « Dupré, Ponsot et Servet 2015 » marqué doublon de « Dupré Ponsot Servet 2015 — Bitcoin contre la révolution des communs » (1716ed6bcad44771ad22101e932b843f, canonique par DEGRÉ, deg=23). Entrée PDF : DUPRÉ Denis, PONSOT Jean-François et SERVET Jean-Michel, 2015, « Le bitcoin contre la révolution des communs »"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "67f3f453063feb8a51665d0f6da926b6",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "38639c7e3bc04be98f694db7680027e8",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "1716ed6bcad44771ad22101e932b843f"
+   },
+   "_comment": "famille 34 — « Dupre Ponsot Servet 2015 » marqué doublon de « Dupré Ponsot Servet 2015 — Bitcoin contre la révolution des communs » (1716ed6bcad44771ad22101e932b843f, canonique par DEGRÉ, deg=23). Entrée PDF : DUPRÉ Denis, PONSOT Jean-François et SERVET Jean-Michel, 2015, « Le bitcoin contre la révolution des communs »"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "38639c7e3bc04be98f694db7680027e8",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2c3733bad1fc480ebfc9aff5d72fb6dc",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "c14637f57d5a423894cbd35856129302"
+   },
+   "_comment": "famille 35 — « Edwards et al. 2009 — Agenda for Infrastructure Studies » marqué doublon de « Edwards et al. 2009 » (c14637f57d5a423894cbd35856129302, canonique par DEGRÉ, deg=23). Entrée PDF : EDWARDS Paul, BOWKER Geoffrey, JACKSON Steven et WILLIAMS Robin, 2009, « Introduction: An Agenda for Infrastru"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2c3733bad1fc480ebfc9aff5d72fb6dc",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d49e7200ebee4ede8950f9e36e6bdff7",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "cfc5ccfec20718e675f89a24487294bd"
+   },
+   "_comment": "famille 37 — « Friedman Benjamin M. 2008 — Les objectifs de la politique monétaire » marqué doublon de « Friedman 2008 » (cfc5ccfec20718e675f89a24487294bd, canonique par DEGRÉ, deg=8). Entrée PDF : FRIEDMAN Benjamin M., 2008, « Quels doivent être les objectifs de la politique monétaire. » dans Jean-Philippe"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d49e7200ebee4ede8950f9e36e6bdff7",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "8a86eb7f81364573848e43b03d391a89",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a768338169584a618a8ef5b797b7b063"
+   },
+   "_comment": "famille 38 — « Friedman Milton 1999 — Video interview on internet and private currencies (land value tax) » marqué doublon de « Friedman Milton 1999 — Interview sur internet et monnaies privées » (a768338169584a618a8ef5b797b7b063, canonique par DEGRÉ, deg=2). Entrée PDF : FRIEDMAN Milton., 1999, “Land value tax and internet currencies ”, interview with Nobel Laureate Milton Friedm"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "8a86eb7f81364573848e43b03d391a89",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "569ea7309d154d1e92acf5b177563629",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "ecfda0e51bd147e3bd0329a9bf4bbc6b"
+   },
+   "_comment": "famille 39 — « Galbraith 1976 — L'argent » marqué doublon de « Galbraith 1976 » (ecfda0e51bd147e3bd0329a9bf4bbc6b, canonique par DEGRÉ, deg=14). Entrée PDF : GALBRAITH John Kenneth, 1976, L’argent, Paris, Gallimard . (coll. « idée, Gallimard »), collection : idées, 36"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "569ea7309d154d1e92acf5b177563629",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9e20ed50d936437eb53e034f20a5d8f5",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "644de7a85c76448fa1e1bbeabd176d03"
+   },
+   "_comment": "famille 40 — « Garzik 2014a — Counterparty and metacoins analysis » marqué doublon de « Garzik 2014a » (644de7a85c76448fa1e1bbeabd176d03, canonique par DEGRÉ, deg=7). Entrée PDF : GARZIK Jeff, 2014a, « [ANN][XCP] Counterparty - Pioneering Peer -to-Peer Finance - Official Thread », https://"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9e20ed50d936437eb53e034f20a5d8f5",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "fdafe6e12c094113a2e2ba841b4e324e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a7d3cc7c0c2e4a36b6f8acb0f0308f6e"
+   },
+   "_comment": "famille 41 — « Garzik 2014b » marqué doublon de « Garzik 2014b — OP_RETURN and metadata in Bitcoin » (a7d3cc7c0c2e4a36b6f8acb0f0308f6e, canonique par DEGRÉ, deg=26). Entrée PDF : GARZIK Jeff, 2014b, « [Bitcoin-development] On OP_RETURN in upcoming 0.9 release »."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "fdafe6e12c094113a2e2ba841b4e324e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "be56089c62d34df08bd15f366454ab9e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "1d8a4c4ab89c449a8de9b02761f65ab4"
+   },
+   "_comment": "famille 42 — « David Gilbert 2014 » marqué doublon de « Gilbert David 2014 — Dogecoin cryptocurrency community » (1d8a4c4ab89c449a8de9b02761f65ab4, canonique par DEGRÉ, deg=2). Entrée PDF : GILBERT David, 2014, « \\’Most Valuable Tweet in History\\’ Donates $11,000 Worth of Dogecoin to Kenyan Water Ch"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "be56089c62d34df08bd15f366454ab9e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c76bb3ae5b4d43f680ca8c5f075e12ba",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "51061825b7fb47ab9676f6fb393f996e"
+   },
+   "_comment": "famille 43 — « Hughes 1993 — A Cypherpunk's Manifesto » marqué doublon de « Hughes 1993 Cypherpunk Manifesto » (51061825b7fb47ab9676f6fb393f996e, canonique par DEGRÉ, deg=6). Entrée PDF : HUGHES Eric, 1993, « A Cypherpunk’s Manifesto », https://www.activism.net/cypherpunk/manifesto.html, 9 mars 19"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c76bb3ae5b4d43f680ca8c5f075e12ba",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "17498d46de3114ecfad0f57c3077da34",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "ba4fb228bb824d1b9ec0c15d9651edf0"
+   },
+   "_comment": "famille 44 — « Jeong 2013 » marqué doublon de « Jeong 2013 — The Bitcoin Protocol as Law » (ba4fb228bb824d1b9ec0c15d9651edf0, canonique par DEGRÉ, deg=24). Entrée PDF : JEONG Sarah, 2013, « The Bitcoin Protocol as Law, and the Politics of a Stateless Currency »."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "17498d46de3114ecfad0f57c3077da34",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2986a9e1e1ce4486bbfa358ca58d2242",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "6d3ccfa0dd3c4d798d364840f888a4e2"
+   },
+   "_comment": "famille 45 — « Kavanagh et Miscione 2017 » marqué doublon de « Kavanagh & Miscione 2017 » (6d3ccfa0dd3c4d798d364840f888a4e2, canonique par DEGRÉ, deg=17). Entrée PDF : KAVANAGH Donncha et MISCIONE Gianluca, 2017, « Infrastructures and Their Invisible Carnivalesque », SSRN Elect"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "2986a9e1e1ce4486bbfa358ca58d2242",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "8ba11b69224445fba65e1e5160b365f7",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "b9b474c9712b4dbea11d55ae163d2b36"
+   },
+   "_comment": "famille 46 — « Sunny King et Nadal 2012 » marqué doublon de « King & Nadal 2012 Peercoin » (b9b474c9712b4dbea11d55ae163d2b36, canonique par DEGRÉ, deg=5). Entrée PDF : KING Sunny et NADAL Scott, 2012, « PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake », 19 août 2012."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "8ba11b69224445fba65e1e5160b365f7",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6649a875b6b040e4b645481de807e338",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "b9b474c9712b4dbea11d55ae163d2b36"
+   },
+   "_comment": "famille 46 — « King Nadal 2012 — PPCoin Peer-to-Peer Crypto-Currency » marqué doublon de « King & Nadal 2012 Peercoin » (b9b474c9712b4dbea11d55ae163d2b36, canonique par DEGRÉ, deg=5). Entrée PDF : KING Sunny et NADAL Scott, 2012, « PPCoin: Peer-to-Peer Crypto-Currency with Proof-of-Stake », 19 août 2012."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6649a875b6b040e4b645481de807e338",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "573d8b4226b84a089da2580fc046b334",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "4e7c7974fdc04b07a244b8eec8550974"
+   },
+   "_comment": "famille 47 — « Knapp 1924 — The State Theory of Money » marqué doublon de « Knapp 1924 State Theory Money » (4e7c7974fdc04b07a244b8eec8550974, canonique par DEGRÉ, deg=11). Entrée PDF : KNAPP G F, 1924, « The state theory of money », History of Economic Thought Books, 1924."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "573d8b4226b84a089da2580fc046b334",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "db4e7b892fcb6a0b049a7a32dbd5b601",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "4e7c7974fdc04b07a244b8eec8550974"
+   },
+   "_comment": "famille 47 — « Knapp 1924 » marqué doublon de « Knapp 1924 State Theory Money » (4e7c7974fdc04b07a244b8eec8550974, canonique par DEGRÉ, deg=11). Entrée PDF : KNAPP G F, 1924, « The state theory of money », History of Economic Thought Books, 1924."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "db4e7b892fcb6a0b049a7a32dbd5b601",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e318cea2b733450ca0992a87ead0b345",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "8add087a86294cef8dfad0f37882ba34"
+   },
+   "_comment": "famille 48 — « Lars 2019a » marqué doublon de « Lars 2019a — Colored Coins: early tokenization on Bitcoin » (8add087a86294cef8dfad0f37882ba34, canonique par DEGRÉ, deg=25). Entrée PDF : LARS Ludovic, 2019a, « Des jetons sur Bitcoin : colored coins et autres procédés », https://journalducoin.com/"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e318cea2b733450ca0992a87ead0b345",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c1ebf64c7d6734e73472a545f04cec05",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "32f91ac4b4b14019a0afb4640bba23c7"
+   },
+   "_comment": "famille 49 — « Lars 2021 » marqué doublon de « Lars 2021 — Bitcoin and religious metaphors (bitcoin-histoire.fr) » (32f91ac4b4b14019a0afb4640bba23c7, canonique par DEGRÉ, deg=28). Entrée PDF : LARS Ludovic, 2021, « Bitcoin, quand la révolution de la monnaie vire à la religion », https://journalducoin.c"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c1ebf64c7d6734e73472a545f04cec05",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b95feb4b7ce94d2c9903c5a192e3421d",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "304579e381c84c4a8f470c3386ac1e45"
+   },
+   "_comment": "famille 51 — « Lopp 2018 — Who Controls Bitcoin Core » marqué doublon de « Lopp 2018 GitHub Bitcoin Core » (304579e381c84c4a8f470c3386ac1e45, canonique par DEGRÉ, deg=31). Entrée PDF : LOPP Jameson, 2018, « Who Controls Bitcoin Core? », Medium, https://medium.com/@lopp/who- controls-bitcoin-cor"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b95feb4b7ce94d2c9903c5a192e3421d",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "78aaaaee3c684931b0b63a0b2a7ec181",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a4a15c4d930e4c53ac47ceb110695686"
+   },
+   "_comment": "famille 52 — « Lopp 2021 Spam Storms » marqué doublon de « Lopp 2021 — History Bitcoin Transaction Dust Spam Storms » (a4a15c4d930e4c53ac47ceb110695686, canonique par DEGRÉ, deg=26). Entrée PDF : LOPP Jameson, 2021, « A History of Bitcoin Transaction Dust & Spam Storms », https://blog.lopp.net/history-bit"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "78aaaaee3c684931b0b63a0b2a7ec181",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6c21ae38f32f4957a4c38675b4582d1a",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "59cad7f544f743a3a42b7bfcf4c32991"
+   },
+   "_comment": "famille 53 — « Lustig & Nardi 2015 Algorithmic Authority » marqué doublon de « Lustig & Nardi 2015 — Algorithmic authority Bitcoin » (59cad7f544f743a3a42b7bfcf4c32991, canonique par DEGRÉ, deg=23). Entrée PDF : LUSTIG Caitlin et NARDI Bonnie, 2015, « Algorithmic authority: The case of Bitcoin », Proceedings of the Annua"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "6c21ae38f32f4957a4c38675b4582d1a",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ff9f99aebc5d4ea69609189a38a96a53",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "73ec82f5ffa03829ef5ab301dfadad9b"
+   },
+   "_comment": "famille 54 — « Mauss 1914 — Les origines de la notion de monnaie » marqué doublon de « Mauss 1914 » (73ec82f5ffa03829ef5ab301dfadad9b, canonique par DEGRÉ, deg=7). Entrée PDF : MAUSS Marcel, 1914, « Les origines de la notion de monnaie » dans Oeuvres 2. Représentations collectives et di"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "ff9f99aebc5d4ea69609189a38a96a53",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "11ca49860474402ab03050357095c728",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "ad474c1724da4ec88cbd78f924613cc5"
+   },
+   "_comment": "famille 56 — « Musiani 2018 CM Gouvernance » marqué doublon de « Musiani Mallard Meadel 2018 » (ad474c1724da4ec88cbd78f924613cc5, canonique par DEGRÉ, deg=13). Entrée PDF : MUSIANI Francesca, MALLARD Alexandre et MÉADEL Cécile, 2018, « 7 Governing what wasn’t meant to be governed » "
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "11ca49860474402ab03050357095c728",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9d026d51d41e40edb4c8c7c15d563ca5",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "ad474c1724da4ec88cbd78f924613cc5"
+   },
+   "_comment": "famille 56 — « Musiani Mallard Méadel 2018 — Governing what wasn't meant to be governed » marqué doublon de « Musiani Mallard Meadel 2018 » (ad474c1724da4ec88cbd78f924613cc5, canonique par DEGRÉ, deg=13). Entrée PDF : MUSIANI Francesca, MALLARD Alexandre et MÉADEL Cécile, 2018, « 7 Governing what wasn’t meant to be governed » "
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9d026d51d41e40edb4c8c7c15d563ca5",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e324660d7944e4c3b398b652c9eb490d",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "4510632442f34a1c8ad6f3fe0f17ad05"
+   },
+   "_comment": "famille 57 — « Nakamoto 2008c — Bitcoin: A Peer-to-Peer Electronic Cash System » marqué doublon de « Nakamoto 2008 Bitcoin WP » (4510632442f34a1c8ad6f3fe0f17ad05, canonique par DEGRÉ, deg=41). Entrée PDF : NAKAMOTO Satoshi, 2008c, « Bitcoin: A Peer -to-Peer Electronic Cash System », https://bitcoin.org/bitcoin.pdf,"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e324660d7944e4c3b398b652c9eb490d",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d41e873a58e8e4eeb1f0ae715f884f8a",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "c539113210a84e1eaea3d8340504aba5"
+   },
+   "_comment": "famille 58 — « Narayanan et Clark 2017 » marqué doublon de « Narayanan & Clark 2017 » (c539113210a84e1eaea3d8340504aba5, canonique par DEGRÉ, deg=10). Entrée PDF : NARAYANAN Arvind et CLARK Jeremy, 2017, « Bitcoin’s academic pedigree », Communications of the ACM, 2017, vol."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d41e873a58e8e4eeb1f0ae715f884f8a",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b86c5ec82ea14e47854fce42261981d6",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "e3b7d91585004ef7a392934a0b37292f"
+   },
+   "_comment": "famille 60 — « Ostrom 1990 — Governing the Commons » marqué doublon de « Ostrom 1990 » (e3b7d91585004ef7a392934a0b37292f, canonique par DEGRÉ, deg=9). Entrée PDF : OSTROM Elinor, 1990, Governing the Commons, New York, Cambridge University Press, 1990."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b86c5ec82ea14e47854fce42261981d6",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d59d4daf9118bb32716098b7f00f0328",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "24d1f1fef4004261b7828cee4ef56038"
+   },
+   "_comment": "famille 62 — « Polanyi 2011 » marqué doublon de « Polanyi 2011 — La subsistance de l'homme » (24d1f1fef4004261b7828cee4ef56038, canonique par DEGRÉ, deg=12). Entrée PDF : POLANYI Karl, 2011, La subsistance de l’homme : La place de l’économie dans l’histoire et la société [trad B C"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "d59d4daf9118bb32716098b7f00f0328",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4f8f09e6db31439399896568354c0f56",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "a97e6731b97b32372dc29020e1317b59"
+   },
+   "_comment": "famille 64 — « Raskin & Yermack 2016 — Digital currencies, decentralized ledgers, and the future of central banking » marqué doublon de « Raskin et Yermack 2016 » (a97e6731b97b32372dc29020e1317b59, canonique par DEGRÉ, deg=6). Entrée PDF : RASKIN Max et YERMACK David, 2016, « Digital currencies, decentralized ledgers, and the future of central bank"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "4f8f09e6db31439399896568354c0f56",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9531cc48ccec4fa3b4dec6e4ea90f907",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "4ed01f7542be4de9b53d4f30516ab5fb"
+   },
+   "_comment": "famille 65 — « Rauchs 2016 — Cryptocurrencies meeting business ecosystems » marqué doublon de « Rauchs 2016 » (4ed01f7542be4de9b53d4f30516ab5fb, canonique par DEGRÉ, deg=22). Entrée PDF : RAUCHS Michel, 2016, « Cryptocurrencies meeting business ecosystems : the case of bitcoin », https://papers.ss"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "9531cc48ccec4fa3b4dec6e4ea90f907",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c90459607fca4768b307d096e3e05378",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "9984b3924a284a1d881e34ffcf669c39"
+   },
+   "_comment": "famille 66 — « Rauchs et al. 2018 — Distributed Ledger Systems Conceptual Framework » marqué doublon de « Rauchs et al. 2018 » (9984b3924a284a1d881e34ffcf669c39, canonique par DEGRÉ, deg=14). Entrée PDF : RAUCHS Michel, GLIDDEN Andrew, GORDON Brian, PIETERS Gina, RECANATINI Martino, ROSTAND François, VAGNEUR Kathr"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "c90459607fca4768b307d096e3e05378",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "db27994d43c54873939c11e21dcf0ebe",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "6e2f338bb3bc4a04aa0fa3dfa8931318"
+   },
+   "_comment": "famille 67 — « Redman 2019b » marqué doublon de « Redman 2019b — Wrapped Bitcoin (WBTC) launch on Ethereum » (6e2f338bb3bc4a04aa0fa3dfa8931318, canonique par DEGRÉ, deg=29). Entrée PDF : REDMAN Jamie, 2019b, « The “Wrapped Bitcoin ” Project Has Now Officially Launched on Ethereum », https://news."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "db27994d43c54873939c11e21dcf0ebe",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "0ea689b1511b481e9df16233058bcce1",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "708e681a656d41fd9104328794cab822"
+   },
+   "_comment": "famille 68 — « Rolland & Slim 2017 » marqué doublon de « Rolland & Slim 2017 — Économie politique du Bitcoin » (708e681a656d41fd9104328794cab822, canonique par DEGRÉ, deg=28). Entrée PDF : ROLLAND Maël et SLIM Assen, 2017, « Économie politique du Bitcoin : l’institutionnalisation d’une monnaie sans"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "0ea689b1511b481e9df16233058bcce1",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b911a98badbc4c76bdb0df93b26ec47e",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "3737dd82ad0e4819aaacee0061c57c58"
+   },
+   "_comment": "famille 69 — « Rosenfeld 2012 — Colored Coins » marqué doublon de « Rosenfeld 2012 » (3737dd82ad0e4819aaacee0061c57c58, canonique par DEGRÉ, deg=4). Entrée PDF : ROSENFELD Meni, 2012, « Overview of Colored Coins », https://allquantor.at/blockchainbib/pdf/rosenfeld2012over"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b911a98badbc4c76bdb0df93b26ec47e",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e70690b67c514557baade09dd0410872",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "bcb6224ca258462e815df9678e1992b1"
+   },
+   "_comment": "famille 70 — « Russo 2020 Infinite Machine » marqué doublon de « Russo 2020 — The Infinite Machine Ethereum » (bcb6224ca258462e815df9678e1992b1, canonique par DEGRÉ, deg=32). Entrée PDF : RUSSO Camila, 2020, The Infinite Machine: How an Army of Crypto -Hackers Is Building the Next Internet with Et"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e70690b67c514557baade09dd0410872",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "89e4b24810e94abe98890e581be45e7d",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "2461f0fb8d904328aa1dfe60c5d547b8"
+   },
+   "_comment": "famille 73 — « Shin 2022 — The Cryptopians » marqué doublon de « Shin 2022 Cryptopians » (2461f0fb8d904328aa1dfe60c5d547b8, canonique par DEGRÉ, deg=14). Entrée PDF : SHIN Laura, 2022, The Cryptopians: Idealism, Greed, Lies, and the Making of the First Big Cryptocurrency Craze"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "89e4b24810e94abe98890e581be45e7d",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "a5f0ee04162d4434ba7329ac575da1e4",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "940fa052d3004315bb56e5785d746fe7"
+   },
+   "_comment": "famille 74 — « Star & Ruhleder 2010 — Vers une écologie de l'infrastructure » marqué doublon de « Star & Ruhleder 2010 » (940fa052d3004315bb56e5785d746fe7, canonique par DEGRÉ, deg=8). Entrée PDF : STAR Susan Leigh et RUHLEDER, K aren. (2010) . « Vers une écologie de l'infrastructure Conception et accès aux"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "a5f0ee04162d4434ba7329ac575da1e4",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e054a8412cf847b7b75c471e72bc414f",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "f9dffa750bf5466eb6ab2c836395672c"
+   },
+   "_comment": "famille 75 — « Star 1999 — Ethnography of Infrastructure » marqué doublon de « Star 1999 Ethnography Infrastructure » (f9dffa750bf5466eb6ab2c836395672c, canonique par DEGRÉ, deg=20). Entrée PDF : STAR Susan Leigh, 1999, « Ethnography of infrastructure », American Behavioral Scientist , 1999, vol. 43, p. 3"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e054a8412cf847b7b75c471e72bc414f",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e030d16a8f2c28d30382cb57c6ea6b61",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "9aa951e44e7c4548b534561d9413f5d3"
+   },
+   "_comment": "famille 76 — « Stiglitz 2017 » marqué doublon de « Stiglitz 2017 — Bitcoin ought to be outlawed (Bloomberg) » (9aa951e44e7c4548b534561d9413f5d3, canonique par DEGRÉ, deg=23). Entrée PDF : « Bitcoin ‘Ought to Be Outlawed,’ Nobel Prize Winner Stiglitz Says - Bloomberg », 29 novembre 2017, https://ww"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e030d16a8f2c28d30382cb57c6ea6b61",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "a5deed892210461c9bddf8a8e3485537",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "22c9a9932b054b36959436c08c50d93e"
+   },
+   "_comment": "famille 77 — « Theret 2008 Etats de la monnaie » marqué doublon de « Théret 2008 — Les trois états de la monnaie » (22c9a9932b054b36959436c08c50d93e, canonique par DEGRÉ, deg=14). Entrée PDF : THÉRET Bruno, 2008, « Les trois états de la monnaie », Revue économique, 2008, vol. 59, no 4, p.813- 840."
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "a5deed892210461c9bddf8a8e3485537",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "dd5827d0f60ca83da5c8790159348427",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "eee5305b0f8a4c3ca93b4a37257c1be2"
+   },
+   "_comment": "famille 79 — « Wirdum 2014 » marqué doublon de « Van Wirdum 2014 — The democratization of finance through Bitcoin » (eee5305b0f8a4c3ca93b4a37257c1be2, canonique par DEGRÉ, deg=24). Entrée PDF : WIRDUM Aaron van, 2014, « Why Bitcoin Really Does Represent the Democratization of Money », Bitcoin Magazine ,"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "dd5827d0f60ca83da5c8790159348427",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "354839e9e88649b1bfc42d89d28d1a84",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "b84ba9333dae45b79c193be327fb769a"
+   },
+   "_comment": "famille 80 — « Vergne & Swain 2017 Anarchic Categories » marqué doublon de « Vergne & Swain 2017 — Categorical Anarchy Bitcoin British Media » (b84ba9333dae45b79c193be327fb769a, canonique par DEGRÉ, deg=21). Entrée PDF : VERGNE Jean Philippe et SWAIN Gautam, 2017, « Categorical Anarchy in the U.K. The British Media’s Classificati"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "354839e9e88649b1bfc42d89d28d1a84",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "aa7f659399b34095acee25ec65ecef41",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "7486621579b552edc8aed12feed95ddf"
+   },
+   "_comment": "famille 81 — « Von Mises 1912 — The Theory of Money and Credit » marqué doublon de « Von Mises 1912 » (7486621579b552edc8aed12feed95ddf, canonique par DEGRÉ, deg=3). Entrée PDF : VON MISES Ludwig, 1912, The theory of money and credit, New Haven, Yale University Press, 1953, Auburn, Alabam"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "aa7f659399b34095acee25ec65ecef41",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b4c29d75b01748fe9b457b73e0b045f3",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "5b4b67bbe5774f5d97833c0e02d10f3a"
+   },
+   "_comment": "famille 84 — « Wilcke 2016 — To Fork or not to Fork » marqué doublon de « Wilcke 2016 Hard Fork » (5b4b67bbe5774f5d97833c0e02d10f3a, canonique par DEGRÉ, deg=6). Entrée PDF : WILCKE Jeffrey, 2016, « To Fork or not to Fork », https://blog.ethereum.org/2016/07/15/to-Fork-or- not-to-Fork"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "b4c29d75b01748fe9b457b73e0b045f3",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e000d5189ed14e2ab391bd42d79a7426",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "e57bb7366c66490b82597a1edab3d016"
+   },
+   "_comment": "famille 85 — « Van Wirdum 2019 — Stratum V2: next generation mining protocol » marqué doublon de « Wirdum 2019 » (e57bb7366c66490b82597a1edab3d016, canonique par DEGRÉ, deg=8). Entrée PDF : WIRDUM Aaron van, 2019, « Stratum V2 Could Overhaul Pooled Bitcoin Mining », Bitcoin Magazine, https://bitcoin"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "e000d5189ed14e2ab391bd42d79a7426",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "462ca3c2907a45f0a4ef51d3bddbf906",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "4d5634d4359646c9cd1ee839036724eb"
+   },
+   "_comment": "famille 87 — « Wood 2014 Yellow Paper » marqué doublon de « Yellow Paper (Ethereum, Gavin Wood 2014) » (4d5634d4359646c9cd1ee839036724eb, canonique par DEGRÉ, deg=32). Entrée PDF : WOOD Gavin, 2014b, « “Yellow paper” : Ethereum: A Secure Decentralised Generalised Transaction Ledger (Version"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "462ca3c2907a45f0a4ef51d3bddbf906",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "0dca90d7ef1f4ec8a2c44b20b3bbf668",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "cd4ebb49a5854494a4df0bb45e292369"
+   },
+   "_comment": "famille 88 — « Yermack 2013 Real Currency » marqué doublon de « Yermack 2013 — Is Bitcoin a real currency » (cd4ebb49a5854494a4df0bb45e292369, canonique par DEGRÉ, deg=24). Entrée PDF : YERMACK David, 2013, « Is bitcoin a real currency? An economic appraisal », National Bureau of Economic Resear"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "0dca90d7ef1f4ec8a2c44b20b3bbf668",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "bc1361982acc4dff8ee8d5a270e61f34",
+   "attributeId": "duplicateOf",
+   "value": {
+    "type": "TEXT",
+    "value": "c89bf93708224ac481afb22a55ca5362"
+   },
+   "_comment": "famille 89 — « Zelizer 1989 — Social Meaning of Money Special Monies » marqué doublon de « Zelizer 1989 » (c89bf93708224ac481afb22a55ca5362, canonique par DEGRÉ, deg=13). Entrée PDF : ZELIZER Viviana A ., 1989, « The Social Meaning of Money : “Special Monies” », The American Journal of Sociolo"
+  },
+  {
+   "type": "SET_ATTRIBUTE",
+   "entityId": "bc1361982acc4dff8ee8d5a270e61f34",
+   "attributeId": "reviewStatus",
+   "value": {
+    "type": "TEXT",
+    "value": "pending-author"
+   }
+  }
+ ]
+}

@@ -11,6 +11,10 @@ dans le CSV.
 | `poids-ancrage-diagnostic-v110.csv` | `grc20-poids-ancrage-v2.md` |
 | `anchoring-baseline.json` | `scripts/check_anchoring.py` (régressions acceptées, motivées) |
 | `bibliographie-reconciliation-v109.csv` | `grc20-bibliographie-reconciliation-v1.md` |
+| `bibliographie-18-fiches-douteuses-v1.csv` | `grc20-bibliographie-reconciliation-lab-v1.md` (tri alphabétique stable, aucun horodatage ; contient **22** fiches malgré le « 18 » du nom, hérité du périmètre du patch_18 — 18 douteuses + 4 homonymie/multi-auteurs) |
+| `bibliographie-doublons-familles-v1.csv` | `grc20-bibliographie-reconciliation-lab-v1.md` (tri par famille_id ; cible de fusion ≠ libellé final — lire § 3) |
+| `bibliographie-entrees-sans-noeud-v1.csv` | `grc20-bibliographie-reconciliation-lab-v1.md` (tri par patronyme_annee ; lignes NAKAMOTO 2010F et ORLEAN 2002 corrigées par la revue hostile du 2026-08-07) |
+| `bibliographie-parasites-et-jamais-cites-v1.csv` | `grc20-bibliographie-reconciliation-lab-v1.md` (tri par nom) |
 | `catalogue-evenements-v2-fusion.csv`, `chronologie-domaines-decodee.csv`, `chronology-events-*.csv`, `added-events-from-chronology.csv`, `rejected-or-ambiguous-chronology-events.csv`, `dates-verification-externe.csv` | `grc20-chronologie-domaines-decodage.md`, `grc20-add-missing-events/`, `grc20-dedup-events-audit-v1.md` |
 | `domaines-divergences.csv` | `grc20-domaines-developpement-v1.md` |
 | `doublons-verifies.csv` | `grc20-dedup-events-audit-v1.md` |
