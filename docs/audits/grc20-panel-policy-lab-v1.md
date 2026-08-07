@@ -123,10 +123,11 @@ panneaux** (source : `panel-policy-impact-v110.csv`, colonne
 | *direct strict* (repère hors CSV, lignes brutes) | *294/648 (45 %)* | *viderait glossaire_preamble, amputerait conclu_traduction et intro_E (§ 3.1)* | *non mesuré ici* | *seul cas où des panneaux se vident réellement* |
 
 Le repère *direct strict* reproduit exactement le chiffre de
-`build_anchor_weights.py --impact` (auto-contrôle imprimé par le script à
-chaque exécution) — les deux outils se valident l'un l'autre sur la
-formule ; sa base (648 places, 54 clés brutes) n'est **pas** comparable
-ligne à ligne aux 660 places de la simulation lecteur.
+`build_anchor_weights.py --impact` (auto-contrôle **bloquant** : le script
+échoue avec un code non nul si la valeur attendue versionnée — 294/648
+pour v110 — n'est pas reproduite) — les deux outils se valident l'un
+l'autre sur la formule ; sa base (648 places, 54 clés brutes) n'est
+**pas** comparable ligne à ligne aux 660 places de la simulation lecteur.
 
 Sur la baseline fidèle, l'ordre des politiques change par rapport à la
 première version : `hybrid-cautious` (372) passe **devant** `direct-count`
@@ -139,9 +140,9 @@ dominent déjà le classement legacy. Les dix panneaux agrégés survivent entre
 ### 3.1 Sections pauvres en candidats mesurés
 
 Trois sections ont moins de 3 lignes à `direct_anchor_count` ≥ 1 (colonne
-`measured_candidates` du CSV) : **glossaire_preamble (0** — sa plage de
-texte n'est pas dérivable, `direct` est `null` partout —**),
-conclu_traduction (2), intro_E (2)**. Le panneau agrégé `conclu_theo` n'a
+`measured_candidates` du CSV) : **glossaire_preamble (0)** — sa plage de
+texte n'est pas dérivable, `direct` est `null` partout —,
+**conclu_traduction (2)** et **intro_E (2)**. Le panneau agrégé `conclu_theo` n'a
 que 6 candidats mesurés (hérités de `conclu_theo_mon`, sa seule
 contributrice). Sous `direct-count`, le fallback legacy remplit ces
 panneaux ; la variante stricte les vidait. C'est la raison d'être du

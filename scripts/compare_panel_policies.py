@@ -104,6 +104,11 @@ POLITIQUES = ('diagnostic-only', 'direct-count', 'hybrid-cautious',
 # des parentes `panelLabFusionneLigne`, `?? 4`).
 CLASSE_STATUT = {'self': 0, 'self-base': 1, 'proxy': 2, 'no-snippet': 3}
 SEPARATEURS = ('.', '_')
+# Valeur attendue de l'auto-controle formule par version de graphe
+# (survivants, total), etablie par build_anchor_weights.py --impact au
+# --top 12 du lecteur. Le controle ECHOUE si le chiffre devie ; pour une
+# nouvelle version, etablir le chiffre avec --impact puis l'ajouter ici.
+ATTENDU_FORMULE = {110: (294, 648)}
 
 
 def charge_json(chemin, quoi):
@@ -396,6 +401,28 @@ def main(argv=None):
           f"simulation lecteur) :\n  direct STRICT vs legacy brut : "
           f"{surv_strict}/{tot_strict} ({100 * surv_strict // (tot_strict or 1)} %) "
           f"— doit reproduire build_anchor_weights.py --impact")
+    # Le controle est BLOQUANT : un chiffre qui devie signifie que la formule
+    # ou les donnees ont change, et la simulation ne vaudrait plus reference.
+    # La valeur attendue est versionnee (etablie par build_anchor_weights.py
+    # --impact sur la meme version) ; elle n'a de sens qu'au --top du lecteur.
+    attendu = ATTENDU_FORMULE.get(version)
+    if attendu and top == 12:
+        if (surv_strict, tot_strict) != attendu:
+            print(f"ECHEC (donnees) : auto-controle formule "
+                  f"{surv_strict}/{tot_strict} au lieu de "
+                  f"{attendu[0]}/{attendu[1]} attendu pour v{version} — "
+                  f"comparer a build_anchor_weights.py --impact avant de se "
+                  f"fier a la simulation.", file=sys.stderr)
+            return 1
+        print(f"  conforme a la valeur attendue v{version} "
+              f"({attendu[0]}/{attendu[1]})")
+    elif top != 12:
+        print("  (controle non bloquant : --top != 12, la valeur de "
+              "reference ne s'applique pas)")
+    else:
+        print(f"  ATTENTION : aucune valeur de reference versionnee pour "
+              f"v{version} — etablir le chiffre avec build_anchor_weights.py "
+              f"--impact et l'ajouter a ATTENDU_FORMULE.")
     print(f"\nsections avec < 3 candidats mesures : {len(sections_pauvres)} "
           f"({', '.join(f'{c} ({m})' for c, m in sections_pauvres)})")
     for pol in POLITIQUES:

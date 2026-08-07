@@ -868,6 +868,10 @@ body::before {
   padding: 2px 0; cursor: pointer;
 }
 .panel-lab-item:hover .panel-lab-nom { color: var(--gold); }
+.panel-lab-item:focus-visible {
+  outline: 1px dashed var(--gold);
+  outline-offset: 1px;
+}
 .panel-lab-rang { min-width: 2em; text-align: right; color: var(--gold-dim); }
 .panel-lab-pin  { color: var(--gold); }
 .panel-lab-nom  { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -1912,9 +1916,15 @@ function panelLabRender(sectionKey, finalIds, overrideSet) {
     const ligne  = lignes[eid];
     const statut = ligne?.snippet_status || null;
     const direct = ligne?.direct_anchor_count;
+    const nomTexte = state.entityMap[eid]?.name || ligne?.entity_name || eid;
     const item = document.createElement('div');
     item.className = 'panel-lab-item';
     item.dataset.entityId = eid;
+    // Accessibilité clavier : la liste lab est cliquable, elle doit aussi
+    // être atteignable et actionnable au clavier (Enter / Espace).
+    item.setAttribute('role', 'button');
+    item.tabIndex = 0;
+    item.setAttribute('aria-label', `Ouvrir la fiche de ${nomTexte}`);
 
     const rang = document.createElement('span');
     rang.className   = 'panel-lab-rang';
@@ -1926,7 +1936,7 @@ function panelLabRender(sectionKey, finalIds, overrideSet) {
 
     const nom = document.createElement('span');
     nom.className   = 'panel-lab-nom';
-    nom.textContent = state.entityMap[eid]?.name || ligne?.entity_name || eid;
+    nom.textContent = nomTexte;
 
     const badge = document.createElement('span');
     badge.className   = 'panel-lab-badge' + (statut ? ` panel-lab-st-${statut}` : '');
@@ -1935,6 +1945,12 @@ function panelLabRender(sectionKey, finalIds, overrideSet) {
 
     item.append(rang, nom, badge);
     item.addEventListener('click', () => openEntityPanel(eid));
+    item.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();   // Espace ne doit pas faire défiler la liste
+        openEntityPanel(eid);
+      }
+    });
     list.appendChild(item);
   });
 }
