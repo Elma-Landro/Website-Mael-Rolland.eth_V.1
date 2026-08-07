@@ -1,11 +1,11 @@
 {
   "_meta": {
-    "source_graph": "grc20-these-mael-rolland-v109.json",
-    "date": "2026-08-06",
+    "source_graph": "grc20-these-mael-rolland-v110.json",
+    "date": "2026-08-07",
     "generated_by": "scripts/build_properties_registry.py",
     "id_scheme": "md5('grc20-property-v1|' + key), 32 hexa minuscules",
     "entry_count": 338,
-    "conventions": "Le registre decrit v109 tel qu'il est : `count` et `domain` sont mesures sur le graphe source. `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de patch_19_attribute_normalisation.json (etat normatif) ; les trois cles que ce patch fait disparaitre restent inscrites avec status='deprecated' et `supersededBy` nommant la cle qui les remplace. `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
+    "conventions": "Le registre decrit le graphe source tel qu'il est : `count` et `domain` sont mesures sur lui. Si le graphe source n'a pas encore integre patch_19_attribute_normalisation.json (detection par les donnees), `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de ce patch (etat normatif) ; sinon l'etape est sans objet. Les trois cles que ce patch a retirees restent inscrites avec status='deprecated', count 0, `supersededBy` nommant la cle qui les remplace et leurs comptes historiques v109 dans `notes` — trace d'audit explicite (arbitrage Q2-b du 2026-08-07). `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
   },
   "entries": [
     {
@@ -340,6 +340,7 @@
         "scripts/make_v107_wire_chapter_I_tree.py",
         "scripts/match_chronology_events.py",
         "scripts/polish_v105_editorial.py",
+        "scripts/preflight_candidate_patches.py",
         "scripts/verif_doublons.py",
         "sitemap.html",
         "these.html"
@@ -721,6 +722,7 @@
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/plan_section_migration.py",
+        "scripts/preflight_candidate_patches.py",
         "scripts/remap_section_keys.py",
         "scripts/sourcequote-migration/apply.mjs",
         "scripts/verif_doublons.py"
@@ -830,9 +832,11 @@
       "readBy": [
         "graphe.html",
         "lecteur.html",
+        "scripts/build_anchor_weights.py",
         "scripts/build_section_headings_map.py",
         "scripts/check_anchoring.py",
         "scripts/check_graph_integrity.py",
+        "scripts/compare_panel_policies.py",
         "scripts/derive_section_tree.py",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
@@ -1031,7 +1035,7 @@
         "Concept",
         "ThesisSection"
       ],
-      "count": 49,
+      "count": 50,
       "status": "structural",
       "readBy": [
         "scripts/make_section_creation_patch.py"
@@ -1168,8 +1172,10 @@
         "StakeholderGroup"
       ],
       "count": 40,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "lecteur.html"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -1486,28 +1492,6 @@
       "notes": ""
     },
     {
-      "key": "organisateur",
-      "id": "6c243da87b7edcc14d776d7779284fec",
-      "valueType": "TEXT",
-      "language": "fr",
-      "domain": [
-        "PrimarySource"
-      ],
-      "count": 27,
-      "status": "editorial",
-      "readBy": [],
-      "vocabulary": [
-        "Asseth",
-        "Bitcoin",
-        "Bitcoin-Paris",
-        "Cercle du Coin",
-        "Chaintech",
-        "Ethereum"
-      ],
-      "derivedFrom": null,
-      "notes": "patch_19 supprime 1 valeur vide ; la cle reste active (26 porteurs)."
-    },
-    {
       "key": "rolesEcosysteme",
       "id": "490743f6c33f7237c84c86ce54805f67",
       "valueType": "TEXT",
@@ -1582,8 +1566,7 @@
       "valueType": "TEXT",
       "language": "fr",
       "domain": [
-        "Person",
-        "Reference"
+        "Person"
       ],
       "count": 26,
       "status": "editorial",
@@ -1614,6 +1597,28 @@
       ],
       "derivedFrom": null,
       "notes": ""
+    },
+    {
+      "key": "organisateur",
+      "id": "6c243da87b7edcc14d776d7779284fec",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 26,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": [
+        "Asseth",
+        "Bitcoin",
+        "Bitcoin-Paris",
+        "Cercle du Coin",
+        "Chaintech",
+        "Ethereum"
+      ],
+      "derivedFrom": null,
+      "notes": "patch_19 supprime 1 valeur vide ; la cle reste active (26 porteurs)."
     },
     {
       "key": "seriesNumber",
@@ -1648,22 +1653,6 @@
       ],
       "derivedFrom": null,
       "notes": ""
-    },
-    {
-      "key": "nomEnquete",
-      "id": "134cf435f11611558250866fb00d939f",
-      "valueType": "TEXT",
-      "language": "fr",
-      "domain": [
-        "PrimarySource"
-      ],
-      "count": 23,
-      "status": "deprecated",
-      "readBy": [],
-      "vocabulary": null,
-      "derivedFrom": null,
-      "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `interviewName`.",
-      "supersededBy": "interviewName"
     },
     {
       "key": "period",
@@ -1789,8 +1778,7 @@
       "valueType": "TEXT",
       "language": "en",
       "domain": [
-        "Person",
-        "Reference"
+        "Person"
       ],
       "count": 17,
       "status": "editorial",
@@ -2822,8 +2810,10 @@
         "StakeholderGroup"
       ],
       "count": 3,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/preflight_candidate_patches.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2841,6 +2831,7 @@
       "status": "structural",
       "readBy": [
         "scripts/make_v105_dedup_events.py",
+        "scripts/preflight_candidate_patches.py",
         "scripts/verif_doublons.py"
       ],
       "vocabulary": null,
@@ -3136,6 +3127,22 @@
       "notes": ""
     },
     {
+      "key": "concept_source",
+      "id": "92e234d20c526bf1b9a3d26ffa79f3f0",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method",
+        "NarrativeCluster"
+      ],
+      "count": 2,
+      "status": "editorial",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": ""
+    },
+    {
       "key": "consensus",
       "id": "3ebba693d3071ec75aeb167531e31eac",
       "valueType": "TEXT",
@@ -3268,7 +3275,8 @@
       "status": "structural",
       "readBy": [
         "crisis-fr.html",
-        "crisis.html"
+        "crisis.html",
+        "scripts/build_anchor_weights.py"
       ],
       "vocabulary": null,
       "derivedFrom": null,
@@ -3812,22 +3820,6 @@
       "notes": ""
     },
     {
-      "key": "centralArgument",
-      "id": "a2d2004109194a6ca01a483416934ffa",
-      "valueType": "TEXT",
-      "language": "fr",
-      "domain": [
-        "Concept"
-      ],
-      "count": 1,
-      "status": "deprecated",
-      "readBy": [],
-      "vocabulary": null,
-      "derivedFrom": null,
-      "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `central_argument`.",
-      "supersededBy": "central_argument"
-    },
-    {
       "key": "clients",
       "id": "43bd679b0c63e22c0593e57b2964d486",
       "valueType": "TEXT",
@@ -3909,37 +3901,6 @@
       "language": "fr",
       "domain": [
         "Concept"
-      ],
-      "count": 1,
-      "status": "editorial",
-      "readBy": [],
-      "vocabulary": null,
-      "derivedFrom": null,
-      "notes": ""
-    },
-    {
-      "key": "conceptSource",
-      "id": "91d269606d473902378851943bf31aa2",
-      "valueType": "TEXT",
-      "language": "fr",
-      "domain": [
-        "Method"
-      ],
-      "count": 1,
-      "status": "deprecated",
-      "readBy": [],
-      "vocabulary": null,
-      "derivedFrom": null,
-      "notes": "Depreciee par patch_19 (deposee, non appliquee) : remplacee par `concept_source`.",
-      "supersededBy": "concept_source"
-    },
-    {
-      "key": "concept_source",
-      "id": "92e234d20c526bf1b9a3d26ffa79f3f0",
-      "valueType": "TEXT",
-      "language": "fr",
-      "domain": [
-        "NarrativeCluster"
       ],
       "count": 1,
       "status": "editorial",
@@ -5957,6 +5918,54 @@
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
+    },
+    {
+      "key": "centralArgument",
+      "id": "a2d2004109194a6ca01a483416934ffa",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Concept"
+      ],
+      "count": 0,
+      "status": "deprecated",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Cle historique, retiree du graphe par patch_19 (integre depuis v110) : remplacee par `central_argument`. Comptes historiques v109 : 1 porteur(s), domaine Concept. Conservee au registre comme trace d'audit (arbitrage Q2-b du 2026-08-07).",
+      "supersededBy": "central_argument"
+    },
+    {
+      "key": "conceptSource",
+      "id": "91d269606d473902378851943bf31aa2",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "Method"
+      ],
+      "count": 0,
+      "status": "deprecated",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Cle historique, retiree du graphe par patch_19 (integre depuis v110) : remplacee par `concept_source`. Comptes historiques v109 : 1 porteur(s), domaine Method. Conservee au registre comme trace d'audit (arbitrage Q2-b du 2026-08-07).",
+      "supersededBy": "concept_source"
+    },
+    {
+      "key": "nomEnquete",
+      "id": "134cf435f11611558250866fb00d939f",
+      "valueType": "TEXT",
+      "language": "fr",
+      "domain": [
+        "PrimarySource"
+      ],
+      "count": 0,
+      "status": "deprecated",
+      "readBy": [],
+      "vocabulary": null,
+      "derivedFrom": null,
+      "notes": "Cle historique, retiree du graphe par patch_19 (integre depuis v110) : remplacee par `interviewName`. Comptes historiques v109 : 23 porteur(s), domaine PrimarySource. Conservee au registre comme trace d'audit (arbitrage Q2-b du 2026-08-07).",
+      "supersededBy": "interviewName"
     }
   ]
 }

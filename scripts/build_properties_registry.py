@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Construit grc20-properties-registry-v1.json : le registre des cles
-d'attributs d'entites de grc20-these-mael-rolland-v109.json.
+d'attributs d'entites du graphe GRC-20 courant.
 
 Pourquoi ce registre : aucun endroit du depot ne declare les cles
 d'attributs. `grc20-publish.mjs` emet la cle brute comme identifiant de
@@ -9,23 +9,26 @@ propriete (« a mapper vers un ID de propriete si defini dans le Space »),
 ce qui bloque toute publication propre. Ce fichier donne a chaque cle un
 identifiant stable, un type de valeur, et un statut d'usage constatable.
 
-Le registre decrit v109 TEL QU'IL EST, avec une nuance assumee :
-patch_19_attribute_normalisation.json (depose, non applique) corrige des
-VALEURS, pas des cles — sauf deux renommages (centralArgument →
-central_argument, conceptSource → concept_source) et une deduplication
-(nomEnquete, absorbee par interviewName). Ces trois cles sont donc gardees
-avec status='deprecated' et un champ `supersededBy` qui nomme la cle
-survivante. Pour toutes les autres, `valueType`, `language` et
-`vocabulary` sont calcules APRES application en memoire de patch_19 :
-c'est l'etat normatif vers lequel le graphe converge. `count` et `domain`
-restent ceux de v109 tel quel.
+Revision du 2026-08-07 (arbitrage de Mael, lot 1 Q2) : la source n'est
+plus codee en dur — defaut = le graphe le plus recent du depot,
+surchargeable par --source. patch_19 n'est applique en memoire QUE si le
+graphe source ne l'a pas deja integre (detection par les donnees : la
+presence des cles que ce patch fait disparaitre) — depuis v110 il est
+integre, l'etape est donc sans objet et sautee. Les trois cles retirees
+par patch_19 restent inscrites au registre comme HISTORIQUE explicite
+(status='deprecated', count 0 sur le graphe courant, comptes historiques
+v109 dans notes) : une trace d'audit, pas un dechet — c'est l'arbitrage
+Q2-b. Un mode --check regenere en memoire et compare au fichier commite
+(controle de fraicheur, appele par la CI — arbitrage Q5-a).
 
 Rejouable : meme sortie octet pour octet a re-execution (aucun
-horodatage variable ; la date de `_meta` est figee au jour de l'audit).
+horodatage variable ; la date de `_meta` est figee au jour de la
+derniere revision du registre).
 
 Usage :
     python3 scripts/build_properties_registry.py
-    python3 scripts/build_properties_registry.py --repo .
+    python3 scripts/build_properties_registry.py --source grc20-these-mael-rolland-v110.json
+    python3 scripts/build_properties_registry.py --check
 """
 import argparse
 import collections
@@ -36,10 +39,12 @@ import os
 import re
 import sys
 
-SOURCE = 'grc20-these-mael-rolland-v109.json'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from grc20_commun import graphe_le_plus_recent  # noqa: E402
+
 PATCH = 'patch_19_attribute_normalisation.json'
 SORTIE = 'grc20-properties-registry-v1.json'
-DATE_AUDIT = '2026-08-06'
+DATE_AUDIT = '2026-08-07'
 
 # Renommages/absorptions portes par patch_19 : la cle depreciee → la cle
 # qui la remplace. C'est la seule connaissance non deduite du graphe.
@@ -47,6 +52,19 @@ SUPERSEDED_BY = {
     'nomEnquete': 'interviewName',
     'centralArgument': 'central_argument',
     'conceptSource': 'concept_source',
+}
+
+# HISTORIQUE explicite (arbitrage Q2-b) : quand une cle de SUPERSEDED_BY a
+# entierement disparu du graphe source (patch_19 integre), son entree
+# subsiste au registre avec ces donnees historiques, mesurees sur v109 —
+# la derniere version qui les portait.
+HISTORIQUE_DEPRECIEES = {
+    'nomEnquete': {'valueType': 'TEXT', 'language': 'fr',
+                   'domain': ['PrimarySource'], 'count_v109': 23},
+    'centralArgument': {'valueType': 'TEXT', 'language': 'fr',
+                        'domain': ['Concept'], 'count_v109': 1},
+    'conceptSource': {'valueType': 'TEXT', 'language': 'fr',
+                      'domain': ['Method'], 'count_v109': 1},
 }
 
 # Anomalies constatees, notees sans etre tranchees. Le registre NE fusionne
@@ -242,9 +260,24 @@ def main(argv=None):
     p = argparse.ArgumentParser(description="Registre des cles d'attributs.")
     p.add_argument('--repo', default=os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))))
+    p.add_argument('--source', default=None,
+                   help="graphe source (defaut : le plus recent du depot)")
+    p.add_argument('--check', action='store_true',
+                   help="regenere en memoire et compare au registre commite "
+                        "— echoue (code 1) s'ils divergent (fraicheur, CI)")
     args = p.parse_args(argv)
 
-    with open(os.path.join(args.repo, SOURCE), encoding='utf-8') as fh:
+    chemin_source = args.source or graphe_le_plus_recent(args.repo)
+    if not os.path.isabs(chemin_source):
+        candidat = os.path.join(args.repo, chemin_source)
+        if os.path.exists(candidat):
+            chemin_source = candidat
+    if not os.path.exists(chemin_source):
+        print(f"ECHEC : graphe source introuvable : {chemin_source}",
+              file=sys.stderr)
+        return 2
+    source_nom = os.path.basename(chemin_source)
+    with open(chemin_source, encoding='utf-8') as fh:
         g = json.load(fh)
     entites = g['entities']
 
@@ -259,14 +292,20 @@ def main(argv=None):
             for t in (e.get('types') or []):
                 domaines[k].add(nom_type.get(t, t))
 
-    # etat apres patch_19 (en memoire, sur copie)
-    chemin_patch = os.path.join(args.repo, PATCH)
+    # patch_19 : applique en memoire SEULEMENT si le graphe source ne l'a
+    # pas deja integre. Detection par les donnees, pas par le numero de
+    # version : les cles que ce patch fait disparaitre sont-elles encore
+    # portees ? (v109 : oui ; v110 et suivants : non, patch integre par
+    # make_v110 — l'appliquer une seconde fois serait sans objet.)
+    patch_integre = not any(k in avant for k in SUPERSEDED_BY)
     apres = avant
-    if not os.path.exists(chemin_patch):
-        print(f"ECHEC : {PATCH} introuvable — le registre decrirait l'etat "
-              f"AVANT patch en se donnant pour l'etat apres.", file=sys.stderr)
-        return 2
-    if os.path.exists(chemin_patch):
+    if not patch_integre:
+        chemin_patch = os.path.join(args.repo, PATCH)
+        if not os.path.exists(chemin_patch):
+            print(f"ECHEC : {PATCH} introuvable — le registre decrirait "
+                  f"l'etat AVANT patch en se donnant pour l'etat apres.",
+                  file=sys.stderr)
+            return 2
         copie = json.loads(json.dumps(entites))
         with open(chemin_patch, encoding='utf-8') as fh:
             appliquer_patch(copie, json.load(fh))
@@ -275,7 +314,9 @@ def main(argv=None):
             for k, v in attrs(e).items():
                 apres[k].append(v)
 
-    lecteurs = read_by(set(avant), args.repo)
+    # les cles depreciees participent au balayage readBy meme quand elles
+    # ont quitte le graphe : un code qui les nomme encore doit se voir.
+    lecteurs = read_by(set(avant) | set(SUPERSEDED_BY), args.repo)
 
     derivations = {}
     if derive_source_page(entites):
@@ -315,23 +356,56 @@ def main(argv=None):
             entree['notes'] = (entree['notes'] + ' ' + complement).strip()
         entrees.append(entree)
 
+    # HISTORIQUE explicite (arbitrage Q2-b) : les cles retirees du graphe
+    # par patch_19 restent inscrites, comme trace d'audit.
+    if patch_integre:
+        for k in sorted(HISTORIQUE_DEPRECIEES):
+            if k in avant:
+                continue
+            h = HISTORIQUE_DEPRECIEES[k]
+            entrees.append({
+                'key': k,
+                'id': cle_id(k),
+                'valueType': h['valueType'],
+                'language': h['language'],
+                'domain': list(h['domain']),
+                'count': 0,
+                'status': 'deprecated',
+                'readBy': lecteurs.get(k, []),
+                'vocabulary': None,
+                'derivedFrom': None,
+                'notes': (f"Cle historique, retiree du graphe par patch_19 "
+                          f"(integre depuis v110) : remplacee par "
+                          f"`{SUPERSEDED_BY[k]}`. Comptes historiques v109 : "
+                          f"{h['count_v109']} porteur(s), domaine "
+                          f"{'/'.join(h['domain'])}. Conservee au registre "
+                          f"comme trace d'audit (arbitrage Q2-b du "
+                          f"2026-08-07)."),
+                'supersededBy': SUPERSEDED_BY[k],
+            })
+
     entrees.sort(key=lambda x: (-x['count'], x['key']))
 
     registre = {
         '_meta': {
-            'source_graph': SOURCE,
+            'source_graph': source_nom,
             'date': DATE_AUDIT,
             'generated_by': 'scripts/build_properties_registry.py',
             'id_scheme': "md5('grc20-property-v1|' + key), 32 hexa minuscules",
             'entry_count': len(entrees),
             'conventions': (
-                "Le registre decrit v109 tel qu'il est : `count` et `domain` "
-                "sont mesures sur le graphe source. `valueType`, `language` "
-                "et `vocabulary` sont calcules apres application en memoire "
-                "de patch_19_attribute_normalisation.json (etat normatif) ; "
-                "les trois cles que ce patch fait disparaitre restent "
-                "inscrites avec status='deprecated' et `supersededBy` nommant "
-                "la cle qui les remplace. `language` est la langue "
+                "Le registre decrit le graphe source tel qu'il est : "
+                "`count` et `domain` sont mesures sur lui. Si le graphe "
+                "source n'a pas encore integre "
+                "patch_19_attribute_normalisation.json (detection par les "
+                "donnees), `valueType`, `language` et `vocabulary` sont "
+                "calcules apres application en memoire de ce patch (etat "
+                "normatif) ; sinon l'etape est sans objet. Les trois cles "
+                "que ce patch a retirees restent inscrites avec "
+                "status='deprecated', count 0, `supersededBy` nommant la "
+                "cle qui les remplace et leurs comptes historiques v109 "
+                "dans `notes` — trace d'audit explicite (arbitrage Q2-b du "
+                "2026-08-07). `language` est la langue "
                 "majoritaire des options (null si aucune ou egalite). "
                 "`vocabulary` est la liste close des valeurs si <= 8 valeurs "
                 "distinctes ET >= 10 porteurs, sinon null. `status` vaut "
@@ -347,10 +421,27 @@ def main(argv=None):
         'entries': entrees,
     }
     sortie = os.path.join(args.repo, SORTIE)
+    if args.check:
+        if not os.path.exists(sortie):
+            print(f"ECHEC : registre commite introuvable : {sortie}",
+                  file=sys.stderr)
+            return 2
+        with open(sortie, encoding='utf-8') as fh:
+            disque = json.load(fh)
+        if disque != registre:
+            print("--check : le registre commite N'EST PAS la sortie du "
+                  "generateur sur le graphe courant — regenerer avec "
+                  "scripts/build_properties_registry.py (fraicheur, "
+                  "arbitrage Q5-a).", file=sys.stderr)
+            return 1
+        print("--check : le registre est a jour "
+              f"({len(entrees)} entrees, source {source_nom}).")
+        return 0
     with open(sortie, 'w', encoding='utf-8') as fh:
         json.dump(registre, fh, ensure_ascii=False, indent=2)
         fh.write('\n')
-    print('ecrit %s (%d entrees)' % (sortie, len(entrees)))
+    print('ecrit %s (%d entrees, source %s)' % (sortie, len(entrees),
+                                                source_nom))
     stats = collections.Counter(e['status'] for e in entrees)
     print('statuts :', dict(sorted(stats.items())))
     return 0

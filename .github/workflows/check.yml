@@ -71,6 +71,20 @@ jobs:
       - name: Poids d'ancrage a jour
         run: python3 scripts/build_anchor_weights.py --check
 
+      # Fraicheur du registre des proprietes (arbitrage Q5-a du 2026-08-07) :
+      # la CI ne verifie par ailleurs que la PRESENCE des cles au registre,
+      # jamais domain/count — sans ce controle, un registre perime resterait
+      # silencieusement vert (le trou mis au jour par le preflight lab).
+      - name: Registre des proprietes a jour
+        run: python3 scripts/build_properties_registry.py --check
+
+      # Preflight des patchs candidats (arbitrage Q5-b) : policy CANDIDATE
+      # conservee, entityIds vivants, comptes exacts, pas de chaine
+      # duplicateOf — un candidat qui perime ou perd son marquage doit se
+      # voir avant tout merge, pas au moment d'une application.
+      - name: Preflight des patchs candidats
+        run: python3 scripts/preflight_candidate_patches.py
+
       - name: Recapitulatif
         if: always()
         run: |

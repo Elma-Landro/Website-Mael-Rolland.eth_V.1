@@ -11,13 +11,13 @@
   "registre": "grc20-properties-registry-v1.json",
   "source_graph": "grc20-these-mael-rolland-v110.json",
   "provenance": {
-   "description": "empreintes SHA-256 des entrees au moment de la production du rapport — le rapport n'a pas de generateur committe (limite declaree, audit § 8.9) ; ces empreintes permettent de verifier que les entrees n'ont pas bouge depuis",
+   "description": "empreintes SHA-256 des entrees au moment de la production du rapport — le rapport n'a pas de generateur committe (limite declaree, audit § 8.9) ; ces empreintes permettent de verifier que les entrees n'ont pas bouge depuis — Empreintes des deux patchs rafraichies le 2026-08-07 apres les arbitrages Q3 (source_entry -> sourceEntry) et Q4 (note d'arbitrage), qui ne changent aucun chiffre de la simulation (renommage de cle et note de _meta).",
    "inputs": {
     "grc20-these-mael-rolland-v110.json": "97d68ce4e40aaf25f7a2c482214c39c97ad9d6b1b59601af120a9711431be8e4",
     "grc20-properties-registry-v1.json": "d70ab000f9d7b58ba2dbaebaca3909ee2e93ec42674583d2c1f69ffa1df0e0ac",
     "patch_candidate_bibliographie_retypes_v1.json": "0e4d1503cc4ae27cc2704317ae98d1e92de8262a2504791222a296ed13b82734",
-    "patch_candidate_bibliographie_duplicates_v1.json": "ab0c75a24c89ac2c4d011e7702628e857e2b99e16b0434bcd3e72c2ce8e7b7c9",
-    "patch_candidate_bibliographie_missing_nodes_v1.json": "3e37b323ad8611d6e41994133ce961c9d6c364eb0dc0ef93005ea09b0f05373f"
+    "patch_candidate_bibliographie_duplicates_v1.json": "f005a05a5a11a3e539dfc5f6a7329ff3cffeefe1c1e22df956d7c210696b4fcc",
+    "patch_candidate_bibliographie_missing_nodes_v1.json": "511fee1f660319848161dd34d328a254d671751bdb91294dbd2a26247f0e84dc"
    },
    "validateur_contemporain": {
     "scripts/preflight_candidate_patches.py": "c43c0c8e0cc9dd84ba86fbf10e3773fc570825250466caae5fb4e36bfb78ca47",
@@ -134,7 +134,7 @@
       "Reference"
      ]
     },
-    "source_entry": {
+    "sourceEntry": {
      "delta_porteurs": 38,
      "note": "cle ABSENTE du registre : scripts/check_graph_integrity.py bloquerait tout graphe la portant (CI bloquante)",
      "porteurs_apres": 38,
@@ -336,7 +336,7 @@
     "risque_sequencement": "La justification du CSV entrees-sans-noeud atteste que les 38 oeuvres sont citees dans le corps de la these, mais le patch ne pose AUCUNE relation cited in / appears in section : a la creation, les 38 noeuds seraient orphelins de relations ET de citation. Un graphe publie entre la creation et la pose des relations exposerait 38 noeuds isoles ; la pose des cited in doit etre dans le MEME make_vNNN."
    },
    "attributs_nouveaux": {
-    "source_entry": {
+    "sourceEntry": {
      "delta_porteurs": 38,
      "note": "cle ABSENTE du registre : scripts/check_graph_integrity.py bloquerait tout graphe la portant (CI bloquante)",
      "porteurs_apres": 38,
