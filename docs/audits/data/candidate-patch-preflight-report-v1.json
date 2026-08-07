@@ -9,7 +9,21 @@
    "patch_candidate_bibliographie_retypes_v1.json"
   ],
   "registre": "grc20-properties-registry-v1.json",
-  "source_graph": "grc20-these-mael-rolland-v110.json"
+  "source_graph": "grc20-these-mael-rolland-v110.json",
+  "provenance": {
+   "description": "empreintes SHA-256 des entrees au moment de la production du rapport — le rapport n'a pas de generateur committe (limite declaree, audit § 8.9) ; ces empreintes permettent de verifier que les entrees n'ont pas bouge depuis",
+   "inputs": {
+    "grc20-these-mael-rolland-v110.json": "97d68ce4e40aaf25f7a2c482214c39c97ad9d6b1b59601af120a9711431be8e4",
+    "grc20-properties-registry-v1.json": "d70ab000f9d7b58ba2dbaebaca3909ee2e93ec42674583d2c1f69ffa1df0e0ac",
+    "patch_candidate_bibliographie_retypes_v1.json": "0e4d1503cc4ae27cc2704317ae98d1e92de8262a2504791222a296ed13b82734",
+    "patch_candidate_bibliographie_duplicates_v1.json": "ab0c75a24c89ac2c4d011e7702628e857e2b99e16b0434bcd3e72c2ce8e7b7c9",
+    "patch_candidate_bibliographie_missing_nodes_v1.json": "3e37b323ad8611d6e41994133ce961c9d6c364eb0dc0ef93005ea09b0f05373f"
+   },
+   "validateur_contemporain": {
+    "scripts/preflight_candidate_patches.py": "c43c0c8e0cc9dd84ba86fbf10e3773fc570825250466caae5fb4e36bfb78ca47",
+    "note": "le validateur n'est pas le generateur du rapport ; son empreinte date l'etat de l'outillage contemporain de la production"
+   }
+  }
  },
  "prises": [],
  "simulations": {

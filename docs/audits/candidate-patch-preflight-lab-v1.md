@@ -16,12 +16,16 @@
 > `count` 3 et `domain` `[CrisisEvent, InfrastructureEvent]`, `source_entry`
 > absente, `_meta.source_graph` = v109 (lecture de
 > `grc20-properties-registry-v1.json`) ; 156 / 38 / 10 ops dans les trois
-> candidats (recomptage des fichiers) ; verdict **36 OK / 4 AVERTISSEMENT /
-> 0 BLOQUANT, code de sortie 0** (ré-exécution du validateur le 2026-08-07) ;
+> candidats (recomptage des fichiers) ; verdict **42 OK / 4 AVERTISSEMENT /
+> 0 BLOQUANT, code de sortie 0** (ré-exécution du validateur dans son état
+> final, après les durcissements de revue — les décomptes antérieurs, 36
+> puis 39 OK, correspondaient aux états intermédiaires du validateur : le
+> nombre de contrôles OK croît avec chaque contrôle ajouté, le verdict
+> 4 AVERTISSEMENT / 0 BLOQUANT est, lui, invariant) ;
 > 11 677 relations porteuses de `page_approx` dans v110 (recomptage) ; les
 > 3 porteurs `duplicateOf` de v110 sont bien `ee7277…`, `7f8009…`, `22c507…`
-> (recomptage). Deux des six tests négatifs (policy mal marquée, `entityId`
-> mort) ont été rejoués hors dépôt : code de sortie 1 dans les deux cas.
+> (recomptage). Les seize cas négatifs de l'inventaire du § 4 ont tous été
+> prouvés en code de sortie 1 (ou 2 pour l'invocation illisible).
 
 ---
 
@@ -78,10 +82,13 @@ de `Migration/`, et `patches/grc20_anchor_overrides_targeted.json`.
   (`sourcequote_effective_patch_phase1/2/3.zip`) : 18 + 10 + 13 = **41 ops
   `ADD_SOURCEQUOTE_WITH_SECTION_LINKS`** dans un dialecte ad hoc à résolution
   par noms (aucun `entityId`), préparés hors dépôt avec pour cible déclarée
-  v96+. Un outil dédié existe (`scripts/apply-sourcequote-phases.mjs`) mais
-  la revue hostile a établi qu'il **n'écrit rien** : même avec `--write`,
-  il simule en mémoire et imprime un rapport (aucun `writeFile` dans le
-  script ni ses modules) — appliquer réellement exigerait de l'étendre.
+  v96+. Il n'existe **aucun applicateur** pour ces zips :
+  `scripts/apply-sourcequote-phases.mjs` est un **outil de simulation et
+  d'inspection** — même avec `--write`, il simule en mémoire et imprime un
+  rapport, sans jamais écrire de graphe (aucun `writeFile` dans le script
+  ni ses modules, établi par la revue hostile). **Un véritable applicateur
+  en écriture devra exister avant toute application des trois zips** — et
+  traiter le risque de doublon ci-dessous.
   Aucune trace en v110 (0 titre, 0 `seed_id` retrouvés) — **sauf** en
   phase 3, où **3 extraits coïncident avec des citations déjà présentes** :
   risque de doublon si appliqué tel quel. Citations à vérifier contre le PDF
@@ -166,9 +173,9 @@ sans id préassigné (C09) ; collisions de noms, contre le graphe et dans le lot
 marquage (C11) ; croisements inter-patchs du lot (C12). Codes de sortie :
 0 = aucun bloquant, 1 = au moins un bloquant, 2 = erreur d'invocation.
 
-**Verdict sur les trois candidats réels** (ré-exécuté pour ce document,
-identique à la livraison) : **36 OK / 4 AVERTISSEMENT / 0 BLOQUANT, sortie
-0**. Les quatre avertissements ne sont pas des surprises : ce sont exactement
+**Verdict sur les trois candidats réels** (ré-exécuté sur l'état final du
+validateur, après durcissements de revue) : **42 OK / 4 AVERTISSEMENT /
+0 BLOQUANT, sortie 0**. Les quatre avertissements ne sont pas des surprises : ce sont exactement
 les préalables déjà documentés par les `_meta` des patchs et le prédécesseur —
 
 - C08 ×2 (duplicates) : domaine du registre de `duplicateOf` et
@@ -180,13 +187,20 @@ les préalables déjà documentés par les `_meta` des patchs et le prédécesse
 - C09 ×1 (missing_nodes) : 38 `CREATE_ENTITY` non applicables en l'état —
   aucun `scripts/make_*.py` ne consomme `CREATE_ENTITY` (balayage dynamique).
 
-**Six tests négatifs prouvent que le script refuse** (code de sortie 1) les
-patchs mal formés : policy absente ou mal marquée (C03), `entityId` mort
-(C06), compte déclaré faux (C05), collision `SET_NAME` avec un nom déjà porté
-(C10 — le motif d'échec historique de `make_v110`), chaîne `duplicateOf`
-A→B→C (C11 — l'incident « Mining pools » C4), `entityId` préassigné sur
-`CREATE_ENTITY` (C09). Deux de ces six cas (policy, `entityId` mort) ont été
-rejoués hors dépôt pour ce document : sortie 1 confirmée les deux fois.
+**Seize cas négatifs prouvent que le script refuse** les patchs mal formés
+(code de sortie 1, ou 2 quand c'est l'invocation qui est illisible) —
+inventaire complet, accumulé sur les trois passes de revue :
+policy absente, tronquée, en minuscules, ou de type liste (C03) ;
+`entityId` mort (C06) ; compte déclaré faux (C05) ; collision `SET_NAME`
+avec un nom déjà porté, y compris à espaces surnuméraires (C10 — le motif
+d'échec historique de `make_v110`) ; chaîne `duplicateOf` A→B→C et cycle
+A→B→A (C11 — l'incident « Mining pools » C4) ; `entityId` préassigné sur
+`CREATE_ENTITY` (C09) ; patch vide `{}` (C02) ; op d'un type hors périmètre
+ou sans type (C06) ; `ops` qui n'est pas une liste, ou dont un élément
+n'est pas un objet (C01 structurel) ; champ `_meta` ou champ d'op mal typé
+(C02/C06 forme) ; fichier en UTF-8 invalide (C01 en lot, sortie 2 via
+`--graph`). Chaque cas a été fabriqué hors dépôt et rejoué : sortie non
+nulle confirmée à chaque fois.
 
 **Découverte du croisement (C12)** : aucune incohérence inter-patchs réelle
 dans le lot. Le croisement pressenti autour de la famille Wood est au niveau

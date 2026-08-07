@@ -86,7 +86,7 @@ def lire_json(chemin, quoi):
     try:
         with open(chemin, encoding='utf-8') as f:
             return json.load(f)
-    except (json.JSONDecodeError, OSError) as err:
+    except (json.JSONDecodeError, OSError, UnicodeDecodeError) as err:
         echec_invocation(f"{quoi} illisible : {err}")
 
 
@@ -155,6 +155,19 @@ def controle_meta(c, patch):
     else:
         c.ajoute('C02', OK, "_meta complet (policy, source_graph, patch_id, "
                             "description)")
+    mal_types = []
+    for cle in ('patch_id', 'description', 'source_graph', 'generated'):
+        if cle in meta and not isinstance(meta[cle], str):
+            mal_types.append(f"{cle} (chaine attendue)")
+    for cle in ('op_count', 'candidate_count', 'skipped_count',
+                'entities_touched', 'members_marked', 'families_marked'):
+        if cle in meta and not isinstance(meta[cle], int):
+            mal_types.append(f"{cle} (entier attendu)")
+    if 'skipped' in meta and not isinstance(meta['skipped'], list):
+        mal_types.append("skipped (liste attendue)")
+    if mal_types:
+        c.ajoute('C02', BLOQ, "champ(s) _meta mal type(s) : "
+                              + ', '.join(mal_types))
     policy = meta.get('policy')
     if not isinstance(policy, str) or not policy.startswith(PREFIXE_POLICY):
         c.ajoute('C03', BLOQ, "policy ne commence pas par le marquage "
@@ -217,6 +230,66 @@ def controle_comptes(c, meta, ops):
     if aucun_compte_ops:
         c.ajoute('C05', AVERT, "aucun compte d'ops declare "
                                "(ni op_count ni candidate_count)")
+
+
+def controle_forme_ops(c, ops):
+    """C06 (forme) : chaque op porte des champs correctement types.
+
+    Verifie AVANT les controles de fond, pour qu'un champ mal type soit un
+    BLOQUANT lisible plutot qu'un comportement indefini. La representation
+    typee des attributs est celle du contrat : {type, value[, options]}."""
+    problemes = []
+    for i, op in enumerate(ops):
+        t = op.get('type')
+        if t is not None and not isinstance(t, str):
+            problemes.append(f"op[{i}] : type n'est pas une chaine")
+            continue
+        eid = op.get('entityId')
+        if eid is not None and not isinstance(eid, str):
+            problemes.append(f"op[{i}] {t} : entityId n'est pas une chaine")
+        if t == 'SET_NAME' and not (isinstance(op.get('value'), str)
+                                    and op.get('value')):
+            problemes.append(f"op[{i}] SET_NAME : value (chaine non vide) "
+                             "requise")
+        if t == 'SET_TYPES':
+            v = op.get('value')
+            if not isinstance(v, list) or not v or any(
+                    not isinstance(x, str) for x in v):
+                problemes.append(f"op[{i}] SET_TYPES : value (liste non "
+                                 "vide de chaines) requise")
+        if t in ('SET_ATTRIBUTE', 'DELETE_ATTRIBUTE') and not isinstance(
+                op.get('attributeId'), str):
+            problemes.append(f"op[{i}] {t} : attributeId (chaine) requis")
+        if t == 'SET_ATTRIBUTE':
+            v = op.get('value')
+            if not isinstance(v, dict) or 'type' not in v or 'value' not in v:
+                problemes.append(f"op[{i}] SET_ATTRIBUTE : value doit etre "
+                                 "un objet {type, value[, options]}")
+        if t == 'CREATE_ENTITY':
+            if not (isinstance(op.get('name'), str) and op.get('name')):
+                problemes.append(f"op[{i}] CREATE_ENTITY : name (chaine non "
+                                 "vide) requis")
+            ty = op.get('types')
+            if not isinstance(ty, list) or not ty or any(
+                    not isinstance(x, str) for x in ty):
+                problemes.append(f"op[{i}] CREATE_ENTITY : types (liste non "
+                                 "vide de chaines) requise")
+            attrs = op.get('attributes')
+            if attrs is not None and (
+                    not isinstance(attrs, dict) or any(
+                        not isinstance(v2, dict) or 'type' not in v2
+                        or 'value' not in v2 for v2 in attrs.values())):
+                problemes.append(f"op[{i}] CREATE_ENTITY : attributes doit "
+                                 "associer chaque cle a un objet "
+                                 "{type, value[, options]}")
+    for m in problemes[:12]:
+        c.ajoute('C06', BLOQ, m)
+    if len(problemes) > 12:
+        c.ajoute('C06', BLOQ, f"... et {len(problemes) - 12} autre(s) "
+                              "probleme(s) de forme")
+    if not problemes:
+        c.ajoute('C06', OK, "forme des ops valide (champs types par "
+                            "operation)")
 
 
 def controle_entites(c, ops, entites):
@@ -328,10 +401,14 @@ def controle_registre(c, ops, registre, entites, nom_type):
                 hors_registre[cle] += 1
                 continue
             domaine = entree.get('domain') or []
+            # Couverture COMPLETE exigee : une intersection non vide ne
+            # suffit pas — chaque type cible doit etre au domaine, sinon
+            # le registre resterait partiellement menteur a l'application.
             cibles = types_cibles_de(op, entites, nom_type)
-            if domaine and not (set(domaine) & set(cibles)):
+            non_couverts = set(cibles) - set(domaine)
+            if domaine and non_couverts:
                 n, _, vus = hors_domaine.get(cle, (0, domaine, set()))
-                vus = set(vus) | set(cibles)
+                vus = set(vus) | non_couverts
                 hors_domaine[cle] = (n + 1, domaine, vus)
     for cle in sorted(hors_registre):
         c.ajoute('C08', AVERT, f"cle « {cle} » absente du registre : "
@@ -551,10 +628,13 @@ def main(argv=None):
             # liste — sinon la suite exploserait en traceback au lieu d'un
             # BLOQUANT propre, et les autres patchs du lot seraient perdus.
             if not isinstance(donnees, dict) or (
-                    'ops' in donnees and not isinstance(donnees['ops'], list)):
+                    'ops' in donnees and (
+                        not isinstance(donnees['ops'], list)
+                        or any(not isinstance(o, dict)
+                               for o in donnees['ops']))):
                 patchs.append((nom, None, "structure inattendue : le patch "
                                           "doit etre un objet JSON et ops "
-                                          "une liste"))
+                                          "une liste d'objets"))
             else:
                 patchs.append((nom, donnees, None))
         except (json.JSONDecodeError, OSError, UnicodeDecodeError) as err:
@@ -593,6 +673,7 @@ def main(argv=None):
         ops = donnees.get('ops') or []
         meta = controle_meta(c, donnees)
         controle_source_graph(c, meta, graphes_repo, plus_recent)
+        controle_forme_ops(c, ops)
         controle_comptes(c, meta, ops)
         controle_entites(c, ops, entites)
         controle_types(c, ops, nom_type)
@@ -632,7 +713,7 @@ def main(argv=None):
         print(f"  resume : {r[OK]} OK / {r[AVERT]} AVERTISSEMENT / "
               f"{r[BLOQ]} BLOQUANT")
 
-    print(f"\n=== RESUME GLOBAL ===")
+    print("\n=== RESUME GLOBAL ===")
     print(f"  {total[OK]} OK / {total[AVERT]} AVERTISSEMENT / "
           f"{total[BLOQ]} BLOQUANT")
 

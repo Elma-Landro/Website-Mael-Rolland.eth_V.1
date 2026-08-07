@@ -126,12 +126,24 @@ Objet JSON de premier niveau à exactement deux clés : **`_meta`** et **`ops`**
 | `skipped` + `skipped_count` | chaque cas examiné et écarté, **motivé un par un** — un patch qui ne dit pas ce qu'il n'a pas osé faire cache ses arbitrages | `patch_18._meta.skipped`, candidats |
 | comptes déclarés | `op_count` et `entities_touched` (ou équivalents), **vérifiables mécaniquement** contre `ops` — un applicateur ou une CI doit pouvoir recompter | candidat retypes (`op_count: 10`, `entities_touched: 6`) |
 
+Types exigés (le validateur les fait respecter, C02) : `patch_id`,
+`source_graph`, `generated`, `description`, `policy` sont des **chaînes** ;
+tous les comptes déclarés (`op_count`, `candidate_count`, `skipped_count`,
+`entities_touched`, `members_marked`, `families_marked`) sont des
+**entiers** ; `skipped` est une **liste**. `ops` est une **liste
+d'objets** — un patch dont `ops` n'est pas une liste, ou dont un élément
+n'est pas un objet, est refusé en bloc (erreur de structure, le lot
+continue). Tout compte déclaré est recompté — `op_count` ET
+`candidate_count` s'ils coexistent, pas seulement le premier.
+
 ### 3.2 Dialecte d'ops unique : celui de patch_18/19, consommé par `make_v110`
 
 - Enveloppe d'ops : **`ops`** (jamais `operations`), clé d'opération **`type`** (jamais `op`).
 - Champs : **`entityId`**, **`attributeId`** (jamais `entity_id` / `attribute_name`).
 - `SET_ATTRIBUTE` : `value` = **`{type, value}`** ou `{type, value, options}` — jamais une valeur nue.
-- `SET_NAME` : `value` = chaîne. `SET_TYPES` : `value` = liste d'**ids** de types. `DELETE_ATTRIBUTE` : pas de `value`.
+- `SET_NAME` : `value` = chaîne **non vide**. `SET_TYPES` : `value` = liste **non vide** d'**ids** de types. `DELETE_ATTRIBUTE` : `attributeId` (chaîne), pas de `value`.
+- `CREATE_ENTITY` (descriptif tant qu'aucun applicateur n'existe) : champs requis `name` (chaîne non vide), `types` (liste non vide d'ids), `attributes` optionnel — chaque clé associée à un objet **`{type, value[, options]}`**, jamais une valeur nue ; `typeNames` optionnel (cohérence id↔nom vérifiée) ; **jamais d'`entityId` préassigné**.
+- Ces exigences de forme sont celles que `scripts/preflight_candidate_patches.py` fait respecter (C02/C06) : contrat et validateur évoluent ensemble — amender l'un impose de mettre à jour l'autre.
 - Les clés `_comment` par op sont admises et ignorables (précédent : `patch_13`, `patch_18`, audit dédup § « Format »).
 - Justification : c'est le seul dialecte qu'un applicateur en service (`make_v110`)
   valide et applique, et c'est celui que le graphe journalise nativement dans sa clé de
