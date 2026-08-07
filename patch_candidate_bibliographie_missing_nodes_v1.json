@@ -37,7 +37,7 @@
    {
     "entree": "LEIGH STAR & RUHLEDER 2010",
     "category": "faux-absent",
-    "reason": "vraiment_absente=non — l'œuvre a déjà un nœud dans v110 (a5f0ee04162d4434ba7329ac575da1e4) : Doublon interne du PDF (même article que l'entrée STAR & RUHLEDER 2010 p. 376), l'article a déjà deux nœuds et le corps cite (Leigh Star et Ruhleder 2010)"
+    "reason": "vraiment_absente=non — l'œuvre a déjà deux nœuds dans v110 (famille de doublons 74 : canonique par degré « Star & Ruhleder 2010 » 940fa052d3004315bb56e5785d746fe7, deg=8 ; « Star & Ruhleder 2010 — Vers une écologie de l'infrastructure » a5f0ee04162d4434ba7329ac575da1e4, marqué duplicateOf dans le patch duplicates) : doublon interne du PDF (même article que l'entrée STAR & RUHLEDER 2010 p. 376), le corps cite (Leigh Star et Ruhleder 2010)"
    },
    {
     "entree": "MANGOLTE 2013B",
@@ -823,7 +823,7 @@
      "value": "WOOD Gavin, 2014a, « Gav’s Ethereum Ð ΞV Update II », Blog Etheruum , https://blog.ethereum.org/2014/11/01/gavs-ethereum-d%ce%bev-update-ii/, 1 novembre 2014, consulté le 11 octobre 2020."
     }
    },
-   "_comment": "WOOD 2014A (indigene) — Cité chap. I (Wood 2014b, Wood 2014a), seul le Yellow Paper (2014b) a des nœuds (462ca3c2907a45f0)"
+   "_comment": "WOOD 2014A (indigene) — Cité chap. I (Wood 2014b, Wood 2014a), seul le Yellow Paper (2014b) a des nœuds (canonique « Yellow Paper (Ethereum, Gavin Wood 2014) » 4d5634d4359646c9cd1ee839036724eb — « Wood 2014 Yellow Paper » 462ca3c2907a45f0a4ef51d3bddbf906 y est marqué duplicateOf)"
   },
   {
    "type": "CREATE_ENTITY",
