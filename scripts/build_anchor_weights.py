@@ -11,17 +11,21 @@ mot « Bitcoin ». Le classement des panneaux de `lecteur.html` repose dessus.
 
 CE QUE CE SCRIPT FAIT — deux champs NOUVEAUX, `occurrence_count` INTACT :
 
-  `weightStatus` — une CLASSIFICATION, pas une mesure. Chaque ligne
-  (section, entite) est qualifiee par la preuve que la carte porte deja,
-  ses extraits (`snippet`) :
-      'self'        le nom de l'entite figure dans au moins un extrait de
-                    cette section — le poids compte bien l'entite ;
-      'proxy'       des extraits existent mais aucun ne contient le nom —
-                    le poids compte un autre terme (mandataire) ;
-      'no-snippet'  aucun extrait pour ce couple (lignes issues de la
-                    reconstruction v81 ou de reparations) — invérifiable.
+  `snippet_status` — une CLASSIFICATION de la preuve par extrait, pas une
+  mesure, et pas un certificat : les cles de section des extraits
+  d'`entity_section_map.json` sont elles-memes partiellement perimees
+  (notes terminales avalees par les cles de fin de fichier — dette
+  documentee, non reparee ici). Croiser TOUJOURS avec
+  `direct_anchor_count`. Valeurs, en limites de mots :
+      'self'        le nom complet de l'entite figure dans un extrait de
+                    cette section ;
+      'self-base'   la base de citation du nom (avant « — ») y figure —
+                    « Theret 2008 » pour « Theret 2008 — Les trois etats » ;
+      'proxy'       des extraits existent, ni le nom ni sa base n'y sont ;
+      'no-snippet'  aucun extrait pour ce couple — mais 576 de ces lignes
+                    ont une presence textuelle mesuree (voir l'audit).
 
-  `directAnchorCount` — la seule MESURE ajoutee, et la plus pauvre possible :
+  `direct_anchor_count` — la seule MESURE ajoutee, et la plus pauvre possible :
   nombre d'occurrences du nom littéral de l'entite dans le texte de la
   section (corps du bloc + definitions des notes qui y sont appelees),
   insensible casse/accents/apostrophes, en LIMITES DE MOTS. La regle
@@ -50,9 +54,9 @@ import sys
 import unicodedata
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import REPO  # noqa: E402
+from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
 
-GRAPHE = os.path.join(REPO, 'grc20-these-mael-rolland-v110.json')
+
 CARTE_TITRES = os.path.join(REPO, 'section-headings-map.json')
 SEM = os.path.join(REPO, 'section_entities_map.json')
 ESM = os.path.join(REPO, 'entity_section_map.json')
@@ -126,17 +130,23 @@ def texte_de_plage(fichier, debut, fin, cache={}):
 def main(argv=None):
     p = argparse.ArgumentParser(description="Qualifie les poids d'ancrage.")
     p.add_argument('--apply', action='store_true',
-                   help="ecrit weightStatus/directAnchorCount dans la carte")
+                   help="ecrit snippet_status/direct_anchor_count dans la carte")
     p.add_argument('--check', action='store_true',
                    help="echoue si la carte n'est pas a jour")
     p.add_argument('--csv', default=CSV_OUT)
+    p.add_argument('--graph', default=None,
+                   help="graphe de reference (defaut : le plus recent)")
+    p.add_argument('--impact', action='store_true',
+                   help="simulation deterministe : survie du top-12 actuel "
+                        "sous classement direct_anchor_count")
     args = p.parse_args(argv)
 
     with open(SEM, encoding='utf-8') as f:
         sem = json.load(f)
     with open(ESM, encoding='utf-8') as f:
         esm = json.load(f)
-    with open(GRAPHE, encoding='utf-8') as f:
+    chemin_graphe = args.graph or graphe_le_plus_recent()
+    with open(chemin_graphe, encoding='utf-8') as f:
         g = json.load(f)
     noms = {e['id']: e.get('name', '') for e in g['entities']}
 
@@ -164,10 +174,23 @@ def main(argv=None):
             nom = noms.get(eid) or ent.get('entity_name', '')
             nn = norm(nom)
             snips = extraits.get((eid, cle), [])
+            # base de citation : la part du nom avant « — » (« Theret 2008 —
+            # Les trois etats » se cite « Theret 2008 »). Sans elle, 434
+            # lignes de references reellement citees passaient pour proxy.
+            base = norm(nom.split('—')[0]) if '—' in nom else ''
+            if len(base) < 8:
+                base = ''
+            def _dans(terme, texte):
+                # limites de mots, comme la mesure : la sous-chaine validait
+                # « Entretien n°2 » par « Entretien n°24 ».
+                return bool(re.search(r"(?<![a-z0-9])" + re.escape(terme) +
+                                      r"(?![a-z0-9])", texte))
             if not snips:
                 statut = 'no-snippet'
-            elif nn and any(nn in norm(sn) for sn in snips):
+            elif nn and any(_dans(nn, ' ' + norm(sn) + ' ') for sn in snips):
                 statut = 'self'
+            elif base and any(_dans(base, ' ' + norm(sn) + ' ') for sn in snips):
+                statut = 'self-base'
             else:
                 statut = 'proxy'
             direct = None
@@ -177,7 +200,7 @@ def main(argv=None):
             stats[statut] += 1
             lignes_csv.append((cle, eid, nom, ent.get('occurrence_count'),
                                statut, direct))
-            ent_maj = {'weightStatus': statut, 'directAnchorCount': direct}
+            ent_maj = {'snippet_status': statut, 'direct_anchor_count': direct}
             if args.apply or args.check:
                 ent['_maj'] = ent_maj
 
@@ -186,13 +209,12 @@ def main(argv=None):
     if not args.check:
         with open(args.csv, 'w', encoding='utf-8') as f:
             f.write('section_key;entity_id;entity_name;occurrence_count;'
-                    'weightStatus;directAnchorCount\n')
+                    'snippet_status;direct_anchor_count\n')
             for cle, eid, nom, occ, st, d in lignes_csv:
                 nom_csv = (nom or '').replace(';', ',')
                 f.write(f'{cle};{eid};{nom_csv};{occ};{st};'
                         f'{"" if d is None else d}\n')
 
-    sig_part = sum(1 for s, n in partagees.items() if n > 1 for _ in range(n))
     print(f"lignes de carte : {len(lignes_csv)}")
     for k, n in stats.most_common():
         print(f"  {n:6d}  {k}")
@@ -204,11 +226,71 @@ def main(argv=None):
         print(f"csv : {os.path.relpath(args.csv, REPO)}")
 
     # ---------- application / controle ----------
+    if args.impact:
+        # Simulation DETERMINISTE : formule du lecteur (occ x log(N/df)),
+        # epingles d'abord, bris d'egalite EXPLICITE par entity_id — avec
+        # 10 000+ lignes a direct=0, un tri sans bris d'egalite dependrait
+        # de l'ordre d'insertion JSON, et le chiffre ne serait pas rejouable.
+        import math
+        with open(os.path.join(REPO, 'section_overrides.json'), encoding='utf-8') as f:
+            ov = json.load(f)
+        direct_par = {(c, e): d for c, e, _n, _o, _s, d in lignes_csv}
+        allS = list(sem)
+        N = len(allS)
+        df = collections.Counter()
+        dfd = collections.Counter()
+        for d2 in sem.values():
+            for e2 in d2.get('entities', []):
+                df[e2['entity_id']] += 1
+        for (c2, e2), d2 in direct_par.items():
+            if d2:
+                dfd[e2] += 1
+        tot = surv = panneaux = affectes = 0
+        pires = []
+        for cle in allS:
+            ents = sem[cle].get('entities', [])
+            if not ents:
+                continue
+            pins = [i for i in (ov.get(cle) or []) if isinstance(i, str)]
+            def cle_tri(e2, direct):
+                if direct:
+                    d3 = direct_par.get((cle, e2['entity_id'])) or 0
+                    sc = d3 * math.log(N / (dfd[e2['entity_id']] or 1)) if d3 else -1
+                else:
+                    sc = e2['occurrence_count'] * math.log(N / (df[e2['entity_id']] or 1))
+                return (-sc, e2['entity_id'])
+            reste = [e2 for e2 in ents if e2['entity_id'] not in set(pins)]
+            a = pins + [e2['entity_id'] for e2 in
+                        sorted(reste, key=lambda x: cle_tri(x, False))[:12 - len(pins)]]
+            b = pins + [e2['entity_id'] for e2 in
+                        sorted([x for x in reste if direct_par.get((cle, x['entity_id']))],
+                               key=lambda x: cle_tri(x, True))[:12 - len(pins)]]
+            panneaux += 1
+            tot += len(a)
+            s2 = len(set(a) & set(b))
+            surv += s2
+            nonself = sum(1 for i in a
+                          if not str(direct_par.get((cle, i)) or 0).isdigit()
+                          or True) - 0
+            pires.append((s2, len(a), cle, len(b)))
+        pires.sort()
+        print(f"\n--impact (deterministe, bris d'egalite par entity_id)")
+        print(f"  panneaux : {panneaux} · survie top-12 : {surv}/{tot} "
+              f"({100 * surv // tot} %)")
+        print(f"  les 10 plus bouleverses :")
+        for s2, n2, cle, nb in pires[:10]:
+            print(f"    {cle:18s} survivants {s2:2d}/{n2:2d} · candidats direct {nb:2d}")
+        return 0
+
     if args.apply or args.check:
         change = 0
         for cle in sem:
             for ent in sem[cle].get('entities', []):
                 maj = ent.pop('_maj')
+                for legacy in ('weightStatus', 'directAnchorCount'):
+                    if legacy in ent:
+                        del ent[legacy]
+                        change += 1
                 for k, v in maj.items():
                     if ent.get(k) != v:
                         ent[k] = v
