@@ -1039,7 +1039,7 @@ body::before {
 //  CONFIGURATION
 // ═══════════════════════════════════════════════════════
 const BASE            = './assets/MD/';
-const GRAPH_FILE      = './grc20-these-mael-rolland-v109.json';
+const GRAPH_FILE      = './grc20-these-mael-rolland-v110.json';
 const SECTION_MAP_FILE= './section_entities_map.json';
 const MAX_GRAPH_NODES = 12;   // max nodes in graph (paragraph-level scrollytelling)
 const MAX_HIGHLIGHT   = 150;  // max entity names for DOM highlighting
@@ -1084,6 +1084,8 @@ let state = {
   sectionKeyLabel:   {},     // section_key → labelFr (built from ThesisSection entities)
   anchorsByEntityId: {},     // primaryEntityId → NarrativeAnchor[] (from narrative-anchors.json)
   _introCtx:         { letter: null, num: null }, // context for stateful intro heading parsing
+  sectionHeadingsMap:null,   // section-headings-map.json — positional heading → section_key
+  currentFile:       null,   // markdown file currently rendered (key into sectionHeadingsMap.files)
 };
 
 // ═══════════════════════════════════════════════════════
@@ -1154,17 +1156,19 @@ async function init() {
 // ═══════════════════════════════════════════════════════
 async function loadGraph() {
   try {
-    const [graphRes, sectionRes, overrideRes, anchorRes] = await Promise.all([
+    const [graphRes, sectionRes, overrideRes, anchorRes, headingsRes] = await Promise.all([
       fetch(GRAPH_FILE),
       fetch(SECTION_MAP_FILE),
       fetch('./section_overrides.json').catch(() => null),
       fetch('./narrative-anchors.json').catch(() => null),
+      fetch('./section-headings-map.json').catch(() => null),
     ]);
     const [data, sectionMap] = await Promise.all([
       graphRes.json(),
       sectionRes.json(),
     ]);
     if (overrideRes?.ok) state.sectionOverrides = await overrideRes.json();
+    if (headingsRes?.ok) state.sectionHeadingsMap = await headingsRes.json();
 
     // ── Index NarrativeAnchors by primary entity ───────────────────────
     if (anchorRes?.ok) {
@@ -1305,9 +1309,66 @@ async function loadGraph() {
 
 // ═══════════════════════════════════════════════════════
 //  SECTION KEY MAPPING
-//  Maps heading text → key in section_entities_map.json
-//  Keys: 'intro_A'…'intro_E', 'I.1', 'I.1.1', 'II.3', …
+//
+//  PRIMARY PATH — by POSITION (section-headings-map.json):
+//  in chapters I–III the markdown `##` carry no numbering, so no text rule
+//  can name them. The generated map lists, per markdown file, the ordered
+//  headings with their canonical section_key; the n-th rendered <hK> of the
+//  chapter resolves to the n-th level-K entry of the map. Text (normalised
+//  the same way on both sides — accents, emphasis, typographic apostrophes,
+//  footnote calls all dissolve) is only a sanity check + secondary lookup.
+//
+//  FALLBACK — headingToSectionKey below: heading-text heuristics
+//  (Roman numerals, intro letters, conclusion keywords). Kept for headings
+//  absent from the map (glossary, drifted markdown) — never the other way
+//  round.
 // ═══════════════════════════════════════════════════════
+
+// Mirror of scripts/grc20_commun.py::normalise_appariement — lowercase,
+// accents stripped, every non-alphanumeric (after HTML-entity decoding)
+// becomes a space. Two spellings of the same title must collapse together.
+function normHeadingForMap(s) {
+  let t = String(s || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(parseInt(d, 10)))
+    .replace(/&#[xX]([0-9a-fA-F]+);/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
+    .replace(/&amp;/g, '&').replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  t = t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+       .replace(/\u2019/g, "'").replace(/[^a-z0-9 ]/g, ' ');
+  return t.split(/\s+/).filter(Boolean).join(' ');
+}
+
+// Per-chapter positional resolver. Returns a function(tag, text, fallbackKey)
+// called once per rendered heading, in document order.
+function makePositionalSectionResolver(file) {
+  const entry   = state.sectionHeadingsMap?.files?.[file];
+  const byLevel = { 1: [], 2: [], 3: [], 4: [] };
+  for (const h of (entry?.headings || [])) {
+    if (byLevel[h.level]) byLevel[h.level].push(h);
+  }
+  const seen = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  return (tagName, text, fallbackKey) => {
+    const level = parseInt(tagName[1], 10);
+    const pool  = byLevel[level];
+    if (!pool || !pool.length) return fallbackKey;
+    const pos  = seen[level]++;          // position always advances
+    const at   = pool[pos];
+    const norm = normHeadingForMap(text);
+    // 1. position, confirmed by normalised text
+    if (at && at.text === norm) return at.key || fallbackKey;
+    // 2. unique text match at the same level — recovers real headings when
+    //    marked injects setext artefacts (Pandoc table remnants like
+    //    « Source : Rolland Maël » + dashed line render as spurious h2 and
+    //    shift the position counter)
+    const byText = pool.filter(h => h.text === norm);
+    if (byText.length === 1) return byText[0].key || fallbackKey;
+    // 3. text heuristics (old behaviour). NEVER trust an unconfirmed
+    //    position: a spurious heading would steal the next section's key.
+    return fallbackKey;
+  };
+}
+
 function headingToSectionKey(text, chapterId, tagName) {
   const clean = text.replace(/<[^>]+>/g, '').trim();
   const lc    = clean.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -1636,6 +1697,7 @@ async function loadChapter(chapterId) {
   if (!def) return;
 
   const file = state.lang === 'en' && def.fileEN ? def.fileEN : def.fileFR;
+  state.currentFile = file || null;
   if (!file) {
     document.getElementById('reader-content').innerHTML =
       `<p style="color:var(--gold2);font-family:var(--pixel);font-size:0.6em;padding:40px">Traduction en cours…</p>`;
@@ -1710,12 +1772,17 @@ function renderMarkdown(md) {
   let html = marked.parse(cleaned);
 
   // Attach data-section and data-section-key to h1–h4 for IntersectionObserver
-  // h3/h4 only get data-section-key (no TOC entry), h1/h2 get both
+  // h3/h4 only get data-section-key (no TOC entry), h1/h2 get both.
+  // Keys come from the POSITIONAL map (section-headings-map.json) first;
+  // headingToSectionKey is the text-based fallback. It is still called on
+  // every heading because its intro heuristics are stateful (_introCtx).
   state._introCtx = { letter: null, num: null };
+  const resolveSectionKey = makePositionalSectionResolver(state.currentFile);
   html = html.replace(/<(h[1-4])(.*?)>(.*?)<\/h[1-4]>/gs, (m, tag, attrs, content) => {
-    const text       = content.replace(/<[^>]+>/g, '');
-    const slug       = slugify(text);
-    const sectionKey = headingToSectionKey(text, state.currentChapter, tag) || '';
+    const text        = content.replace(/<[^>]+>/g, '');
+    const slug        = slugify(text);
+    const fallbackKey = headingToSectionKey(text, state.currentChapter, tag) || '';
+    const sectionKey  = resolveSectionKey(tag, text, fallbackKey) || '';
     const keyAttr    = sectionKey ? ` data-section-key="${sectionKey}"` : '';
     const secAttr    = (tag === 'h1' || tag === 'h2') ? ` data-section="${text}"` : '';
     const idAttr     = (tag === 'h1' || tag === 'h2') ? ` id="section-${slug}"` : '';
