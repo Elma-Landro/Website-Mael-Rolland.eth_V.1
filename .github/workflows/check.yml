@@ -65,6 +65,12 @@ jobs:
       - name: Coherence de la couche d'ancrage
         run: python3 scripts/check_anchoring.py
 
+      # Les champs snippet_status / direct_anchor_count de la carte doivent
+      # suivre les MD, la carte des titres et les noms d'entites : sans ce
+      # controle, ils perimeraient en silence au premier changement.
+      - name: Poids d'ancrage a jour
+        run: python3 scripts/build_anchor_weights.py --check
+
       - name: Recapitulatif
         if: always()
         run: |
