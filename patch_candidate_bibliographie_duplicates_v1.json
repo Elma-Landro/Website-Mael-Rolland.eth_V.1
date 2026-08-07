@@ -306,7 +306,9 @@
     ],
     "reason": "Une seule entrée Wray 2010 au PDF (« Alternative Approaches to Money ») : le titre « Modern Monetary Theory and the origins of money » du second nœud est une paraphrase à confirmer (Wray 2004 existe aussi au PDF)."
    }
-  ]
+  ],
+  "degree_tie_note": "Dans 8 familles (8, 28, 33, 38, 42, 46, 58, 62), le degré du canonique est À ÉGALITÉ avec celui d'au moins un autre membre : le critère « le mieux relié » n'y discrimine pas, et la cible proposée y est un choix d'ordre, pas une mesure. La décision D11 (confirmation de chaque cible de fusion) couvre ces cas. Relevé par la revue hostile du 2026-08-07.",
+  "type_divergence_note": "Le canonique et ses doublons peuvent porter des TYPES différents (ex. famille 57 : canonique Reference nu, doublon AcademicWork) : une fusion naïve vers le canonique appauvrirait le typage. La conservation des types à la fusion est une décision distincte du choix de la cible et du libellé (cf. D11/D12). Relevé par la revue hostile du 2026-08-07."
  },
  "ops": [
   {

@@ -75,9 +75,9 @@
     "reason": "jamais citée dans le corps — un nœud serait un orphelin : Fil Transactions and Scripts (DUP HASH160) : aucun appel repéré dans le corps"
    },
    {
-    "entree": "ORLEAN 2002",
-    "category": "risque-ajout-inutile-eleve",
-    "reason": "jamais citée dans le corps — un nœud serait un orphelin : La monnaie contre la marchandise : aucun appel (Orléan 2002) repéré, les occurrences 2002 du corps renvoient à Aglietta & Orléan 2002"
+    "entree": "NAKAMOTO 2010F",
+    "category": "faux-absent",
+    "reason": "7e faux absent, découvert par la revue hostile : le nœud « Nakamoto 2010g » (34c52771cbcf9e7e7a941c4307055ee4, degré 13) porte déjà ce post (topic=1735, quote « nid de frelons »), mislabellisé 2010g alors que le lettrage du PDF s'arrête à 2010f ; le corps cite en outre ce contenu sous (Nakamoto 2010b) (313c66ac111542d3a47de4607949a807) — le rattachement des trois porteurs est un arbitrage (D16)"
    },
    {
     "entree": "PEERCOIN S.D.",
@@ -254,6 +254,25 @@
     }
    },
    "_comment": "FELIXA 2016B (indigene) — Cité chap. III (FelixA 2016b), seul le billet 2016a a un nœud"
+  },
+  {
+   "type": "CREATE_ENTITY",
+   "name": "Orléan 2002 — La monnaie contre la marchandise",
+   "types": [
+    "51f53c59535b4e22b1dd0d83f6593fe1",
+    "9a2fd04e026a410281686e02a6de3dcd"
+   ],
+   "typeNames": [
+    "Reference",
+    "AcademicWork"
+   ],
+   "attributes": {
+    "source_entry": {
+     "type": "TEXT",
+     "value": "ORLÉAN A., 2002, « La monnaie contre la marchandise », L’Homme, 2002, no 2, p. 27‑48."
+    }
+   },
+   "_comment": "ORLEAN 2002 (academique) — Requalifié par la revue hostile : cité au corps, ch. II « (Orléan 2002, p. 27) » (pagination de l'article, pas du livre d'Aglietta & Orléan) plus trois appels « A. Orléan 2002 » (intro note ^27, ch. II) — la ligne initiale du CSV le disait à tort jamais cité"
   },
   {
    "type": "CREATE_ENTITY",
@@ -577,25 +596,6 @@
     }
    },
    "_comment": "MINISTERE ECONOMIE 2019B (littérature-grise) — Cité en note chap. II (Ministère de l'Économie et des Finances (2019b)), le nœud 2019 existant est apparié à l'entrée 2019a"
-  },
-  {
-   "type": "CREATE_ENTITY",
-   "name": "Nakamoto 2010f — Re: Wikileaks contact info?",
-   "types": [
-    "51f53c59535b4e22b1dd0d83f6593fe1",
-    "d62cf376f60449dfbdb1350c924231bc"
-   ],
-   "typeNames": [
-    "Reference",
-    "IndigenousLiterature"
-   ],
-   "attributes": {
-    "source_entry": {
-     "type": "TEXT",
-     "value": "NAKAMOTO Satoshi, 2010f, « Re: Wikileaks contact info? | Satoshi Nakamoto Institute », https://bitcointalk.org/index.php?topic=1735.msg26999#msg26999, consulté le 3 août 2020."
-    }
-   },
-   "_comment": "NAKAMOTO 2010F (nakamoto) — Deux SourceQuote du graphe citent explicitement (2010f) (2d0b344055f64417 et 3fdeea6de4544052) : le texte est mobilisé, seul le nœud Reference manque"
   },
   {
    "type": "CREATE_ENTITY",
