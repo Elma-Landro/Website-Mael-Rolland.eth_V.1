@@ -118,12 +118,27 @@ def texte_de_plage(fichier, debut, fin, cache={}):
         cache[fichier] = open(os.path.join(MD, fichier),
                               encoding='utf-8').read().split('\n')
     lignes = cache[fichier]
-    corps = [l for l in lignes[debut - 1:fin - 1]
-             if not re.match(r'\[\^[^\]]+\]:', l)]
+    corps = [ligne for ligne in lignes[debut - 1:fin - 1]
+             if not re.match(r'\[\^[^\]]+\]:', ligne)]
     corps_txt = '\n'.join(corps)
     appels = set(re.findall(r'\[\^([^\]]+)\](?!:)', corps_txt))
-    notes = [l for l in lignes
-             if (m := re.match(r'\[\^([^\]]+)\]:', l)) and m.group(1) in appels]
+    notes = []
+    i = 0
+    while i < len(lignes):
+        m = re.match(r'\[\^([^\]]+)\]:', lignes[i])
+        if m and m.group(1) in appels:
+            notes.append(lignes[i])
+            i += 1
+            # bloc complet de la definition : lignes de continuation
+            # (indentees ou vides) jusqu'a la definition suivante, une
+            # ligne pleine non indentee, ou la fin du fichier
+            while (i < len(lignes)
+                   and not re.match(r'\[\^[^\]]+\]:', lignes[i])
+                   and (not lignes[i] or lignes[i][0] in ' \t')):
+                notes.append(lignes[i])
+                i += 1
+        else:
+            i += 1
     return corps_txt + '\n' + '\n'.join(notes)
 
 
@@ -205,7 +220,9 @@ def main(argv=None):
                 ent['_maj'] = ent_maj
 
     # ---------- CSV ----------
-    os.makedirs(os.path.dirname(args.csv), exist_ok=True)
+    dossier_csv = os.path.dirname(args.csv)
+    if dossier_csv:
+        os.makedirs(dossier_csv, exist_ok=True)
     if not args.check:
         with open(args.csv, 'w', encoding='utf-8') as f:
             f.write('section_key;entity_id;entity_name;occurrence_count;'
@@ -274,10 +291,10 @@ def main(argv=None):
                           or True) - 0
             pires.append((s2, len(a), cle, len(b)))
         pires.sort()
-        print(f"\n--impact (deterministe, bris d'egalite par entity_id)")
+        print("\n--impact (deterministe, bris d'egalite par entity_id)")
         print(f"  panneaux : {panneaux} · survie top-12 : {surv}/{tot} "
               f"({100 * surv // tot} %)")
-        print(f"  les 10 plus bouleverses :")
+        print("  les 10 plus bouleverses :")
         for s2, n2, cle, nb in pires[:10]:
             print(f"    {cle:18s} survivants {s2:2d}/{n2:2d} · candidats direct {nb:2d}")
         return 0

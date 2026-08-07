@@ -149,7 +149,7 @@ soit absent** — c'est ce que `snippet_status` existe pour distinguer.
 1. **Le classement du panneau** : garder l'actuel, filtrer `self` d'abord,
    basculer sur `direct_anchor_count`, ou voie A complète — avec le § 2 comme
    étude d'impact.
-2. Le sort des **10 249 lignes `proxy`** : les garder comme contexte
+2. Le sort des **9 899 lignes `proxy`** : les garder comme contexte
    assumé (elles disent « cette section parle de Bitcoin ») ou les purger.
 3. Les **918 `no-snippet`**.
 4. L'affichage éventuel du statut dans le lecteur (badge « vérifié » ?).
