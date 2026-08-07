@@ -43,7 +43,7 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
 ├── grc20-publish.mjs                           # GRC-20 publication pipeline (Node.js ES module)
 ├── graph-worker.mjs                            # Cloudflare Worker API (Node.js ES module)
 │
-├── grc20-these-mael-rolland-v108.json          # Current authoritative knowledge graph (canonical)
+├── grc20-these-mael-rolland-v110.json          # Current authoritative knowledge graph (canonical)
 │
 ├── entity_section_map.json                     # Entity ID → thesis subsection mapping
 ├── section_entities_map.json                   # Thesis section → entity list mapping
@@ -208,9 +208,9 @@ A fully client-side force-directed + matrix visualization of the GRC-20 knowledg
 
 ## GRC-20 Knowledge Graph
 
-The file `grc20-these-mael-rolland-v108.json` is the current authoritative knowledge graph (v108, 2,293 entities, 20,207 relations). Snapshots v96 through v108 are kept in the repo; only the most recent is blocking in CI.
+The file `grc20-these-mael-rolland-v110.json` is the current authoritative knowledge graph (v110, 2,293 entities, 20,207 relations). Snapshots v96 through v110 are kept in the repo; only the most recent is blocking in CI.
 
-### Entity Types (v108 — 55 types)
+### Entity Types (v110 — 55 types)
 
 | Type | Description |
 |------|-------------|
@@ -251,7 +251,7 @@ The file `grc20-these-mael-rolland-v108.json` is the current authoritative knowl
 
 ### Knowledge Graph Versioning
 
-The graph has evolved across 108 versions. Key milestones: v72 added the `ThesisSection` layer (23 subsection nodes, 11,884 `appears_in_section` relations); v88–v90 added `appears_in_section` relations for frameworks, arguments, and concepts; v97 repaired 15 truncated relation endpoints; v98–v99 added missing chronology events and wired the maturation phase; v100 renumbered the chapter I sections onto the thesis's own numbering; v101 dropped 19 orphan ops; v102 restored the thesis's 8 development domains; v103 wired events to domains from the v2 catalogue; v104 added Ethereum's hard forks; v105 applied the event dedup patch; v106 completed the section migration for chapters II and III (13 renumbered, 11 created), after which all 48 table-of-contents entries in `graphe.html` resolve to a graph node. v107 wired the four chapter I sections that had stayed outside the `section of` / `has section` tree. v108 realigned 3,970 `section_key` attributes carried by `appears in section` relations, which still named the pre-migration key of their own target. **v108 is the current canonical snapshot.**
+The graph has evolved across 110 versions. Key milestones: v72 added the `ThesisSection` layer (23 subsection nodes, 11,884 `appears_in_section` relations); v88–v90 added `appears_in_section` relations for frameworks, arguments, and concepts; v97 repaired 15 truncated relation endpoints; v98–v99 added missing chronology events and wired the maturation phase; v100 renumbered the chapter I sections onto the thesis's own numbering; v101 dropped 19 orphan ops; v102 restored the thesis's 8 development domains; v103 wired events to domains from the v2 catalogue; v104 added Ethereum's hard forks; v105 applied the event dedup patch; v106 completed the section migration for chapters II and III (13 renumbered, 11 created), after which all 48 table-of-contents entries in `graphe.html` resolve to a graph node. v107 wired the four chapter I sections that had stayed outside the `section of` / `has section` tree. v108 realigned 3,970 `section_key` attributes carried by `appears in section` relations, which still named the pre-migration key of their own target. v109 (« voie C ») rewired 3,970 of those relations to the section whose text their anchoring charge actually describes — 18 keys had been shifted one block over by the v100/v106 migrations, which made 8 table-of-contents entries look empty while their content sat under the neighbour's key. v110 corrected one bibliographic typo (Danezis), retyped 21 bibliography-confirmed author cards from Reference to Person, and applied 384 mechanical attribute normalisations described by `grc20-properties-registry-v1.json` — now a CI invariant. **v110 is the current canonical snapshot.**
 
 ### Patch Files
 
@@ -374,7 +374,7 @@ The Markdown files in `assets/MD/` are the full text of the PhD thesis. When wor
 - French originals: `01_chapitre_I.md`, etc.
 - English translations: `01_chapitre_I_EN.md`, etc.
 - `style.css` in this directory styles the `lecteur.html` reader
-- The knowledge graph JSON (`grc20-these-mael-rolland-v108.json`) is derived from these texts
+- The knowledge graph JSON (`grc20-these-mael-rolland-v110.json`) is derived from these texts
 
 Do not modify thesis text content unless explicitly asked — these are archival academic documents.
 

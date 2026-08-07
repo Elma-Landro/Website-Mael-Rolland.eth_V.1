@@ -1202,7 +1202,7 @@ hr.panel-hr { border: none; border-top: 1px solid var(--border); margin: 4px 0; 
     <div class="scrolly-spinner" id="auto-spinner"></div>
     <span style="font-size:2.5em; display:none" id="overlay-icon">◈</span>
     <h2 id="overlay-title">Chargement du graphe…</h2>
-    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v109.json</p>
+    <p id="overlay-msg" style="font-size:0.8em;color:var(--text2)">Lecture de grc20-these-mael-rolland-v110.json</p>
     <button class="btn-primary hidden" id="btn-load2">📂 Charger manuellement</button>
   </div>
 </div>
@@ -3215,6 +3215,16 @@ const Graph = (() => {
         'Leigh Star': 7, 'Geoffrey Bowker': 7,
         'André Orléan': 7, 'Bruno Theret': 7,
         'Viviana Zelizer': 7,
+        // Fiches d'auteur retypees Reference -> Person en v110 : sans cette
+        // liste, elles quitteraient la colonne References pour la colonne
+        // Acteurs, a cote de Buterin — ce sont des references theoriques.
+        'Paul Krugman': 7, 'Nouriel Roubini': 7, 'J.P. Koning': 7,
+        'Georg Simmel': 7, 'Adrian Chen': 7, 'Arjun Kharpal': 7,
+        'Annie Massa': 7, 'Antoine Le Calvez': 7, 'Nermin Hajdarbegovic': 7,
+        'Aaron van Wirdum': 7, 'Jonathan Bier': 7, 'Rainer Böhme': 7,
+        'Danny Bradbury': 7, 'Abeer ElBahrawy': 7, 'Jacques Sapir': 7,
+        'David Yermack': 7, 'Karl Polanyi': 7, 'Bruno Latour': 7,
+        'Primavera De Filippi': 7, 'Milton Friedman': 7,
       };
     }
 
@@ -6276,7 +6286,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (async () => {
     try {
       const [resp, anchorResp] = await Promise.all([
-        fetch('grc20-these-mael-rolland-v109.json'),
+        fetch('grc20-these-mael-rolland-v110.json'),
         fetch('narrative-anchors.json').catch(() => null),
       ]);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
