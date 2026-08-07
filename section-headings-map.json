@@ -1,0 +1,2279 @@
+{
+ "_comment": "Cles de section par POSITION pour lecteur.html. Genere par scripts/build_section_headings_map.py — ne pas editer a la main ; regenerer apres tout changement des titres de assets/MD/ ou des section_key du graphe.",
+ "generated_by": "scripts/build_section_headings_map.py",
+ "source_graph": "grc20-these-mael-rolland-v110.json",
+ "files": {
+  "00_introduction.md": {
+   "chapter": "intro",
+   "lang": "fr",
+   "headings": [
+    {
+     "level": 1,
+     "line": 72,
+     "text": "a la gouvernance des cm construction de notre objet de recherche",
+     "title": "A. La gouvernance des CM : construction de notre objet de recherche",
+     "key": "intro_A"
+    },
+    {
+     "level": 2,
+     "line": 76,
+     "text": "1 un interet pour la monnaie et les objets monetaires non identifies",
+     "title": "1) Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »",
+     "key": "intro_A_1"
+    },
+    {
+     "level": 2,
+     "line": 86,
+     "text": "2 la controverse sur le caractere monetaire des crypto monnaies",
+     "title": "2) La controverse sur le caractère monétaire des crypto-monnaies",
+     "key": "intro_A_2"
+    },
+    {
+     "level": 2,
+     "line": 94,
+     "text": "3 reveler l indicible gouvernance des cm contre les pretentions liberales technicistes",
+     "title": "3) Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes",
+     "key": "intro_A_3"
+    },
+    {
+     "level": 1,
+     "line": 108,
+     "text": "b la gouvernance des cm devoilee par leurs crises un institutionnalisme monetaire seconde d une sociologie des sciences et techniques",
+     "title": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme monétaire secondé d'une sociologie des sciences et techniques",
+     "key": "intro_B"
+    },
+    {
+     "level": 2,
+     "line": 112,
+     "text": "1 l institutionnalisme monetaire pour caracteriser les cm comme monnaie",
+     "title": "1) L'institutionnalisme monétaire pour caractériser les CM comme monnaie",
+     "key": "intro_B_1"
+    },
+    {
+     "level": 3,
+     "line": 116,
+     "text": "notre insatisfaction vis a vis de la theorie monetaire dominante",
+     "title": "Notre insatisfaction vis-à-vis de la théorie monétaire dominante",
+     "key": "intro_B_1a"
+    },
+    {
+     "level": 3,
+     "line": 124,
+     "text": "analyser le phenomene monetaire sans l amputer un institutionnalisme premier",
+     "title": "Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier",
+     "key": "intro_B_1b"
+    },
+    {
+     "level": 2,
+     "line": 136,
+     "text": "2 gouvernance des cm perspectives sociologiques",
+     "title": "2) Gouvernance des CM : perspectives sociologiques",
+     "key": "intro_B_2"
+    },
+    {
+     "level": 3,
+     "line": 140,
+     "text": "anthropologie ethnographie et sociologie de la monnaie l empirie des usages",
+     "title": "Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages",
+     "key": "intro_B_2a"
+    },
+    {
+     "level": 3,
+     "line": 148,
+     "text": "au dela des boites noires les cm des infrastructures sans coutures",
+     "title": "Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures »",
+     "key": "intro_B_2b"
+    },
+    {
+     "level": 2,
+     "line": 158,
+     "text": "3 la gouvernance de bitcoin et d ethereum devoilee par leurs crises",
+     "title": "3) La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises",
+     "key": "intro_B_3"
+    },
+    {
+     "level": 3,
+     "line": 162,
+     "text": "les fonctions heuristiques et hermeneutiques des crises",
+     "title": "Les fonctions heuristiques et herméneutiques des « crises »",
+     "key": "intro_B_3a"
+    },
+    {
+     "level": 3,
+     "line": 168,
+     "text": "du perimetre de nos terrains deux crises differenciees touchant bitcoin et ethereum",
+     "title": "Du périmètre de nos terrains : deux crises différenciées touchant Bitcoin et Ethereum",
+     "key": "intro_B_3b"
+    },
+    {
+     "level": 1,
+     "line": 176,
+     "text": "c une demarche ethnographique pour un terrain d enquete multi niveau",
+     "title": "C. Une démarche ethnographique, pour un terrain d\\'enquête multi-niveau",
+     "key": "intro_C"
+    },
+    {
+     "level": 2,
+     "line": 180,
+     "text": "enqueter sur la gouvernance des cm contraintes et enjeux",
+     "title": "Enquêter sur la gouvernance des CM : contraintes et enjeux",
+     "key": "intro_C_1"
+    },
+    {
+     "level": 3,
+     "line": 184,
+     "text": "enjeux methodologiques",
+     "title": "Enjeux méthodologiques",
+     "key": "intro_C_1a"
+    },
+    {
+     "level": 3,
+     "line": 190,
+     "text": "la relation enqueteur enquetes",
+     "title": "La relation enquêteur-enquêtés",
+     "key": "intro_C_1b"
+    },
+    {
+     "level": 2,
+     "line": 200,
+     "text": "2 strategie d acces et materiaux de terrain recoltes",
+     "title": "2) Stratégie d'accès et matériaux de terrain récoltés",
+     "key": "intro_C_2"
+    },
+    {
+     "level": 3,
+     "line": 238,
+     "text": "la face en ligne des cm d une entree par voie de recherche documentaire au saut de l immersion participante",
+     "title": "La face « en ligne » des CM : d'une entrée par voie de recherche documentaire au saut de l'« immersion participante »",
+     "key": "intro_C_2a"
+    },
+    {
+     "level": 4,
+     "line": 240,
+     "text": "creuser au fond du terrier 51 les recherches documentaires une source essentielle de connaissance de ce champ",
+     "title": "« Creuser au fond du terrier »[^51] : les recherches documentaires, une source essentielle de connaissance de ce champ",
+     "key": "intro_C_2b"
+    },
+    {
+     "level": 4,
+     "line": 250,
+     "text": "s approcher des acteurs non humains des immersions participantes nombreuses et fructueuses",
+     "title": "S'approcher des acteurs non humains : des immersions participantes nombreuses et « fructueuses »",
+     "key": "intro_C_2c"
+    },
+    {
+     "level": 3,
+     "line": 260,
+     "text": "a son envers hors ligne au contact des acteurs par observations et entretiens",
+     "title": "À son envers « hors ligne » : au contact des acteurs par observations et entretiens",
+     "key": "intro_C_2d"
+    },
+    {
+     "level": 4,
+     "line": 262,
+     "text": "observations participantes d evenement hors ligne premiers contacts en presence d acteurs humains",
+     "title": "Observations participantes d'évènement hors ligne : premiers contacts en présence d'acteurs humains",
+     "key": "intro_C_2e"
+    },
+    {
+     "level": 4,
+     "line": 268,
+     "text": "entretiens",
+     "title": "Entretiens",
+     "key": "intro_C_2f"
+    },
+    {
+     "level": 1,
+     "line": 274,
+     "text": "d objectifs apports et organisation generale de la these",
+     "title": "D. Objectifs, Apports et Organisation générale de la thèse",
+     "key": "intro_D"
+    },
+    {
+     "level": 1,
+     "line": 296,
+     "text": "e declaration d interets",
+     "title": "E. Déclaration d'intérêts",
+     "key": "intro_E"
+    }
+   ]
+  },
+  "00_introduction_EN.md": {
+   "chapter": "intro",
+   "lang": "en",
+   "headings": [
+    {
+     "level": 1,
+     "line": 72,
+     "text": "a the governance of cryptocurrencies constructing our research object",
+     "title": "A. The Governance of Cryptocurrencies: Constructing Our Research Object",
+     "key": "intro_A"
+    },
+    {
+     "level": 2,
+     "line": 76,
+     "text": "1 an interest in money and unidentified monetary objects",
+     "title": "1) An Interest in Money and “Unidentified Monetary Objects”",
+     "key": "intro_A_1"
+    },
+    {
+     "level": 2,
+     "line": 91,
+     "text": "2 the controversy over the monetary nature of cryptocurrencies",
+     "title": "2) The Controversy over the Monetary Nature of Cryptocurrencies",
+     "key": "intro_A_2"
+    },
+    {
+     "level": 2,
+     "line": 101,
+     "text": "3 revealing the unspeakable governance of cryptocurrencies against liberal technicist claims",
+     "title": "3) Revealing the “Unspeakable” Governance of Cryptocurrencies Against Liberal Technicist Claims",
+     "key": "intro_A_3"
+    },
+    {
+     "level": 1,
+     "line": 119,
+     "text": "b the governance of cryptocurrencies revealed through their crises a monetary institutionalism supported by a sociology of science and technology",
+     "title": "B. The Governance of Cryptocurrencies Revealed Through Their Crises: A Monetary Institutionalism Supported by a Sociology of Science and Technology",
+     "key": "intro_B"
+    },
+    {
+     "level": 2,
+     "line": 123,
+     "text": "1 monetary institutionalism to characterize cryptocurrencies as money",
+     "title": "1) Monetary Institutionalism to Characterize Cryptocurrencies as Money",
+     "key": "intro_B_1"
+    },
+    {
+     "level": 3,
+     "line": 127,
+     "text": "our dissatisfaction with the dominant monetary theory",
+     "title": "Our Dissatisfaction with the Dominant Monetary Theory",
+     "key": "intro_B_1a"
+    },
+    {
+     "level": 3,
+     "line": 135,
+     "text": "analyzing the monetary phenomenon without diminishing it a foundational institutionalism",
+     "title": "Analyzing the Monetary Phenomenon Without Diminishing It: A Foundational Institutionalism",
+     "key": "intro_B_1b"
+    },
+    {
+     "level": 2,
+     "line": 147,
+     "text": "2 governance of community currencies sociological perspectives",
+     "title": "2) Governance of Community Currencies: Sociological Perspectives",
+     "key": "intro_B_2"
+    },
+    {
+     "level": 3,
+     "line": 151,
+     "text": "anthropology ethnography and sociology of money the empirics of usage",
+     "title": "Anthropology, Ethnography, and Sociology of Money: The Empirics of Usage",
+     "key": "intro_B_2a"
+    },
+    {
+     "level": 3,
+     "line": 167,
+     "text": "beyond the black boxes dcs as seamless infrastructures",
+     "title": "Beyond the “Black Boxes”: DCs as “Seamless” Infrastructures",
+     "key": "intro_B_2b"
+    },
+    {
+     "level": 2,
+     "line": 177,
+     "text": "3 the governance of bitcoin and ethereum revealed through their crises",
+     "title": "3) The Governance of Bitcoin and Ethereum Revealed through Their Crises",
+     "key": "intro_B_3"
+    },
+    {
+     "level": 3,
+     "line": 181,
+     "text": "the heuristic and hermeneutic functions of crises",
+     "title": "The Heuristic and Hermeneutic Functions of “Crises”",
+     "key": "intro_B_3a"
+    },
+    {
+     "level": 3,
+     "line": 187,
+     "text": "on the scope of our fields two distinct crises affecting bitcoin and ethereum",
+     "title": "On the Scope of Our Fields: Two Distinct Crises Affecting Bitcoin and Ethereum",
+     "key": "intro_B_3b"
+    },
+    {
+     "level": 1,
+     "line": 198,
+     "text": "c an ethnographic approach for a multi level field investigation",
+     "title": "C. An Ethnographic Approach for a Multi-Level Field Investigation",
+     "key": "intro_C"
+    },
+    {
+     "level": 2,
+     "line": 202,
+     "text": "investigating the governance of cm constraints and stakes",
+     "title": "Investigating the Governance of CM: Constraints and Stakes",
+     "key": "intro_C_1"
+    },
+    {
+     "level": 3,
+     "line": 206,
+     "text": "methodological stakes",
+     "title": "Methodological Stakes",
+     "key": "intro_C_1a"
+    },
+    {
+     "level": 3,
+     "line": 212,
+     "text": "the investigator investigated relationship",
+     "title": "The Investigator–Investigated Relationship",
+     "key": "intro_C_1b"
+    },
+    {
+     "level": 2,
+     "line": 228,
+     "text": "2 access strategy and field materials collected",
+     "title": "2) Access Strategy and Field Materials Collected",
+     "key": "intro_C_2"
+    },
+    {
+     "level": 3,
+     "line": 274,
+     "text": "the online aspect of community managers from documentary research to the leap into participant immersion",
+     "title": "The “Online” Aspect of Community Managers: From Documentary Research to the Leap into “Participant Immersion”",
+     "key": "intro_C_2a"
+    },
+    {
+     "level": 4,
+     "line": 276,
+     "text": "digging deep down the rabbit hole 51 documentary research as an essential source for understanding this field",
+     "title": "“Digging Deep Down the Rabbit Hole”[^51]: Documentary Research as an Essential Source for Understanding This Field",
+     "key": "intro_C_2b"
+    },
+    {
+     "level": 4,
+     "line": 286,
+     "text": "approaching non human actors numerous and fruitful participant immersions",
+     "title": "Approaching Non-Human Actors: Numerous and “Fruitful” Participant Immersions",
+     "key": "intro_C_2c"
+    },
+    {
+     "level": 3,
+     "line": 296,
+     "text": "its offline counterpart engaging with actors through observations and interviews",
+     "title": "Its “offline” counterpart: engaging with actors through observations and interviews",
+     "key": "intro_C_2d"
+    },
+    {
+     "level": 4,
+     "line": 298,
+     "text": "participant observations of offline events initial face to face contacts with human actors",
+     "title": "Participant observations of offline events: initial face-to-face contacts with human actors",
+     "key": "intro_C_2e"
+    },
+    {
+     "level": 4,
+     "line": 304,
+     "text": "interviews",
+     "title": "Interviews",
+     "key": "intro_C_2f"
+    },
+    {
+     "level": 1,
+     "line": 312,
+     "text": "d objectives contributions and general organization of the thesis",
+     "title": "D. Objectives, Contributions, and General Organization of the Thesis",
+     "key": "intro_D"
+    },
+    {
+     "level": 1,
+     "line": 342,
+     "text": "e declaration of interests",
+     "title": "E. Declaration of Interests",
+     "key": "intro_E"
+    }
+   ]
+  },
+  "01_chapitre_I.md": {
+   "chapter": "ch1",
+   "lang": "fr",
+   "headings": [
+    {
+     "level": 1,
+     "line": 95,
+     "text": "i 1 quand bitcoin definit son monde l aloi politique d une cm pionniere",
+     "title": "I.1 Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière",
+     "key": "I.1"
+    },
+    {
+     "level": 2,
+     "line": 105,
+     "text": "du terreau materiel et ideel aux racines de bitcoin",
+     "title": "Du terreau matériel et idéel aux racines de Bitcoin",
+     "key": "I.1.1"
+    },
+    {
+     "level": 3,
+     "line": 111,
+     "text": "une monnaie frappee au coin de philosophies politiques et d experiences pratiques",
+     "title": "Une monnaie frappée au coin de philosophies politiques et d'expériences pratiques",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 125,
+     "text": "une creation heterodoxe entre recherche academique et recherche appliquee",
+     "title": "Une création hétérodoxe, entre recherche académique et recherche appliquée",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 137,
+     "text": "bitcoin une chimere theorico pratique tres politique",
+     "title": "Bitcoin : une chimère théorico-pratique très politique",
+     "key": "I.1.2"
+    },
+    {
+     "level": 3,
+     "line": 141,
+     "text": "des composants sociotechniques anciens singulierement recomposes",
+     "title": "Des composants sociotechniques anciens singulièrement recomposés",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 157,
+     "text": "l usage de la pow un jeu d incitations tres politique",
+     "title": "L'usage de la PoW : un « jeu » d'incitations très politique",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 177,
+     "text": "le fonctionnement de bitcoin suivant le script original de nakamoto",
+     "title": "Le fonctionnement de Bitcoin suivant le script original de Nakamoto",
+     "key": "I.1.3"
+    },
+    {
+     "level": 3,
+     "line": 185,
+     "text": "production individuelle d une transaction bitcoin",
+     "title": "Production individuelle d'une transaction Bitcoin",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 189,
+     "text": "les prealables disposer d un portefeuille et d ucn",
+     "title": "Les Préalables : disposer d'un portefeuille et d'UCN",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 195,
+     "text": "creer et diffuser une transaction bitcoin",
+     "title": "Créer et diffuser une transaction Bitcoin",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 201,
+     "text": "production collective d un consensus sur un registre transactionnel commun",
+     "title": "Production collective d'un consensus sur un registre transactionnel commun",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 205,
+     "text": "le traitement distribue des transactions par minage verification ordonnancement production et diffusion d un enregistrement candidat valide",
+     "title": "Le traitement distribué des transactions par « minage » : vérification, ordonnancement, production et diffusion d'un enregistrement candidat valide",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 209,
+     "text": "verification et integration d un bloc candidat valide dans le registre canonique commun",
+     "title": "Vérification et intégration d'un bloc candidat valide dans le registre canonique commun",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 215,
+     "text": "3 bis reorganisation de l historique fork de chain et bloc orphelin",
+     "title": "(3 Bis) Réorganisation de l'historique, fork de chain et bloc orphelin",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 225,
+     "text": "i 2 quand le monde redefinit bitcoin de maniere carnavalesque",
+     "title": "I.2 Quand le « *monde redéfinit* » Bitcoin de manière carnavalesque",
+     "key": "I.2"
+    },
+    {
+     "level": 2,
+     "line": 259,
+     "text": "un developpement infrastructurel au dela du protocole bitcoin",
+     "title": "Un développement infrastructurel au-delà du protocole Bitcoin",
+     "key": "I.2.1"
+    },
+    {
+     "level": 3,
+     "line": 263,
+     "text": "la phase de preuve de concept de juillet 2008 a mars 2012",
+     "title": "La phase de « preuve de concept » (de juillet 2008 à mars 2012)",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 275,
+     "text": "la phase de peche d avril 2012 a octobre 2013",
+     "title": "La phase de « péché » (d'avril 2012 à octobre 2013)",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 285,
+     "text": "la phase de maturation de novembre de 2013 a aujourd hui",
+     "title": "La phase de « maturation » (de novembre de 2013 à aujourd'hui)",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 297,
+     "text": "un protocole deborde de carnavalesques improvisations d acteurs",
+     "title": "Un protocole débordé de « carnavalesques » improvisations d'acteurs",
+     "key": "I.2.2"
+    },
+    {
+     "level": 3,
+     "line": 301,
+     "text": "des renegociations pratiques reintermediation de l acces a bitcoin et de l activite de traitement des transactions",
+     "title": "Des renégociations pratiques : réintermédiation de l'accès à Bitcoin et de l'activité de traitement des transactions...",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 321,
+     "text": "un protocole bitcoin qui s adapte des regulations transactionnelles tres politiques",
+     "title": "Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 333,
+     "text": "i 3 ethereum une rupture assumee d avec bitcoin et les premiers altcoins",
+     "title": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers *Altcoins*",
+     "key": "I.3"
+    },
+    {
+     "level": 2,
+     "line": 339,
+     "text": "de la constellation des altcoins construire sur ou a cote de bitcoin",
+     "title": "De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
+     "key": "I.3.1"
+    },
+    {
+     "level": 3,
+     "line": 343,
+     "text": "namecoin entre complementarite et independance vis a vis de bitcoin",
+     "title": "« Namecoin », entre complémentarité et indépendance vis-à-vis de Bitcoin",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 353,
+     "text": "des cm qui s emancipent de plus en plus de l architecture bitcoin",
+     "title": "Des CM qui s'émancipent de plus en plus de l'architecture Bitcoin",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 369,
+     "text": "guerre des metaprotocoles modifier bitcoin pour en interdire certains usages",
+     "title": "Guerre des « métaprotocoles » : modifier Bitcoin pour en interdire certains usages",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 383,
+     "text": "ethereum continuite et rupture d avec bitcoin et les experiences passees",
+     "title": "Ethereum : continuité et rupture d\\'avec Bitcoin et les expériences passées",
+     "key": "I.3.2"
+    },
+    {
+     "level": 3,
+     "line": 387,
+     "text": "ethereum une conception par des insiders reconnus de l ecosysteme des cm",
+     "title": "Ethereum : une conception par des *insiders* reconnus de l'écosystème des CM",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 395,
+     "text": "ethereum une synthese materielle et ideelle critique des experiences passees",
+     "title": "Ethereum : une synthèse matérielle et idéelle critique des expériences passées",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 403,
+     "text": "ethereum des recompositions d alliances contre les rigidites de bitcoin",
+     "title": "Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
+     "key": "I.3.3"
+    },
+    {
+     "level": 3,
+     "line": 407,
+     "text": "ethereum des arbitrages sociotechniques differencies",
+     "title": "Ethereum : des arbitrages sociotechniques différenciés",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 417,
+     "text": "ethereum contre bitcoin emprunts et differences de fonctionnement",
+     "title": "Ethereum contre Bitcoin ? Emprunts et différences de fonctionnement",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 435,
+     "text": "ethereum des reformes du consensus et du monnayage en forme de revolution",
+     "title": "Ethereum : des réformes du consensus et du monnayage en forme de révolution",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 453,
+     "text": "i 4 conclusion du chapitre i",
+     "title": "I.4 Conclusion du Chapitre I",
+     "key": "I.4"
+    }
+   ]
+  },
+  "01_chapitre_I_EN.md": {
+   "chapter": "ch1",
+   "lang": "en",
+   "headings": [
+    {
+     "level": 1,
+     "line": 71,
+     "text": "i the emergence of the cryptocurrency cm phenomenon bitcoin and ethereum as sociotechnical infrastructures",
+     "title": "I. The Emergence of the Cryptocurrency (CM) Phenomenon: Bitcoin and Ethereum as Sociotechnical Infrastructures",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 109,
+     "text": "i 1 when bitcoin defines its world the political alloy of a pioneering cryptocurrency",
+     "title": "I.1 When Bitcoin Defines Its World…: The Political Alloy of a Pioneering Cryptocurrency",
+     "key": "I.1"
+    },
+    {
+     "level": 2,
+     "line": 119,
+     "text": "from material and ideational groundwork to the roots of bitcoin",
+     "title": "From Material and Ideational Groundwork to the Roots of Bitcoin",
+     "key": "I.1.1"
+    },
+    {
+     "level": 3,
+     "line": 125,
+     "text": "a currency stamped by political philosophies and practical experiences",
+     "title": "A Currency Stamped by Political Philosophies and Practical Experiences",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 164,
+     "text": "a heterodox creation between academic research and applied research",
+     "title": "A Heterodox Creation, Between Academic Research and Applied Research",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 178,
+     "text": "bitcoin a highly political theorico practical chimera",
+     "title": "Bitcoin: a highly political theorico-practical chimera",
+     "key": "I.1.2"
+    },
+    {
+     "level": 3,
+     "line": 182,
+     "text": "singularly recomposed ancient sociotechnical components",
+     "title": "Singularly Recomposed Ancient Sociotechnical Components",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 205,
+     "text": "the use of pow a highly political game of incentives",
+     "title": "The Use of PoW: A Highly Political “Game” of Incentives",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 239,
+     "text": "the functioning of bitcoin according to nakamoto s original script",
+     "title": "The Functioning of Bitcoin According to Nakamoto’s Original Script",
+     "key": "I.1.3"
+    },
+    {
+     "level": 3,
+     "line": 247,
+     "text": "individual production of a bitcoin transaction",
+     "title": "Individual Production of a Bitcoin Transaction",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 251,
+     "text": "prerequisites possessing a wallet and utxos",
+     "title": "Prerequisites: Possessing a Wallet and UTXOs",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 257,
+     "text": "creating and broadcasting a bitcoin transaction",
+     "title": "Creating and Broadcasting a Bitcoin Transaction",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 263,
+     "text": "collective production of consensus on a common transaction ledger",
+     "title": "Collective Production of Consensus on a Common Transaction Ledger",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 267,
+     "text": "distributed transaction processing through mining verification ordering production and dissemination of a valid candidate record",
+     "title": "Distributed Transaction Processing through “Mining”: Verification, Ordering, Production, and Dissemination of a Valid Candidate Record",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 271,
+     "text": "verification and integration of a valid candidate block into the common canonical ledger",
+     "title": "Verification and Integration of a Valid Candidate Block into the Common Canonical Ledger",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 277,
+     "text": "3 bis history reorganization chain fork and orphan block",
+     "title": "(3 Bis) History Reorganization, Chain Fork, and Orphan Block",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 288,
+     "text": "i 2 when the world redefines bitcoin in a carnivalesque manner",
+     "title": "I.2 When the “*world redefines*” Bitcoin in a carnivalesque manner",
+     "key": "I.2"
+    },
+    {
+     "level": 2,
+     "line": 335,
+     "text": "an infrastructural development beyond the bitcoin protocol",
+     "title": "An Infrastructural Development Beyond the Bitcoin Protocol",
+     "key": "I.2.1"
+    },
+    {
+     "level": 3,
+     "line": 339,
+     "text": "the proof of concept phase july 2008 to march 2012",
+     "title": "The “Proof of Concept” Phase (July 2008 to March 2012)",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 363,
+     "text": "the sin phase from april 2012 to october 2013",
+     "title": "The “Sin” Phase (from April 2012 to October 2013)",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 386,
+     "text": "the maturation phase from november 2013 to the present",
+     "title": "The “Maturation” Phase (from November 2013 to the Present)",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 406,
+     "text": "a protocol overwhelmed by carnivalesque improvisations of actors",
+     "title": "A protocol overwhelmed by “carnivalesque” improvisations of actors",
+     "key": "I.2.2"
+    },
+    {
+     "level": 3,
+     "line": 410,
+     "text": "practical renegotiations reintermediation of access to bitcoin and transaction processing activities",
+     "title": "Practical renegotiations: reintermediation of access to Bitcoin and transaction processing activities...",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 457,
+     "text": "an adaptive bitcoin protocol highly political transactional regulations",
+     "title": "An Adaptive Bitcoin Protocol: Highly Political Transactional Regulations",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 477,
+     "text": "i 3 ethereum a deliberate break with bitcoin and the early altcoins",
+     "title": "I.3 Ethereum: A Deliberate Break with Bitcoin and the Early *Altcoins*",
+     "key": "I.3"
+    },
+    {
+     "level": 2,
+     "line": 483,
+     "text": "on the constellation of altcoins building on or beside bitcoin",
+     "title": "On the Constellation of Altcoins: Building “On” or “Beside” Bitcoin",
+     "key": "I.3.1"
+    },
+    {
+     "level": 3,
+     "line": 487,
+     "text": "namecoin between complementarity and independence with respect to bitcoin",
+     "title": "“Namecoin,” Between Complementarity and Independence with Respect to Bitcoin",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 502,
+     "text": "cryptocurrencies increasingly emancipating themselves from the bitcoin architecture",
+     "title": "Cryptocurrencies Increasingly Emancipating Themselves from the Bitcoin Architecture",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 529,
+     "text": "war of the metaprotocols modifying bitcoin to prohibit certain uses",
+     "title": "War of the “Metaprotocols”: Modifying Bitcoin to Prohibit Certain Uses",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 564,
+     "text": "ethereum continuity and rupture with bitcoin and past experiments",
+     "title": "Ethereum: Continuity and Rupture with Bitcoin and Past Experiments",
+     "key": "I.3.2"
+    },
+    {
+     "level": 3,
+     "line": 570,
+     "text": "ethereum a design by recognized insiders of the cc ecosystem",
+     "title": "Ethereum: a design by recognized *insiders* of the CC ecosystem",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 584,
+     "text": "ethereum a critical material and ideological synthesis of past experiences",
+     "title": "Ethereum: a critical material and ideological synthesis of past experiences",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 600,
+     "text": "ethereum reconfigurations of alliances against bitcoin s rigidities",
+     "title": "Ethereum: Reconfigurations of Alliances Against Bitcoin’s Rigidities",
+     "key": "I.3.3"
+    },
+    {
+     "level": 3,
+     "line": 604,
+     "text": "ethereum differentiated sociotechnical trade offs",
+     "title": "Ethereum: Differentiated Sociotechnical Trade-offs",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 622,
+     "text": "ethereum versus bitcoin borrowings and functional differences",
+     "title": "Ethereum versus Bitcoin? Borrowings and Functional Differences",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 646,
+     "text": "ethereum reforms of consensus and monetary issuance in the form of a revolution",
+     "title": "Ethereum: Reforms of Consensus and Monetary Issuance in the Form of a Revolution",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 694,
+     "text": "i 4 conclusion of chapter i",
+     "title": "I.4 Conclusion of Chapter I",
+     "key": "I.4"
+    }
+   ]
+  },
+  "02_chapitre_II.md": {
+   "chapter": "ch2",
+   "lang": "fr",
+   "headings": [
+    {
+     "level": 1,
+     "line": 107,
+     "text": "ii 1 les cm ne sont pas monnaie arguments contre le caractere monetaire des cm",
+     "title": "II.1 « Les CM ne sont pas monnaie ! » : arguments contre le caractère monétaire des CM",
+     "key": "II.1"
+    },
+    {
+     "level": 2,
+     "line": 115,
+     "text": "la critique des cm depuis les grands courants de theorie monetaire",
+     "title": "La critique des CM depuis les grands courants de théorie monétaire",
+     "key": "II.1.1"
+    },
+    {
+     "level": 3,
+     "line": 119,
+     "text": "les critiques instrumentales fondees sur des fonctions monetaires canoniques",
+     "title": "Les critiques instrumentales fondées sur des fonctions monétaires canoniques",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 137,
+     "text": "une monnaie creature de l etat les critiques nominalistes et chartalistes",
+     "title": "Une monnaie « créature de l'État » : les critiques nominalistes et chartalistes",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 157,
+     "text": "les cm comme epreuve d explicitation de l argent des monstres monetaires difficilement qualifiables",
+     "title": "Les CM comme épreuve d'explicitation de l'argent : des « monstres monétaires » difficilement qualifiables",
+     "key": "II.1.2"
+    },
+    {
+     "level": 3,
+     "line": 161,
+     "text": "des objets non couverts par les categories juridiques et empiriques de la monnaie",
+     "title": "Des objets non couverts par les catégories juridiques et empiriques de la monnaie",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 167,
+     "text": "statut reglementaire des cm non qualification disqualification et requalification",
+     "title": "Statut règlementaire des CM : non-qualification, disqualification et requalification",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 191,
+     "text": "ii 2 pourtant elles font monnaie a l aune d un nominalisme non etatiste attentif aux usages",
+     "title": "II.2 « Pourtant, elles font monnaie » ! à l'aune d'un nominalisme « non étatiste » attentif aux usages",
+     "key": "II.2"
+    },
+    {
+     "level": 2,
+     "line": 197,
+     "text": "des chimeres monetaires inedites releguees a des usages speculatifs",
+     "title": "Des chimères monétaires inédites, reléguées à des usages spéculatifs",
+     "key": "II.2.1"
+    },
+    {
+     "level": 3,
+     "line": 201,
+     "text": "les cm des chimeres monetaires inedites de mauvais aloi",
+     "title": "Les CM : des chimères monétaires inédites... de mauvais aloi",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 207,
+     "text": "des critiques paradoxales et syncretiques confinant les cm au role d actif financier",
+     "title": "Des critiques paradoxales et syncrétiques, confinant les CM au rôle d'actif financier",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 217,
+     "text": "l institutionnalisme monetaire francophone un nominalisme non etatique apte a contenir les cm",
+     "title": "L'Institutionnalisme Monétaire Francophone : un nominalisme non étatique, apte à contenir les CM",
+     "key": "II.2.2"
+    },
+    {
+     "level": 3,
+     "line": 221,
+     "text": "au dela de la monnaie l argent questionner la monetisation a l aune des usages",
+     "title": "Au-delà de la monnaie, l'argent : questionner la monétisation à l'aune des usages",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 229,
+     "text": "la monnaie comme systeme de paiement monetisation et liquidite de dettes heterogenes",
+     "title": "La monnaie comme système de paiement : monétisation et liquidité de dettes hétérogènes",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 237,
+     "text": "la monnaie a l epreuve quand dettes confiance et souverainete se confrontent",
+     "title": "La monnaie à l'épreuve : quand dettes, confiance et souveraineté se confrontent",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 247,
+     "text": "au dela des critiques instrumentales et chartalistes des cm ni unitaires ni exclusives",
+     "title": "Au-delà des critiques instrumentales et chartalistes : des CM ni unitaires, ni exclusives",
+     "key": "II.2.3"
+    },
+    {
+     "level": 3,
+     "line": 253,
+     "text": "l irreductible heterogeneite des monnaies d hier et d aujourd hui",
+     "title": "L'irréductible hétérogénéité des monnaies d'hier et d'aujourd'hui",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 263,
+     "text": "monnaies nationales et monnaies paralleles un espace monetaire toujours conteste",
+     "title": "Monnaies nationales et monnaies parallèles, un espace monétaire toujours contesté",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 273,
+     "text": "des crypto monnaies paralleles usages monetaires des ucn btc et eth",
+     "title": "Des crypto-monnaies parallèles : usages monétaires des UCN BTC et ETH",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 277,
+     "text": "l imperieuse mise en forme des ucn btc et eth",
+     "title": "L'impérieuse mise en forme des UCN BTC et ETH",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 283,
+     "text": "usage en compte et en paiement",
+     "title": "Usage en compte et en paiement",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 293,
+     "text": "de l usage non monetaire en reserve de valeur",
+     "title": "De l'usage - non monétaire - en réserve de valeur",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 303,
+     "text": "ii 3 au dela de la revendication d une absence de gouvernance",
+     "title": "II.3 Au‑delà de la revendication d'une absence de gouvernance !",
+     "key": "II.3"
+    },
+    {
+     "level": 2,
+     "line": 309,
+     "text": "d un concept de gouvernance problematique a la problematique de la gouvernance des cm",
+     "title": "D'un concept de gouvernance problématique à la problématique de la gouvernance des CM",
+     "key": "II.3.1"
+    },
+    {
+     "level": 3,
+     "line": 313,
+     "text": "du concept de gouvernance et de sa polysemie un concept normatif premier",
+     "title": "Du concept de gouvernance et de sa polysémie : un concept normatif premier",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 319,
+     "text": "retournement positif du concept reintegrer le pouvoir et la politique",
+     "title": "Retournement positif du concept : réintégrer le pouvoir et la politique",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 331,
+     "text": "quand les cm reactivent un debat monetaire ancien conflit symbolique et materiel autour de la bonne gouvernance des cm",
+     "title": "Quand les CM réactivent un débat monétaire ancien : conflit symbolique et matériel autour de la « bonne » gouvernance des CM",
+     "key": "II.3.2"
+    },
+    {
+     "level": 3,
+     "line": 337,
+     "text": "de la bonne monnaie a la bonne gouvernance une approche normative partagee par les coiners et leurs detracteurs",
+     "title": "De *la bonne* monnaie à *la bonne* gouvernance : une approche normative partagée par les coiners et leurs détracteurs",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 341,
+     "text": "de la regle contre la discretion a la discretion contrainte",
+     "title": "De la « règle contre la discrétion » à la « discrétion-contrainte »",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 347,
+     "text": "les cm une radicalisation theorique et pratique de la regle",
+     "title": "Les CM : une radicalisation théorique et pratique de la règle ?",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 355,
+     "text": "une opposition quant a la bonne gouvernance des cm",
+     "title": "Une opposition quant à la « bonne » gouvernance des CM",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 361,
+     "text": "pour les coiners une absence de gouvernance marque d une monnaie absolument bonne",
+     "title": "Pour les coiners : une absence de gouvernance, marque d'une monnaie absolument « bonne »",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 369,
+     "text": "pour les professionnels de l argent une absence de gouvernance marque d une monnaie absolument mauvaise",
+     "title": "Pour les professionnels de l'argent : une absence de gouvernance, marque d'une monnaie absolument « mauvaise »",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 377,
+     "text": "les autorites monetaires et leurs capacites de regulation en peril",
+     "title": "Les autorités monétaires et leurs capacités de régulation en péril ?",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 389,
+     "text": "caracteriser la gouvernance des cm hors normativite en surplomb enjeu theorique et pratique d un eclaircissement categoriel primordial",
+     "title": "Caractériser la gouvernance des CM hors normativité en surplomb : enjeu théorique et pratique d'un éclaircissement catégoriel primordial",
+     "key": "II.3.3"
+    },
+    {
+     "level": 3,
+     "line": 395,
+     "text": "communautes heterogenes controverses gouvernance duale et polycentrique",
+     "title": "Communautés hétérogènes, controverses, gouvernance duale et polycentrique",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 427,
+     "text": "une anarchie categorielle problematique",
+     "title": "Une anarchie catégorielle problématique",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 435,
+     "text": "caracteriser la gouvernance des cm une voie de remise en ordre",
+     "title": "Caractériser la gouvernance des CM : une voie de remise en ordre ?",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 449,
+     "text": "ii 4 conclusion du chapitre ii",
+     "title": "II.4 Conclusion du Chapitre II",
+     "key": "II.4"
+    }
+   ]
+  },
+  "02_chapitre_II_EN.md": {
+   "chapter": "ch2",
+   "lang": "en",
+   "headings": [
+    {
+     "level": 1,
+     "line": 125,
+     "text": "ii 1 cryptocurrencies are not money arguments against the monetary nature of cryptocurrencies",
+     "title": "II.1 “Cryptocurrencies Are Not Money!”: Arguments Against the Monetary Nature of Cryptocurrencies",
+     "key": "II.1"
+    },
+    {
+     "level": 2,
+     "line": 135,
+     "text": "criticism of commodity money from major monetary theory traditions",
+     "title": "Criticism of Commodity Money from Major Monetary Theory Traditions",
+     "key": "II.1.1"
+    },
+    {
+     "level": 3,
+     "line": 139,
+     "text": "instrumental critiques based on canonical monetary functions",
+     "title": "Instrumental Critiques Based on Canonical Monetary Functions",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 157,
+     "text": "a creature of the state currency nominalist and chartalist critiques",
+     "title": "A “creature of the state” currency: nominalist and chartalist critiques",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 187,
+     "text": "cryptocurrencies as a test of the explication of money monetary monsters difficult to classify",
+     "title": "Cryptocurrencies as a Test of the Explication of Money: “Monetary Monsters” Difficult to Classify",
+     "key": "II.1.2"
+    },
+    {
+     "level": 3,
+     "line": 191,
+     "text": "objects not covered by the legal and empirical categories of money",
+     "title": "Objects Not Covered by the Legal and Empirical Categories of Money",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 197,
+     "text": "regulatory status of commodity monies non qualification disqualification and requalification",
+     "title": "Regulatory Status of Commodity Monies: Non-Qualification, Disqualification, and Requalification",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 234,
+     "text": "ii 2 yet they function as money through the lens of a non statist nominalism attentive to practices",
+     "title": "II.2 “Yet, they function as money!” through the lens of a non-statist nominalism attentive to practices",
+     "key": "II.2"
+    },
+    {
+     "level": 2,
+     "line": 242,
+     "text": "novel monetary chimeras relegated to speculative uses",
+     "title": "Novel Monetary Chimeras, Relegated to Speculative Uses",
+     "key": "II.2.1"
+    },
+    {
+     "level": 3,
+     "line": 246,
+     "text": "cryptocurrencies novel monetary chimeras of poor quality",
+     "title": "Cryptocurrencies: Novel Monetary Chimeras… of Poor Quality",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 257,
+     "text": "paradoxical and syncretic critiques confined cm to the role of financial asset",
+     "title": "Paradoxical and Syncretic Critiques, Confined CM to the Role of Financial Asset",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 284,
+     "text": "francophone monetary institutionalism a non state nominalism capable of encompassing cryptocurrencies",
+     "title": "Francophone Monetary Institutionalism: a Non-State Nominalism Capable of Encompassing Cryptocurrencies",
+     "key": "II.2.2"
+    },
+    {
+     "level": 3,
+     "line": 296,
+     "text": "beyond money cash questioning monetization in light of uses",
+     "title": "Beyond Money, Cash: Questioning Monetization in Light of Uses",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 307,
+     "text": "money as a payment system monetization and liquidity of heterogeneous debts",
+     "title": "Money as a Payment System: Monetization and Liquidity of Heterogeneous Debts",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 315,
+     "text": "money put to the test when debts trust and sovereignty confront each other",
+     "title": "Money Put to the Test: When Debts, Trust, and Sovereignty Confront Each Other",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 337,
+     "text": "beyond instrumentalist and chartalist critiques cryptocurrencies neither unitary nor exclusive",
+     "title": "Beyond Instrumentalist and Chartalist Critiques: Cryptocurrencies Neither Unitary nor Exclusive",
+     "key": "II.2.3"
+    },
+    {
+     "level": 3,
+     "line": 345,
+     "text": "the irreducible heterogeneity of currencies past and present",
+     "title": "The Irreducible Heterogeneity of Currencies Past and Present",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 355,
+     "text": "national currencies and parallel monies an always contested monetary space",
+     "title": "National currencies and parallel monies: an always contested monetary space",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 367,
+     "text": "parallel cryptocurrencies monetary uses of the btc and eth units of account",
+     "title": "Parallel Cryptocurrencies: Monetary Uses of the BTC and ETH Units of Account",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 371,
+     "text": "the imperative structuring of the btc and eth units of account",
+     "title": "The Imperative Structuring of the BTC and ETH Units of Account",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 385,
+     "text": "account and payment usage",
+     "title": "Account and Payment Usage",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 405,
+     "text": "on the non monetary use as a store of value",
+     "title": "On the (Non-Monetary) Use as a Store of Value",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 415,
+     "text": "ii 3 beyond the claim of an absence of governance",
+     "title": "II.3 Beyond the Claim of an Absence of Governance!",
+     "key": "II.3"
+    },
+    {
+     "level": 2,
+     "line": 421,
+     "text": "from a problematic concept of governance to the problematic of cryptocurrencies governance",
+     "title": "From a Problematic Concept of Governance to the Problematic of Cryptocurrencies’ Governance",
+     "key": "II.3.1"
+    },
+    {
+     "level": 3,
+     "line": 425,
+     "text": "on the concept of governance and its polysemy a primordial normative concept",
+     "title": "On the Concept of Governance and Its Polysemy: A Primordial Normative Concept",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 431,
+     "text": "positive reversal of the concept reintegrating power and politics",
+     "title": "Positive reversal of the concept: reintegrating power and politics",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 445,
+     "text": "when complementary currencies reactivate an old monetary debate symbolic and material conflict over the good governance of complementary currencies",
+     "title": "When Complementary Currencies Reactivate an Old Monetary Debate: Symbolic and Material Conflict over the “Good” Governance of Complementary Currencies",
+     "key": "II.3.2"
+    },
+    {
+     "level": 3,
+     "line": 451,
+     "text": "from the good currency to the good governance a normative approach shared by coiners and their detractors",
+     "title": "From *the good* currency to *the good* governance: a normative approach shared by coiners and their detractors",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 455,
+     "text": "from the rule versus discretion to discretion constraint",
+     "title": "From the “rule versus discretion” to “discretion-constraint”",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 465,
+     "text": "central banks a theoretical and practical radicalization of the rule",
+     "title": "Central Banks: A Theoretical and Practical Radicalization of the Rule?",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 473,
+     "text": "a dispute concerning the proper governance of cryptocurrencies",
+     "title": "A Dispute Concerning the “Proper” Governance of Cryptocurrencies",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 483,
+     "text": "for coiners an absence of governance as the hallmark of an absolutely good currency",
+     "title": "For coiners: an absence of governance as the hallmark of an absolutely “good” currency",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 491,
+     "text": "for money professionals an absence of governance as a mark of an absolutely bad currency",
+     "title": "For Money Professionals: An Absence of Governance as a Mark of an Absolutely “Bad” Currency",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 509,
+     "text": "monetary authorities and the endangerment of their regulatory capacities",
+     "title": "Monetary Authorities and the Endangerment of Their Regulatory Capacities?",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 530,
+     "text": "characterizing the governance of cms beyond overarching normativity theoretical and practical stakes of a crucial categorical clarification",
+     "title": "Characterizing the Governance of CMs Beyond Overarching Normativity: Theoretical and Practical Stakes of a Crucial Categorical Clarification",
+     "key": "II.3.3"
+    },
+    {
+     "level": 3,
+     "line": 540,
+     "text": "heterogeneous communities controversies dual and polycentric governance",
+     "title": "Heterogeneous Communities, Controversies, Dual and Polycentric Governance",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 584,
+     "text": "a problematic categorical anarchy",
+     "title": "A Problematic Categorical Anarchy",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 600,
+     "text": "characterizing the governance of cryptocurrencies a path toward reordering",
+     "title": "Characterizing the Governance of Cryptocurrencies: A Path Toward Reordering?",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 624,
+     "text": "ii 4 conclusion of chapter ii",
+     "title": "II.4 Conclusion of Chapter II",
+     "key": "II.4"
+    }
+   ]
+  },
+  "03_chapitre_III.md": {
+   "chapter": "ch3",
+   "lang": "fr",
+   "headings": [
+    {
+     "level": 1,
+     "line": 37,
+     "text": "iii 1 crise bitcoin cve 2018 17144 d une crise a de nombreuses autres",
+     "title": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
+     "key": "III.1"
+    },
+    {
+     "level": 2,
+     "line": 45,
+     "text": "presentation periodisee de la crise bitcoin cve 2018",
+     "title": "Présentation périodisée de la crise Bitcoin CVE 2018",
+     "key": "III.1.1"
+    },
+    {
+     "level": 3,
+     "line": 53,
+     "text": "une mise en crise longue et silencieuse",
+     "title": "Une mise en crise longue et silencieuse",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 57,
+     "text": "insemination gestation une etrange confluence d evenements potentiellement catastrophiques",
+     "title": "Insémination/gestation : une « étrange confluence d\\'événements » potentiellement catastrophiques",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 91,
+     "text": "d un declenchement confidentiel par divulgation responsable",
+     "title": "D'un déclenchement confidentiel par « divulgation responsable »",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 105,
+     "text": "une remise en ordre rapide",
+     "title": "Une remise en ordre rapide",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 109,
+     "text": "la phase d evaluation definition des problemes des solutions et d une strategie de resolution",
+     "title": "La phase d'évaluation : définition des problèmes, des solutions et d'une stratégie de résolution",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 117,
+     "text": "la phase de resolution mensonge blanc contre chapeau noir",
+     "title": "La phase de résolution : « mensonge blanc » contre « chapeau noir »",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 155,
+     "text": "restituer cette crise dans l histoire de celles traversees par bitcoin",
+     "title": "Restituer cette crise dans l'histoire de celles traversées par Bitcoin",
+     "key": "III.1.2"
+    },
+    {
+     "level": 3,
+     "line": 161,
+     "text": "de la diversite des crises aux crises protocolaires des cm",
+     "title": "De la diversité des crises aux crises protocolaires des CM",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 179,
+     "text": "enjeux des crises bitcoin labelisations indigenes et exemples historiques",
+     "title": "Enjeux des crises Bitcoin : labélisations indigènes et exemples historiques",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 217,
+     "text": "crise de faux monnayage ou l immutabilite des regles de monnayages en question",
+     "title": "Crise de « faux monnayage » , ou l'immutabilité des règles de monnayages en question",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 229,
+     "text": "crise de scission de chaine l unicite des paiements mise en peril",
+     "title": "Crise de « scission de chaine » : l'unicité des paiements mise en péril",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 241,
+     "text": "crise de dos degradation de l accessibilite au reseau et de la praticite des paiements",
+     "title": "Crise de « DOS » : dégradation de l'accessibilité au réseau et de la praticité des paiements",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 247,
+     "text": "d autres types de crises passees et encore a decouvrir",
+     "title": "D'autres types de crises passées et encore à découvrir",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 253,
+     "text": "iii 2 des marques d une politique de crises une gouvernance de huis clos routiniere",
+     "title": "III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière",
+     "key": "III.2"
+    },
+    {
+     "level": 2,
+     "line": 261,
+     "text": "des acteurs au c ur de la gouvernance sur le protocole",
+     "title": "Des acteurs au cœur de la gouvernance sur le protocole",
+     "key": "III.2.1"
+    },
+    {
+     "level": 3,
+     "line": 265,
+     "text": "de l ame des acteurs non humains d un esprit du code excedant sa lettre",
+     "title": "De l'âme des acteurs non humains : d'un « esprit du code » excédant sa « lettre »",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 299,
+     "text": "la diversite des acteurs non humains en question l hegemonie de bitcoin core en crise",
+     "title": "La diversité des acteurs non humains en question : l'hégémonie de « Bitcoin Core »  en crise ?",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 309,
+     "text": "qui peut modifier bitcoin bitcoin core un groupe en charge de maintenir et securiser bitcoin",
+     "title": "Qui peut modifier Bitcoin ? Bitcoin Core, un groupe en charge de maintenir et sécuriser Bitcoin ?",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 323,
+     "text": "ou modifier bitcoin un repo bitcoin core encadre et hierarchise",
+     "title": "Où modifier Bitcoin ? Un « repo Bitcoin Core » encadré et hiérarchisé",
+     "key": "III.2.2"
+    },
+    {
+     "level": 3,
+     "line": 327,
+     "text": "le repertoire bitcoin core et son administration",
+     "title": "Le répertoire « Bitcoin Core » et son administration",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 371,
+     "text": "d une hierarchie formelle selon le principe du moindre privilege a la designation informelle des mainteneurs core",
+     "title": "D'une hiérarchie formelle selon le principe « du moindre privilège » à la désignation informelle des mainteneurs « Core »",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 419,
+     "text": "une technocratie soumise a consensus communautaire entre confiance et defiance",
+     "title": "Une technocratie soumise à consensus communautaire : entre confiance et défiance",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 435,
+     "text": "bitcoin cve 2018 une gouvernance de huis clos suspendue a l absence de dissensus public",
+     "title": "Bitcoin CVE 2018 : une gouvernance de huis clos suspendue à l'absence de dissensus public",
+     "key": "III.2.3"
+    },
+    {
+     "level": 3,
+     "line": 439,
+     "text": "maintenance ou innovation deux procedures d evolution protocolaire differenciees",
+     "title": "Maintenance ou innovation ? Deux procédures d'évolution protocolaire différenciées",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 455,
+     "text": "gouvernance de huis clos consensus local ex ante entre une poignee d acteurs en reseau",
+     "title": "Gouvernance de huis clos : consensus local *ex ante* entre une poignée d'acteurs en réseau",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 493,
+     "text": "unanime et inapercu l audience publique sans vague d une crise et sa resolution",
+     "title": "Unanime et inaperçu : l'Audience Publique sans vague d'une crise et sa résolution",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 505,
+     "text": "iii 3 une gouvernance publique d exception le hard fork d ethereum consecutif a l attaque de the dao",
+     "title": "III.3 Une gouvernance publique d'exception : le *Hard Fork* d'Ethereum consécutif à l'attaque de « The DAO »",
+     "key": "III.3"
+    },
+    {
+     "level": 2,
+     "line": 513,
+     "text": "une mise en crise brutale publique et tapageuse",
+     "title": "Une mise en crise brutale, publique et tapageuse",
+     "key": "III.3.1"
+    },
+    {
+     "level": 3,
+     "line": 517,
+     "text": "periodisation du hard fork de the dao",
+     "title": "Périodisation du *Hard Fork* de « The DAO »",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 535,
+     "text": "phase d insemination demesure d un fonds d investissement distribue sur ethereum",
+     "title": "Phase d'insémination : démesure d'un fonds d'investissement distribué sur Ethereum",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 551,
+     "text": "le declenchement des alertes variees precedant l attaque de the dao",
+     "title": "Le déclenchement : des alertes variées précédant l'attaque de « The DAO »",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 563,
+     "text": "une remise en ordre complexe contrainte et controversee moyens et enjeux d un consensus multi acteur",
+     "title": "Une remise en ordre complexe, contrainte et controversée : moyens et enjeux d'un consensus multi-acteur",
+     "key": "III.3.2"
+    },
+    {
+     "level": 3,
+     "line": 567,
+     "text": "une cellule de crise a l image des strategies de remediation diversifiee",
+     "title": "Une cellule de crise à l'image des stratégies de remédiation : diversifiée",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 577,
+     "text": "50 nuances de code is law un diagnostic et des strategies de remediation controverses",
+     "title": "50 nuances de « Code is Law » : un diagnostic et des stratégies de remédiation controversés",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 585,
+     "text": "ne rien faire 1",
+     "title": "« Ne rien faire » (1)",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 595,
+     "text": "sauve qui peut au sein de la lettre du code",
+     "title": "« Sauve-qui-peut » *au sein* de « la lettre du code »",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 601,
+     "text": "se sauver soi meme au detriment des autres 2 b",
+     "title": "« Se sauver soi-même au détriment des autres » (2-b)",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 609,
+     "text": "contre attaquer action collective et coordonnee en vue d un interet commun 2 c d e",
+     "title": "« Contre-attaquer : action collective et coordonnée en vue d'un intérêt commun » (2 -- c, d, e)",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 657,
+     "text": "gouvernance ouverte et publique pour des forks controverses",
+     "title": "Gouvernance ouverte et publique pour des *forks* controversés",
+     "key": "III.3.3"
+    },
+    {
+     "level": 3,
+     "line": 661,
+     "text": "to fork or not to fork 149 enjeux et controverses theoriques autour des forks",
+     "title": "« *To fork or not to fork *» [^149] : enjeux et controverses théoriques autour des *forks*",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 671,
+     "text": "la production d un fork processus incertain multi acteur et multiniveau",
+     "title": "La production d'un *fork* : processus incertain, multi-acteur et multiniveau",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 713,
+     "text": "arenes et dispositifs d expression du desaccord le camp du hard fork rallie par la majorite",
+     "title": "Arènes et dispositifs d'expression du désaccord : le camp du *Hard Fork* rallié par la majorité",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 721,
+     "text": "fork you une scission surprise fondatrice et ses enseignements",
+     "title": "« Fork You ?! » : une scission surprise fondatrice et ses enseignements",
+     "key": "III.3.4"
+    },
+    {
+     "level": 3,
+     "line": 725,
+     "text": "un hard fork et ses attendus theoriques",
+     "title": "Un *Hard Fork* et ses attendus théoriques",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 731,
+     "text": "un hard fork contentieux inedit la secession d ethereum classic",
+     "title": "Un *Hard Fork* contentieux inédit : la sécession d'Ethereum Classic",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 737,
+     "text": "se separer pour mieux se retrouver fin d une remise en ordre et ses enseignements",
+     "title": "Se séparer pour mieux se retrouver : fin d'une remise en ordre et ses enseignements",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 751,
+     "text": "iii 4 conclusion du chapitre iii",
+     "title": "III.4 Conclusion du Chapitre III",
+     "key": "III.4"
+    }
+   ]
+  },
+  "03_chapitre_III_EN.md": {
+   "chapter": "ch3",
+   "lang": "en",
+   "headings": [
+    {
+     "level": 1,
+     "line": 37,
+     "text": "iii 1 bitcoin cve 2018 crisis from one crisis to many others",
+     "title": "III.1 Bitcoin CVE 2018 Crisis: from one crisis to many others…",
+     "key": "III.1"
+    },
+    {
+     "level": 2,
+     "line": 45,
+     "text": "periodized presentation of the bitcoin cve 2018 crisis",
+     "title": "Periodized Presentation of the Bitcoin CVE 2018 Crisis",
+     "key": "III.1.1"
+    },
+    {
+     "level": 3,
+     "line": 57,
+     "text": "a prolonged and silent crisis onset",
+     "title": "A Prolonged and Silent Crisis Onset",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 61,
+     "text": "insemination gestation a strange confluence of potentially catastrophic events",
+     "title": "Insemination/Gestation: A “Strange Confluence of Potentially Catastrophic Events”",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 98,
+     "text": "from a confidential triggering through responsible disclosure",
+     "title": "From a confidential triggering through “responsible disclosure”",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 112,
+     "text": "a rapid crisis resolution",
+     "title": "A Rapid Crisis Resolution",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 116,
+     "text": "the evaluation phase defining problems solutions and a resolution strategy",
+     "title": "The Evaluation Phase: Defining Problems, Solutions, and a Resolution Strategy",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 124,
+     "text": "the resolution phase white lie versus black hat",
+     "title": "The resolution phase: “white lie” versus “black hat”",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 157,
+     "text": "situating this crisis within the history of those experienced by bitcoin",
+     "title": "Situating this Crisis within the History of Those Experienced by Bitcoin",
+     "key": "III.1.2"
+    },
+    {
+     "level": 3,
+     "line": 163,
+     "text": "from the diversity of crises to protocol crises of cm",
+     "title": "From the Diversity of Crises to Protocol Crises of CM",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 182,
+     "text": "stakes of bitcoin crises indigenous labels and historical examples",
+     "title": "Stakes of Bitcoin crises: indigenous labels and historical examples",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 220,
+     "text": "false coinage crisis or the immutability of coinage rules questioned",
+     "title": "“False Coinage” Crisis, or the Immutability of Coinage Rules Questioned",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 236,
+     "text": "chain split crisis the uniqueness of payments jeopardized",
+     "title": "Chain Split Crisis: The Uniqueness of Payments Jeopardized",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 252,
+     "text": "dos crisis degradation of network accessibility and payment practicality",
+     "title": "DOS Crisis: Degradation of Network Accessibility and Payment Practicality",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 258,
+     "text": "other types of past and yet to be discovered crises",
+     "title": "Other Types of Past and Yet-to-be-Discovered Crises",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 268,
+     "text": "iii 2 signs of a crisis policy routine closed door governance",
+     "title": "III.2 Signs of a Crisis Policy: Routine Closed-Door Governance",
+     "key": "III.2"
+    },
+    {
+     "level": 2,
+     "line": 276,
+     "text": "actors at the heart of governance over the protocol",
+     "title": "Actors at the Heart of Governance over the Protocol",
+     "key": "III.2.1"
+    },
+    {
+     "level": 3,
+     "line": 280,
+     "text": "on the soul of non human actors from a spirit of the code exceeding its letter",
+     "title": "On the Soul of Non-Human Actors: From a \"Spirit of the Code\" Exceeding Its \"Letter\"",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 320,
+     "text": "the diversity of non human actors at stake is the hegemony of bitcoin core in crisis",
+     "title": "The diversity of non-human actors at stake: Is the hegemony of “Bitcoin Core” in crisis?",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 334,
+     "text": "who can modify bitcoin bitcoin core a group responsible for maintaining and securing bitcoin",
+     "title": "Who can modify Bitcoin? Bitcoin Core, a group responsible for maintaining and securing Bitcoin?",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 348,
+     "text": "where to modify bitcoin a regulated and hierarchical bitcoin core repo",
+     "title": "Where to Modify Bitcoin? A Regulated and Hierarchical “Bitcoin Core Repo”",
+     "key": "III.2.2"
+    },
+    {
+     "level": 3,
+     "line": 352,
+     "text": "the bitcoin core repository and its administration",
+     "title": "The “Bitcoin Core” Repository and Its Administration",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 396,
+     "text": "from a formal hierarchy based on the least privilege principle to the informal designation of core maintainers",
+     "title": "From a formal hierarchy based on the “least privilege” principle to the informal designation of “Core” maintainers",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 444,
+     "text": "a technocracy subject to community consensus between trust and distrust",
+     "title": "A technocracy subject to community consensus: between trust and distrust",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 460,
+     "text": "bitcoin cve 2018 a closed door governance suspended on the absence of public dissensus",
+     "title": "Bitcoin CVE 2018: a closed-door governance suspended on the absence of public dissensus",
+     "key": "III.2.3"
+    },
+    {
+     "level": 3,
+     "line": 464,
+     "text": "maintenance or innovation two differentiated procedures for protocol evolution",
+     "title": "Maintenance or Innovation? Two Differentiated Procedures for Protocol Evolution",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 483,
+     "text": "closed door governance local ex ante consensus among a handful of networked actors",
+     "title": "Closed-Door Governance: Local *Ex Ante* Consensus Among a Handful of Networked Actors",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 524,
+     "text": "unanimous and unnoticed the public audience without turmoil of a crisis and its resolution",
+     "title": "Unanimous and Unnoticed: The Public Audience Without Turmoil of a Crisis and Its Resolution",
+     "key": ""
+    },
+    {
+     "level": 1,
+     "line": 536,
+     "text": "iii 3 an exceptional public governance the ethereum hard fork following the the dao attack",
+     "title": "III.3 An Exceptional Public Governance: The Ethereum *Hard Fork* Following the “The DAO” Attack",
+     "key": "III.3"
+    },
+    {
+     "level": 2,
+     "line": 548,
+     "text": "a brutal public and conspicuous crisis onset",
+     "title": "A brutal, public, and conspicuous crisis onset",
+     "key": "III.3.1"
+    },
+    {
+     "level": 3,
+     "line": 556,
+     "text": "periodization of the the dao hard fork",
+     "title": "Periodization of the “The DAO” *Hard Fork*",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 576,
+     "text": "insemination phase excess of a distributed investment fund on ethereum",
+     "title": "Insemination Phase: Excess of a Distributed Investment Fund on Ethereum",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 592,
+     "text": "the onset diverse warnings preceding the attack on the dao",
+     "title": "The Onset: Diverse Warnings Preceding the Attack on “The DAO”",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 604,
+     "text": "a complex constrained and controversial crisis resolution means and stakes of a multi actor consensus",
+     "title": "A Complex, Constrained, and Controversial Crisis Resolution: Means and Stakes of a Multi-Actor Consensus",
+     "key": "III.3.2"
+    },
+    {
+     "level": 3,
+     "line": 608,
+     "text": "a crisis cell reflecting the diversity of remediation strategies",
+     "title": "A Crisis Cell Reflecting the Diversity of Remediation Strategies",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 618,
+     "text": "50 shades of code is law a controversial diagnosis and remediation strategies",
+     "title": "50 Shades of “Code is Law”: A Controversial Diagnosis and Remediation Strategies",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 626,
+     "text": "do nothing 1",
+     "title": "“Do Nothing” (1)",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 636,
+     "text": "every man for himself within the letter of the code",
+     "title": "“Every man for himself” *within* “the letter of the code”",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 642,
+     "text": "saving oneself at the expense of others 2 b",
+     "title": "“Saving oneself at the expense of others” (2-b)",
+     "key": ""
+    },
+    {
+     "level": 4,
+     "line": 650,
+     "text": "counterattacking collective and coordinated action aimed at a common interest 2 c d e",
+     "title": "“Counterattacking: collective and coordinated action aimed at a common interest” (2 – c, d, e)",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 702,
+     "text": "open and public governance for controversial forks",
+     "title": "Open and Public Governance for Controversial *Forks*",
+     "key": "III.3.3"
+    },
+    {
+     "level": 3,
+     "line": 706,
+     "text": "to fork or not to fork 149 theoretical stakes and controversies surrounding forks",
+     "title": "“*To fork or not to fork*” [^149]: Theoretical Stakes and Controversies Surrounding *Forks*",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 716,
+     "text": "the production of a fork uncertain multi actor and multi level process",
+     "title": "The production of a *fork*: uncertain, multi-actor, and multi-level process",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 762,
+     "text": "arenas and devices for expressing dissent the hard fork camp rallied by the majority",
+     "title": "Arenas and Devices for Expressing Dissent: The *Hard Fork* Camp Rallied by the Majority",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 770,
+     "text": "fork you a founding surprise split and its lessons",
+     "title": "“Fork You?!”: A Founding Surprise Split and Its Lessons",
+     "key": "III.3.4"
+    },
+    {
+     "level": 3,
+     "line": 774,
+     "text": "a hard fork and its theoretical expectations",
+     "title": "A *Hard Fork* and Its Theoretical Expectations",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 780,
+     "text": "an unprecedented contentious hard fork the secession of ethereum classic",
+     "title": "An Unprecedented Contentious *Hard Fork*: The Secession of Ethereum Classic",
+     "key": ""
+    },
+    {
+     "level": 3,
+     "line": 786,
+     "text": "separating to reunite the end of a crisis resolution and its lessons",
+     "title": "Separating to Reunite: The End of a Crisis Resolution and Its Lessons",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 804,
+     "text": "iii 4 conclusion of chapter iii",
+     "title": "III.4 Conclusion of Chapter III",
+     "key": "III.4"
+    }
+   ]
+  },
+  "04_conclusion.md": {
+   "chapter": "ccl",
+   "lang": "fr",
+   "headings": [
+    {
+     "level": 1,
+     "line": 1,
+     "text": "conclusion de la these",
+     "title": "Conclusion de la thèse",
+     "key": ""
+    },
+    {
+     "level": 2,
+     "line": 10,
+     "text": "resume de la these",
+     "title": "Résumé de la thèse",
+     "key": "conclu_resume"
+    },
+    {
+     "level": 2,
+     "line": 28,
+     "text": "decrypter la crypto par l approche infrastructurelle",
+     "title": "Décrypter la Crypto par l'approche infrastructurelle",
+     "key": "conclu_infra"
+    },
+    {
+     "level": 2,
+     "line": 38,
+     "text": "de l acephalisme apolitique des cm a l epreuve d une sociologie des crises",
+     "title": "De l'acéphalisme apolitique des CM à l'épreuve d'une sociologie des crises",
+     "key": "conclu_aceph"
+    },
+    {
+     "level": 2,
+     "line": 46,
+     "text": "une integration coherente des cm dans le champ de la theorie monetaire",
+     "title": "Une intégration cohérente des CM dans le champ de la théorie monétaire",
+     "key": "conclu_theo_mon"
+    },
+    {
+     "level": 2,
+     "line": 54,
+     "text": "un effort de traduction attentif aux et a l attention des acteurs",
+     "title": "Un effort de traduction *attentif aux* et à *l'attention* des acteurs",
+     "key": "conclu_traduction"
+    },
+    {
+     "level": 2,
+     "line": 64,
+     "text": "les cm boucs emissaires commodes d un systeme monetaire en crise",
+     "title": "Les CM : boucs émissaires commodes d'un système monétaire en crise ?",
+     "key": "conclu_boucs"
+    }
+   ]
+  },
+  "04_conclusion_EN.md": {
+   "chapter": "ccl",
+   "lang": "en",
+   "headings": [
+    {
+     "level": 3,
+     "line": 10,
+     "text": "thesis summary",
+     "title": "Thesis Summary",
+     "key": "conclu_resume"
+    },
+    {
+     "level": 3,
+     "line": 32,
+     "text": "decoding crypto through the infrastructure studies approach",
+     "title": "Decoding Crypto through the Infrastructure Studies Approach",
+     "key": "conclu_infra"
+    },
+    {
+     "level": 3,
+     "line": 42,
+     "text": "from the apolitical acephalism of cm to the challenge of a sociology of crises",
+     "title": "From the Apolitical Acephalism of CM to the Challenge of a Sociology of Crises",
+     "key": "conclu_aceph"
+    },
+    {
+     "level": 3,
+     "line": 50,
+     "text": "a coherent integration of cm into the field of monetary theory",
+     "title": "A coherent integration of CM into the field of monetary theory",
+     "key": "conclu_theo_mon"
+    },
+    {
+     "level": 3,
+     "line": 58,
+     "text": "a translation effort attentive to and attended by the actors",
+     "title": "A translation effort *attentive to* and *attended by* the actors",
+     "key": "conclu_traduction"
+    },
+    {
+     "level": 3,
+     "line": 68,
+     "text": "cryptocurrencies cm convenient scapegoats for a monetary system in crisis",
+     "title": "Cryptocurrencies (CM): Convenient Scapegoats for a Monetary System in Crisis?",
+     "key": "conclu_boucs"
+    }
+   ]
+  }
+ }
+}

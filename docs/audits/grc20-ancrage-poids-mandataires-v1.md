@@ -278,3 +278,16 @@ Deuxième illustration de la même règle : l'hypothèse du § 3 était la mienn
 elle était plausible, et la mesure l'a démentie. **Aucun des deux garde-fous
 n'était un contrôle automatique** — c'était, dans les deux cas, une
 contre-vérification. C'est l'argument de l'architecture, vérifié sur elle-même.
+
+
+---
+
+## Addendum — 2026-08-06
+
+Le § 6 de ce document affirme que le contenu des 8 sections vides « ne vit pas
+dans leurs sous-parties » et que « le vide est bien un défaut d'outillage ».
+La seconde phrase était juste, la première fausse : la localisation des
+20 056 extraits a montré que **18 clés de la carte étaient décalées d'un
+cran** — la charge de chaque section vivait sous la clé de la voisine,
+déplacée par le remappage qui a accompagné les migrations v100/v106. Corrigé
+en v109 (voie C). Voir `grc20-voie-c-realignement-charges-v1.md`.
