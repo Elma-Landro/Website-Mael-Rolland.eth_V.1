@@ -3,9 +3,9 @@
   "patch_id": "candidate-bibliographie-missing-nodes-v1",
   "source_graph": "grc20-these-mael-rolland-v110.json",
   "generated": "2026-08-07",
-  "description": "Candidats de création de nœuds bibliographiques pour les entrées du PDF sans aucun nœud dans v110, issus de docs/audits/data/bibliographie-entrees-sans-noeud-v1.csv. Critères d'inclusion STRICTS : vraiment_absente=oui ET niveau_preuve=entree-complete ET risque_ajout_inutile=faible (citation attestée dans le corps de la thèse). name = clé de citation + titre court, sur la convention majoritaire des nœuds existants (« Auteur Année — Titre », 502 nœuds sur 770 d'après l'audit source) ; types = type_propose du CSV traduit en ids de types EXACTS de v110 (Reference 51f53c59535b4e22b1dd0d83f6593fe1, GreyLiterature b6ff2981875a4027a8cbd56e26010732, IndigenousLiterature d62cf376f60449dfbdb1350c924231bc, AcademicWork 9a2fd04e026a410281686e02a6de3dcd) ; attribut source_entry = l'entrée complète de assets/MD/07_bibliographie.md (version scindée post-addendum du 2026-08-07, non tronquée).",
+  "description": "Candidats de création de nœuds bibliographiques pour les entrées du PDF sans aucun nœud dans v110, issus de docs/audits/data/bibliographie-entrees-sans-noeud-v1.csv. Critères d'inclusion STRICTS : vraiment_absente=oui ET niveau_preuve=entree-complete ET risque_ajout_inutile=faible (citation attestée dans le corps de la thèse). name = clé de citation + titre court, sur la convention majoritaire des nœuds existants (« Auteur Année — Titre », 502 nœuds sur 770 d'après l'audit source) ; types = type_propose du CSV traduit en ids de types EXACTS de v110 (Reference 51f53c59535b4e22b1dd0d83f6593fe1, GreyLiterature b6ff2981875a4027a8cbd56e26010732, IndigenousLiterature d62cf376f60449dfbdb1350c924231bc, AcademicWork 9a2fd04e026a410281686e02a6de3dcd) ; attribut sourceEntry = l'entrée complète de assets/MD/07_bibliographie.md (version scindée post-addendum du 2026-08-07, non tronquée).",
   "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Format DESCRIPTIF : AUCUN applicateur du dépôt ne consomme CREATE_ENTITY (vérifié par balayage de scripts/ et des .mjs — les applicateurs existants ne traitent que SET_NAME/SET_TYPES/SET_ATTRIBUTE/DELETE_ATTRIBUTE). L'application exigerait un script dédié make_vNNN qui assigne les entityId (aucun id n'est préassigné ici), pose les relations cited in / appears in section correspondant aux appels du corps, et un arbitrage de Maël Rolland sur chaque création.",
-  "registry_note": "La clé d'attribut source_entry N'EXISTE PAS dans grc20-properties-registry-v1.json : en l'état, tout graphe portant cet attribut serait BLOQUÉ par scripts/check_graph_integrity.py (toute clé d'attribut d'entité hors registre est bloquante). L'application exigerait d'abord l'ajout de la clé au registre (régénération via scripts/build_properties_registry.py) ou le choix d'une clé existante.",
+  "registry_note": "La cle d'attribut sourceEntry N'EXISTE PAS dans grc20-properties-registry-v1.json : en l'etat, tout graphe portant cet attribut serait BLOQUE par scripts/check_graph_integrity.py (toute cle d'attribut d'entite hors registre est bloquante). L'application exigera la regeneration du registre dans le meme commit (arbitrage Q1-A du 2026-08-07), ou la cle entrera automatiquement avec l'id e3f8b05adc0057677354bf5fb0f7c5e1. ARBITRAGE Q3 (2026-08-07) : Mael a choisi la graphie camelCase sourceEntry, alignee sur la famille source* du registre (l'ancienne graphie source_entry, id 4fafa2650e0b7f2a4bb2474b6669d3e6, est abandonnee avant toute creation — renommer apres coup aurait ete une nouvelle cle plus une migration).",
   "candidate_count": 38,
   "skipped_count": 22,
   "skipped": [
@@ -134,7 +134,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "BITMEX RESEARCH, 2018a, « The bitcoin flash crash to $0.01 in June 2011 », BitMEX Blog , https://blog.bitmex.com/the-june-2011-flash-crash-to-0-01/, 19 juillet 2018, consulté le 24 août 2020."
     }
@@ -153,7 +153,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "BITMEX RESEARCH, 2020a, « Who Funds Bitcoin Development? », BitMEX Blog , https://blog.bitmex.com/who-funds-bitcoin-development/, 28 mars 2020, consulté le 21 août 2020."
     }
@@ -172,7 +172,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "BUTERIN Vitalik, 2021, « Why sharding is great: demystifying the technical properties », https://vitalik.ca/general/2021/04/07/sharding.html , 7 avril 2021, consulté le 12 juin 2023."
     }
@@ -191,7 +191,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "CLASSIC Ethereum et ARVICCO (PSEUDONYME), 2016, « La déclaration d’indépendance d’Ethereum Classic », https://ethereumclassic.org/fr/blog/2016 -08-13-declaration-of-independence, 13 août 2016, consulté le 6 août 2024."
     }
@@ -210,7 +210,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "DAI Wei, 1998, « B-money », https://nakamotoinstitute.org/library/b-money/, consulté le 12 février 2016."
     }
@@ -229,7 +229,7 @@
     "AcademicWork"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "DEMIRGÜÇ-KUNTASLI Asli et DETRAGIACHE Enrica, 1998, Financial Liberalization and Financial Fragility, World Bank, Development Research Group and International Monetary Fund, Research Dept., Washington, DC, 48 p."
     }
@@ -248,7 +248,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "FELIXA pseudonyme, 2016b, « Update3: The DAO is under attack — but Vitalik saved us », https://blog.daohub.org/the-dao-is-under-attack-8d18ca45011b, 17 juin 2016, consulté le 27 mars 2019."
     }
@@ -267,7 +267,7 @@
     "AcademicWork"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "ORLÉAN A., 2002, « La monnaie contre la marchandise », L’Homme, 2002, no 2, p. 27‑48."
     }
@@ -286,7 +286,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "GÜN SIRER Emin, 2016, « Thoughts on The DAO Hack », http://hackingdistributed.com/2016/06/17/thoughts-on-the-dao-hack/, 17 juin 2016, consulté le 27 mars 2019."
     }
@@ -305,7 +305,7 @@
     "AcademicWork"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "INGHAM Geoffrey, 2007, « The Specificity of Money », European Journal of Sociology, 2007, vol. 48, no 02, p. 265‐272."
     }
@@ -324,7 +324,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "INSIDER Coin, 2021, « The story of the DAO, and how it shaped Ethereum », https://www.coininsider.com/what-happened-to-the-dao/, 9 juillet 2021, consulté le 9 mai 2024."
     }
@@ -343,7 +343,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2012, « Moneyness: Bitcoin steps on the toes of a few popular monetary theories », https://jpkoning.blogspot.com/2012/10/bitcoin-steps-on-toes-of-few-popular.html, 18 octobre 2012, consulté le 2 février 2021."
     }
@@ -362,7 +362,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING Jp, 2017, « Moneyness: The evolution of the Federal Reserve’s promises as recorded on their banknotes », https://jpkoning.blogspot.com/2017/10/the -evolution-of-federal-reserves.html, 27 octobre 2017, consulté le 9 novembre 2023."
     }
@@ -381,7 +381,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2018a, « Moneyness: Can lottery tickets become money? », https://jpkoning.blogspot.com/2018/12/can-lottery-tickets-become-money.html, 12 décembre 2018, consulté le 13 janvier 2021."
     }
@@ -400,7 +400,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2018b, « Moneyness: Bitcoin and the bubble theory of money », https://jpkoning.blogspot.com/2018/10/bitcoin-and-bubble-theory-of-money.html, 13 octobre 2018, consulté le 13 janvier 2021."
     }
@@ -419,7 +419,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2018c, « Play Bitcoin : Remember, it’s just a game », https://breakermag.com/play - bitcoin-remember-its-just-a-game/, 7 septembre 2018, consulté le 18 janvier 2021."
     }
@@ -438,7 +438,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2018d, « Moneyness: Tainted money », https://jpkoning.blogspot.com/2018/07/tainted- money.html, 31 juillet 2018, consulté le 13 janvier 2021."
     }
@@ -457,7 +457,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2018e, « Moneyness: A case for bitcoin », https://jpkoning.blogspot.com/2018/05/the- case-for-bitcoin.html, 10 mai 2018, consulté le 13 janvier 2021."
     }
@@ -476,7 +476,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2018f, « Moneyness: Fiatsplainin’ », https://jpkoning.blogspot.com/2018/03/fiatsplainin.html, 21 mars 2018, consulté le 13 janvier 2021."
     }
@@ -495,7 +495,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KONING J.P, 2019c, « Moneyness: Classifying cryptocurrencies », https://jpkoning.blogspot.com/2019/07/classifying-cryptocurrencies.html, 5 juillet 2019, consulté le 13 janvier 2021."
     }
@@ -514,7 +514,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "KRUGMAN Paul, 2013, « Bitcoin is Evil », https://krugman.blogs.nytimes.com/2013/12/28/bitcoin-is- evil/?_r=1&, 28 décembre 2013, consulté le 4 février 2021."
     }
@@ -533,7 +533,7 @@
     "AcademicWork"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "LATOUR Bruno, 2000, « La fin des moyens », Réseaux, 2000, vol. 18, no 100, p. 39‐58."
     }
@@ -552,7 +552,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "MINISTÈRE DE L’ÉCONOMIE ET DES FINANCES, 2011, Rapport d’activité 2011, Tracfin, s.l."
     }
@@ -571,7 +571,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "MINISTÈRE DE L’ÉCONOMIE ET DES FINANCES , 2017, Traitement du Renseignement et Action contre les Circuits FINanciers clandestins., https://www.economie.gouv.fr/files/TRACFIN_Rapport_Analyse_2017_2018_Web.pdf, 2018 2017, consulté le 29 janvier 2021."
     }
@@ -590,7 +590,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "MINISTÈRE DE L ’ÉCONOMIE ET DES FINANCES, 2019b, « BNC - Champ d’application - Activités et revenus imposables - Généralités - Exploitations lucratives et sources de profits - Professions ou activités dont la classification fiscale des revenus a donné lieu à des solutions administratives ou jurisprudentielles », Bulletin Officiel des Finances Publiques-Impôts, 2 septembre 2019."
     }
@@ -609,7 +609,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "POLROT Simon, 2016b, « Slock.it : la promesse des objets connectés sur la blockchain », https://www.ethereum-france.com/blog/slock-it-la-promesse-des-objets-connectes-sur-la-blockchain/, 4 avril 2016, consulté le 29 avril 2024."
     }
@@ -628,7 +628,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "POLROT Simon, 2016c, « The DAO mortem », https://www.ethereum-france.com/blog/the-dao-post- mortem/, consulté le 7 mai 2021."
     }
@@ -647,7 +647,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "SCHNEIDER Nathan, 2015, « En cavale avec le voleur de banque Enric Duran », https://www.vice.com/fr/article/ppnxg8/devenez-la-banque-que-vous-voulez-avoir-v9n5, 28 mai 2015, consulté le 6 octobre 2020."
     }
@@ -666,7 +666,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "TERUZZI David, 2016b, « Les consensus: Proof of work vs Proof of stake », blogchain café , https://blogchaincafe.com/les-consensus-proof-of-work-vs-proof-of-stake, 14 mars 2016, consulté le 13 juillet 2020."
     }
@@ -685,7 +685,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "THEYMOS, 2018, « The duplicate input vulnerability shouldn’t be forgotten », https://bitcointalk.org/index.php?topic=5035144.0, 22 septembre 2018, consulté le 31 mai 2021."
     }
@@ -704,7 +704,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "TUAL Stephan, 2016a, « The DAO Creation is now Live », Slock.it Blog, https://archive.is/wOiUZ, 30 avril 2016, consulté le 3 mai 2024."
     }
@@ -723,7 +723,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "TUAL Stephan, 2016b, « Daohub.org gets a facelift, full scope of The DAO is revealed », Medium, https://medium.com/ursium-blog/daohub-org-gets-a-facelift-full-scope-of-the-dao-is-revealed- 4d4c43eaf7b, 21 avril 2016, consulté le 29 avril 2024."
     }
@@ -742,7 +742,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "TUAL Stephan, 2016d, « Vitalik Buterin, Gavin Wood, Alex van De Sande, Vlad Zamfir announced amongst exceptional DAO Curators », Medium, 25 avril 2016, https://medium.com/ursium-blog/vitalik- buterin-gavin-wood-alex-van-de-sande-vlad-zamfir-announced-amongst-stellar-dao-curators- 44be4d12dd6e, consulté le 20 juin 2016."
     }
@@ -761,7 +761,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "TUAL Stephan, 2016e, « Announcing DAO.LINK, the bridge between blockchain and brick -and- mortar companies », Slock.it Blog , https://blog.slock.it/announcing-dao-link-the-bridge-between- blockchain-and-brick-and-mortar-companies-9510ba04d236#.fg2c41d3k, consulté le 20 juin 2016."
     }
@@ -780,7 +780,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "TUAL Stephan, 2016f, « No DAO funds at risk following the Ethereum smart contract ‘recursive call’ bug discovery », Slock.it Blog , https://blog.slock.it/no-dao-funds-at-risk-following-the-ethereum-smart- contract-recursive-call-bug-discovery-29f482d348b, consulté le 20 juin 2016."
     }
@@ -799,7 +799,7 @@
     "GreyLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "VAN WIRDUM Aaron, 2018, « The Genesis Files: How David Chaum’s eCash Spawned a Cypherpunk Dream », Bitcoin Magazine, https://bitcoinmagazine.com/articles/genesis-files-how-david-chaums-ecash- spawned-cypherpunk-dream, 24 avril 2018, consulté le 2 juillet 2020."
     }
@@ -818,7 +818,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "WOOD Gavin, 2014a, « Gav’s Ethereum Ð ΞV Update II », Blog Etheruum , https://blog.ethereum.org/2014/11/01/gavs-ethereum-d%ce%bev-update-ii/, 1 novembre 2014, consulté le 11 octobre 2020."
     }
@@ -837,7 +837,7 @@
     "IndigenousLiterature"
    ],
    "attributes": {
-    "source_entry": {
+    "sourceEntry": {
      "type": "TEXT",
      "value": "ZAMFIR Vlad, 2016, « (2) Vlad Zamfir sur X : « @simondlr would the community hard Fork ethereum if there was a critical bug in the DAO? :p », X, https://x.com/VladZamfir/status/731510468695756800, 14 mai 2016, consulté le 10 juillet 2024."
     }

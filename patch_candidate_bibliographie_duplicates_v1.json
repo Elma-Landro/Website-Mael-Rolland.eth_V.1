@@ -308,7 +308,8 @@
    }
   ],
   "degree_tie_note": "Dans 8 familles (8, 28, 33, 38, 42, 46, 58, 62), le degré du canonique est À ÉGALITÉ avec celui d'au moins un autre membre : le critère « le mieux relié » n'y discrimine pas, et la cible proposée y est un choix d'ordre, pas une mesure. La décision D11 (confirmation de chaque cible de fusion) couvre ces cas. Relevé par la revue hostile du 2026-08-07.",
-  "type_divergence_note": "Le canonique et ses doublons peuvent porter des TYPES différents (ex. famille 57 : canonique Reference nu, doublon AcademicWork) : une fusion naïve vers le canonique appauvrirait le typage. La conservation des types à la fusion est une décision distincte du choix de la cible et du libellé (cf. D11/D12). Relevé par la revue hostile du 2026-08-07."
+  "type_divergence_note": "Le canonique et ses doublons peuvent porter des TYPES différents (ex. famille 57 : canonique Reference nu, doublon AcademicWork) : une fusion naïve vers le canonique appauvrirait le typage. La conservation des types à la fusion est une décision distincte du choix de la cible et du libellé (cf. D11/D12). Relevé par la revue hostile du 2026-08-07.",
+  "arbitrage_note": "ARBITRAGE Q4 (2026-08-07, Mael) : reutilisation des cles existantes duplicateOf/reviewStatus confirmee (pas de cles dediees bibliographiques), domaine elargi au moment de la regeneration du registre qui accompagnera l'application (arbitrage Q1-A : meme commit) ; la valeur pending-author est CONSERVEE — elle dit « en attente d'arbitrage auteur », pas « fusion deja decidee » comme duplicate-pending-merge ; les deux valeurs seront figees par le champ vocabulary du registre regenere."
  },
  "ops": [
   {

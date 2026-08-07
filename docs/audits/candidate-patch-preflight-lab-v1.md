@@ -529,7 +529,21 @@ pas.
    outre une sémantique d'application qu'aucun applicateur n'implémente
    encore (note `[]`/clé absente, § 5).
 
-## 9. Décisions réservées à Maël
+## 9. Décisions réservées à Maël — arbitrages du lot 1 rendus
+
+> **Arbitrages rendus par Maël le 2026-08-07** (phase « Arbitrage Queue »,
+> lot 1 infrastructure, questions posées et répondues dans le chat de
+> session). Chaque décision ci-dessous porte son verdict en gras ; les
+> décisions 1 (fond des 3 patchs) restent ouvertes — elles relèvent des
+> lots 2-3 de la file. Ce qui découle mécaniquement des verdicts est
+> appliqué par la PR qui porte cette révision : générateur du registre
+> révisé et registre régénéré sur v110 (Q2/Q5-a — aucune clé candidate
+> ajoutée, Q1-A respecté), clé du patch missing-nodes renommée
+> `sourceEntry` (Q3), note d'arbitrage dans le patch duplicates (Q4),
+> deux contrôles ajoutés à la CI (Q5-a/b), `anchor_overrides_targeted`
+> archivé avec sa note (Q7). Les mentions `source_entry` des § 6.3-6.4
+> ci-dessus décrivent l'état AU MOMENT de l'analyse — la graphie retenue
+> depuis est `sourceEntry`.
 
 1. **Arbitrer les 3 patchs bibliographiques** — retypes (10 ops, risque
    faible, réversibles unitairement), duplicates (156 ops, marquage
@@ -541,10 +555,12 @@ pas.
    applicateur existant), vérifier d'abord les citations contre le PDF, ou
    archiver ; en cas d'application, traiter les 3 doublons potentiels de la
    phase 3. Donnée d'appui : inventaire, lignes 1-3.
+   **Arbitré (Q8) : vérifier d'abord** — les 41 citations seront vérifiées contre le PDF, sans aucune écriture dans le graphe ; ni applicateur ni application avant ce contrôle. « Une fausse citation gravée dans le graphe serait pire qu'un travail préparatoire laissé en attente. »
 3. **Le sort de `patches/grc20_anchor_overrides_targeted.json`** —
    réévaluation complète ou retrait : base v93, structure hors dialectes,
    clés inconnues du registre, mécanisme concurrent de v108–v109. Donnée
    d'appui : inventaire, dernière ligne `patches/`.
+   **Arbitré (Q7) : archivé** — déplacé vers `patches/archive/` avec sa note de motifs ; pas de réévaluation sauf preuve ultérieure que ces 10 entrées portaient un jugement d'auteur que v108/v109 n'a pas repris.
 4. **Adopter ou amender le contrat de patch** (§ 3) — notamment la sévérité
    de l'applicateur futur (`source_graph` bloquant ou indicatif, § 4) et le
    sort de `CREATE_ENTITY` (le promouvoir en op consommable, ou rabattre les
@@ -553,22 +569,27 @@ pas.
    C03, C09 en appliquent les règles) — l'amender implique de mettre à jour
    `preflight_candidate_patches.py` dans le même mouvement ; le préflight
    n'étant pas en CI, rien n'est verrouillé d'ici là.
+   **Arbitré partiellement (Q6) : pour `CREATE_ENTITY`, pas d'applicateur tant que les 38 fiches ne sont pas arbitrées ; quand elles le seront, un `make_vNNN` dédié propre plutôt qu'un rabattement sur l'ancien dialecte D.** Le reste du contrat demeure en l'état, outillé par le validateur.
 5. **Scénario A ou B pour le registre** (§ 6.5) — même-commit mesuré, ou
    extension anticipée avec perte de reproductibilité. Donnée d'appui :
    § 6.5 et les deux chiffres registre de la simulation (§ 5).
+   **Arbitré (Q1) : scénario A** — appliquer les patchs arbitrés puis régénérer le registre, dans le même commit. « Je ne veux pas d'un registre étendu par anticipation qui décrive un état qui n'existe pas. »
 6. **Réviser `build_properties_registry.py`** — `SOURCE` codé en dur v109
    (l. 39), `DATE_AUDIT` figée, exigence patch_19 obsolète, disparition des
    3 entrées `deprecated` à la régénération (perte d'historique à assumer ou
    à compenser). Donnée d'appui : § 6.3.
+   **Arbitré (Q2) : révisé maintenant** — source paramétrable (défaut : graphe le plus récent), patch_19 conditionnel détecté par les données, et les 3 entrées dépréciées **conservées** via la liste d'historique explicite `HISTORIQUE_DEPRECIEES` (« une trace d'audit, pas un déchet »). Registre régénéré sur v110 : 338 entrées, 15 modifiées (comptes patch_19 intégrés, domaines des 21 retypages patch_18, readBy des scripts récents), dépréciées à count 0 avec comptes historiques v109 en notes.
 7. **Ajouter les contrôles CI proposés** (§ 6.5) — fraîcheur du registre
    (ferme le mensonge silencieux, utile indépendamment de tout patch),
    préflight des candidats en CI, invariants `duplicateOf` dans
    `check_graph_integrity.py` après application.
+   **Arbitré (Q5) : (a) + (b) maintenant** — fraîcheur du registre (`build_properties_registry.py --check`) et préflight des candidats ajoutés à `check.yml` ; **(c) reporté** au moment où les annotations `duplicateOf` seront effectivement appliquées.
 8. **La casse de `source_entry`** — snake_case (comme `section_key`) ou
    camelCase (comme la famille `source*`), à trancher **avant** la création
    des 38 nœuds : renommer après coup serait une nouvelle clé plus une
    migration. Donnée d'appui : § 6.4.
 
+   **Arbitré (Q3) : `sourceEntry`** (camelCase, aligné sur la famille `source*` ; `source` écarté comme trop ambigu) — le patch candidat est modifié maintenant plutôt qu'une migration plus tard ; id de la future entrée : `e3f8b05adc0057677354bf5fb0f7c5e1`.
 ## 10. Ce que ce chantier n'a pas fait
 
 Aucun patch appliqué, aucun graphe écrit, pas de v111 ; le registre des
