@@ -1,0 +1,293 @@
+{
+ "_meta": {
+  "patch_id": "18",
+  "source_graph": "grc20-these-mael-rolland-v109.json",
+  "generated": "2026-08-06",
+  "description": "1 coquille de nom (Danzeis -> Danezis, absente de la bibliographie) et 21 retypages Reference -> Person de fiches d'auteur sans millesime, chacune CONFIRMEE par une entree d'auteur de assets/MD/07_bibliographie.md (patronyme + prenom).",
+  "policy": "SET_NAME et SET_TYPES uniquement. Aucune relation touchee, aucune fusion. Un retypage n'est emis que si la bibliographie confirme le nom complet : la revue hostile du 06/08 a etabli que 5 fiches portaient un prenom contredit par le PDF (FAVIER Jacques, TAKKAL BATAILLE Adli, DREAN Gerard, LOIBL Andreas) ou une conflation de deux autrices (Florence Dufy <- DUFY Caroline + WEBER Florence), et que 13 autres n'ont aucune entree d'auteur au PDF. Promouvoir ces noms en Person graverait des personnes fausses : ils restent Reference, a l'arbitrage.",
+  "skipped": [
+   {
+    "name": "Marco Corallo",
+    "reason": "entité Person 'Matt Corallo' (même patronyme, très probablement la même personne) — fusion à arbitrer"
+   },
+   {
+    "name": "Desmedt et Lakomski-Laguerre",
+    "reason": "fiche à deux auteurs ; Persons 'Mathieu Desmedt' et 'Odile Lakomski-Laguerre' déjà présents — arbitrage"
+   },
+   {
+    "name": "De Boyer des Roches et Rosales",
+    "reason": "fiche à deux auteurs — ne peut pas devenir une entité Person unique ; arbitrage"
+   },
+   {
+    "name": "Martti Malmi (Sirius)",
+    "reason": "entité Person homonyme 'Martti Malmi' déjà présente — fusion à arbitrer"
+   },
+   {
+    "entityId": "718e0d4dadda4180a04600fbf5c3ce51",
+    "name": "Joseph Stiglitz",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "909cc7f5cae7466198dac07dff0b1f4f",
+    "name": "John Maynard Keynes",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "bec0b6b26cb44424abbd499b86ebc87a",
+    "name": "Christine Desan",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "3a06841689ec4bebac553b2b7fc974b5",
+    "name": "Emmanuel Macron",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "9b9c6eb4c0914b95a4cd087d1f5517b7",
+    "name": "\"The Madhatter\"",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "d66fdb7349e04a84b2850d2cb4b7f2de",
+    "name": "Neil Gandal",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "b332ace807b84fe4ab2373b8dc8f4856",
+    "name": "Shinobi (pseudonyme)",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "03fd59f205f24666968722d5b4e1bab9",
+    "name": "Kyle Croman",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "5fc4278b78704f6c92c3744e2654518a",
+    "name": "Laura DeNardis",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "be8ac28672e44ef6852fd5b1d80f3b90",
+    "name": "Gregor Loibl",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "7cd4cfe4c8d74aaaaeabcd17ebf11b3a",
+    "name": "Guillaume Dréan",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "dcd10825d6ddd231dda4b6057d7296c1",
+    "name": "Tyler Winklevoss",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "179aa1fe59cd4aa89596a7f6ac8a864c",
+    "name": "Lionel Robbins",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "4722e76151654d63a64bf4ef0c209a4e",
+    "name": "Alain Maucourant",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "53525938440543a5af359337eeab9823",
+    "name": "Jérôme Favier",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "ec901513fae144a0a350e798b0351c6d",
+    "name": "Audrey Takkal Bataille",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "4d583f06ee5247f8bde64ae8dcfdc025",
+    "name": "Felix Albert",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   },
+   {
+    "entityId": "4efa5d34e66b4997be3c10dfeca63680",
+    "name": "Florence Dufy",
+    "reason": "prenom contredit par le PDF ou sans entree d auteur — arbitrage"
+   }
+  ]
+ },
+ "ops": [
+  {
+   "type": "SET_NAME",
+   "entityId": "05338358f9d7485dbef4110be604c4f8",
+   "value": "Danezis et Meiklejohn 2015",
+   "_comment": "Coquille : 'Danzeis' pour George Danezis (Danezis & Meiklejohn 2015, 'Centrally Banked Cryptocurrencies'/RSCoin, Bank of England). NB : l'attribut 'author' porte la même coquille ('Danzeis Meiklejohn') et l'entrée est absente de la bibliographie du PDF — voir rapport."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "4669c78297ef4330958faacf150247a1",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Paul Krugman » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "102a3d9c39ff43ccb0d32ecb4aaa977e",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Nouriel Roubini » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "0bb65ed8a7894205b3d46a8c22c483e1",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « J.P. Koning » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "7805fbd2d525452db3ae9c278d68c28b",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Georg Simmel » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "95a987bdfba64125a5ece7a20bd513ad",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Adrian Chen » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "a7331e33909243efa451591de0dc2890",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Arjun Kharpal » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "c71a050fe421473cb9640f121919846b",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Annie Massa » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "efc23cf4c63b4a18921efc1b3b9703e7",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Antoine Le Calvez » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "90e866d0e30348ddb2ea7ceaf64610b6",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Nermin Hajdarbegovic » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "186fdf0bfb784c47bfe0fc4809bfade6",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Aaron van Wirdum » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "a6f5cd7629d9426ebe1617d8b1d11f16",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Jonathan Bier » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "7bca8e9a05a34a25b998960e7ec6df65",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Rainer Böhme » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "fedbae493a9d45f692dcbef761690682",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Danny Bradbury » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "47d4119d830e4bf1b83c26e21e5cdcd1",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Abeer ElBahrawy » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "a9fd809426d7308532e694cd3e01a485",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Jacques Sapir » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "806288e640364375dc33d96befa5037a",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « David Yermack » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "6569ffa350046954451929655aea3835",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Karl Polanyi » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "42169b253e082bb8fb8e7ccca23cd917",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Viviana Zelizer » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "7cab4b2ab227f56dfae0524e137a0247",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Bruno Latour » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "fb692ce5f716443fa6bd1d5e28906142",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Primavera De Filippi » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  },
+  {
+   "type": "SET_TYPES",
+   "entityId": "b7f8607bde0340b9acadd0537b669656",
+   "value": [
+    "ed738791205548e4b4c187c58be227dc"
+   ],
+   "_comment": "Fiche d'auteur sans millésime « Milton Friedman » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person). Aucune entité Person homonyme dans le graphe v109."
+  }
+ ]
+}
