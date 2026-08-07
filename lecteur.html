@@ -827,6 +827,61 @@ body::before {
 }
 .annot-export-btn:hover { border-color: var(--gold); color: var(--gold); }
 
+/* ═══ MODE LABORATOIRE (?panelLab=1 uniquement) ═════════
+   Aucune de ces classes n'est posée sans le paramètre d'URL :
+   le DOM est injecté par panelLabInit(), jamais en mode normal. */
+.panel-lab-banner {
+  flex-shrink: 0;
+  padding: 8px 10px;
+  background: var(--bg3);
+  border-bottom: 2px dashed var(--accent);
+  color: var(--gold);
+  font-family: var(--pixel);
+  font-size: 0.4em;
+  line-height: 1.8;
+}
+.panel-lab-bar {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--pixel); font-size: 0.4em;
+  color: var(--text2);
+}
+.panel-lab-bar select {
+  flex: 1; min-width: 0;
+  background: var(--bg2); color: var(--gold2);
+  border: 1px solid var(--border); border-radius: 2px;
+  font-family: var(--body); font-size: 1.7em;
+  padding: 2px 4px; cursor: pointer;
+}
+.panel-lab-list {
+  flex-shrink: 0;
+  max-height: 34%;
+  overflow-y: auto;
+  border-top: 1px solid var(--border);
+  padding: 6px 10px;
+  font-size: 0.85em;
+}
+.panel-lab-item {
+  display: flex; align-items: baseline; gap: 6px;
+  padding: 2px 0; cursor: pointer;
+}
+.panel-lab-item:hover .panel-lab-nom { color: var(--gold); }
+.panel-lab-rang { min-width: 2em; text-align: right; color: var(--gold-dim); }
+.panel-lab-pin  { color: var(--gold); }
+.panel-lab-nom  { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.panel-lab-badge {
+  white-space: nowrap; cursor: help;
+  border: 1px solid currentColor; border-radius: 2px;
+  padding: 0 4px; font-size: 0.8em;
+  color: var(--gold-dim);
+}
+.panel-lab-st-self       { color: var(--success); }
+.panel-lab-st-self-base  { color: #aaff66; }
+.panel-lab-st-proxy      { color: var(--text2); }
+.panel-lab-st-no-snippet { color: var(--danger); }
+
 /* ═══ SCROLLBAR ═════════════════════════════════════════ */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -1044,6 +1099,14 @@ const SECTION_MAP_FILE= './section_entities_map.json';
 const MAX_GRAPH_NODES = 12;   // max nodes in graph (paragraph-level scrollytelling)
 const MAX_HIGHLIGHT   = 150;  // max entity names for DOM highlighting
 
+// ── Mode laboratoire (opt-in, ?panelLab=1) ─────────────
+// Compare des politiques de classement du panneau. Sans le paramètre d'URL,
+// PANEL_LAB vaut false et TOUT le code du laboratoire est inerte : aucun
+// élément injecté, tri canonique inchangé. Le mode choisi ne se persiste
+// jamais (ni localStorage ni URL) : il meurt avec l'onglet.
+const PANEL_LAB = new URLSearchParams(location.search).get('panelLab') === '1';
+let panelLabMode = 'legacy';  // 'legacy' | 'verified-first' | 'direct-count' | 'hybrid-cautious'
+
 const CHAPTERS_DEF = [
   { id: 'intro',    labelFR: 'Intro',      labelEN: 'Intro',
     fileFR: '00_introduction.md',      fileEN: '00_introduction_EN.md' },
@@ -1143,6 +1206,7 @@ const HIGHLIGHT_TYPES = new Set([
 // ═══════════════════════════════════════════════════════
 async function init() {
   renderChapterNav();
+  if (PANEL_LAB) panelLabInit();   // mode laboratoire : opt-in par URL uniquement
   await loadGraph();
   initCytoscape();
   initReadingProgress();
@@ -1205,6 +1269,18 @@ async function loadGraph() {
         df[entity_id] = (df[entity_id] || 0) + 1;
       }
     }
+    // ── Mode laboratoire : dfd = nb de sections où l'entité a au moins
+    //    une ancre directe. Compté sur les lignes BRUTES, avant l'agrégation
+    //    des parentes plus bas — même corpus que df, même raison.
+    if (PANEL_LAB) {
+      const dfd = {};
+      for (const secData of Object.values(sectionMap)) {
+        for (const e of (secData.entities || [])) {
+          if ((e.direct_anchor_count || 0) >= 1) dfd[e.entity_id] = (dfd[e.entity_id] || 0) + 1;
+        }
+      }
+      state.panelLabDfd = dfd;
+    }
     const tfidf = {};
     for (const [secKey, secData] of Object.entries(sectionMap)) {
       tfidf[secKey] = {};
@@ -1246,7 +1322,12 @@ async function loadGraph() {
       for (const cle of [parente, ...contributeurs]) {
         for (const e of (sectionMap[cle]?.entities || [])) {
           const vu = cumul.get(e.entity_id);
-          if (vu) vu.occurrence_count += e.occurrence_count;
+          if (vu) {
+            vu.occurrence_count += e.occurrence_count;
+            // Mode laboratoire : la carte ne fournit pas ces champs pour les
+            // parentes agrégées, on les approxime (somme / meilleur statut).
+            if (PANEL_LAB) panelLabFusionneLigne(vu, e);
+          }
           else cumul.set(e.entity_id, { ...e });
         }
       }
@@ -1596,6 +1677,7 @@ function updateGraph(sectionKey) {
     // lit comme une panne ; on dit ce qu'il en est.
     document.getElementById('graph-section-total').textContent =
       'Contenu de cette section pas encore rattaché au graphe';
+    if (PANEL_LAB) panelLabRender(sectionKey, [], new Set());
     return;
   }
 
@@ -1604,9 +1686,13 @@ function updateGraph(sectionKey) {
   const overrideIds = state.sectionOverrides?.[sectionKey] || [];
   const overrideSet = new Set(overrideIds);
 
+  // Mode laboratoire : comparateur expérimental. null (mode legacy ou
+  // laboratoire éteint) = le tri canonique ci-dessous, à l'identique.
+  const triLab = PANEL_LAB ? panelLabComparateur(scores) : null;
+
   const byScore = [...sectionData.entities]
     .filter(e => !overrideSet.has(e.entity_id))
-    .sort((a, b) => (scores[b.entity_id] || 0) - (scores[a.entity_id] || 0))
+    .sort(triLab || ((a, b) => (scores[b.entity_id] || 0) - (scores[a.entity_id] || 0)))
     .slice(0, MAX_GRAPH_NODES - overrideIds.length)
     .map(e => e.entity_id);
 
@@ -1654,6 +1740,8 @@ function updateGraph(sectionKey) {
   const total = sectionData.entities.length;
   document.getElementById('graph-section-total').textContent =
     total > newNodes.length ? `top ${newNodes.length}/${total} entités` : `${newNodes.length} entités`;
+
+  if (PANEL_LAB) panelLabRender(sectionKey, finalIds, overrideSet);
 }
 
 function smoothUpdateGraph(newNodes, newEdges) {
@@ -1696,6 +1784,152 @@ function smoothUpdateGraph(newNodes, newEdges) {
       padding:           24,
     }).run();
   }
+}
+
+// ═══════════════════════════════════════════════════════
+//  MODE LABORATOIRE (?panelLab=1) — classement expérimental du panneau
+//
+//  Compare quatre politiques de tri du panneau contextuel, épinglés
+//  toujours d'abord, bris d'égalité par entity_id croissant. Définitions
+//  NORMATIVES, partagées avec scripts/compare_panel_policies.py :
+//    legacy          : occurrence_count × log(N/df) — l'existant, inchangé
+//    verified-first  : self + self-base d'abord (score legacy), puis le reste
+//    direct-count    : direct ≥ 1 triés par direct × log(N/dfd), puis
+//                      les restantes par score legacy
+//    hybrid-cautious : self < self-base < proxy < no-snippet, score legacy
+//                      à l'intérieur de chaque classe
+//  Toutes ces fonctions sont mortes quand PANEL_LAB est false.
+// ═══════════════════════════════════════════════════════
+const PANEL_LAB_RANG_STATUT = { 'self': 0, 'self-base': 1, 'proxy': 2, 'no-snippet': 3 };
+
+const PANEL_LAB_TOOLTIP =
+  'Mesures indicatives, PAS une validation scientifique.\n' +
+  'snippet_status — qualité de la preuve par extrait :\n' +
+  '  self : le nom complet figure dans un extrait (limites de mots) ;\n' +
+  '  self-base : la base de citation du nom y figure\n' +
+  '    (« Théret 2008 » pour « Théret 2008 — Les trois états ») ;\n' +
+  '  proxy : des extraits existent, mais ni le nom ni sa base n’y figurent ;\n' +
+  '  no-snippet : aucun extrait (une présence textuelle reste possible).\n' +
+  'direct_anchor_count — occurrences littérales du nom dans la section : ' +
+  'mesure PAUVRE, qui sous-compte les noms forgés ou traduits.';
+
+// Fusion des champs laboratoire quand une parente agrège ses descendants :
+// somme des ancres directes connues, meilleur statut d'extrait retenu.
+function panelLabFusionneLigne(vu, e) {
+  if (e.direct_anchor_count != null) {
+    vu.direct_anchor_count = (vu.direct_anchor_count || 0) + e.direct_anchor_count;
+  }
+  if ((PANEL_LAB_RANG_STATUT[e.snippet_status] ?? 4) <
+      (PANEL_LAB_RANG_STATUT[vu.snippet_status] ?? 4)) {
+    vu.snippet_status = e.snippet_status;
+  }
+}
+
+// Comparateur du mode courant. Retourne null pour `legacy` : le panneau
+// repasse alors par le tri canonique de updateGraph, strictement identique.
+function panelLabComparateur(scores) {
+  if (panelLabMode === 'legacy') return null;
+  const parId  = (a, b) => (a.entity_id < b.entity_id ? -1 : a.entity_id > b.entity_id ? 1 : 0);
+  const legacy = (a, b) =>
+    ((scores[b.entity_id] || 0) - (scores[a.entity_id] || 0)) || parId(a, b);
+  if (panelLabMode === 'verified-first') {
+    const verifie = e =>
+      (e.snippet_status === 'self' || e.snippet_status === 'self-base') ? 0 : 1;
+    return (a, b) => (verifie(a) - verifie(b)) || legacy(a, b);
+  }
+  if (panelLabMode === 'direct-count') {
+    const N   = state.totalSections || 1;
+    const dfd = state.panelLabDfd  || {};
+    const aDirect = e => ((e.direct_anchor_count || 0) >= 1 ? 0 : 1);
+    const scoreD  = e => (e.direct_anchor_count || 0) * Math.log(N / (dfd[e.entity_id] || 1));
+    return (a, b) => (aDirect(a) - aDirect(b))
+      || (aDirect(a) === 0 ? ((scoreD(b) - scoreD(a)) || parId(a, b)) : legacy(a, b));
+  }
+  if (panelLabMode === 'hybrid-cautious') {
+    const rang = e => (PANEL_LAB_RANG_STATUT[e.snippet_status] ?? 3);
+    return (a, b) => (rang(a) - rang(b)) || legacy(a, b);
+  }
+  return null;
+}
+
+// Injection du bandeau, du sélecteur et de la liste — appelé une seule
+// fois depuis init(), et seulement si PANEL_LAB.
+function panelLabInit() {
+  const col = document.querySelector('.graph-col');
+  if (!col) return;
+
+  const banner = document.createElement('div');
+  banner.id        = 'panel-lab-banner';
+  banner.className = 'panel-lab-banner';
+  banner.textContent = '⚠ MODE LABORATOIRE — classement expérimental ' +
+    'd’arbitrage, PAS le classement canonique du panneau';
+  col.insertBefore(banner, col.firstChild);
+
+  const bar = document.createElement('div');
+  bar.className = 'panel-lab-bar';
+  bar.innerHTML =
+    '<label for="panel-lab-select">TRI</label>' +
+    '<select id="panel-lab-select" title="Politique de classement expérimentale (jamais enregistrée)">' +
+      '<option value="legacy" selected>legacy — canonique (TF-IDF)</option>' +
+      '<option value="verified-first">verified-first — nom attesté dans un extrait d’abord</option>' +
+      '<option value="direct-count">direct-count — ancres directes pondérées</option>' +
+      '<option value="hybrid-cautious">hybrid-cautious — classes de preuve</option>' +
+    '</select>';
+  banner.after(bar);
+
+  const list = document.createElement('div');
+  list.id        = 'panel-lab-list';
+  list.className = 'panel-lab-list';
+  col.insertBefore(list, col.querySelector('.graph-stats'));
+
+  document.getElementById('panel-lab-select').addEventListener('change', (ev) => {
+    panelLabMode = ev.target.value;   // volontairement jamais persisté
+    const cle = state.currentSectionKey;
+    if (!cle) return;
+    state.currentSectionKey = null;   // force updateGraph à recalculer la même section
+    updateGraph(cle);
+  });
+}
+
+// Liste ordonnée du panneau courant, avec badge snippet_status (+ ancres
+// directes si connues) par entité. Rendue à chaque updateGraph.
+function panelLabRender(sectionKey, finalIds, overrideSet) {
+  const list = document.getElementById('panel-lab-list');
+  if (!list) return;
+  list.innerHTML = '';
+  const lignes = {};
+  for (const e of (state.sectionEntitiesMap?.[sectionKey]?.entities || [])) {
+    lignes[e.entity_id] = e;
+  }
+  finalIds.forEach((eid, i) => {
+    const ligne  = lignes[eid];
+    const statut = ligne?.snippet_status || null;
+    const direct = ligne?.direct_anchor_count;
+    const item = document.createElement('div');
+    item.className = 'panel-lab-item';
+    item.dataset.entityId = eid;
+
+    const rang = document.createElement('span');
+    rang.className   = 'panel-lab-rang';
+    rang.textContent = overrideSet.has(eid) ? '📌' : String(i + 1);
+    if (overrideSet.has(eid)) {
+      rang.classList.add('panel-lab-pin');
+      rang.title = 'Épinglée via section_overrides.json — toujours en tête';
+    }
+
+    const nom = document.createElement('span');
+    nom.className   = 'panel-lab-nom';
+    nom.textContent = state.entityMap[eid]?.name || ligne?.entity_name || eid;
+
+    const badge = document.createElement('span');
+    badge.className   = 'panel-lab-badge' + (statut ? ` panel-lab-st-${statut}` : '');
+    badge.textContent = (statut || '?') + (direct != null ? ` · ${direct}` : '');
+    badge.title       = PANEL_LAB_TOOLTIP;
+
+    item.append(rang, nom, badge);
+    item.addEventListener('click', () => openEntityPanel(eid));
+    list.appendChild(item);
+  });
 }
 
 // ═══════════════════════════════════════════════════════

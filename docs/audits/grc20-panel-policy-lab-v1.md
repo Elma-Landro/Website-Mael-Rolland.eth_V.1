@@ -167,7 +167,11 @@ n'en formule aucune.
    réordonnancement) — combinaison non simulée ici.
 
 **Ce que ce chantier n'a pas fait** : aucun changement de classement public
-(`lecteur.html` affiche aujourd'hui la même chose qu'hier), aucun graphe
-touché, pas de v111, aucune modification de la carte, des overrides ni
-d'aucun fichier existant. Le script est une simulation déterministe,
+(`lecteur.html` sans paramètre affiche aujourd'hui la même chose qu'hier —
+prouvé par comparaison des ordres de panneau avant/après), aucun graphe
+touché, pas de v111, aucune modification de la carte ni des overrides. La
+seule modification d'un fichier existant est le **mode laboratoire opt-in**
+de `lecteur.html` (`?panelLab=1`), inerte par défaut, qui permet d'essayer
+les quatre politiques de tri du § 2 et d'afficher les deux champs — sans
+jamais persister le choix. Le script est une simulation déterministe,
 rejouable, dont la seule écriture est le CSV d'impact.
