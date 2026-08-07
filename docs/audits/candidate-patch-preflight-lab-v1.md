@@ -78,7 +78,10 @@ de `Migration/`, et `patches/grc20_anchor_overrides_targeted.json`.
   (`sourcequote_effective_patch_phase1/2/3.zip`) : 18 + 10 + 13 = **41 ops
   `ADD_SOURCEQUOTE_WITH_SECTION_LINKS`** dans un dialecte ad hoc à résolution
   par noms (aucun `entityId`), préparés hors dépôt avec pour cible déclarée
-  v96+. Un applicateur **existe** (`scripts/apply-sourcequote-phases.mjs`).
+  v96+. Un outil dédié existe (`scripts/apply-sourcequote-phases.mjs`) mais
+  la revue hostile a établi qu'il **n'écrit rien** : même avec `--write`,
+  il simule en mémoire et imprime un rapport (aucun `writeFile` dans le
+  script ni ses modules) — appliquer réellement exigerait de l'étendre.
   Aucune trace en v110 (0 titre, 0 `seed_id` retrouvés) — **sauf** en
   phase 3, où **3 extraits coïncident avec des citations déjà présentes** :
   risque de doublon si appliqué tel quel. Citations à vérifier contre le PDF
@@ -226,10 +229,18 @@ Par type : `Person` +6 (les retypes), `Reference` +32 net (+38 créations,
   croisement** avec les 3 porteurs `duplicateOf` déjà présents dans v110
   (les entités patch_10 : `ee7277…`, `7f8009…`, `22c507…` — verdict « aucun
   croisement ») ;
-- **zéro référence runtime** : grep des noms, ids et clés de citation des
-  entités touchées dans `narrative-anchors`, `story-presets`,
-  `graphe.story-helpers`, `graphe.html`, `lecteur.html` — aucune. Retyper,
-  marquer ou créer ces entités ne casse aucun affichage existant.
+- **zéro référence runtime par nom-clé** (formulation corrigée par la
+  revue hostile) : grep des noms, ids et clés de citation des entités
+  touchées dans `narrative-anchors`, `story-presets`,
+  `graphe.story-helpers`, `graphe.html`, `lecteur.html` — aucune référence
+  par identifiant ni par nom-clé (`primaryEntityName`, `focusNodes`).
+  **Une occurrence en prose de citation existe** : « Kavanagh et
+  Miscione 2017 » (`2986a9e1…`, marquée `duplicateOf` par le candidat)
+  apparaît dans le `quoteText`/`storyBody` de `narrative-anchors.json`
+  (ancre 35) — le marquage ne casse rien, mais une **fusion** future
+  toucherait un nom présent dans du texte affiché au lecteur. Au passage :
+  le canonique visé porte un espace final dans son nom v110
+  (« Kavanagh & Miscione 2017␣ »), coquille à corriger lors de la fusion.
 
 **Les deux chiffres registre** (clé `attributs_nouveaux`) :
 
@@ -470,9 +481,11 @@ pas.
    `make_v105` (one-shot) et dans le préflight (qui ne s'exécute pas en CI).
    Les 78 nouveaux porteurs n'auraient aucun gardien (§ 6.2.a).
 3. **Le risque de doublon des zips SourceQuote** : 3 extraits de la phase 3
-   coïncident avec des citations déjà en v110 (inventaire) — une application
-   naïve par `apply-sourcequote-phases.mjs` dupliquerait. La résolution par
-   noms des 41 ops est de surcroît fragile.
+   coïncident avec des citations déjà en v110 (inventaire) — toute
+   application future dupliquerait si elle ne dédoublonne pas d'abord
+   (l'outil actuel n'écrit rien, § 2 ; un applicateur réel reste à écrire
+   et devra traiter ce cas). La résolution par noms des 41 ops est de
+   surcroît fragile.
 4. **`anchor_overrides_targeted` en zone grise** : classé
    candidat-non-appliqué par l'inventaire mais probablement périmé (base v93,
    concurrent du mécanisme v108–v109) — tant qu'il n'est pas explicitement
@@ -490,9 +503,17 @@ pas.
    `pending-author`) : sans conflit de code aujourd'hui (§ 6.2), mais tout
    futur consommateur de la clé devra connaître les deux valeurs — à figer
    dans `vocabulary` à la régénération.
-8. **Comptages divergents entre livrables** (§ 3) : 27/28 fichiers côté
-   contrat, 32 artefacts côté inventaire — sans conséquence sur le fond,
-   mais à ne pas citer l'un pour l'autre.
+8. **Comptages divergents entre livrables** (§ 3) : 26 `patch*.json` de
+   racine + `new_relations_patch.json` = 27 fichiers JSON côté contrat,
+   32 artefacts côté inventaire (zips, reçus et fichiers hors dialecte
+   compris) — sans conséquence sur le fond, mais à ne pas citer l'un pour
+   l'autre ; l'inventaire est la référence.
+9. **La simulation à blanc n'a pas de générateur committé** (relevé par la
+   revue hostile) : ses chiffres sont recoupables un à un (et l'ont été),
+   mais le rapport n'est pas rejouable par un script du dépôt — asymétrie
+   assumée avec le registre et le préflight, qui le sont ; elle imite en
+   outre une sémantique d'application qu'aucun applicateur n'implémente
+   encore (note `[]`/clé absente, § 5).
 
 ## 9. Décisions réservées à Maël
 
@@ -513,7 +534,11 @@ pas.
 4. **Adopter ou amender le contrat de patch** (§ 3) — notamment la sévérité
    de l'applicateur futur (`source_graph` bloquant ou indicatif, § 4) et le
    sort de `CREATE_ENTITY` (le promouvoir en op consommable, ou rabattre les
-   créations sur le dialecte D — le contrat § 5 renvoie ce choix).
+   créations sur le dialecte D — le contrat § 5 renvoie ce choix). À savoir
+   en décidant : le validateur committé **outille déjà** ce contrat (C02,
+   C03, C09 en appliquent les règles) — l'amender implique de mettre à jour
+   `preflight_candidate_patches.py` dans le même mouvement ; le préflight
+   n'étant pas en CI, rien n'est verrouillé d'ici là.
 5. **Scénario A ou B pour le registre** (§ 6.5) — même-commit mesuré, ou
    extension anticipée avec perte de reproductibilité. Donnée d'appui :
    § 6.5 et les deux chiffres registre de la simulation (§ 5).

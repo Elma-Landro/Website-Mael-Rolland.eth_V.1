@@ -4,14 +4,14 @@
 **Graphe** : `grc20-these-mael-rolland-v110.json` (inchangé par ce chantier)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mode agent** : A — documentation ; aucun patch modifié, aucun patch créé, aucun graphe touché
-**Sources** : les 27 `patch*.json` de la racine + `new_relations_patch.json`, les applicateurs `scripts/make_v98/v99/v100/v105/v107/v110*.py`, `docs/audits/grc20-dedup-events-audit-v1.md` (constat C3), `grc20-properties-registry-v1.json`, `scripts/check_graph_integrity.py`
+**Sources** : les 26 `patch*.json` de la racine + `new_relations_patch.json`, les applicateurs `scripts/make_v98/v99/v100/v105/v107/v110*.py`, `docs/audits/grc20-dedup-events-audit-v1.md` (constat C3), `grc20-properties-registry-v1.json`, `scripts/check_graph_integrity.py`
 **Portée** : ce contrat oblige les **futurs** patchs candidats. Il ne réécrit aucun patch existant (voir § 4).
 
 ---
 
 ## 0. Pourquoi un contrat, et pourquoi minimal
 
-Le dépôt a produit 28 fichiers de patch en six dialectes incompatibles. Ce n'est pas une
+Le dépôt a produit 27 fichiers de patch JSON en six dialectes incompatibles (l'inventaire `candidate-patch-inventory-v1.csv` recense 32 artefacts en comptant les zips, reçus et fichiers hors dialecte). Ce n'est pas une
 hypothèse : l'incident C3 de `grc20-dedup-events-audit-v1.md` (§ 2 ci-dessous) montre
 qu'un patch a déjà été émis dans un **hybride de deux dialectes** qui ne correspondait
 exactement à aucun, précisément parce qu'aucun document ne disait lequel suivre. Chaque

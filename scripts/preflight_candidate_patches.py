@@ -98,17 +98,24 @@ def normalise_nom(s):
 
 
 def applicateurs_create_entity(repo=REPO):
-    """Balayage DYNAMIQUE : les scripts make_*.py qui portent le litteral
-    CREATE_ENTITY. Vide aujourd'hui — aucun applicateur ne le consomme —
-    mais le jour ou un make_vNNN le traitera, ce controle changera seul."""
+    """Balayage DYNAMIQUE : les scripts make_*.py ET les .mjs de scripts/
+    qui portent le litteral CREATE_ENTITY. Vide aujourd'hui — aucun
+    applicateur ne le consomme — mais le jour ou l'un d'eux le traitera,
+    ce controle changera seul. Limite assumee : le balayage est par
+    litteral (un simple commentaire suffirait a le declencher) et ne voit
+    pas un applicateur au dispatch purement structurel — le constat
+    d'aujourd'hui a ete verifie a la main en plus du balayage."""
+    motifs = (os.path.join(repo, 'scripts', 'make_*.py'),
+              os.path.join(repo, 'scripts', '*.mjs'))
     trouves = []
-    for chemin in sorted(glob.glob(os.path.join(repo, 'scripts', 'make_*.py'))):
-        try:
-            with open(chemin, encoding='utf-8') as f:
-                if 'CREATE_ENTITY' in f.read():
-                    trouves.append(os.path.basename(chemin))
-        except OSError:
-            continue
+    for motif in motifs:
+        for chemin in sorted(glob.glob(motif)):
+            try:
+                with open(chemin, encoding='utf-8') as f:
+                    if 'CREATE_ENTITY' in f.read():
+                        trouves.append(os.path.basename(chemin))
+            except OSError:
+                continue
     return trouves
 
 
@@ -176,30 +183,40 @@ def controle_source_graph(c, meta, graphes_repo, plus_recent):
 
 
 def controle_comptes(c, meta, ops):
-    """C05 : les comptes declares dans _meta contre les contenus reels."""
-    declare = None
-    cle_declaree = None
-    for cle in ('op_count', 'candidate_count'):
-        if cle in meta:
-            declare, cle_declaree = meta[cle], cle
-            break
-    if declare is None:
+    """C05 : TOUS les comptes declares dans _meta contre les contenus reels.
+
+    Chaque cle presente est verifiee (pas seulement la premiere trouvee :
+    un patch declarant op_count juste et candidate_count faux passait).
+    Les comptes derives declares par les patchs existants sont recomptes
+    aussi : entities_touched, members_marked, families_marked."""
+    reels = {
+        'op_count': len(ops),
+        'candidate_count': len(ops),
+        'skipped_count': len(meta.get('skipped') or []),
+        'entities_touched': len({op.get('entityId') for op in ops
+                                 if op.get('entityId')}),
+        'members_marked': len({op.get('entityId') for op in ops
+                               if op.get('type') == 'SET_ATTRIBUTE'
+                               and op.get('attributeId') == 'duplicateOf'}),
+        'families_marked': len({(op.get('value') or {}).get('value')
+                                for op in ops
+                                if op.get('type') == 'SET_ATTRIBUTE'
+                                and op.get('attributeId') == 'duplicateOf'}),
+    }
+    aucun_compte_ops = True
+    for cle in sorted(reels):
+        if cle not in meta:
+            continue
+        if cle in ('op_count', 'candidate_count'):
+            aucun_compte_ops = False
+        if meta[cle] != reels[cle]:
+            c.ajoute('C05', BLOQ, f"{cle} declare {meta[cle]}, "
+                                  f"contenu reel {reels[cle]}")
+        else:
+            c.ajoute('C05', OK, f"{cle} = {meta[cle]} = contenu reel")
+    if aucun_compte_ops:
         c.ajoute('C05', AVERT, "aucun compte d'ops declare "
                                "(ni op_count ni candidate_count)")
-    elif declare != len(ops):
-        c.ajoute('C05', BLOQ, f"{cle_declaree} declare {declare}, "
-                              f"contenu reel {len(ops)} op(s)")
-    else:
-        c.ajoute('C05', OK, f"{cle_declaree} = {declare} = contenu reel")
-    if 'skipped_count' in meta:
-        reel = len(meta.get('skipped') or [])
-        if meta['skipped_count'] != reel:
-            c.ajoute('C05', BLOQ, f"skipped_count declare "
-                                  f"{meta['skipped_count']}, liste skipped "
-                                  f"reelle : {reel} entree(s)")
-        else:
-            c.ajoute('C05', OK, f"skipped_count = {meta['skipped_count']} "
-                                "= liste reelle")
 
 
 def controle_entites(c, ops, entites):
@@ -227,9 +244,14 @@ def controle_entites(c, ops, entites):
         {op.get('type') or '(absent)' for op in ops
          if op.get('type') not in OPS_CONNUES})
     if types_hors_perimetre:
-        c.ajoute('C06', AVERT, "type(s) d'op hors perimetre du preflight, "
-                               f"non verifie(s) : "
-                               f"{', '.join(types_hors_perimetre)}")
+        # BLOQUANT, pas avertissement : un candidat dont des ops echappent
+        # au perimetre obtiendrait sinon le meme « 0 BLOQUANT » que les
+        # patchs entierement verifies — etendre le validateur ou corriger
+        # le patch avant de re-passer le preflight.
+        c.ajoute('C06', BLOQ, "type(s) d'op hors perimetre du preflight, "
+                              f"INVERIFIABLE(S) : "
+                              f"{', '.join(types_hors_perimetre)} — "
+                              "etendre le validateur ou corriger le patch")
 
 
 def controle_types(c, ops, nom_type):
@@ -524,7 +546,17 @@ def main(argv=None):
         nom = os.path.basename(chemin)
         try:
             with open(chemin, encoding='utf-8') as f:
-                patchs.append((nom, json.load(f), None))
+                donnees = json.load(f)
+            # Structure minimale AVANT tout controle : un objet, et ops en
+            # liste — sinon la suite exploserait en traceback au lieu d'un
+            # BLOQUANT propre, et les autres patchs du lot seraient perdus.
+            if not isinstance(donnees, dict) or (
+                    'ops' in donnees and not isinstance(donnees['ops'], list)):
+                patchs.append((nom, None, "structure inattendue : le patch "
+                                          "doit etre un objet JSON et ops "
+                                          "une liste"))
+            else:
+                patchs.append((nom, donnees, None))
         except (json.JSONDecodeError, OSError, UnicodeDecodeError) as err:
             patchs.append((nom, None, str(err)))
 

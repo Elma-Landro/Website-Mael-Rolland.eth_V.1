@@ -144,7 +144,7 @@
    },
    "entites_existantes_touchees": 84,
    "ops_appliquees": 204,
-   "references_runtime": "aucune",
+   "references_runtime": "aucune reference par identifiant ni par nom-cle (primaryEntityName, focusNodes) ; une occurrence en prose de citation : « Kavanagh et Miscione 2017 » (2986a9e1…, marquee duplicateOf) apparait dans quoteText/storyBody de narrative-anchors.json (ancre 35) — le marquage ne casse rien, une fusion future toucherait ce texte affiche ; le canonique vise porte un espace final dans son nom v110 (coquille). Constat ajoute par la revue hostile du 2026-08-07",
    "relations": {
     "apres": 20207,
     "avant": 20207,
@@ -309,7 +309,8 @@
      "Reference": 76
     },
     "types_absents_du_graphe_references": []
-   }
+   },
+   "references_runtime": "aucune reference par identifiant ni par nom-cle (primaryEntityName, focusNodes) ; une occurrence en prose de citation : « Kavanagh et Miscione 2017 » (2986a9e1…, marquee duplicateOf) apparait dans quoteText/storyBody de narrative-anchors.json (ancre 35) — le marquage ne casse rien, une fusion future toucherait ce texte affiche ; le canonique vise porte un espace final dans son nom v110 (coquille). Constat ajoute par la revue hostile du 2026-08-07"
   },
   "missing_nodes": {
    "analyse_creations": {
