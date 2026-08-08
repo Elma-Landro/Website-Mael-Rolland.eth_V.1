@@ -54,6 +54,30 @@ CODE_DONNEES, CODE_INVOCATION = 1, 2
 
 CLE = 'page_start'
 POLICY_CANDIDAT = 'CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED'
+VERSION_CIBLE = 'v111'
+OPS_ATTENDUES = 16
+
+# Applicateur a USAGE UNIQUE : le lot est fige ici, pas seulement declare
+# par le patch. Un patch retouche entre l'arbitrage et l'application ne
+# doit pas passer parce qu'il aurait mis a jour son propre op_count.
+IDS_ATTENDUS = frozenset({
+    '0420e53c4c8fd12fef6dcee451a50f61',
+    '0b521ac19a2f5ee0cdd07d7460ebdfd0',
+    '1168d4e0c868c27a81ac371cb6879359',
+    '439782308b5dedb9c5da7022bc2b82ef',
+    '4ec3224a44f06315d26d3cac111e5efc',
+    '515088f012136277d7375fa65d7a3e3f',
+    '5a82e90b2cc17baf91baa9102bd48034',
+    '7b3312fed875cffb74320f0a579763c7',
+    '97eb62676b0052c4ab3652fc2bd15535',
+    '9fbdbbc3f81ee08fb89b5c5dfbcd2929',
+    'ac859fd14006e379e55373d31090b6c6',
+    'd93cb2ceee6dea674fecc4f44d113643',
+    'da7e8dda9cacdb8cddfbab73bb6ecd0b',
+    'eda05ae2f601e62bf53294a2be373d2a',
+    'f34ad8e32d22d905708d07fc6f0e8150',
+    'f8a8acbfa05a53c07498346df21f6808',
+})
 MOTIF_COMMENT = re.compile(r'page_start\s+(\d+)\s*->\s*(\d+)')
 
 
@@ -122,7 +146,7 @@ def diff_attributs(avant, apres):
     A = {e['id']: e for e in avant['entities']}
     B = {e['id']: e for e in apres['entities']}
     if set(A) != set(B):
-        autres.append(f"jeu d'entites modifie : "
+        autres.append("jeu d'entites modifie : "
                       f"+{len(set(B) - set(A))} / -{len(set(A) - set(B))}")
     for eid in set(A) & set(B):
         a, b = A[eid], B[eid]
@@ -199,10 +223,29 @@ def main(argv=None):
               CODE_INVOCATION)
 
     ops = patch.get('ops') or []
+    # Le lot doit etre EXACTEMENT celui qui a ete arbitre : nombre d'ops et
+    # jeu d'entites visees, verifies contre les constantes de ce script et
+    # non contre ce que le patch declare de lui-meme.
+    if len(ops) != OPS_ATTENDUES:
+        echec(f"le patch porte {len(ops)} op(s), {OPS_ATTENDUES} attendues : "
+              "ce n'est pas le lot arbitre", CODE_INVOCATION)
+    vises = [(o or {}).get('entityId') for o in ops]
+    if len(set(vises)) != len(vises):
+        vus = collections.Counter(vises)
+        doubles = sorted(x for x, n in vus.items() if n > 1)
+        echec(f"entite(s) visee(s) plus d'une fois : {doubles} — une seule "
+              "correction par noeud", CODE_INVOCATION)
+    if set(vises) != IDS_ATTENDUS:
+        manquants = sorted(IDS_ATTENDUS - set(vises))
+        intrus = sorted(set(vises) - IDS_ATTENDUS)
+        echec(f"jeu d'entites visees different de celui arbitre — "
+              f"manquantes : {[x[:8] for x in manquants]} · "
+              f"intruses : {[x[:8] for x in intrus]}", CODE_INVOCATION)
     E = {e['id']: e for e in g['entities']}
     nom_type = nom_des_types(g)
     avant_e, avant_r = len(g['entities']), len(g['relations'])
-    csv_par_id = {(l.get('entity_id') or '').strip(): l for l in lignes_csv}
+    csv_par_id = {(ligne.get('entity_id') or '').strip(): ligne
+                  for ligne in lignes_csv}
     erreurs = []
 
     # ---------- validations, op par op ----------
@@ -413,8 +456,8 @@ def main(argv=None):
 
     print(f"\n  entites : {avant_e} (inchange) · relations : {avant_r} (inchange)")
     print(f"  diff exhaustif : {len(changes)} attribut(s) modifie(s), "
-          f"0 cree, 0 supprime, 0 changement hors attributs")
-    print(f"  types, relation_types, ops, space : identiques")
+          "0 cree, 0 supprime, 0 changement hors attributs")
+    print("  types, relation_types, ops, space : identiques")
     print(f"  skipped : {len(meta.get('skipped') or [])} noeuds inchanges, "
           "0 completion")
     print(f"  porteurs de {CLE} : "
@@ -424,11 +467,17 @@ def main(argv=None):
         print("\n--dry-run : rien ecrit.")
         return 0
 
+    if os.path.realpath(args.target) == os.path.realpath(args.source):
+        echec("la cible est le graphe SOURCE : ce script ecrit une nouvelle "
+              "version, il n'ecrase jamais celle qu'il lit", CODE_INVOCATION)
     espace = g.setdefault('space', {})
     m_v = re.search(r'-(v\d+)\.json$', os.path.basename(args.target))
     if not m_v:
-        echec(f"nom de sortie sans numero de version : "
+        echec("nom de sortie sans numero de version : "
               f"{os.path.basename(args.target)}", CODE_INVOCATION)
+    if m_v.group(1) != VERSION_CIBLE:
+        echec(f"cible en {m_v.group(1)} : cet applicateur produit "
+              f"{VERSION_CIBLE} et rien d'autre", CODE_INVOCATION)
     espace['version'] = m_v.group(1)
     espace['entity_count'] = len(g['entities'])
     espace['relation_count'] = len(g['relations'])
@@ -446,8 +495,17 @@ def main(argv=None):
         "les 49 noeuds sans page_start etabli restent vides. Aucune "
         "SourceQuote, aucun lien, aucune cle de section touchee. " + heritee)
 
-    with open(args.target, 'w', encoding='utf-8') as f:
-        json.dump(g, f, ensure_ascii=False, indent=2)
+    # Ecriture ATOMIQUE : un json.dump interrompu laisserait un graphe
+    # tronque a la place de la cible. On serialise a cote, puis on remplace.
+    temporaire = args.target + '.tmp'
+    try:
+        with open(temporaire, 'w', encoding='utf-8') as f:
+            json.dump(g, f, ensure_ascii=False, indent=2)
+        os.replace(temporaire, args.target)
+    except OSError as err:
+        if os.path.exists(temporaire):
+            os.unlink(temporaire)
+        echec(f"ecriture impossible : {err}")
     print(f"\ngraphe ecrit : {os.path.relpath(args.target, REPO)}")
     return 0
 
