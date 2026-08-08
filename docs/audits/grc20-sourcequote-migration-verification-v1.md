@@ -1,6 +1,6 @@
 # SourceQuote Migration Verification Lab v1 — 41 citations vérifiées contre la thèse, aucune gravée
 
-**Date** : 2026-08-07 · **révisé le 2026-08-07 après revue hostile** (cf. § 0) · **arbitrages de Maël inscrits le 2026-08-07** (Q1-Q8) · **arbitrages complémentaires inscrits le 2026-08-08** (R1-R3, S1-S6 — cf. encadré ci-dessous et § 7)
+**Date** : 2026-08-07 · **révisé le 2026-08-07 après revue hostile** (cf. § 0) · **arbitrages de Maël inscrits le 2026-08-07** (Q1-Q8) · **arbitrages complémentaires inscrits le 2026-08-08** (R1-R3, S1-S6) · **deux derniers arbitrages inscrits le 2026-08-08** (T1-T2 — cf. encadré ci-dessous et § 7)
 **Graphe** : `grc20-these-mael-rolland-v110.json` (**inchangé** par ce chantier, révision et inscription des arbitrages comprises)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mode agent** : A (vérification probatoire — **aucune création, aucune application**, aucun fichier de patch modifié ni créé)
@@ -10,10 +10,11 @@
 
 > ## Arbitrages rendus
 >
-> **Dix-sept arbitrages au total.** Maël a répondu aux huit questions du § 7
-> le 2026-08-07 (**Q1-Q8**), puis à neuf questions complémentaires le
-> 2026-08-08 (**R1-R3** sur la résolution des noms, **S1-S6** sur les cas
-> restants). Ce dossier les inscrit, sans les réinterpréter ; il **n'applique
+> **Dix-neuf arbitrages au total : 8 + 11.** Maël a répondu aux huit questions
+> du § 7 le 2026-08-07 (**Q1-Q8**), puis à **onze questions complémentaires**
+> le 2026-08-08 — **R1-R3** sur la résolution des noms, **S1-S6** sur les cas
+> restants, **T1-T2** sur les deux points que S3 et S4 avaient laissés
+> ouverts. Ce dossier les inscrit, sans les réinterpréter ; il **n'applique
 > toujours rien**.
 >
 > ### Les huit premiers (2026-08-07)
@@ -54,7 +55,7 @@
 >   « je ne veux pas installer des citations p. 191 dans une section que le
 >   graphe dit commencer p. 202 ».
 >
-> ### Les neuf suivants (2026-08-08)
+> ### Les neuf suivants (2026-08-08) — R1-R3, S1-S6
 >
 > - **R1 — (c).** Deux alias circulaires **dégradés en `confidence=basse`**
 >   dans `entity-alias-table-v1.csv` (commit `03a1a09`) : « Susan Leigh
@@ -88,6 +89,33 @@
 >   est conservée et signalée `[sic]`. Pas de correction silencieuse du texte
 >   original. » — s'applique à **P2-6 et P2-4**, et à toute coquille future.
 >
+> ### Les deux derniers (2026-08-08) — T1-T2
+>
+> - **T1 — (c).** Les **17 références (16 noms)** que S3 ne rangeait pas sont
+>   triées en **trois catégories** : « Génériques trop larges — Gouvernance,
+>   Méthodologie, Crise, Pouvoir, Politique **et équivalents** → abandon comme
+>   liens de soutien » ; « Noms non génériques — Objets monétaires non
+>   identifiés, Institutionnalisme monétaire, Bitcoin Wiki **ou autres** →
+>   chantier distinct, **sans création ici** et **sans lien de soutien
+>   automatique** » ; et une clé de section employée comme entité (type
+>   « II.3.1 ») qui « **ne doit pas devenir une entité de soutien** : à traiter
+>   comme **erreur de nature / dette de modélisation**, pas comme concept à
+>   créer ». Résultat mesuré : **12 noms (13 références) en chantier
+>   distinct**, **3 noms (3 références) abandonnés comme génériques**, **1 nom
+>   (1 référence) en erreur de nature**. Les 11 mentions `NON COUVERT PAR S3`
+>   du CSV sont **remplacées** par un verdict `T1 ( c )`. **Aucun cas
+>   ambigu résiduel** (§ 7-T1).
+> - **T2 — (c).** La réduction de S4 est étendue **aux seules ops à 3 cibles
+>   ou plus** : « quand une op vise parent + plusieurs enfants, je lis cela
+>   comme une incertitude de découpe ; quand elle vise parent + un seul enfant,
+>   je ne veux pas l'écraser mécaniquement sans examen supplémentaire. » Sur
+>   les 12 ops portant le même motif que P1-11, **une seule franchit le
+>   seuil** : **P1-13, qui porte quatre cibles**, réduite à sa seule mère
+>   `intro_C_2`. Les **10 paires parent + enfant unique** sont **laissées en
+>   l'état**, « parce qu'elles peuvent encore exprimer un ancrage plus précis
+>   plutôt qu'une incertitude de découpe ». Les 11 mentions
+>   `NON COUVERT PAR S4` sont remplacées par un verdict `T2 ( c )`.
+>
 > **Un arbitrage a par ailleurs été retiré** : **P3-10 reste gelée**. Ni
 > création opportuniste de nœud, ni ancrage forcé — c'est un cas d'arbitrage
 > de modèle, renvoyé tel quel.
@@ -96,10 +124,12 @@
 >
 > **Toute action applicative de cette migration est désormais conditionnée à
 > la réparation préalable des `page_start` (Q8).** Les 41 lignes du CSV
-> portent cette mention. Aucun des dix-sept arbitrages n'autorise une gravure
+> portent cette mention. Aucun des dix-neuf arbitrages n'autorise une gravure
 > immédiate : ils fixent *ce qu'il faudra graver*, pas *quand*. Les points qui
 > restent hors de leur portée sont signalés comme tels (§ 7, encadré « Ce que
-> les arbitrages ne couvrent pas »).
+> les arbitrages ne couvrent pas ») — après T1 et T2 il **n'en reste qu'un**,
+> l'exception « Immersion participante » de S2 (b), plus P3-10 volontairement
+> gelée.
 
 ---
 
@@ -130,11 +160,13 @@
 > 53 `fuzzy-only` / 11 `not-found` déclarés par les zips) mais n'ont plus
 > cours ici.
 >
-> **Recommandations après inscription des dix-sept arbitrages** (recomptées
-> sur le CSV révisé) : **24 `retenir` / 10 `retenir-avec-correction-de-section` /
+> **Recommandations après inscription des dix-neuf arbitrages** (recomptées
+> sur le CSV révisé) : **23 `retenir` / 11 `retenir-avec-correction-de-section` /
 > 5 `completer-l-existante` / 2 `arbitrage`** — contre 24 / 5 / 4 / 8 avant
-> tout arbitrage. Sept lignes ont changé de recommandation au total (§ 7,
-> tableau récapitulatif). La colonne `needs_mael_arbitration` est laissée en
+> tout arbitrage. **Huit** lignes ont changé de recommandation au total (§ 7,
+> tableau récapitulatif) ; la dernière est P1-13, réduite par T2 (c). Le
+> nombre d'ops déterminées reste **39 sur 41** (23 + 11 + 5), les 2 restantes
+> étant P3-2 et P3-10. La colonne `needs_mael_arbitration` est laissée en
 > l'état — **34 `oui` / 7 `non`** : elle enregistre *quelles ops ont été
 > soumises à Maël*, pas leur état après réponse. Ce sont `recommendation` et
 > `notes` qui portent les verdicts.
@@ -261,15 +293,15 @@ reste vrai. Les 7 ops restées à `non` (P1-0, P1-6, P1-10, P1-16, P2-1, P2-7,
 P3-1) sont celles où le texte est verbatim, la section confirmée par la page,
 et où aucune coupe ni aucune entité litigieuse n'intervient.
 
-Recommandations — **état après inscription des dix-sept arbitrages du § 7** :
+Recommandations — **état après inscription des dix-neuf arbitrages du § 7** :
 
-| `recommendation` | Avant arbitrage | Après Q1-Q8 | **Après R1-R3 / S1-S6** | Ce qui a bougé |
-|---|---|---|---|---|
-| `retenir` | 24 | 25 | **24** | P2-0 y était entrée (Q5 (a)) ; P1-11 en sort (S4 (b)) |
-| `retenir-avec-correction-de-section` | 5 | 9 | **10** | + P3-3, P3-4, P3-8, P3-9 (Q2 (a)) ; + P1-11, réduite à sa seule mère C.2 (S4 (b)) |
-| `completer-l-existante` | 4 | 5 | **5** | + P3-7 (Q3.1 (a)) ; P3-6 y reste au titre d'une *réécriture* (Q3.2 (a)) ; P3-11 y reste et porte en outre le recentrage de S5 (a) |
-| `arbitrage` | 8 | 2 | **2** | ne restent que P3-2 (Q3.3 (b) : réparation préalable) et P3-10 (Q4 (b), **arbitrage retiré le 2026-08-08 : reste gelée**) |
-| **Total** | **41** | **41** | **41** | 7 lignes changées au total |
+| `recommendation` | Avant arbitrage | Après Q1-Q8 | Après R1-R3 / S1-S6 | **Après T1-T2** | Ce qui a bougé |
+|---|---|---|---|---|---|
+| `retenir` | 24 | 25 | 24 | **23** | P2-0 y était entrée (Q5 (a)) ; P1-11 en sort (S4 (b)) ; P1-13 en sort (T2 (c)) |
+| `retenir-avec-correction-de-section` | 5 | 9 | 10 | **11** | + P3-3, P3-4, P3-8, P3-9 (Q2 (a)) ; + P1-11, réduite à sa seule mère C.2 (S4 (b)) ; + P1-13, réduite à sa seule mère `intro_C_2` (T2 (c)) |
+| `completer-l-existante` | 4 | 5 | 5 | **5** | + P3-7 (Q3.1 (a)) ; P3-6 y reste au titre d'une *réécriture* (Q3.2 (a)) ; P3-11 y reste et porte en outre le recentrage de S5 (a) |
+| `arbitrage` | 8 | 2 | 2 | **2** | ne restent que P3-2 (Q3.3 (b) : réparation préalable) et P3-10 (Q4 (b), **arbitrage retiré le 2026-08-08 : reste gelée**) |
+| **Total** | **41** | **41** | **41** | **41** | 8 lignes changées au total |
 
 Les deux axes se croisent toujours : **19 ops portent une correction
 éditoriale à faire avant gravure** au titre de Q7 — reconduit et généralisé
@@ -651,7 +683,7 @@ ancrages gravés soient lisibles. D'où la nouvelle question **Q8** au § 7.
 distinct et mesurable », puis seulement la gravure : « je ne veux pas
 installer des citations p. 191 dans une section que le graphe dit commencer
 p. 202 ». **C'est la condition générale de tout ce dossier** : aucune action
-applicative de cette migration — pas même les 24 `retenir` — n'est autorisée
+applicative de cette migration — pas même les 23 `retenir` — n'est autorisée
 avant que les `page_start` incohérents ne soient réparés ou, au minimum,
 instruits proprement. Le relevé exhaustif des 35 pages de titre reste à faire
 et fait partie de ce chantier distinct.
@@ -725,17 +757,17 @@ l'arbitrage de section que seul le texte permet.
 Décompte **après inscription des arbitrages** (§ 7). Les libellés ci-dessous
 sont ceux du CSV révisé.
 
-**Récupérables sur le fond (24 `retenir`)** : textes vérifiés, sections
+**Récupérables sur le fond (23 `retenir`)** : textes vérifiés, sections
 existantes et confirmées par la page ; P2-0 les rejoint par Q5 (a), P1-11 en
-sort par S4 (b). Attention toutefois : **22 de ces 24 portent une retouche à
-faire avant gravure**, non pas sur leur section mais sur la lettre du texte
-cité ou sur un lien d'entité :
+sort par S4 (b) et **P1-13 par T2 (c)**. Attention toutefois : **21 de ces 23
+portent une retouche à faire avant gravure**, non pas sur leur section mais
+sur la lettre du texte cité ou sur un lien d'entité :
 
 | Nature de la retouche | Ops | Motif |
 |---|---|---|
 | texte seulement | 5 — P1-2, P2-2, P2-6, P2-8, P3-5 | coupe à marquer `[…]`, ou coquille à conserver `[sic]` (Q7 (d), S6 (a)) |
-| entité seulement | 12 — P1-0, P1-1, P1-3, P1-4, P1-5, P1-6, P1-9, P1-10, P1-16, P1-17, P3-1, P3-12 | lien de soutien à poser, écarter ou abandonner (S2 (b), S3 (b), R3b) |
-| les deux | 5 — P1-7, P1-12, P1-13, P2-0, P2-3 | cumul des deux motifs |
+| entité seulement | 12 — P1-0, P1-1, P1-3, P1-4, P1-5, P1-6, P1-9, P1-10, P1-16, P1-17, P3-1, P3-12 | lien de soutien à poser, écarter ou abandonner (S2 (b), S3 (b), R3b, **T1 (c)**) |
+| les deux | 4 — P1-7, P1-12, P2-0, P2-3 | cumul des deux motifs (P1-13 en sort avec T2 (c)) |
 | **aucune** | **2 — P2-1, P2-7** | 4 références natives chacune, aucune coupe |
 
 Seules **2 ops** sont donc récupérables sans aucune retouche de texte ni
@@ -744,7 +776,7 @@ du lot : c'est que S2 (b) **oblige à statuer sur chaque référence**, y
 compris là où l'état intermédiaire laissait passer un `fuzzy-only` sans
 décision. Et ces deux-là restent soumises au gel de Q8.
 
-**Récupérables avec correction de section (10 `retenir-avec-correction-de-section`)**,
+**Récupérables avec correction de section (11 `retenir-avec-correction-de-section`)**,
 en trois familles désormais :
 
 - les **6 recentrages prouvés** — les 5 validés par Q1 (a) (P1-14 → II.3.1 ;
@@ -760,9 +792,13 @@ en trois familles désormais :
   P3-4 → I.2.2 ; P3-8 → I.3.3 ; P3-9 → I.3.3. Ces quatre ops ne butaient que
   sur une section jamais existée : le rabattement les sort d'`arbitrage` ;
 - la **réduction d'un ancrage multiple à sa seule mère**, famille ouverte par
-  S4 (b) — **P1-11**, dont les cibles `intro_C_2a` et `intro_C_2b` sont
-  abandonnées au profit de la seule `intro_C_2` : « l'ancrage triple
-  C.2 / C.2.a / C.2.b ressemble trop à une incertitude de découpe ».
+  S4 (b) et **fermée par T2 (c)** — **P1-11**, dont les cibles `intro_C_2a` et
+  `intro_C_2b` sont abandonnées au profit de la seule `intro_C_2`
+  (« l'ancrage triple C.2 / C.2.a / C.2.b ressemble trop à une incertitude de
+  découpe »), et **P1-13**, dont les quatre cibles sont ramenées à la seule
+  `intro_C_2` par le seuil des 3 cibles posé par T2 (c). Ce sont les **2
+  seules ops du lot au-dessus du seuil** ; les 10 paires parent + enfant
+  unique restent inchangées et donc hors de cette famille.
 
 **À faire porter par une SourceQuote existante (5 `completer-l-existante`)** :
 P1-8, P3-0, P3-7 et P3-11 par **complément** (Q3.1 (a) — inclusion stricte
@@ -795,10 +831,12 @@ maintenant**, le gel de Q8 (a) portant sur les 41.
 
 ## 7. Arbitrages rendus par Maël (2026-08-07 et 2026-08-08)
 
-**Dix-sept verdicts.** Les huit questions de la version précédente ont reçu
-une réponse le 2026-08-07 (**Q1-Q8**) ; neuf questions complémentaires ont
-été tranchées le 2026-08-08 (**R1-R3**, sur la règle de résolution des noms ;
-**S1-S6**, sur les cas que Q1-Q8 laissaient ouverts). Ils sont reproduits ici
+**Dix-neuf verdicts, 8 + 11.** Les huit questions de la version précédente ont
+reçu une réponse le 2026-08-07 (**Q1-Q8**) ; **onze** questions
+complémentaires ont été tranchées le 2026-08-08 (**R1-R3**, sur la règle de
+résolution des noms ; **S1-S6**, sur les cas que Q1-Q8 laissaient ouverts ;
+**T1-T2**, sur les deux points que S3 et S4 avaient eux-mêmes laissés
+ouverts). Ils sont reproduits ici
 sous forme de **verdicts**, chacun cité fidèlement puis suivi de ce qu'il
 implique pour les ops concernées et de ce qui a changé dans le CSV. **Ce
 dossier n'applique rien** : il inscrit. Rappel de la condition qui domine
@@ -1055,7 +1093,7 @@ graphe dit commencer p. 202.** »
 
 **Ce que cela implique — conséquence majeure.** **Toute action applicative de
 cette migration est désormais conditionnée à la réparation préalable des
-`page_start`.** Cela vaut pour les 41 ops, y compris les 24 `retenir` et les
+`page_start`.** Cela vaut pour les 41 ops, y compris les 23 `retenir` et les
 2 récupérables sans retouche : le gel ne porte pas sur la qualité des
 citations, qui est établie, mais sur la lisibilité de leur ancrage. L'ordre
 imposé est donc :
@@ -1235,11 +1273,11 @@ migration »).
 | S3 (b) — concepts réels absents, chantier distinct | 6 | 6 |
 | R3b — arbitrage manuel (interdiction de la table) | 4 | 3 |
 | R1c — alias circulaire dégradé, ne résout plus | 2 | 2 |
-| **Non couvertes exactement par un verdict** | **17** | **16** |
+| Non couvertes exactement par S3 — **tranchées depuis par T1 (c)** | 17 | 16 |
 | **Total** | **43** | **34** |
 
-**Ce que le verdict ne dit pas exactement.** La liste des génériques se
-termine par « … », et **17 références (16 noms) ne tombent proprement dans
+**Ce que le verdict ne disait pas exactement.** La liste des génériques se
+termine par « … », et **17 références (16 noms) ne tombaient proprement dans
 aucun des deux régimes** : « Anthropologie de la monnaie »,
 « Institutionnalisme monétaire » (×2), « Théorie monétaire dominante »,
 « Usages monétaires », « Monétisation », « Vulnérabilité », « Crises
@@ -1249,12 +1287,14 @@ enquêteur-enquêtés », « Faucet », « Bitcoin Wiki », « Objets monétaire
 identifiés », « II.3.1 ». Plusieurs ne sont manifestement pas des
 génériques — « Bitcoin Wiki » est une source, « II.3.1 » est une clé de
 section, « Objets monétaires non identifiés » est une formule propre à la
-thèse. **Ce dossier ne les range pas d'office** : chaque ligne concernée
-porte la mention `NON COUVERT PAR S3` et la question retourne à Maël.
+thèse. Ce dossier ne les avait pas rangées d'office ; la question est
+retournée à Maël, **et T1 (c) y répond** (§ 7-T1).
 
-**Dans le CSV.** Aucune `recommendation` ne change. 6 lignes portent la
-mention des 6 concepts réels, 11 celle des génériques abandonnés, 4 celle de
-R3b, 2 celle de R1c, et **11 lignes** portent `NON COUVERT PAR S3`.
+**Dans le CSV.** Aucune `recommendation` ne change au titre de S3. 6 lignes
+portent la mention des 6 concepts réels, 11 celle des génériques abandonnés,
+4 celle de R3b, 2 celle de R1c. Les **11 lignes** qui portaient
+`NON COUVERT PAR S3` portent désormais un verdict `T1 ( c )` — la mention a
+disparu du fichier.
 
 ### S4 — La triple cible sectionnelle de P1-11 → **(b)**
 
@@ -1267,14 +1307,13 @@ l'ancrage multiple soit faux, c'est qu'il **ressemble à une hésitation
 déguisée en exhaustivité**. Un générateur qui ne sait pas où couper accroche
 partout ; garder la seule mère est la lecture qui n'invente rien.
 
-**Ce que le verdict ne dit pas exactement.** S4 (b) ne nomme que P1-11. Or
+**Ce que le verdict ne disait pas exactement.** S4 (b) ne nomme que P1-11. Or
 **12 autres ops portent le même motif** parent + enfant(s) : P1-3, P1-4,
 P1-5, P1-6, P1-7, P1-8, P1-9, P1-10, P1-12, P1-13, P3-0 et P3-11 (celle-ci
 étant traitée par S5). Le parallèle le plus proche est **P1-13, qui porte
 quatre cibles** (`intro_C_2` + `intro_C_2d` + `intro_C_2e` + `intro_C_2f`) —
-une de plus que la triple que S4 réduit. **Ce dossier ne les réduit pas** :
-les 11 lignes non couvertes portent la mention `NON COUVERT PAR S4` et la
-question retourne à Maël.
+une de plus que la triple que S4 réduit. Cette passe ne les avait pas
+réduites ; la question est retournée à Maël, **et T2 (c) y répond** (§ 7-T2).
 
 **Dans le CSV.** **P1-11 passe de `retenir` à
 `retenir-avec-correction-de-section`** — la seule `recommendation` que cette
@@ -1330,6 +1369,211 @@ coupe `[…]`, appliquée à l'échelle du caractère.
 **Dans le CSV.** Aucune `recommendation` ne change. 2 lignes portent la
 mention `S6 ( a )` : **P2-4** et **P2-6**.
 
+### T1 — Les 17 références (16 noms) que S3 ne rangeait pas → **(c)**
+
+**Verdict.** Trois règles, citées telles quelles.
+
+> « **Génériques trop larges** — “Gouvernance”, “Méthodologie”, “Crise”,
+> “Pouvoir”, “Politique” **et équivalents** → **abandon** comme liens de
+> soutien. »
+>
+> « **Noms non génériques** — “Objets monétaires non identifiés”,
+> “Institutionnalisme monétaire”, “Bitcoin Wiki” **ou autres** → **chantier
+> distinct** (avec les 6 concepts réels déjà renvoyés par S3), **sans création
+> ici** et **sans lien de soutien automatique**. »
+>
+> « **Une clé de section employée comme entité** (type “II.3.1”) → **ne doit
+> pas devenir une entité de soutien** : à traiter comme **erreur de nature /
+> dette de modélisation**, pas comme concept à créer. Catégorie distincte des
+> deux précédentes. »
+
+Et l'autorisation qui va avec : « Tu peux documenter les 16 cas ligne par
+ligne dans le dossier, avec cette règle de tri, **sans me redemander chaque
+nom sauf si un cas reste vraiment ambigu après classification**. »
+
+**Le critère d'équivalence retenu, écrit pour être contestable.** La règle
+délègue le jugement (« et équivalents », « ou autres ») ; il faut donc dire
+sous quel critère il a été rendu, faute de quoi le tri n'est pas vérifiable.
+Un nom est classé **générique** quand les **deux** conditions de Maël sont
+réunies : (1) ce n'est pas un libellé d'entité — ni `name`, ni `nameEn`, ni
+`labelEn`, ni `aliases` de v110, ce que la règle des 7 rangs (§ 8) a déjà
+établi pour les 43 non résolues ; **et** (2) c'est une requête trop large,
+c'est-à-dire un **nom commun ou un champ indéterminé**, sans complément qui
+en restreigne l'extension. Le test opératoire, appliqué à chaque cas : *le
+nom restreint-il la requête, ou la paraphrase-t-il ?* « Gouvernance de
+crise » restreint (il y a des gouvernances qui ne sont pas de crise) ;
+« Concept de gouvernance » paraphrase (le préfixe n'écarte rien). Un nom
+tronqué d'une entité qualifiée existante est traité comme générique :
+« Monétisation » est la troncature de « Monétisation des cryptomonnaies »
+`de6da7fa…`, qui résout nativement et porte déjà ses liens ailleurs.
+
+Deux garde-fous, tirés d'incidents du dépôt. **Le critère ne dit rien de
+l'importance du concept dans la thèse** — « Vulnérabilité » est central et
+reste classé générique, parce que c'est la *dénomination* qui est trop large,
+pas la notion. Et **il n'autorise aucun rapprochement** : « Observations
+participantes » voisine la `Method` `b3af43b8…` « Observation participante
+(hors ligne) » sans en être un homonyme, exactement comme les trois
+voisinages non homonymes déjà écartés en § 5.3.
+
+**Un point d'appui non arbitraire.** S3 (b) avait déjà rangé « Sociologie
+économique » parmi les **6 concepts réels absents**. « Anthropologie de la
+monnaie » en est le jumeau structurel — même forme, un champ disciplinaire
+pourvu de son complément déterminant. Le classer en chantier distinct n'est
+donc pas une préférence : c'est la seule lecture cohérente avec un verdict
+déjà rendu.
+
+**Les 16 noms, un par ligne.**
+
+| # | Nom | Op(s) | Catégorie | Motif |
+|---:|---|---|---|---|
+| 1 | Objets monétaires non identifiés | P1-0 | **chantier-distinct** | Formule propre à la thèse, nommée telle quelle par Maël |
+| 2 | Institutionnalisme monétaire (×2) | P1-3, P1-4 | **chantier-distinct** | Cadre théorique nommé tel quel par Maël — 1 nom, 2 références |
+| 3 | Théorie monétaire dominante | P1-3 | **chantier-distinct** | Syntagme déterminé désignant une position théorique précise |
+| 4 | Anthropologie de la monnaie | P1-5 | **chantier-distinct** | Jumeau structurel de « Sociologie économique », déjà rangée par S3 (b) |
+| 5 | Usages monétaires | P1-5 | **chantier-distinct** | Syntagme déterminé — objet analytique de l'approche par les usages |
+| 6 | **Monétisation** | P1-5 | **générique-abandonné** | Nom commun indéterminé ; troncature de `de6da7fa…` qui, elle, résout |
+| 7 | Relation enquêteur-enquêtés | P1-10 | **chantier-distinct** | Concept méthodologique composé, désigne un rapport d'enquête précis |
+| 8 | Recherche documentaire | P1-11 | **chantier-distinct** | Nom de méthode déterminé, du genre d'« Ethnographie » `f788033e…` |
+| 9 | Faucet | P1-12 | **chantier-distinct** | Objet technique nommé, dispositif précis du terrain |
+| 10 | Observations participantes | P1-13 | **chantier-distinct** | Nom de méthode déterminé (27 observations, p. 46) — pas de fusion avec `b3af43b8…` |
+| 11 | **Concept de gouvernance** | P1-14 | **générique-abandonné** | Périphrase de « Gouvernance », nommée par l'arbitrage : ne restreint pas |
+| 12 | **II.3.1** | P1-14 | **erreur-de-nature** | Clé de section employée comme entité de soutien — défaut du patch source |
+| 13 | Crises protocolaires | P1-16 | **chantier-distinct** | Catégorie construite par la thèse au chapitre III |
+| 14 | Gouvernance de crise | P1-16 | **chantier-distinct** | Gouvernance qualifiée, du genre de `a22f20ae…` et `73b638dd…` — restreint |
+| 15 | **Vulnérabilité** | P1-17 | **générique-abandonné** | Nom commun indéterminé ; le graphe ne le porte qu'en forme qualifiée |
+| 16 | Bitcoin Wiki | P1-17 | **chantier-distinct** | Source indigène nommée, nommée telle quelle par Maël |
+
+**Répartition.**
+
+| Catégorie | Noms | Références | Effet |
+|---|---:|---:|---|
+| `chantier-distinct` | **12** | **13** | Rejoignent les 6 concepts réels de S3 (b) — **aucune création ici**, **aucun lien de soutien automatique** |
+| `générique-abandonné` | **3** | **3** | Abandonnés définitivement comme liens de soutien |
+| `erreur-de-nature` | **1** | **1** | Ni abandon, ni concept à créer : dette de modélisation du patch source |
+| **Total** | **16** | **17** | |
+
+**État final des 43 références non résolues** — plus aucune ligne « non
+couverte », le tableau du § 7-S3 est clos :
+
+| Régime | Références | Noms |
+|---|---:|---:|
+| Génériques abandonnés définitivement — S3 (b) + **T1 (c)** | **17** | **10** |
+| Concepts renvoyés au chantier distinct — S3 (b) + **T1 (c)** | **19** | **18** |
+| **Erreur de nature / dette de modélisation — T1 (c)** | **1** | **1** |
+| Arbitrage manuel (interdiction que la table s'impose) — R3b | 4 | 3 |
+| Alias circulaire dégradé, ne résout plus — R1c | 2 | 2 |
+| **Total** | **43** | **34** |
+
+Soit, par rapport à S3 (b) seule : les génériques passent de 7 noms /
+14 références à **10 / 17**, le chantier distinct de 6 noms / 6 références à
+**18 / 19**, et une catégorie nouvelle apparaît avec un seul membre.
+
+**Le cas « II.3.1 », et pourquoi il mérite sa catégorie.** Le patch source
+déclare `II.3.1` dans `quote_supports_entity_names` de P1-14 — au même rang
+qu'un concept. Or la section II.3.1 **existe** dans v110 (`d493c4ac…`), et
+elle est **déjà la cible d'ancrage de cette même op** (Q1 (a) l'y a recentrée
+sur la foi du texte imprimé). Un `quote supports` posé vers elle ferait
+**doublon avec l'`appears in section` que l'op produit déjà** : c'est
+exactement le vice que Q5 (a) a écarté pour `38e637cc…` en P2-0, « cela
+doublerait le lien d'ancrage et confondrait une section avec une entité de
+soutien ». Ce n'est donc **pas un manque du graphe** — rien à créer, rien à
+chercher — mais **un défaut de nature du patch**, qui mélange dans un même
+champ des entités de soutien et des clés de section. Le classer parmi les
+génériques l'aurait fait passer pour une requête maladroite ; le classer
+parmi les concepts aurait pu inviter à créer un nœud. La troisième catégorie
+évite les deux.
+
+**Aucun cas ambigu résiduel.** L'autorisation de Maël réservait le retour
+vers lui aux cas qui « restent vraiment ambigus après classification » : il
+n'y en a pas. Trois cas ont demandé un examen supplémentaire et sont tranchés
+par le test « restreint ou paraphrase » énoncé plus haut — « Monétisation »
+(troncature d'un libellé existant), « Vulnérabilité » (notion centrale,
+dénomination trop large), « Concept de gouvernance » (périphrase d'un
+générique nommé). Le raisonnement est écrit dans les `notes` de leur ligne
+pour que le tri puisse être contesté nom par nom.
+
+**Ce que T1 (c) ne fait pas.** Aucune entité n'est créée, aucun alias n'est
+ajouté, aucun rapprochement n'est engagé. Les 12 noms renvoyés au chantier
+distinct y arrivent **sans instruction préalable** : leur type, leur
+existence et leur libellé restent entiers à décider, et c'est la décision de
+l'auteur.
+
+**Dans le CSV.** Aucune `recommendation` ne change au titre de T1. **11
+lignes** portent un verdict `T1 ( c )` qui **remplace** leur mention
+`NON COUVERT PAR S3` — laquelle a disparu du fichier. Chaque nom y porte sa
+catégorie (`chantier-distinct` / `générique-abandonné` / `erreur-de-nature`)
+et son motif d'une ligne.
+
+### T2 — L'extension de la réduction S4 → **(c)**
+
+**Verdict.** « **Ops à 3 cibles ou plus** (dont P1-11 déjà traitée et
+**P1-13 qui en porte quatre**) → **ne garder que la section mère**. **Paires
+parent + enfant unique → laissées en l'état**, parce qu'elles peuvent encore
+exprimer un ancrage plus précis plutôt qu'une incertitude de découpe. »
+
+Le principe, cité tel quel :
+
+> « Quand une op vise parent + plusieurs enfants, je lis cela comme une
+> incertitude de découpe ; quand elle vise parent + un seul enfant, je ne veux
+> pas l'écraser mécaniquement sans examen supplémentaire. »
+
+**Ce que cela implique.** S4 (b) avait donné un motif — l'ancrage multiple
+« ressemble à une hésitation déguisée en exhaustivité » — sans donner de
+seuil. T2 (c) pose le seuil, et il est bas mais net : **trois cibles**. En
+deçà, le doute profite à l'ancrage : une paire parent + enfant peut être la
+trace d'une précision, pas d'une hésitation, et la trancher demanderait de
+relire le passage — travail non fait ici, donc décision non prise.
+
+**Les 13 ops à cible sectionnelle multiple, réparties par le seuil.**
+
+| Seuil | Ops | Cibles | Sort |
+|---|---|---|---|
+| **3 cibles ou plus** | **P1-11** | `intro_C_2` + `intro_C_2a` + `intro_C_2b` | Réduite à `intro_C_2` — **déjà par S4 (b)**, T2 (c) le confirme |
+| | **P1-13** | `intro_C_2` + `intro_C_2d` + `intro_C_2e` + `intro_C_2f` | **Réduite à `intro_C_2` par T2 (c)** — 3 cibles abandonnées |
+| **Parent + 1 enfant** | P1-3 | `intro_B_1` + `intro_B_1a` | **Laissée en l'état** |
+| | P1-4 | `intro_B_1` + `intro_B_1b` | **Laissée en l'état** |
+| | P1-5 | `intro_B_2` + `intro_B_2a` | **Laissée en l'état** |
+| | P1-6 | `intro_B_2` + `intro_B_2b` | **Laissée en l'état** |
+| | P1-7 | `intro_B_3` + `intro_B_3a` | **Laissée en l'état** |
+| | P1-8 | `intro_B_3` + `intro_B_3b` | **Laissée en l'état** |
+| | P1-9 | `intro_C_1` + `intro_C_1a` | **Laissée en l'état** |
+| | P1-10 | `intro_C_1` + `intro_C_1b` | **Laissée en l'état** |
+| | P1-12 | `intro_C_2` + `intro_C_2c` | **Laissée en l'état** |
+| | P3-0 | `I.2` + `I.2.1` | **Laissée en l'état** |
+| **Hors du motif** | P3-11 | `conclu_infra` + `conclu_aceph` | 2 cibles, et **deux sections sœurs**, pas parent + enfant — déjà départagées par **S5 (a)** |
+
+**Comptes.** **2 ops** franchissent le seuil des 3 cibles — P1-11 (3) et
+P1-13 (4) — dont **une seule est nouvelle**, P1-13. **10 ops** sont des
+paires parent + enfant unique et **restent inchangées, leurs deux cibles
+subsistant**. La treizième, P3-11, ne relève pas du motif : ses deux cibles
+sont deux sections sœurs, et S5 (a) a déjà écarté `conclu_aceph` sur preuve
+de texte. Les 11 mentions `NON COUVERT PAR S4` disparaissent du CSV, remplacées
+par un verdict `T2 ( c )`.
+
+**Ce que la réduction de P1-13 abandonne, précisément.** Les cibles
+`intro_C_2d`, `intro_C_2e` et `intro_C_2f` — soit les sous-sections
+consacrées aux observations, aux entretiens et au terrain hors ligne. Le
+passage (p. 46) traverse effectivement les trois, ce qui est exactement le
+symptôme que Maël nomme : un générateur qui ne sait pas où couper accroche
+partout. Seule `intro_C_2` subsiste. Comme pour P1-11, le champ
+`target_section` **conserve les quatre clés annoncées par le patch** comme
+trace de la demande (convention posée en Q2) ; ce sont les `notes` qui
+portent l'abandon.
+
+**Une conséquence à ne pas manquer.** Une op réduite change de geste : P1-13
+passe de `retenir` à `retenir-avec-correction-de-section`, comme P1-11 avant
+elle. Un applicateur qui lirait `target_section` sans lire les `notes`
+poserait **quatre** relations d'ancrage là où le verdict n'en veut qu'une.
+C'est le même piège que celui signalé pour P3-11 et P2-0 (§ 7, « Ce que les
+arbitrages ne couvrent pas »), et il vaut désormais pour deux ops.
+
+**Dans le CSV.** **P1-13 passe de `retenir` à
+`retenir-avec-correction-de-section`** — la seule `recommendation` que cette
+passe modifie, ce qui porte à **8** le nombre total de lignes ayant changé de
+recommandation. **13 lignes** portent un verdict `T2 ( c )` : les 10 laissées
+en l'état, P1-13 réduite, P1-11 dont S4 (b) est confirmée et généralisée, et
+P3-11 dont il est dit qu'elle est sous le seuil et déjà tranchée.
+
 ### P3-10 — arbitrage retiré, l'op reste gelée
 
 Ce n'est pas un verdict de plus, c'en est un de moins, et il faut l'inscrire
@@ -1358,35 +1602,49 @@ triple cible de P1-11 par S4 (b) ; la seconde cible erronée de P3-11 par
 S5 (a). Reste P3-10, **volontairement laissée ouverte** : son arbitrage a été
 retiré, elle est gelée (§ 7, P3-10).
 
-**Trois points nouveaux ne sont pas exactement couverts** par les verdicts du
-2026-08-08. Ils sont signalés dans les `notes` par la mention `NON COUVERT`
-et **ne sont pas tranchés ici** :
+**Les trois points nouveaux du 2026-08-08 : deux sont fermés, un reste
+ouvert.** T1 (c) et T2 (c) ont clos les deux premiers ; la mention
+`NON COUVERT` **a entièrement disparu du CSV**.
 
-1. **Les 17 références non résolues que S3 ne range ni parmi les génériques
-   ni parmi les 6 concepts réels** (16 noms, § 7-S3). La liste des génériques
-   se termine par « … » ; plusieurs de ces 17 ne sont manifestement pas des
-   génériques — « Bitcoin Wiki » est une source, « II.3.1 » une clé de
-   section, « Objets monétaires non identifiés » une formule de la thèse.
-   11 lignes du CSV portent `NON COUVERT PAR S3`.
-2. **Les 11 ops à cible sectionnelle multiple que S4 ne nomme pas.** S4 (b)
-   réduit la triple cible de P1-11 au motif qu'elle « ressemble trop à une
-   incertitude de découpe » ; 12 autres ops portent le même motif parent +
-   enfant(s), dont **P1-13 avec quatre cibles**. 11 lignes portent
-   `NON COUVERT PAR S4` (P3-11 étant traitée par S5).
+1. ~~Les 17 références non résolues que S3 ne range ni parmi les génériques
+   ni parmi les 6 concepts réels~~ — **fermé par T1 (c)** (§ 7-T1) :
+   12 noms / 13 références au chantier distinct, 3 / 3 abandonnés comme
+   génériques, 1 / 1 en erreur de nature. Les 11 lignes qui portaient
+   `NON COUVERT PAR S3` portent le verdict.
+2. ~~Les 11 ops à cible sectionnelle multiple que S4 ne nomme pas~~ —
+   **fermé par T2 (c)** (§ 7-T2) : seuil à 3 cibles, **P1-13 réduite** à sa
+   seule mère, **10 paires parent + enfant unique laissées en l'état**,
+   P3-11 hors motif et déjà tranchée par S5 (a). Les 11 lignes qui portaient
+   `NON COUVERT PAR S4` portent le verdict.
 3. **Le cas que S2 (b) écarte alors que sa preuve tient** — « Immersion
    participante » → `17d7b62a…` (P1-12), seule des 13 résolutions par la
    table dont l'évidence n'est pas circulaire. La règle est appliquée telle
    quelle, mais l'exception est signalée plutôt que traitée en silence.
+   **C'est le seul point non couvert qui subsiste**, avec P3-10 dont
+   l'arbitrage a été retiré.
 
-**Un point de forme, à signaler plutôt qu'à corriger.** Deux lignes portent
+**Une dette de modélisation est renvoyée, et elle est d'un genre nouveau.**
+T1 (c) crée une troisième catégorie, **erreur de nature / dette de
+modélisation** : une clé de section employée comme entité de soutien
+(« II.3.1 » dans P1-14) n'est **ni** un générique à abandonner **ni** un
+concept à instruire, c'est **un défaut du patch source, pas un manque du
+graphe**. La section existe (`d493c4ac…`) et l'op l'ancre déjà ; le lien de
+soutien y ferait doublon — le vice que Q5 (a) avait écarté pour `38e637cc…`.
+Rien n'est à créer ni à chercher : ce qui est renvoyé, c'est la contrainte
+qu'une réécriture devra respecter — **`quote_supports_entity_names` ne doit
+jamais contenir de clé de section**, et un contrôle de type de la cible doit
+précéder toute pose de `quote supports` (§ 5.3, P6).
+
+**Un point de forme, à signaler plutôt qu'à corriger.** Trois lignes portent
 désormais **deux gestes** que la colonne `recommendation` ne peut pas
 exprimer ensemble : **P3-11** (compléter l'existante + recentrer la section,
-Q3.1 (a) + S5 (a)) et, à un moindre degré, **P2-0** (retenir + changer de
-type d'ancre, Q5 (a) + S1 (a)). Dans les deux cas la valeur retenue est le
-geste dominant et l'autre voyage dans les `notes`. Un applicateur qui ne
-lirait que `recommendation` raterait la moitié du verdict.
+Q3.1 (a) + S5 (a)), **P1-13** (retenir + abandonner trois cibles, T2 (c)) et,
+à un moindre degré, **P2-0** (retenir + changer de type d'ancre, Q5 (a) +
+S1 (a)). Dans les trois cas la valeur retenue est le geste dominant et l'autre
+voyage dans les `notes`. Un applicateur qui ne lirait que `recommendation`
+raterait la moitié du verdict.
 
-### Tableau récapitulatif — les 7 recommandations qui changent
+### Tableau récapitulatif — les 8 recommandations qui changent
 
 | Op | Avant | Après | Passe | Motif |
 |---|---|---|---|---|
@@ -1397,8 +1655,9 @@ lirait que `recommendation` raterait la moitié du verdict.
 | P3-8 | `arbitrage` | **`retenir-avec-correction-de-section`** | 2026-08-07 | Q2 (a) : rabattue sur I.3.3 |
 | P3-9 | `arbitrage` | **`retenir-avec-correction-de-section`** | 2026-08-07 | Q2 (a) : rabattue sur I.3.3 |
 | **P1-11** | `retenir` | **`retenir-avec-correction-de-section`** | **2026-08-08** | **S4 (b) : ancrage triple réduit à sa seule mère C.2** |
+| **P1-13** | `retenir` | **`retenir-avec-correction-de-section`** | **2026-08-08** | **T2 (c) : ancrage quadruple réduit à sa seule mère `intro_C_2`** |
 
-Les 40 autres lignes gardent leur valeur. **Les 41 lignes ont en revanche vu
+Les 33 autres lignes gardent leur valeur. **Les 41 lignes ont en revanche vu
 changer leur `entity_resolution_status`** — la colonne a changé de
 vocabulaire, cf. l'encadré de tête — et **12 lignes leur `resolved_entity_id`**
 (P1-8, P1-12, P2-3, P2-5, P3-0, P3-1, P3-3, P3-5, P3-8, P3-10, P3-11, P3-12) ;
@@ -1567,20 +1826,22 @@ devrait avoir une réécriture éventuelle**, et **en repousser le moment**.
   aucun des 6 doublons et ne verraient pas III.3 (§ 5.7).
 - **Réécriture en patch candidat canonique : non décidée, mais désormais
   spécifiée.** Les chiffres la soutiennent — **39 des 41 ops** sont
-  aujourd'hui déterminées (24 `retenir` + 10 `retenir-avec-correction-de-section`
+  aujourd'hui déterminées (23 `retenir` + 11 `retenir-avec-correction-de-section`
   + 5 `completer-l-existante`), les 2 restantes étant P3-2 et P3-10. Une
   réécriture conforme au contrat (`grc20-candidate-patch-contract-v1.md`)
   résorberait d'un coup les trois vices de forme rédhibitoires des zips :
   dialecte hors contrat, résolution par nom, base v96 avec clés
   pré-migration. **Mais Maël n'a pas demandé d'écrire ce patch**, et ce
   dossier ne le fait pas — **les 41 ops restent non appliquées**. Si elle est
-  décidée, cette réécriture devra intégrer les **dix-sept** verdicts :
+  décidée, cette réécriture devra intégrer les **dix-neuf** verdicts :
   1. les **6 recentrages** de Q1 (a) et S5 (a), aux ids v110 des tableaux du
      § 7 ;
   2. les **6 rabattements** sur section parente de Q2 (a), sans création
-     d'aucun nœud de niveau 3 ; et la **réduction de P1-11 à sa seule mère
-     C.2** (S4 (b)), les cibles `intro_C_2a` et `intro_C_2b` étant
-     abandonnées ;
+     d'aucun nœud de niveau 3 ; et les **2 réductions à la seule section
+     mère** — P1-11 (S4 (b), `intro_C_2a` et `intro_C_2b` abandonnées) et
+     P1-13 (T2 (c), `intro_C_2d`, `intro_C_2e` et `intro_C_2f` abandonnées) ;
+     les **10 paires parent + enfant unique restent inchangées, leurs deux
+     cibles subsistant** (T2 (c)) ;
   3. les **4 compléments** et la **1 réécriture** de Q3.1/Q3.2, opérés sur
      les SourceQuote existantes (aucun nœud nouveau), P3-2 restant hors
      patch tant que `47dfac14…` n'est pas réparée (Q3.3) ;
@@ -1597,9 +1858,14 @@ devrait avoir une réécriture éventuelle**, et **en repousser le moment**.
      **`quote supports` retiré** vers `38e637cc…` dans P2-0 (Q5 (a)) ;
   6. l'**ancre `Chapter` `5b5935bc…` pour P2-0** (S1 (a)), qui sort du type
      `ThesisSection` et que tout index par `section_key` manquerait ;
-  7. les points **non couverts** du § 7 — les 17 références non rangées par
-     S3, les 11 ops à cible multiple non nommées par S4, l'exception
-     « Immersion participante » de S2 — qui doivent revenir à Maël **avant**
+  7. le tri de **T1 (c)** sur les 17 références que S3 ne rangeait pas —
+     **12 noms au chantier distinct** (aucune création, aucun lien de soutien
+     automatique), **3 abandonnés comme génériques**, et « II.3.1 » traité
+     comme **erreur de nature** : `quote_supports_entity_names` ne doit
+     **jamais** contenir de clé de section, et un contrôle de type de la
+     cible doit précéder toute pose de `quote supports` ;
+  8. le seul point **non couvert** qui subsiste au § 7 — l'exception
+     « Immersion participante » de S2 (b) — qui doit revenir à Maël **avant**
      et non pendant la réécriture ; **P3-10 restant gelée** de son propre
      chef.
 - **Abandon partiel** : le périmètre s'est réduit. Les 6 doublons ne sont
@@ -1614,7 +1880,7 @@ devrait avoir une réécriture éventuelle**, et **en repousser le moment**.
 
 Dans tous les scénarios, l'arbitrage **Q8 du préflight** (à ne pas confondre
 avec la Q8 du § 7 ci-dessus) demeure : **aucun applicateur avant les réponses
-du § 7** — elles sont maintenant rendues, les dix-sept, ce qui lève cette
+du § 7** — elles sont maintenant rendues, les dix-neuf, ce qui lève cette
 condition-là. La
 condition qui la remplace est plus stricte : **Q8 (a) — aucune action
 applicative, pas même un patch candidat gravé, avant réparation ou
@@ -1703,7 +1969,7 @@ Ajouts de l'inscription des arbitrages complémentaires du 2026-08-08
   `docs/audits/data/sourcequote-migration-verification-v1.csv` et le présent
   document ;
 - **les 41 ops restent non appliquées** et **le gel de Q8 (a) tient sur
-  l'ensemble** : les dix-sept verdicts disent *ce qu'il faudra graver*, aucun
+  l'ensemble** : les dix-neuf verdicts disent *ce qu'il faudra graver*, aucun
   ne dit *quand*, et la réparation des `page_start` reste le préalable ;
 - **les 112 liens de soutien de S2 (b) sont des candidats, pas des
   relations** : ils sont comptés et nommés ligne à ligne dans le CSV, aucun
@@ -1721,9 +1987,44 @@ Ajouts de l'inscription des arbitrages complémentaires du 2026-08-08
   (§ 7, « Ce que les arbitrages ne couvrent pas ») : les 17 références que
   S3 ne range ni parmi les génériques ni parmi les 6 concepts réels, les 11
   ops à cible sectionnelle multiple que S4 ne nomme pas, et l'exception
-  « Immersion participante » que S2 écarte alors que sa preuve tient ;
+  « Immersion participante » que S2 écarte alors que sa preuve tient. **Les
+  deux premiers ont depuis été fermés** par T1 (c) et T2 (c) ;
 - **le doublon bibliographique « Cartelier 1996 »** mis au jour par la mesure
   de sûreté du rang 6 (§ 8) n'a **pas** été tranché : il revient au
   Bibliography Reconciliation Lab ;
 - **aucun contrôle navigateur** n'a été refait : rien n'a changé côté
   runtime, aucune page du site ne lit ces deux fichiers.
+
+Ajouts de l'inscription des deux derniers arbitrages du 2026-08-08
+(**T1-T2**) — ce que cette passe n'a **pas** fait non plus :
+
+- **rien n'a été appliqué, une troisième fois.** Le graphe
+  `grc20-these-mael-rolland-v110.json` est **inchangé** : aucun nœud corrigé,
+  fusionné, retypé ou créé, **aucune SourceQuote créée**, **aucun lien de
+  section posé ni retiré**, **aucun alias créé**, **aucun applicateur écrit**,
+  **aucune v111 produite**. Les cartes d'ancrage, le runtime, `scripts/` et
+  les zips de `Migration/` n'ont pas été touchés. Les **deux seuls fichiers
+  écrits** sont `docs/audits/data/sourcequote-migration-verification-v1.csv`
+  et le présent document ;
+- **aucun des 12 noms renvoyés au chantier distinct par T1 (c) n'a été
+  créé**, ni typé, ni rapproché d'un voisin : « sans création ici » est pris à
+  la lettre, comme l'était déjà « sans création dans celui-ci » de S3 (b).
+  Ils s'ajoutent aux 6 concepts réels de S3 (b) — **18 noms en tout attendent
+  un chantier qui n'est pas ouvert ici** ;
+- **aucun lien de soutien n'a été posé pour eux**, l'arbitrage l'interdisant
+  explicitement (« sans lien de soutien automatique ») : les 112 candidats de
+  S2 (b) restent les seuls, et ce sont toujours des candidats ;
+- **la dette de nature de « II.3.1 » n'a pas été réparée** : elle est
+  qualifiée et renvoyée, pas corrigée. Le patch source n'est pas modifié —
+  ce serait falsifier une archive ;
+- **la réduction de P1-13 n'a pas été opérée** : les trois cibles
+  `intro_C_2d`, `intro_C_2e`, `intro_C_2f` sont déclarées abandonnées dans
+  les `notes`, le champ `target_section` conserve les quatre clés du patch, et
+  **aucune relation d'ancrage n'existe ni n'a été retirée** ;
+- **les 10 paires parent + enfant unique n'ont pas été examinées au fond** :
+  T2 (c) les laisse en l'état sans juger de leur pertinence, et l'« examen
+  supplémentaire » que Maël réserve reste à faire ;
+- **le gel de Q8 (a) tient toujours** sur les 41 ops, y compris celles dont la
+  recommandation est `retenir`. Aucune des passes suivantes ne doit lire ce
+  dossier comme une autorisation de graver ;
+- **aucun contrôle navigateur** : rien n'a changé côté runtime.
