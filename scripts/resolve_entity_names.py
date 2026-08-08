@@ -30,7 +30,10 @@ n'entre jamais dans une resolution.
   rang 3  `labelEn`      libelle anglais declare            confiance haute
   rang 4  `labelFr`      libelle francais declare           confiance haute
   rang 5  `aliases`      alias declare par le graphe        confiance moyenne
-  rang 6  `alias-table`  table externe, lignes de confiance
+  rang 6  `ponctuation-  cle des rangs 1-5 DEPOUILLEE de sa
+          ignoree`       ponctuation (jeu clos, voir plus
+                         bas)                               confiance moyenne
+  rang 7  `alias-table`  table externe, lignes de confiance
                          haute ou moyenne UNIQUEMENT        confiance de la ligne
   sinon   `not-found`
 
@@ -48,8 +51,63 @@ rangs 1-4 sont des denominations : une entite a un nom, un nom anglais, un
 libelle. Le rang 5 est heterogene — dans v110 il melange gloses
 parenthetiques (« Gouvernance duale (CM) »), corrections orthographiques
 (« Shaoling Fry ») et variantes multiples separees par « | ». Un match
-exact y reste une equivalence editoriale, pas une denomination. Le rang 6
+exact y reste une equivalence editoriale, pas une denomination. Le rang 7
 porte la confiance declaree par la ligne du CSV.
+
+=====================================================================
+RANG 6 — « ponctuation ignoree » (arbitrage R2(a), Mael, 2026-08-07)
+=====================================================================
+CE QUI LE MOTIVE. Le lot SourceQuote designe une section de la these par
+« II.2 « Pourtant, elles font monnaie ! » : a l'aune d'un nominalisme
+« non etatiste » attentif aux usages », alors que v110 (38e637cc) ecrit
+« II.2 « Pourtant, elles font monnaie » ! a l'aune […] » : meme phrase,
+meme section, mais le « ! » et le « : » sont poses ailleurs. Aucun rang
+1-5 ne matche, et la piste fuzzy donne 0,98 — un faux negatif dont la
+cause est typographique, pas semantique.
+
+CE QU'IL FAIT. Il compare la cle normalisee de la demande, DEPOUILLEE de
+sa ponctuation, aux memes cles depouillees de TOUS les champs des rangs
+1-5 (name, nameEn, labelEn, labelFr, aliases). C'est donc une passe
+supplementaire sur les denominations que le graphe declare lui-meme, pas
+une source nouvelle : le rang 6 ne peut designer qu'une entite deja
+atteignable par un des cinq premiers.
+
+LE JEU DE PONCTUATION — clos, explicite, et rien d'autre. Chaque caractere
+liste est remplace par une ESPACE (jamais supprime : supprimer souderait
+« non-etatiste » en « nonetatiste »), puis les espaces sont reduits.
+
+  ponctuation de phrase   ! ? : ; . , …
+  guillemets typographiques   « » “ ” „ ‟ ‹ ›  (et ‘ ’, deja replies)
+  guillemets droits       " '
+  parentheses             ( )
+  crochets et accolades   [ ] { }
+  tirets                  - ‐ ‑ ‒ – — ―
+
+TOUT LE RESTE EST GARDE : chiffres, lettres, mais aussi / & + % # @ * _ = ~
+et l'espace insecable (deja reduit par la normalisation). C'est ce qui
+distingue ce rang de `normalise_appariement`, qui ecrase `[^a-z0-9 ]` tout
+entier : « KYC / AML » et « KYC AML » restent deux chaines differentes ici.
+
+CONFIANCE MOYENNE, ET POURQUOI PAS HAUTE. Une egalite apres depouillement
+n'est pas une denomination declaree : c'est un constat que deux graphies
+coincident une fois la typographie neutralisee. Cela suffit a lever un faux
+negatif, pas a certifier une identite.
+
+LE RISQUE, ET CE QUI LE CONTIENT. Une normalisation qui supprime la
+ponctuation ecrase des distinctions reelles : « ASIC (materiel de minage) »
+et « ASIC » sont deux entites, et une regle trop gourmande les confondrait.
+Le remplacement par une espace les separe deja (« asic materiel de minage »
+vs « asic »), mais cela ne suffit pas a garantir le cas general. D'ou la
+regle absolue du rang : DES QUE PLUSIEURS ENTITES portent la meme cle
+depouillee, le statut est `ambiguous`, toutes sont listees, rien n'est
+resolu, ET LE PARCOURS S'ARRETE LA — pas de retombee au rang 7. Une
+collision ne doit jamais devenir une resolution silencieuse.
+
+`--audit-collisions-ponctuation` mesure ce risque sur le graphe entier :
+il liste toute cle depouillee portee par plusieurs entites, en distinguant
+celles qui collidaient DEJA sans depouillement (ambigues de toute facon)
+de celles que le rang 6 cree. `--no-punctuation-rank` desactive le rang
+pour comparer.
 
 POURQUOI LES LIGNES `basse` DE LA TABLE SONT EXCLUES. Elles couvrent
 precisement les collisions et les traductions interpretatives : les 30
@@ -90,11 +148,14 @@ typographiques (U+2018, U+02BC, U+2032, U+00B4) + reduction des espaces
 (`split()`/`join`, ce qui absorbe aussi l'espace insecable U+00A0 et
 l'espace fine U+202F).
 
-La ponctuation est GARDEE, contrairement a `normalise_appariement`. C'est
-delibere : « ASIC (matériel de minage) » et « ASIC » doivent rester deux
-chaines distinctes — c'est la table d'alias, avec sa confiance et ses
-`collision_with`, qui dit si l'une renvoie a l'autre, pas une normalisation
-qui les ecraserait en silence.
+La ponctuation est GARDEE aux rangs 1-5, contrairement a
+`normalise_appariement`. C'est delibere : « ASIC (matériel de minage) » et
+« ASIC » doivent rester deux chaines distinctes — c'est la table d'alias,
+avec sa confiance et ses `collision_with`, qui dit si l'une renvoie a
+l'autre, pas une normalisation qui les ecraserait en silence. Le rang 6 en
+derive une SECONDE cle, depouillee, qu'il n'emploie qu'apres les cinq
+premiers et sous la contrainte `ambiguous` decrite plus haut ; la cle des
+rangs 1-5, elle, ne change pas.
 
 =====================================================================
 FORME REELLE DE `aliases` DANS v110 — constatee, pas supposee
@@ -161,8 +222,9 @@ CODE_INVOCATION = 2
 
 # Rangs portes par le graphe lui-meme, dans l'ordre d'interrogation.
 RANGS_GRAPHE = ('name', 'nameEn', 'labelEn', 'labelFr', 'aliases')
+RANG_PONCTUATION = 'ponctuation-ignoree'
 RANG_TABLE = 'alias-table'
-RANGS = RANGS_GRAPHE + (RANG_TABLE,)
+RANGS = RANGS_GRAPHE + (RANG_PONCTUATION, RANG_TABLE)
 
 CONFIANCE_PAR_RANG = {
     'name': 'haute',
@@ -170,7 +232,23 @@ CONFIANCE_PAR_RANG = {
     'labelEn': 'haute',
     'labelFr': 'haute',
     'aliases': 'moyenne',   # cf. docstring : rang heterogene
+    RANG_PONCTUATION: 'moyenne',   # cf. docstring : coincidence typographique
 }
+
+# Le jeu de ponctuation ECARTE par le rang 6 — clos, explicite, et rien
+# d'autre (cf. docstring). Chaque caractere devient une ESPACE, jamais rien.
+PONCTUATION_IGNOREE = frozenset(
+    '!?:;.,'                                    # ponctuation de phrase
+    '…'                                    # …
+    '«»'                              # « »
+    '“”„‟'                  # “ ” „ ‟
+    '‹›'                              # ‹ ›
+    '‘’'                              # ‘ ’ (deja replies sur ')
+    '"\''                                       # guillemet droit, apostrophe
+    '()'                                        # parentheses
+    '[]{}'                                      # crochets, accolades
+    '-‐‑‒–—―'     # - ‐ ‑ ‒ – — ―
+)
 
 SEPARATEUR_ALIAS = '|'
 TABLE_DEFAUT = os.path.join(REPO, 'docs', 'audits', 'data',
@@ -212,6 +290,24 @@ def normalise_cle(s):
     for a in APOSTROPHES:
         s = s.replace(a, "'")
     return ' '.join(normalise_doux(s).split())
+
+
+def depouille_ponctuation(cle):
+    """La cle du rang 6 : la cle normalisee, ponctuation -> espace.
+
+    Prend en entree une cle DEJA passee par `normalise_cle` (c'est ce qui
+    garantit qu'on depouille la meme chose des deux cotes). Cf. docstring
+    pour le jeu de caracteres, qui est clos.
+    """
+    if not cle:
+        return ''
+    depouillee = ''.join(' ' if c in PONCTUATION_IGNOREE else c for c in cle)
+    return ' '.join(depouillee.split())
+
+
+def normalise_cle_depouillee(s):
+    """`normalise_cle` puis `depouille_ponctuation` — pour un appel direct."""
+    return depouille_ponctuation(normalise_cle(s))
 
 
 def valeur_texte(attribut):
@@ -266,6 +362,69 @@ def index_du_graphe(denominations):
         for cle in index[rang]:
             index[rang][cle].sort()
     return index
+
+
+def index_ponctuation(denominations):
+    """-> {cle_depouillee: [(entity_id, chaine_source, rang_origine)]}.
+
+    Une seule table pour les CINQ rangs du graphe : le rang 6 ne distingue
+    pas d'ou vient la denomination, il constate que sa graphie coincide une
+    fois la ponctuation neutralisee. Listes triees -> sortie deterministe.
+    """
+    index = collections.defaultdict(list)
+    for rang, cle, source, eid in denominations:
+        cle_dep = depouille_ponctuation(cle)
+        if not cle_dep:
+            continue
+        entree = (eid, source, rang)
+        if entree not in index[cle_dep]:
+            index[cle_dep].append(entree)
+    for cle_dep in index:
+        index[cle_dep].sort()
+    return index
+
+
+def collisions_ponctuation(denominations):
+    """Les cles depouillees portees par PLUSIEURS entites — le risque du rang 6.
+
+    Rend deux listes : `creees` (les entites ne collidaient sur AUCUNE cle
+    exacte commune avant depouillement — c'est le rang 6 qui les rapproche)
+    et `preexistantes` (elles portaient deja la meme cle exacte, donc elles
+    etaient deja `ambiguous` aux rangs 1-5). Tri deterministe.
+    """
+    par_cle_dep = collections.defaultdict(list)
+    entites_par_cle = collections.defaultdict(set)
+    for rang, cle, source, eid in denominations:
+        cle_dep = depouille_ponctuation(cle)
+        if not cle_dep:
+            continue
+        entree = (eid, source, rang, cle)
+        if entree not in par_cle_dep[cle_dep]:
+            par_cle_dep[cle_dep].append(entree)
+        entites_par_cle[cle].add(eid)
+    deja = {cle for cle, ids in entites_par_cle.items() if len(ids) > 1}
+    creees, preexistantes = [], []
+    for cle_dep, entrees in par_cle_dep.items():
+        ids = {e[0] for e in entrees}
+        if len(ids) < 2:
+            continue
+        cles_exactes = {e[3] for e in entrees}
+        groupe = {
+            'stripped_key': cle_dep,
+            'entity_ids': sorted(ids),
+            'denominations': [
+                {'entity_id': eid, 'denomination_rule': rang, 'string': source,
+                 'exact_key': cle}
+                for eid, rang, source, cle in sorted(
+                    (e[0], e[2], e[1], e[3]) for e in entrees)],
+        }
+        if cles_exactes & deja:
+            preexistantes.append(groupe)
+        else:
+            creees.append(groupe)
+    creees.sort(key=lambda g: g['stripped_key'])
+    preexistantes.sort(key=lambda g: g['stripped_key'])
+    return creees, preexistantes
 
 
 def interdite(notes):
@@ -385,10 +544,11 @@ def pistes_fuzzy(cle, denominations, entites, nom_type, seuil, maximum):
 
 
 def resout_un(nom, index_graphe, index_table, entites, nom_type,
-              interdits_table=None):
+              interdits_table=None, index_ponct=None):
     """La regle, rang par rang. -> dict de resolution (sans les pistes)."""
     cle = normalise_cle(nom)
-    base = {'name': nom, 'normalized': cle}
+    base = {'name': nom, 'normalized': cle,
+            'normalized_stripped': depouille_ponctuation(cle)}
     if not cle:
         base.update({'status': 'not-found', 'match_rule': 'not-found',
                      'confidence': None,
@@ -415,6 +575,35 @@ def resout_un(nom, index_graphe, index_table, entites, nom_type,
                      'reason': f"{len(ids)} entites portent cette chaine au "
                                f"rang {rang} — aucune n'est tranchee ici"})
         return base
+
+    # --- rang 6 : ponctuation ignoree (cf. docstring) -------------------
+    # Une collision ARRETE le parcours : `ambiguous`, jamais de retombee
+    # vers la table, jamais de resolution silencieuse.
+    cle_dep = base['normalized_stripped']
+    entrees = index_ponct.get(cle_dep) if (index_ponct is not None
+                                           and cle_dep) else None
+    if entrees:
+        candidats = []
+        for eid, source, rang_origine in entrees:
+            c = decrit(eid, entites, nom_type)
+            c.update({'matched_string': source,
+                      'denomination_rule': rang_origine,
+                      'stripped_key': cle_dep})
+            candidats.append(c)
+        ids = {c['entity_id'] for c in candidats}
+        if len(ids) == 1:
+            base.update({'status': 'resolved', 'match_rule': RANG_PONCTUATION,
+                         'confidence': CONFIANCE_PAR_RANG[RANG_PONCTUATION]})
+            base.update(candidats[0])
+            base['name'] = nom
+            return base
+        base.update({'status': 'ambiguous', 'match_rule': RANG_PONCTUATION,
+                     'confidence': None, 'candidates': candidats,
+                     'reason': f"{len(ids)} entites portent cette chaine une "
+                               "fois la ponctuation ignoree — collision non "
+                               "tranchee, et le parcours s'arrete ici"})
+        return base
+
     entrees = index_table.get(cle) if index_table is not None else None
     if entrees:
         candidats = []
@@ -529,20 +718,75 @@ def ligne_lisible(r):
     return '\n'.join(lignes)
 
 
+def audit_collisions(chemin_graphe, denominations, entites, nom_type,
+                     report_json=None):
+    """`--audit-collisions-ponctuation` : le risque du rang 6, mesure."""
+    creees, preexistantes = collisions_ponctuation(denominations)
+
+    def enrichit(groupes):
+        for g in groupes:
+            g['entities'] = [decrit(eid, entites, nom_type)
+                             for eid in g['entity_ids']]
+        return groupes
+
+    creees, preexistantes = enrichit(creees), enrichit(preexistantes)
+    print(f"graphe       : {os.path.relpath(chemin_graphe, REPO)}")
+    print(f"denominations: {len(denominations)} (rangs 1-5)")
+    print(f"cles depouillees en collision : {len(creees)} CREEE(S) par le "
+          f"depouillement, {len(preexistantes)} preexistante(s) sur la cle "
+          "exacte\n")
+    for titre, groupes in (('COLLISIONS CREEES PAR LE RANG 6', creees),
+                           ('COLLISIONS DEJA PRESENTES AUX RANGS 1-5',
+                            preexistantes)):
+        print(f"=== {titre} ({len(groupes)}) ===")
+        if not groupes:
+            print("  (aucune)")
+        for g in groupes:
+            print(f"  « {g['stripped_key']} » -> {len(g['entity_ids'])} entites")
+            for d in g['denominations']:
+                print(f"      {d['entity_id']}  [{d['denomination_rule']}]  "
+                      f"« {d['string']} »")
+        print()
+    print("Toutes ces cles produisent `ambiguous` au rang 6 : aucune n'est "
+          "resolue, et le parcours ne retombe pas sur la table.")
+    if report_json:
+        sortie = {
+            'graph': os.path.basename(chemin_graphe),
+            'audit': 'collisions-ponctuation',
+            'punctuation_stripped': sorted(PONCTUATION_IGNOREE),
+            'denominations_examined': len(denominations),
+            'collisions_created_by_stripping': creees,
+            'collisions_already_present_on_exact_key': preexistantes,
+        }
+        dossier = os.path.dirname(os.path.abspath(report_json))
+        if dossier:
+            os.makedirs(dossier, exist_ok=True)
+        with open(report_json, 'w', encoding='utf-8') as f:
+            json.dump(sortie, f, ensure_ascii=False, indent=1, sort_keys=True)
+            f.write('\n')
+        print(f"\nrapport json : {report_json}")
+    return 0
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(
         description="Resout des noms d'entites contre le graphe GRC-20, en "
                     "interrogeant les denominations que le graphe declare "
-                    "lui-meme (name, nameEn, labelEn, labelFr, aliases) AVANT "
-                    "la table d'alias externe. Lecture seule, sortie "
-                    "deterministe. Codes de sortie : 0 = la resolution a "
-                    "tourne (des not-found restent un resultat), 2 = erreur "
-                    "d'invocation.",
-        epilog="Ordre strict des rangs : name > nameEn > labelEn > labelFr > "
-               "aliases > alias-table (lignes de confiance haute/moyenne "
-               "seulement) > not-found. Plusieurs entites au meme rang => "
-               "`ambiguous`, jamais d'arbitrage automatique. Le fuzzy des "
-               "not-found est une PISTE pour un humain, jamais une resolution.")
+                    "lui-meme (name, nameEn, labelEn, labelFr, aliases, puis "
+                    "ces memes champs ponctuation ignoree) AVANT la table "
+                    "d'alias externe. Lecture seule, sortie deterministe. "
+                    "Codes de sortie : 0 = la resolution a tourne (des "
+                    "not-found restent un resultat), 2 = erreur d'invocation.",
+        epilog="Ordre strict des rangs : 1 name > 2 nameEn > 3 labelEn > "
+               "4 labelFr > 5 aliases > 6 ponctuation-ignoree (cles des rangs "
+               "1-5 depouillees de ! ? : ; . , … « » “ ” „ ‟ ‹ › ‘ ’ \" ' "
+               "( ) [ ] { } et des tirets - ‐ ‑ ‒ – — ― , chacun remplace par "
+               "une espace ; confiance moyenne) > 7 alias-table (lignes de "
+               "confiance haute/moyenne seulement) > not-found. Plusieurs "
+               "entites au meme rang => `ambiguous`, jamais d'arbitrage "
+               "automatique, et au rang 6 le parcours s'arrete la sans "
+               "retomber sur la table. Le fuzzy des not-found est une PISTE "
+               "pour un humain, jamais une resolution.")
     p.add_argument('--name', action='append', default=None, metavar='CHAINE',
                    help="nom a resoudre (repetable ; combinable avec "
                         "--from-json)")
@@ -560,7 +804,17 @@ def main(argv=None):
                         "(defaut : %(default)s)")
     p.add_argument('--no-alias-table', action='store_true',
                    help="n'interroge QUE les denominations du graphe (rangs "
-                        "1-5) : mesure ce que le graphe resout seul")
+                        "1-6) : mesure ce que le graphe resout seul")
+    p.add_argument('--no-punctuation-rank', action='store_true',
+                   help="desactive le rang 6 « ponctuation ignoree » : mesure "
+                        "ce qu'il apporte, et ce que le resolveur rendait "
+                        "avant l'arbitrage R2(a)")
+    p.add_argument('--audit-collisions-ponctuation', action='store_true',
+                   help="n'interroge aucun nom : liste les cles depouillees "
+                        "portees par plusieurs entites du graphe — le risque "
+                        "que le rang 6 contient par `ambiguous`. Distingue "
+                        "les collisions CREEES par le depouillement de celles "
+                        "qui preexistaient sur la cle exacte")
     p.add_argument('--confidences', default=','.join(CONFIANCES_ADMISES),
                    metavar='LISTE',
                    help="confiances admises de la table externe, separees par "
@@ -588,7 +842,7 @@ def main(argv=None):
     if args.from_json:
         demandes += noms_depuis_json(
             lire_json(args.from_json, "fichier --from-json"), args.from_json)
-    if not demandes:
+    if not demandes and not args.audit_collisions_ponctuation:
         echec_invocation("aucun nom a resoudre : fournir --name et/ou "
                          "--from-json")
 
@@ -603,6 +857,12 @@ def main(argv=None):
     entites, nom_type = carte_entites(graphe)
     denominations = denominations_du_graphe(graphe)
     index_graphe = index_du_graphe(denominations)
+    index_ponct = (None if args.no_punctuation_rank
+                   else index_ponctuation(denominations))
+
+    if args.audit_collisions_ponctuation:
+        return audit_collisions(chemin_graphe, denominations, entites,
+                                nom_type, args.report_json)
 
     confiances = tuple(x.strip() for x in args.confidences.split(',')
                        if x.strip())
@@ -628,7 +888,7 @@ def main(argv=None):
     resolutions = []
     for nom in ordre:
         r = resout_un(nom, index_graphe, index_table, entites, nom_type,
-                      interdits_table)
+                      interdits_table, index_ponct)
         r['occurrences'] = occurrences[nom]
         if r['status'] == 'not-found' and args.fuzzy_max > 0:
             r['fuzzy_hints'] = pistes_fuzzy(r['normalized'], denominations,
@@ -656,6 +916,12 @@ def main(argv=None):
               f"note « ne jamais/pas resoudre »"
               + (" — HONORAGE DESACTIVE" if args.ignore_table_interdictions
                  else "") + ")")
+    if index_ponct is None:
+        print("rang 6       : DESACTIVE (--no-punctuation-rank)")
+    else:
+        print(f"rang 6       : ponctuation ignoree, "
+              f"{len(index_ponct)} cle(s) depouillee(s) "
+              f"({len(PONCTUATION_IGNOREE)} caracteres ecartes)")
     print(f"noms         : {len(demandes)} demande(s), {len(ordre)} distinct(s)")
     print()
     for r in resolutions:
@@ -685,6 +951,14 @@ def main(argv=None):
                 'interdictions_honoured': not args.ignore_table_interdictions,
             }),
             'rule_order': list(RANGS) + ['not-found'],
+            'punctuation_rank': (None if index_ponct is None else {
+                'stripped_characters': sorted(PONCTUATION_IGNOREE),
+                'replacement': 'espace (jamais suppression)',
+                'confidence': CONFIANCE_PAR_RANG[RANG_PONCTUATION],
+                'stripped_keys': len(index_ponct),
+                'on_collision': 'ambiguous — arret du parcours, pas de '
+                                'retombee sur la table',
+            }),
             'summary': {
                 'names_requested': len(demandes),
                 'names_distinct': len(ordre),
