@@ -70,11 +70,11 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
 ├── .github/workflows/check.yml                 # CI: 8 steps, no install (Node + Python 3 only)
 ├── agents/                                     # Agent charter and roles (README.md = the rules)
 ├── .claude/skills/                             # Invocable skills (hostile review, archivist, …)
-├── scripts/                                    # 42 files — see "Scripts and controls" below
+├── scripts/                                    # 46 files — see "Scripts and controls" below
 ├── patches/                                    # Receipts + archive/ (retired patches, with motive)
 ├── Migration/                                  # External SourceQuote bundles (zips, NOT applied)
 ├── docs/audits/                                # 27 audit reports — the repo's memory
-│   └── data/                                   # 25 evidence files (CSV/JSON) — read with their audit
+│   └── data/                                   # 26 evidence files (CSV/JSON) — read with their audit
 └── assets/
     ├── MD/                                     # Thesis chapters in Markdown (bilingual FR/EN)
     │   ├── INDEX.md                            # Agent-readable entry point for thesis content
@@ -365,13 +365,14 @@ The renumbering map is not reliable either: on four verified cases the printed
 text proved the raw key right and the map wrong. **Only the thesis text
 settles it.**
 
-**Another one** — the graph carries 115 `nameEn`, 77 `labelEn` and 30
-`aliases`. A resolver that queries only `name` produces false negatives: an
-external patch declared "Polycentric Governance" absent while `a444085b`
-carries exactly that string in its `nameEn`. Query all of them before
-concluding an entity is missing; `docs/audits/data/entity-alias-table-v1.csv`
-covers what the graph does *not* declare (and an alias table is never an
-authorisation to merge).
+**Another one** — the graph carries 115 `nameEn`, 77 `labelEn`, 70 `labelFr`
+and 30 `aliases`. A resolver that queries only `name` produces false negatives:
+an external patch declared "Polycentric Governance" absent while `a444085b`
+carries exactly that string in its `nameEn`. **Query `name`, `nameEn`,
+`labelEn`, `labelFr` and `aliases` — all of them — before concluding an entity
+is missing**; that is the order `scripts/resolve_entity_names.py` implements.
+`docs/audits/data/entity-alias-table-v1.csv` covers what the graph does *not*
+declare (and an alias table is never an authorisation to merge).
 
 ### Anomalies Report
 
@@ -464,7 +465,7 @@ before committing), `grc20-thesis-archivist` (locate and verify a claim in the
 thesis), `grc20-semantic-classifier` (decide an entity's type), and
 `grc20-visual-coherence` (check what the site actually shows).
 
-**`docs/audits/` is the repository's memory** — 27 reports and 25 evidence
+**`docs/audits/` is the repository's memory** — 27 reports and 26 evidence
 files. Before opening a chantier, check whether it has already been
 instructed; several questions look new and are already documented, with
 figures. Read an evidence CSV *with* its audit, never alone: the definitions,
@@ -516,7 +517,8 @@ re-runnable applicator script:
 
 ### Scripts and controls
 
-`scripts/` holds 42 files. The ones worth knowing:
+`scripts/` holds 46 files (41 at the top level plus the
+`sourcequote-migration/` module). The ones worth knowing:
 
 | Script | Role |
 |---|---|

@@ -333,7 +333,9 @@ def denominations_du_graphe(graphe):
         eid = e.get('id')
         if not eid:
             continue
-        attrs = e.get('attributes') or {}
+        attrs = e.get('attributes')
+        if not isinstance(attrs, dict):
+            attrs = {}
         for rang in RANGS_GRAPHE:
             brut = e.get('name') if rang == 'name' else attrs.get(rang)
             if brut is None:
@@ -523,9 +525,13 @@ def pistes_fuzzy(cle, denominations, entites, nom_type, seuil, maximum):
             continue
         courant = meilleur.get(eid)
         candidat = (round(ratio, 4), rang, source, cle_deno)
+        # Bris d'egalite par l'ordre DOCUMENTE des rangs, pas par l'ordre
+        # alphabetique : « aliases » < « name » alphabetiquement, ce qui
+        # inversait la hierarchie (le rang 5 passait devant le rang 1).
         if courant is None or candidat[0] > courant[0] or (
-                candidat[0] == courant[0] and (candidat[1], candidat[2])
-                < (courant[1], courant[2])):
+                candidat[0] == courant[0]
+                and (RANGS.index(candidat[1]), candidat[2])
+                < (RANGS.index(courant[1]), courant[2])):
             meilleur[eid] = candidat
     lignes = []
     for eid, (ratio, rang, source, cle_deno) in meilleur.items():
@@ -851,7 +857,8 @@ def main(argv=None):
         echec_invocation("aucun graphe grc20-these-mael-rolland-v*.json "
                          "dans le depot (et aucun --graph fourni)")
     graphe = lire_json(chemin_graphe, 'graphe de reference')
-    if not isinstance(graphe.get('entities'), list):
+    if not isinstance(graphe, dict) or not isinstance(
+            graphe.get('entities'), list):
         echec_invocation(f"graphe sans liste d'entites : {chemin_graphe}")
 
     entites, nom_type = carte_entites(graphe)
