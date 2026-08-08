@@ -5,7 +5,7 @@
     "generated_by": "scripts/build_properties_registry.py",
     "id_scheme": "md5('grc20-property-v1|' + key), 32 hexa minuscules",
     "entry_count": 338,
-    "conventions": "Le registre decrit le graphe source tel qu'il est : `count` et `domain` sont mesures sur lui. Si le graphe source n'a pas encore integre patch_19_attribute_normalisation.json (detection par les donnees), `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de ce patch (etat normatif) ; sinon l'etape est sans objet. Les trois cles que ce patch a retirees restent inscrites avec status='deprecated', count 0, `supersededBy` nommant la cle qui les remplace et leurs comptes historiques v109 dans `notes` — trace d'audit explicite (arbitrage Q2-b du 2026-08-07). `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
+    "conventions": "Le registre decrit le graphe source tel qu'il est : `count` et `domain` sont mesures sur lui. Si le graphe source n'a pas encore integre patch_19_attribute_normalisation.json (detection par les donnees), `valueType`, `language` et `vocabulary` sont calcules apres application en memoire de ce patch (etat normatif) ; sinon l'etape est sans objet. Les trois cles que ce patch a retirees restent inscrites avec status='deprecated', count 0, `supersededBy` nommant la cle qui les remplace et leurs comptes historiques v109 dans `notes` — trace d'audit explicite (arbitrage Q2-b du 2026-08-07). `language` est la langue majoritaire des options (null si aucune ou egalite). `vocabulary` est la liste close des valeurs si <= 8 valeurs distinctes ET >= 10 porteurs, sinon null. `status` vaut 'structural' si la cle est nommee dans un fichier de code du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : cle citee entre guillemets ou en acces de propriete ; ce script est exclu du balayage car il nomme les cles depreciees ; les faux positifs constates fichier par fichier sont retires apres detection, cf. EXCLUSIONS_READ_BY dans le generateur), sinon 'editorial'. `readBy` liste ces fichiers. `derivedFrom` n'est pose que si la derivation se verifie dans 100 % des cas sur le graphe."
   },
   "entries": [
     {
@@ -286,6 +286,7 @@
         "graphe.html",
         "graphe.panels.js",
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/build_section_headings_map.py",
         "scripts/sourcequote-migration/apply.mjs",
         "scripts/sourcequote-migration/normalize.mjs"
@@ -703,6 +704,7 @@
         "lecteur.html",
         "narrative-anchors-build.mjs",
         "scripts/audit_graph.py",
+        "scripts/audit_section_page_start.py",
         "scripts/check_graph_integrity.py",
         "scripts/generate_chapter_patch.mjs",
         "scripts/generate_corrective_patch.mjs",
@@ -834,6 +836,7 @@
       "readBy": [
         "graphe.html",
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/build_anchor_weights.py",
         "scripts/build_section_headings_map.py",
         "scripts/check_anchoring.py",
@@ -919,6 +922,7 @@
       "status": "structural",
       "readBy": [
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
         "scripts/make_v100_section_migration.py",
@@ -1212,6 +1216,7 @@
       "status": "structural",
       "readBy": [
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/make_section_creation_patch.py"
       ],
       "vocabulary": null,
@@ -2436,7 +2441,7 @@
       ],
       "vocabulary": null,
       "derivedFrom": null,
-      "notes": ""
+      "notes": "Collision lexicale avec des noms de colonnes de CSV et des variables locales homonymes. scripts/audit_section_page_start.py est a ce titre EXCLU de `readBy` par EXCLUSIONS_READ_BY ; d'autres faux positifs du balayage textuel peuvent subsister."
     },
     {
       "key": "quote",
@@ -3439,7 +3444,7 @@
       "readBy": [],
       "vocabulary": null,
       "derivedFrom": null,
-      "notes": ""
+      "notes": "Plage de pages bibliographique (domaine Reference). Collision lexicale avec l'API pypdf (`lecteur.pages`, `self.pages`) : scripts/audit_section_page_start.py nomme la chaine sans jamais lire cet attribut du graphe — il est desormais EXCLU de `readBy` par EXCLUSIONS_READ_BY, et `status` retrouve sa valeur juste."
     },
     {
       "key": "paradox",
