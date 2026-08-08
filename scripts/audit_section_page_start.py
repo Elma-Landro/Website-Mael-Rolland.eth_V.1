@@ -484,21 +484,23 @@ def index_fenetres_pistes(corpus):
 
 
 def index_table_des_matieres(corpus):
-    """-> {forme_reduite: [pages declarees]} lues dans la TDM imprimee.
+    """-> (texte, forme, positions, frontieres) : l'index de la TDM imprimee.
 
-    La TDM est reconstituee en un flux continu (les entrees y sont coupees
-    par les sauts de ligne et les points de conduite), puis, pour chaque
-    position d'un titre, on lit le PREMIER nombre isole qui suit dans une
-    fenetre bornee. Corroboration seulement — cf. docstring.
+    `texte` est la TDM reconstituee en un flux continu (les entrees y sont
+    coupees par les sauts de ligne et les points de conduite) ; `forme` en
+    est la reduction alphanumerique ; `positions[i]` donne l'index dans
+    `texte` du i-eme caractere reduit ; `frontieres[i]` dit si un caractere
+    non alphanumerique le separait du precedent. C'est `pages_declarees_tdm`
+    qui s'en sert pour lire le PREMIER nombre isole suivant une entree,
+    dans une fenetre bornee. Corroboration seulement — cf. docstring.
     """
-    flux, correspondance = [], []
-    for imprimee, lignes in corpus.tdm:
+    flux = []
+    for _imprimee, lignes in corpus.tdm:
         for ligne in lignes:
             if MARQUE_PAGE.fullmatch(ligne.strip()):
                 continue
             for caractere in ligne + ' ':
                 flux.append(caractere)
-                correspondance.append(imprimee)
     texte = ''.join(flux)
     # Correspondance position_reduite -> position_texte, pour retrouver le
     # nombre qui suit une entree une fois celle-ci localisee sur la forme
@@ -647,6 +649,11 @@ def sections_sourcequote(chemin):
     concernee autant que sous la nouvelle.
     """
     if not os.path.exists(chemin):
+        # Non fatal — la colonne concernee_sourcequote sera vide — mais
+        # silencieux serait pire : un dossier absent ne doit pas se lire
+        # comme « aucune section concernee ».
+        print(f"ATTENTION : dossier SourceQuote introuvable : {chemin} — "
+              "la colonne concernee_sourcequote sera vide", file=sys.stderr)
         return set(), 0
     jetons, lues = set(), 0
     try:
@@ -810,7 +817,13 @@ def audit(graphe, corpus, jetons_sq, seuil_piste, max_pistes, prefixe_min,
             partages = {}
             for cible in ligne['formes']:
                 for fichier, page, texte, forme in fenetres:
-                    if forme[:12] != cible[:12]:
+                    # Garde bon marche avant le calcul du prefixe commun. La
+                    # borne est le prefixe utile (prefixe_min), jamais une
+                    # longueur codee en dur : un titre plus court que cette
+                    # borne ne doit pas etre elimine par la garde alors qu'il
+                    # peut encore satisfaire prefixe_min.
+                    borne = min(prefixe_min, len(forme), len(cible))
+                    if forme[:borne] != cible[:borne]:
                         continue
                     commun = 0
                     for a, b in zip(forme, cible):
@@ -945,7 +958,7 @@ def audit(graphe, corpus, jetons_sq, seuil_piste, max_pistes, prefixe_min,
         # cause : numerotation imprimee != section_key
         if ligne['page_verifiee'] is not None and ligne['section_key']:
             imprimees = set()
-            for fichier, page, texte, _ in fenetres:
+            for _fichier, page, texte, _ in fenetres:
                 if page != ligne['page_verifiee']:
                     continue
                 reduit_titre = reduit(PREFIXE_NUM.sub('', texte))
@@ -1296,11 +1309,14 @@ def main(argv=None):
                         "audite (docs/audits/data/"
                         "section-page-start-diagnostic-vNNN.csv), pour qu'un "
                         "audit de v111 n'ecrase pas la preuve v110. Omettre "
-                        "l'option = aucune ecriture")
+                        "l'option = aucune ecriture. INCOMPATIBLE avec "
+                        "--check : --csv PRODUIT la preuve, --check la LIT")
     p.add_argument('--check', action='store_true',
                    help="ne rapporte que les divergences et sort en code 1 "
                         "s'il y en a — le controle qui devra rester vert "
-                        "apres une reparation")
+                        "apres une reparation. N'ecrit rien, et sait se "
+                        "replier sur le CSV de preuve deja enregistre quand "
+                        "pypdf est absent. INCOMPATIBLE avec --csv")
     p.add_argument('--pdf-dir', default=DOSSIER_PDF, metavar='DOSSIER',
                    help="dossier des PDF canoniques (defaut : "
                         f"{os.path.relpath(DOSSIER_PDF, REPO)})")
@@ -1341,6 +1357,17 @@ def main(argv=None):
         echec_invocation("--piste-prefixe ne peut pas etre negatif")
     if not 0.0 < args.piste_seuil <= 1.0:
         echec_invocation("--piste-seuil doit etre dans ]0, 1]")
+    if args.check and args.csv is not None:
+        # Les deux modes ont des finalites differentes : --check COMPARE le
+        # graphe a la preuve deja enregistree et n'ecrit rien ; --csv PRODUIT
+        # cette preuve. Les combiner court-circuitait le repli sans pypdf de
+        # --check et ne garantissait aucune ecriture du CSV demande. Deux
+        # invocations, dans cet ordre : --csv d'abord, --check ensuite.
+        echec_invocation(
+            "--check et --csv ne se combinent pas : --check compare le graphe "
+            "a la preuve deja enregistree (aucune ecriture), --csv produit "
+            "cette preuve. Lancer les deux separement : d'abord "
+            "`--csv`, puis `--check`")
 
     chemin_graphe = args.graph or graphe_le_plus_recent()
     if not chemin_graphe:

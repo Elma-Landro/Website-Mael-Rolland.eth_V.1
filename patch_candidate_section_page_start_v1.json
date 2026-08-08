@@ -10,7 +10,7 @@
   "skipped_count": 49,
   "value_type_note": "`value` est {type: NUMBER, value: <entier>} parce que c'est EXACTEMENT la forme que v110 porte deja pour cette cle : v110 (patch_19_attribute_normalisation) a retype les « 58 » textuels en 58 numeriques. Les 16 valeurs actuelles ont ete inspectees une par une dans le graphe avant redaction : toutes {type: NUMBER, value: int}. Le patch ne change donc que le NOMBRE, jamais le type.",
   "registry_note": "La cle `page_start` EXISTE deja au registre grc20-properties-registry-v1.json (id 9a51004e4755b22b82877f5d55d59a7c, valueType NUMBER, domain [ThesisSection], count 37, status structural, readBy lecteur.html + scripts/audit_section_page_start.py + scripts/make_section_creation_patch.py). Les 16 entites visees sont toutes de type ThesisSection et SEULEMENT ThesisSection (verifie) : aucune extension de registre, aucune extension de domaine, aucun changement de `count` (16 valeurs modifiees, 0 posee, 0 supprimee) ne serait requis a l'application.",
-  "collision_note": "CAS I.2.2.b — INCLUS, et voici pourquoi. Le noeud 97eb6267… (cle I.2.2.b) partage son titre reduit avec 3ce505bc…, un noeud HORS de l'arbre `section of` / `has section` nomme « I.2.1b Un protocole Bitcoin qui s'adapte… ». Le CSV signale que « une reparation mecanique leur donnerait la meme page — arbitrage auteur ». L'op est retenue quand meme, pour trois raisons verifiables : (1) elle ne touche QUE 97eb6267… — 3ce505bc… ne porte aucun `page_start` et n'est pas dans ce patch, donc aucune page partagee n'est creee ; (2) p.106 est la page imprimee de CE titre quel que soit le noeud que l'auteur tiendra pour canonique — la valeur n'anticipe aucune fusion et n'en empeche aucune ; (3) laisser 100 en place serait laisser une valeur DEMONTREE fausse (100 est la page imprimee de la section que le noeud designait en v96) sur l'un des 5 noeuds `incoherent` que le lot SourceQuote vise — c'est-a-dire ne pas lever le gel pour la moitie des cas qui le motivent. Le doublon 97eb6267… / 3ce505bc… reste une question ouverte, posee a l'auteur au § 7(b) de l'audit ; ce patch ne la prejuge ni ne la resout.",
+  "collision_note": "CAS I.2.2.b — INCLUS, et voici pourquoi. Le noeud 97eb6267… (cle I.2.2.b) partage son titre reduit avec 3ce505bc…, un noeud HORS de l'arbre `section of` / `has section` nomme « I.2.1b Un protocole Bitcoin qui s'adapte… ». Le CSV signale que « une reparation mecanique leur donnerait la meme page — arbitrage auteur ». L'op est retenue quand meme, pour trois raisons verifiables : (1) elle ne touche QUE 97eb6267… — 3ce505bc… ne porte aucun `page_start` et n'est pas dans ce patch, donc aucune page partagee n'est creee ; (2) p.106 est la page imprimee de CE titre quel que soit le noeud que l'auteur tiendra pour canonique — la valeur n'anticipe aucune fusion et n'en empeche aucune ; (3) laisser 100 en place serait laisser une valeur DEMONTREE fausse (100 est la page imprimee de la section que le noeud designait en v96) sur l'un des 5 noeuds `incoherent` que le lot SourceQuote vise — c'est-a-dire ne pas lever le gel pour un cinquieme des cas qui le motivent. Le doublon 97eb6267… / 3ce505bc… reste une question ouverte, posee a l'auteur au § 7(b) de l'audit ; ce patch ne la prejuge ni ne la resout.",
   "verification": [
    "Les 16 entityId existent dans grc20-these-mael-rolland-v110.json et y portent deja un attribut page_start (verifie un par un).",
    "Les 16 valeurs actuelles du graphe egalent la colonne `page_start_actuel` du CSV ; les 16 valeurs cibles sont la colonne `page_imprimee_verifiee`, reprise sans arrondi ni interpolation.",
@@ -26,7 +26,7 @@
     "name": "I.2.1b Un protocole Bitcoin qui s'adapte : des régulations transactionnelles très politiques",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "106",
+    "page_imprimee_verifiee": 106,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.106 (5_Chapitre_1.pdf p.106) : le remplissage serait possible sur preuve, mais n'est pas decide ici. Ce noeud est HORS de l'arbre `section of` / `has section` et porte le MEME titre reduit que I.2.2.b (97eb6267…), dont ce patch corrige la page a 106. Le remplir mecaniquement donnerait 106 aux DEUX : la question du doublon precede celle de la page."
    },
    {
@@ -35,7 +35,7 @@
     "name": "I.1 Quand Bitcoin définit son monde… : l'aloi politique d'une CM pionnière",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "55",
+    "page_imprimee_verifiee": 55,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.55 (5_Chapitre_1.pdf p.55) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -44,7 +44,7 @@
     "name": "I.2 Quand le « monde redéfinit » Bitcoin de manière carnavalesque",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "84",
+    "page_imprimee_verifiee": 84,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.84 (5_Chapitre_1.pdf p.84) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -53,7 +53,7 @@
     "name": "I.2.2 Un protocole débordé de « carnavalesques » improvisations d'acteurs",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "100",
+    "page_imprimee_verifiee": 100,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.100 (5_Chapitre_1.pdf p.100) : le remplissage serait possible sur preuve, mais n'est pas decide ici. La these imprime « I.2.1 » la ou section_key vaut « I.2.2 » : le CSV ne tranche pas laquelle a raison, et ce patch ne touche aucune cle."
    },
    {
@@ -62,7 +62,7 @@
     "name": "I.3 Ethereum : une rupture assumée d'avec Bitcoin et les premiers Altcoins",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "109",
+    "page_imprimee_verifiee": 109,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.109 (5_Chapitre_1.pdf p.109) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -71,7 +71,7 @@
     "name": "I.3.1 De la constellation des Altcoins : construire « sur » ou « à côté » de Bitcoin",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "111",
+    "page_imprimee_verifiee": 111,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.111 (5_Chapitre_1.pdf p.111) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -80,7 +80,7 @@
     "name": "I.3.2 Ethereum : continuité et rupture d'avec Bitcoin et les expériences passées",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "123",
+    "page_imprimee_verifiee": 123,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.123 (5_Chapitre_1.pdf p.123) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -89,7 +89,7 @@
     "name": "I.3.3 Ethereum, des recompositions d'alliances contre les rigidités de Bitcoin",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "128",
+    "page_imprimee_verifiee": 128,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.128 (5_Chapitre_1.pdf p.128) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -98,7 +98,7 @@
     "name": "I.4 Conclusion du Chapitre I",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "140",
+    "page_imprimee_verifiee": 140,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.140 (5_Chapitre_1.pdf p.140) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -107,7 +107,7 @@
     "name": "II.1 « Les CM ne sont pas monnaie ! » : arguments contre le caractère monétaire des CM",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "147",
+    "page_imprimee_verifiee": 147,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.147 (6_Chapitre_2.pdf p.147) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -116,7 +116,7 @@
     "name": "II.2 « Pourtant, elles font monnaie » ! à l'aune d'un nominalisme « non étatiste » attentif aux usages",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "160",
+    "page_imprimee_verifiee": 160,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.160 (6_Chapitre_2.pdf p.160) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -125,7 +125,7 @@
     "name": "II.3 Au‑delà de la revendication d'une absence de gouvernance !",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "185",
+    "page_imprimee_verifiee": 185,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.185 (6_Chapitre_2.pdf p.185) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -134,7 +134,7 @@
     "name": "II.4 Conclusion du Chapitre II",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "216",
+    "page_imprimee_verifiee": 216,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.216 (6_Chapitre_2.pdf p.216) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -143,7 +143,7 @@
     "name": "III.1 Crise Bitcoin CVE 2018-17144 : d'une crise à de nombreuses autres…",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "224",
+    "page_imprimee_verifiee": 224,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.224 (7_Chapitre_3.pdf p.224) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -152,7 +152,7 @@
     "name": "III.2 Des marques d'une politique de crises : une gouvernance de huis clos routinière",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "254",
+    "page_imprimee_verifiee": 254,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.254 (7_Chapitre_3.pdf p.254) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -161,7 +161,7 @@
     "name": "III.3 Une gouvernance publique d'exception : le Hard Fork d'Ethereum consécutif à l'attaque de « The DAO »",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "287",
+    "page_imprimee_verifiee": 287,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.287 (7_Chapitre_3.pdf p.287) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -170,7 +170,7 @@
     "name": "III.4 Conclusion du Chapitre III",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "329",
+    "page_imprimee_verifiee": 329,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.329 (7_Chapitre_3.pdf p.329) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -179,7 +179,7 @@
     "name": "De l’acéphalisme apolitique des CM à l’épreuve d’une sociologie des crises",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "336",
+    "page_imprimee_verifiee": 336,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.336 (8_Conclusion_Generale.pdf p.336) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -188,7 +188,7 @@
     "name": "A. Décrypter la crypto par l’approche infrastructurelle",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "334",
+    "page_imprimee_verifiee": 334,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.334 (8_Conclusion_Generale.pdf p.334) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -224,7 +224,7 @@
     "name": "A.1. Un intérêt pour la monnaie et les « Objets Monétaires Non Identifiés »",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "18",
+    "page_imprimee_verifiee": 18,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.18 (4_Introduction_generale.pdf p.18) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -233,7 +233,7 @@
     "name": "A.2. La controverse sur le caractère monétaire des cryptomonnaies",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "19",
+    "page_imprimee_verifiee": 19,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.19 (4_Introduction_generale.pdf p.19) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -242,7 +242,7 @@
     "name": "A.3. Révéler l'« indicible » gouvernance des CM contre les prétentions libérales technicistes",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "21",
+    "page_imprimee_verifiee": 21,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.21 (4_Introduction_generale.pdf p.21) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -251,7 +251,7 @@
     "name": "B. La gouvernance des CM dévoilée par leurs crises : un institutionnalisme articulé à une sociologie des sciences et techniques",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "24",
+    "page_imprimee_verifiee": 24,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.24 (4_Introduction_generale.pdf p.24) : le remplissage serait possible sur preuve, mais n'est pas decide ici. La these imprime « B » la ou section_key vaut « intro_B » : le CSV ne tranche pas laquelle a raison, et ce patch ne touche aucune cle."
    },
    {
@@ -260,7 +260,7 @@
     "name": "B.1. L'institutionnalisme monétaire pour caractériser les CM comme monnaies",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "24",
+    "page_imprimee_verifiee": 24,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.24 (4_Introduction_generale.pdf p.24) : le remplissage serait possible sur preuve, mais n'est pas decide ici. Attention : remplir donnerait a ce noeud la MEME page que sa parente « intro_B » — legitime (une parente commence a la page de son premier enfant) mais a decider explicitement."
    },
    {
@@ -269,7 +269,7 @@
     "name": "B.1.a. Notre insatisfaction vis-à-vis de la théorie monétaire dominante",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "25",
+    "page_imprimee_verifiee": 25,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.25 (4_Introduction_generale.pdf p.25) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -278,7 +278,7 @@
     "name": "B.1.b. Analyser le phénomène monétaire sans l'amputer : un institutionnalisme premier",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "27",
+    "page_imprimee_verifiee": 27,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.27 (4_Introduction_generale.pdf p.27) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -287,7 +287,7 @@
     "name": "B.2. Gouvernance des CM : perspectives sociologiques",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "28",
+    "page_imprimee_verifiee": 28,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.28 (4_Introduction_generale.pdf p.28) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -296,7 +296,7 @@
     "name": "B.2.a. Anthropologie, ethnographie et sociologie de la monnaie : l'empirie des usages",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "29",
+    "page_imprimee_verifiee": 29,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.29 (4_Introduction_generale.pdf p.29) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -305,7 +305,7 @@
     "name": "B.2.b. Au-delà des « boîtes noires » : les CM, des infrastructures « sans coutures »",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "30",
+    "page_imprimee_verifiee": 30,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.30 (4_Introduction_generale.pdf p.30) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -314,7 +314,7 @@
     "name": "B.3. La gouvernance de Bitcoin et d'Ethereum dévoilée par leurs crises",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "32",
+    "page_imprimee_verifiee": 32,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.32 (4_Introduction_generale.pdf p.32) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -323,7 +323,7 @@
     "name": "B.3.a. Les fonctions heuristiques et herméneutiques des « crises »",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "32",
+    "page_imprimee_verifiee": 32,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.32 (4_Introduction_generale.pdf p.32) : le remplissage serait possible sur preuve, mais n'est pas decide ici. Attention : remplir donnerait a ce noeud la MEME page que sa parente « intro_B_3 » — legitime (une parente commence a la page de son premier enfant) mais a decider explicitement."
    },
    {
@@ -332,7 +332,7 @@
     "name": "B.3.b. Du périmètre de nos terrains : deux crises différenciées touchant Bitcoin et Ethereum",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "33",
+    "page_imprimee_verifiee": 33,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.33 (4_Introduction_generale.pdf p.33) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -341,7 +341,7 @@
     "name": "C. Une démarche ethnographique, pour un terrain d'enquête multi-niveau",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "34",
+    "page_imprimee_verifiee": 34,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.34 (4_Introduction_generale.pdf p.34) : le remplissage serait possible sur preuve, mais n'est pas decide ici. La these imprime « C » la ou section_key vaut « intro_C » : le CSV ne tranche pas laquelle a raison, et ce patch ne touche aucune cle."
    },
    {
@@ -350,7 +350,7 @@
     "name": "C.1. Enquêter sur la gouvernance des CM : contraintes et enjeux",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "34",
+    "page_imprimee_verifiee": 34,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.34 (4_Introduction_generale.pdf p.34) : le remplissage serait possible sur preuve, mais n'est pas decide ici. Attention : remplir donnerait a ce noeud la MEME page que sa parente « intro_C » — legitime (une parente commence a la page de son premier enfant) mais a decider explicitement."
    },
    {
@@ -359,7 +359,7 @@
     "name": "C.1.a. Enjeux méthodologiques",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "34",
+    "page_imprimee_verifiee": 34,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.34 (4_Introduction_generale.pdf p.34) : le remplissage serait possible sur preuve, mais n'est pas decide ici. Attention : remplir donnerait a ce noeud la MEME page que sa parente « intro_C_1 » — legitime (une parente commence a la page de son premier enfant) mais a decider explicitement."
    },
    {
@@ -368,7 +368,7 @@
     "name": "C.1.b. La relation enquêteur-enquêtés",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "36",
+    "page_imprimee_verifiee": 36,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.36 (4_Introduction_generale.pdf p.36) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -377,7 +377,7 @@
     "name": "C.2. Stratégie d'accès et matériaux de terrain récoltés",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "39",
+    "page_imprimee_verifiee": 39,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.39 (4_Introduction_generale.pdf p.39) : le remplissage serait possible sur preuve, mais n'est pas decide ici."
    },
    {
@@ -440,7 +440,7 @@
     "name": "D. Objectifs, apports et organisation générale de la thèse",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "47",
+    "page_imprimee_verifiee": 47,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.47 (4_Introduction_generale.pdf p.47) : le remplissage serait possible sur preuve, mais n'est pas decide ici. La these imprime « D » la ou section_key vaut « intro_D » : le CSV ne tranche pas laquelle a raison, et ce patch ne touche aucune cle."
    },
    {
@@ -449,7 +449,7 @@
     "name": "E. Déclaration d'intérêts",
     "statut_diagnostic": "absent",
     "page_start_actuel": null,
-    "page_imprimee_verifiee": "51",
+    "page_imprimee_verifiee": 51,
     "reason": "Le noeud ne porte AUCUN page_start. Le remplir serait une EXTENSION de portee du chantier (reparer une valeur fausse != creer une valeur absente) et releve de l'arbitrage de l'auteur. Page imprimee etablie p.51 (4_Introduction_generale.pdf p.51) : le remplissage serait possible sur preuve, mais n'est pas decide ici. La these imprime « E » la ou section_key vaut « intro_E » : le CSV ne tranche pas laquelle a raison, et ce patch ne touche aucune cle."
    },
    {
@@ -457,7 +457,7 @@
     "section_key": "conclu_boucs",
     "name": "Conclusion — Les CM : boucs émissaires d'un système monétaire en crise ?",
     "statut_diagnostic": "ambigu",
-    "page_start_actuel": "338",
+    "page_start_actuel": 338,
     "page_imprimee_verifiee": null,
     "reason": "Seul noeud `ambigu` du diagnostic. Il porte page_start 338 mais AUCUN titre imprime ne correspond exactement a son libelle : la these imprime « LES CM : BOUCS EMISSAIRES COMMODES D'UN SYSTEME MONETAIRE EN CRISE ? » (8_Conclusion_Generale.pdf p.338), le graphe ecrit « ... boucs emissaires d'un systeme monetaire en crise ? » — sans « commodes ». Les pistes (quasi-titre 0.92, prefixe commun, table des matieres) CONVERGENT toutes vers 338, donc il n'y a probablement rien a corriger ; mais une reformulation plausible n'est pas une preuve (lecon « Florence Dufy »). Aucune op : rapprocher les deux titres est une decision d'auteur."
    }

@@ -46,7 +46,7 @@ numérotation). C'est une égalité, pas une approximation.
 **Aucune page n'est déduite d'un offset de fichier PDF.** Les PDF du dépôt sont
 découpés par bloc ; l'offset d'une page dans son fichier n'a aucun rapport avec
 sa pagination dans la thèse. Le script lit le numéro **imprimé** au pied de
-chaque page — la marque `— NN — ` — et ne travaille qu'en pages imprimées.
+chaque page — la marque `— NN —` — et ne travaille qu'en pages imprimées.
 
 ### 2.2 Calibration constatée (re-mesurée à la rédaction de ce rapport)
 
@@ -508,24 +508,33 @@ page est celle de sa parente) ?**
   20/16/48/1/5, mêmes 16 écarts, même calibration, même corroboration 80/80),
   mais le fichier commité n'a pas été réécrit.
 
-**Écritures de ce chantier — cinq fichiers** (énoncé corrigé par la revue
-hostile, qui a relevé que l'affirmation « deux fichiers, exactement » était
-fausse) : `scripts/audit_section_page_start.py`,
+**Écritures de ce chantier — six fichiers** (énoncé corrigé deux fois : la
+revue hostile a d'abord relevé que « deux fichiers, exactement » était faux,
+puis la revue de la PR que « cinq » oubliait encore le générateur du
+registre) : `scripts/audit_section_page_start.py`,
 `docs/audits/data/section-page-start-diagnostic-v110.csv`,
-`patch_candidate_section_page_start_v1.json`, le présent rapport — et
-**`grc20-properties-registry-v1.json`**, régénéré parce que le nouveau script
-change le `readBy` de plusieurs clés d'attributs.
+`patch_candidate_section_page_start_v1.json`, le présent rapport,
+**`grc20-properties-registry-v1.json`** — régénéré parce que le nouveau script
+change le `readBy` de plusieurs clés d'attributs — et
+**`scripts/build_properties_registry.py`**, qui produit ce registre et que le
+chantier a modifié (voir juste après).
 
 Sur ce dernier point, la revue a établi un fait qu'il faut consigner : le
-balayage de `build_properties_registry.py` est **lexical**, et il compte comme
-lecteurs des occurrences qui n'en sont pas. Le script d'audit lit réellement
-quatre clés (`page_start`, `section_key`, `title`, `labelFr`) ; les trois
-autres attribuées sont des **faux positifs** — `pages` vient de l'API pypdf
-(`lecteur.pages`, `self.pages`), `note` et `type` des noms de colonnes du CSV.
-Conséquence mesurable : la clé `pages` (domaine `Reference`, une plage de
-pages **bibliographique**) a basculé `editorial` → `structural` sur la foi d'un
-lecteur qui ne la lit pas. Le registre porte désormais un caveat explicite pour
-`pages` et `note`, sur le modèle de celui qui existait déjà pour `type`. La CI
-reste verte (le registre est régénéré dans le même commit, la discipline tient)
-— mais un invariant qui déclare un lecteur fictif est un invariant un peu moins
-vrai, et cela devait être écrit.
+balayage de `build_properties_registry.py` est **lexical**, et il comptait
+comme lecteurs des occurrences qui n'en sont pas. Le script d'audit lit
+réellement quatre clés (`page_start`, `section_key`, `title`, `labelFr`) ; les
+trois autres attribuées sont des **faux positifs** — `pages` vient de l'API
+pypdf (`lecteur.pages`, `self.pages`), `note` et `type` des noms de colonnes du
+CSV. Conséquence mesurable : la clé `pages` (domaine `Reference`, une plage de
+pages **bibliographique**) avait basculé `editorial` → `structural` sur la foi
+d'un lecteur qui ne la lit pas. Un caveat avait d'abord été ajouté au registre
+pour `pages` et `note`, sur le modèle de celui qui existait déjà pour `type` ;
+la revue de la PR a demandé mieux qu'un caveat, et le générateur porte
+désormais une **table d'exclusions nominative** (`EXCLUSIONS_READ_BY`) qui
+retire, après détection, le fichier d'audit du `readBy` de `pages` et de
+`note`. `pages` est redevenue `editorial` avec un `readBy` vide ; les entrées
+`notes` du registre restent, réécrites, pour documenter la nature du piège.
+L'exclusion est nominative par clé et par fichier — jamais un assouplissement
+du critère — et chaque entrée doit avoir été vérifiée dans le fichier visé :
+un invariant qui déclare un lecteur fictif est un invariant un peu moins vrai,
+et c'était vrai du caveat comme du silence.

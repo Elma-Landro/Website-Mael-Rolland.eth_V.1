@@ -100,14 +100,25 @@ NOTES = {
                     "(26 porteurs).",
     'pages': "Plage de pages bibliographique (domaine Reference). Collision "
              "lexicale avec l'API pypdf (`lecteur.pages`, `self.pages`) : "
-             "scripts/audit_section_page_start.py est compte comme lecteur "
-             "alors qu'il n'accede jamais a cet attribut. `status` et "
-             "`readBy` surestiment donc son usage reel.",
+             "scripts/audit_section_page_start.py nomme la chaine sans "
+             "jamais lire cet attribut du graphe — il est desormais EXCLU "
+             "de `readBy` par EXCLUSIONS_READ_BY, et `status` retrouve sa "
+             "valeur juste.",
     'note': "Collision lexicale avec des noms de colonnes de CSV et des "
-            "variables locales homonymes ; plusieurs entrees de `readBy` "
-            "sont des faux positifs du balayage textuel.",
+            "variables locales homonymes. scripts/audit_section_page_start.py "
+            "est a ce titre EXCLU de `readBy` par EXCLUSIONS_READ_BY ; "
+            "d'autres faux positifs du balayage textuel peuvent subsister.",
     'sourcePages': "Source de derivation de `sourcePage` (premier numero de "
                    "page) ; porte en plus les pages multiples.",
+}
+
+# Faux positifs du balayage LEXICAL : le fichier nomme la chaine sans jamais
+# lire l'attribut du graphe. `pages` est capte par l'API pypdf
+# (`lecteur.pages`, `self.pages`), `note` par des noms de colonnes de CSV.
+# Toute entree ajoutee ici doit avoir ete verifiee dans le fichier vise.
+EXCLUSIONS_READ_BY = {
+    'pages': {'scripts/audit_section_page_start.py'},
+    'note': {'scripts/audit_section_page_start.py'},
 }
 
 
@@ -172,7 +183,11 @@ def read_by(cles, repo):
     en forme de code — cle entre guillemets ('k', "k", `k`) ou en acces de
     propriete (.k) — pour eviter les faux positifs de la prose des
     commentaires ; il peut encore surcompter les identifiants generiques
-    (type, description, language, ...), ce que `notes` signale."""
+    (type, description, language, ...), ce que `notes` signale.
+
+    Les faux positifs constates fichier par fichier sont retires apres
+    detection via EXCLUSIONS_READ_BY : une exclusion nominative et
+    verifiable, pas un assouplissement du critere."""
     textes = {}
     for f in fichiers_code(repo):
         try:
@@ -186,7 +201,9 @@ def read_by(cles, repo):
         rx = re.compile(
             r'''(['"`])''' + e + r'''\1'''
             r'''|\.''' + e + r'''(?![A-Za-z0-9_$])''')
-        res[k] = sorted(f for f, t in textes.items() if rx.search(t))
+        exclus = EXCLUSIONS_READ_BY.get(k, ())
+        res[k] = sorted(f for f, t in textes.items()
+                        if rx.search(t) and f not in exclus)
     return res
 
 
@@ -421,7 +438,10 @@ def main(argv=None):
                 "du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : "
                 "cle citee entre guillemets ou en acces de propriete ; ce "
                 "script est exclu du balayage car il nomme les cles "
-                "depreciees), sinon 'editorial'. `readBy` liste ces "
+                "depreciees ; les faux positifs constates fichier par "
+                "fichier sont retires apres detection, cf. "
+                "EXCLUSIONS_READ_BY dans le generateur), sinon 'editorial'. "
+                "`readBy` liste ces "
                 "fichiers. `derivedFrom` n'est pose que si la derivation se "
                 "verifie dans 100 % des cas sur le graphe."
             ),
