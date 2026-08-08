@@ -286,6 +286,7 @@
         "graphe.html",
         "graphe.panels.js",
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/build_section_headings_map.py",
         "scripts/sourcequote-migration/apply.mjs",
         "scripts/sourcequote-migration/normalize.mjs"
@@ -703,6 +704,7 @@
         "lecteur.html",
         "narrative-anchors-build.mjs",
         "scripts/audit_graph.py",
+        "scripts/audit_section_page_start.py",
         "scripts/check_graph_integrity.py",
         "scripts/generate_chapter_patch.mjs",
         "scripts/generate_corrective_patch.mjs",
@@ -834,6 +836,7 @@
       "readBy": [
         "graphe.html",
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/build_anchor_weights.py",
         "scripts/build_section_headings_map.py",
         "scripts/check_anchoring.py",
@@ -919,6 +922,7 @@
       "status": "structural",
       "readBy": [
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
         "scripts/make_v100_section_migration.py",
@@ -1212,6 +1216,7 @@
       "status": "structural",
       "readBy": [
         "lecteur.html",
+        "scripts/audit_section_page_start.py",
         "scripts/make_section_creation_patch.py"
       ],
       "vocabulary": null,
@@ -2423,6 +2428,7 @@
       "count": 6,
       "status": "structural",
       "readBy": [
+        "scripts/audit_section_page_start.py",
         "scripts/derive_section_tree.py",
         "scripts/make_v107_wire_chapter_I_tree.py",
         "scripts/make_v108_realign_relation_section_keys.py",
@@ -3435,8 +3441,10 @@
         "Reference"
       ],
       "count": 2,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_section_page_start.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
