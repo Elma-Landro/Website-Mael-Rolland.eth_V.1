@@ -20,6 +20,7 @@ dans le CSV.
 | `doublons-verifies.csv` | `grc20-dedup-events-audit-v1.md` |
 | `maturation-phase-wiring.csv` | `grc20-maturation-phase-wiring.md` |
 | `section-migration.csv`, `section-tree.csv` | `grc20-section-migration-chapitre-I.md`, `grc20-section-migration-chapitres-II-III.md` |
+| `entity-alias-table-v1.csv` | `grc20-sourcequote-migration-verification-v1.md` (table d'alias EN→FR et variantes de libellés sur v110, une ligne par couple entité/alias, tri par `canonical_name` puis `alias`). **Une table d'alias n'est pas une autorisation de fusion** : elle sert à empêcher qu'un résolveur *recrée* en double une entité déjà présente sous un autre libellé — la décision d'identité (fusionner, renommer, créer) reste à l'auteur. Les alias `confidence=basse` ne doivent **jamais** servir à une résolution automatique : ils couvrent les chaînes ambiguës (un même alias pour plusieurs entités), les collisions (`collision_with` non vide — la chaîne est déjà le nom d'une autre fiche) et les traductions interprétatives. |
 
 Mises en garde permanentes :
 

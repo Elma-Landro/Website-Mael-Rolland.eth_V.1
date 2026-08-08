@@ -369,6 +369,44 @@ trouvé en `resolved_entity_id`. **Aucune création n'est requise pour
 elles** — et en créer une serait activement nuisible : cela doublerait un
 nœud central du graphe d'un jumeau anglais.
 
+#### Le faux négatif était évitable sans aucune traduction — la donnée était déjà dans le graphe
+
+La construction de la table d'alias (arbitrage Q6) a établi un fait plus
+sévère encore, **vérifié directement dans v110** : l'entité `a444085b…`
+porte l'attribut **`nameEn = "Polycentric Governance"`** — *exactement*
+la chaîne que le patch déclarait introuvable. La correspondance ne
+demandait ni traduction, ni synonymie, ni jugement : une simple lecture
+d'un attribut existant suffisait.
+
+Le graphe v110 porte **115 attributs `nameEn`, 77 `labelEn` et
+30 `aliases`** (recomptés). Le résolveur employé par la migration n'a
+interrogé que le champ `name` : il a ignoré 222 désignations alternatives
+déjà déclarées par le graphe lui-même. Même mécanisme sur `6baa8059…`
+« Infrastructure », dont le `nameEn` est « Seamless Infrastructure » — la
+chaîne laissée en `fuzzy-only` quatre fois.
+
+**Conséquence pour la suite** : le correctif prioritaire n'est pas la
+table d'alias, c'est **la règle de résolution** — tout résolveur futur
+doit interroger `name`, `nameEn`, `labelEn`, `labelFr` et `aliases` avant
+de conclure à une absence. La table d'alias
+(`docs/audits/data/entity-alias-table-v1.csv`, 400 alias sur 271 entités)
+couvre ce que le graphe ne déclare pas ; elle ne dispense pas de lire ce
+qu'il déclare déjà.
+
+**Découverte annexe, à instruire séparément** : trois doublons FR/EN sont
+**déjà réalisés** dans v110 — « Divulgation responsable » (`2f54deb5…`,
+deg 17) / « Responsible Disclosure » (`018cb3c5…`, deg 5) ; « Logique de
+consensus distribué » (`eccebadf…`, deg 23) / « Distributed Consensus
+Fiduciary Logic » (`cae0d43b…`, deg 9) ; « Pools de minage »
+(`5f7f718b…`, `ActorGroup`, deg 41) / « Mining pools » (`ee727747…`,
+`InfrastructureEvent`, deg 7 — même référent sous **deux types
+incompatibles**, anomalie de typage plutôt que fusion évidente). Une
+quatrième paire probable : `2e24bde0…` / `53983b53…`
+(« Institutionnalisme Monétaire Francophone », `TheoreticFramework` vs
+`Concept`). Le risque que ce chantier a évité **s'est donc déjà
+matérialisé ailleurs** — aucune fusion n'est proposée ici, c'est un
+chantier d'arbitrage distinct.
+
 Restent **6 références réellement absentes** de v110 : « Individualisme
 méthodologique », « Sociologie économique », « Travail invisible »,
 « Littérature indigène », « Terrain hors ligne », « Labélisation indigène ».
