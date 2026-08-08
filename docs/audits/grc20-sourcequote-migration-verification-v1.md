@@ -1,6 +1,6 @@
 # SourceQuote Migration Verification Lab v1 — 41 citations vérifiées contre la thèse, aucune gravée
 
-**Date** : 2026-08-07 · **révisé le 2026-08-07 après revue hostile** (cf. § 0) · **arbitrages de Maël inscrits le 2026-08-07** (cf. encadré ci-dessous et § 7)
+**Date** : 2026-08-07 · **révisé le 2026-08-07 après revue hostile** (cf. § 0) · **arbitrages de Maël inscrits le 2026-08-07** (Q1-Q8) · **arbitrages complémentaires inscrits le 2026-08-08** (R1-R3, S1-S6 — cf. encadré ci-dessous et § 7)
 **Graphe** : `grc20-these-mael-rolland-v110.json` (**inchangé** par ce chantier, révision et inscription des arbitrages comprises)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mode agent** : A (vérification probatoire — **aucune création, aucune application**, aucun fichier de patch modifié ni créé)
@@ -10,8 +10,13 @@
 
 > ## Arbitrages rendus
 >
-> **Maël a répondu aux huit questions du § 7 le 2026-08-07.** Ce dossier les
-> inscrit, sans les réinterpréter ; il **n'applique toujours rien**.
+> **Dix-sept arbitrages au total.** Maël a répondu aux huit questions du § 7
+> le 2026-08-07 (**Q1-Q8**), puis à neuf questions complémentaires le
+> 2026-08-08 (**R1-R3** sur la résolution des noms, **S1-S6** sur les cas
+> restants). Ce dossier les inscrit, sans les réinterpréter ; il **n'applique
+> toujours rien**.
+>
+> ### Les huit premiers (2026-08-07)
 >
 > - **Q1 — (a), conditionné à Q8.** Les 5 recentrages sont validés sur la foi
 >   du texte imprimé (P1-14 → II.3.1, P1-15 → II.3.1.b, P2-4 → II.3.2,
@@ -49,14 +54,52 @@
 >   « je ne veux pas installer des citations p. 191 dans une section que le
 >   graphe dit commencer p. 202 ».
 >
+> ### Les neuf suivants (2026-08-08)
+>
+> - **R1 — (c).** Deux alias circulaires **dégradés en `confidence=basse`**
+>   dans `entity-alias-table-v1.csv` (commit `03a1a09`) : « Susan Leigh
+>   Star » → « Leigh Star » (engage l'identité d'une personne) et
+>   « Littérature grise » → « Corpus littérature grise » (confond un concept
+>   et un corpus). Ils **ne résolvent plus**, ils ne ressortent qu'en piste.
+>   Les 5 autres gains circulaires — formes courtes, pluriels, sigle — sont
+>   conservés.
+> - **R2 — (a).** Un rang **« ponctuation ignorée »** est ajouté au
+>   résolveur (commit `e019a3b`), **confiance moyenne**, entre les `aliases`
+>   et la table externe. 32 caractères remplacés par une espace, jamais
+>   supprimés. Sûreté mesurée : **1 seule collision créée sur 2 589
+>   dénominations** de v110.
+> - **R3 — (b).** Les **interdictions que la table s'impose à elle-même**
+>   dans ses `notes` restent respectées : 4 références (STS ×2, « Absence de
+>   gouvernance », « Bourse d'échange ») restent en **arbitrage manuel**.
+> - **S1 — (a).** « Ancrer P2-0 sur le nœud `Chapter`, puisque l'introduction
+>   du chapitre II n'existe pas comme `ThesisSection`. Ne pas rattacher
+>   artificiellement à II.2. » — le nœud est `5b5935bc…`.
+> - **S2 — (b).** « Poser les liens de soutien seulement pour les résolutions
+>   appuyées sur des attributs natifs du graphe, pas sur la table d'alias
+>   circulaire. » — **112 liens de soutien candidats**, 13 références
+>   écartées.
+> - **S3 — (b).** « Abandonner les génériques ; instruire les 6 concepts
+>   réels absents dans un chantier distinct, sans création dans celui-ci. »
+> - **S4 — (b).** « Pour P1-11, ne garder que C.2. L'ancrage triple
+>   C.2 / C.2.a / C.2.b ressemble trop à une incertitude de découpe. »
+> - **S5 — (a).** « Corriger P3-11 vers `conclu_infra`, même logique que les
+>   5 recentrages déjà validés. » — ils sont désormais **6**.
+> - **S6 — (a).** « Confirmer le principe général : toute coquille imprimée
+>   est conservée et signalée `[sic]`. Pas de correction silencieuse du texte
+>   original. » — s'applique à **P2-6 et P2-4**, et à toute coquille future.
+>
+> **Un arbitrage a par ailleurs été retiré** : **P3-10 reste gelée**. Ni
+> création opportuniste de nœud, ni ancrage forcé — c'est un cas d'arbitrage
+> de modèle, renvoyé tel quel.
+>
 > **Condition générale**
 >
 > **Toute action applicative de cette migration est désormais conditionnée à
 > la réparation préalable des `page_start` (Q8).** Les 41 lignes du CSV
-> portent cette mention. Aucun arbitrage ci-dessus n'autorise une gravure
-> immédiate : ils fixent *ce qu'il faudra graver*, pas *quand*. Trois points
-> restent hors de leur portée et sont signalés comme tels (§ 7, encadré
-> « Ce que les arbitrages ne couvrent pas »).
+> portent cette mention. Aucun des dix-sept arbitrages n'autorise une gravure
+> immédiate : ils fixent *ce qu'il faudra graver*, pas *quand*. Les points qui
+> restent hors de leur portée sont signalés comme tels (§ 7, encadré « Ce que
+> les arbitrages ne couvrent pas »).
 
 ---
 
@@ -64,18 +107,34 @@
 > par recomptage direct du CSV commité — 41 lignes de données, 18 champs
 > partout ; 14 `exact-match` / 14 `minor-normalization` / 7 `wrong-section` /
 > 6 `duplicate-existing` ; 0 `paraphrase-only`, 0 `not-found` (au sens : les
-> 41 textes existent dans la thèse) ; 169 références d'entités
-> (**105 uniques / 53 fuzzy / 5 résolues par synonyme ou traduction /
-> 6 réellement introuvables**) et 57 cibles de section
-> (40 existantes / 11 renumérotées / 6 jamais existées). La calibration de
-> page est exacte : chaque page des PDF porte son numéro imprimé « — NN — »
-> dans la pagination de la thèse ; aucun décalage de bloc à estimer.
+> 41 textes existent dans la thèse) ; **169 références d'entités** et 57
+> cibles de section (40 existantes / 11 renumérotées / 6 jamais existées). La
+> calibration de page est exacte : chaque page des PDF porte son numéro
+> imprimé « — NN — » dans la pagination de la thèse ; aucun décalage de bloc
+> à estimer.
 >
-> **Recommandations après inscription des arbitrages** (recomptées sur le CSV
-> révisé) : **25 `retenir` / 9 `retenir-avec-correction-de-section` /
+> **Résolution des 169 références, état final** (règle des 7 rangs, § 8 ;
+> recomptée sur le CSV révisé) : **126 résolues / 43 non résolues** —
+> 104 par `name`, 8 par `nameEn`, 1 par le rang « ponctuation ignorée »,
+> 13 par la table d'alias seule. Soit **113 références (60 noms) par un
+> attribut natif du graphe** et **13 (5 noms) par la table externe**, dont
+> **12 à évidence circulaire**. Par S2 (b), seules les résolutions natives
+> donnent lieu à un lien de soutien : **112 liens candidats** (113 moins la
+> seule dont Q5 (a) a déjà supprimé le lien, § 7-S2).
+>
+> Ces chiffres **remplacent** ceux de la version précédente
+> (« 105 uniques / 53 fuzzy / 5 résolues par synonyme ou traduction /
+> 6 réellement introuvables ») : les catégories `unique` et `fuzzy-only`
+> étaient celles que le **patch** déclarait, pas des résolutions mesurées
+> contre v110. Elles restent lisibles dans l'inventaire brut (105 `unique` /
+> 53 `fuzzy-only` / 11 `not-found` déclarés par les zips) mais n'ont plus
+> cours ici.
+>
+> **Recommandations après inscription des dix-sept arbitrages** (recomptées
+> sur le CSV révisé) : **24 `retenir` / 10 `retenir-avec-correction-de-section` /
 > 5 `completer-l-existante` / 2 `arbitrage`** — contre 24 / 5 / 4 / 8 avant
-> arbitrage. Six lignes ont changé de recommandation (§ 7, tableau
-> récapitulatif). La colonne `needs_mael_arbitration` est laissée en
+> tout arbitrage. Sept lignes ont changé de recommandation au total (§ 7,
+> tableau récapitulatif). La colonne `needs_mael_arbitration` est laissée en
 > l'état — **34 `oui` / 7 `non`** : elle enregistre *quelles ops ont été
 > soumises à Maël*, pas leur état après réponse. Ce sont `recommendation` et
 > `notes` qui portent les verdicts.
@@ -83,13 +142,23 @@
 > **Sémantique des valeurs de `recommendation`** (inchangée sauf mention) :
 > `retenir` = op récupérable telle qu'annoncée, sous réserve des corrections
 > éditoriales de Q6/Q7 ; `retenir-avec-correction-de-section` = op récupérable
-> après changement de cible sectionnelle (recentrage prouvé de Q1 **ou**
-> rabattement sur la parente de Q2) ; `completer-l-existante` = ne pas créer
-> de nœud, agir sur la SourceQuote v110 déjà présente — **cette valeur couvre
-> désormais deux gestes distincts** : le *complément* de Q3.1 (4 ops, le texte
-> long contient le texte court) et la *réécriture* de Q3.2 (P3-6 seule, le
-> texte court n'est pas une sous-chaîne du long) ; `arbitrage` = op dont la
-> décision reste ouverte après le 2026-08-07.
+> après changement de cible sectionnelle — **trois familles désormais** :
+> recentrage prouvé de Q1/S5, rabattement sur la parente de Q2, **réduction
+> d'un ancrage multiple à sa seule mère (S4, P1-11)** ;
+> `completer-l-existante` = ne pas créer de nœud, agir sur la SourceQuote
+> v110 déjà présente — **deux gestes distincts** : le *complément* de Q3.1
+> (4 ops, le texte long contient le texte court) et la *réécriture* de Q3.2
+> (P3-6 seule, le texte court n'est pas une sous-chaîne du long) ;
+> `arbitrage` = op dont la décision reste ouverte après le 2026-08-08.
+>
+> **Sémantique des valeurs de `entity_resolution_status`** — **cette colonne
+> a changé de vocabulaire** le 2026-08-08. Elle portait les statuts que le
+> *patch* déclarait (`unique` / `fuzzy-only` / `not-found`, plus
+> `resolved-by-synonym` ajouté en révision) ; elle porte désormais le **rang
+> par lequel chaque référence résout réellement contre v110** :
+> `natif-name`, `natif-nameEn`, `natif-ponctuation`, `table-alias`,
+> `not-found`. C'est ce qui rend S2 (b) lisible ligne à ligne : les trois
+> valeurs `natif-*` ouvrent droit à un lien de soutien, `table-alias` non.
 
 ---
 
@@ -192,24 +261,25 @@ reste vrai. Les 7 ops restées à `non` (P1-0, P1-6, P1-10, P1-16, P2-1, P2-7,
 P3-1) sont celles où le texte est verbatim, la section confirmée par la page,
 et où aucune coupe ni aucune entité litigieuse n'intervient.
 
-Recommandations — **état après inscription des arbitrages du § 7** :
+Recommandations — **état après inscription des dix-sept arbitrages du § 7** :
 
-| `recommendation` | Avant arbitrage | **Après arbitrage** | Ce qui a bougé |
-|---|---|---|---|
-| `retenir` | 24 | **25** | P2-0 y entre (Q5 (a)) |
-| `retenir-avec-correction-de-section` | 5 | **9** | + P3-3, P3-4, P3-8, P3-9, rabattues sur leur parente (Q2 (a)) |
-| `completer-l-existante` | 4 | **5** | + P3-7 (Q3.1 (a)) ; P3-6 y reste mais au titre d'une *réécriture* (Q3.2 (a)) |
-| `arbitrage` | 8 | **2** | ne restent que P3-2 (Q3.3 (b) : réparation préalable) et P3-10 (Q4 (b) : impasse signalée) |
-| **Total** | **41** | **41** | 6 lignes changées |
+| `recommendation` | Avant arbitrage | Après Q1-Q8 | **Après R1-R3 / S1-S6** | Ce qui a bougé |
+|---|---|---|---|---|
+| `retenir` | 24 | 25 | **24** | P2-0 y était entrée (Q5 (a)) ; P1-11 en sort (S4 (b)) |
+| `retenir-avec-correction-de-section` | 5 | 9 | **10** | + P3-3, P3-4, P3-8, P3-9 (Q2 (a)) ; + P1-11, réduite à sa seule mère C.2 (S4 (b)) |
+| `completer-l-existante` | 4 | 5 | **5** | + P3-7 (Q3.1 (a)) ; P3-6 y reste au titre d'une *réécriture* (Q3.2 (a)) ; P3-11 y reste et porte en outre le recentrage de S5 (a) |
+| `arbitrage` | 8 | 2 | **2** | ne restent que P3-2 (Q3.3 (b) : réparation préalable) et P3-10 (Q4 (b), **arbitrage retiré le 2026-08-08 : reste gelée**) |
+| **Total** | **41** | **41** | **41** | 7 lignes changées au total |
 
 Les deux axes se croisent toujours : **19 ops portent une correction
-éditoriale à faire avant gravure** au titre de Q7 (les 18 coupes non
-signalées + la coquille P2-6), et **12 portent une décision d'entité** au
-titre de Q6 (6 liens abandonnés, 5 résolutions par synonyme/traduction,
-1 référence `fuzzy-only` laissée sans politique). Une recommandation
-`retenir` ne signifie donc pas « gravable en l'état » : elle signifie
-« récupérable, une fois les corrections de Q6/Q7 appliquées et les
-`page_start` réparés (Q8) ».
+éditoriale à faire avant gravure** au titre de Q7 — reconduit et généralisé
+par S6 (a) : la coquille de P2-4 (« de leur critiques », p. 191) est
+désormais **explicitement** couverte au même titre que celle de P2-6. Et
+**toutes les ops portent une décision d'entité** depuis S2 (b), qui départage
+ligne à ligne les 112 liens de soutien candidats des 13 références écartées
+et des 43 non résolues. Une recommandation `retenir` ne signifie donc pas
+« gravable en l'état » : elle signifie « récupérable, une fois les corrections
+de Q6/Q7/S2/S6 appliquées et les `page_start` réparés (Q8) ».
 
 ## 4. Les 6 doublons v110 — nature exacte de chaque équivalence
 
@@ -345,13 +415,31 @@ butaient que sur la section, passent de `arbitrage` à
 (son second motif est tranché par Q3.1) ; P3-2 reste à `arbitrage`, son
 second motif étant renvoyé par Q3.3.
 
-### 5.3 Entités : 6 réellement absentes, 5 résolubles par synonyme, 53 fuzzy (sur 169 références)
+### 5.3 Entités : 6 réellement absentes, 5 résolubles par synonyme, 53 fuzzy (sur 169 références) — *décomptes périmés, cf. encadré et § 8*
 
 > **Corrigé en révision (P1).** La version initiale annonçait « 11
 > introuvables » et concluait que « "Polycentric Governance", concept central
 > de la thèse, n'a pas de nœud propre en v110 ». **C'était faux, et c'est la
 > prise la plus lourde de la revue.** Le résolveur employé ne testait ni le
 > synonyme ni la traduction FR/EN : il produisait des faux négatifs.
+
+> **Chiffres périmés — voir § 8.** Cette sous-section est conservée pour la
+> trace du raisonnement, mais ses décomptes (« 105/169 en `unique` »,
+> « 53 `fuzzy-only` », « 5 résolues par synonyme ou traduction ») sont ceux
+> d'un état intermédiaire. La règle de résolution a été arrêtée le
+> 2026-08-08 (R1-R3) et le lot entier re-diagnostiqué contre v110 :
+> **126 références résolues sur 169**, dont 113 par un attribut natif du
+> graphe. Deux corrections importent ici. (i) Les catégories `unique` et
+> `fuzzy-only` **n'étaient pas des résolutions** : elles étaient les statuts
+> que le patch se déclarait à lui-même. Sous la règle finale, une référence
+> est résolue ou ne l'est pas — la « sous-question de second rideau » sur les
+> 53 `fuzzy-only` est donc **sans objet**, elle ne portait sur rien de
+> mesuré. (ii) Les 5 références dites « résolues par synonyme ou
+> traduction » se scindent : **4 le sont par l'attribut natif `nameEn`**
+> (« Polycentric governance » / « Polycentric Governance » → `a444085b…`) et
+> **1 seule par la table d'alias** (« Controverse sur le statut monétaire »
+> → `758e9ca9…`), sur une évidence circulaire. S2 (b) les traite donc
+> différemment : lien de soutien pour les 4, pas pour la 1.
 
 Les `quote_supports_entity_names` résolvent à 105/169 en `unique`. Des 11
 références classées `not-found` à l'inventaire, **5 ont en réalité un nœud
@@ -363,9 +451,11 @@ existant en v110 sous un autre libellé** — vérifié entité par entité :
 | « Controverse sur le statut monétaire » | **1** (P1-1) | `758e9ca9…` **« Controverse statut monétaire des cryptomonnaies »** (`Concept`) | **Synonyme** / reformulation. Ce nœud porte déjà une SourceQuote (`a1ee97b5…`) |
 
 Le concept central de la thèse **a donc bien son nœud propre** ; c'est le
-résolveur qui ne le voyait pas. Ces 5 références sont passées à
+résolveur qui ne le voyait pas. Ces 5 références étaient passées à
 `entity_resolution_status = resolved-by-synonym` dans le CSV, avec l'id
-trouvé en `resolved_entity_id`. **Aucune création n'est requise pour
+trouvé en `resolved_entity_id` ; depuis le 2026-08-08 elles portent le rang
+qui les résout réellement — `natif-nameEn` pour 4 d'entre elles,
+`table-alias` pour « Controverse sur le statut monétaire ». **Aucune création n'est requise pour
 elles** — et en créer une serait activement nuisible : cela doublerait un
 nœud central du graphe d'un jumeau anglais.
 
@@ -400,7 +490,8 @@ consensus distribué » (`eccebadf…`, deg 23) / « Distributed Consensus
 Fiduciary Logic » (`cae0d43b…`, deg 9) ; « Pools de minage »
 (`5f7f718b…`, `ActorGroup`, deg 41) / « Mining pools » (`ee727747…`,
 `InfrastructureEvent`, deg 7 — même référent sous **deux types
-incompatibles**, anomalie de typage plutôt que fusion évidente). Une
+incompatibles**, anomalie de typage plutôt que fusion évidente ; **ce cas
+n'est pas une paire mais une grappe de cinq fiches, dépliée au § 9**). Une
 quatrième paire probable : `2e24bde0…` / `53983b53…`
 (« Institutionnalisme Monétaire Francophone », `TheoreticFramework` vs
 `Concept`). Le risque que ce chantier a évité **s'est donc déjà
@@ -420,13 +511,21 @@ C.2.e ; « Labélisation indigène » n'a pour voisin que la `ThesisSection`
 III.1.2.b « …labélisations indigènes… » ; « Littérature indigène » côtoie le
 `Corpus` `1e5246b5…` « Corpus sources indigènes ». Aucun de ces voisins n'est
 un concept homonyme : les rattacher serait un choix, pas une résolution.
+**S3 (b) confirme et déplace ce verdict** : ces six-là ne sont pas
+abandonnées, elles sont « à instruire dans un chantier distinct, sans
+création dans celui-ci ». Ce sont les seules références non résolues qui
+survivent au lot.
 
-Les 53 `fuzzy-only` (dont « Gouvernance », « STS », « Crise »…) demandent un
-choix de rattachement au cas par cas ; une au moins (« Objets monétaires non
-identifiés », P1-0) ne résout que vers la section de thèse homonyme, pas vers
-un concept. **Cette sous-question de second rideau n'a pas été tranchée** :
-Q6 (a) porte sur les 6 absentes et commande la table d'alias, pas sur la
-politique des `fuzzy-only`. Le CSV la signale telle quelle sur P1-0.
+Les références que le patch classait `fuzzy-only` (dont « Gouvernance »,
+« STS », « Crise »…) demandaient, dans l'état intermédiaire, un choix de
+rattachement au cas par cas. **Cette sous-question de second rideau est
+devenue sans objet** : sous la règle des 7 rangs, `fuzzy-only` n'est pas un
+statut de résolution — chaque référence est résolue par un rang nommé, ou ne
+l'est pas. « Objets monétaires non identifiés » (P1-0), qui ne renvoyait
+qu'à la section de thèse homonyme, est simplement **non résolue** ; le
+« meilleur candidat flou » reste une piste pour arbitrage humain, jamais une
+résolution. Le sort des 43 non résolues est réparti par S3 (b) et R3b : voir
+le tableau du § 7-S3.
 
 **Table d'alias : commandée.** La sous-question de Q6 — « faut-il inscrire
 ces correspondances EN→FR et synonymiques dans une table réutilisable ? » —
@@ -489,7 +588,8 @@ enfreindre l'une des trois. **Ce point n'est pas tranché ici** — P3-10 reste
   ChatGPT ; les clés réelles sont `conclu_resume` / `conclu_infra` /
   `conclu_aceph` (appariement par nom confirmé par le contenu, sauf P3-11 où
   la cible `conclu_aceph` est fausse : le passage est entièrement dans
-  `conclu_infra`, avant le titre de l'acéphalisme).
+  `conclu_infra`, avant le titre de l'acéphalisme — **arbitré le 2026-08-08,
+  S5 (a) : recentrage vers `conclu_infra`, `conclu_aceph` abandonnée**).
 
 ### 5.6 Les `page_start` de v110 sont incohérents — préalable à toute gravure
 
@@ -535,7 +635,7 @@ Le motif est systématique : chaque nœud fautif porte le `page_start` de son
 réparés en v108/v109, mais sur un autre attribut. **16 est donc un plancher,
 pas un plafond** : I.2.2.b, II.3.1.a, II.3.1.b et III.1.2.a sont décalés sans
 être pris dans une collision, et n'entrent donc pas dans ce compte — le
-relevé exhaustif des 35 pages de titre reste à faire (§ 9).
+relevé exhaustif des 35 pages de titre reste à faire (§ 11).
 
 **Conséquence pour ce chantier.** La conclusion du § 5.1 — « la carte de
 renumérotation a tort 4 fois » — **tient par le texte imprimé**, et la revue
@@ -551,7 +651,7 @@ ancrages gravés soient lisibles. D'où la nouvelle question **Q8** au § 7.
 distinct et mesurable », puis seulement la gravure : « je ne veux pas
 installer des citations p. 191 dans une section que le graphe dit commencer
 p. 202 ». **C'est la condition générale de tout ce dossier** : aucune action
-applicative de cette migration — pas même les 25 `retenir` — n'est autorisée
+applicative de cette migration — pas même les 24 `retenir` — n'est autorisée
 avant que les `page_start` incohérents ne soient réparés ou, au minimum,
 instruits proprement. Le relevé exhaustif des 35 pages de titre reste à faire
 et fait partie de ce chantier distinct.
@@ -625,32 +725,44 @@ l'arbitrage de section que seul le texte permet.
 Décompte **après inscription des arbitrages** (§ 7). Les libellés ci-dessous
 sont ceux du CSV révisé.
 
-**Récupérables sur le fond (25 `retenir`)** : textes vérifiés, sections
-existantes et confirmées par la page ; P2-0 les rejoint par Q5 (a). Attention
-toutefois : **19 de ces 25 portent une retouche à faire avant gravure**, non
-pas sur leur section mais sur la lettre du texte cité ou sur un lien
-d'entité. Répartition des motifs (deux ops, P1-13 et P2-2, en cumulent
-deux) : **9** pour une coupe non signalée à marquer `[…]` (Q7), **1** pour la
-coquille P2-6 à conserver et signaler `[sic]` (Q7), **6** pour une entité
-réellement absente dont le `quote supports` est abandonné (Q6), **4** pour
-une entité résolue par synonyme ou traduction (Q6), **1** pour la référence
-`fuzzy-only` de P1-0 laissée sans politique (Q6, non tranchée). Seules **6
-ops** — P1-6, P1-10, P1-16, P2-1, P2-7, P3-1 — sont récupérables sans aucune
-retouche de texte ni d'entité ; encore restent-elles soumises au gel de Q8.
-(La version précédente comptait P1-0 parmi elles : sa référence
-`fuzzy-only` la range désormais du côté des cas à instruire.)
+**Récupérables sur le fond (24 `retenir`)** : textes vérifiés, sections
+existantes et confirmées par la page ; P2-0 les rejoint par Q5 (a), P1-11 en
+sort par S4 (b). Attention toutefois : **22 de ces 24 portent une retouche à
+faire avant gravure**, non pas sur leur section mais sur la lettre du texte
+cité ou sur un lien d'entité :
 
-**Récupérables avec correction de section (9 `retenir-avec-correction-de-section`)**,
-en deux familles désormais :
+| Nature de la retouche | Ops | Motif |
+|---|---|---|
+| texte seulement | 5 — P1-2, P2-2, P2-6, P2-8, P3-5 | coupe à marquer `[…]`, ou coquille à conserver `[sic]` (Q7 (d), S6 (a)) |
+| entité seulement | 12 — P1-0, P1-1, P1-3, P1-4, P1-5, P1-6, P1-9, P1-10, P1-16, P1-17, P3-1, P3-12 | lien de soutien à poser, écarter ou abandonner (S2 (b), S3 (b), R3b) |
+| les deux | 5 — P1-7, P1-12, P1-13, P2-0, P2-3 | cumul des deux motifs |
+| **aucune** | **2 — P2-1, P2-7** | 4 références natives chacune, aucune coupe |
 
-- les **5 recentrages prouvés** validés par Q1 (a) — P1-14 → II.3.1 ;
-  P1-15 → II.3.1.b ; P2-4 et P2-5 → II.3.2 ; P2-9 → III.3.4. La correction
-  est **prouvée par la page et la TOC** et Maël la valide, mais elle est
-  **explicitement gelée** tant que les `page_start` du § 5.6 ne sont pas
-  réparés ou instruits (P2-4/P2-5 sont le cas qu'il nomme) ;
+Seules **2 ops** sont donc récupérables sans aucune retouche de texte ni
+d'entité, contre 6 dans le décompte précédent. Ce n'est pas une dégradation
+du lot : c'est que S2 (b) **oblige à statuer sur chaque référence**, y
+compris là où l'état intermédiaire laissait passer un `fuzzy-only` sans
+décision. Et ces deux-là restent soumises au gel de Q8.
+
+**Récupérables avec correction de section (10 `retenir-avec-correction-de-section`)**,
+en trois familles désormais :
+
+- les **6 recentrages prouvés** — les 5 validés par Q1 (a) (P1-14 → II.3.1 ;
+  P1-15 → II.3.1.b ; P2-4 et P2-5 → II.3.2 ; P2-9 → III.3.4) **plus P3-11 →
+  `conclu_infra`, ajouté par S5 (a)** « même logique que les 5 recentrages
+  déjà validés ». La correction est **prouvée par la page et la TOC** et Maël
+  la valide, mais elle est **explicitement gelée** tant que les `page_start`
+  du § 5.6 ne sont pas réparés ou instruits (P2-4/P2-5 sont le cas qu'il
+  nomme). P3-11 n'apparaît pas dans cette ligne du CSV : sa `recommendation`
+  reste `completer-l-existante`, geste dominant, et le recentrage voyage dans
+  ses `notes` — une ligne ne peut porter qu'une valeur ;
 - les **4 rabattements sur la parente** décidés par Q2 (a) — P3-3 → I.2.1 ;
   P3-4 → I.2.2 ; P3-8 → I.3.3 ; P3-9 → I.3.3. Ces quatre ops ne butaient que
-  sur une section jamais existée : le rabattement les sort d'`arbitrage`.
+  sur une section jamais existée : le rabattement les sort d'`arbitrage` ;
+- la **réduction d'un ancrage multiple à sa seule mère**, famille ouverte par
+  S4 (b) — **P1-11**, dont les cibles `intro_C_2a` et `intro_C_2b` sont
+  abandonnées au profit de la seule `intro_C_2` : « l'ancrage triple
+  C.2 / C.2.a / C.2.b ressemble trop à une incertitude de découpe ».
 
 **À faire porter par une SourceQuote existante (5 `completer-l-existante`)** :
 P1-8, P3-0, P3-7 et P3-11 par **complément** (Q3.1 (a) — inclusion stricte
@@ -668,7 +780,12 @@ Q2 (a).
 **Encore ouvertes (2 `arbitrage`)** : **P3-2**, dont Q3.3 (b) impose la
 réparation préalable de `47dfac14…` avant toute décision de fusion ; et
 **P3-10**, dont les trois clauses de Q4 (b) ne laissent, en l'état du graphe,
-aucune cible d'ancrage admissible (§ 5.4).
+aucune cible d'ancrage admissible (§ 5.4). **P3-10 a été rouverte puis
+refermée le 2026-08-08** : Maël a retiré l'arbitrage qu'il envisageait et
+laisse l'op **gelée** — ni création opportuniste d'un nœud pour le résumé
+liminaire, ni ancrage forcé sur `conclu_resume`. C'est un cas d'arbitrage de
+modèle, pas un cas de migration : il touche à ce que le graphe accepte de
+représenter, pas à ce que cette citation vaut.
 
 **À ne graver en aucun cas tels quels** : aucune op n'est fausse sur le
 texte, mais **aucune n'est appliquable mécaniquement** : par construction
@@ -676,14 +793,17 @@ texte, mais **aucune n'est appliquable mécaniquement** : par construction
 que ce chantier a dû trancher à la main — et **aucune n'est gravable
 maintenant**, le gel de Q8 (a) portant sur les 41.
 
-## 7. Arbitrages rendus par Maël (2026-08-07)
+## 7. Arbitrages rendus par Maël (2026-08-07 et 2026-08-08)
 
-Les huit questions de la version précédente ont reçu une réponse. Elles sont
-reproduites ici sous forme de **verdicts**, chacun cité fidèlement puis suivi
-de ce qu'il implique pour les ops concernées et de ce qui a changé dans le
-CSV. **Ce dossier n'applique rien** : il inscrit. Rappel de la condition qui
-domine toutes les autres — **Q8 (a) : aucune action applicative avant
-réparation des `page_start`**.
+**Dix-sept verdicts.** Les huit questions de la version précédente ont reçu
+une réponse le 2026-08-07 (**Q1-Q8**) ; neuf questions complémentaires ont
+été tranchées le 2026-08-08 (**R1-R3**, sur la règle de résolution des noms ;
+**S1-S6**, sur les cas que Q1-Q8 laissaient ouverts). Ils sont reproduits ici
+sous forme de **verdicts**, chacun cité fidèlement puis suivi de ce qu'il
+implique pour les ops concernées et de ce qui a changé dans le CSV. **Ce
+dossier n'applique rien** : il inscrit. Rappel de la condition qui domine
+toutes les autres — **Q8 (a) : aucune action applicative avant réparation des
+`page_start`**.
 
 ### Q1 — Les 5 recentrages de section prouvés → **(a), conditionné à Q8**
 
@@ -699,6 +819,10 @@ autorité : là où elle diverge du texte, elle a tort, et c'est le relevé
 page-à-page du § 5.1 qui fait foi pour la cible. En revanche, la validation
 ne vaut pas autorisation de gravure — c'est un **gel conditionnel**, pas un
 feu vert.
+
+> **Étendu le 2026-08-08 par S5 (a).** Un sixième recentrage rejoint les cinq :
+> **P3-11 → `conclu_infra`**, « même logique que les 5 recentrages déjà
+> validés ». Ils sont désormais **6**, tous soumis au même gel.
 
 **Dans le CSV.** Les 5 lignes **conservent** `recommendation =
 retenir-avec-correction-de-section` (aucun changement de valeur) ; leurs
@@ -840,6 +964,13 @@ chapitre II » décrit *où se trouve le texte* et l'ancre reste `II.2` ;
 pas. **Ce dossier ne tranche pas** : il retient la lettre de (a), garde
 `target_section = II.2`, et signale le point.
 
+> **Fermé le 2026-08-08 par S1 (a).** C'est la lecture (ii) qui l'emporte,
+> et l'entité existe : le nœud `Chapter` `5b5935bc…`. « Ancrer P2-0 sur le
+> nœud `Chapter`, puisque l'introduction du chapitre II n'existe pas comme
+> `ThesisSection`. Ne pas rattacher artificiellement à II.2. » Le champ
+> `target_section` garde la clé `II.2` comme trace de la demande du patch,
+> les `notes` portent l'ancre décidée.
+
 **Dans le CSV.** **P2-0 passe de `arbitrage` à `retenir`** ; les `notes`
 portent la suppression du `quote supports` vers `38e637cc…`, la citation du
 motif, la localisation p. 146, et le point non couvert ci-dessus.
@@ -872,10 +1003,20 @@ français** ou **omis**. (ii) La question de « second rideau » sur les **53
 été abordée**. Les deux points sont signalés dans les `notes` des lignes
 concernées, non tranchés.
 
+> **Fermé le 2026-08-08.** Les deux points sont tranchés par **S2 (b)** : le
+> lien de soutien se pose sur les résolutions natives et sur elles seules.
+> Les 4 références qui résolvent par `nameEn` vers `a444085b…` reçoivent
+> donc leur lien ; celle qui ne résout que par la table (`758e9ca9…`, P1-1)
+> ne le reçoit pas. Quant au « second rideau » des `fuzzy-only`, il était
+> **sans objet** : `fuzzy-only` n'est pas un statut de résolution mais une
+> auto-déclaration du patch (§ 8).
+
 **Dans le CSV.** Aucune `recommendation` ne change (les 6 ops porteuses
 restent `retenir`) ; 12 lignes portent une mention `Q6 ( a )` : 6 pour un
 lien abandonné, 5 pour une résolution par synonyme/traduction, 1 pour la
-référence `fuzzy-only` de P1-0.
+référence `fuzzy-only` de P1-0. **Les mentions « Non couvert » de P1-1, P1-4
+et P3-12 ont depuis été remplacées** par le verdict de S2 (b) qui les
+tranche.
 
 ### Q7 — Politique de fidélité du texte cité → **(d)**
 
@@ -914,8 +1055,8 @@ graphe dit commencer p. 202.** »
 
 **Ce que cela implique — conséquence majeure.** **Toute action applicative de
 cette migration est désormais conditionnée à la réparation préalable des
-`page_start`.** Cela vaut pour les 41 ops, y compris les 25 `retenir` et les
-6 récupérables sans retouche : le gel ne porte pas sur la qualité des
+`page_start`.** Cela vaut pour les 41 ops, y compris les 24 `retenir` et les
+2 récupérables sans retouche : le gel ne porte pas sur la qualité des
 citations, qui est établie, mais sur la lisibilité de leur ancrage. L'ordre
 imposé est donc :
 
@@ -933,43 +1074,481 @@ imposé est donc :
 `Q8 ( a ) : gravure gelée jusqu'à réparation des page_start`. Les 5 lignes de
 Q1 portent en outre `GEL CONDITIONNEL ( Q1 + Q8 )`.
 
+---
+
+### R1 — Les alias circulaires de la table → **(c)**
+
+**Verdict.** Deux alias sont **dégradés en `confidence=basse`** dans
+`docs/audits/data/entity-alias-table-v1.csv` (commit `03a1a09`) :
+« Susan Leigh Star » → « Leigh Star », qui **engage l'identité d'une
+personne**, et « Littérature grise » → « Corpus littérature grise », qui
+**confond un concept et un corpus**. Les cinq autres gains circulaires
+— formes courtes, pluriels, un sigle — sont **conservés**.
+
+**Ce que cela implique.** Un alias dégradé **ne résout plus** : il ne ressort
+qu'en piste pour arbitrage humain. Le tri n'est pas quantitatif mais
+qualitatif — ce qui est refusé, ce n'est pas la circularité en soi (les cinq
+gains conservés sont eux aussi circulaires), c'est la **catégorie de la
+chose engagée**. Un pluriel ou une forme courte n'affirme rien de neuf ; un
+raccourci sur le nom d'une chercheuse, ou l'assimilation d'un concept à son
+corpus, affirme quelque chose que rien n'atteste hors du patch qu'on
+diagnostique.
+
+**Dans le CSV.** 2 lignes portent la mention `R1c` : **P1-9** (« Susan Leigh
+Star » ne résout plus) et **P1-11** (« Littérature grise » ne résout plus).
+Ces 2 références sont passées de `resolved` à `not-found` dans le bilan
+final.
+
+### R2 — Le rang « ponctuation ignorée » → **(a)**
+
+**Verdict.** Un rang supplémentaire est ajouté au résolveur (commit
+`e019a3b`), de **confiance moyenne**, placé **entre les `aliases` et la table
+externe**. Il compare les dénominations après remplacement de 32 caractères
+de ponctuation **par une espace — jamais par une suppression**.
+
+**Ce que cela implique.** Le remplacement par une espace, et non la
+suppression, est la précaution qui empêche « ASIC » et « ASIC (matériel de
+minage) » de se confondre : le premier ne résout pas, le second résout au
+rang 1, aucun n'écrase l'autre. **Sûreté mesurée sur tout le graphe : 1
+collision créée sur 2 589 dénominations** (voir § 8 pour le recomptage
+indépendant et ce qu'il ajoute). En cas de collision, le résolveur rend
+`ambiguous` et **arrête le parcours** : pas de retombée sur la table, pas de
+choix arbitraire.
+
+**Ce que la mesure a mis au jour.** L'unique collision oppose deux graphies
+d'une même référence bibliographique — « Cartelier 1996 — La monnaie »
+(`2165a0e1…`) et « Cartelier 1996 La monnaie » (`a8810712…`). C'est un
+**doublon bibliographique réel**, découvert par un contrôle de sûreté et
+**non tranché ici** : il relève du Bibliography Reconciliation Lab.
+
+**Dans le CSV.** Une seule référence gagne une résolution par ce rang :
+**P2-0**, dont la dénomination « II.2 "Pourtant, elles font monnaie !" : à
+l'aune d'un nominalisme "non étatiste" attentif aux usages » résout vers
+`38e637cc…` — le nom v110 place le point d'exclamation **hors** des
+guillemets. Le rang 6 fait donc gagner exactement **1 référence** et n'en
+perd aucune.
+
+### R3 — Les interdictions que la table s'impose → **(b)**
+
+**Verdict.** Les interdictions inscrites par la table dans ses propres
+`notes` **restent respectées**. Quatre références demeurent en **arbitrage
+manuel** : « STS » (×2), « Absence de gouvernance », « Bourse d'échange ».
+
+**Ce que cela implique.** La table d'alias est traitée comme une source qui
+peut **se dédire d'elle-même** : 13 de ses 400 lignes portent une note qui
+interdit la résolution automatique, et le résolveur les écarte même quand la
+correspondance paraît évidente. « Bourse d'échange » → « Bourses d'échange »
+a un ratio de 0,97 et reste non résolue : c'est le prix payé pour que la
+table ne devienne jamais un mécanisme d'auto-validation.
+
+**Dans le CSV.** 4 lignes portent la mention `R3b` : P1-6 et P1-7 (« STS »),
+P1-12 (« Bourse d'échange »), P2-5 (« Absence de gouvernance »).
+
+### S1 — L'ancrage de P2-0 → **(a)**
+
+**Verdict.** « **Ancrer P2-0 sur le nœud `Chapter`, puisque l'introduction du
+chapitre II n'existe pas comme `ThesisSection`. Ne pas rattacher
+artificiellement à II.2.** »
+
+**Ce que cela implique.** C'est la fermeture du premier des trois points que
+Q1-Q8 laissaient ouverts. Q5 (a) avait gardé l'op et supprimé son
+`quote supports`, mais avait laissé l'ancre en suspens : la lettre de son
+option disait « II.2 », sa formulation disait « l'introduction du chapitre
+II », et aucun nœud `ThesisSection` ne correspond à la seconde. Maël tranche
+pour **la réalité du graphe plutôt que pour la commodité** : l'ancre est le
+nœud `Chapter` `5b5935bc…` « Chapitre II — Dépasser la controverse du statut
+monétaire des CM… » (degré 440), et non la section II.2 que le texte de la
+p. 146 se contente d'annoncer. Le refus est explicite : « ne pas rattacher
+artificiellement ».
+
+**Une conséquence de forme.** L'ancrage sort du type `ThesisSection` : un
+applicateur qui indexerait les cibles par `section_key` **ne trouverait pas
+cette op** — `5b5935bc…` est un `Chapter` et n'en porte pas. C'est la même
+cécité que celle qui frappe III.3 dans `resolve.mjs` (§ 5.7 (c)), et elle
+devra être traitée par tout applicateur futur.
+
+**Dans le CSV.** `recommendation` **reste `retenir`**. Le champ
+`target_section` **conserve la clé `II.2` annoncée par le patch**, comme
+trace de la demande — c'est la convention déjà posée en Q2 pour les
+rabattements ; ce sont les `notes` qui portent l'ancre décidée `5b5935bc…`.
+La ligne porte en outre la mention `R2a` : la dénomination de section, non
+résolue avant le rang 6, résout désormais vers `38e637cc…`, **sans que cela
+change rien** au verdict de Q5 (a) — le lien de soutien reste supprimé, la
+cible étant une `ThesisSection`.
+
+### S2 — Quelles résolutions donnent droit à un lien de soutien → **(b)**
+
+**Verdict.** « **Poser les liens de soutien seulement pour les résolutions
+appuyées sur des attributs natifs du graphe, pas sur la table d'alias
+circulaire.** »
+
+**Ce que cela implique.** C'est la fermeture du troisième point laissé ouvert
+par Q6 — et c'est le verdict qui touche le plus de lignes. Il partage les 126
+résolutions en deux :
+
+| | Références | Noms distincts | Lien de soutien |
+|---|---:|---:|---|
+| **Attribut natif du graphe** (`name`, `nameEn`, ponctuation ignorée) | **113** | 60 | **oui — 112 candidats** (1 écartée par Q5 (a)) |
+| **Table d'alias seule** | **13** | 5 | **non** |
+| Non résolues | 43 | 34 | sans objet |
+
+Les 112 liens candidats visent **57 entités distinctes** de v110.
+
+**Le cas que la règle écarte alors que sa preuve tient.** Sur les 13
+résolutions par la table, **12 ont une évidence circulaire** : leur seule
+attestation est le patch SourceQuote qu'on diagnostique. La treizième,
+**« Immersion participante » → `17d7b62a…` « Immersion participante (en
+ligne) » (P1-12)**, a une évidence **indépendante** — c'est le nom canonique
+de v110 privé de sa parenthèse. La règle de S2 (b) l'écarte quand même, et
+elle est appliquée telle quelle. **C'est le seul cas où elle écarte une
+résolution dont la preuve tient**, et il est signalé comme tel dans les
+`notes` de P1-12 plutôt que traité en exception silencieuse.
+
+**Dans le CSV.** Aucune `recommendation` ne change. **Les 41 lignes** portent
+un décompte `S2 ( b )` nommant leurs liens candidats ; **10 lignes** portent
+en outre une mention d'exclusion pour une ou plusieurs références résolues
+par la table seule. Les mentions « Non couvert » de Q6 sur P1-1, P1-4 et
+P3-12 sont **remplacées** par le verdict qui les tranche.
+
+### S3 — Le sort des 43 références non résolues → **(b)**
+
+**Verdict.** « **Abandonner les génériques ; instruire les 6 concepts réels
+absents dans un chantier distinct, sans création dans celui-ci.** »
+
+**Ce que cela implique.** Deux régimes distincts, et une frontière qui n'est
+pas quantitative. Les génériques nommés — « Gouvernance » (×4),
+« Méthodologie » (×4), « Crise », « Conflit », « Pouvoir », « Politique »,
+« Transactions » (×2) — sont **abandonnés définitivement** : ce sont des
+étiquettes de commodité produites par un générateur, pas des concepts de la
+thèse. Les six absents réels — « Individualisme méthodologique »,
+« Sociologie économique », « Travail invisible », « Littérature indigène »,
+« Terrain hors ligne », « Labélisation indigène » — sont **instruits
+ailleurs**, et surtout pas créés au passage : c'est exactement l'écueil que
+Q2 (a) avait déjà écarté pour les sections (« pas un effet de bord de cette
+migration »).
+
+**Répartition vérifiée des 43 non résolues :**
+
+| Régime | Références | Noms |
+|---|---:|---:|
+| S3 (b) — génériques abandonnés définitivement | 14 | 7 |
+| S3 (b) — concepts réels absents, chantier distinct | 6 | 6 |
+| R3b — arbitrage manuel (interdiction de la table) | 4 | 3 |
+| R1c — alias circulaire dégradé, ne résout plus | 2 | 2 |
+| **Non couvertes exactement par un verdict** | **17** | **16** |
+| **Total** | **43** | **34** |
+
+**Ce que le verdict ne dit pas exactement.** La liste des génériques se
+termine par « … », et **17 références (16 noms) ne tombent proprement dans
+aucun des deux régimes** : « Anthropologie de la monnaie »,
+« Institutionnalisme monétaire » (×2), « Théorie monétaire dominante »,
+« Usages monétaires », « Monétisation », « Vulnérabilité », « Crises
+protocolaires », « Gouvernance de crise », « Concept de gouvernance »,
+« Observations participantes », « Recherche documentaire », « Relation
+enquêteur-enquêtés », « Faucet », « Bitcoin Wiki », « Objets monétaires non
+identifiés », « II.3.1 ». Plusieurs ne sont manifestement pas des
+génériques — « Bitcoin Wiki » est une source, « II.3.1 » est une clé de
+section, « Objets monétaires non identifiés » est une formule propre à la
+thèse. **Ce dossier ne les range pas d'office** : chaque ligne concernée
+porte la mention `NON COUVERT PAR S3` et la question retourne à Maël.
+
+**Dans le CSV.** Aucune `recommendation` ne change. 6 lignes portent la
+mention des 6 concepts réels, 11 celle des génériques abandonnés, 4 celle de
+R3b, 2 celle de R1c, et **11 lignes** portent `NON COUVERT PAR S3`.
+
+### S4 — La triple cible sectionnelle de P1-11 → **(b)**
+
+**Verdict.** « **Pour P1-11, ne garder que C.2. L'ancrage triple
+C.2 / C.2.a / C.2.b ressemble trop à une incertitude de découpe.** »
+
+**Ce que cela implique.** C'est la fermeture d'un des deux points hérités que
+Q1-Q8 ne mentionnaient pas. Le motif est important : ce n'est pas que
+l'ancrage multiple soit faux, c'est qu'il **ressemble à une hésitation
+déguisée en exhaustivité**. Un générateur qui ne sait pas où couper accroche
+partout ; garder la seule mère est la lecture qui n'invente rien.
+
+**Ce que le verdict ne dit pas exactement.** S4 (b) ne nomme que P1-11. Or
+**12 autres ops portent le même motif** parent + enfant(s) : P1-3, P1-4,
+P1-5, P1-6, P1-7, P1-8, P1-9, P1-10, P1-12, P1-13, P3-0 et P3-11 (celle-ci
+étant traitée par S5). Le parallèle le plus proche est **P1-13, qui porte
+quatre cibles** (`intro_C_2` + `intro_C_2d` + `intro_C_2e` + `intro_C_2f`) —
+une de plus que la triple que S4 réduit. **Ce dossier ne les réduit pas** :
+les 11 lignes non couvertes portent la mention `NON COUVERT PAR S4` et la
+question retourne à Maël.
+
+**Dans le CSV.** **P1-11 passe de `retenir` à
+`retenir-avec-correction-de-section`** — la seule `recommendation` que cette
+passe modifie. Le champ `target_section` conserve les trois clés annoncées
+par le patch, ce sont les `notes` qui portent l'abandon de `intro_C_2a` et
+`intro_C_2b`. La mention « Non couvert » héritée est remplacée par le
+verdict.
+
+### S5 — La seconde cible de P3-11 → **(a)**
+
+**Verdict.** « **Corriger P3-11 vers `conclu_infra`, même logique que les 5
+recentrages déjà validés.** »
+
+**Ce que cela implique.** C'est la fermeture du second point hérité. La
+vérification page-à-page (§ 5.5) avait établi que le passage de P3-11 est
+**entièrement dans `conclu_infra`**, avant le titre de l'acéphalisme p. 336 :
+la seconde cible `conclu_aceph` est fausse. Maël l'aligne sur la doctrine de
+Q1 (a) — « le texte tranche contre la carte de renumérotation quand ils
+divergent » — et **les recentrages passent de 5 à 6**. Tous les six restent
+soumis au gel de Q8 : validés, non gravables.
+
+**Une remarque de forme.** P3-11 porte désormais **deux gestes** : compléter
+la SourceQuote existante `fb610652…` (Q3.1 (a)) et corriger sa section
+(S5 (a)). La colonne `recommendation` n'en accepte qu'un ; elle garde
+`completer-l-existante`, le geste qui décide s'il faut créer un nœud, et le
+recentrage voyage dans les `notes`. Un applicateur qui ne lirait que la
+colonne raterait le recentrage — c'est signalé ici et dans la ligne.
+
+**Dans le CSV.** `recommendation` **reste `completer-l-existante`**. La
+mention « Non couvert » héritée est remplacée par le verdict et l'abandon de
+`conclu_aceph`.
+
+### S6 — Le principe de fidélité aux coquilles → **(a)**
+
+**Verdict.** « **Confirmer le principe général : toute coquille imprimée est
+conservée et signalée `[sic]`. Pas de correction silencieuse du texte
+original.** »
+
+**Ce que cela implique.** Q7 (d) avait posé le principe mais n'avait nommé
+qu'un cas, **P2-6** (« médiatisées **des** dispositifs », p. 254, que le
+candidat corrigeait en ajoutant « par »). La vérification en avait relevé un
+second, **P2-4** (« de leur critiques », p. 191), que le CSV traitait *au
+titre du principe* faute de mention explicite. S6 (a) **généralise** : le
+principe couvre P2-4 comme P2-6, **et toute coquille future**. Il devient
+une règle de la maison, pas une décision d'espèce.
+
+**Pourquoi c'est plus qu'une formalité.** Une coquille conservée est une
+preuve d'authenticité de la citation ; une coquille silencieusement corrigée
+rend la citation invérifiable contre le PDF, et fait porter à l'auteur des
+mots qu'il n'a pas imprimés. C'est la même exigence que celle des marques de
+coupe `[…]`, appliquée à l'échelle du caractère.
+
+**Dans le CSV.** Aucune `recommendation` ne change. 2 lignes portent la
+mention `S6 ( a )` : **P2-4** et **P2-6**.
+
+### P3-10 — arbitrage retiré, l'op reste gelée
+
+Ce n'est pas un verdict de plus, c'en est un de moins, et il faut l'inscrire
+comme tel. Maël avait envisagé de trancher P3-10 ; il **retire cet
+arbitrage** le 2026-08-08. L'op **reste gelée** : ni création opportuniste
+d'un nœud pour le résumé liminaire, ni ancrage forcé sur `conclu_resume`.
+
+Le motif est de bonne facture : l'impasse du § 5.4 n'est pas une impasse de
+cette migration, c'est **un cas d'arbitrage de modèle**. Il demande de dire
+si le graphe doit pouvoir représenter les pièces liminaires de la thèse
+(résumé, mots-clés, page de titre) — question qui dépasse de loin le sort
+d'une citation, et qu'il serait malvenu de trancher par un effet de bord.
+
+**Dans le CSV.** `recommendation` **reste `arbitrage`** ; les `notes`
+portent le retrait explicite.
+
+---
+
 ### Ce que les arbitrages ne couvrent pas
 
-Trois cas du CSV ne sont pas exactement couverts par les verdicts. Ils sont
-signalés dans les `notes` par la mention `Non couvert` ou `IMPASSE` et **ne
-sont pas tranchés ici** :
+**Les cinq points ouverts du 2026-08-07 sont tous fermés.** P2-0 par S1 (a) ;
+les liens de soutien vers les nœuds résolus par synonyme, et la « politique
+des 53 `fuzzy-only` », par S2 (b) — la seconde étant en réalité devenue sans
+objet, `fuzzy-only` n'étant pas un statut de résolution (§ 5.3, § 8) ; la
+triple cible de P1-11 par S4 (b) ; la seconde cible erronée de P3-11 par
+S5 (a). Reste P3-10, **volontairement laissée ouverte** : son arbitrage a été
+retiré, elle est gelée (§ 7, P3-10).
 
-1. **P3-10 (Q4)** — les trois clauses du verdict, appliquées à l'état réel du
-   graphe, ne laissent aucune cible d'ancrage admissible. Voir Q4 ci-dessus.
-2. **P2-0 (Q5)** — « rattachée à l'introduction du chapitre II » ne
-   correspond à aucun nœud `ThesisSection` de v110 ; l'ancre reste `II.2`
-   comme le dit la lettre de l'option (a), à confirmer.
-3. **Les liens de soutien vers les nœuds résolus par synonyme (Q6)** — la
-   table d'alias est commandée, mais le sort du `quote supports` lui-même
-   (posé vers le nœud français, ou omis) n'est pas dit ; et la politique des
-   **53 `fuzzy-only`** n'a pas été abordée.
+**Trois points nouveaux ne sont pas exactement couverts** par les verdicts du
+2026-08-08. Ils sont signalés dans les `notes` par la mention `NON COUVERT`
+et **ne sont pas tranchés ici** :
 
-S'y ajoutent deux points hérités que les arbitrages ne mentionnent pas :
-la **triple cible sectionnelle de P1-11** (C.2 + C.2.a + C.2.b), laissée en
-l'état ; et la **seconde cible erronée de P3-11** (`conclu_aceph`, alors que
-le passage est entièrement dans `conclu_infra`), qui ne figure pas parmi les
-5 recentrages de Q1 et n'a donc reçu aucun arbitrage.
+1. **Les 17 références non résolues que S3 ne range ni parmi les génériques
+   ni parmi les 6 concepts réels** (16 noms, § 7-S3). La liste des génériques
+   se termine par « … » ; plusieurs de ces 17 ne sont manifestement pas des
+   génériques — « Bitcoin Wiki » est une source, « II.3.1 » une clé de
+   section, « Objets monétaires non identifiés » une formule de la thèse.
+   11 lignes du CSV portent `NON COUVERT PAR S3`.
+2. **Les 11 ops à cible sectionnelle multiple que S4 ne nomme pas.** S4 (b)
+   réduit la triple cible de P1-11 au motif qu'elle « ressemble trop à une
+   incertitude de découpe » ; 12 autres ops portent le même motif parent +
+   enfant(s), dont **P1-13 avec quatre cibles**. 11 lignes portent
+   `NON COUVERT PAR S4` (P3-11 étant traitée par S5).
+3. **Le cas que S2 (b) écarte alors que sa preuve tient** — « Immersion
+   participante » → `17d7b62a…` (P1-12), seule des 13 résolutions par la
+   table dont l'évidence n'est pas circulaire. La règle est appliquée telle
+   quelle, mais l'exception est signalée plutôt que traitée en silence.
 
-### Tableau récapitulatif — les 6 recommandations qui changent
+**Un point de forme, à signaler plutôt qu'à corriger.** Deux lignes portent
+désormais **deux gestes** que la colonne `recommendation` ne peut pas
+exprimer ensemble : **P3-11** (compléter l'existante + recentrer la section,
+Q3.1 (a) + S5 (a)) et, à un moindre degré, **P2-0** (retenir + changer de
+type d'ancre, Q5 (a) + S1 (a)). Dans les deux cas la valeur retenue est le
+geste dominant et l'autre voyage dans les `notes`. Un applicateur qui ne
+lirait que `recommendation` raterait la moitié du verdict.
 
-| Op | Avant | Après | Motif |
-|---|---|---|---|
-| P2-0 | `arbitrage` | **`retenir`** | Q5 (a) : op gardée, `quote supports` vers `38e637cc…` supprimé |
-| P3-3 | `arbitrage` | **`retenir-avec-correction-de-section`** | Q2 (a) : rabattue sur I.2.1 |
-| P3-4 | `arbitrage` | **`retenir-avec-correction-de-section`** | Q2 (a) : rabattue sur I.2.2 |
-| P3-7 | `arbitrage` | **`completer-l-existante`** | Q3.1 (a) : compléter `6b1a40ec…` ; Q2 (a) lève le blocage de section |
-| P3-8 | `arbitrage` | **`retenir-avec-correction-de-section`** | Q2 (a) : rabattue sur I.3.3 |
-| P3-9 | `arbitrage` | **`retenir-avec-correction-de-section`** | Q2 (a) : rabattue sur I.3.3 |
+### Tableau récapitulatif — les 7 recommandations qui changent
 
-Les 35 autres lignes gardent leur valeur ; seules leurs `notes` changent, pour
-porter le verdict qui les gouverne.
+| Op | Avant | Après | Passe | Motif |
+|---|---|---|---|---|
+| P2-0 | `arbitrage` | **`retenir`** | 2026-08-07 | Q5 (a) : op gardée, `quote supports` vers `38e637cc…` supprimé |
+| P3-3 | `arbitrage` | **`retenir-avec-correction-de-section`** | 2026-08-07 | Q2 (a) : rabattue sur I.2.1 |
+| P3-4 | `arbitrage` | **`retenir-avec-correction-de-section`** | 2026-08-07 | Q2 (a) : rabattue sur I.2.2 |
+| P3-7 | `arbitrage` | **`completer-l-existante`** | 2026-08-07 | Q3.1 (a) : compléter `6b1a40ec…` ; Q2 (a) lève le blocage de section |
+| P3-8 | `arbitrage` | **`retenir-avec-correction-de-section`** | 2026-08-07 | Q2 (a) : rabattue sur I.3.3 |
+| P3-9 | `arbitrage` | **`retenir-avec-correction-de-section`** | 2026-08-07 | Q2 (a) : rabattue sur I.3.3 |
+| **P1-11** | `retenir` | **`retenir-avec-correction-de-section`** | **2026-08-08** | **S4 (b) : ancrage triple réduit à sa seule mère C.2** |
 
-## 8. Le sort des zips — après arbitrage
+Les 40 autres lignes gardent leur valeur. **Les 41 lignes ont en revanche vu
+changer leur `entity_resolution_status`** — la colonne a changé de
+vocabulaire, cf. l'encadré de tête — et **12 lignes leur `resolved_entity_id`**
+(P1-8, P1-12, P2-3, P2-5, P3-0, P3-1, P3-3, P3-5, P3-8, P3-10, P3-11, P3-12) ;
+les `notes` des 41 portent le verdict qui les gouverne. **Aucun autre champ
+n'a été touché** : `target_section`, `match_status`, `duplicate_risk`,
+`evidence_location` et `needs_mael_arbitration` sont ceux du 2026-08-07.
+
+## 8. La règle de résolution
+
+C'est le legs le plus réutilisable de ce chantier. Il ne vient pas d'une
+idée mais d'un incident : la prise P1 de la revue hostile (§ 0) a montré
+qu'un résolveur qui n'interroge que `name` déclarait absent de v110 un
+concept central de la thèse — « Polycentric Governance » — alors que
+l'entité `a444085b…` porte exactement cette chaîne dans son attribut
+`nameEn`. Le faux négatif ne demandait ni traduction ni jugement : seulement
+de lire ce que le graphe déclare déjà.
+
+La règle arrêtée le 2026-08-08 (R1-R3) ordonne **sept rangs**, essayés dans
+cet ordre, le premier qui répond gagne :
+
+| Rang | Source interrogée | Nature | Confiance | Motif |
+|---:|---|---|---|---|
+| 1 | `name` | attribut natif | haute | la dénomination canonique de v110 |
+| 2 | `nameEn` | attribut natif | haute | 115 entités en portent un — c'est le rang dont l'absence a causé l'incident P1 |
+| 3 | `labelEn` | attribut natif | haute | 77 entités — libellé d'affichage anglais, distinct du nom |
+| 4 | `labelFr` | attribut natif | haute | 70 entités — même rôle côté français |
+| 5 | `aliases` | attribut natif | haute | 30 entités déclarent elles-mêmes leurs variantes |
+| 6 | **ponctuation ignorée** | dérivé des rangs 1-5 | **moyenne** | R2 (a) — 32 caractères remplacés par une espace, jamais supprimés |
+| 7 | table d'alias externe | hors graphe | variable | `entity-alias-table-v1.csv` — couvre ce que le graphe **ne** déclare **pas** |
+
+Au-delà : `not-found`. Le « meilleur candidat flou » (ratio de similarité)
+est calculé et consigné, mais **n'est jamais une résolution** — c'est une
+piste pour arbitrage humain, marquée comme telle.
+
+**Pourquoi le rang 6 remplace la ponctuation par une espace et ne la
+supprime pas.** Une suppression écraserait « ASIC » sur « ASIC (matériel de
+minage) » ; un remplacement par une espace les laisse distincts — le premier
+ne résout pas, le second résout au rang 1. La précaution n'est pas
+théorique : c'est elle qui empêche un raccourci d'absorber une dénomination
+plus précise.
+
+**La mesure de sûreté, et ce qu'un recomptage indépendant y ajoute.** R2 (a)
+annonce **1 collision créée sur 2 589 dénominations**. Le recomptage mené
+ici contre v110 confirme le dénominateur — 2 293 `name` + 115 `nameEn` +
+77 `labelEn` + 70 `labelFr` + 34 chaînes tirées des 30 `aliases` = **2 589
+dénominations, 2 514 distinctes** — et trouve **deux** collisions de
+chaînes, pas une. La différence s'explique, et elle conforte le chiffre :
+
+- « Cartelier 1996 — La monnaie » (`2165a0e1…`) et « Cartelier 1996 La
+  monnaie » (`a8810712…`) sont **deux entités différentes** : collision
+  réelle, celle que R2 (a) compte ;
+- « "Not your keys, not your coins" » et « Not your keys, not your coins »
+  sont le `name` et le `nameEn` de **la même entité** `596f2b5f…` : les deux
+  chaînes désignent la même cible, aucune ambiguïté n'est créée.
+
+**1 collision sur 2 589** est donc juste, à condition de préciser
+« entre entités distinctes ». En cas de collision le résolveur rend
+`ambiguous` et **arrête le parcours** : pas de retombée sur le rang suivant,
+pas de choix par défaut. Et l'unique collision réelle a mis au jour un
+**doublon bibliographique** que personne ne cherchait — non tranché ici, il
+revient au Bibliography Reconciliation Lab.
+
+**Le principe que Maël en tire**, et qui est l'apport durable :
+
+> **Les attributs natifs du graphe priment. La table externe est une couche
+> complémentaire. Un alias circulaire ne fait pas preuve.**
+
+Les trois propositions se tiennent. La première dit qu'on lit d'abord ce que
+le graphe déclare de lui-même — c'est la leçon de P1. La deuxième assigne à
+la table son rôle exact : couvrir ce que le graphe **ne** déclare **pas**,
+jamais se substituer à ce qu'il déclare. La troisième est la plus exigeante :
+une correspondance dont la seule attestation est le patch qu'on diagnostique
+**tourne en rond**, et 12 des 13 résolutions par la table sont dans ce cas.
+C'est de là que S2 (b) découle directement — les liens de soutien ne se
+posent que sur du natif.
+
+Deux garde-fous complètent la règle, et il faut les tenir ensemble avec
+elle : **R1 (c)**, qui dégrade un alias circulaire dès qu'il engage
+l'identité d'une personne ou confond deux catégories, et **R3 (b)**, qui
+respecte les interdictions que la table s'impose à elle-même — 13 de ses 400
+lignes refusent la résolution automatique, et elles sont refusées même
+quand la correspondance paraît évidente.
+
+## 9. La grappe Mining pools — cinq fiches
+
+Le § 5.3 signalait « Pools de minage » / « Mining pools » comme une paire
+FR/EN à deux types incompatibles. **C'était une simplification, et la
+re-vérification contre v110 la corrige sur trois points.** Ce paragraphe est
+de la **documentation seule** : aucune correction applicative, aucune fusion,
+aucun retypage n'est proposé ni exécuté.
+
+Le cas n'est pas une paire mais une **grappe de cinq fiches**, toutes
+vérifiées entité par entité dans `grc20-these-mael-rolland-v110.json` :
+
+| Id | Nom | Type | Degré | Annotation |
+|---|---|---|---:|---|
+| `5f7f718b…` | Pools de minage | **`ActorGroup`** | 41 | aucune |
+| `ee727747…` | Mining pools | `InfrastructureEvent` | 7 | `duplicateOf` → **`15864ab2…`**, `reviewStatus=duplicate-pending-merge` |
+| `15864ab2…` | InfrastructureEvent — Mining pools (coopératives de minage) | `InfrastructureEvent` | 4 | aucune — c'est le survivant désigné |
+| `7f800946…` | Mining pools emergence | `InfrastructureEvent` | 3 | `duplicateOf` → **`15864ab2…`**, `reviewStatus=duplicate-pending-merge` |
+| `cc346d7c…` | InfrastructureEvent — Première pool de minage (Slush Pool) | `InfrastructureEvent` | 12 | aucune — porte une date précise, 2010-11-27 |
+
+**Les trois corrections d'un faux souvenir.** Elles importent parce que la
+version courte du dossier invitait à conclure trop vite :
+
+1. **Le `duplicateOf` de `ee727747…` ne pointe PAS sur `5f7f718b…`.** Il
+   pointe sur `15864ab2…`, une autre fiche `InfrastructureEvent`. Croire le
+   contraire donnerait à penser que le graphe a déjà rapproché l'acteur et
+   l'événement — il ne l'a pas fait.
+2. **Le couple `ActorGroup` / `InfrastructureEvent` n'est annoté nulle
+   part.** Vérifié : `5f7f718b…` ne porte ni `duplicateOf` ni
+   `reviewStatus` (ses seuls attributs sont `sourcePage` et `sourcePages`),
+   aucune entité ne pointe un `duplicateOf` vers lui, et **aucune relation
+   ne relie les cinq fiches entre elles** (0 relation interne à la grappe).
+   Les annotations existantes portent uniquement sur le trio
+   `ee727747…` / `7f800946…` → `15864ab2…`, c'est-à-dire **entre événements**.
+   `5f7f718b…` et `ee727747…` ne partagent d'ailleurs **aucune section**.
+3. **La `description` de `ee727747…` décrit un groupe d'acteurs, pas un
+   événement.** Elle dit : « Coopératives de mineurs mutualisant leur
+   puissance de calcul pour stabiliser leurs revenus, la première (Slush
+   Pool) apparaissant fin 2010. » C'est la définition d'un collectif, avec
+   une date en incise. Une fiche typée `InfrastructureEvent` qui se décrit
+   comme un `ActorGroup` est le symptôme, pas la maladie.
+
+**Ce qu'il ne faut pas en conclure.** Que les cinq fiches doivent fusionner.
+La question de fond n'est pas mécanique : « Pools de minage » est-il un
+acteur collectif — auquel cas `5f7f718b…` (degré 41, celle que la thèse
+mobilise) est juste et `ee727747…` est mal typée — ou faut-il **maintenir
+deux fiches**, l'acteur d'un côté et l'événement de leur apparition (fin
+2010, Slush Pool) de l'autre ? La seconde lecture est défendable : la thèse
+distingue clairement l'émergence des pools, datée, de leur rôle d'acteur de
+gouvernance, continu. **C'est une décision d'auteur, pas une décision
+d'agent.**
+
+**Où cette dette est suivie.** Elle est **renvoyée au chantier d'identité**,
+et déjà instruite là-bas :
+`docs/audits/data/identity-debt-fr-en-v1.csv`, lignes **P09** (le cas jumeau
+des ASIC : `a1d764bf…` / `1dc7f42c…`), **P10** (`15864ab2…` / `7f800946…`,
+seul couple du relevé déjà annoté dans le graphe — la fusion devra reporter
+l'attribut `date` que seul `7f800946…` porte) et **P20** (`5f7f718b…` /
+`ee727747…`, marqué `conflit-de-types`, « CAS EMBLÉMATIQUE — arbitrage
+sémantique requis, aucune fusion automatique »). La correction du faux
+souvenir y figure déjà en toutes lettres dans les `notes` de P20.
+
+Rien de tout cela n'entre dans la migration SourceQuote : aucune des 41 ops
+ne vise l'une de ces cinq fiches. Le cas est consigné ici parce que le § 5.3
+l'avait mal résumé, et qu'un dossier probatoire qui laisse traîner un résumé
+faux prépare l'incident suivant.
+
+## 10. Le sort des zips — après arbitrage
 
 Trois issues étaient posées par le préflight. Les arbitrages du § 7 ne
 tranchent **pas** le sort des zips eux-mêmes : Maël n'a pas dit d'écrire le
@@ -988,45 +1567,62 @@ devrait avoir une réécriture éventuelle**, et **en repousser le moment**.
   aucun des 6 doublons et ne verraient pas III.3 (§ 5.7).
 - **Réécriture en patch candidat canonique : non décidée, mais désormais
   spécifiée.** Les chiffres la soutiennent — **39 des 41 ops** sont
-  aujourd'hui déterminées (25 `retenir` + 9 `retenir-avec-correction-de-section`
+  aujourd'hui déterminées (24 `retenir` + 10 `retenir-avec-correction-de-section`
   + 5 `completer-l-existante`), les 2 restantes étant P3-2 et P3-10. Une
   réécriture conforme au contrat (`grc20-candidate-patch-contract-v1.md`)
   résorberait d'un coup les trois vices de forme rédhibitoires des zips :
   dialecte hors contrat, résolution par nom, base v96 avec clés
   pré-migration. **Mais Maël n'a pas demandé d'écrire ce patch**, et ce
-  dossier ne le fait pas. Si elle est décidée, cette réécriture devra
-  intégrer les huit verdicts :
-  1. les **5 recentrages** de Q1 (a), aux ids v110 du tableau du § 7 ;
+  dossier ne le fait pas — **les 41 ops restent non appliquées**. Si elle est
+  décidée, cette réécriture devra intégrer les **dix-sept** verdicts :
+  1. les **6 recentrages** de Q1 (a) et S5 (a), aux ids v110 des tableaux du
+     § 7 ;
   2. les **6 rabattements** sur section parente de Q2 (a), sans création
-     d'aucun nœud de niveau 3 ;
+     d'aucun nœud de niveau 3 ; et la **réduction de P1-11 à sa seule mère
+     C.2** (S4 (b)), les cibles `intro_C_2a` et `intro_C_2b` étant
+     abandonnées ;
   3. les **4 compléments** et la **1 réécriture** de Q3.1/Q3.2, opérés sur
      les SourceQuote existantes (aucun nœud nouveau), P3-2 restant hors
      patch tant que `47dfac14…` n'est pas réparée (Q3.3) ;
   4. les **marques de coupe `[…]`** restaurées dans les 18 `quoteText`
-     concernés et la coquille de P2-6 conservée avec `[sic]` (Q7) — y compris
-     à l'intérieur des textes allongés ou réécrits du point 3 ;
-  5. les **6 `quote supports` abandonnés** vers les entités absentes (Q6) et
-     le **`quote supports` retiré** vers `38e637cc…` dans P2-0 (Q5) ;
-  6. les trois points **non couverts** du § 7, qui doivent revenir à Maël
-     avant et non pendant la réécriture.
+     concernés (Q7 (d)) et **toutes les coquilles imprimées conservées avec
+     `[sic]`** — P2-6 et P2-4 nommément, et le principe pour toute coquille
+     future (S6 (a)) — y compris à l'intérieur des textes allongés ou
+     réécrits du point 3 ;
+  5. la **règle de résolution des 7 rangs** (§ 8) au lieu de la résolution
+     par `name` seul, et le partage de S2 (b) : **112 liens de soutien
+     candidats** vers 57 entités distinctes, **13 références écartées** parce
+     que résolues par la table d'alias seule, **43 sans lien** faute de
+     résolution — dont les 6 abandonnées de Q6 (a) ; plus le
+     **`quote supports` retiré** vers `38e637cc…` dans P2-0 (Q5 (a)) ;
+  6. l'**ancre `Chapter` `5b5935bc…` pour P2-0** (S1 (a)), qui sort du type
+     `ThesisSection` et que tout index par `section_key` manquerait ;
+  7. les points **non couverts** du § 7 — les 17 références non rangées par
+     S3, les 11 ops à cible multiple non nommées par S4, l'exception
+     « Immersion participante » de S2 — qui doivent revenir à Maël **avant**
+     et non pendant la réécriture ; **P3-10 restant gelée** de son propre
+     chef.
 - **Abandon partiel** : le périmètre s'est réduit. Les 6 doublons ne sont
   plus candidats à l'abandon (Q3.1 et Q3.2 les versent tous vers l'existante,
-  Q3.3 met P3-2 en attente) ; ne reste discutable que **P3-10**, dont Q4 (b)
-  laisse le sort ouvert. Un abandon total serait coûteux : 39 ops apportent
-  des citations vérifiées verbatim sur des sections identifiées
-  `CRITICAL_ZERO` par le patch d'origine, et ce travail de vérification page
-  à page est maintenant fait, consigné et arbitré.
+  Q3.3 met P3-2 en attente) ; ne reste discutable que **P3-10**, dont
+  l'arbitrage a été **retiré** le 2026-08-08 et qui **reste gelée** — ni
+  création opportuniste, ni ancrage forcé, cas d'arbitrage de modèle. Un
+  abandon total serait coûteux : 39 ops apportent des citations vérifiées
+  verbatim sur des sections identifiées `CRITICAL_ZERO` par le patch
+  d'origine, et ce travail de vérification page à page est maintenant fait,
+  consigné et arbitré.
 
 Dans tous les scénarios, l'arbitrage **Q8 du préflight** (à ne pas confondre
 avec la Q8 du § 7 ci-dessus) demeure : **aucun applicateur avant les réponses
-du § 7** — elles sont maintenant rendues, ce qui lève cette condition-là. La
+du § 7** — elles sont maintenant rendues, les dix-sept, ce qui lève cette
+condition-là. La
 condition qui la remplace est plus stricte : **Q8 (a) — aucune action
 applicative, pas même un patch candidat gravé, avant réparation ou
 instruction documentée des `page_start`** (§ 5.6). L'ordre arrêté est celui
 du § 7-Q8 : `page_start` → `47dfac14…` → patch candidat → préflight →
 gravure.
 
-## 9. Ce que ce chantier n'a pas fait
+## 11. Ce que ce chantier n'a pas fait
 
 - **Aucune écriture dans le graphe**, aucune SourceQuote créée ni modifiée,
   aucun patch appliqué ni généré, aucun applicateur écrit ni exécuté ;
@@ -1042,7 +1638,7 @@ gravure.
 - pas de contrôle visuel navigateur (`grc20-visual-coherence`) — rien n'a
   changé côté runtime ;
 - pas de réécriture des zips en patch candidat — et **toujours pas**, après
-  les arbitrages : Maël n'a pas demandé de l'écrire (§ 8).
+  les arbitrages : Maël n'a pas demandé de l'écrire (§ 10).
 
 Ajouts de la révision du 2026-08-07 — ce que la révision n'a **pas** fait
 non plus :
@@ -1086,10 +1682,48 @@ Ajouts de l'inscription des arbitrages du 2026-08-07 — ce que cette passe n'a
 - **trois cas non tranchés** ont été signalés et laissés à Maël plutôt que
   décidés en son nom (§ 7, « Ce que les arbitrages ne couvrent pas ») : P3-10,
   la cible d'ancrage de P2-0, et le sort des `quote supports` vers les nœuds
-  résolus par synonyme ainsi que la politique des 53 `fuzzy-only`. S'y
+  résolus par synonyme ainsi que la politique des `fuzzy-only`. S'y
   ajoutent la triple cible de P1-11 et la seconde cible erronée de P3-11, que
-  les arbitrages ne mentionnent pas ;
+  les arbitrages ne mentionnaient pas. **Tous sauf P3-10 ont depuis été
+  fermés** par S1, S2, S4 et S5 (2026-08-08) ;
 - **la table d'alias EN→FR n'a pas été écrite ici** : elle est commandée par
   Q6 et produite en parallèle sous
   `docs/audits/data/entity-alias-table-v1.csv` ; ce dossier la cite comme
   destination, sans s'en servir comme prémisse.
+
+Ajouts de l'inscription des arbitrages complémentaires du 2026-08-08
+(**R1-R3, S1-S6**) — ce que cette passe n'a **pas** fait non plus :
+
+- **rien n'a été appliqué, une seconde fois.** Le graphe
+  `grc20-these-mael-rolland-v110.json` est **inchangé** : aucun nœud corrigé,
+  fusionné, retypé ou créé, **aucune SourceQuote créée**, **aucun lien de
+  section posé**, **aucun alias créé**, **aucun applicateur écrit**, **aucune
+  v111 produite**. Les cartes d'ancrage, le runtime et les zips de
+  `Migration/` n'ont pas été touchés. Les **deux seuls fichiers écrits** sont
+  `docs/audits/data/sourcequote-migration-verification-v1.csv` et le présent
+  document ;
+- **les 41 ops restent non appliquées** et **le gel de Q8 (a) tient sur
+  l'ensemble** : les dix-sept verdicts disent *ce qu'il faudra graver*, aucun
+  ne dit *quand*, et la réparation des `page_start` reste le préalable ;
+- **les 112 liens de soutien de S2 (b) sont des candidats, pas des
+  relations** : ils sont comptés et nommés ligne à ligne dans le CSV, aucun
+  n'existe dans le graphe ;
+- **aucune des 43 références non résolues n'a été créée**, y compris les 6
+  concepts réels que S3 (b) renvoie à un chantier distinct — « sans création
+  dans celui-ci » est pris à la lettre ;
+- **aucune correction n'a été portée sur la grappe Mining pools** (§ 9) : les
+  cinq fiches sont documentées, le faux souvenir est corrigé **dans le
+  texte**, et la dette d'arbitrage sémantique est renvoyée telle quelle au
+  chantier d'identité (`identity-debt-fr-en-v1.csv`, lignes P09, P10, P20) ;
+- **P3-10 n'a pas été tranchée** : son arbitrage a été retiré par Maël, elle
+  reste gelée, et ce dossier se garde de combler ce vide ;
+- **trois nouveaux points non couverts** ont été signalés plutôt que décidés
+  (§ 7, « Ce que les arbitrages ne couvrent pas ») : les 17 références que
+  S3 ne range ni parmi les génériques ni parmi les 6 concepts réels, les 11
+  ops à cible sectionnelle multiple que S4 ne nomme pas, et l'exception
+  « Immersion participante » que S2 écarte alors que sa preuve tient ;
+- **le doublon bibliographique « Cartelier 1996 »** mis au jour par la mesure
+  de sûreté du rang 6 (§ 8) n'a **pas** été tranché : il revient au
+  Bibliography Reconciliation Lab ;
+- **aucun contrôle navigateur** n'a été refait : rien n'a changé côté
+  runtime, aucune page du site ne lit ces deux fichiers.
