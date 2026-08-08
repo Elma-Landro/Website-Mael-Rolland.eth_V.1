@@ -43,18 +43,20 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
 ├── grc20-publish.mjs                           # GRC-20 publication pipeline (Node.js ES module)
 ├── graph-worker.mjs                            # Cloudflare Worker API (Node.js ES module)
 │
+├── sections.helpers.js                         # Shared section-tree helpers (graphe.html + lecteur.html)
+│
 ├── grc20-these-mael-rolland-v110.json          # Current authoritative knowledge graph (canonical)
+├── grc20-properties-registry-v1.json           # Attribute-key registry — CI invariant, GENERATED
 │
 ├── entity_section_map.json                     # Entity ID → thesis subsection mapping
-├── section_entities_map.json                   # Thesis section → entity list mapping
+├── section_entities_map.json                   # Thesis section → entity list mapping (+ anchoring fields)
 ├── section_overrides.json                      # Manual overrides for section assignments
-├── new_relations_patch.json                    # Batch of new relations to inject
-├── patch_1a_fix_cited_in.json                  # Fix cited_in chapter assignments
-├── patch_1b_missing_cited_in.json              # Add missing cited_in relations
-├── patch_2a_sourcequote_subsections.json       # SourceQuote → subsection relations
-├── patch_2b_central_arguments.json             # Central argument node relations
-├── patch_2c_definitions.json                   # Definition node patches
-├── patch_3a_intro_subsections.json             # Introduction subsection relations
+├── section-headings-map.json                   # Heading line → section key (positional resolution)
+│
+├── new_relations_patch.json                    # v72 lot: 11,884 appears_in_section (historical)
+├── patch_1a … patch_3a_*.json                  # Historical patches, integrated (see Patch Files)
+├── patch_10 … patch_19_*.json                  # Patches applied by their make_vNNN script
+├── patch_candidate_bibliographie_*.json        # 3 CANDIDATES — NOT APPLIED, awaiting arbitration
 │
 ├── anomalies_report.md                         # Entity/section mapping QA report (v71 base)
 ├── package.json                                # Node.js dependencies + npm scripts
@@ -64,6 +66,15 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
 ├── README.md
 ├── favicon_32x32.png / favicon_16x16.png
 ├── placeholder.svg
+│
+├── .github/workflows/check.yml                 # CI: 8 steps, no install (Node + Python 3 only)
+├── agents/                                     # Agent charter and roles (README.md = the rules)
+├── .claude/skills/                             # Invocable skills (hostile review, archivist, …)
+├── scripts/                                    # 46 files — see "Scripts and controls" below
+├── patches/                                    # Receipts + archive/ (retired patches, with motive)
+├── Migration/                                  # External SourceQuote bundles (zips, NOT applied)
+├── docs/audits/                                # 27 audit reports — the repo's memory
+│   └── data/                                   # 26 evidence files (CSV/JSON) — read with their audit
 └── assets/
     ├── MD/                                     # Thesis chapters in Markdown (bilingual FR/EN)
     │   ├── INDEX.md                            # Agent-readable entry point for thesis content
@@ -74,7 +85,8 @@ There is also an applied research lab identity: **TheDyorLab** (`thedyorlab.eth`
     │   ├── 03_chapitre_III.md / 03_chapitre_III_EN.md
     │   ├── 04_conclusion.md / 04_conclusion_EN.md
     │   ├── 05_glossaire_annexes.md / 05_glossary_appendix_en.md
-    │   └── 06_resume.md
+    │   ├── 06_resume.md
+    │   └── 07_bibliographie.md                 # 664 entries converted from the PDF (2026-08)
     ├── Mael_Rolland_CV_Court2026.html          # Standalone HTML CV for print/PDF export
     ├── img/                                    # Photos and images
     ├── figures/                                # Research diagrams and visualizations
@@ -203,6 +215,25 @@ A fully client-side force-directed + matrix visualization of the GRC-20 knowledg
 - **Node sizing**: Proportional on mobile, adaptive zoom-based label reveal (threshold ≥ 1.8×)
 - **Label coloring**: By entity type, matching column halo colors
 - Fetches graph data from the Cloudflare Worker API or local JSON fallback
+- Its counters come from **relations**, not from `occurrence_count` — the
+  anchoring-weight debt does not affect this page
+
+### `lecteur.html` — Markdown thesis reader
+
+Scrollytelling reader: renders the thesis Markdown, highlights entity mentions,
+and drives a contextual graph panel per section.
+
+- **Panel ranking**: pinned entities from `section_overrides.json` first, then
+  a top-12 by `occurrence_count × log(N/df)`. **Parent sections are aggregated**
+  (ten keys, `conclu_theo` included — it exists only as an aggregate), and the
+  canonical sort is *stable with no tie-break*. Any simulation of this panel
+  must reproduce both, or it is not simulating the site.
+- **Positional heading resolution** via `section-headings-map.json`, with
+  `sections.helpers.js` shared with `graphe.html`.
+- **`?panelLab=1`** — opt-in laboratory mode: banner, `snippet_status` /
+  `direct_anchor_count` badges, and a selector comparing four ranking policies.
+  **Inert without the parameter**; the choice is never persisted. Do not let it
+  leak into the public default.
 
 ---
 
@@ -255,25 +286,93 @@ The graph has evolved across 110 versions. Key milestones: v72 added the `Thesis
 
 ### Patch Files
 
-Several JSON patch files in the root apply corrections and enrichments to the base graph:
+**32 patch artefacts have been inventoried empirically** against v110
+(`docs/audits/data/candidate-patch-inventory-v1.csv`, each line carrying its
+proof of application or non-application). Three statuses:
 
-| File | Purpose |
-|------|---------|
-| `patch_1a_fix_cited_in.json` | Fix incorrect chapter assignments in `cited_in` |
-| `patch_1b_missing_cited_in.json` | Add missing `cited_in` relations |
-| `patch_2a_sourcequote_subsections.json` | Link `SourceQuote` nodes to subsections |
-| `patch_2b_central_arguments.json` | Argument node relations |
-| `patch_2c_definitions.json` | Definition node enrichment |
-| `patch_3a_intro_subsections.json` | Introduction subsection links |
-| `new_relations_patch.json` | Batch of new graph relations |
+| Status | Count | What it means |
+|---|---:|---|
+| `applique` | 11 | A `make_vNNN` script applied it; effects verified one by one in v110 (`patch_10` … `patch_19`) |
+| `historique` | 14 | Integrated long ago, mostly without a traceability script (`patch_1a`–`patch_3a`, `new_relations_patch.json`) — some target IDs are now dead, so a naive replay would fail |
+| `candidat-non-applique` | 7 | The 3 `patch_candidate_bibliographie_*.json`, the 3 `Migration/` SourceQuote zips, and `patches/archive/grc20_anchor_overrides_targeted.json` |
+
+**Six incompatible dialects** coexist in that history (three of them for
+`ADD_RELATION` alone). Any *new* candidate patch must follow
+`docs/audits/grc20-candidate-patch-contract-v1.md`: envelope `_meta` + `ops`,
+the `patch_18`/`19` dialect (`type` / `entityId` / `attributeId`, values as
+`{type, value}`), declared counts that can be recomputed, motivated `skipped`,
+and — for a candidate — `_meta.policy` starting with the exact string
+`CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED`.
+
+Three interdictions for candidates: never self-apply, never mix dialects,
+never pre-assign an `entityId` on `CREATE_ENTITY` (no applicator consumes
+that op type yet). **Historical patches are archives — do not rewrite them**,
+it would falsify the record.
+
+Validate any candidate with `python3 scripts/preflight_candidate_patches.py`
+(12 checks, non-zero exit on a blocker; also wired into CI).
 
 ### Mapping Files
 
 | File | Purpose |
 |------|---------|
-| `entity_section_map.json` | Maps entity IDs to their thesis subsections |
-| `section_entities_map.json` | Maps section IDs to their entity lists |
-| `section_overrides.json` | Manual overrides for ambiguous assignments |
+| `entity_section_map.json` | Maps entity IDs to their thesis subsections (20,056 snippets) |
+| `section_entities_map.json` | Maps section IDs to their entity lists — plus `snippet_status` and `direct_anchor_count` on each of its 12,374 lines |
+| `section_overrides.json` | Manual overrides for ambiguous assignments (pinned entities, always first in a panel) |
+| `section-headings-map.json` | Heading line → section key; drives `lecteur.html`'s positional resolution and the anchoring-weight ranges |
+
+**Reading `occurrence_count` honestly.** It is a *record count* from proxy
+keyword matching, not a measure of importance: **80 % of the map's lines
+(9,899/12,374) are `proxy`** — snippets exist but carry neither the entity's
+name nor its citation base. Since the anchoring-weight work, every line also
+carries `snippet_status` (`self` / `self-base` / `proxy` / `no-snippet`) and
+`direct_anchor_count` (literal word-boundary count, `null` where the text
+range is underivable). **Never read `direct_anchor_count` alone** — it is a
+poor measure that under-counts forged, translated or bilingual names; and
+`snippet_status` is evidence, not a certificate. Cross them, always
+(`docs/audits/grc20-poids-ancrage-v2.md`).
+
+### Since v110 — work that deliberately did NOT bump the graph
+
+Several chantiers have landed since v110 **without producing v111**, by
+design. Knowing this prevents both "why isn't this in the graph?" and the
+temptation to bump a version to make something fit:
+
+- **Anchoring qualification** — `snippet_status` / `direct_anchor_count` live
+  in `section_entities_map.json`, *not* in the graph. Patching the graph would
+  have **imported the proxy debt into it** instead of repairing it.
+- **Panel Policy Lab** — five display policies for the reader's panels were
+  measured (`docs/audits/grc20-panel-policy-lab-v1.md`); **the public ranking
+  did not change**. A `?panelLab=1` opt-in mode in `lecteur.html` lets the
+  author try them; it is inert without the parameter.
+- **Bibliography Reconciliation Lab** — 22 doubtful author cards, 89 duplicate
+  families, 60 PDF entries without a node and 11 "never cited" nodes were
+  instructed to the point of decision, and materialised as **three candidate
+  patches, none applied**.
+- **Candidate Patch Preflight Lab** — inventory, contract, validator and a
+  memory-only simulation; no patch applied, no graph written.
+- **SourceQuote Migration Verification Lab** — the 41 ops of the `Migration/`
+  zips verified line by line against the thesis PDFs. All 41 quotes exist in
+  the thesis, but 18 cut text without marking it, 7 are mis-attached, 6
+  duplicate an existing `SourceQuote`. **Frozen**: nothing may be engraved
+  before the incoherent `page_start` attributes are repaired (author's
+  arbitration).
+
+**A standing trap** — three section keys (`II.3.1`, `II.3.2`, `III.2.2`) still
+exist in v110 but designate *different* sections since the v106 migration. A
+patch that resolves sections by raw key anchors silently to the wrong place.
+The renumbering map is not reliable either: on four verified cases the printed
+text proved the raw key right and the map wrong. **Only the thesis text
+settles it.**
+
+**Another one** — the graph carries 115 `nameEn`, 77 `labelEn`, 70 `labelFr`
+and 30 `aliases`. A resolver that queries only `name` produces false negatives:
+an external patch declared "Polycentric Governance" absent while `a444085b`
+carries exactly that string in its `nameEn`. **Query `name`, `nameEn`,
+`labelEn`, `labelFr` and `aliases` — all of them — before concluding an entity
+is missing**; that is the order `scripts/resolve_entity_names.py` implements.
+`docs/audits/data/entity-alias-table-v1.csv` covers what the graph does *not*
+declare (and an alias table is never an authorisation to merge).
 
 ### Anomalies Report
 
@@ -327,6 +426,54 @@ Do not "modernize" the design unless explicitly asked.
 
 ---
 
+## Working discipline (read this before touching the graph)
+
+The charter is `agents/README.md`. Its rules are not decoration — each one
+comes from a real incident in this repository.
+
+**An agent is a work role, not a scientific authority.** Type changes, entity
+merges, node creation, semantics of `appears in section`, and anything that
+would engrave a claim about a person are **the author's decisions**. Instruct
+them to the point where only a decision remains, then stop and ask. Put the
+question to Maël directly — context, options, effects, an optional clearly
+separated recommendation, and a closed question — rather than burying it in a
+"decisions reserved for the author" section that no one will act on.
+
+**Data is not fact.** A CSV, an audit or another agent's report is a claim to
+be re-verified, not a premise. Several of this repo's worst near-misses came
+from trusting a previous report: a patch would have engraved "Florence Dufy"
+(a welding of two real co-authors' names), another a duplicate English twin of
+a central concept, another a `SourceQuote` duplicating one already present.
+Each was caught by re-checking, not by reasoning.
+
+**Hostile review before any PR that touches the graph, the maps, the runtime
+or a patch.** Invoke the `grc20-reviewer-hostile` skill: it asks nine
+questions drawn from real incidents and produces no fix — only what would make
+the reasoning wrong. It has issued blocking verdicts that were right, and at
+least once been wrong itself and been corrected. Review the reviewer too.
+
+**Browser verification for any runtime change.** A static check does not see
+what a reader sees. Chromium lives at `/opt/pw-browsers/chromium`; never run
+`playwright install`. CDNs are blocked — intercept them with Playwright's
+`page.route` and serve `cytoscape`/`marked` from a local `node_modules`, and
+serve the repo over `python3 -m http.server`. Expect zero `pageerror`, and
+prove that the default behaviour is unchanged by comparing panel orders before
+and after (`grc20-visual-coherence` skill has the recipe).
+
+**Skills** live in `.claude/skills/`: `grc20-reviewer-hostile` (contradict
+before committing), `grc20-thesis-archivist` (locate and verify a claim in the
+thesis), `grc20-semantic-classifier` (decide an entity's type), and
+`grc20-visual-coherence` (check what the site actually shows).
+
+**`docs/audits/` is the repository's memory** — 27 reports and 26 evidence
+files. Before opening a chantier, check whether it has already been
+instructed; several questions look new and are already documented, with
+figures. Read an evidence CSV *with* its audit, never alone: the definitions,
+simulated baselines and caveats live in the audit
+(`docs/audits/data/README.md` maps each file to its origin).
+
+---
+
 ## Security Notes
 
 - **Never commit private keys**. `GEO_PRIVATE_KEY` and similar must only be set in environment variables or Cloudflare Worker secrets.
@@ -345,15 +492,64 @@ Do not "modernize" the design unless explicitly asked.
 5. Link it from the navigation (usually `index.html` and `index-fr.html`)
 
 ### Updating the knowledge graph
-1. Edit the latest `grc20-these-mael-rolland-vN.json` (increment version in the filename/metadata)
-2. Run `npm run dry-run` (update the script path or pass `--input` explicitly)
-3. Run `npm run testnet` to test on-chain
-4. Run `npm run mainnet` to publish (requires `GEO_PRIVATE_KEY`)
-5. Update `IPFS_CID` in the Cloudflare Worker environment after publishing
-6. Update `entity_section_map.json` / `section_entities_map.json` if section structure changed
+
+**Never edit a graph JSON by hand.** The house pattern is a dedicated,
+re-runnable applicator script:
+
+1. Write `scripts/make_vNNN_<object>.py` on the model of
+   `make_v110_apply_bib_and_attribute_patches.py`: reads vN, mutates, writes
+   vN+1, supports `--dry-run`, and carries **its own after-checks** (counts
+   unchanged unless intended, targets exist, no homonym created…).
+2. `space.version` must match the output filename — `check_graph_integrity.py`
+   blocks otherwise. Keep `space.note` bounded (~1200 chars); the full history
+   lives here, not in the graph.
+3. Regenerate the registry **in the same commit**:
+   `python3 scripts/build_properties_registry.py` (defaults to the most recent
+   graph). An intermediate state where the graph carries a key the registry
+   ignores is CI-red, so graph and registry must travel together.
+4. Run the local checks (below) before pushing.
+5. Update every pointer to the graph filename — `package.json`, `these.html`,
+   `graphe.html`, `lecteur.html`, `graph-worker.mjs`,
+   `narrative-anchors-build.mjs`. **CI does not verify that the site points at
+   the right graph.**
+6. Only then publish: `npm run dry-run` → `npm run testnet` → `npm run mainnet`
+   (requires `GEO_PRIVATE_KEY`), then update `IPFS_CID` in the Worker.
+
+### Scripts and controls
+
+`scripts/` holds 46 files (41 at the top level plus the
+`sourcequote-migration/` module). The ones worth knowing:
+
+| Script | Role |
+|---|---|
+| `check_graph_integrity.py` | Broken endpoints, duplicate IDs, orphans, version, attribute keys vs registry. **Only the newest graph is blocking**; older snapshots are frozen, reported not enforced |
+| `check_anchoring.py` | Anchoring-layer coherence, against a baseline of 46 known problems — it catches *regressions*, not the existing debt |
+| `build_anchor_weights.py` | Builds/refreshes `snippet_status` + `direct_anchor_count`; `--check` in CI; `--impact` runs a deterministic ranking simulation |
+| `build_properties_registry.py` | **Generates** the registry (never hand-edit it); `--source` selectable, `--check` verifies freshness in CI |
+| `preflight_candidate_patches.py` | 12 checks on candidate patches (policy, counts, live IDs, registry, name collisions, `duplicateOf` chains) |
+| `compare_panel_policies.py` | Simulates the reader's panels under five display policies; reproduces the reader's real pipeline (parent aggregation, stable sort) |
+| `grc20_commun.py` | Shared helpers (`REPO`, most-recent-graph lookup, version parsing) — import it rather than re-deriving |
+
+Run before any push touching the graph, maps or patches:
+
+```bash
+python3 scripts/check_graph_integrity.py
+python3 scripts/check_anchoring.py
+python3 scripts/build_anchor_weights.py --check
+python3 scripts/build_properties_registry.py --check
+python3 scripts/preflight_candidate_patches.py
+```
+
+CI (`.github/workflows/check.yml`, 8 steps, no install) runs these plus JS
+syntax and JSON validity, on every push and pull request.
 
 ### Applying patch files
-Patch files are applied by merging their entity/relation data into the base graph JSON. They are not auto-applied — the publishing pipeline must be run after merging.
+
+Patches are **not** auto-applied and must never be applied by merging JSON by
+hand: an applicator script owns the operation (see above). Check the patch's
+status in the inventory first — a `historique` patch is already integrated and
+replaying it would fail on dead IDs; a `candidat-non-applique` one is waiting
+on the author's arbitration and must keep its `CANDIDATE` policy until then.
 
 ### Deploying the Worker
 ```bash
@@ -385,5 +581,7 @@ Do not modify thesis text content unless explicitly asked — these are archival
 - It is **not** a React/Vue/Next.js app — do not suggest adding a framework
 - It is **not** server-rendered — all pages are static HTML
 - It is **not** configured for npm-based frontend builds — `package.json` is only for the Node.js publication scripts
-- There is **no test suite** — manual testing via browser and `npm run dry-run`
-- There is **no CI/CD pipeline** — deployments are manual
+- There is **no unit test suite** — but there *is* CI (see below), and browser
+  verification is expected for any runtime change
+- **Deployments** are manual; **checks** are not — `.github/workflows/check.yml`
+  runs on every push and pull request
