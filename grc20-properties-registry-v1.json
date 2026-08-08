@@ -2442,7 +2442,7 @@
       ],
       "vocabulary": null,
       "derivedFrom": null,
-      "notes": ""
+      "notes": "Collision lexicale avec des noms de colonnes de CSV et des variables locales homonymes ; plusieurs entrees de `readBy` sont des faux positifs du balayage textuel."
     },
     {
       "key": "quote",
@@ -3447,7 +3447,7 @@
       ],
       "vocabulary": null,
       "derivedFrom": null,
-      "notes": ""
+      "notes": "Plage de pages bibliographique (domaine Reference). Collision lexicale avec l'API pypdf (`lecteur.pages`, `self.pages`) : scripts/audit_section_page_start.py est compte comme lecteur alors qu'il n'accede jamais a cet attribut. `status` et `readBy` surestiment donc son usage reel."
     },
     {
       "key": "paradox",

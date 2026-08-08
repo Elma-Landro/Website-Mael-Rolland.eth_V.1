@@ -216,7 +216,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from grc20_commun import (REPO, graphe_le_plus_recent, graphes_tries,  # noqa: E402
-                          sans_accents, TYPES_SECTION)
+                          numero_de_version, sans_accents, TYPES_SECTION)
 
 CODE_DIVERGENCE = 1
 CODE_INVOCATION = 2
@@ -225,8 +225,19 @@ TYPE_CHAPITRE = 'Chapter'
 TYPES_AUDITES = TYPES_SECTION + (TYPE_CHAPITRE,)
 
 DOSSIER_PDF = os.path.join(REPO, 'assets', 'pdf')
-CSV_DEFAUT = os.path.join(REPO, 'docs', 'audits', 'data',
-                          'section-page-start-diagnostic-v110.csv')
+CSV_AUTO = '<auto>'   # sentinelle : nom derive de la version du graphe
+
+
+def csv_defaut(chemin_graphe):
+    """Nom du CSV derive de la VERSION du graphe audite.
+
+    Fige sur v110, le chemin par defaut aurait reecrit la preuve v110 avec
+    des donnees v111 des qu'un graphe plus recent existe — et le repli sans
+    pypdf aurait compare v111 a une preuve etablie pour v110."""
+    version = numero_de_version(chemin_graphe or '')
+    suffixe = f"v{version}" if version is not None else 'vX'
+    return os.path.join(REPO, 'docs', 'audits', 'data',
+                        f'section-page-start-diagnostic-{suffixe}.csv')
 SOURCEQUOTE_DEFAUT = os.path.join(
     REPO, 'docs', 'audits', 'data',
     'sourcequote-migration-verification-v1.csv')
@@ -1278,11 +1289,13 @@ def main(argv=None):
         formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument('--graph', default=None, metavar='FICHIER',
                    help="graphe audite (defaut : le plus recent du depot)")
-    p.add_argument('--csv', nargs='?', const=CSV_DEFAUT, default=None,
+    p.add_argument('--csv', nargs='?', const=CSV_AUTO, default=None,
                    metavar='CHEMIN',
                    help="ECRIT le CSV de diagnostic (';'-separe). Sans "
-                        "valeur, ecrit dans "
-                        f"{os.path.relpath(CSV_DEFAUT, REPO)}. Omettre "
+                        "valeur, le nom est DERIVE de la version du graphe "
+                        "audite (docs/audits/data/"
+                        "section-page-start-diagnostic-vNNN.csv), pour qu'un "
+                        "audit de v111 n'ecrase pas la preuve v110. Omettre "
                         "l'option = aucune ecriture")
     p.add_argument('--check', action='store_true',
                    help="ne rapporte que les divergences et sort en code 1 "
@@ -1338,15 +1351,21 @@ def main(argv=None):
             graphe.get('entities'), list):
         echec_invocation(f"graphe sans liste d'entites : {chemin_graphe}")
 
+    # la sentinelle CSV_AUTO se resout maintenant : la version du graphe
+    # audite est connue (arbitrage de robustesse, revue hostile prise 3)
+    chemin_csv_defaut = csv_defaut(chemin_graphe)
+    if args.csv == CSV_AUTO:
+        args.csv = chemin_csv_defaut
+
     pypdf = importe_pypdf()
     if pypdf is None:
         if args.check and not args.csv:
-            return controle_sur_csv(graphe, CSV_DEFAUT)
+            return controle_sur_csv(graphe, chemin_csv_defaut)
         echec_invocation(
             "pypdf est indispensable pour etablir les pages imprimees et il "
             "est absent (pip install pypdf). Repli disponible : `--check` "
             "seul, qui compare le graphe a la preuve deja enregistree dans "
-            f"{os.path.relpath(CSV_DEFAUT, REPO)}")
+            f"{os.path.relpath(chemin_csv_defaut, REPO)}")
 
     corpus = Corpus()
     corpus.charge(pypdf, args.pdf_dir)

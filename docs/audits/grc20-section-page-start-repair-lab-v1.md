@@ -61,8 +61,13 @@ chaque page — la marque `— NN — ` — et ne travaille qu'en pages imprimé
 | `7_Chapitre_3.pdf` | 220-331 |
 | `8_Conclusion_Generale.pdf` | 332-340 |
 
-**Suite imprimée 1-340 : continue, sans trou.** Une seule page est écartée de
-l'index faute de numéro imprimé exploitable : l'offset 0 de
+**Suite imprimée 1-340 : continue, sans trou** — dans le **périmètre indexé**,
+qui est le corps de la thèse. La pagination imprimée continue au-delà (la
+bibliographie va jusqu'à 382, les annexes suivent) : ces blocs sont
+délibérément hors index, et la revue hostile a vérifié qu'aucun des 16 titres
+n'y apparaît (0 occurrence sur les 72 pages d'annexes et sur la
+bibliographie), donc le test d'unicité n'est pas contourné. Une seule page du
+périmètre est écartée faute de numéro imprimé exploitable : l'offset 0 de
 `1_Premières_pages.pdf`, c'est-à-dire la couverture — signalée, jamais devinée.
 
 **Corroboration indépendante par la table des matières imprimée : accord
@@ -328,7 +333,17 @@ des citations p. 191 dans une section que le graphe dit commencer p. 202 ». Les
 5 nœuds incohérents visés sont précisément ceux qui produisaient ce
 contresens — dont II.3.2 (202→190) et III.1.2.b (265→243), les deux cas qui ont
 motivé le gel. Après application, **aucune des 41 citations ne serait attachée à
-une section dont le `page_start` contredit le texte imprimé.** Les 5 recentrages
+une section dont le `page_start` contredit le texte imprimé** — à une condition
+que la revue hostile a mise au jour et qu'il faut énoncer : cette conclusion
+**suppose l'arbitrage Q1 (a)**. Sans lui, P1-14 (citation p. 186) resterait
+rattachée à `II.3.1.a`, dont la page corrigée devient **187** : la réparation
+créerait elle-même une citation antérieure au début déclaré de sa section. Q1
+recentre précisément cette op sur `II.3.1` (p. 186, `correct`), ce qui lève le
+cas — mais le recentrage vit dans les `notes` du dossier SourceQuote, pas dans
+la colonne `target_section`. Un applicateur qui ne lirait que la colonne
+reproduirait le contresens. Noter au passage que `II.3.1.a` **recule** de 186 à
+187, donc *défavorise* cette op : c'est une preuve de plus que la pagination
+n'a pas été orientée pour arranger le lot. Les 5 recentrages
 validés en Q1 (P1-14 → II.3.1, P1-15 → II.3.1.b, P2-4 et P2-5 → II.3.2,
 P2-9 → III.3.4) portent tous sur des nœuds désormais soit corrigés, soit déjà
 corrects.
@@ -449,5 +464,24 @@ page est celle de sa parente) ?**
   20/16/48/1/5, mêmes 16 écarts, même calibration, même corroboration 80/80),
   mais le fichier commité n'a pas été réécrit.
 
-**Écritures de ce chantier — deux fichiers, exactement** :
-`patch_candidate_section_page_start_v1.json` et le présent rapport.
+**Écritures de ce chantier — cinq fichiers** (énoncé corrigé par la revue
+hostile, qui a relevé que l'affirmation « deux fichiers, exactement » était
+fausse) : `scripts/audit_section_page_start.py`,
+`docs/audits/data/section-page-start-diagnostic-v110.csv`,
+`patch_candidate_section_page_start_v1.json`, le présent rapport — et
+**`grc20-properties-registry-v1.json`**, régénéré parce que le nouveau script
+change le `readBy` de plusieurs clés d'attributs.
+
+Sur ce dernier point, la revue a établi un fait qu'il faut consigner : le
+balayage de `build_properties_registry.py` est **lexical**, et il compte comme
+lecteurs des occurrences qui n'en sont pas. Le script d'audit lit réellement
+quatre clés (`page_start`, `section_key`, `title`, `labelFr`) ; les trois
+autres attribuées sont des **faux positifs** — `pages` vient de l'API pypdf
+(`lecteur.pages`, `self.pages`), `note` et `type` des noms de colonnes du CSV.
+Conséquence mesurable : la clé `pages` (domaine `Reference`, une plage de
+pages **bibliographique**) a basculé `editorial` → `structural` sur la foi d'un
+lecteur qui ne la lit pas. Le registre porte désormais un caveat explicite pour
+`pages` et `note`, sur le modèle de celui qui existait déjà pour `type`. La CI
+reste verte (le registre est régénéré dans le même commit, la discipline tient)
+— mais un invariant qui déclare un lecteur fictif est un invariant un peu moins
+vrai, et cela devait être écrit.

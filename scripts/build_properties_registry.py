@@ -98,6 +98,14 @@ NOTES = {
                "(« Chapitre II / Chapitre III », etc.) restent intouchees.",
     'organisateur': "patch_19 supprime 1 valeur vide ; la cle reste active "
                     "(26 porteurs).",
+    'pages': "Plage de pages bibliographique (domaine Reference). Collision "
+             "lexicale avec l'API pypdf (`lecteur.pages`, `self.pages`) : "
+             "scripts/audit_section_page_start.py est compte comme lecteur "
+             "alors qu'il n'accede jamais a cet attribut. `status` et "
+             "`readBy` surestiment donc son usage reel.",
+    'note': "Collision lexicale avec des noms de colonnes de CSV et des "
+            "variables locales homonymes ; plusieurs entrees de `readBy` "
+            "sont des faux positifs du balayage textuel.",
     'sourcePages': "Source de derivation de `sourcePage` (premier numero de "
                    "page) ; porte en plus les pages multiples.",
 }
