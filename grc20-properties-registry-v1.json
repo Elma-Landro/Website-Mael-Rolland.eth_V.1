@@ -650,8 +650,10 @@
         "TheoreticFramework"
       ],
       "count": 115,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/resolve_entity_names.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -892,7 +894,8 @@
       "readBy": [
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
-        "scripts/make_v100_section_migration.py"
+        "scripts/make_v100_section_migration.py",
+        "scripts/resolve_entity_names.py"
       ],
       "vocabulary": null,
       "derivedFrom": null,
@@ -918,7 +921,8 @@
         "lecteur.html",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
-        "scripts/make_v100_section_migration.py"
+        "scripts/make_v100_section_migration.py",
+        "scripts/resolve_entity_names.py"
       ],
       "vocabulary": null,
       "derivedFrom": null,
@@ -999,7 +1003,8 @@
       "status": "structural",
       "readBy": [
         "scripts/audit_graph.py",
-        "scripts/make_section_creation_patch.py"
+        "scripts/make_section_creation_patch.py",
+        "scripts/resolve_entity_names.py"
       ],
       "vocabulary": null,
       "derivedFrom": null,
@@ -1249,7 +1254,8 @@
       "count": 30,
       "status": "structural",
       "readBy": [
-        "scripts/check_anchoring.py"
+        "scripts/check_anchoring.py",
+        "scripts/resolve_entity_names.py"
       ],
       "vocabulary": null,
       "derivedFrom": null,
@@ -1890,6 +1896,7 @@
         "scripts/generate_corrective_patch_batch3.mjs",
         "scripts/make_v110_apply_bib_and_attribute_patches.py",
         "scripts/make_v97_remove_truncated_broken_relations.py",
+        "scripts/resolve_entity_names.py",
         "scripts/sourcequote-migration/apply.mjs",
         "scripts/sourcequote-migration/resolve.mjs",
         "workshop/scripts/build-export-dry-run.mjs",
@@ -2424,6 +2431,7 @@
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/polish_v105_editorial.py",
+        "scripts/resolve_entity_names.py",
         "workshop/scripts/build-export-dry-run.mjs"
       ],
       "vocabulary": null,
