@@ -374,10 +374,54 @@ de la migration.
 
 ---
 
-## 7. Les cas réservés à l'arbitrage de Maël
+## 7. Les cas réservés à l'arbitrage de Maël — **arbitrages rendus**
 
-Ces cinq questions sont posées en parallèle dans le fil de discussion. Elles
-sont écrites ici **sans réponse** : aucune n'est tranchable par un agent.
+> **Les cinq questions ont été posées dans le fil de discussion et tranchées
+> par Maël Rolland le 2026-08-08 : P1 (a), P2 (a), P3 (b), P4 (a), P5 (a).**
+> Chaque verdict est reporté sous sa question, cité fidèlement. Le CSV n'est
+> **pas** retouché pour autant : il reste la sortie de la mesure, et une
+> validation d'auteur n'est pas une mesure — `conclu_boucs` y garde donc le
+> statut `ambigu` que l'appariement automatique produit, la validation vivant
+> ici. (Vérifié : `--check` ne signale pas les cas `ambigu`, seulement les 16
+> divergences ; la validation ne laisse donc aucun signal résiduel en CI.)
+>
+> **Principe général posé par l'auteur en rendant ces arbitrages**, et qui
+> commande la lecture de tout ce rapport : « La réparation `page_start` ne
+> doit pas être présentée comme suffisante indépendamment de mes arbitrages
+> SourceQuote précédents. Si une correction `page_start` rend une citation
+> incohérente sauf en appliquant mon arbitrage Q1 (a), alors cette dépendance
+> doit être inscrite explicitement. Le patch `page_start` peut être
+> mécaniquement juste, mais il ne dégèle pas seul les 41 SourceQuote. » Cette
+> dépendance est inscrite au § 6.
+
+**Verdicts, dans l'ordre :**
+
+- **P1 (a)** — « Valider le rapprochement `conclu_boucs` : `page_start` 338 est
+  juste. Ne pas renommer le titre dans ce chantier. Le renommage éventuel du
+  nœud appartient à un chantier séparé. » → aucune correction requise ; le
+  nœud sort du périmètre de réparation.
+- **P2 (a)** — « Garder la correction de `I.2.2.b` dans le patch et consigner
+  `3ce505bc` comme dette d'identité / reliquat de migration. La page 106 est
+  démontrée ; le doublon ne doit pas bloquer la réparation d'une valeur
+  fausse. » → l'op reste au patch ; `3ce505bc` rejoint les dettes renvoyées.
+- **P3 (b)** — « Consigner l'erratum de la thèse : le texte imprime deux fois
+  `I.2.1`, mais le graphe ne doit pas importer ce doublon de numérotation. La
+  page est juste ; la numérotation imprimée fautive est documentée sans
+  action. » → erratum consigné, clé `I.2.2` conservée.
+- **P4 (a)** — « Ne pas remplir les 48 sections sans `page_start` dans ce
+  chantier. Ici on répare ce qui est faux ; on ne mélange pas réparation et
+  complétion. Les 39 pages prouvées peuvent faire l'objet d'un chantier
+  distinct. » → les 49 `skipped` du patch restent tels quels.
+- **P5 (a)** — dégel **op par op** après application future, aux trois
+  conditions posées par l'auteur : la section cible a une page vérifiée ou ne
+  présente aucune contradiction détectée ; les arbitrages Q1-Q8 sont inscrits ;
+  les coupes, coquilles, doublons et mauvais rattachements sont traités
+  conformément aux arbitrages déjà rendus. « Le patch `page_start` ne dégèle
+  pas automatiquement les 41 ops. Il lève seulement la contradiction
+  structurelle qui empêchait d'avancer. »
+
+Les cinq questions sont conservées ci-dessous dans leur formulation d'origine,
+pour que l'on puisse juger sur quoi chaque verdict a porté.
 
 **(a) `conclu_boucs` — le seul `ambigu`.** Le nœud `d9f534f9` déclare
 `page_start` 338. Aucun titre imprimé ne correspond exactement à son libellé :
