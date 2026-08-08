@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "source_graph": "grc20-these-mael-rolland-v110.json",
+    "source_graph": "grc20-these-mael-rolland-v111.json",
     "date": "2026-08-07",
     "generated_by": "scripts/build_properties_registry.py",
     "id_scheme": "md5('grc20-property-v1|' + key), 32 hexa minuscules",
@@ -557,6 +557,7 @@
         "scripts/make_v108_realign_relation_section_keys.py",
         "scripts/make_v109_realign_anchoring_charges.py",
         "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v111_apply_section_page_start_patch.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/match_chronology_events.py"
@@ -722,6 +723,7 @@
         "scripts/make_v108_realign_relation_section_keys.py",
         "scripts/make_v109_realign_anchoring_charges.py",
         "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v111_apply_section_page_start_patch.py",
         "scripts/make_v97_remove_truncated_broken_relations.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
@@ -849,6 +851,7 @@
         "scripts/make_v107_wire_chapter_I_tree.py",
         "scripts/make_v108_realign_relation_section_keys.py",
         "scripts/make_v109_realign_anchoring_charges.py",
+        "scripts/make_v111_apply_section_page_start_patch.py",
         "scripts/plan_section_migration.py",
         "scripts/remap_section_keys.py",
         "scripts/sourcequote-migration/apply.mjs",
@@ -1217,7 +1220,8 @@
       "readBy": [
         "lecteur.html",
         "scripts/audit_section_page_start.py",
-        "scripts/make_section_creation_patch.py"
+        "scripts/make_section_creation_patch.py",
+        "scripts/make_v111_apply_section_page_start_patch.py"
       ],
       "vocabulary": null,
       "derivedFrom": null,
@@ -1900,6 +1904,7 @@
         "scripts/check_graph_integrity.py",
         "scripts/generate_corrective_patch_batch3.mjs",
         "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v111_apply_section_page_start_patch.py",
         "scripts/make_v97_remove_truncated_broken_relations.py",
         "scripts/resolve_entity_names.py",
         "scripts/sourcequote-migration/apply.mjs",
@@ -2433,6 +2438,7 @@
         "scripts/make_v108_realign_relation_section_keys.py",
         "scripts/make_v109_realign_anchoring_charges.py",
         "scripts/make_v110_apply_bib_and_attribute_patches.py",
+        "scripts/make_v111_apply_section_page_start_patch.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/polish_v105_editorial.py",
