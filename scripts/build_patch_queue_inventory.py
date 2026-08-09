@@ -174,12 +174,19 @@ def effet_realise(op, par_id, types_par_nom, relations=None):
     if t == 'ADD_RELATION(implicite)' and relations is not None:
         src = op.get('from') or op.get('from_entity') or op.get('from_entity_id')
         dst = op.get('to') or op.get('to_entity') or op.get('to_entity_id')
-        typ = op.get('type') or op.get('relation_type')
+        # `relation_type` D'ABORD : ce dialecte porte `type: "ADD_RELATION"`
+        # (le type d'OPERATION) ET `relation_type: "appears_in_section"` (le
+        # type de RELATION). Prendre `type` en premier resolvait vers None et
+        # declarait 11 884 ops non realisees alors que 6 246 le sont.
+        typ = op.get('relation_type') or op.get('type')
+        if typ in OPS_CONNUES:
+            typ = None
         if not (src and dst):
             return None
         # Le type peut etre un identifiant OU un nom de relation ; on accepte
         # les deux, et on se rabat sur (source, cible) quand il est absent.
-        cles = {(src, dst, typ), (src, dst, types_par_nom.get(typ))}
+        cles = {(src, dst, typ), (src, dst, types_par_nom.get(typ)),
+                (src, dst, types_par_nom.get(str(typ).replace('_', ' ')))}
         if any(c in relations for c in cles):
             return True
         return (src, dst) in {(a, b) for a, b, _ in relations} if typ is None \
@@ -232,6 +239,10 @@ def effet_realise(op, par_id, types_par_nom, relations=None):
 
 
 def statut_de(chemin, doc, ops, par_id, types_par_nom, courant, relations):
+    # Chemin RELATIF : interpoler `courant` brut gravait le chemin absolu de
+    # la machine dans 21 des 30 lignes, rendant `--check` rouge partout
+    # ailleurs — donc impossible a cabler en CI, et un chemin local versionne.
+    courant = os.path.relpath(courant, REPO)
     """-> (statut, preuve, geste, compteurs). Le statut vient du graphe."""
     lisibles = deja = absentes = 0
     for op in ops:
@@ -319,9 +330,13 @@ def construire(courant):
     types_par_nom.update({t['name']: t['id'] for t in g['relation_types']})
     relations = {(r['from'], r['to'], r['type']) for r in g['relations']}
 
-    chemins = sorted(glob.glob(os.path.join(REPO, 'patch*.json')))
-    chemins += sorted(glob.glob(os.path.join(REPO, 'patches', '**', '*.json'),
-                                recursive=True))
+    # Le glob `patch*.json` ratait `new_relations_patch.json` — 3 Mo, 11 884 ops,
+    # le plus gros artefact du depot, nomme dans CLAUDE.md — parce que son nom
+    # ne COMMENCE pas par « patch ». Un inventaire qui se dit exhaustif ne peut
+    # pas dependre d'une convention de nommage que les fichiers ne suivent pas.
+    chemins = sorted(set(
+        glob.glob(os.path.join(REPO, '*patch*.json'))
+        + glob.glob(os.path.join(REPO, 'patches', '**', '*.json'), recursive=True)))
     lignes = []
     for chemin in chemins:
         rel = os.path.relpath(chemin, REPO)

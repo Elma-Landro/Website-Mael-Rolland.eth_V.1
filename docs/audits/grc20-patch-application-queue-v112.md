@@ -112,6 +112,13 @@ Posés dans le fil de discussion le 2026-08-09, et reportés ici pour que ce doc
 - **Il ne tranche pas les sept `indetermine`.** Un statut non établi est écrit comme tel, avec ce qui manque pour l'établir.
 - **Il ne relance pas SourceQuote.** Aucun zip de `Migration/` n'est ouvert ; ils ne contiennent pas de patch au format du dépôt et leur vérification (41 ops) est déjà instruite ailleurs, gelée sur arbitrage.
 
-## 6. Limite connue
+## 6. Corrections apportées après revue hostile
+
+- **Le périmètre annoncé était faux.** Le glob `patch*.json` ratait `new_relations_patch.json` — **3 Mo, 11 884 ops**, le plus gros artefact du dépôt, nommé dans CLAUDE.md — parce que son nom ne *commence* pas par « patch ». Le glob est désormais `*patch*.json`, et la file compte **31 artefacts**, non 30.
+- **Et l'avoir raté masquait un défaut de lecture.** Ce fichier porte `type: "ADD_RELATION"` **et** `relation_type: "appears_in_section"` : le code prenait le type d'*opération* pour le type de *relation*, résolvait vers `None`, et aurait déclaré **0 op réalisée sur 11 884** — un lot intégré depuis v72 présenté comme candidat. Après correction : **6 246 réalisées**, statut `indetermine` (état mixte), geste « instruire op par op ». Le chiffre a été retrouvé indépendamment par la revue.
+- **Le CSV portait le chemin absolu de la machine** dans 21 de ses 30 lignes, ce qui rendait `--check` rouge sur toute autre machine — donc impossible à câbler en CI, et un chemin local versionné. La preuve est désormais relative au dépôt.
+- **`already_applied` sur-promet sur quatre lignes** : le statut est calculé sur les ops *lisibles*. `patch_2b_central_arguments.json` est ainsi classé `already_applied` alors que **7 de ses cibles n'existent plus**. La colonne `ops_cibles_absentes` porte l'information et la `preuve` dit « op(s) lisibles » — l'honnêteté est dans les colonnes, l'excès dans le mot. Un lecteur qui trie sur `statut` ne verra pas les 7.
+
+## 7. Limite connue
 
 Le script lit les six dialectes du dépôt par heuristique déclarée. Sur les artefacts sans champ de type et sans cible résoluble, il **refuse de conclure** plutôt que de deviner : c'est pourquoi deux fichiers restent à 0 op lisible. `--check` garantit que le CSV versé est bien la sortie du script sur le graphe courant ; il ne garantit pas que l'heuristique soit complète.

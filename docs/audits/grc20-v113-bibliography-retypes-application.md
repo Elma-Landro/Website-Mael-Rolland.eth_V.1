@@ -92,7 +92,7 @@ Restent également intouchés : SourceQuote, l'identité BitcoinTalk, Mining poo
 
 ## 5. Effet de bord mesuré sur la file de patchs
 
-Le CSV de file se régénère sur le graphe courant. Après v113, **un seul statut change** : `patch_candidate_bibliographie_retypes_v1.json` passe de `stale_source_graph_but_preconditions_intact` à `already_applied` (21 au lieu de 20). C'est l'effet attendu, et c'est aussi la preuve que la file se tient à jour toute seule.
+Le CSV de file se régénère sur le graphe courant. Après v113, **un seul statut change** : `patch_candidate_bibliographie_retypes_v1.json` passe de `stale_source_graph_but_preconditions_intact` à `already_applied` (21 au lieu de 20). C'est l'effet attendu. **Mais la file ne se tient pas à jour toute seule** : `build_patch_queue_inventory.py --check` **n'est pas dans les 8 étapes de la CI**, et rien ne s'apercevrait qu'elle est périmée. Il faut la régénérer à la main après chaque version.
 
 Le fichier a été renommé `patch-application-queue-v113.csv` : son nom suit désormais le graphe de référence. Un CSV nommé v112 décrivant v113 aurait menti en silence — c'est le piège déjà constaté sur `audit_chronology_dates.py`.
 
@@ -100,4 +100,6 @@ Le fichier a été renommé `patch-application-queue-v113.csv` : son nom suit d�
 
 ## 6. Limite connue
 
-**Aucune vérification navigateur.** `graphe.html` et `lecteur.html` sont modifiés — uniquement sur le pointeur de version. `node_modules` est absent, les CDN sont bloqués, `playwright install` est interdit par la charte. Remplacement : `node --check` sur les quatre `.mjs`, diff runtime inspecté et borné aux pointeurs, six validations de graphe vertes. Même exception que v112, acceptée par l'auteur à condition d'être énoncée.
+**Aucune vérification navigateur — et l'exception coûte plus cher ici qu'en v112.** Le *diff de fichiers* est borné aux pointeurs de version ; **le comportement ne l'est pas**. La revue hostile a mesuré que le retypage `Reference → Person` traverse quatre filtres par type : `NEBULA_LEAF_TYPES` (les six cessent d'être des points-feuilles périphériques), `REF_TYPES`/`getDepth` (bande « Références » → bande « Entités sémantiques »), la couleur/forme/taille, et `GRAPH_SKIP_TYPES` de `lecteur.html` (les six deviennent éligibles comme voisins à un saut — au plus six nœuds nouveaux, chacun tiré par sa seule référence). **Dire « borné aux pointeurs » était donc vrai du diff et faux de l'écran.**
+
+Deux constats de la revue à porter au dossier, tous deux vérifiés : la colonne d'affichage **ne change pas** — le défaut `embedded_persons ? 5 : 7` maintient les six en colonne 7, aucune n'ayant de voisin empirique — mais `V3_PERSON_COL`, la table de rattrapage écrite lors du retypage v110, **n'a pas été étendue** à ces six noms : une seule relation future vers un `Protocol` ou une `Institution` ferait basculer Jacques Favier en colonne « Acteurs ». Et `narrative-anchors.json` régénéré sur v112 et v113 est **identique feuille pour feuille**. `node_modules` est absent, les CDN sont bloqués, `playwright install` est interdit par la charte. Remplacement : `node --check` sur les quatre `.mjs`, diff runtime inspecté et borné aux pointeurs, six validations de graphe vertes. Même exception que v112, acceptée par l'auteur à condition d'être énoncée.
