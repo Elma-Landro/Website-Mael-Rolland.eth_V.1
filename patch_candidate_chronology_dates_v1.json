@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "patch_id": "candidate-chronology-dates-v1",
+    "source_graph": "grc20-these-mael-rolland-v111.json",
+    "generated": "2026-08-09",
+    "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Les deux operations ci-dessous portent sur des points DEJA arbitres par Maël Rolland le 2026-08-09 (reponses 2 et 3 du chantier chronologie) ET adosses a une source primaire. Le patch reste neanmoins candidat : il n'est applique par aucun script, et son application relevera d'un `scripts/make_vNNN_*.py` dedie, decide separement. Aucune autre correction de date du chantier n'est incluse — voir `skipped`.",
+    "description": "2 corrections de l'attribut `date`, chacune arbitree et adossee a une source primaire. (1) `ca278d21` CVE-2014-0160 Heartbleed : `04/07/2014` -> `2014-04-07`. La valeur est la seule du graphe a se lire MM/JJ, contre 26 valeurs decidables sur 26 en JJ/MM (docs/audits/data/chronology-date-inventory-v111.csv). Arbitrage rendu : cellule fausse de la figure « Chronologie n°4 », et non seconde convention. (2) `0d81bba0` BitcoinTalk : `2010-11-22` -> `2009-11-22`, coquille d'annee. ATTENTION : ce patch ne traite QUE les dates. Il n'annote aucun doublon et n'assigne aucun `duplicateOf` — voir `skipped`. NOTE POUR L'APPLICATEUR : les deux valeurs `date` visees portent aujourd'hui une cle `options.language` (`fr` pour ca278d21, `en` pour 0d81bba0), semantiquement vide sur une date. Le dialecte du depot n'exprime que `{type, value}` : l'applicateur devra decider explicitement s'il preserve ou retire ces `options`. Ce patch ne tranche pas ce point et le signale plutot que de le decider en silence.",
+    "audit": "docs/audits/grc20-chronology-dates-references-lab-v1.md",
+    "evidence": [
+      "docs/audits/data/chronology-external-verification-v111.csv",
+      "docs/audits/data/chronology-date-inventory-v111.csv",
+      "docs/audits/data/chronology-event-identity-debt-v111.csv"
+    ],
+    "author": "mael-rolland.eth",
+    "op_count": 2,
+    "entities_touched": 2,
+    "skipped_count": 5,
+    "skipped": [
+      {
+        "reason": "Les 28 valeurs `NN/NN/AAAA` ambigues : la convention JJ/MM est confirmee par l'auteur (reponse 1), mais confirmer une LECTURE n'est pas decider d'une REECRITURE. Aucune de ces 28 valeurs n'est fausse sous JJ/MM ; les normaliser en ISO serait un changement de format non arbitre. Laissees telles quelles, convention desormais documentee dans l'audit et dans docs/audits/data/README.md."
+      },
+      {
+        "reason": "L'annotation du doublon BitcoinTalk (`duplicateOf` / `reviewStatus` sur `0d81bba0` vers `06ac37fc`) : ecartee deliberement. L'auteur a demande une dette documentee, PAS une fusion automatique (reponse 3). Surtout, assigner `duplicateOf` designerait une canonique — or `0d81bba0` a un degre de 24 et `06ac37fc` un degre de 22 : la fiche a l'annee fausse est la MIEUX reliee. C'est exactement le piege C5 (constat de grc20-dedup-events-audit-v1.md), et c'est le motif pour lequel l'auteur refuse par ailleurs la fusion Mining pools (reponse 5). La canonicite reste a arbitrer."
+      },
+      {
+        "reason": "La separation de `120e6fa2` en deux fiches (perte wallet.dat 2010-08-10 / vol Allinvain juin 2011), arbitree favorablement (reponse 8) : aucune op emise. Le contrat des patchs candidats interdit de pre-assigner un `entityId` sur `CREATE_ENTITY`, et aucun applicateur du depot ne consomme ce type d'op. La specification des deux fiches est portee par l'audit, § 8 point 11."
+      },
+      {
+        "reason": "Les 7 cas `two_distinct_events_possible` : le principe de dedoublement est arbitre (reponse 7), mais l'auteur a conditionne chaque cas a une preuve fine (proposition/activation, annonce/mise en service...). Cette preuve n'a pas pu etre reunie — les domaines qui la porteraient sont bloques par le proxy. Documenter sans op."
+      },
+      {
+        "reason": "La date de l'attaque The DAO : reste `non_verifie`. Elle est connue de memoire et le reseau ne permet pas de la sourcer. Instruction expresse de l'auteur : ne pas corriger depuis la memoire."
+      }
+    ]
+  },
+  "ops": [
+    {
+      "_comment": "ca278d21 CVE-2014-0160 Heartbleed — `date` 04/07/2014 -> 2014-04-07. PREUVE PRIMAIRE : l'alerte versionnee bitcoin-dot-org/Bitcoin.org `_alerts/2014-04-11-heartbleed.html` porte en front-matter `date: 2014-04-11` et « This notice last updated: Fri, 11 Apr 2014 » ; une reponse ne peut pas preceder de trois mois un evenement du 4 juillet 2014. La divulgation publique de Heartbleed est du 7 avril 2014. PREUVE DE CONVENTION : sur les 54 valeurs a barres du graphe, 26 sont decidables sans convention (un groupe > 12) et donnent JJ/MM 26 / MM/JJ 0 ; cette valeur est la seule exception. CAUSE ARBITREE PAR L'AUTEUR (reponse 2) : cellule fausse de la figure « Chronologie n°4 » (crise n°25), et non seconde convention de format. La valeur cible est ecrite en ISO pour lever l'ambiguite a la source.",
+      "type": "SET_ATTRIBUTE",
+      "entityId": "ca278d213d804294a2c5a672d52808e4",
+      "attributeId": "date",
+      "value": {
+        "type": "TEXT",
+        "value": "2014-04-07"
+      }
+    },
+    {
+      "_comment": "0d81bba0 InfrastructureEvent — BitcoinTalk forum created — `date` 2010-11-22 -> 2009-11-22, coquille d'annee (meme jour, meme mois, un an d'ecart). PREUVE PRIMAIRE : l'archive Nakamoto (lugaxker/nakamoto-archive, `doc/bitcoin-forum/0005-00028.md`) porte « Date: November 22, 2009, 06:04:28 PM », auteur « satoshi », fil « Welcome to the new Bitcoin forum! » ; le README de la meme archive date le corpus « 2009-11-22 ». PREUVE INTERNE : l'attribut `description` de CETTE fiche dit « Forum Bitcoin cree par Satoshi Nakamoto en novembre 2009 » — la fiche se contredit elle-meme. RESERVE DECLAREE : les trois URL viennent d'un meme depot d'archive, donc non independantes. CORROBORATION : la fiche `06ac37fc` porte deja 2009-11-22 pour le meme fait. NE PAS EN DEDUIRE UNE FUSION : voir `skipped`, la fiche corrigee ici est la mieux reliee des deux (degre 24 contre 22).",
+      "type": "SET_ATTRIBUTE",
+      "entityId": "0d81bba0461d49a5af8997a20663d630",
+      "attributeId": "date",
+      "value": {
+        "type": "TEXT",
+        "value": "2009-11-22"
+      }
+    }
+  ]
+}

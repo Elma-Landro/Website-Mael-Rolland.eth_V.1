@@ -4,7 +4,9 @@
 **Graphe audité** : `grc20-these-mael-rolland-v111.json` (2 293 entités, 20 207 relations)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mode agent** : audit documentaire — **aucun graphe modifié, aucune v112, aucun patch appliqué, aucune fusion, aucun retypage, aucun runtime touché**
-**Mécanisme rejouable** : `scripts/audit_chronology_dates.py` (`--csv`, `--check`)
+**Mécanismes rejouables** : `scripts/audit_chronology_dates.py` (`--csv`, `--check`) et `scripts/classify_date_evidence.py` (`--write`, `--check`). **Les trois autres CSV sont construits à la main et ne sont pas rejouables** — voir § 10.
+**Patch candidat** : `patch_candidate_chronology_dates_v1.json` — 2 ops, **NON APPLIQUÉ**
+**Arbitrages de l'auteur** : rendus le 2026-08-09, reportés au § 7 bis
 
 **Données probantes** (à lire *avec* cet audit, jamais seules) :
 
@@ -14,9 +16,10 @@
 | `data/chronology-thesis-crosscheck-v111.csv` | recoupement de 260 dates avec le texte de la thèse |
 | `data/chronology-external-verification-v111.csv` | vérification externe ciblée de 40 dates |
 | `data/chronology-event-identity-debt-v111.csv` | 50 paires événementielles instruites |
-| `data/chronology-reference-support-v111.csv` | adossement probatoire, 608 lignes |
+| `data/chronology-reference-support-v111.csv` | adossement probatoire, 608 lignes, + 3 colonnes de régime de preuve (arbitrage 10) |
+| `patch_candidate_chronology_dates_v1.json` | 2 corrections de `date`, **candidat, non appliqué** |
 
-> Rappel de la charte (`agents/README.md`) : **un agent est un rôle de travail, pas une autorité scientifique.** Rien n'est tranché ici. Les questions posées au § 8 attendent l'arbitrage de Maël Rolland.
+> Rappel de la charte (`agents/README.md`) : **un agent est un rôle de travail, pas une autorité scientifique.** Aucune décision scientifique n'est prise par l'agent. Les onze questions ★ du § 8 ont été posées à Maël Rolland et **ont toutes reçu réponse le 2026-08-09** (§ 7 bis) ; les points non marqués ★ restent ouverts.
 
 ---
 
@@ -28,7 +31,7 @@ Il a cherché à répondre à trois questions distinctes, souvent confondues :
 2. **D'où viennent-elles ?** — adossement probatoire. *Une date sourcée n'est pas une date juste.*
 3. **Sont-elles justes ?** — recoupement avec la thèse, puis vérification externe.
 
-Il n'a **pas** cherché à réparer. Aucun patch candidat n'est émis, et le § 7 explique pourquoi c'eût été prématuré.
+Il n'a **pas** cherché à réparer de sa propre autorité. Un seul patch candidat est émis — **2 opérations, non appliqué** — et uniquement sur les deux points qui réunissent les deux conditions posées par l'auteur : *arbitrage rendu* **et** *preuve forte*. Le § 7 explique ce qui a été écarté, et pourquoi.
 
 ---
 
@@ -192,6 +195,54 @@ Trois raisons, dans l'ordre de force :
 3. **La charte réserve à l'auteur** les fusions, créations, retypages et tout ce qui engrave une affirmation sur une personne.
 
 Ce que le chantier livre à la place : cinq relevés, un mécanisme rejouable, et des questions posées au point où seule une décision reste.
+
+---
+
+## 7 bis. Arbitrages rendus par Maël Rolland — 2026-08-09
+
+Les onze questions du § 8 marquées ★ ont été posées et **toutes ont reçu réponse**. Elles sont reportées ici *avant* la liste des points ouverts, parce qu'elles en referment une partie et en requalifient le reste. Les points du § 8 restent écrits tels quels : un point ouvert arbitré n'est pas effacé, il est daté.
+
+| # | Question | Arbitrage | Effet dans ce chantier |
+|---|---|---|---|
+| 1 | Convention des 28 `NN/NN/AAAA` ambiguës | **JJ/MM confirmé** | Documenté. **Aucune réécriture** : confirmer une lecture n'est pas décider d'une normalisation |
+| 2 | Heartbleed `ca278d21` | **Cellule fausse**, corriger vers `2014-04-07` ; ne pas préserver l'idée d'une seconde convention | **Op 1 du patch candidat** |
+| 3 | BitcoinTalk `0d81bba0` | Coquille d'année **oui**, fusion probable, mais **pas de fusion automatique ici** — décision candidate + dette documentée | **Op 2 du patch candidat** (date seule). Aucun `duplicateOf` émis |
+| 4 | Les 4 paires des deux chronologies | **Lot accepté**, à condition que chaque paire reste listée et justifiée individuellement ; pas de fusion silencieuse par appartenance au lot | Les 4 paires restent une ligne chacune dans le CSV d'identité |
+| 5 | Les 3 fiches `duplicate-pending-merge` | **Ne pas fusionner.** La grappe réelle compte cinq fiches, la canonique est la moins reliée | Dette conservée, contradiction canonique/degré documentée, renvoi au chantier identité |
+| 6 | Selgin | **Fiches distinctes pour l'instant** ; aucun des trois appariements n'est gravé | Les trois hypothèses consignées comme dette |
+| 7 | Les 7 `two_distinct_events_possible` | **Dédoubler en principe**, au cas par cas selon preuve fine — mais **documenter seulement ici** | Aucune op ; preuve fine hors d'atteinte (réseau) |
+| 8 | `120e6fa2` Allinvain / wallet.dat | **Séparer en deux fiches candidates** | Spécifié au § 8 point 11 ; **aucune op** — le contrat interdit `CREATE_ENTITY` avec `entityId` pré-assigné |
+| 9 | Les 237 doubles descriptions | **Chantier de résorption, mais séparé** | Hors de ce chantier. Priorité fixée : inventaire, typologie, politique de choix, puis arbitrage |
+| 10 | Les 86 dates sans source déclarée | **Exiger un `dateSource`** pour les dates prétendant à une autorité, en distinguant quatre régimes de preuve | **Implémenté** — voir ci-dessous |
+| 11 | Figures et chronologie des HF | **Verser les sources**, ou marquer les dates comme insuffisamment sourcées | Point ouvert, hors périmètre d'un audit |
+
+### Ce que l'arbitrage 10 a produit
+
+`scripts/classify_date_evidence.py` classe les 239 dates événementielles selon les quatre régimes demandés et écrit trois colonnes dans le CSV d'adossement (`regime_de_preuve`, `confirme_par_these`, `motif_regime`). Il porte `--check` pour la CI.
+
+| Régime | n |
+|---|---:|
+| `source_primaire` | 4 |
+| `these_verbatim` | 90 |
+| `approximatif` | 35 |
+| `infere` | 110 |
+
+**92 dates au total sont confirmées par la thèse** (dont 2 qui relèvent d'un régime supérieur) ; **26 d'entre elles sont dans les 86 `non_adosse`** — non déclarées, mais pas sans fondement.
+
+Deux choix de méthode sont déclarés dans le script plutôt que cachés :
+
+- **La précédence** `source_primaire > these_verbatim > approximatif > infere` est un choix, non une évidence : une source externe l'emporte parce qu'elle est vérifiable par un tiers. Mais l'arbitrage exige que le statut « confirmé par la thèse » reste visible même quand il n'est pas retenu — d'où la colonne `confirme_par_these`, qui ne disparaît jamais derrière la précédence.
+- **`these_verbatim` est explicitement provisoire.** La thèse est ici juge et partie, et ce chantier a montré qu'elle se contredit parfois elle-même (§ 5). Le champ `motif_regime` le dit sur chaque ligne concernée.
+
+`infere` **n'est pas un reproche** : c'est l'aveu qu'on ne sait pas d'où vient la date. Et un régime ne dit rien de la véracité — une date `these_verbatim` peut être fausse ; Frontier, Bitcoin-QT et le split de chaîne le sont probablement.
+
+### Défaut d'interopérabilité corrigé au passage
+
+`chronology-external-verification-v111.csv` portait des `entity_id` **tronqués à 8 caractères**, là où les quatre autres CSV portent l'identifiant complet. La jointure retournait silencieusement zéro — c'est ce qui a fait afficher `source_primaire = 0` au premier essai. Les 40 préfixes ont été vérifiés comme résolvant chacun vers **exactement une** entité (et le graphe entier ne compte aucune collision de préfixe à 8 caractères) avant remplacement par la forme complète. Un identifiant tronqué dans une donnée probante est un piège : il casse les jointures sans erreur.
+
+### Ce qui n'a délibérément pas été produit
+
+Le patch candidat `patch_candidate_chronology_dates_v1.json` ne porte que **2 opérations**, et son bloc `skipped` motive cinq abstentions. La plus importante : **aucun `duplicateOf` n'est émis pour BitcoinTalk.** Assigner cet attribut désignerait une canonique, or `0d81bba0` — la fiche à l'année fausse — a un **degré de 24** contre **22** pour `06ac37fc`. C'est le piège C5, et c'est le motif même pour lequel l'arbitrage 5 refuse la fusion Mining pools. Corriger une date n'autorise pas à trancher une identité.
 
 ---
 

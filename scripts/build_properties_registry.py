@@ -119,6 +119,10 @@ NOTES = {
 EXCLUSIONS_READ_BY = {
     'pages': {'scripts/audit_section_page_start.py'},
     'note': {'scripts/audit_section_page_start.py'},
+    # classify_date_evidence.py ne lit jamais `dateSource` : il joint des CSV
+    # entre eux. La chaine n'apparait que dans sa docstring, ou elle enonce
+    # l'arbitrage qui a motive le script. Verifie : occurrence unique, l.5.
+    'dateSource': {'scripts/classify_date_evidence.py'},
 }
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
