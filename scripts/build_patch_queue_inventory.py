@@ -92,6 +92,19 @@ FAMILLES = (
 )
 
 # Conteneurs d'operations rencontres dans les six dialectes du depot.
+# Fichiers que le glob attrape MAIS qui ne sont pas des patchs. Liste
+# explicite, jamais un retrecissement du glob : le retrecir avait deja fait
+# perdre `new_relations_patch.json` (11 884 ops).
+#
+# `patch-application-ledger.json` est le registre des applications produit par
+# `build_patch_application_ledger.py`. Sans cette exclusion, l'inventaire de la
+# file lit la sortie de son propre outillage et la compte comme un 32e patch,
+# classe `indetermine` faute d'ops lisibles — c'est-a-dire qu'il prescrit
+# « a instruire a la main, jamais a rejouer par defaut » a la comptabilite du
+# depot. C'est exactement la question 1 de la revue hostile (« ce script
+# lit-il sa propre sortie ? »), et elle etait realisee ici.
+NON_PATCHS = frozenset({'patch-application-ledger.json'})
+
 CONTENEURS = ('ops', 'operations', 'relations', 'new_relations',
               'new_entities', 'rewire_relations', 'update_entities',
               # Dialecte ad hoc de patches/archive/grc20_anchor_overrides :
@@ -369,9 +382,12 @@ def construire(courant):
     # le plus gros artefact du depot, nomme dans CLAUDE.md — parce que son nom
     # ne COMMENCE pas par « patch ». Un inventaire qui se dit exhaustif ne peut
     # pas dependre d'une convention de nommage que les fichiers ne suivent pas.
-    chemins = sorted(set(
-        glob.glob(os.path.join(REPO, '*patch*.json'))
-        + glob.glob(os.path.join(REPO, 'patches', '**', '*.json'), recursive=True)))
+    chemins = sorted(
+        c for c in set(
+            glob.glob(os.path.join(REPO, '*patch*.json'))
+            + glob.glob(os.path.join(REPO, 'patches', '**', '*.json'),
+                        recursive=True))
+        if os.path.relpath(c, REPO) not in NON_PATCHS)
     lignes = []
     for chemin in chemins:
         rel = os.path.relpath(chemin, REPO)

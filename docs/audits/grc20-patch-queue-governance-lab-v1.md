@@ -5,7 +5,7 @@
 **Mécanisme rejouable** : `scripts/build_patch_queue_governance.py` (`--csv`, `--check`)
 **Données probantes** : `docs/audits/data/patch-queue-governance-cases-current.csv` — 31 artefacts
 **Ledger** : `patch-application-ledger.json` — mémoire d'application, 3 entrées
-**Arbitrages** : Maël Rolland, 2026-08-09, questions 1 à 8 — **tous rendus**, § 7
+**Arbitrages** : Maël Rolland, 2026-08-09, questions 1 à 8 — **tous rendus**, § 5
 **Brouillon de politique** : `docs/audits/patch-queue-lifecycle-policy-draft.md` — **non appliqué**
 
 **Aucun graphe modifié. Aucune v114. Aucun patch appliqué. Aucun nœud, aucune fusion, aucune relation, aucun retypage, aucune SourceQuote, aucun runtime touché. C03 n'est pas modifié.**
@@ -16,15 +16,20 @@
 
 **Sur 31 artefacts de patch, deux restent applicables.**
 
-> **Corrigé après revue hostile.** Ce paragraphe annonçait « un seul ». La revue a montré que `patches/archive/grc20_anchor_overrides_targeted.json` était classé `archive_historical` — « lot intégré » — alors qu'il est appliqué à **0/10** : son dialecte `safe_fix` / `proposed_review` n'était pas dans la table des conteneurs, l'outil lisait 0 op et retombait sur un défaut. Mesure de contrôle : l'attribut `primaryChapter` que ce patch pose a **0 porteur** sur les 2 293 entités de v113. Le dialecte est désormais lu, et le statut est `candidate_active`. C'était l'inverse exact de la vérité, et le mot « prudent » que le § 6 employait était faux : sur quatre statuts, `archive_historical` est le **moins** conservateur.
+> **Corrigé après revue hostile.** Ce paragraphe annonçait « un seul ». La revue a montré que `patches/archive/grc20_anchor_overrides_targeted.json` était classé `archive_historical` — « lot intégré » — alors qu'il est appliqué à **0/10** : son dialecte `safe_fix` / `proposed_review` n'était pas dans la table des conteneurs, l'outil lisait 0 op et retombait sur un défaut. Mesure de contrôle : l'attribut `primaryChapter` que ce patch pose a **0 porteur** sur les 2 293 entités de v113. Le dialecte est désormais lu, l'artefact se mesure à `still_candidate`, et l'arbitrage 7 le classe **`blocked_author_arbitration`** — techniquement applicable, scientifiquement non instruit. C'était l'inverse exact de la vérité, et le mot « prudent » alors employé pour `archive_historical` était faux : sur les statuts possibles, c'est le **moins** conservateur, puisqu'il autorise à ne plus rien instruire.
 
-| Statut de gouvernance proposé | n | Rejouable ? |
-|---|---:|---|
-| `archive_historical` | 18 | non — lot intégré, rejeu sans effet |
-| `archive_partial` | 7 | **non — un rejeu écrirait à côté** |
-| `candidate_applied` | 3 | non — appliqué par v111, v112, v113 |
-| `blocked_missing_applicator` | 1 | non — aucun applicateur ne lit `CREATE_ENTITY` |
-| **`candidate_active`** | **2** | **oui** |
+La colonne **« proposé »** est le diagnostic tel qu'il a été soumis à l'auteur ; la colonne **« après arbitrage 7 »** est ce que le CSV versé porte aujourd'hui (`patch-queue-governance-cases-current.csv`, régénérable par `--csv`, vérifiable par `--check`). Les deux sont montrées parce que l'arbitrage a déplacé deux lignes, et qu'un audit qui n'afficherait que le résultat effacerait ce qui a été décidé.
+
+| Statut de gouvernance | proposé | après arbitrage 7 | Rejouable ? |
+|---|---:|---:|---|
+| `archive_historical` | 18 | **17** | non — lot intégré, rejeu sans effet |
+| `archive_partial` | 7 | 7 | **non — un rejeu écrirait à côté** |
+| `candidate_applied` | 3 | 3 | non — appliqué par v111, v112, v113 |
+| `blocked_missing_applicator` | 1 | 1 | non — aucun applicateur ne lit `CREATE_ENTITY` |
+| `indetermine` | 0 | **1** | **statut non établi** — l'outil ne lit aucune op |
+| `candidate_active` → **`blocked_author_arbitration`** | **2** | **2** | techniquement **oui**, `ci_candidate` = **non** |
+
+Deux déplacements, tous deux vers plus de prudence : l'artefact à 0 op lisible quitte `archive_historical` pour `indetermine` (§ 7), et les deux candidats actifs deviennent `blocked_author_arbitration` (§ 5). **Après arbitrage, `ci_candidate` vaut `non` sur les 31 lignes.**
 
 Les deux candidats actifs sont `patch_candidate_bibliographie_duplicates_v1.json` (156 ops `duplicateOf`, famille explicitement mise hors périmètre par l'auteur) et `patches/archive/grc20_anchor_overrides_targeted.json` (10 ops, 0 réalisée).
 
@@ -105,7 +110,7 @@ Trois conventions possibles : `-vNNN.csv` pour les deux (état actuel, ambigu) ;
 
 ---
 
-## 7. Arbitrages rendus — 2026-08-09
+## 5. Arbitrages rendus — 2026-08-09
 
 Les huit questions ont reçu réponse. Ce que le chantier a **exécuté** en conséquence :
 
@@ -126,12 +131,28 @@ Les huit questions ont reçu réponse. Ce que le chantier a **exécuté** en con
 
 ---
 
-## 5. Ce que ce chantier ne fait pas
+## 6. Ce que ce chantier ne fait pas
 
 Il **ne modifie pas C03** et n'ajoute aucun `lifecycleStatus` aux patchs existants — l'auteur a renvoyé ce point à un chantier dédié (arbitrage 2). Il ne modifie aucun graphe, ne crée aucune v114, n'applique aucun patch. **Les deux artefacts techniquement applicables ne sont pas appliqués** : ils sont classés `blocked_author_arbitration` et renvoyés à instruction. Le brouillon `patch-queue-lifecycle-policy-draft.md` écrit la politique **telle qu'elle serait si elle était adoptée** ; il n'a aucun effet.
 
-## 6. Limite connue
+## 7. Corrections apportées après revue hostile
 
-La table de gouvernance dérive de l'inventaire : si l'heuristique de dialecte de `build_patch_queue_inventory.py` se trompe sur un artefact, la recommandation héritera de l'erreur. Un artefact reste à `0` op lisible (`patches/grc20_v97_remove_15_truncated_broken_relations.json`, un reçu d'opération plutôt qu'un patch) et retombe sur `archive_historical` par défaut. **Ce défaut n'est pas prudent** : sur les quatre statuts possibles, `archive_historical` est le moins conservateur, puisqu'il autorise à ne plus rien instruire. Le prudent serait `indetermine`. La revue hostile a démontré le coût de ce choix sur un autre fichier (voir § 1) ; il subsiste ici.
+**L'inventaire lisait la sortie de son propre outillage.** Le glob `*patch*.json` attrape `patch-application-ledger.json` — le registre d'applications créé par ce chantier même. La file en comptait donc **32** artefacts là où tout le reste du dépôt en annonce 31, et prescrivait au ledger, classé `indetermine` faute d'ops lisibles, « à instruire à la main, jamais à rejouer par défaut ». Autrement dit, le chantier a produit un fichier de comptabilité et son propre outil l'a rangé dans la file d'attente des patchs. C'est exactement la **question 1 de la revue hostile** — « ce script lit-il sa propre sortie ? » — et elle était réalisée.
 
-**Trois lignes `archive_historical` reposent par ailleurs sur 33 ops que l'outil ne lit pas** (`patch_14` 6, `patch_16` 22, `patch_3a` 5 — dialectes `rewire_relations` et `update_entities`). La revue les a mesurées à la main : **33/33 réalisées**. Le verdict est donc juste en fait, mais sans preuve produite par ce chantier.
+Deux choses la rendaient difficile à voir. D'abord `--check` restait **vert** : le CSV versé avait été régénéré *avec* la ligne fautive, donc il collait à ce que le script recalculait. Un contrôle de cohérence entre un outil et sa propre sortie ne peut pas détecter que l'outil a tort. Ensuite l'écart 31/32 n'apparaissait dans aucune sortie lue de bout en bout : les vérifications passées n'affichaient que la queue du résumé.
+
+Le correctif est une **exclusion nommée** (`NON_PATCHS`), pas un rétrécissement du glob : rétrécir avait déjà fait perdre `new_relations_patch.json` et ses 11 884 ops. Les deux CSV sont régénérés à 31 lignes, et le ledger n'y figure plus.
+
+**Le § 6 décrivait comme subsistant un défaut que l'arbitrage 7 avait supprimé.** Il annonçait que `patches/grc20_v97_remove_15_truncated_broken_relations.json`, à 0 op lisible, « retombe sur `archive_historical` par défaut ». Depuis l'arbitrage 7 le code renvoie `indetermine` dans ce cas, et la mesure le confirme (`measured_status=indetermine`, `recommended_governance_status=indetermine`). La limite est levée ; elle est réécrite ci-dessous pour ce qu'elle est encore.
+
+**La numérotation des sections était fausse** — § 7 s'intercalait entre § 4 et § 5. Corrigée.
+
+## 8. Limite connue
+
+La table de gouvernance dérive de l'inventaire : si l'heuristique de dialecte de `build_patch_queue_inventory.py` se trompe sur un artefact, la recommandation héritera de l'erreur, sans que rien ne le signale. C'est la limite structurante, et aucun contrôle du dépôt ne la couvre : `--check` compare l'outil à sa propre sortie, jamais à la réalité.
+
+**Un artefact reste à 0 op lisible** — `patches/grc20_v97_remove_15_truncated_broken_relations.json`, un reçu d'opération plutôt qu'un patch. Il est désormais classé `indetermine`, ce qui est le statut prudent, mais `indetermine` **n'est pas un verdict** : c'est l'aveu qu'il n'y en a pas. Il faudra l'instruire à la main.
+
+**Trois lignes `archive_historical` reposent sur 33 ops que l'outil ne lit pas** (`patch_14` 6, `patch_16` 22, `patch_3a` 5 — dialectes `rewire_relations` et `update_entities`). La revue les a mesurées à la main : **33/33 réalisées**. Le verdict est donc juste en fait, mais sans preuve produite par ce chantier — et un `archive_historical` non prouvé autorise à ne plus rien instruire.
+
+**L'étape CI ajoutée compare des sorties, pas des fichiers.** Elle lance chaque outil deux fois et diffe leur `stdout`, qui ne porte que des compteurs. Une non-déterminisme qui n'affecterait qu'une colonne du CSV sans changer un total passerait au vert. C'est un test de déterminisme minimal, assumé comme tel par l'arbitrage 5 ; le modèle strict reste la cible.
