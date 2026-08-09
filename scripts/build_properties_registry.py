@@ -123,6 +123,14 @@ EXCLUSIONS_READ_BY = {
     # entre eux. La chaine n'apparait que dans sa docstring, ou elle enonce
     # l'arbitrage qui a motive le script. Verifie : occurrence unique, l.5.
     'dateSource': {'scripts/classify_date_evidence.py'},
+    # make_v112 ne lit NI `duplicateOf` NI `reviewStatus` : il les nomme dans
+    # CLES_INTERDITES pour les REFUSER, et les cite en prose pour dire qu'il
+    # n'annote aucune identite. Ne pas les exclure ferait dire a `readBy` le
+    # contraire exact de ce que fait le script — et sur les deux cles dont le
+    # non-ecrit est precisement l'objet de cette version. Verifie ligne a
+    # ligne : aucune lecture du graphe sur ces deux cles.
+    'duplicateOf': {'scripts/make_v112_apply_chronology_dates_patch.py'},
+    'reviewStatus': {'scripts/make_v112_apply_chronology_dates_patch.py'},
 }
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
