@@ -21,17 +21,17 @@
  *
  *    # 2. Publish — publie sur IPFS testnet, ancre onchain
  *    GEO_PRIVATE_KEY=... GEO_SPACE_ID=... GEO_NETWORK=... \
- *      GEO_INPUT=./grc20-these-mael-rolland-v112.json node grc20-publish.mjs
+ *      GEO_INPUT=./grc20-these-mael-rolland-v113.json node grc20-publish.mjs
  *          --network TESTNET
  *
  *    # 3. Mainnet (après validation sur testnet)
  *    GEO_PRIVATE_KEY=... GEO_SPACE_ID=... GEO_NETWORK=... \
- *      GEO_INPUT=./grc20-these-mael-rolland-v112.json node grc20-publish.mjs
+ *      GEO_INPUT=./grc20-these-mael-rolland-v113.json node grc20-publish.mjs
  *          --network MAINNET
  *
  *    # 4. Créer un nouveau Space (première fois seulement)
  *    GEO_PRIVATE_KEY=... GEO_SPACE_ID=... GEO_NETWORK=... \
- *      GEO_INPUT=./grc20-these-mael-rolland-v112.json node grc20-publish.mjs
+ *      GEO_INPUT=./grc20-these-mael-rolland-v113.json node grc20-publish.mjs
  *          --network TESTNET --create-space
  *
  *  VARIABLES D'ENVIRONNEMENT (alternative aux flags)

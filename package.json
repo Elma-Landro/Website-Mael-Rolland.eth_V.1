@@ -4,10 +4,10 @@
   "description": "Pipeline de conversion et publication GRC-20 — Au-delà des codes (EHESS, 2024)",
   "type": "module",
   "scripts": {
-    "dry-run":    "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v112.json --dry-run",
-    "testnet":    "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v112.json --network TESTNET",
-    "mainnet":    "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v112.json --network MAINNET",
-    "new-space":  "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v112.json --network TESTNET --create-space",
+    "dry-run":    "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v113.json --dry-run",
+    "testnet":    "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v113.json --network TESTNET",
+    "mainnet":    "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v113.json --network MAINNET",
+    "new-space":  "node grc20-publish.mjs --input ./grc20-these-mael-rolland-v113.json --network TESTNET --create-space",
     "worker-dev": "wrangler dev graph-worker.mjs",
     "worker-deploy": "wrangler deploy"
   },
