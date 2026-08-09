@@ -131,6 +131,13 @@ EXCLUSIONS_READ_BY = {
     # ligne : aucune lecture du graphe sur ces deux cles.
     'duplicateOf': {'scripts/make_v112_apply_chronology_dates_patch.py'},
     'reviewStatus': {'scripts/make_v112_apply_chronology_dates_patch.py'},
+    # build_patch_queue_inventory.py ne lit ces deux cles dans AUCUN graphe :
+    # « page_start » n'y est qu'un LIBELLE DE FAMILLE de la table FAMILLES
+    # (le patch page_start), et « type » y designe le champ d'operation d'un
+    # patch (`op.get('type')`), homonyme de l'attribut de graphe. Verifie
+    # occurrence par occurrence dans le fichier vise.
+    'page_start': {'scripts/build_patch_queue_inventory.py'},
+    'type': {'scripts/build_patch_queue_inventory.py'},
 }
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
