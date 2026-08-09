@@ -115,16 +115,25 @@ NOTES = {
 # Faux positifs du balayage LEXICAL : le fichier nomme la chaine sans jamais
 # lire l'attribut du graphe. `pages` est capte par l'API pypdf
 # (`lecteur.pages`, `self.pages`), `note` par des noms de colonnes de CSV.
-# Cas particulier de `page_start` : audit_chronology_dates.py ne le lit pas,
-# il l'EXCLUT — la chaine n'y figure que dans sa docstring et dans la
-# constante CLES_EXCLUES_NON_DATEES qui l'ecarte du perimetre des dates.
-# L'y laisser ferait dire a `readBy` le contraire de ce qui se passe.
 # Toute entree ajoutee ici doit avoir ete verifiee dans le fichier vise.
 EXCLUSIONS_READ_BY = {
     'pages': {'scripts/audit_section_page_start.py'},
     'note': {'scripts/audit_section_page_start.py'},
-    'page_start': {'scripts/audit_chronology_dates.py'},
 }
+
+# Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
+# l'auto-exclusion de ce generateur. Un inventaire dont l'objet est de
+# parcourir une famille entiere de cles les nomme TOUTES par construction : les
+# compter comme lecteurs viderait `status` de son sens. Mesure : sans cette
+# exclusion, `audit_chronology_dates.py` faisait basculer 31 cles de
+# 'editorial' a 'structural' d'un coup (`closed`, `foundedYear`, `timeStart`,
+# `dateInterview`…) alors que RIEN dans le site ni dans la chaine de
+# publication ne les lit. L'instrument de mesure contaminait la mesure.
+# N'ajouter ici qu'un script dont l'enumeration est le PROPOS, jamais un
+# consommateur reel d'attributs.
+SCRIPTS_ENUMERANTS = frozenset({
+    'audit_chronology_dates.py',
+})
 
 
 def cle_id(key):
@@ -169,7 +178,10 @@ def fichiers_code(repo):
     """Fichiers de code scannes pour `status`/`readBy` : *.html, *.js, *.mjs
     du depot entier (hors node_modules et assets/MD) plus tout scripts/.
     Ce script-ci est exclu : il nomme les cles depreciees dans SUPERSEDED_BY et
-    se marquerait lui-meme comme lecteur."""
+    se marquerait lui-meme comme lecteur. Meme raison pour les autres scripts
+    d'ENUMERATION (SCRIPTS_ENUMERANTS) : un inventaire dont l'objet est de
+    parcourir toutes les cles d'une famille les nomme toutes par construction,
+    et les compterait comme « lues » alors que rien n'en depend."""
     fs = []
     for pat in ('**/*.html', '**/*.js', '**/*.mjs'):
         fs += glob.glob(os.path.join(repo, pat), recursive=True)
@@ -180,7 +192,9 @@ def fichiers_code(repo):
     moi = os.path.abspath(__file__)
     return sorted(set(
         f for f in fs
-        if not any(x in f for x in exclus) and os.path.abspath(f) != moi))
+        if not any(x in f for x in exclus)
+        and os.path.abspath(f) != moi
+        and os.path.basename(f) not in SCRIPTS_ENUMERANTS))
 
 
 def read_by(cles, repo):
@@ -443,7 +457,11 @@ def main(argv=None):
                 "du depot (*.html, *.js, *.mjs, scripts/ — critere lexical : "
                 "cle citee entre guillemets ou en acces de propriete ; ce "
                 "script est exclu du balayage car il nomme les cles "
-                "depreciees ; les faux positifs constates fichier par "
+                "depreciees, et les scripts d'ENUMERATION le sont pour la "
+                "meme raison, cf. SCRIPTS_ENUMERANTS — un inventaire qui "
+                "parcourt une famille entiere de cles les nomme toutes par "
+                "construction et les rendrait 'structural' sans que rien "
+                "n'en depende ; les faux positifs constates fichier par "
                 "fichier sont retires apres detection, cf. "
                 "EXCLUSIONS_READ_BY dans le generateur), sinon 'editorial'. "
                 "`readBy` liste ces "
