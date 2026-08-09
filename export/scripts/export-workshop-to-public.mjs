@@ -14,7 +14,7 @@ const getArg = (name, fallback) => {
   return (idx >= 0 && args[idx + 1] !== undefined) ? args[idx + 1] : fallback;
 };
 
-const inputCanonical = getArg('--canonical', './grc20-these-mael-rolland-v111.json');
+const inputCanonical = getArg('--canonical', './grc20-these-mael-rolland-v112.json');
 const outputDir = getArg('--out', './public-data');
 
 const PUBLIC_ALLOWED = new Set(['legacy_canonical', 'validated']);
