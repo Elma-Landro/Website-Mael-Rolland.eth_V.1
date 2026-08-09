@@ -37,8 +37,14 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
-SORTIE = os.path.join(REPO, 'docs', 'audits', 'data',
-                      'patch-application-queue-v112.csv')
+# Le nom du CSV suit le graphe de reference : une file de patchs decrit un
+# ETAT, et un fichier nomme v112 qui decrirait v113 mentirait en silence.
+# C'est le piege deja constate sur `audit_chronology_dates.py`, ou le nom
+# derive du « graphe le plus recent » sans que rien ne le declare.
+def sortie_pour(graphe):
+    version = os.path.basename(graphe).rsplit('-', 1)[-1].removesuffix('.json')
+    return os.path.join(REPO, 'docs', 'audits', 'data',
+                        f'patch-application-queue-{version}.csv')
 
 COLONNES = (
     'chemin', 'famille', 'source_graph_declare', 'cible', 'nb_ops',
@@ -379,11 +385,12 @@ def main():
         print(f'  {n:3d}  {statut}')
 
     if args.check:
-        if not os.path.exists(SORTIE):
-            print(f'--check : {os.path.relpath(SORTIE, REPO)} absent.',
+        sortie = sortie_pour(courant)
+        if not os.path.exists(sortie):
+            print(f'--check : {os.path.relpath(sortie, REPO)} absent.',
                   file=sys.stderr)
             return 1
-        with open(SORTIE, encoding='utf-8', newline='') as f:
+        with open(sortie, encoding='utf-8', newline='') as f:
             verse = list(csv.DictReader(f, delimiter=';'))
         recalcule = [{k: str(v) for k, v in l.items()} for l in lignes]
         if verse != recalcule:
@@ -397,13 +404,14 @@ def main():
         print('\n(simulation — relancer avec --csv pour ecrire)')
         return 0
 
-    temporaire = SORTIE + '.tmp'
+    sortie = sortie_pour(courant)
+    temporaire = sortie + '.tmp'
     with open(temporaire, 'w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=COLONNES, delimiter=';')
         w.writeheader()
         w.writerows(lignes)
-    os.replace(temporaire, SORTIE)
-    print(f'\necrit : {os.path.relpath(SORTIE, REPO)} ({len(lignes)} lignes)')
+    os.replace(temporaire, sortie)
+    print(f'\necrit : {os.path.relpath(sortie, REPO)} ({len(lignes)} lignes)')
     return 0
 
 

@@ -4,9 +4,11 @@
 **Graphe de référence** : `grc20-these-mael-rolland-v112.json` (canonique)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mécanisme rejouable** : `scripts/build_patch_queue_inventory.py` (`--csv`, `--check`)
-**Données probantes** : `docs/audits/data/patch-application-queue-v112.csv` — 30 artefacts
+**Données probantes** : `docs/audits/data/patch-application-queue-v113.csv` — 30 artefacts
 
-**Aucun graphe modifié dans ce triage. Aucune v113. Aucune fusion, aucun nœud, aucune SourceQuote, aucun lien, aucun retypage.**
+> **Note de lecture.** Le triage a été fait sur v112 et ses chiffres ci-dessous sont ceux de v112. Le CSV, lui, est une **file vivante** : son nom suit le graphe de référence, et il a été régénéré sur v113 dans la même PR. Un seul statut change — `patch_candidate_bibliographie_retypes_v1.json` passe de `stale_source_graph_but_preconditions_intact` à `already_applied`, ce qui est précisément l'effet de v113. Le CSV se régénère par `--csv` et se vérifie par `--check` contre le graphe courant.
+
+**Aucun graphe modifié par ce triage lui-même.** Il n'a rien appliqué : il a mesuré, classé, et posé quatre arbitrages. La v113 qui suit est un acte distinct, décidé par l'auteur au vu de ce triage, et documentée séparément dans `grc20-v113-bibliography-retypes-application.md`.
 
 > Rappel de la charte : un agent est un rôle de travail, pas une autorité scientifique. Le § 4 pose quatre arbitrages ; ils ont été posés **directement dans le fil de discussion**, pas seulement ici.
 
@@ -99,7 +101,7 @@ Posés dans le fil de discussion le 2026-08-09, et reportés ici pour que ce doc
 3. Créer **v113 pour ce seul lot** ? **oui / non**
 4. Garder **fusions, doublons et créations bibliographiques hors périmètre** ? **oui / non**
 
-**Aucune v113 ne sera créée avant réponse.** Si les 4 renommages ne sont pas validés, le lot se réduit aux 2 retypages purs — il reste borné et cohérent.
+**Réponse rendue le 2026-08-09 : les quatre questions sont positives.** Les 2 retypages purs et les 4 rename-then-retype sont validés, v113 est créée pour ce seul lot, et fusions, doublons et créations restent hors périmètre. L'application est documentée dans `grc20-v113-bibliography-retypes-application.md`.
 
 ---
 
