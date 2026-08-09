@@ -41,10 +41,20 @@ CODE_DONNEES, CODE_INVOCATION = 1, 2
 # ETAT, et un fichier nomme v112 qui decrirait v113 mentirait en silence.
 # C'est le piege deja constate sur `audit_chronology_dates.py`, ou le nom
 # derive du « graphe le plus recent » sans que rien ne le declare.
-def sortie_pour(graphe):
+# Arbitrage de l'auteur du 2026-08-09, Q6 : le SUFFIXE dit la NATURE.
+#   `-current.csv`   inventaire VIVANT du graphe courant — regenerable ;
+#   `-vNN.snapshot.csv` preuve FIGEE — ne se regenere jamais pour faire taire
+#                    un rouge.
+# Et jamais d'ecrasement silencieux : viser un graphe qui n'est pas le plus
+# recent produit un snapshot a son nom, pas une reecriture du `current`.
+def sortie_pour(graphe, courant_du_depot=None):
     version = os.path.basename(graphe).rsplit('-', 1)[-1].removesuffix('.json')
-    return os.path.join(REPO, 'docs', 'audits', 'data',
-                        f'patch-application-queue-{version}.csv')
+    dossier = os.path.join(REPO, 'docs', 'audits', 'data')
+    reference = courant_du_depot or graphe_le_plus_recent(REPO)
+    if reference and os.path.realpath(graphe) != os.path.realpath(reference):
+        return os.path.join(dossier,
+                            f'patch-application-queue-{version}.snapshot.csv')
+    return os.path.join(dossier, 'patch-application-queue-current.csv')
 
 COLONNES = (
     'chemin', 'famille', 'source_graph_declare', 'cible', 'nb_ops',

@@ -38,10 +38,16 @@ CODE_DONNEES, CODE_INVOCATION = 1, 2
 # « -v113 » faisait exactement ce que l'audit reproche par ailleurs : `--graph
 # <ancien> --csv` ecrasait le fichier v113 avec les donnees d'une autre
 # version, en silence. Un fichier ne doit pas pouvoir mentir sur ce qu'il decrit.
-def sortie_pour(graphe):
+# Meme regle que l'inventaire (arbitrage Q6) : `-current` pour le vivant,
+# `-vNN.snapshot` pour une preuve figee, jamais d'ecrasement silencieux.
+def sortie_pour(graphe, courant_du_depot=None):
     version = os.path.basename(graphe).rsplit('-', 1)[-1].removesuffix('.json')
-    return os.path.join(REPO, 'docs', 'audits', 'data',
-                        f'patch-queue-governance-cases-{version}.csv')
+    dossier = os.path.join(REPO, 'docs', 'audits', 'data')
+    reference = courant_du_depot or graphe_le_plus_recent(REPO)
+    if reference and os.path.realpath(graphe) != os.path.realpath(reference):
+        return os.path.join(
+            dossier, f'patch-queue-governance-cases-{version}.snapshot.csv')
+    return os.path.join(dossier, 'patch-queue-governance-cases-current.csv')
 
 COLONNES = (
     'artifact_path', 'current_label_or_policy', 'measured_status',
@@ -103,8 +109,13 @@ def gouvernance(ligne, sous_c03, applique_par):
 
     if mesure == 'indetermine':
         if lisibles == 0:
-            return ('archive_historical', 'evidence_frozen', 'non',
-                    'forme non lisible par l outil : effet inconnu',
+            # ARBITRAGE Q7 : quand l'outil ne lit pas tout, le statut ne peut
+            # etre NI `archive_historical` NI `already_applied`. `indetermine`
+            # est le statut prudent ; retomber sur « archive » a deja classe
+            # « lot integre » un patch applique a 0/10.
+            return ('indetermine', 'evidence_frozen', 'non',
+                    'forme non lisible par l outil : effet INCONNU, un rejeu '
+                    'naif peut ecrire des choses fausses',
                     'statut NON etabli — a instruire a la main, jamais a '
                     'rejouer par defaut')
         return ('archive_partial', 'evidence_frozen', 'non',
@@ -118,19 +129,22 @@ def gouvernance(ligne, sous_c03, applique_par):
                 'CREATE_ENTITY : le contrat interdit de pre-assigner un '
                 'entityId, et aucun make_* ne lit ce type d op')
 
-    if mesure == 'still_candidate':
-        return ('candidate_active', 'evidence_frozen', 'oui',
+    # ARBITRAGE Q7 : « applicable techniquement ne veut pas dire mur pour
+    # v114 ». Un artefact entier dont les cibles existent n'est PAS un feu
+    # vert : il est bloque par arbitrage tant qu'un chantier ne l'a pas
+    # instruit. `ci_candidate` reste donc « non » — la CI n'a rien a garder.
+    if mesure in ('still_candidate',
+                  'stale_source_graph_but_preconditions_intact'):
+        entier = mesure == 'still_candidate'
+        return ('blocked_author_arbitration', 'evidence_frozen', 'non',
                 'aucun rejeu : rien n est applique',
-                f'0 op realisee sur {lisibles} lisibles — le patch est ENTIER '
-                'et ses cibles existent. Ni archive ni applique : il attend un '
-                'arbitrage')
-
-    if mesure == 'stale_source_graph_but_preconditions_intact':
-        return ('candidate_active', 'evidence_frozen', 'oui',
-                'aucun rejeu : rien n est applique',
-                f'source declaree {ligne["source_graph_declare"]} perimee, '
-                'mais les cibles portent encore leur valeur d origine — '
-                'seul cas ou une application reste possible')
+                (f'0 op realisee sur {lisibles} lisibles ; le patch est entier '
+                 'et ses cibles existent'
+                 if entier else
+                 f'source declaree {ligne["source_graph_declare"]} perimee, '
+                 'mais les cibles portent encore leur valeur d origine')
+                + ' — TECHNIQUEMENT applicable, PAS mur : a reauditer avant '
+                  'tout chantier d application (arbitrage Q7 du 2026-08-09)')
 
     return ('indetermine', 'evidence_frozen', 'non', 'inconnu',
             'statut mesure non reconnu par cette table')

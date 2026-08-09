@@ -142,7 +142,15 @@ EXCLUSIONS_READ_BY = {
     # de patch, `note` un nom de colonne du CSV produit. Verifie occurrence par
     # occurrence — le script ne touche aucun attribut d'entite.
     'description': {'scripts/build_patch_queue_governance.py'},
-    'status': {'scripts/build_patch_queue_governance.py'},
+    # build_patch_application_ledger.py n'ecrit QUE son propre JSON : `date`,
+    # `status` et `purpose` y sont des cles de CE fichier, jamais des attributs
+    # d'entite. Sans exclusion, `purpose` bascule meme de `editorial` a
+    # `structural` — un fichier de ledger ferait croire que le graphe depend
+    # d'une cle que rien ne lit.
+    'date': {'scripts/build_patch_application_ledger.py'},
+    'purpose': {'scripts/build_patch_application_ledger.py'},
+    'status': {'scripts/build_patch_queue_governance.py',
+               'scripts/build_patch_application_ledger.py'},
     'note': {'scripts/audit_section_page_start.py',
              'scripts/build_patch_queue_governance.py'},
 }
