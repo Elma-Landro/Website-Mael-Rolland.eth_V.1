@@ -30,7 +30,7 @@ Première application de la phase « Patch Application Queue » : on cesse d'acc
 
 Comparaison v111 / v112 refaite **indépendamment de l'applicateur**, après écriture :
 
-```
+```text
 entites   : 2293 -> 2293      relations : 20207 -> 20207
 types            identiques : True      relation_types identiques : True
 relations        identiques : True      ops            identiques : True
@@ -72,14 +72,14 @@ Le dialecte du dépôt n'exprime qu'un couple `{type, value}`, alors que les deu
 
 `scripts/verif_doublons.py` est l'instrument de dédoublonnage du dépôt. Exécuté sur les deux graphes, sorties redirigées hors du dépôt :
 
-```
+```text
 v111 : 78 paires · FUSION_SURE 4 · A_VERIFIER 14 · REJET_AUTO 60
 v112 : 78 paires · FUSION_SURE 4 · A_VERIFIER 15 · REJET_AUTO 59
 ```
 
 Une seule paire bouge, et c'est la nôtre :
 
-```
+```text
 v111  REJET_AUTO ; motif = « dates contradictoires (2010-11-22 / 2009-11-22) »
 v112  A_VERIFIER ; motifs = « meme type ; dates identiques ; identifiants
                               compatibles ; 15 cible(s) commune(s) ;
@@ -90,7 +90,7 @@ v112  A_VERIFIER ; motifs = « meme type ; dates identiques ; identifiants
 
 Corroboration indépendante, sur le graphe seul — entités partageant `(date, description, types)` :
 
-```
+```text
 v111 : 0 collision
 v112 : 1 collision  ->  0d81bba0 / 06ac37fc, date 2009-11-22
 ```
@@ -115,7 +115,7 @@ Rendus après lecture de la PR #119 et de la revue hostile. Ils ne modifient pas
 
 **Dette de modélisation inscrite** : l'attribut `date` mélange encore, selon les fiches, une date d'incident, une date de divulgation, une date d'activation et une date narrative. La revue hostile l'a mesuré sur les 4 fiches CVE portant les deux clés — `date` y précède systématiquement `publicDisclosure` de plusieurs semaines :
 
-```
+```text
 CVE-2012-3789  date 12/05/2012  publicDisclosure 20/06/2012
 CVE-2013-2293  date 09/01/2013  publicDisclosure 14/02/2013
 ```
@@ -176,7 +176,7 @@ Deux entrées ont été ajoutées à `EXCLUSIONS_READ_BY` — `duplicateOf` et `
 
 ## 6. Validations exécutées
 
-```
+```text
 JSON valide (v112, registre, package.json)          OK
 py_compile applicateur + generateur de registre     OK
 node --check des 4 .mjs modifies                    OK
@@ -214,7 +214,15 @@ Aucune n'est refermée par cette version — **à une exception près, signalée
 
 ### `audit_chronology_dates.py --check` échoue — ce n'est PAS une régression du graphe
 
-> **Note pour les agents futurs, à ne pas contourner de travers.** Cet échec **ne signale aucun défaut de v112**. Il vient uniquement du passage v111 → v112 face à une **preuve figée** : le script dérive le nom de son CSV du graphe le plus récent et cherche donc `chronology-date-inventory-v112.csv`, qui n'existe pas. Le CSV versé décrit v111 et **doit** rester tel quel : il est la donnée probante du chantier PR #118. Ne le régénérez pas pour faire taire le rouge — vous détruiriez la mesure sans rien mesurer. La correction propre est de donner au script un `--source` déclaré au lieu de « le graphe le plus récent », dans un chantier distinct.
+> **Note pour les agents futurs, à ne pas contourner de travers.** Cet échec **ne signale aucun défaut de v112**. Il vient uniquement du passage v111 → v112 face à une **preuve figée** : le script dérive le nom de son CSV du graphe le plus récent et cherche donc `chronology-date-inventory-v112.csv`, qui n'existe pas. Le CSV versé décrit v111 et **doit** rester tel quel : il est la donnée probante du chantier PR #118. Ne le régénérez pas pour faire taire le rouge — vous détruiriez la mesure sans rien mesurer.
+>
+> **Le contrôle reste faisable dès aujourd'hui**, avec l'option que le script porte réellement :
+>
+> ```text
+> python3 scripts/audit_chronology_dates.py --graph grc20-these-mael-rolland-v111.json --check
+> ```
+>
+> — vérifié, `exit 0`, « 948 lignes identiques ». `--graph` désigne le graphe que le CSV décrit, et `--check` compare au CSV versé. Le script **ne porte pas** d'option `--source` : ses arguments sont `--graph`, `--csv`, `--check` et `--aujourdhui`. La correction de fond — ancrer le nom du CSV sur un graphe déclaré plutôt que sur « le plus récent » — reste un chantier distinct.
 
 **Vérifié** : `.github/workflows/check.yml` compte 8 étapes et **ce script n'y figure pas**. La CI ne rougit pas. Les cinq contrôles qui y sont, eux, passent.
 
@@ -230,4 +238,4 @@ Exception **acceptée par l'auteur** le 2026-08-09, à condition qu'elle soit é
 
 ### Détail technique de l'échec `--check`
 
-`audit_chronology_dates.py --check` **échoue désormais**, et c'était prévu : il dérive le nom de son CSV du graphe le plus récent, donc il cherche `chronology-date-inventory-v112.csv`, absent. Ce comportement était **déclaré au § 10 de l'audit du chantier** avant même que v112 existe. Le CSV d'inventaire reste celui de v111 et le reste volontairement : il décrit v111, et le régénérer sur v112 mélangerait une mesure et une application dans la même PR. Le script n'est pas en CI, donc rien ne rougit. **La ligne à corriger est un `--source` déclaré plutôt qu'un « graphe le plus récent »** — chantier distinct, non ouvert ici.
+`audit_chronology_dates.py --check` **échoue désormais**, et c'était prévu : il dérive le nom de son CSV du graphe le plus récent, donc il cherche `chronology-date-inventory-v112.csv`, absent. Ce comportement était **déclaré au § 10 de l'audit du chantier** avant même que v112 existe. Le CSV d'inventaire reste celui de v111 et le reste volontairement : il décrit v111, et le régénérer sur v112 mélangerait une mesure et une application dans la même PR. Le script n'est pas en CI, donc rien ne rougit. Contournement immédiat et vérifié : `--graph grc20-these-mael-rolland-v111.json --check` (exit 0). **Le fond à corriger est l'ancrage du nom de CSV sur « le graphe le plus récent » plutôt que sur un graphe déclaré** — chantier distinct, non ouvert ici.

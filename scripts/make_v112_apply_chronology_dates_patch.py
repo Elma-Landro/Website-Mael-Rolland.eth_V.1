@@ -89,10 +89,28 @@ PLAFOND_NOTE = 1200
 # Applicateur a USAGE UNIQUE : le lot est FIGE ici, pas seulement declare par
 # le patch. Un patch retouche entre l'arbitrage et l'application ne doit pas
 # passer parce qu'il aurait mis a jour son propre `op_count`.
-IDS_ATTENDUS = frozenset({
-    'ca278d213d804294a2c5a672d52808e4',   # CVE-2014-0160 Heartbleed
-    '0d81bba0461d49a5af8997a20663d630',   # InfrastructureEvent — BitcoinTalk
-})
+#
+# ET LE LOT FIGE PORTE LES VALEURS, pas seulement les identifiants. Figer les
+# seuls ids laissait passer une reecriture de la valeur CIBLE : un patch
+# retouche pouvait ecrire n'importe quelle date sur ces deux fiches, du moment
+# que son `_expected` correspondait encore au graphe. C'est exactement ce que
+# l'arbitrage de l'auteur a decide, et cela ne doit pas dependre du fichier de
+# patch. Les deux operations approuvees sont donc reproduites ici, en entier.
+LOT_APPROUVE = {
+    # CVE-2014-0160 Heartbleed
+    'ca278d213d804294a2c5a672d52808e4': {
+        'attendu': {'type': 'TEXT', 'value': '04/07/2014',
+                    'options': {'language': 'fr'}},
+        'cible': {'type': 'TEXT', 'value': '2014-04-07'},
+    },
+    # InfrastructureEvent — BitcoinTalk forum created
+    '0d81bba0461d49a5af8997a20663d630': {
+        'attendu': {'type': 'TEXT', 'value': '2010-11-22',
+                    'options': {'language': 'en'}},
+        'cible': {'type': 'TEXT', 'value': '2009-11-22'},
+    },
+}
+IDS_ATTENDUS = frozenset(LOT_APPROUVE)
 
 # Cles d'attribut que ce lot n'a PAS le droit d'ecrire, meme si un patch
 # retouche les demandait. Nommees pour que le refus soit lisible dans le
@@ -160,17 +178,30 @@ def valider_patch(patch):
                   "gagnante, une op serait silencieusement ecrasee")
         vus.add(eid)
 
+        approuve = LOT_APPROUVE[eid]
+
         attendu = op.get('_expected')
         if not isinstance(attendu, dict):
             echec(f"op #{i} sans bloc `_expected` : l'ancienne valeur doit "
                   "etre declaree pour etre verifiee, jamais supposee")
-        for champ in ('type', 'value'):
+        for champ in ('type', 'value', 'options'):
             if champ not in attendu:
-                echec(f"op #{i} : `_expected` sans `{champ}`")
+                echec(f"op #{i} : `_expected` sans `{champ}` — les trois "
+                      "champs sont exiges, `options` comprise : c'est elle "
+                      "qui garantit qu'aucune option n'est perdue en silence")
+        if attendu != approuve['attendu']:
+            echec(f"op #{i} : `_expected` = {attendu!r}, le lot approuve "
+                  f"declare {approuve['attendu']!r} — le patch a ete retouche "
+                  "depuis l'arbitrage, il doit etre re-arbitre, pas applique")
 
         cible = op.get('value')
-        if not isinstance(cible, dict) or 'value' not in cible:
+        if not isinstance(cible, dict):
             echec(f"op #{i} sans valeur cible exploitable")
+        if cible != approuve['cible']:
+            echec(f"op #{i} : valeur cible {cible!r}, le lot approuve declare "
+                  f"{approuve['cible']!r} — figer les seuls identifiants "
+                  "laisserait reecrire la date arbitree ; le lot porte donc "
+                  "aussi les valeurs")
         plan.append((eid, attendu, cible))
 
     if vus != IDS_ATTENDUS:
@@ -298,10 +329,6 @@ def main():
         print(f'      `{CLE}` {actuel["value"]!r} -> {cible["value"]!r}')
         print(f'      options preservees : {actuel.get("options") or {}}')
 
-    if args.dry_run:
-        print('\n--dry-run : rien n\'a ete ecrit.')
-        return 0
-
     if os.path.realpath(args.target) == os.path.realpath(args.source):
         echec("la cible est le graphe SOURCE : ce script ecrit une nouvelle "
               "version, il n'ecrase jamais celle qu'il lit", CODE_INVOCATION)
@@ -362,8 +389,31 @@ def main():
     heritee = espace.get('note', '')
     budget = max(0, PLAFOND_NOTE - len(tete))
     if len(heritee) > budget:
-        heritee = heritee[:budget].rsplit(' ', 1)[0] + ' […]'
+        # Le suffixe est RESERVE avant la decoupe. Sans cela, `rsplit` peut ne
+        # rien retirer (quand la coupe tombe pile sur une espace) et les quatre
+        # caracteres de « […] » debordent le plafond. La note actuelle faisait
+        # 1200 par chance, pas par construction.
+        marque = ' […]'
+        utile = max(0, budget - len(marque))
+        tronquee = heritee[:utile]
+        if ' ' in tronquee:
+            tronquee = tronquee.rsplit(' ', 1)[0]
+        heritee = tronquee + marque
     espace['note'] = tete + heritee
+    if len(espace['note']) > PLAFOND_NOTE:
+        echec(f"space.note fait {len(espace['note'])} caracteres pour un "
+              f"plafond de {PLAFOND_NOTE} : le bornage a echoue, rien n'est "
+              "ecrit")
+
+    # --dry-run sort ICI, et pas plus tot : un essai a blanc qui s'arreterait
+    # avant la mutation et le diff ne verifierait que la lecture du patch. Tout
+    # ce qui precede — validation de la cible, mutation en memoire, diff
+    # exhaustif, refus des changements hors lot — a donc deja tourne, et la
+    # seule chose que --dry-run evite est l'ecriture du fichier.
+    if args.dry_run:
+        print("\n--dry-run : tous les controles ont tourne, "
+              "y compris le diff exhaustif. Rien n'a ete ecrit.")
+        return 0
 
     temporaire = args.target + '.tmp'
     try:

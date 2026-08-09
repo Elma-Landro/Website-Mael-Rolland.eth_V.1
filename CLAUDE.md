@@ -293,7 +293,11 @@ Chronology, Dates & References Lab (PR #118): exactly **two** `date` values —
 Heartbleed `04/07/2014` → `2014-04-07` (the graph's only MM/DD reading against
 26 decidable DD/MM values out of 26) and BitcoinTalk `2010-11-22` →
 `2009-11-22` (a year typo its own description contradicted). Nothing else
-moved: same entities, relations, types and attribute keys, byte for byte.
+moved: entity and relation counts, entity identifiers, `types`,
+`relation_types`, `relations`, `ops` and the full set of attribute keys are
+all unchanged, and so is every other field of every entity — the two date
+values above are the only differences, with `space.version` and `space.note`
+updated as the version record requires.
 The probable BitcoinTalk duplicate stays a **debt** — no `duplicateOf` was
 written, because the corrected card is the better-connected of the two
 (degree 24 against 22) and naming a canonical remains the author's call.
