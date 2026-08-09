@@ -3,7 +3,9 @@
 **Date** : 2026-08-09
 **Graphe de référence** : `grc20-these-mael-rolland-v113.json` — **non modifié**
 **Mécanisme rejouable** : `scripts/build_patch_queue_governance.py` (`--csv`, `--check`)
-**Données probantes** : `docs/audits/data/patch-queue-governance-cases-v113.csv` — 31 artefacts
+**Données probantes** : `docs/audits/data/patch-queue-governance-cases-current.csv` — 31 artefacts
+**Ledger** : `patch-application-ledger.json` — mémoire d'application, 3 entrées
+**Arbitrages** : Maël Rolland, 2026-08-09, questions 1 à 8 — **tous rendus**, § 7
 **Brouillon de politique** : `docs/audits/patch-queue-lifecycle-policy-draft.md` — **non appliqué**
 
 **Aucun graphe modifié. Aucune v114. Aucun patch appliqué. Aucun nœud, aucune fusion, aucune relation, aucun retypage, aucune SourceQuote, aucun runtime touché. C03 n'est pas modifié.**
@@ -103,9 +105,30 @@ Trois conventions possibles : `-vNNN.csv` pour les deux (état actuel, ambigu) ;
 
 ---
 
+## 7. Arbitrages rendus — 2026-08-09
+
+Les huit questions ont reçu réponse. Ce que le chantier a **exécuté** en conséquence :
+
+| # | Arbitrage | Effet dans cette PR |
+|---|---|---|
+| 1 | file = **les deux, mais séparés** — un inventaire vivant, des snapshots figés ; jamais le même fichier pour les deux rôles | `-current.csv` + `-vNN.snapshot.csv`, et viser un ancien graphe écrit un snapshot **au lieu** d'écraser le vivant |
+| 2 | `lifecycleStatus` **oui**, mais *pas* comme source unique de vérité ; le statut réel reste **mesuré** | vocabulaire inscrit au brouillon ; **aucun patch existant modifié** — l'auteur a demandé un chantier dédié |
+| 3 | ledger externe **oui** | `patch-application-ledger.json`, généré, `--check`. Chaque entrée porte un `measured` relu dans le graphe |
+| 4 | C03 **non modifié** maintenant | intact. L'audit dit désormais où lire le vrai statut : **graphe → file vivante → ledger**, jamais la policy |
+| 5 | CI **modèle 2 maintenant**, modèle 4 en cible | étape ajoutée : les trois outils tournent et leurs sorties sont **déterministes** ; aucune exigence de fraîcheur du CSV |
+| 6 | nommage **current + snapshots** | appliqué aux deux CSV ; l'écrasement silencieux est structurellement impossible |
+| 7 | statut **conservateur obligatoire** | `indetermine` quand l'outil ne lit pas tout ; `archive_historical` n'est plus un défaut de repli |
+| 8 | PR de gouvernance **oui** | cette PR — aucun graphe, aucune v114, aucune application |
+
+**Le point le plus important de l'arbitrage 7**, et il change un résultat : *« applicable techniquement ne veut pas dire mûr pour v114 »*. Les deux artefacts entiers dont les cibles existent — `patch_candidate_bibliographie_duplicates_v1.json` et `patches/archive/grc20_anchor_overrides_targeted.json` — passent de `candidate_active` à **`blocked_author_arbitration`**, et leur `ci_candidate` tombe à `non`.
+
+**Conséquence directe : il ne reste plus AUCUN artefact que la CI aurait à surveiller.** L'argument contre la CI stricte n'est plus fondé sur un chiffre bas, il l'est sur un ensemble vide. Le § 1 ci-dessus, écrit avant l'arbitrage, disait « deux » ; c'est désormais **zéro applicable sans instruction préalable**.
+
+---
+
 ## 5. Ce que ce chantier ne fait pas
 
-Il **ne modifie pas C03**, n'ajoute aucun `lifecycleStatus`, ne crée aucun ledger, ne renomme aucun CSV et ne câble aucune CI. Le brouillon `patch-queue-lifecycle-policy-draft.md` écrit la politique **telle qu'elle serait si elle était adoptée** ; il n'a aucun effet.
+Il **ne modifie pas C03** et n'ajoute aucun `lifecycleStatus` aux patchs existants — l'auteur a renvoyé ce point à un chantier dédié (arbitrage 2). Il ne modifie aucun graphe, ne crée aucune v114, n'applique aucun patch. **Les deux artefacts techniquement applicables ne sont pas appliqués** : ils sont classés `blocked_author_arbitration` et renvoyés à instruction. Le brouillon `patch-queue-lifecycle-policy-draft.md` écrit la politique **telle qu'elle serait si elle était adoptée** ; il n'a aucun effet.
 
 ## 6. Limite connue
 

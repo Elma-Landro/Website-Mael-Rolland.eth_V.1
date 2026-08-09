@@ -1,6 +1,8 @@
 # Brouillon — politique de cycle de vie de la file de patchs
 
-**NON APPLIQUÉ.** Ce document décrit la politique **telle qu'elle serait si elle était adoptée**. Aucune de ses règles n'est en vigueur ; rien dans le dépôt ne s'y conforme encore. Il n'a d'effet qu'après arbitrage de l'auteur.
+**Statut au 2026-08-09 : ARBITRÉ, partiellement en vigueur.** Les huit questions ont reçu réponse. Les règles 1, 2 bis, 3, 5, 6 et 7 sont **appliquées** par cette PR ; la règle 4 (`lifecycleStatus` sur les patchs existants) est **acceptée mais renvoyée à un chantier dédié**, et rien dans le dépôt ne s'y conforme encore.
+
+**Le vocabulaire de statuts retenu par l'auteur** : `candidate_active`, `candidate_applied`, `candidate_superseded`, `archive_partial`, `archive_historical`, `blocked_author_arbitration`, `blocked_missing_applicator`, `blocked_identity_model`, `dangerous_do_not_replay`, `indetermine`.
 
 ---
 
@@ -32,7 +34,7 @@ Conséquence directe : un `--check` sur un fichier `-current` ne casse jamais au
 
 ## Règle 4 — Un patch appliqué le dit dans son propre fichier
 
-`_meta.lifecycleStatus` est ajouté à l'application, sans toucher `policy` :
+`_meta.lifecycleStatus` serait ajouté à l'application, sans toucher `policy`. **Accepté par l'auteur, mais pas appliqué ici** : il vaut pour les patchs *nouveaux*, et pour les patchs existants seulement lors d'un chantier dédié. Il **ne remplace pas la mesure** — il aide la lecture humaine.
 
 ```json
 "lifecycleStatus": {

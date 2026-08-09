@@ -98,6 +98,8 @@ Le CSV de file se régénère sur le graphe courant. Après v113, **un seul stat
 
 Le fichier a été renommé `patch-application-queue-v113.csv` : son nom suit désormais le graphe de référence. Un CSV nommé v112 décrivant v113 aurait menti en silence — c'est le piège déjà constaté sur `audit_chronology_dates.py`.
 
+> **Suite (2026-08-09, arbitrage Q6 du *Patch Queue Governance Lab*).** La règle ci-dessus a été conservée mais déplacée : renommer le CSV à chaque version obligeait à mettre à jour tous les pointeurs et laissait derrière soi des fichiers de versions mortes indiscernables des preuves figées. Le fichier vivant s'appelle désormais `patch-application-queue-current.csv` ; **seul** un lancement contre un graphe qui n'est pas le courant écrit un `patch-application-queue-vNN.snapshot.csv`. Le motif reste le même — un fichier ne doit pas pouvoir mentir sur ce qu'il décrit — mais l'écrasement silencieux d'un CSV de version par les données d'une autre est maintenant impossible plutôt que seulement déconseillé.
+
 ---
 
 ## 6. Limite connue
