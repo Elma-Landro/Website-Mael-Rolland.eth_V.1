@@ -3,7 +3,7 @@
 **Date** : 2026-08-09
 **Graphe source** : `grc20-these-mael-rolland-v112.json`
 **Graphe produit** : `grc20-these-mael-rolland-v113.json` — **canonique**
-**Applicateur** : `scripts/make_v113_apply_bibliography_retypes.py` (`--dry-run`)
+**Applicateur** : `scripts/make_v113_apply_bibliography_retypes.py` — `--dry-run` pour valider sans écrire, invocation nue (`python3 scripts/make_v113_apply_bibliography_retypes.py`) pour produire le graphe
 **Patch appliqué** : `patch_candidate_bibliographie_retypes_v1.json` — 10 ops
 **Instruction** : Patch Application Queue Master Triage v1, `docs/audits/grc20-patch-application-queue-v112.md`
 **Arbitrage** : Maël Rolland, 2026-08-09, questions 1 à 4 — toutes positives
@@ -72,7 +72,9 @@ Neuf refus provoqués, aucun fichier écrit dans aucun cas :
 
 | Situation | Constaté |
 |---|---|
-| cible == source · cible en v114 · source en v111 | exit 2 |
+| cible == source | exit 2 |
+| cible en v114 | exit 2 |
+| source en v111 (mauvaise version) | exit 2 |
 | entité hors lot figé | exit 1 |
 | nom cible réécrit (« Jean Dupont ») | exit 1 |
 | renommage d'une fiche à nom déjà juste | exit 1 |

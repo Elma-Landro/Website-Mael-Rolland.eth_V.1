@@ -4,7 +4,7 @@
 **Graphe de référence** : `grc20-these-mael-rolland-v112.json` (canonique)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mécanisme rejouable** : `scripts/build_patch_queue_inventory.py` (`--csv`, `--check`)
-**Données probantes** : `docs/audits/data/patch-application-queue-v113.csv` — 30 artefacts
+**Données probantes** : `docs/audits/data/patch-application-queue-v113.csv` — **31 artefacts** (la file vivante ; les chiffres de ce document restent ceux du triage sur v112, où le glob n'en voyait que 30 — voir § 6)
 
 > **Note de lecture.** Le triage a été fait sur v112 et ses chiffres ci-dessous sont ceux de v112. Le CSV, lui, est une **file vivante** : son nom suit le graphe de référence, et il a été régénéré sur v113 dans la même PR. Un seul statut change — `patch_candidate_bibliographie_retypes_v1.json` passe de `stale_source_graph_but_preconditions_intact` à `already_applied`, ce qui est précisément l'effet de v113. Le CSV se régénère par `--csv` et se vérifie par `--check` contre le graphe courant.
 
@@ -22,7 +22,7 @@ C'est ce qui permet de trancher un cas que la lecture naïve rate. `patch_candid
 
 ---
 
-## 2. Inventaire — 30 artefacts
+## 2. Inventaire — 30 artefacts (mesure du triage, sur v112)
 
 | Statut | n | Ce que cela veut dire |
 |---|---:|---|

@@ -139,16 +139,19 @@ OPS_CONNUES = frozenset({
 def type_op(op, conteneur_relation=False):
     if not isinstance(op, dict):
         return '(non-objet)'
+    # Le type DECLARE d'abord, quand il nomme une operation connue : un
+    # REMOVE_RELATION portant `from`/`to` serait sinon lu comme un ajout, et
+    # l'effet cherche dans le graphe serait l'exact inverse du bon.
+    for cle in ('type', 'op', 'operation'):
+        v = op.get(cle)
+        if isinstance(v, str) and v in OPS_CONNUES:
+            return v
     # PIEGE DU DEPOT : dans les dialectes `relations` / `new_relations`, la cle
     # `type` ne porte PAS un type d'operation mais l'IDENTIFIANT DU TYPE DE
     # RELATION. La lire comme un type d'op rendait ces 8 patchs illisibles
     # (0 op lisible sur 500), donc `indetermine` a tort.
     if {'from', 'to'} <= set(op):
         return 'ADD_RELATION(implicite)'
-    for cle in ('type', 'op', 'operation'):
-        v = op.get(cle)
-        if isinstance(v, str) and v in OPS_CONNUES:
-            return v
     for cle in ('type', 'op', 'operation'):
         v = op.get(cle)
         if isinstance(v, str):
@@ -162,7 +165,7 @@ def type_op(op, conteneur_relation=False):
     return '(sans type)'
 
 
-def effet_realise(op, par_id, types_par_nom, relations=None):
+def effet_realise(op, par_id, types_par_nom, relations=None, paires=None):
     """-> True / False / None (indecidable). Regarde le GRAPHE, pas le patch."""
     if not isinstance(op, dict):
         return None
@@ -171,8 +174,10 @@ def effet_realise(op, par_id, types_par_nom, relations=None):
     # Dialectes HISTORIQUES, sans champ de type. Ils sont majoritaires dans le
     # depot (patch_1a a patch_batch3) et les ignorer laissait 20 artefacts sur
     # 30 en `indetermine` — un inventaire qui ne sait rien n'aide personne.
-    if t == 'ADD_RELATION(implicite)' and relations is not None:
-        src = op.get('from') or op.get('from_entity') or op.get('from_entity_id')
+    if t in ('ADD_RELATION', 'ADD_RELATION(implicite)') \
+            and relations is not None:
+        src = (op.get('from') or op.get('from_entity')
+               or op.get('from_entity_id'))
         dst = op.get('to') or op.get('to_entity') or op.get('to_entity_id')
         # `relation_type` D'ABORD : ce dialecte porte `type: "ADD_RELATION"`
         # (le type d'OPERATION) ET `relation_type: "appears_in_section"` (le
@@ -189,22 +194,15 @@ def effet_realise(op, par_id, types_par_nom, relations=None):
                 (src, dst, types_par_nom.get(str(typ).replace('_', ' ')))}
         if any(c in relations for c in cles):
             return True
-        return (src, dst) in {(a, b) for a, b, _ in relations} if typ is None \
-            else False
+        return (src, dst) in paires if typ is None else False
     if t == 'CREATE_ENTITY(implicite)':
         return op.get('id') in par_id
-    if t == 'ADD_RELATION' and relations is not None:
-        src = op.get('from_entity_id') or op.get('from')
-        dst = op.get('to_entity_id') or op.get('to')
-        if not (src and dst):
-            return None
-        return (src, dst) in {(a, b) for a, b, _ in relations}
     if t == 'REMOVE_RELATION' and relations is not None:
         src = op.get('from_entity_id') or op.get('from')
         dst = op.get('to_entity_id') or op.get('to')
         if not (src and dst):
             return None
-        return (src, dst) not in {(a, b) for a, b, _ in relations}
+        return (src, dst) not in paires
     eid = op.get('entityId') or op.get('entity_id') or op.get('id')
     if t == 'SET_ATTRIBUTE':
         e = par_id.get(eid)
@@ -238,15 +236,16 @@ def effet_realise(op, par_id, types_par_nom, relations=None):
     return None
 
 
-def statut_de(chemin, doc, ops, par_id, types_par_nom, courant, relations):
+def statut_de(chemin, doc, ops, par_id, types_par_nom, courant, relations,
+              paires):
+    """-> (statut, preuve, geste, compteurs). Le statut vient du graphe."""
     # Chemin RELATIF : interpoler `courant` brut gravait le chemin absolu de
     # la machine dans 21 des 30 lignes, rendant `--check` rouge partout
     # ailleurs — donc impossible a cabler en CI, et un chemin local versionne.
     courant = os.path.relpath(courant, REPO)
-    """-> (statut, preuve, geste, compteurs). Le statut vient du graphe."""
     lisibles = deja = absentes = 0
     for op in ops:
-        e = effet_realise(op, par_id, types_par_nom, relations)
+        e = effet_realise(op, par_id, types_par_nom, relations, paires)
         if e is None:
             eid = (op.get('entityId') or op.get('entity_id') or op.get('id')
                    if isinstance(op, dict) else None)
@@ -324,11 +323,15 @@ def statut_de(chemin, doc, ops, par_id, types_par_nom, courant, relations):
 
 
 def construire(courant):
-    g = json.load(open(courant, encoding='utf-8'))
+    with open(courant, encoding='utf-8') as f:
+        g = json.load(f)
     par_id = {e['id']: e for e in g['entities']}
     types_par_nom = {t['name']: t['id'] for t in g['types']}
     types_par_nom.update({t['name']: t['id'] for t in g['relation_types']})
     relations = {(r['from'], r['to'], r['type']) for r in g['relations']}
+    # Projection (source, cible) construite UNE fois : la reconstruire par op
+    # faisait 11 884 x 20 207 comparaisons et faisait expirer `--check`.
+    paires = {(a, b) for a, b, _ in relations}
 
     # Le glob `patch*.json` ratait `new_relations_patch.json` — 3 Mo, 11 884 ops,
     # le plus gros artefact du depot, nomme dans CLAUDE.md — parce que son nom
@@ -341,7 +344,8 @@ def construire(courant):
     for chemin in chemins:
         rel = os.path.relpath(chemin, REPO)
         try:
-            doc = json.load(open(chemin, encoding='utf-8'))
+            with open(chemin, encoding='utf-8') as f:
+                doc = json.load(f)
         except (json.JSONDecodeError, OSError) as err:
             lignes.append({
                 'chemin': rel, 'famille': famille_de(rel),
@@ -357,7 +361,7 @@ def construire(courant):
         ops, conteneurs = ops_de(doc)
         compte = Counter(type_op(op) for op in ops)
         statut, preuve, geste, (lis, deja, abs_) = statut_de(
-            rel, doc, ops, par_id, types_par_nom, courant, relations)
+            rel, doc, ops, par_id, types_par_nom, courant, relations, paires)
         m = meta_de(doc)
         lignes.append({
             'chemin': rel,
@@ -396,7 +400,7 @@ def main():
 
     print(f'graphe de reference : {os.path.basename(courant)}')
     print(f'{len(lignes)} artefact(s) inventorie(s)\n')
-    for statut, n in sorted(Counter(l['statut'] for l in lignes).items()):
+    for statut, n in sorted(Counter(ligne['statut'] for ligne in lignes).items()):
         print(f'  {n:3d}  {statut}')
 
     if args.check:
@@ -407,7 +411,7 @@ def main():
             return 1
         with open(sortie, encoding='utf-8', newline='') as f:
             verse = list(csv.DictReader(f, delimiter=';'))
-        recalcule = [{k: str(v) for k, v in l.items()} for l in lignes]
+        recalcule = [{k: str(v) for k, v in ligne.items()} for ligne in lignes]
         if verse != recalcule:
             print('--check : le CSV verse differe du CSV recalcule.',
                   file=sys.stderr)

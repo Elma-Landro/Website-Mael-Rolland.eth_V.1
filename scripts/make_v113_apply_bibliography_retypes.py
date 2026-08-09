@@ -293,7 +293,7 @@ def main():
                 echec(f'{eid} : le nom {cible_nom!r} est deja porte par '
                       f'{collision} — renommer creerait un homonyme')
         print(f'  {eid[:8]}  {approuve["nom_actuel"]!r}')
-        print(f'      types  Reference -> Person')
+        print('      types  Reference -> Person')
         if cible_nom:
             print(f'      nom    -> {cible_nom!r}')
 
