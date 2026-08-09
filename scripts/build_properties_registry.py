@@ -135,8 +135,12 @@ EXCLUSIONS_READ_BY = {
 # publication ne les lit. L'instrument de mesure contaminait la mesure.
 # N'ajouter ici qu'un script dont l'enumeration est le PROPOS, jamais un
 # consommateur reel d'attributs.
+#
+# Chemins RELATIFS AU DEPOT, comme EXCLUSIONS_READ_BY — pas des noms de
+# fichier : un basename exclurait aussi un homonyme range ailleurs, qui lui
+# pourrait etre un vrai lecteur.
 SCRIPTS_ENUMERANTS = frozenset({
-    'audit_chronology_dates.py',
+    'scripts/audit_chronology_dates.py',
 })
 
 
@@ -198,7 +202,8 @@ def fichiers_code(repo):
         f for f in fs
         if not any(x in f for x in exclus)
         and os.path.abspath(f) != moi
-        and os.path.basename(f) not in SCRIPTS_ENUMERANTS))
+        and os.path.relpath(f, repo).replace(os.sep, '/')
+        not in SCRIPTS_ENUMERANTS))
 
 
 def read_by(cles, repo):

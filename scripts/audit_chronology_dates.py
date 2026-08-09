@@ -351,6 +351,10 @@ class Lecture:
         self.dmy = ''             # '', 'oui', 'non'
         self.annees = []          # annees ETABLIES (triees) : 0, 1 ou 2
         self.borne_min = None     # date la plus precoce etablie, si connue
+        # Les DEUX dates possibles quand l'ordre jour/mois est indecidable.
+        # Vide sinon. Sert a ne pas juger une valeur ambigue sur une seule de
+        # ses lectures : voir la sortie `anterieure_a_2008_sur_entite_crypto`.
+        self.lectures_possibles = []
         self.notes = []
 
 
@@ -461,6 +465,14 @@ def analyse(cle, type_declare, brute, plages=True):
         if a <= 12 and b <= 12:
             lu.dmy = 'oui'
             lu.iso = f"{annee:04d}"
+            # Les deux lectures sont de vraies dates ; la plus precoce des
+            # deux est une borne inferieure ETABLIE, la ou le 1er janvier
+            # n'etait qu'un defaut de famille. La distinction compte pour le
+            # seuil crypto : « 01/12/2008 » se lit 12 janvier OU 1er decembre,
+            # de part et d'autre du 31/10/2008.
+            lu.lectures_possibles = sorted({datetime.date(annee, b, a),
+                                            datetime.date(annee, a, b)})
+            lu.borne_min = lu.lectures_possibles[0]
             if a == b:
                 lu.notes.append(
                     f"ordre jour/mois indecidable ({a:02d}/{b:02d}) mais les "
@@ -860,6 +872,19 @@ def plausibilite(lu, est_crypto, types, date_reference):
                     "entite de type crypto datee de 2008 sans mois : le "
                     "31/10/2008 (livre blanc) tombe dans l'annee, la "
                     "granularite ne permet pas de trancher")
+            elif lu.dmy == 'oui' and len(lu.lectures_possibles) == 2 \
+                    and lu.lectures_possibles[1] >= SEUIL_CRYPTO:
+                # Ordre jour/mois indecidable ET les deux lectures tombent de
+                # part et d'autre du 31/10/2008 : drapeau non fonde. Trancher
+                # reviendrait a appliquer une convention, ce que ce script
+                # s'interdit partout ailleurs.
+                notes.append(
+                    "entite de type crypto dont l'ordre jour/mois est "
+                    "indecidable : les deux lectures possibles "
+                    f"({lu.lectures_possibles[0].isoformat()} ou "
+                    f"{lu.lectures_possibles[1].isoformat()}) tombent de part "
+                    "et d'autre du 31/10/2008 (livre blanc) — aucune des deux "
+                    "n'etant etablie, l'anteriorite ne l'est pas non plus")
             elif lu.granularite == 'mois' and lu.iso == '2008-10':
                 notes.append(
                     "entite de type crypto datee d'octobre 2008 : le "

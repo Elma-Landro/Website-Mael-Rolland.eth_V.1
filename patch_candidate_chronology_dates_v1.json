@@ -4,7 +4,7 @@
     "source_graph": "grc20-these-mael-rolland-v111.json",
     "generated": "2026-08-09",
     "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Les deux operations ci-dessous portent sur des points DEJA arbitres par Maël Rolland le 2026-08-09 (reponses 2 et 3 du chantier chronologie) ET adosses a une source primaire. Le patch reste neanmoins candidat : il n'est applique par aucun script, et son application relevera d'un `scripts/make_vNNN_*.py` dedie, decide separement. Aucune autre correction de date du chantier n'est incluse — voir `skipped`.",
-    "description": "2 corrections de l'attribut `date`, chacune arbitree et adossee a une source primaire. (1) `ca278d21` CVE-2014-0160 Heartbleed : `04/07/2014` -> `2014-04-07`. La valeur est la seule du graphe a se lire MM/JJ, contre 26 valeurs decidables sur 26 en JJ/MM (docs/audits/data/chronology-date-inventory-v111.csv). Arbitrage rendu : cellule fausse de la figure « Chronologie n°4 », et non seconde convention. (2) `0d81bba0` BitcoinTalk : `2010-11-22` -> `2009-11-22`, coquille d'annee. ATTENTION : ce patch ne traite QUE les dates. Il n'annote aucun doublon et n'assigne aucun `duplicateOf` — voir `skipped`. NOTE POUR L'APPLICATEUR : les deux valeurs `date` visees portent aujourd'hui une cle `options.language` (`fr` pour ca278d21, `en` pour 0d81bba0), semantiquement vide sur une date. Le dialecte du depot n'exprime que `{type, value}` : l'applicateur devra decider explicitement s'il preserve ou retire ces `options`. Ce patch ne tranche pas ce point et le signale plutot que de le decider en silence.",
+    "description": "2 corrections de l'attribut `date`, chacune arbitree et adossee a une source primaire. (1) `ca278d21` CVE-2014-0160 Heartbleed : `04/07/2014` -> `2014-04-07`. La valeur est la seule du graphe a se lire MM/JJ, contre 26 valeurs decidables sur 26 en JJ/MM (docs/audits/data/chronology-date-inventory-v111.csv). Arbitrage rendu : cellule fausse de la figure « Chronologie n°4 », et non seconde convention. (2) `0d81bba0` BitcoinTalk : `2010-11-22` -> `2009-11-22`, coquille d'annee. ATTENTION : ce patch ne traite QUE les dates. Il n'annote aucun doublon et n'assigne aucun `duplicateOf` — voir `skipped`. NOTE POUR L'APPLICATEUR : les deux valeurs `date` visees portent aujourd'hui une cle `options.language` (`fr` pour ca278d21, `en` pour 0d81bba0), semantiquement vide sur une date. Le dialecte du depot n'exprime que `{type, value}` : l'applicateur devra decider explicitement s'il preserve ou retire ces `options`. Ce patch ne tranche pas ce point et le signale plutot que de le decider en silence. PRECONDITION MACHINE : chaque op porte `_expected`, l'etat EXACT de l'attribut dans `source_graph` (type, value, options), lu dans le graphe et non recopie. L'applicateur DOIT verifier les trois champs avant d'ecrire et s'arreter en cas d'ecart — un ecart signifie que le graphe a bouge depuis la redaction, et releve de l'arbitrage de l'auteur, pas d'une reecriture. Le motif maison existe deja : `make_v111_apply_section_page_start_patch.py` exigeait une triple concordance sur l'ancienne valeur ; `_expected` la rend lisible par machine au lieu de la laisser en prose. Il repond aussi a la question des `options` : elles sont ici declarees, donc un applicateur qui les perdrait le ferait sciemment.",
     "audit": "docs/audits/grc20-chronology-dates-references-lab-v1.md",
     "evidence": [
       "docs/audits/data/chronology-external-verification-v111.csv",
@@ -42,6 +42,13 @@
       "value": {
         "type": "TEXT",
         "value": "2014-04-07"
+      },
+      "_expected": {
+        "type": "TEXT",
+        "value": "04/07/2014",
+        "options": {
+          "language": "fr"
+        }
       }
     },
     {
@@ -52,6 +59,13 @@
       "value": {
         "type": "TEXT",
         "value": "2009-11-22"
+      },
+      "_expected": {
+        "type": "TEXT",
+        "value": "2010-11-22",
+        "options": {
+          "language": "en"
+        }
       }
     }
   ]
