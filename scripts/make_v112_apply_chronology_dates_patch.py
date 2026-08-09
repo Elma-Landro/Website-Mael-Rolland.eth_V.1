@@ -82,6 +82,10 @@ VERSION_SOURCE = 'v111'
 VERSION_CIBLE = 'v112'
 OPS_ATTENDUES = 2
 
+# Plafond du champ `space.note`, TOTAL et non seulement sur l'heritage.
+# CLAUDE.md : « Keep `space.note` bounded (~1200 chars) ».
+PLAFOND_NOTE = 1200
+
 # Applicateur a USAGE UNIQUE : le lot est FIGE ici, pas seulement declare par
 # le patch. Un patch retouche entre l'arbitrage et l'application ne doit pas
 # passer parce qu'il aurait mis a jour son propre `op_count`.
@@ -175,15 +179,20 @@ def valider_patch(patch):
 
 
 def signature(graphe):
-    """Etat compare avant/apres. Tout ce qui n'est pas `space` y entre."""
+    """Etat compare avant/apres. Tout ce qui n'est pas `space` y entre.
+
+    Les champs de tete ne sont PAS enumeres en dur. Une premiere version
+    projetait sur (name, description, types, attributes) et ratait donc les
+    3 entites du graphe qui portent en plus une cle `type` au singulier :
+    un controle qui se dit exhaustif ne doit pas dependre d'une liste ecrite
+    a la main, qui vieillit des qu'une entite gagne un champ."""
     entites = {}
     for e in graphe.get('entities', []):
         attrs = e.get('attributes') or {}
+        autres = {k: json.dumps(v, sort_keys=True, ensure_ascii=False)
+                  for k, v in e.items() if k not in ('id', 'attributes')}
         entites[e['id']] = {
-            'name': e.get('name'),
-            'description': json.dumps(e.get('description'), sort_keys=True,
-                                      ensure_ascii=False),
-            'types': tuple(e.get('types') or []),
+            'champs': autres,
             'attributs': {k: json.dumps(v, sort_keys=True, ensure_ascii=False)
                           for k, v in attrs.items()},
         }
@@ -214,8 +223,13 @@ def diff_exhaustif(avant, apres):
 
     for eid in sorted(ids_a & ids_b):
         a, b = avant['entites'][eid], apres['entites'][eid]
-        for champ in ('name', 'description', 'types'):
-            if a[champ] != b[champ]:
+        champs_a, champs_b = set(a['champs']), set(b['champs'])
+        for champ in sorted(champs_a - champs_b):
+            changements.append(f'{eid} : champ de tete `{champ}` SUPPRIME')
+        for champ in sorted(champs_b - champs_a):
+            changements.append(f'{eid} : champ de tete `{champ}` CREE')
+        for champ in sorted(champs_a & champs_b):
+            if a['champs'][champ] != b['champs'][champ]:
                 changements.append(f'{eid} : `{champ}` modifie')
         cles_a, cles_b = set(a['attributs']), set(b['attributs'])
         for k in sorted(cles_a - cles_b):
@@ -330,22 +344,26 @@ def main():
     espace['version'] = VERSION_CIBLE
     espace['entity_count'] = len(resultat['entities'])
     espace['relation_count'] = len(resultat['relations'])
+    # BORNE GLOBALE, pas seulement sur l'heritage. CLAUDE.md demande une note
+    # d'environ 1200 caracteres ; v110/v111 la laissaient croitre (1513, 1703)
+    # parce que le troncage ne portait que sur la partie heritee et que le
+    # preambule neuf s'ajoutait par-dessus. On borne ici le TOTAL : la note
+    # est un resume, l'historique complet vit dans CLAUDE.md et dans l'audit.
+    tete = (
+        "V112 — deux dates corrigees : Heartbleed CVE-2014-0160 "
+        "(04/07/2014 -> 2014-04-07) et BitcoinTalk forum created "
+        "(2010-11-22 -> 2009-11-22, coquille d'annee). Patch candidat "
+        "patch_candidate_chronology_dates_v1.json applique apres arbitrage de "
+        "l'auteur ; chantier chronologie PR #118. Rien d'autre n'a bouge. "
+        "Aucun duplicateOf : le doublon BitcoinTalk (0d81bba0 / 06ac37fc) "
+        "reste une dette, et v112 leve le veto de date qui l'ecartait du "
+        "dedoublonnage automatique — voir "
+        "docs/audits/grc20-v112-chronology-dates-application.md. ")
     heritee = espace.get('note', '')
-    if len(heritee) > 1200:
-        heritee = heritee[:1200].rsplit(' ', 1)[0] + ' […]'
-    espace['note'] = (
-        "V112 — deux dates corrigees : CVE-2014-0160 Heartbleed "
-        "(04/07/2014 -> 2014-04-07, seule valeur du graphe se lisant MM/JJ "
-        "contre 26 valeurs decidables sur 26 en JJ/MM) et BitcoinTalk forum "
-        "created (2010-11-22 -> 2009-11-22, coquille d'annee contredite par "
-        "la description de la fiche elle-meme). Chantier chronologie, PR #118 ; "
-        "patch candidat patch_candidate_chronology_dates_v1.json applique "
-        "apres arbitrage de l'auteur du 2026-08-09. AUCUNE autre date touchee, "
-        "aucun duplicateOf, aucune fusion, aucun noeud cree, aucune "
-        "SourceQuote. Le doublon probable BitcoinTalk (0d81bba0 / 06ac37fc) "
-        "reste une dette : la fiche corrigee est la mieux reliee des deux "
-        "(degre 24 contre 22), designer une canonique reste a l'auteur. "
-        + heritee)
+    budget = max(0, PLAFOND_NOTE - len(tete))
+    if len(heritee) > budget:
+        heritee = heritee[:budget].rsplit(' ', 1)[0] + ' […]'
+    espace['note'] = tete + heritee
 
     temporaire = args.target + '.tmp'
     try:

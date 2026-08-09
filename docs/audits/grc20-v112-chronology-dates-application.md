@@ -46,7 +46,11 @@ space : seules `version` et `note` changent
 
 `entity_count` et `relation_count` de `space` sont réécrits mais retombent sur les mêmes valeurs, les effectifs étant inchangés.
 
+**`space.note` est bornée à 1 200 caractères au total**, et non plus seulement sur sa partie héritée. La revue hostile a relevé que la note enflait de version en version — 1 513 (v110), 1 703 (v111), et 1 910 dans le premier jet de v112 — parce que le tronçage ne portait que sur l'héritage tandis que le préambule neuf s'ajoutait par-dessus. CLAUDE.md demande ~1 200 : l'applicateur borne désormais le total, et la note mesure exactement 1 200 caractères.
+
 L'applicateur porte lui-même ce contrôle : il compare le résultat à la source **entité par entité, attribut par attribut, relation par relation, type par type**, et refuse d'écrire si le diff complet ne vaut pas exactement deux valeurs de `date` changées.
+
+> **Corrigé après revue hostile.** Une première version de `signature()` projetait sur une liste de champs écrite à la main — `name`, `description`, `types`, `attributes` — et ratait donc les **3 entités du graphe qui portent en plus une clé `type` au singulier**. Un contrôle qui se dit exhaustif ne doit pas dépendre d'une liste qui vieillit dès qu'une entité gagne un champ. `signature()` énumère désormais **tous** les champs de tête, et `diff_exhaustif()` signale les créations et suppressions de champ. Sans effet ici — l'applicateur n'écrit que `attributes['date']['value']` — mais l'affirmation était plus large que le code.
 
 ### Les `options` sont préservées — choix déclaré
 
@@ -58,7 +62,46 @@ Le dialecte du dépôt n'exprime qu'un couple `{type, value}`, alors que les deu
 
 - **Aucun `duplicateOf`, aucun `reviewStatus`, aucune fusion.** La fiche `0d81bba0` a très probablement une jumelle, `06ac37fc`, qui porte déjà la bonne date. Marquer le doublon désignerait une canonique — or **`0d81bba0`, la fiche corrigée, a un degré de 24 contre 22** pour `06ac37fc` : la fiche fausse est la **mieux reliée**. C'est le piège **C5** de `grc20-dedup-events-audit-v1.md`, et le motif même pour lequel l'auteur refuse par ailleurs la fusion Mining pools. Corriger une date n'autorise pas à trancher une identité. L'applicateur refuse explicitement toute op portant ces deux clés.
 - **Aucun nœud créé, aucune SourceQuote, aucun retypage, aucun renommage.**
-- **Aucune autre date touchée** — ni les 28 valeurs ambiguës, ni les 86 sans source déclarée.
+- **Aucune autre date touchée** — ni les 27 valeurs ambiguës restantes, ni les 86 sans source déclarée. (27 et non 28 : `04/07/2014` faisait partie du lot ambigu, et l'op n° 1 en corrige une — voir § 7.)
+
+---
+
+## 3 bis. La conséquence que cette version produit — mesurée après revue hostile
+
+> **Ajouté après revue hostile.** La première version de cet audit écrivait que « le doublon probable BitcoinTalk reste une dette ». **C'est faux tel quel : la dette a changé de nature**, et v112 en est la cause. Il fallait le mesurer avant d'écrire, pas après.
+
+`scripts/verif_doublons.py` est l'instrument de dédoublonnage du dépôt. Exécuté sur les deux graphes, sorties redirigées hors du dépôt :
+
+```
+v111 : 78 paires · FUSION_SURE 4 · A_VERIFIER 14 · REJET_AUTO 60
+v112 : 78 paires · FUSION_SURE 4 · A_VERIFIER 15 · REJET_AUTO 59
+```
+
+Une seule paire bouge, et c'est la nôtre :
+
+```
+v111  REJET_AUTO ; motif = « dates contradictoires (2010-11-22 / 2009-11-22) »
+v112  A_VERIFIER ; motifs = « meme type ; dates identiques ; identifiants
+                              compatibles ; 15 cible(s) commune(s) ;
+                              chevauchement de description »
+```
+
+**La date fausse était le veto.** Tant que `0d81bba0` portait 2010, le mécanisme *refusait* d'examiner la paire. En la corrigeant, v112 supprime cette protection : la paire entre dans `A_VERIFIER`, et le CSV produit **désigne une canonique** — exactement ce que l'applicateur, le patch et cet audit s'interdisent tous les trois.
+
+Corroboration indépendante, sur le graphe seul — entités partageant `(date, description, types)` :
+
+```
+v111 : 0 collision
+v112 : 1 collision  ->  0d81bba0 / 06ac37fc, date 2009-11-22
+```
+
+**v112 crée l'unique collision d'empreinte du graphe.** Elle n'existait pas avant.
+
+L'énoncé juste n'est donc pas « la dette reste entière » mais : **v112 échange une contradiction visible contre une duplication invisible.** Avant, un lecteur voyait deux dates pour un même fait — un défaut criant. Maintenant il voit deux fois le même événement, à la même date, sans marqueur.
+
+Ce n'est pas une raison de défaire v112 : la date corrigée est juste, et laisser une date fausse pour qu'elle serve de garde-fou serait absurde. Mais cela **déplace l'urgence** de l'arbitrage d'identité, et cela doit être écrit ici pour que le prochain agent qui relancera `verif_doublons.py` sache que la convergence des deux fiches est le produit d'un patch de date, non une découverte. Le degré 24/22 rend d'ailleurs la canonique proposée par l'automate *plausible* — donc convaincante, donc dangereuse.
+
+**Dommage collatéral, non corrigé ici** : `docs/audits/data/doublons-verifies.csv` (base v97) porte encore `REJET_AUTO … « dates contradictoires (2010-11-22 / 2009-11-22) »`. Ce n'est plus seulement périmé : le **motif** qu'il invoque n'existe plus. Le régénérer sortirait du périmètre de cette PR.
 
 ---
 
@@ -113,13 +156,13 @@ comparaison v111/v112 independante                  exactement 2 changements
 
 ## 7. Dettes explicitement NON traitées
 
-Aucune n'est refermée par cette version, et aucune ne doit être réputée l'être :
+Aucune n'est refermée par cette version — **à une exception près, signalée après revue hostile** : le lot des valeurs à barres ambiguës passe de 28 à 27, `04/07/2014` en ayant fait partie. Le `skipped` n° 1 du patch affirme « aucune de ces 28 valeurs n'est fausse sous JJ/MM » dans le fichier même dont l'op n° 1 en corrige une : contradiction interne du patch, recopiée ici sans être vue. Pour tout le reste :
 
 - **le doublon probable BitcoinTalk** (`0d81bba0` / `06ac37fc`) — dette entière, canonique non désignée ;
 - **la grappe Mining pools à cinq fiches**, traversant les types, et les 3 fiches `duplicate-pending-merge` depuis v105 ;
 - **`120e6fa2`** — perte wallet.dat 2010 contre vol Allinvain 2011 sur une même fiche, séparation arbitrée mais non exécutable en patch candidat ;
 - **NewLibertyStandard** et les 6 autres `two_distinct_events_possible` ;
-- **les 28 valeurs `NN/NN/AAAA` ambiguës** — convention JJ/MM confirmée, aucune réécriture ;
+- **les 27 valeurs `NN/NN/AAAA` ambiguës restantes** — et non 28 : `04/07/2014` en faisait partie (`dmy_ambiguous = oui` dans l'inventaire du chantier), et **v112 en a réécrit une**. Recompté : v111 en portait 28, v112 en porte 27, les 26 décidables restant inchangées. La convention JJ/MM est confirmée, aucune des 27 n'est réécrite ;
 - **les 86 dates sans `dateSource`**, et les 37 renvois vers des figures absentes du dépôt ;
 - **les 237 doubles descriptions** — chantier séparé ;
 - **The DAO** — reste `non_verifie` ;

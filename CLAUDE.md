@@ -301,11 +301,19 @@ written, because the corrected card is the better-connected of the two
 
 ### Patch Files
 
-**32 patch artefacts have been inventoried empirically** against v110 (the
-inventory predates v111; `patch_candidate_section_page_start_v1.json`, applied
-by `make_v111`, is a 33rd)
+**32 patch artefacts have been inventoried empirically** against v110
 (`docs/audits/data/candidate-patch-inventory-v1.csv`, each line carrying its
-proof of application or non-application). Three statuses:
+proof of application or non-application). The inventory predates v111 and has
+not been regenerated since: `patch_candidate_section_page_start_v1.json`,
+applied by `make_v111`, is a 33rd, and
+`patch_candidate_chronology_dates_v1.json`, applied by `make_v112`, a 34th.
+
+**Both of those still carry the `CANDIDATE — NOT APPLIED` policy even though
+they were applied.** That is the repo convention, not an oversight — check C03
+of `preflight_candidate_patches.py` requires the string, and the applicators
+refuse a patch that lacks it. But nothing yet records *that they were
+applied*: read the inventory as a snapshot of v110, never as the current
+state. Three statuses:
 
 | Status | Count | What it means |
 |---|---:|---|
