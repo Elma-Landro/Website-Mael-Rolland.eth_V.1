@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "purpose": "Memoire d'application des patchs. Le patch propose, le ledger se souvient, le GRAPHE prouve. En cas de desaccord, le graphe tranche.",
+    "arbitration": "Maël Rolland, 2026-08-09, Q3",
+    "generated_by": "scripts/build_patch_application_ledger.py",
+    "warning": "La `policy` d'un patch applique reste « CANDIDATE — NOT APPLIED » : C03 l exige. Cette phrase est historiquement fausse apres application. Lire le statut dans le graphe, la file vivante, puis ce ledger — jamais dans la policy."
+  },
+  "applications": [
+    {
+      "patch": "patch_candidate_section_page_start_v1.json",
+      "applicator": "scripts/make_v111_apply_section_page_start_patch.py",
+      "source_version": "v110",
+      "applied_version": "v111",
+      "pr": 117,
+      "date": "2026-08-08",
+      "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
+      "measured": {
+        "graph": "grc20-these-mael-rolland-v113.json",
+        "ops_total": 16,
+        "ops_readable": 16,
+        "ops_applied": 16,
+        "ops_missing_targets": 0,
+        "status": "already_applied"
+      }
+    },
+    {
+      "patch": "patch_candidate_chronology_dates_v1.json",
+      "applicator": "scripts/make_v112_apply_chronology_dates_patch.py",
+      "source_version": "v111",
+      "applied_version": "v112",
+      "pr": 119,
+      "date": "2026-08-09",
+      "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
+      "measured": {
+        "graph": "grc20-these-mael-rolland-v113.json",
+        "ops_total": 2,
+        "ops_readable": 2,
+        "ops_applied": 2,
+        "ops_missing_targets": 0,
+        "status": "already_applied"
+      }
+    },
+    {
+      "patch": "patch_candidate_bibliographie_retypes_v1.json",
+      "applicator": "scripts/make_v113_apply_bibliography_retypes.py",
+      "source_version": "v112",
+      "applied_version": "v113",
+      "pr": 120,
+      "date": "2026-08-09",
+      "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
+      "measured": {
+        "graph": "grc20-these-mael-rolland-v113.json",
+        "ops_total": 10,
+        "ops_readable": 10,
+        "ops_applied": 10,
+        "ops_missing_targets": 0,
+        "status": "already_applied"
+      }
+    }
+  ]
+}
