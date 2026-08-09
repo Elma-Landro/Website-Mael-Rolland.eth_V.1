@@ -105,6 +105,45 @@ Ce n'est pas une raison de défaire v112 : la date corrigée est juste, et laiss
 
 ---
 
+## 3 ter. Arbitrages de l'auteur sur cette version — 2026-08-09
+
+Rendus après lecture de la PR #119 et de la revue hostile. Ils ne modifient pas v112 ; ils fixent ce que v112 **signifie**, et ce qu'il laisse ouvert.
+
+### `date` pour Heartbleed : une date de divulgation publique, et une dette de modélisation
+
+**La sémantique générale de `date` n'est PAS tranchée ici.** Pour `ca278d21` seulement, `2014-04-07` doit se comprendre comme **la date publique pertinente de l'événement — la divulgation publique**, et non comme une date d'exploitation ou d'incident.
+
+**Dette de modélisation inscrite** : l'attribut `date` mélange encore, selon les fiches, une date d'incident, une date de divulgation, une date d'activation et une date narrative. La revue hostile l'a mesuré sur les 4 fiches CVE portant les deux clés — `date` y précède systématiquement `publicDisclosure` de plusieurs semaines :
+
+```
+CVE-2012-3789  date 12/05/2012  publicDisclosure 20/06/2012
+CVE-2013-2293  date 09/01/2013  publicDisclosure 14/02/2013
+```
+
+Ce n'est **pas un blocage pour v112**. C'est un chantier de modélisation à ouvrir, qui devra dire ce que `date` désigne, fiche par famille.
+
+### Format ISO isolé : maintenu, et signalé
+
+`2014-04-07` est **maintenu**. Ne pas revenir à `07/04/2014`.
+
+`ca278d21` devient de ce fait **la seule valeur ISO d'une cohorte de 31 fiches `cveId` dont 25 sont en `NN/NN/AAAA`**. Le signalement est requis, mais c'est préférable à réintroduire une date à barres ambiguë — elle appartenait au lot des 28 indécidables, et l'y remettre reconstituerait l'ambiguïté que cette version lève. **La normalisation globale des formats est un chantier distinct.**
+
+### Provenance : aucune `dateSource` ajoutée, et une dette explicite
+
+**Aucune `dateSource` n'est ajoutée dans ce patch**, faute de source externe vérifiée. `crisis.html` corrobore que le runtime affichait déjà `07/04/2014` avec `month: 4`, mais **un fichier du site n'est ni une source scientifique ni une source primaire** : il ne peut pas fonder une `dateSource`.
+
+Donc, en toutes lettres :
+
+- la correction de date est **conservée** ;
+- `ca278d21` est désormais **une correction prouvée par convergence interne (les 26 valeurs décidables du graphe) et par le runtime**, mais **sans provenance externe déclarée** ;
+- **dette inscrite** : ajouter une provenance Heartbleed lors du futur chantier `dateSource`. C'est la seule fiche du graphe dont on sait qu'elle diverge de sa source imprimée, et c'est aussi celle qui ne déclare aucune provenance — l'anomalie est nommée, non comblée.
+
+### BitcoinTalk : pas de `duplicateOf`, pas de fusion, arbitrage d'identité prioritaire
+
+L'effet découvert au § 3 bis **n'est pas une raison de garder la date fausse**. Mais il rend **prioritaire un futur arbitrage d'identité BitcoinTalk**. En attendant : aucun `duplicateOf`, aucune fusion.
+
+---
+
 ## 4. Garde-fous de l'applicateur, testés un par un
 
 Le lot est **figé dans le script**, pas seulement déclaré par le patch : un patch retouché entre l'arbitrage et l'application ne doit pas passer parce qu'il aurait mis à jour son propre `op_count`. Chaque refus a été provoqué :
@@ -171,6 +210,24 @@ Aucune n'est refermée par cette version — **à une exception près, signalée
 
 ---
 
-## 8. Limite connue de cette version
+## 8. Limites connues et exceptions acceptées
+
+### `audit_chronology_dates.py --check` échoue — ce n'est PAS une régression du graphe
+
+> **Note pour les agents futurs, à ne pas contourner de travers.** Cet échec **ne signale aucun défaut de v112**. Il vient uniquement du passage v111 → v112 face à une **preuve figée** : le script dérive le nom de son CSV du graphe le plus récent et cherche donc `chronology-date-inventory-v112.csv`, qui n'existe pas. Le CSV versé décrit v111 et **doit** rester tel quel : il est la donnée probante du chantier PR #118. Ne le régénérez pas pour faire taire le rouge — vous détruiriez la mesure sans rien mesurer. La correction propre est de donner au script un `--source` déclaré au lieu de « le graphe le plus récent », dans un chantier distinct.
+
+**Vérifié** : `.github/workflows/check.yml` compte 8 étapes et **ce script n'y figure pas**. La CI ne rougit pas. Les cinq contrôles qui y sont, eux, passent.
+
+### Vérification navigateur non faite — exception documentée
+
+La charte exige une vérification navigateur pour tout changement de runtime, et `graphe.html` et `lecteur.html` sont modifiés. **Elle n'a pas pu être faite.**
+
+- **Cause** : `node_modules/` est absent de l'arbre, `playwright` n'est pas résoluble, les CDN sont bloqués, et `playwright install` est interdit par la charte. La revue hostile s'est heurtée au même mur : le contrôle manque **des deux côtés**.
+- **Pourquoi le risque est faible** : le diff runtime ne contient **que** des pointeurs de version — une constante de nom de fichier par fichier, rien d'autre. La cible existe, pèse 10,2 Mo et est du JSON valide.
+- **Ce qui remplace le contrôle** : `node --check` sur les quatre `.mjs` modifiés, inspection intégrale du diff runtime (borné aux pointeurs, ligne à ligne), et les cinq validations de graphe vertes.
+
+Exception **acceptée par l'auteur** le 2026-08-09, à condition qu'elle soit énoncée — ce qu'elle est ici et dans le corps de la PR #119.
+
+### Détail technique de l'échec `--check`
 
 `audit_chronology_dates.py --check` **échoue désormais**, et c'était prévu : il dérive le nom de son CSV du graphe le plus récent, donc il cherche `chronology-date-inventory-v112.csv`, absent. Ce comportement était **déclaré au § 10 de l'audit du chantier** avant même que v112 existe. Le CSV d'inventaire reste celui de v111 et le reste volontairement : il décrit v111, et le régénérer sur v112 mélangerait une mesure et une application dans la même PR. Le script n'est pas en CI, donc rien ne rougit. **La ligne à corriger est un `--source` déclaré plutôt qu'un « graphe le plus récent »** — chantier distinct, non ouvert ici.
