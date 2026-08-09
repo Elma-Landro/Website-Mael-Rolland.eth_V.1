@@ -83,7 +83,15 @@ FAMILLES = (
 
 # Conteneurs d'operations rencontres dans les six dialectes du depot.
 CONTENEURS = ('ops', 'operations', 'relations', 'new_relations',
-              'new_entities', 'rewire_relations', 'update_entities')
+              'new_entities', 'rewire_relations', 'update_entities',
+              # Dialecte ad hoc de patches/archive/grc20_anchor_overrides :
+              # les ignorer rendait ce patch illisible (0 op), donc classe
+              # « lot integre » par defaut — alors qu'il est a 0/10.
+              'safe_fix', 'proposed_review')
+
+# Cles qui, dans le dialecte `safe_fix`, PORTENT la valeur a ecrire : l'op n'a
+# pas de champ `attributeId`, l'attribut EST une cle de l'objet.
+CLES_VALEUR_AD_HOC = ('primaryChapter',)
 
 
 def echec(msg, code=CODE_DONNEES):
@@ -195,6 +203,20 @@ def effet_realise(op, par_id, types_par_nom, relations=None, paires=None):
         if any(c in relations for c in cles):
             return True
         return (src, dst) in paires if typ is None else False
+    # Dialecte `safe_fix` : {entity_id, entity_name, primaryChapter, rationale}
+    if 'entity_id' in op and any(k in op for k in CLES_VALEUR_AD_HOC):
+        e = par_id.get(op['entity_id'])
+        if e is None:
+            return None
+        attrs = e.get('attributes') or {}
+        for cle in CLES_VALEUR_AD_HOC:
+            if cle not in op:
+                continue
+            actuel = attrs.get(cle)
+            actuel = actuel.get('value') if isinstance(actuel, dict) else actuel
+            if actuel != op[cle]:
+                return False
+        return True
     if t == 'CREATE_ENTITY(implicite)':
         return op.get('id') in par_id
     if t == 'REMOVE_RELATION' and relations is not None:

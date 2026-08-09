@@ -12,19 +12,23 @@
 
 ## 1. Le diagnostic tient en une mesure
 
-**Sur 31 artefacts de patch, un seul reste applicable.**
+**Sur 31 artefacts de patch, deux restent applicables.**
+
+> **Corrigé après revue hostile.** Ce paragraphe annonçait « un seul ». La revue a montré que `patches/archive/grc20_anchor_overrides_targeted.json` était classé `archive_historical` — « lot intégré » — alors qu'il est appliqué à **0/10** : son dialecte `safe_fix` / `proposed_review` n'était pas dans la table des conteneurs, l'outil lisait 0 op et retombait sur un défaut. Mesure de contrôle : l'attribut `primaryChapter` que ce patch pose a **0 porteur** sur les 2 293 entités de v113. Le dialecte est désormais lu, et le statut est `candidate_active`. C'était l'inverse exact de la vérité, et le mot « prudent » que le § 6 employait était faux : sur quatre statuts, `archive_historical` est le **moins** conservateur.
 
 | Statut de gouvernance proposé | n | Rejouable ? |
 |---|---:|---|
-| `archive_historical` | 19 | non — lot intégré, rejeu sans effet |
+| `archive_historical` | 18 | non — lot intégré, rejeu sans effet |
 | `archive_partial` | 7 | **non — un rejeu écrirait à côté** |
 | `candidate_applied` | 3 | non — appliqué par v111, v112, v113 |
 | `blocked_missing_applicator` | 1 | non — aucun applicateur ne lit `CREATE_ENTITY` |
-| **`candidate_active`** | **1** | **oui — et bloqué par arbitrage d'auteur** |
+| **`candidate_active`** | **2** | **oui** |
 
-Ce seul candidat actif est `patch_candidate_bibliographie_duplicates_v1.json` — 156 ops `duplicateOf`, la famille que l'auteur a explicitement mise hors périmètre.
+Les deux candidats actifs sont `patch_candidate_bibliographie_duplicates_v1.json` (156 ops `duplicateOf`, famille explicitement mise hors périmètre par l'auteur) et `patches/archive/grc20_anchor_overrides_targeted.json` (10 ops, 0 réalisée).
 
-**Toute la question de la CI se joue donc sur un fichier.** Câbler un contrôle strict pour garder un artefact, au prix d'une CI qui rougit à chaque bump de version, est un mauvais échange. Ce chiffre n'est pas un détail de mise en forme : c'est l'argument.
+**Le chiffre porte moins loin qu'il n'y paraît, et la revue hostile a eu raison de le dire.** Il compte ce qui est applicable *aujourd'hui, sans écrire une ligne de code*. Il exclut : `patch_candidate_bibliographie_missing_nodes_v1.json` (38 ops), non applicable seulement parce qu'**aucun applicateur ne lit `CREATE_ENTITY`** — écrire cet applicateur ferait trois ; et les **4 archives `Migration/*.zip`** (41 ops SourceQuote vérifiées par un lab antérieur, gelées par arbitrage), hors du glob comme du périmètre déclaré. Le chiffre est en outre **mobile** : mesuré sur v112, il vaut 2 également, mais rien ne garantit qu'il reste bas.
+
+Énoncé honnête : **2 applicables, 1 bloqué faute d'applicateur, 4 hors périmètre déclaré.** Cela reste un argument contre une CI stricte — mais un argument, pas une démonstration.
 
 ---
 
@@ -49,7 +53,15 @@ Deux précisions mesurées, qui bornent le problème plus qu'on ne le croit :
 
 L'inventaire classait `patch_2b_central_arguments.json` en `already_applied`. La table de gouvernance le rétrograde en **`archive_partial`**, et c'est mérité : ses 49 opérations *lisibles* sont bien réalisées, mais **7 de ses cibles n'existent plus dans le graphe**. « Appliqué » sur-promettait — la revue hostile de la PR #120 l'avait signalé, la colonne portait l'information, le mot la contredisait.
 
-Sept artefacts sont dans ce cas, dont `new_relations_patch.json` (6 246 ops réalisées sur 11 884). **Aucun ne doit être rejoué**, et aucun n'est un candidat.
+Sept artefacts portent `archive_partial`, mais **pour deux raisons distinctes qu'il ne faut pas confondre** — la première rédaction de cet audit les amalgamait :
+
+- **état mixte** — des ops lisibles ne sont pas réalisées : `new_relations_patch.json` (6 246/11 884), `patch_1b` (770/774), `patch_5` (141/147), `patch_4` (105/111), `patch_11` (27/31) ;
+- **cibles mortes** — toutes les ops lisibles sont faites, mais des cibles ont disparu : `patch_2b` (49/49, 7 cibles absentes) ;
+- `patch_2c` (248/274, 19 absentes) cumule les deux.
+
+**Aucun ne doit être rejoué**, et aucun n'est un candidat.
+
+**Une limite du compteur, signalée par la revue** : `ops_missing_targets` vaut **0 par construction** pour les patchs de relations — une op `ADD_RELATION` dont une extrémité est introuvable renvoie `False`, jamais `None`, et n'incrémente donc rien. Sur `new_relations_patch.json`, 428 ops visent une entité réellement disparue et 5 201 pointent vers des marqueurs `NEEDS_CREATION:` non résolus, sans que la colonne l'indique. Sans effet sur les statuts actuels, mais le compteur promet plus qu'il ne mesure.
 
 ---
 
@@ -97,4 +109,6 @@ Il **ne modifie pas C03**, n'ajoute aucun `lifecycleStatus`, ne crée aucun ledg
 
 ## 6. Limite connue
 
-La table de gouvernance dérive de l'inventaire : si l'heuristique de dialecte de `build_patch_queue_inventory.py` se trompe sur un artefact, la recommandation héritera de l'erreur. Deux artefacts restent à `0` op lisible (`patches/archive/grc20_anchor_overrides_targeted.json`, `patches/grc20_v97_remove_15_truncated_broken_relations.json`) et sont classés `archive_historical` par défaut — un défaut prudent, mais un défaut.
+La table de gouvernance dérive de l'inventaire : si l'heuristique de dialecte de `build_patch_queue_inventory.py` se trompe sur un artefact, la recommandation héritera de l'erreur. Un artefact reste à `0` op lisible (`patches/grc20_v97_remove_15_truncated_broken_relations.json`, un reçu d'opération plutôt qu'un patch) et retombe sur `archive_historical` par défaut. **Ce défaut n'est pas prudent** : sur les quatre statuts possibles, `archive_historical` est le moins conservateur, puisqu'il autorise à ne plus rien instruire. Le prudent serait `indetermine`. La revue hostile a démontré le coût de ce choix sur un autre fichier (voir § 1) ; il subsiste ici.
+
+**Trois lignes `archive_historical` reposent par ailleurs sur 33 ops que l'outil ne lit pas** (`patch_14` 6, `patch_16` 22, `patch_3a` 5 — dialectes `rewire_relations` et `update_entities`). La revue les a mesurées à la main : **33/33 réalisées**. Le verdict est donc juste en fait, mais sans preuve produite par ce chantier.

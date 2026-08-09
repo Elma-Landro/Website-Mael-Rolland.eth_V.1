@@ -34,8 +34,14 @@ from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
 import build_patch_queue_inventory as inventaire  # noqa: E402
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
-SORTIE = os.path.join(REPO, 'docs', 'audits', 'data',
-                      'patch-queue-governance-cases-v113.csv')
+# Le nom SUIT le graphe de reference, comme celui de l'inventaire. Le figer a
+# « -v113 » faisait exactement ce que l'audit reproche par ailleurs : `--graph
+# <ancien> --csv` ecrasait le fichier v113 avec les donnees d'une autre
+# version, en silence. Un fichier ne doit pas pouvoir mentir sur ce qu'il decrit.
+def sortie_pour(graphe):
+    version = os.path.basename(graphe).rsplit('-', 1)[-1].removesuffix('.json')
+    return os.path.join(REPO, 'docs', 'audits', 'data',
+                        f'patch-queue-governance-cases-{version}.csv')
 
 COLONNES = (
     'artifact_path', 'current_label_or_policy', 'measured_status',
@@ -111,6 +117,13 @@ def gouvernance(ligne, sous_c03, applique_par):
                 'aucun applicateur ne consomme ces ops',
                 'CREATE_ENTITY : le contrat interdit de pre-assigner un '
                 'entityId, et aucun make_* ne lit ce type d op')
+
+    if mesure == 'still_candidate':
+        return ('candidate_active', 'evidence_frozen', 'oui',
+                'aucun rejeu : rien n est applique',
+                f'0 op realisee sur {lisibles} lisibles — le patch est ENTIER '
+                'et ses cibles existent. Ni archive ni applique : il attend un '
+                'arbitrage')
 
     if mesure == 'stale_source_graph_but_preconditions_intact':
         return ('candidate_active', 'evidence_frozen', 'oui',
@@ -195,11 +208,12 @@ def main():
           'aurait a surveiller')
 
     if args.check:
-        if not os.path.exists(SORTIE):
-            print(f'--check : {os.path.relpath(SORTIE, REPO)} absent.',
+        sortie = sortie_pour(courant)
+        if not os.path.exists(sortie):
+            print(f'--check : {os.path.relpath(sortie, REPO)} absent.',
                   file=sys.stderr)
             return 1
-        with open(SORTIE, encoding='utf-8', newline='') as f:
+        with open(sortie, encoding='utf-8', newline='') as f:
             verse = list(csv.DictReader(f, delimiter=';'))
         recalcule = [{k: str(v) for k, v in ligne.items()} for ligne in lignes]
         if verse != recalcule:
@@ -213,13 +227,14 @@ def main():
         print('\n(simulation — relancer avec --csv pour ecrire)')
         return 0
 
-    temporaire = SORTIE + '.tmp'
+    sortie = sortie_pour(courant)
+    temporaire = sortie + '.tmp'
     with open(temporaire, 'w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=COLONNES, delimiter=';')
         w.writeheader()
         w.writerows(lignes)
-    os.replace(temporaire, SORTIE)
-    print(f'\necrit : {os.path.relpath(SORTIE, REPO)} ({len(lignes)} lignes)')
+    os.replace(temporaire, sortie)
+    print(f'\necrit : {os.path.relpath(sortie, REPO)} ({len(lignes)} lignes)')
     return 0
 
 
