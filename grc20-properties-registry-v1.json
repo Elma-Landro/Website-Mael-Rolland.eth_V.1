@@ -115,6 +115,7 @@
       "readBy": [
         "crisis-fr.html",
         "crisis.html",
+        "scripts/audit_chronology_dates.py",
         "scripts/match_chronology_events.py",
         "scripts/verif_doublons.py"
       ],
@@ -333,6 +334,7 @@
         "plan-du-site.html",
         "rare-pepe-fr.html",
         "rare-pepe.html",
+        "scripts/audit_chronology_dates.py",
         "scripts/audit_graph.py",
         "scripts/generate_chapter_patch.mjs",
         "scripts/make_section_creation_patch.py",
@@ -371,6 +373,7 @@
       "readBy": [
         "crisis-fr.html",
         "crisis.html",
+        "scripts/audit_chronology_dates.py",
         "scripts/make_v104_ethereum_hard_forks.py",
         "scripts/match_chronology_events.py",
         "scripts/verif_doublons.py",
@@ -704,6 +707,7 @@
         "grc20-publish.mjs",
         "lecteur.html",
         "narrative-anchors-build.mjs",
+        "scripts/audit_chronology_dates.py",
         "scripts/audit_graph.py",
         "scripts/audit_section_page_start.py",
         "scripts/check_graph_integrity.py",
@@ -751,6 +755,7 @@
       "count": 95,
       "status": "structural",
       "readBy": [
+        "scripts/audit_chronology_dates.py",
         "scripts/make_v104_ethereum_hard_forks.py",
         "scripts/verif_doublons.py"
       ],
@@ -1068,6 +1073,7 @@
       "count": 49,
       "status": "structural",
       "readBy": [
+        "scripts/audit_chronology_dates.py",
         "scripts/make_v104_ethereum_hard_forks.py",
         "scripts/verif_doublons.py"
       ],
@@ -1238,6 +1244,7 @@
       "count": 31,
       "status": "structural",
       "readBy": [
+        "scripts/audit_chronology_dates.py",
         "scripts/verif_doublons.py"
       ],
       "vocabulary": null,
@@ -1348,8 +1355,10 @@
         "PrimarySource"
       ],
       "count": 27,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -1363,8 +1372,10 @@
         "PrimarySource"
       ],
       "count": 27,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -1551,8 +1562,10 @@
         "Reference"
       ],
       "count": 26,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": [
         "21 juillet 2020"
       ],
@@ -1685,6 +1698,7 @@
       "count": 23,
       "status": "structural",
       "readBy": [
+        "scripts/audit_chronology_dates.py",
         "scripts/match_chronology_events.py"
       ],
       "vocabulary": null,
@@ -1781,8 +1795,10 @@
         "SoftwareClient"
       ],
       "count": 17,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -1876,8 +1892,10 @@
         "PlatformService"
       ],
       "count": 13,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -1977,8 +1995,10 @@
         "PrimarySource"
       ],
       "count": 12,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": [
         "2015-01-01T00:00:00.000Z",
         "2015-06-01T00:00:00.000Z",
@@ -2173,8 +2193,10 @@
         "CrisisPhase"
       ],
       "count": 8,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2188,8 +2210,10 @@
         "CrisisPhase"
       ],
       "count": 8,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2221,8 +2245,10 @@
         "GovernanceProcess"
       ],
       "count": 7,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2268,8 +2294,10 @@
         "Organization"
       ],
       "count": 7,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2298,8 +2326,10 @@
         "Protocol"
       ],
       "count": 7,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2360,8 +2390,10 @@
         "GovernanceProcess"
       ],
       "count": 6,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2682,8 +2714,10 @@
         "CrisisEvent"
       ],
       "count": 4,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2697,8 +2731,10 @@
         "InfrastructureDomain"
       ],
       "count": 4,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -2813,8 +2849,10 @@
         "DevelopmentPhase"
       ],
       "count": 3,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -3086,6 +3124,7 @@
         "curriculum.html",
         "graphe.html",
         "lecteur.html",
+        "scripts/audit_chronology_dates.py",
         "soutenance-edition-fr.html",
         "soutenance-edition.html",
         "soutenance-fr.html",
@@ -3139,8 +3178,10 @@
         "Organization"
       ],
       "count": 2,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -3211,6 +3252,7 @@
       "readBy": [
         "graphe.html",
         "scripts/apply-sourcequote-phases.mjs",
+        "scripts/audit_chronology_dates.py",
         "scripts/sourcequote-migration/apply.mjs",
         "scripts/sourcequote-migration/report.mjs",
         "story-presets.mjs"
@@ -3243,8 +3285,10 @@
         "PriceWindow"
       ],
       "count": 2,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -3606,8 +3650,10 @@
         "PriceWindow"
       ],
       "count": 2,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -3862,8 +3908,10 @@
         "Organization"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4045,8 +4093,10 @@
         "DoctoralThesis"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4137,8 +4187,10 @@
         "DoctoralThesis"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4152,8 +4204,10 @@
         "Concept"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4245,8 +4299,10 @@
         "Organization"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4448,8 +4504,10 @@
         "Person"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4463,8 +4521,10 @@
         "CrisisEvent"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4478,8 +4538,10 @@
         "Protocol"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4493,8 +4555,10 @@
         "Protocol"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4765,8 +4829,10 @@
         "Capability"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -4988,8 +5054,10 @@
         "Protocol"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -5486,8 +5554,10 @@
         "InfrastructureEvent"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""
@@ -5516,8 +5586,10 @@
         "SoftwareClient"
       ],
       "count": 1,
-      "status": "editorial",
-      "readBy": [],
+      "status": "structural",
+      "readBy": [
+        "scripts/audit_chronology_dates.py"
+      ],
       "vocabulary": null,
       "derivedFrom": null,
       "notes": ""

@@ -115,10 +115,15 @@ NOTES = {
 # Faux positifs du balayage LEXICAL : le fichier nomme la chaine sans jamais
 # lire l'attribut du graphe. `pages` est capte par l'API pypdf
 # (`lecteur.pages`, `self.pages`), `note` par des noms de colonnes de CSV.
+# Cas particulier de `page_start` : audit_chronology_dates.py ne le lit pas,
+# il l'EXCLUT — la chaine n'y figure que dans sa docstring et dans la
+# constante CLES_EXCLUES_NON_DATEES qui l'ecarte du perimetre des dates.
+# L'y laisser ferait dire a `readBy` le contraire de ce qui se passe.
 # Toute entree ajoutee ici doit avoir ete verifiee dans le fichier vise.
 EXCLUSIONS_READ_BY = {
     'pages': {'scripts/audit_section_page_start.py'},
     'note': {'scripts/audit_section_page_start.py'},
+    'page_start': {'scripts/audit_chronology_dates.py'},
 }
 
 
