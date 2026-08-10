@@ -34,6 +34,12 @@ from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
 import build_patch_queue_inventory as inventaire  # noqa: E402
 
 SORTIE = os.path.join(REPO, 'patch-application-ledger.json')
+CODE_DONNEES = 1
+
+
+def echec(msg):
+    print(f'ECHEC (donnees) : {msg}', file=sys.stderr)
+    sys.exit(CODE_DONNEES)
 
 # Applications connues, ecrites a la main parce qu'elles portent ce qu'aucun
 # fichier ne sait : la PR et le commit qui les ont portees. Le reste (ops
@@ -59,7 +65,17 @@ def construire(courant):
                   for ligne in inventaire.construire(courant)}
     entrees = []
     for app in APPLICATIONS:
-        ligne = par_chemin.get(app['patch'], {})
+        # Un patch absent de l'inventaire ne doit PAS retomber sur `{}` : le
+        # ledger ecrirait alors 0/0 `inconnu` — un bloc `measured` d'apparence
+        # normale, qui dit « rien de mesure » exactement comme il dirait « rien
+        # d'applique ». C'est le defaut que ce fichier existe pour corriger,
+        # reproduit a l'interieur de lui-meme. Chemin faux, fichier supprime,
+        # exclusion trop large : tout cela doit se voir bruyamment.
+        if app['patch'] not in par_chemin:
+            echec(f"{app['patch']} est declare applique mais absent de "
+                  "l inventaire — chemin errone, fichier supprime, ou capte "
+                  'par une exclusion. Le ledger refuse de mesurer a vide.')
+        ligne = par_chemin[app['patch']]
         chemin = os.path.join(REPO, app['patch'])
         declaree = ''
         if os.path.exists(chemin):

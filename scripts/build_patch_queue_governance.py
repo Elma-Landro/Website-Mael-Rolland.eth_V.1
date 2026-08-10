@@ -81,11 +81,26 @@ def politique_courante(doc):
     return '(aucune)'
 
 
-def gouvernance(ligne, sous_c03, applique_par):
-    """-> (statut recommande, gele/vivant, candidat CI, risque, note).
+def nature_du_fichier(courant):
+    """`live_inventory` si l'on decrit le graphe courant, sinon `evidence_frozen`.
+
+    Cette colonne disait `evidence_frozen` sur TOUTES les lignes, y compris
+    dans le fichier `-current.csv` — c'est-a-dire qu'elle qualifiait de preuve
+    figee un inventaire qui se regenere a chaque version. Elle contredisait
+    ainsi la distinction meme que l'arbitrage Q6 a etablie, et qui donne son
+    nom aux deux fichiers. Elle suit desormais la sortie visee."""
+    return ('live_inventory'
+            if os.path.realpath(courant) == os.path.realpath(
+                graphe_le_plus_recent(REPO) or courant)
+            else 'evidence_frozen')
+
+
+def gouvernance(ligne, sous_c03, applique_par, nature_fichier):
+    """-> (statut recommande, nature du fichier, candidat CI, risque, note).
 
     Aucune de ces valeurs ne vient de la `policy` : elles derivent du statut
-    MESURE et de la forme du patch."""
+    MESURE et de la forme du patch. Le deuxieme element vient de la
+    sortie visee, non du patch."""
     mesure = ligne['statut']
     total = int(ligne['nb_ops'] or 0)
     lisibles = int(ligne['ops_lisibles'] or 0)
@@ -94,17 +109,17 @@ def gouvernance(ligne, sous_c03, applique_par):
 
     if mesure == 'already_applied':
         if sous_c03:
-            return ('candidate_applied', 'evidence_frozen', 'non',
+            return ('candidate_applied', nature_fichier, 'non',
                     'rejeu sans effet, mais la policy ment',
                     f'applique par {applique_par} — la mention CANDIDATE est '
                     'exigee par C03 et ne dit PLUS la verite')
         if absentes:
-            return ('archive_partial', 'evidence_frozen', 'non',
+            return ('archive_partial', nature_fichier, 'non',
                     f'{absentes} cible(s) morte(s) : un rejeu echouerait',
                     f'toutes les {lisibles} op(s) LISIBLES sont faites, mais '
                     f'{absentes} cible(s) n existent plus — « applique » '
                     'sur-promet')
-        return ('archive_historical', 'evidence_frozen', 'non',
+        return ('archive_historical', nature_fichier, 'non',
                 'rejeu sans effet', 'lot integre, conserve comme archive')
 
     if mesure == 'indetermine':
@@ -113,18 +128,18 @@ def gouvernance(ligne, sous_c03, applique_par):
             # etre NI `archive_historical` NI `already_applied`. `indetermine`
             # est le statut prudent ; retomber sur « archive » a deja classe
             # « lot integre » un patch applique a 0/10.
-            return ('indetermine', 'evidence_frozen', 'non',
+            return ('indetermine', nature_fichier, 'non',
                     'forme non lisible par l outil : effet INCONNU, un rejeu '
                     'naif peut ecrire des choses fausses',
                     'statut NON etabli — a instruire a la main, jamais a '
                     'rejouer par defaut')
-        return ('archive_partial', 'evidence_frozen', 'non',
+        return ('archive_partial', nature_fichier, 'non',
                 f'etat MIXTE {faites}/{lisibles} : un rejeu ecrirait a cote',
                 'lot partiellement absorbe ; les ops restantes visent des '
                 'cibles mortes ou ont ete remplacees par une migration')
 
     if mesure == 'blocked_by_missing_applicator':
-        return ('blocked_missing_applicator', 'evidence_frozen', 'non',
+        return ('blocked_missing_applicator', nature_fichier, 'non',
                 'aucun applicateur ne consomme ces ops',
                 'CREATE_ENTITY : le contrat interdit de pre-assigner un '
                 'entityId, et aucun make_* ne lit ce type d op')
@@ -136,7 +151,7 @@ def gouvernance(ligne, sous_c03, applique_par):
     if mesure in ('still_candidate',
                   'stale_source_graph_but_preconditions_intact'):
         entier = mesure == 'still_candidate'
-        return ('blocked_author_arbitration', 'evidence_frozen', 'non',
+        return ('blocked_author_arbitration', nature_fichier, 'non',
                 'aucun rejeu : rien n est applique',
                 (f'0 op realisee sur {lisibles} lisibles ; le patch est entier '
                  'et ses cibles existent'
@@ -146,11 +161,12 @@ def gouvernance(ligne, sous_c03, applique_par):
                 + ' — TECHNIQUEMENT applicable, PAS mur : a reauditer avant '
                   'tout chantier d application (arbitrage Q7 du 2026-08-09)')
 
-    return ('indetermine', 'evidence_frozen', 'non', 'inconnu',
+    return ('indetermine', nature_fichier, 'non', 'inconnu',
             'statut mesure non reconnu par cette table')
 
 
 def construire(courant):
+    nature_fichier = nature_du_fichier(courant)
     lignes_inv = inventaire.construire(courant)
     # Qui a applique quoi : lu dans les applicateurs du depot, pas devine.
     applique_par = {}
@@ -175,7 +191,8 @@ def construire(courant):
             doc = {}
         sous_c03 = os.path.basename(chemin).startswith(MOTIF_SOUS_C03)
         statut, gele, ci, risque, note = gouvernance(
-            l_inv, sous_c03, applique_par.get(chemin, '(aucun applicateur)'))
+            l_inv, sous_c03, applique_par.get(chemin, '(aucun applicateur)'),
+            nature_fichier)
         sorties.append({
             'artifact_path': chemin,
             'current_label_or_policy': politique_courante(doc),

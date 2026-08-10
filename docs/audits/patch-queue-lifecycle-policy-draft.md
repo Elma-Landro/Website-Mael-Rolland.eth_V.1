@@ -28,9 +28,11 @@ Un fichier ne peut pas être les deux. En cas de doute, c'est une preuve figée 
 ## Règle 3 — Nommage : le suffixe dit la nature
 
 - inventaire vivant → `…-current.csv` ;
-- preuve figée → `…-vNNN.csv`.
+- preuve figée → `…-vNN.snapshot.csv`.
 
-Conséquence directe : un `--check` sur un fichier `-current` ne casse jamais au bump de version, et un `--check` sur un `-vNNN` doit nommer son graphe (`--graph`), jamais « le plus récent ».
+Le suffixe `.snapshot` n'est pas décoratif : `-vNNN.csv` est déjà la forme des CSV produits avant l'arbitrage, donc il ne distinguerait pas une preuve figée d'un fichier simplement périmé. C'est la forme que `sortie_pour()` écrit dans les deux générateurs.
+
+Conséquence directe : un `--check` sur un fichier `-current` ne casse jamais au bump de version, et un `--check` sur un `-vNN.snapshot` doit nommer son graphe (`--graph`), jamais « le plus récent ». Corollaire appliqué : viser un graphe qui n'est pas le courant **écrit un snapshot** au lieu d'écraser le vivant.
 
 ## Règle 4 — Un patch appliqué le dit dans son propre fichier
 

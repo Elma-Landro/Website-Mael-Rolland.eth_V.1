@@ -106,7 +106,9 @@ Le dépôt mélange aujourd'hui deux natures sous une même forme :
 
 Trois conventions possibles : `-vNNN.csv` pour les deux (état actuel, ambigu) ; `-current.csv` pour le vivant et `-vNNN.csv` pour le figé (lisible, mais perd la trace historique) ; ou `-vNNN.snapshot.csv` pour le figé et `-current.csv` pour le vivant (explicite, deux suffixes à retenir).
 
-**Recommandation : `-current.csv` pour tout inventaire vivant, `-vNNN.csv` réservé aux preuves figées.** Le suffixe dit alors la *nature* du fichier, pas seulement sa date — et un `--check` sur un fichier `-current` ne casse jamais au bump.
+**Recommandation soumise** : `-current.csv` pour tout inventaire vivant, `-vNNN.csv` réservé aux preuves figées.
+
+> **Arbitrage 6 rendu — c'est la troisième convention qui a été retenue, pas celle-ci.** Le figé porte `-vNN.snapshot.csv`, pas `-vNNN.csv`. La raison est que `-vNNN.csv` est déjà la forme des CSV *périmés* produits avant l'arbitrage : le suffixe ne distinguait donc pas une preuve figée d'un fichier simplement vieux. `.snapshot` le dit explicitement. **C'est cette convention que le code applique** (`sortie_pour()` dans les deux générateurs) et que la règle 3 du brouillon de politique écrit. Le paragraphe ci-dessus est conservé comme trace de ce qui a été proposé.
 
 ---
 
@@ -155,4 +157,6 @@ La table de gouvernance dérive de l'inventaire : si l'heuristique de dialecte d
 
 **Trois lignes `archive_historical` reposent sur 33 ops que l'outil ne lit pas** (`patch_14` 6, `patch_16` 22, `patch_3a` 5 — dialectes `rewire_relations` et `update_entities`). La revue les a mesurées à la main : **33/33 réalisées**. Le verdict est donc juste en fait, mais sans preuve produite par ce chantier — et un `archive_historical` non prouvé autorise à ne plus rien instruire.
 
-**L'étape CI ajoutée compare des sorties, pas des fichiers.** Elle lance chaque outil deux fois et diffe leur `stdout`, qui ne porte que des compteurs. Une non-déterminisme qui n'affecterait qu'une colonne du CSV sans changer un total passerait au vert. C'est un test de déterminisme minimal, assumé comme tel par l'arbitrage 5 ; le modèle strict reste la cible.
+**L'étape CI compare les artefacts, mais toujours pas leur fraîcheur.** Elle régénère les trois fichiers deux fois et diffe les **contenus produits** — CSV et JSON, pas les résumés — puis restaure les fichiers versionnés. Une première version ne diffait que le `stdout`, qui ne porte que des compteurs : un non-déterminisme confiné à une colonne serait passé au vert, et le ledger n'y tournait qu'une fois alors que le message annonçait trois sorties déterministes. Corrigé sur retour de revue.
+
+Ce qu'elle ne fait toujours pas, et c'est délibéré (arbitrage 5) : **vérifier que le CSV versé correspond au graphe courant.** Un CSV périmé reste vert. Le modèle strict reste la cible ; il n'est pas justifié tant que `ci_candidate` vaut `non` sur les 31 lignes.
