@@ -41,10 +41,20 @@ CODE_DONNEES, CODE_INVOCATION = 1, 2
 # ETAT, et un fichier nomme v112 qui decrirait v113 mentirait en silence.
 # C'est le piege deja constate sur `audit_chronology_dates.py`, ou le nom
 # derive du « graphe le plus recent » sans que rien ne le declare.
-def sortie_pour(graphe):
+# Arbitrage de l'auteur du 2026-08-09, Q6 : le SUFFIXE dit la NATURE.
+#   `-current.csv`   inventaire VIVANT du graphe courant — regenerable ;
+#   `-vNN.snapshot.csv` preuve FIGEE — ne se regenere jamais pour faire taire
+#                    un rouge.
+# Et jamais d'ecrasement silencieux : viser un graphe qui n'est pas le plus
+# recent produit un snapshot a son nom, pas une reecriture du `current`.
+def sortie_pour(graphe, courant_du_depot=None):
     version = os.path.basename(graphe).rsplit('-', 1)[-1].removesuffix('.json')
-    return os.path.join(REPO, 'docs', 'audits', 'data',
-                        f'patch-application-queue-{version}.csv')
+    dossier = os.path.join(REPO, 'docs', 'audits', 'data')
+    reference = courant_du_depot or graphe_le_plus_recent(REPO)
+    if reference and os.path.realpath(graphe) != os.path.realpath(reference):
+        return os.path.join(dossier,
+                            f'patch-application-queue-{version}.snapshot.csv')
+    return os.path.join(dossier, 'patch-application-queue-current.csv')
 
 COLONNES = (
     'chemin', 'famille', 'source_graph_declare', 'cible', 'nb_ops',
@@ -82,8 +92,29 @@ FAMILLES = (
 )
 
 # Conteneurs d'operations rencontres dans les six dialectes du depot.
+# Fichiers que le glob attrape MAIS qui ne sont pas des patchs. Liste
+# explicite, jamais un retrecissement du glob : le retrecir avait deja fait
+# perdre `new_relations_patch.json` (11 884 ops).
+#
+# `patch-application-ledger.json` est le registre des applications produit par
+# `build_patch_application_ledger.py`. Sans cette exclusion, l'inventaire de la
+# file lit la sortie de son propre outillage et la compte comme un 32e patch,
+# classe `indetermine` faute d'ops lisibles — c'est-a-dire qu'il prescrit
+# « a instruire a la main, jamais a rejouer par defaut » a la comptabilite du
+# depot. C'est exactement la question 1 de la revue hostile (« ce script
+# lit-il sa propre sortie ? »), et elle etait realisee ici.
+NON_PATCHS = frozenset({'patch-application-ledger.json'})
+
 CONTENEURS = ('ops', 'operations', 'relations', 'new_relations',
-              'new_entities', 'rewire_relations', 'update_entities')
+              'new_entities', 'rewire_relations', 'update_entities',
+              # Dialecte ad hoc de patches/archive/grc20_anchor_overrides :
+              # les ignorer rendait ce patch illisible (0 op), donc classe
+              # « lot integre » par defaut — alors qu'il est a 0/10.
+              'safe_fix', 'proposed_review')
+
+# Cles qui, dans le dialecte `safe_fix`, PORTENT la valeur a ecrire : l'op n'a
+# pas de champ `attributeId`, l'attribut EST une cle de l'objet.
+CLES_VALEUR_AD_HOC = ('primaryChapter',)
 
 
 def echec(msg, code=CODE_DONNEES):
@@ -195,6 +226,20 @@ def effet_realise(op, par_id, types_par_nom, relations=None, paires=None):
         if any(c in relations for c in cles):
             return True
         return (src, dst) in paires if typ is None else False
+    # Dialecte `safe_fix` : {entity_id, entity_name, primaryChapter, rationale}
+    if 'entity_id' in op and any(k in op for k in CLES_VALEUR_AD_HOC):
+        e = par_id.get(op['entity_id'])
+        if e is None:
+            return None
+        attrs = e.get('attributes') or {}
+        for cle in CLES_VALEUR_AD_HOC:
+            if cle not in op:
+                continue
+            actuel = attrs.get(cle)
+            actuel = actuel.get('value') if isinstance(actuel, dict) else actuel
+            if actuel != op[cle]:
+                return False
+        return True
     if t == 'CREATE_ENTITY(implicite)':
         return op.get('id') in par_id
     if t == 'REMOVE_RELATION' and relations is not None:
@@ -337,9 +382,12 @@ def construire(courant):
     # le plus gros artefact du depot, nomme dans CLAUDE.md — parce que son nom
     # ne COMMENCE pas par « patch ». Un inventaire qui se dit exhaustif ne peut
     # pas dependre d'une convention de nommage que les fichiers ne suivent pas.
-    chemins = sorted(set(
-        glob.glob(os.path.join(REPO, '*patch*.json'))
-        + glob.glob(os.path.join(REPO, 'patches', '**', '*.json'), recursive=True)))
+    chemins = sorted(
+        c for c in set(
+            glob.glob(os.path.join(REPO, '*patch*.json'))
+            + glob.glob(os.path.join(REPO, 'patches', '**', '*.json'),
+                        recursive=True))
+        if os.path.relpath(c, REPO) not in NON_PATCHS)
     lignes = []
     for chemin in chemins:
         rel = os.path.relpath(chemin, REPO)

@@ -118,7 +118,6 @@ NOTES = {
 # Toute entree ajoutee ici doit avoir ete verifiee dans le fichier vise.
 EXCLUSIONS_READ_BY = {
     'pages': {'scripts/audit_section_page_start.py'},
-    'note': {'scripts/audit_section_page_start.py'},
     # classify_date_evidence.py ne lit jamais `dateSource` : il joint des CSV
     # entre eux. La chaine n'apparait que dans sa docstring, ou elle enonce
     # l'arbitrage qui a motive le script. Verifie : occurrence unique, l.5.
@@ -138,6 +137,22 @@ EXCLUSIONS_READ_BY = {
     # occurrence par occurrence dans le fichier vise.
     'page_start': {'scripts/build_patch_queue_inventory.py'},
     'type': {'scripts/build_patch_queue_inventory.py'},
+    # build_patch_queue_governance.py lit le `_meta` des PATCHS, jamais le
+    # graphe : `description` et `status` y sont des champs de carte d'identite
+    # de patch, `note` un nom de colonne du CSV produit. Verifie occurrence par
+    # occurrence — le script ne touche aucun attribut d'entite.
+    'description': {'scripts/build_patch_queue_governance.py'},
+    # build_patch_application_ledger.py n'ecrit QUE son propre JSON : `date`,
+    # `status` et `purpose` y sont des cles de CE fichier, jamais des attributs
+    # d'entite. Sans exclusion, `purpose` bascule meme de `editorial` a
+    # `structural` — un fichier de ledger ferait croire que le graphe depend
+    # d'une cle que rien ne lit.
+    'date': {'scripts/build_patch_application_ledger.py'},
+    'purpose': {'scripts/build_patch_application_ledger.py'},
+    'status': {'scripts/build_patch_queue_governance.py',
+               'scripts/build_patch_application_ledger.py'},
+    'note': {'scripts/audit_section_page_start.py',
+             'scripts/build_patch_queue_governance.py'},
 }
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que

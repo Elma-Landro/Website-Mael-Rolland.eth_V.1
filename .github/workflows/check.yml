@@ -85,6 +85,45 @@ jobs:
       - name: Preflight des patchs candidats
         run: python3 scripts/preflight_candidate_patches.py
 
+      # CI SOUPLE (arbitrage de l'auteur du 2026-08-09, Q5). On verifie que
+      # les outils de file TOURNENT et sont DETERMINISTES — pas que le CSV
+      # versionne colle au graphe courant. Une CI stricte rougirait a chaque
+      # bump de version pour garder ZERO artefact applicable (les deux qui le
+      # sont techniquement sont bloques par arbitrage). Le modele strict est
+      # la cible une fois la transition current/snapshot/ledger faite.
+      #
+      # On compare les ARTEFACTS produits, pas les resumes. Une premiere
+      # version de cette etape ne diffait que le `stdout`, qui ne porte que des
+      # compteurs : un non-determinisme confine a une colonne du CSV serait
+      # passe au vert. Et le ledger n'y tournait qu'UNE fois alors que le
+      # message annonçait trois sorties deterministes.
+      #
+      # Les fichiers versionnes sont restaures a la fin : cette etape ne
+      # verifie PAS leur fraicheur (ce serait le modele strict), donc elle ne
+      # doit rien laisser derriere elle qui ressemble a un verdict.
+      - name: File de patchs — les outils tournent et sont deterministes
+        run: |
+          set -euo pipefail
+          suivis="docs/audits/data/patch-application-queue-current.csv
+                  docs/audits/data/patch-queue-governance-cases-current.csv
+                  patch-application-ledger.json"
+          verifier() {  # $1 = commande d ecriture, $2 = fichier produit
+            $1 > /dev/null && cp "$2" /tmp/passe1
+            $1 > /dev/null && cp "$2" /tmp/passe2
+            diff -q /tmp/passe1 /tmp/passe2 \
+              && echo "  deterministe : $2"
+          }
+          verifier "python3 scripts/build_patch_queue_inventory.py --csv" \
+                   docs/audits/data/patch-application-queue-current.csv
+          verifier "python3 scripts/build_patch_queue_governance.py --csv" \
+                   docs/audits/data/patch-queue-governance-cases-current.csv
+          verifier "python3 scripts/build_patch_application_ledger.py --write" \
+                   patch-application-ledger.json
+          git checkout -- $suivis
+          echo "file, gouvernance et ledger : trois artefacts regeneres deux"
+          echo "fois, contenus identiques ; fichiers versionnes restaures"
+
+
       - name: Recapitulatif
         if: always()
         run: |

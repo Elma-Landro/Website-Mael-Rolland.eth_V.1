@@ -4,9 +4,15 @@
 **Graphe de référence** : `grc20-these-mael-rolland-v112.json` (canonique)
 **Branche** : `claude/file-upload-branch-check-jw4cng`
 **Mécanisme rejouable** : `scripts/build_patch_queue_inventory.py` (`--csv`, `--check`)
-**Données probantes** : `docs/audits/data/patch-application-queue-v113.csv` — **31 artefacts** (la file vivante ; les chiffres de ce document restent ceux du triage sur v112, où le glob n'en voyait que 30 — voir § 6)
+**Données probantes** : `docs/audits/data/patch-application-queue-current.csv` — **31 artefacts** (la file vivante ; les chiffres de ce document restent ceux du triage sur v112, où le glob n'en voyait que 30 — voir § 6)
 
-> **Note de lecture.** Le triage a été fait sur v112 et ses chiffres ci-dessous sont ceux de v112. Le CSV, lui, est une **file vivante** : son nom suit le graphe de référence, et il a été régénéré sur v113 dans la même PR. Un seul statut change — `patch_candidate_bibliographie_retypes_v1.json` passe de `stale_source_graph_but_preconditions_intact` à `already_applied`, ce qui est précisément l'effet de v113. Le CSV se régénère par `--csv` et se vérifie par `--check` contre le graphe courant.
+> **Note de lecture — deux écarts distincts, à ne pas confondre.**
+>
+> **1. Le « 30 » n'est pas une mesure de v112 ; c'est un bug.** Le § 2 ci-dessous annonce 30 artefacts. Ce chiffre ne vient pas du graphe : il vient d'un glob `patch*.json` qui ratait `new_relations_patch.json` parce que son nom ne *commence* pas par « patch ». Corrigé en `*patch*.json` dans la même PR (voir § 6). **Le compte exact est 31, sur v112 comme sur v113** — mesuré sur les deux. Aucun snapshot v112 ne reproduira jamais le 30, et il ne faut pas en fabriquer un pour le justifier : ce serait figer une erreur en preuve. Les 30 sont conservés dans le § 2 parce qu'ils documentent l'état du triage au moment où il a été rendu, pas parce qu'ils sont justes.
+>
+> **2. Un statut a réellement changé entre v112 et v113.** `patch_candidate_bibliographie_retypes_v1.json` passe de `stale_source_graph_but_preconditions_intact` à `already_applied` — c'est l'effet de v113, et c'est un écart de version, pas un défaut d'outil.
+>
+> Le CSV pointé ci-dessus est la **file vivante** (`-current.csv`), régénérable par `--csv` et vérifiable par `--check` contre le graphe courant. Pour une preuve figée sur une version donnée : `--graph <graphe> --csv`, qui écrit un `-vNN.snapshot.csv` au lieu d'écraser le vivant.
 
 **Aucun graphe modifié par ce triage lui-même.** Il n'a rien appliqué : il a mesuré, classé, et posé quatre arbitrages. La v113 qui suit est un acte distinct, décidé par l'auteur au vu de ce triage, et documentée séparément dans `grc20-v113-bibliography-retypes-application.md`.
 
@@ -22,7 +28,7 @@ C'est ce qui permet de trancher un cas que la lecture naïve rate. `patch_candid
 
 ---
 
-## 2. Inventaire — 30 artefacts (mesure du triage, sur v112)
+## 2. Inventaire — 30 artefacts (chiffre du triage tel que rendu ; le compte exact est 31, voir la note de lecture et le § 6)
 
 | Statut | n | Ce que cela veut dire |
 |---|---:|---|
