@@ -34,10 +34,15 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
+from grc20_commun import (REPO, graphe_le_plus_recent, graphes_tries,  # noqa: E402
+                          numero_de_version)
 import build_patch_queue_governance as gouv  # noqa: E402
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
+
+# Nom du ledger : une seule fois, ici. Il est ecrit dans les patchs (champ
+# `ledgerEntry`) ET lu par ce script ; deux litteraux auraient pu diverger.
+FICHIER_LEDGER = 'patch-application-ledger.json'
 
 # Le preflight ne balaie que ce motif a la racine : le perimetre de ce script
 # est EXACTEMENT celui de C03, ni plus ni moins. Les patchs historiques
@@ -63,14 +68,18 @@ VOCABULAIRE = (
     'dangerous_do_not_replay', 'indetermine',
 )
 
+# Les notes portent des CHEMINS. Les ecrire en dur, c'est accepter qu'un
+# renommage les desynchronise en silence — et une note qui envoie vers un
+# fichier disparu est pire qu'une absence de note. Elles sont donc des
+# gabarits : %(csv)s vient de `gouv.sortie_pour()`, seul endroit du depot qui
+# decide du nom de la table, et %(ledger)s de la constante ci-dessus.
 NOTES = {
     'candidate_applied':
         "APPLIQUE. Ne pas rejouer : les ops de ce fichier ont deja leur effet "
         "dans le graphe courant. La `policy` ci-dessus dit « NOT APPLIED » "
         "parce que le controle C03 l exige, pas parce que c est vrai. "
-        "Autorite : le graphe, puis docs/audits/data/"
-        "patch-queue-governance-cases-current.csv, puis "
-        "patch-application-ledger.json — jamais la policy, jamais ce champ.",
+        "Autorite : le graphe, puis %(csv)s, puis %(ledger)s — jamais la "
+        "policy, jamais ce champ.",
     'blocked_author_arbitration':
         "NON APPLIQUE, et techniquement applicable n est PAS mur. Les cibles "
         "existent et les preconditions tiennent, mais l arbitrage de l auteur "
@@ -82,6 +91,19 @@ NOTES = {
         "une creation. Ecrire l applicateur est un chantier a part entiere, "
         "distinct de l arbitrage scientifique sur le contenu.",
 }
+
+# Les DEUX ensembles ne sont volontairement PAS egaux, et l'invariant ne vaut
+# que dans un sens. Toute cle de NOTES doit etre au vocabulaire : une note
+# redigee pour un statut inexistant serait morte sans qu'on le sache. La
+# reciproque est REFUSEE : `candidate_active`, `candidate_superseded`,
+# `dangerous_do_not_replay` et `indetermine` n'ont aujourd'hui aucun porteur.
+# Leur imposer une note obligerait a rediger a l'avance un conseil pour une
+# situation jamais rencontree — exactement le genre de texte que personne ne
+# relit et que le premier cas reel contredit. `bloc_pour` echoue proprement le
+# jour ou l'un d'eux se presente ; c'est le comportement voulu.
+assert set(NOTES) <= set(VOCABULAIRE), (
+    'note(s) redigee(s) pour un statut hors vocabulaire : '
+    + ', '.join(sorted(set(NOTES) - set(VOCABULAIRE))))
 
 
 def echec(msg, code=CODE_DONNEES):
@@ -106,7 +128,7 @@ def signature(doc):
 
 
 def ledger_par_patch():
-    chemin = os.path.join(REPO, 'patch-application-ledger.json')
+    chemin = os.path.join(REPO, FICHIER_LEDGER)
     if not os.path.exists(chemin):
         return {}
     with open(chemin, encoding='utf-8') as f:
@@ -114,7 +136,26 @@ def ledger_par_patch():
     return {e['patch']: e for e in doc.get('applications', [])}
 
 
-def bloc_pour(nom, ligne_gouv, entree_ledger, courant):
+def graphe_de_version(nom, version):
+    """Le fichier du depot qui porte cette version — RESOLU, jamais construit.
+
+    Fabriquer le nom par f-string (« grc20-these-mael-rolland-{v}.json »)
+    produisait un champ `appliedInGraph` qui a l'air juste meme quand le
+    fichier n'existe pas : le motif est deja centralise dans
+    `grc20_commun.MOTIF_GRAPHE`, et rien ne verifiait la resolution. Un
+    renommage ou un elagage de snapshot aurait laisse les patchs pointer vers
+    un fichier absent, en silence."""
+    voulu = int(str(version).lstrip('v'))
+    for chemin in graphes_tries(REPO):
+        if numero_de_version(chemin) == voulu:
+            return os.path.basename(chemin)
+    echec(f'{nom} : le ledger declare une application dans « {version} », '
+          'mais aucun graphe de cette version n existe dans le depot. Un '
+          'appliedInGraph pointant vers un fichier absent serait pire que pas '
+          'de champ.')
+
+
+def bloc_pour(nom, ligne_gouv, entree_ledger, courant, csv_gouvernance):
     """Le bloc `_meta` de cycle de vie d un patch — entierement DERIVE."""
     statut = ligne_gouv['recommended_governance_status']
     if statut not in VOCABULAIRE:
@@ -131,20 +172,38 @@ def bloc_pour(nom, ligne_gouv, entree_ledger, courant):
         'measuredAgainstGraph': os.path.basename(courant),
         'measuredStatus': ligne_gouv['measured_status'],
     }
+    # La garde etait ASYMETRIQUE : elle refusait « applique sans ledger » mais
+    # acceptait « ledger sans applique ». Or c'est ce second cas qui est
+    # dangereux — un patch mesure BLOQUE aurait recu appliedBy / appliedInPR,
+    # c'est-a-dire les marques exterieures d'une application, sur un fichier
+    # que personne n'a le droit d'appliquer. Le desaccord entre le ledger et la
+    # mesure du graphe n'est jamais a arbitrer par ce script : il s'arrete.
+    if entree_ledger and statut != 'candidate_applied':
+        echec(f'{nom} : le ledger declare une application (par '
+              f"{entree_ledger['applicator']}, PR #{entree_ledger['pr']}) "
+              f'alors que la mesure du graphe donne « {statut} ». Ledger et '
+              'graphe se contredisent : instruire le desaccord, personne ne '
+              'peut le trancher d office. Autorite : le graphe.')
     if entree_ledger:
         bloc['appliedBy'] = entree_ledger['applicator']
-        bloc['appliedInGraph'] = (
-            f"grc20-these-mael-rolland-{entree_ledger['applied_version']}.json")
+        bloc['appliedInGraph'] = graphe_de_version(
+            nom, entree_ledger['applied_version'])
         bloc['appliedInPR'] = entree_ledger['pr']
-        bloc['ledgerEntry'] = 'patch-application-ledger.json'
+        bloc['ledgerEntry'] = FICHIER_LEDGER
     elif statut == 'candidate_applied':
         # Un patch mesure applique sans entree au ledger : c est exactement le
         # trou de memoire que le ledger existe pour combler. On refuse de le
         # masquer par un bloc d apparence complete.
         echec(f'{nom} : mesure `candidate_applied` mais ABSENT du ledger. '
-              'Renseigner patch-application-ledger.json avant de declarer un '
-              'cycle de vie.')
-    bloc['noteForAgents'] = NOTES[statut]
+              f'Renseigner {FICHIER_LEDGER} avant de declarer un cycle de vie.')
+    # Gabarit en %(cle)s, et surtout PAS la methode de formatage de chaine du
+    # meme nom : ce nom est aussi une cle d'attribut du graphe, et l'appel de
+    # methode suffisait a inscrire ce script dans le `readBy` du registre, qui
+    # passait rouge pour une pure coincidence lexicale. Cause supprimee plutot
+    # que faux positif declare — et le present commentaire evite de la nommer
+    # sous forme de code, sinon il rouvrirait le defaut qu'il explique.
+    bloc['noteForAgents'] = NOTES[statut] % {'csv': csv_gouvernance,
+                                             'ledger': FICHIER_LEDGER}
     return bloc
 
 
@@ -153,6 +212,10 @@ def construire(courant):
     par_chemin = {ligne['artifact_path']: ligne
                   for ligne in gouv.construire(courant)}
     ledger = ledger_par_patch()
+    # Le nom de la table de gouvernance n'est decide qu'a UN endroit du depot.
+    # On le lui demande plutot que de le recopier : c'est ce meme choix qui,
+    # non fait, avait laisse un pointeur mort vers `…-v113.csv` dans CLAUDE.md.
+    csv_gouvernance = os.path.relpath(gouv.sortie_pour(courant), REPO)
     sorties = []
     for chemin in sorted(glob.glob(os.path.join(REPO, MOTIF))):
         nom = os.path.basename(chemin)
@@ -167,7 +230,7 @@ def construire(courant):
                   'deja ; ce script ne le repare pas.')
         sorties.append((nom, chemin, doc,
                         bloc_pour(nom, par_chemin[nom], ledger.get(nom),
-                                  courant)))
+                                  courant, csv_gouvernance)))
     return sorties
 
 
