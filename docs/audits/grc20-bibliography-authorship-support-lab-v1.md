@@ -118,17 +118,33 @@ Il n'applique rien, ne crée aucune v114, n'écrit aucun applicateur. Il ne touc
 
 ---
 
-## 8. Arbitrages posés à Maël
+## 8. Arbitrages — posés, puis **rendus le 2026-08-10**
 
-Posés directement dans le fil de discussion, et reportés ici pour que ce document se suffise :
+Les cinq questions ont été posées dans le fil de discussion et ont toutes reçu réponse. Elles sont reportées ici, avec leur réponse, pour que ce document se suffise — et inscrites dans `_meta.arbitrage` du patch, **jamais dans sa `policy`**.
 
-1. **Valider les 4 relations `authored` certaines** — Favier × 3, Takkal Bataille × 1 ? **oui / non / par cas**
-2. **Créer v114 pour ce seul lot relationnel** ? **oui / non**
-3. **Garder fusions, créations, doublons bibliographiques et `SourceQuote` hors périmètre** ? **oui / non**
-4. **Exclure les relations probables/ambiguës** ? — *sans objet en fait* : le lot n'en contient aucune. La question reste posée comme **règle** pour les lots suivants. **oui / non**
-5. **La forme de l'op relationnelle** — celle proposée ici (dialecte C étendu, type par id + nom déclaré), ou une autre ? Le contrat réserve ce choix à l'auteur, et C13 devra suivre la forme retenue.
+| # | Question | Réponse |
+|---|---|---|
+| 1 | Valider les 4 relations `authored` certaines ? | **OUI**, les quatre |
+| 2 | Créer v114 pour ce seul lot relationnel ? | **OUI sur le principe, NON dans cette PR** |
+| 3 | Garder fusions, créations, doublons et `SourceQuote` hors périmètre ? | **OUI** |
+| 4 | Exclure les relations probables/ambiguës ? | **OUI**, comme règle générale |
+| 5 | La forme de l'op relationnelle ? | **Forme proposée validée** |
 
-**Aucune application avant réponse.** Et même après : aucun applicateur du dépôt ne consomme `ADD_RELATION`. L'écrire est un chantier technique distinct de l'arbitrage scientifique — le second ne débloque pas le premier.
+**1 — les quatre relations sont validées.** Motif retenu par l'auteur : auteur et œuvre nommés ensemble dans la bibliographie, auteurs uniques dans le graphe, œuvres existantes, aucune relation déjà sur la paire, aucune œuvre identifiée comme doublon.
+
+**2 — la v114 est validée dans son principe, et explicitement refusée ici.** Elle doit faire l'objet d'une **PR séparée**, avec un **applicateur `ADD_RELATION` dédié**. Cette PR-ci reste ce qu'elle est : instruction et patch candidat non appliqué.
+
+**3 — périmètre de la future v114, en creux.** Aucune fusion, aucun `duplicateOf`, aucune création de nœud, aucune `SourceQuote`, aucun renommage, aucun retypage, aucune correction de nom de fiche, et **aucune relation autre que ces quatre**. La dette du § 5 — l'éditeur erroné de `7f0f9cc4` — reste hors périmètre : elle sera instruite plus tard **comme renommage**, pas ici.
+
+**4 — règle générale, au-delà de ce lot.** Seules les relations *certaines*, avec preuve bibliographique explicite nommant l'auteur **et** l'œuvre, peuvent entrer dans un lot applicatif. Ici il n'y a rien à retrancher : le lot n'en contient aucune autre.
+
+**5 — la forme est arrêtée.** `ADD_RELATION`, extrémités par identifiants, type par `relationTypeId`, nom déclaré `relationTypeName` vérifié contre le graphe, **contrôle C13 obligatoire** (extrémités existantes et distinctes, `relationTypeId` connu, `relationTypeName` cohérent, aucune relation déjà présente, aucune proposée deux fois). C'est la forme retenue pour ce patch **et pour le futur applicateur v114**. Une autre forme relationnelle proposée plus tard devra être instruite séparément et **ne changera pas rétroactivement ce lot**. Le contrat de patch est mis à jour en conséquence (`grc20-candidate-patch-contract-v1.md` § 4 bis).
+
+### Ce que la PR suivante devra prouver
+
+L'arbitrage 2 pose une condition, pas une autorisation générale. La PR qui créera v114 devra **démontrer que ces quatre relations sont les seules ajoutées** — pas l'affirmer. Le motif de forme est déjà en place : compter les relations avant/après, vérifier le quadruplet `(from, to, type)` de chacune, et prouver qu'aucun autre champ du graphe n'a bougé, sur le modèle des applicateurs `make_vNNN` existants dont le lot approuvé fige les **valeurs**, pas seulement les identifiants.
+
+**Rien n'est appliqué ici**, et l'arbitrage ne suffit pas à débloquer : aucun applicateur du dépôt ne consomme `ADD_RELATION`. L'écrire reste un chantier technique distinct — le `lifecycleStatus` mesuré du patch dit `blocked_missing_applicator`, et il continuera de le dire jusqu'à ce que l'applicateur existe.
 
 ---
 
