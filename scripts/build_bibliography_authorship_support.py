@@ -267,7 +267,16 @@ def main():
     courant = args.graph or os.path.join(
         REPO, f'grc20-these-mael-rolland-v{VERSION_FIGEE}.json')
     if not os.path.exists(courant):
-        echec(f'graphe de reference introuvable : {courant}', CODE_INVOCATION)
+        # Deux pannes distinctes sous un meme message envoyaient chercher le
+        # defaut alors que c est le `--graph` fourni qui etait faux — et
+        # inversement. Le message doit dire LAQUELLE des deux s est produite.
+        if args.graph:
+            echec(f'graphe explicite introuvable : {courant} (passe via '
+                  '--graph)', CODE_INVOCATION)
+        echec(f'graphe FIGE introuvable : {courant}. Ce releve decrit '
+              f'v{VERSION_FIGEE} et ne se rejoue que contre lui ; le graphe '
+              'courant du depot, quel qu il soit, ne le remplace pas.',
+              CODE_INVOCATION)
     vue = numero_de_version(courant)
     if vue != VERSION_FIGEE:
         echec(f'ce releve est une preuve FIGEE sur v{VERSION_FIGEE} ; le '
