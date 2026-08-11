@@ -64,7 +64,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import (REPO, graphe_le_plus_recent, graphes_tries)  # noqa: E402
+from grc20_commun import (REPO, applicateurs_par_op,  # noqa: E402
+                          graphe_le_plus_recent, graphes_tries)
 
 CODE_BLOQUANT, CODE_INVOCATION = 1, 2
 OK, AVERT, BLOQ = 'OK', 'AVERTISSEMENT', 'BLOQUANT'
@@ -110,28 +111,6 @@ def normalise_nom(s):
     « Orlean » et « Orléan » restent deux noms distincts, ce n'est pas au
     preflight d'en decider."""
     return ' '.join(str(s or '').lower().split())
-
-
-def applicateurs_create_entity(repo=REPO):
-    """Balayage DYNAMIQUE : les scripts make_*.py ET les .mjs de scripts/
-    qui portent le litteral CREATE_ENTITY. Vide aujourd'hui — aucun
-    applicateur ne le consomme — mais le jour ou l'un d'eux le traitera,
-    ce controle changera seul. Limite assumee : le balayage est par
-    litteral (un simple commentaire suffirait a le declencher) et ne voit
-    pas un applicateur au dispatch purement structurel — le constat
-    d'aujourd'hui a ete verifie a la main en plus du balayage."""
-    motifs = (os.path.join(repo, 'scripts', 'make_*.py'),
-              os.path.join(repo, 'scripts', '*.mjs'))
-    trouves = []
-    for motif in motifs:
-        for chemin in sorted(glob.glob(motif)):
-            try:
-                with open(chemin, encoding='utf-8') as f:
-                    if 'CREATE_ENTITY' in f.read():
-                        trouves.append(os.path.basename(chemin))
-            except OSError:
-                continue
-    return trouves
 
 
 def valeur_attribut(op):
@@ -352,7 +331,7 @@ def controle_entites(c, ops, entites):
 
 
 def controle_relations(c, ops, entites, nom_relation, relations_graphe,
-                       relations_du_lot, nom_patch):
+                       relations_du_lot, nom_patch, applicateurs):
     """C13 : les ops relationnelles — extremites, type, et DOUBLONS.
 
     Le controle qui compte est le dernier. Une relation deja portee par le
@@ -406,26 +385,11 @@ def controle_relations(c, ops, entites, nom_relation, relations_graphe,
                             "existantes, type connu et nomme juste, aucune "
                             "relation deja presente ni proposee deux fois")
     # Non bloquant mais structurant : personne ne sait appliquer ces ops.
-    if not applicateurs_add_relation():
+    if not applicateurs:
         c.ajoute('C13', AVERT, f"{len(rel_ops)} op(s) ADD_RELATION : non "
                                "applicable en l'etat, applicateur dedie "
                                "requis (aucun scripts/make_*.py ne consomme "
                                "ADD_RELATION)")
-
-
-def applicateurs_add_relation(repo=REPO):
-    """Meme balayage dynamique que pour CREATE_ENTITY, meme limite assumee."""
-    trouves = []
-    for motif in (os.path.join(repo, 'scripts', 'make_*.py'),
-                  os.path.join(repo, 'scripts', '*.mjs')):
-        for chemin in sorted(glob.glob(motif)):
-            try:
-                with open(chemin, encoding='utf-8') as f:
-                    if 'ADD_RELATION' in f.read():
-                        trouves.append(os.path.basename(chemin))
-            except OSError:
-                continue
-    return trouves
 
 
 def controle_types(c, ops, nom_type):
@@ -715,7 +679,8 @@ def main(argv=None):
                         for r in graphe.get('relations', [])}
     graphes_repo = {os.path.basename(x) for x in graphes_tries()}
     plus_recent = os.path.basename(graphe_le_plus_recent() or '')
-    applicateurs = applicateurs_create_entity()
+    # UN seul balayage pour tous les types, partage avec la file de patchs.
+    applicateurs = applicateurs_par_op()
 
     if args.patch:
         chemins = [os.path.abspath(x) for x in args.patch]
@@ -779,7 +744,7 @@ def main(argv=None):
         for eid, roles in visees_par(ops).items():
             visees_lot[eid][nom] = roles
 
-    # ---------- seconde passe : les 12 controles, patch par patch ----------
+    # ---------- seconde passe : les 13 controles, patch par patch ----------
     rapport = {}
     for nom, donnees, erreur in patchs:
         c = Controles()
@@ -796,11 +761,11 @@ def main(argv=None):
         controle_entites(c, ops, entites)
         controle_types(c, ops, nom_type)
         controle_registre(c, ops, registre, entites, nom_type)
-        controle_create_entity(c, ops, applicateurs)
+        controle_create_entity(c, ops, applicateurs['CREATE_ENTITY'])
         controle_collisions(c, ops, noms_graphe, noms_du_lot, nom)
         controle_duplicate_of(c, ops, entites, dup_du_lot)
         controle_relations(c, ops, entites, nom_relation, relations_graphe,
-                           rel_du_lot, nom)
+                           rel_du_lot, nom, applicateurs['ADD_RELATION'])
         partages = sorted(eid for eid, par in visees_lot.items()
                           if nom in par and len(par) > 1)
         if partages:

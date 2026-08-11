@@ -37,12 +37,24 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
+from grc20_commun import (REPO, graphe_le_plus_recent,  # noqa: E402
+                          numero_de_version)
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
 BIBLIO = os.path.join(REPO, 'assets', 'MD', '07_bibliographie.md')
+# PREUVE FIGEE, pas inventaire vivant : ce CSV instruit une dette constatee
+# DANS v113, avec des identifiants et des lignes de bibliographie releves dans
+# v113. Son nom porte donc « v113 » en dur — et le script REFUSE de tourner
+# contre un autre graphe plutot que d'y ecrire des donnees d'une autre version.
+#
+# C'est exactement le piege deja constate sur `audit_chronology_dates.py`, ou
+# le nom derivait du « graphe le plus recent » sans que rien ne le declare :
+# le jour d'une v114, un CSV nomme v113 se serait rempli de mesures v114.
+# L'arbitrage Q6 (2026-08-09) a fixe la regle — `-current` pour le vivant,
+# `-vNN` pour le fige — et un fige ne se regenere pas ailleurs : il echoue.
+VERSION_FIGEE = 113
 SORTIE = os.path.join(REPO, 'docs', 'audits', 'data',
-                      'bibliography-authorship-support-v113.csv')
+                      f'bibliography-authorship-support-v{VERSION_FIGEE}.csv')
 ID_AUTHORED = '2d3f43441ee747dda4172f0954a9fadd'
 
 COLONNES = (
@@ -198,9 +210,9 @@ def construire(courant):
 
         sorties.append({
             'author_entity_id': aid,
-            'author_name': auteur.get('name'),
+            'author_name': auteur.get('name') or '(sans nom)',
             'reference_entity_id': oid,
-            'reference_name': oeuvre.get('name'),
+            'reference_name': oeuvre.get('name') or '(sans nom)',
             'bibliographic_evidence': preuve,
             'existing_authored_relation': 'oui' if deja else 'non',
             'proposed_relation': propose,
@@ -221,9 +233,10 @@ def construire(courant):
         for _, oid in sorted(siens):
             sorties.append({
                 'author_entity_id': aid,
-                'author_name': nom,
+                'author_name': nom or '(sans nom)',
                 'reference_entity_id': oid,
-                'reference_name': par_id.get(oid, {}).get('name', '?'),
+                'reference_name': (par_id.get(oid, {}).get('name')
+                                   or '(sans nom)'),
                 'bibliographic_evidence': 'relation déjà présente dans v113',
                 'existing_authored_relation': 'oui',
                 'proposed_relation': 'aucune',
@@ -251,6 +264,14 @@ def main():
     courant = args.graph or graphe_le_plus_recent(REPO)
     if not courant:
         echec('aucun graphe numerote dans le depot', CODE_INVOCATION)
+    vue = numero_de_version(courant)
+    if vue != VERSION_FIGEE:
+        echec(f'ce releve est une preuve FIGEE sur v{VERSION_FIGEE} ; le '
+              f'graphe vise est {os.path.basename(courant)} (v{vue}). Ecrire '
+              f'des mesures v{vue} dans un fichier nomme v{VERSION_FIGEE} '
+              'serait exactement le mensonge silencieux que la convention de '
+              'nommage interdit. Pour instruire une version ulterieure, '
+              'ouvrir un nouveau releve.')
     lignes = construire(courant)
 
     print(f'graphe de reference : {os.path.basename(courant)}')

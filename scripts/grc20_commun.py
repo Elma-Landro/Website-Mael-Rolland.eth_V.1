@@ -98,3 +98,41 @@ def est_section(entite, nom_type):
     """`nom_type` : {id de type -> nom}. Vrai si l'entite est une section."""
     noms = [nom_type.get(t, t) for t in (entite.get('types') or [])]
     return any(t in noms for t in TYPES_SECTION)
+
+
+# --- Ops qu'aucun applicateur du depot ne consomme -------------------------
+#
+# Deux scripts posaient la meme question sans se parler :
+# `preflight_candidate_patches.py` balayait dynamiquement scripts/ pour
+# CREATE_ENTITY puis, a l'identique, pour ADD_RELATION ; et
+# `build_patch_queue_inventory.py` portait une liste STATIQUE des memes types.
+# Deux notions du meme fait, dont une qui ne se met pas a jour toute seule :
+# le jour ou un applicateur est ecrit, le balayage le voit et la liste
+# statique, non — la file continuerait a dire « bloque faute d'applicateur »
+# sur un patch devenu applicable.
+#
+# La question est donc posee ici, une fois, et par MESURE plutot que par
+# declaration. Limite assumee, heritee du balayage d'origine : le critere est
+# litteral (un simple commentaire nommant le type suffit a le declencher) et
+# ne voit pas un applicateur au dispatch purement structurel. Le constat du
+# jour a ete verifie a la main en plus du balayage.
+OPS_SANS_APPLICATEUR_CONNU = ('CREATE_ENTITY', 'ADD_RELATION')
+
+
+def applicateurs_par_op(repo=REPO, types=OPS_SANS_APPLICATEUR_CONNU):
+    """-> {type d'op: [applicateurs qui le nomment]}, tri stable.
+
+    Vide pour un type = aucun applicateur ne le consomme aujourd'hui. Le jour
+    ou l'un d'eux le traitera, les controles qui s'appuient dessus changeront
+    seuls, sans qu'aucune liste ait a etre mise a jour."""
+    textes = {}
+    for motif in (os.path.join(repo, 'scripts', 'make_*.py'),
+                  os.path.join(repo, 'scripts', '*.mjs')):
+        for chemin in sorted(glob.glob(motif)):
+            try:
+                with open(chemin, encoding='utf-8') as f:
+                    textes[os.path.basename(chemin)] = f.read()
+            except OSError:
+                continue
+    return {t: [nom for nom, texte in sorted(textes.items()) if t in texte]
+            for t in types}

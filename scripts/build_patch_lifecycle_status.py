@@ -233,8 +233,14 @@ def bloc_pour(nom, ligne_gouv, entree_ledger, courant, csv_gouvernance,
     # faisait echouer un patch `blocked_author_arbitration` porteur de
     # SET_ATTRIBUTE — pour un champ que sa note n'utilise meme pas.
     substitutions = {'csv': csv_gouvernance, 'ledger': FICHIER_LEDGER}
-    if '%(verrou)s' in NOTES[statut]:
-        substitutions['ops'] = ' ni '.join(sorted(types_ops)) or 'ces ops'
+    # Tester les DEUX cles, pas seulement `verrou` : une note future n'usant
+    # que de `%(ops)s` aurait leve un KeyError a la substitution.
+    if any(c in NOTES[statut] for c in ('%(ops)s', '%(verrou)s')):
+        # « ne consomme ni A ni B » — le premier « ni » manquait des qu il y
+        # avait plus d un type, ce qui donnait « ne consomme A ni B ».
+        tries = sorted(types_ops)
+        substitutions['ops'] = ('ni ' + ' ni '.join(tries) if len(tries) > 1
+                                else (tries[0] if tries else 'ces ops'))
         substitutions['verrou'] = verrou_pour(nom, types_ops)
     bloc['noteForAgents'] = NOTES[statut] % substitutions
     return bloc

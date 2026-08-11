@@ -34,7 +34,8 @@ import sys
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
+from grc20_commun import (REPO, applicateurs_par_op,  # noqa: E402
+                          graphe_le_plus_recent)
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
 # Le nom du CSV suit le graphe de reference : une file de patchs decrit un
@@ -314,11 +315,16 @@ def statut_de(chemin, doc, ops, par_id, types_par_nom, courant, relations,
     # applicateur. Verifie avant extension : tous les artefacts historiques
     # porteurs d'ADD_RELATION ont deja des ops realisees, donc la condition
     # `deja == 0` ne deplace aucune ligne existante.
-    SANS_APPLICATEUR = ('CREATE_ENTITY', 'CREATE_ENTITY(implicite)',
-                        'ADD_RELATION')
+    # La liste n'est plus statique : elle vient du balayage partage de
+    # `grc20_commun`, qui MESURE quels types aucun applicateur ne consomme.
+    # Une liste ecrite en dur aurait continue a dire « bloque faute
+    # d'applicateur » le jour ou l'applicateur existe.
+    sans_applicateur = {t for t, faits in applicateurs_par_op().items()
+                        if not faits}
+    types_vus = [type_op(op) for op in ops if isinstance(op, dict)]
     orphelines = Counter(
-        type_op(op).replace('(implicite)', '') for op in ops
-        if isinstance(op, dict) and type_op(op) in SANS_APPLICATEUR)
+        t.replace('(implicite)', '') for t in types_vus
+        if t.replace('(implicite)', '') in sans_applicateur)
     if orphelines and sum(orphelines.values()) == len(ops) and deja == 0:
         quoi = ' + '.join(f'{n} {t}' for t, n in sorted(orphelines.items()))
         return ('blocked_by_missing_applicator',
