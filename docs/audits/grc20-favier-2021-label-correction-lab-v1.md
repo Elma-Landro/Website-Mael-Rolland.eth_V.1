@@ -88,14 +88,32 @@ Il n'applique rien, ne crée aucune v115, ne touche aucune relation ni aucun `au
 
 **Il ne corrige pas non plus la thèse.** Le chapitre II cite « Favier 1981 » et « Favier 2018 » sans qu'aucune entrée correspondante figure à la bibliographie — et « Favier 1981 » désigne selon toute vraisemblance **Jean** Favier, le médiéviste, pas Jacques Favier. **Le graphe est indemne** : aucune fiche Favier 1981 ni Favier 2018 n'existe, et `53525938` ne porte que ses trois `authored` légitimes. Le risque d'homonymie a donc été cherché et **écarté par mesure**. `assets/MD/` est archivistique : l'écart est signalé, jamais corrigé.
 
-## 8. Arbitrages posés à Maël
+## 8. Arbitrages — posés, puis **rendus le 2026-08-11**
 
-1. **Corriger le nom de `7f0f9cc4`** ? **oui / non**
-2. **Quelle forme exacte** — A, B, C, ou une autre ?
-3. **Créer une v115 strictement bornée à cette correction** ? **oui / non** — et si oui, **la régénération des 20 lignes de cartes appartient-elle au même lot** ?
-4. **Garder le doublon DeNardis, les `SourceQuote`, les `authored`, les fusions et les créations hors périmètre** ? **oui / non**
+Les quatre questions ont reçu réponse, et l'auteur a ajouté une cinquième rubrique : les contraintes d'application. Le tout est inscrit dans `_meta.arbitrage` du patch candidat, **jamais dans sa `policy`**.
 
-**Aucune application avant réponse.**
+| # | Question | Réponse |
+|---|---|---|
+| 1 | Corriger le nom de `7f0f9cc4` ? | **OUI** |
+| 2 | Quelle forme ? | **A** — correction minimale |
+| 3 | Créer une v115 bornée ? | **OUI**, + **les 20 lignes de cartes dans le même lot** |
+| 4 | Garder DeNardis, `SourceQuote`, `authored`, fusions, créations hors périmètre ? | **OUI** |
+
+**1 — la dette est reconnue et son périmètre confirmé.** La fiche désigne bien la bonne œuvre ; c'est le support qui est faux. On corrige le nom, **pas** l'identité de la fiche, **pas** les relations, **pas** les `authored`.
+
+**2 — forme A, avec les motifs de rejet des deux autres.** `Favier 2021 — Bitcoin et la religion (podcast Parlons Bitcoin)`. B est écartée comme trop large — elle importerait tout le titre bibliographique. C est écartée comme trop pauvre : *le support est précisément ce qui est faux et ce que la correction doit réparer*. **Ne pas ajouter `title` ni `year`** dans ce lot ; c'est une dette séparée.
+
+**3 — les 20 lignes de cartes appartiennent au même lot.** C'est la réponse au § 5 de cet audit, et le motif est explicite : elles sont une **conséquence mécanique** du renommage, et ne pas les régénérer laisserait le dépôt porter une chaîne fausse versionnée *alors même que la fiche canonique est corrigée*. La v115 reste une **PR séparée**.
+
+**4 — périmètre exclu, en creux** : doublon DeNardis (`e0b40d91` / `2272e5b8`), `SourceQuote`, `authored`, fusions, créations, `title`/`year` manquants, Favier 1981, Favier 2018, et toute correction bibliographique plus large.
+
+### Ce que la PR v115 devra prouver — séparément
+
+L'auteur exige **trois preuves distinctes**, et le mot compte : le changement **canonique** sur la fiche, les changements **dénormalisés** dans les cartes, et **l'absence de tout autre effet**. Les mélanger dans un seul diff global masquerait précisément ce que ce chantier a mis au jour — que les deux couches peuvent diverger sans que rien ne le signale.
+
+Douze contraintes encadrent l'application : créer uniquement `grc20-these-mael-rolland-v115.json` ; ne corriger que `7f0f9cc4` ; aucune relation modifiée ; aucun attribut autre que le champ de nom, **et seulement si c'est bien lui qui porte la chaîne fautive** ; aucun nœud créé ; aucune fusion ; aucune `SourceQuote` ; aucun `authored` ; régénérer **seulement** les 20 lignes portant l'ancien nom ; prouver que `b84f59ac` reste intact ; prouver que l'inversion avec `:474` est impossible ; prouver que le slug `bitcoin-et-religion` rattache bien `7f0f9cc4` à l'entrée `:472`.
+
+**Rien n'est appliqué ici.** Le présent chantier reste une instruction et un patch candidat.
 
 ## 9. Limites connues
 
