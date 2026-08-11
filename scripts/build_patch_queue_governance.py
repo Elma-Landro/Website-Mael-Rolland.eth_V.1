@@ -141,8 +141,11 @@ def gouvernance(ligne, sous_c03, applique_par, nature_fichier):
     if mesure == 'blocked_by_missing_applicator':
         return ('blocked_missing_applicator', nature_fichier, 'non',
                 'aucun applicateur ne consomme ces ops',
-                'CREATE_ENTITY : le contrat interdit de pre-assigner un '
-                'entityId, et aucun make_* ne lit ce type d op')
+                'aucun make_* ne lit ce type d op : CREATE_ENTITY (dont le '
+                'contrat interdit de pre-assigner l entityId) ou ADD_RELATION '
+                '(dont les formes historiques sont incompatibles et la forme '
+                'reste a arbitrer). DEUX verrous : ecrire l applicateur est '
+                'technique, l arbitrage de fond ne le debloque pas')
 
     # ARBITRAGE Q7 : « applicable techniquement ne veut pas dire mur pour
     # v114 ». Un artefact entier dont les cibles existent n'est PAS un feu

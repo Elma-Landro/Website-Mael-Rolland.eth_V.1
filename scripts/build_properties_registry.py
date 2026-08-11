@@ -136,7 +136,15 @@ EXCLUSIONS_READ_BY = {
     # patch (`op.get('type')`), homonyme de l'attribut de graphe. Verifie
     # occurrence par occurrence dans le fichier vise.
     'page_start': {'scripts/build_patch_queue_inventory.py'},
-    'type': {'scripts/build_patch_queue_inventory.py'},
+    # Meme homonymie ailleurs : dans build_bibliography_authorship_support.py,
+    # `r['type']` est le champ de type d'une RELATION du graphe (le triplet
+    # from/to/type), pas l'attribut d'entite ; dans build_patch_lifecycle_
+    # status.py, `op.get('type')` est le type d'operation d'un patch. Verifie
+    # occurrence par occurrence : une seule dans chaque fichier, aucune sur un
+    # attribut d'entite.
+    'type': {'scripts/build_patch_queue_inventory.py',
+             'scripts/build_bibliography_authorship_support.py',
+             'scripts/build_patch_lifecycle_status.py'},
     # build_patch_queue_governance.py lit le `_meta` des PATCHS, jamais le
     # graphe : `description` et `status` y sont des champs de carte d'identite
     # de patch, `note` un nom de colonne du CSV produit. Verifie occurrence par
@@ -152,7 +160,15 @@ EXCLUSIONS_READ_BY = {
     'status': {'scripts/build_patch_queue_governance.py',
                'scripts/build_patch_application_ledger.py'},
     'note': {'scripts/audit_section_page_start.py',
-             'scripts/build_patch_queue_governance.py'},
+             'scripts/build_patch_queue_governance.py',
+             'scripts/build_bibliography_authorship_support.py'},
+    # `risk` et `note` sont, dans build_bibliography_authorship_support.py, des
+    # NOMS DE COLONNE du CSV de decision — imposes par le cahier des charges du
+    # chantier, donc non renommables. Le script ne lit aucun attribut d'entite :
+    # il ne consulte du graphe que `entities`, `types`, `relations` et les noms.
+    # Sans exclusion, `risk` bascule de `editorial` a `structural`, ce qui
+    # ferait croire que le graphe depend d'une cle qu'aucun code ne lit.
+    'risk': {'scripts/build_bibliography_authorship_support.py'},
 }
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que

@@ -16,7 +16,7 @@ graphe ni aucun fichier existant (seul --report-json ecrit, a l'endroit
 demande). Stdlib uniquement. Sortie deterministe : aucun horodatage, tris
 stables partout.
 
-LES 12 CONTROLES (codes C01..C12), chacun OK / AVERTISSEMENT / BLOQUANT :
+LES 13 CONTROLES (codes C01..C13), chacun OK / AVERTISSEMENT / BLOQUANT :
   C01  le JSON parse (sinon BLOQUANT, les autres patchs continuent) ;
   C02  _meta present avec policy, source_graph, patch_id, description ;
   C03  la policy commence par « CANDIDATE — NOT APPLIED — AUTHOR
@@ -39,7 +39,12 @@ LES 12 CONTROLES (codes C01..C12), chacun OK / AVERTISSEMENT / BLOQUANT :
        lot, ni via un duplicateOf deja porte par la cible dans le graphe) ;
        au plus UN duplicateOf par entite (invariant de verif_doublons.py) ;
   C12  cross-patch : une meme entite visee par plusieurs patchs du lot
-       (retypee ET marquee doublon, par exemple) -> AVERTISSEMENT detaille.
+       (retypee ET marquee doublon, par exemple) -> AVERTISSEMENT detaille ;
+  C13  ops relationnelles (ADD_RELATION) : extremites existantes et
+       distinctes, relationTypeId connu, relationTypeName coherent avec lui,
+       et surtout AUCUNE relation deja portee par le graphe ni proposee deux
+       fois dans le lot -> BLOQUANT ; aucun applicateur ne consommant
+       ADD_RELATION -> AVERTISSEMENT structurel.
 
 CODES DE SORTIE : 0 = aucun BLOQUANT ; 1 = au moins un BLOQUANT sur le lot ;
 2 = erreur d'invocation (graphe/registre illisible, --patch introuvable).
@@ -70,7 +75,17 @@ REGISTRE_DEFAUT = 'grc20-properties-registry-v1.json'
 PREFIXE_POLICY = 'CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED'
 META_REQUIS = ('policy', 'source_graph', 'patch_id', 'description')
 OPS_SUR_ENTITE = ('SET_NAME', 'SET_TYPES', 'SET_ATTRIBUTE', 'DELETE_ATTRIBUTE')
-OPS_CONNUES = OPS_SUR_ENTITE + ('CREATE_ENTITY',)
+# Ops RELATIONNELLES (C13). Elles ne visent pas une entite mais un COUPLE, et
+# n'ont donc pas d'`entityId` : les controles bases sur ce champ les ignorent,
+# d'ou un controle dedie. La forme reconnue est le dialecte C etendu — type de
+# relation par ID, double d'un nom declare et verifie. Les trois formes
+# historiques d'ADD_RELATION donnent le type par NOM, ce qui est ambigu ; ce
+# validateur n'en reconnait aucune, et c'est deliberé : la FORME d'un patch
+# relationnel est un arbitrage reserve a l'auteur (contrat § 4). Reconnaitre
+# ici une forme n'est pas la choisir a sa place — c'est rendre verifiable la
+# seule qui ait ete proposee, pour qu'il puisse la juger sur pieces.
+OPS_RELATION = ('ADD_RELATION',)
+OPS_CONNUES = OPS_SUR_ENTITE + ('CREATE_ENTITY',) + OPS_RELATION
 ORDRE_STATUT = {OK: 0, AVERT: 1, BLOQ: 2}
 
 
@@ -265,6 +280,15 @@ def controle_forme_ops(c, ops):
             if not isinstance(v, dict) or 'type' not in v or 'value' not in v:
                 problemes.append(f"op[{i}] SET_ATTRIBUTE : value doit etre "
                                  "un objet {type, value[, options]}")
+        if t in OPS_RELATION:
+            for champ in ('from', 'to', 'relationTypeId'):
+                if not (isinstance(op.get(champ), str) and op.get(champ)):
+                    problemes.append(f"op[{i}] {t} : {champ} (chaine non "
+                                     "vide) requis")
+            if 'relationTypeName' in op and not isinstance(
+                    op['relationTypeName'], str):
+                problemes.append(f"op[{i}] {t} : relationTypeName doit etre "
+                                 "une chaine")
         if t == 'CREATE_ENTITY':
             if not (isinstance(op.get('name'), str) and op.get('name')):
                 problemes.append(f"op[{i}] CREATE_ENTITY : name (chaine non "
@@ -325,6 +349,83 @@ def controle_entites(c, ops, entites):
                               f"INVERIFIABLE(S) : "
                               f"{', '.join(types_hors_perimetre)} — "
                               "etendre le validateur ou corriger le patch")
+
+
+def controle_relations(c, ops, entites, nom_relation, relations_graphe,
+                       relations_du_lot, nom_patch):
+    """C13 : les ops relationnelles — extremites, type, et DOUBLONS.
+
+    Le controle qui compte est le dernier. Une relation deja portee par le
+    graphe, reposee par un patch, est un doublon silencieux : rien ne la
+    signale a l'application, et le graphe se met a porter deux fois le meme
+    fait. C'est la variante relationnelle de l'incident d'homonymie qui a fait
+    echouer make_v110, et elle est plus discrete parce qu'aucun nom ne
+    collisionne. On verifie aussi le lot contre lui-meme : deux patchs
+    candidats peuvent proposer la meme relation sans se voir."""
+    rel_ops = [(i, op) for i, op in enumerate(ops)
+               if op.get('type') in OPS_RELATION]
+    if not rel_ops:
+        c.ajoute('C13', OK, "aucune op relationnelle")
+        return
+    problemes, verifiees = [], 0
+    for i, op in rel_ops:
+        depart, arrivee = op.get('from'), op.get('to')
+        tid, tnom = op.get('relationTypeId'), op.get('relationTypeName')
+        if not (depart and arrivee and tid):
+            continue                      # deja BLOQUANT en controle de forme
+        verifiees += 1
+        for role, eid in (('from', depart), ('to', arrivee)):
+            if eid not in entites:
+                problemes.append((BLOQ, f"op[{i}] {role} {eid} : entite "
+                                        "absente du graphe"))
+        if depart == arrivee:
+            problemes.append((BLOQ, f"op[{i}] relation de {depart} vers "
+                                    "lui-meme"))
+        if tid not in nom_relation:
+            problemes.append((BLOQ, f"op[{i}] relationTypeId {tid} inconnu "
+                                    "du graphe"))
+        elif tnom and nom_relation[tid] != tnom:
+            problemes.append((BLOQ, f"op[{i}] relationTypeName « {tnom} » "
+                                    f"!= nom reel « {nom_relation[tid]} » "
+                                    "pour cet id"))
+        if (depart, arrivee, tid) in relations_graphe:
+            problemes.append((BLOQ, f"op[{i}] la relation existe DEJA dans le "
+                                    f"graphe ({depart[:8]} -{tnom or tid}-> "
+                                    f"{arrivee[:8]}) : la reposer creerait un "
+                                    "doublon silencieux"))
+        ailleurs = [p for (p, j) in relations_du_lot.get(
+            (depart, arrivee, tid), []) if not (p == nom_patch and j == i)]
+        if ailleurs:
+            problemes.append((BLOQ, f"op[{i}] la meme relation est proposee "
+                                    f"par {', '.join(sorted(set(ailleurs)))}"))
+    for statut, detail in sorted(set(problemes),
+                                 key=lambda x: (ORDRE_STATUT[x[0]], x[1])):
+        c.ajoute('C13', statut, detail)
+    if not problemes:
+        c.ajoute('C13', OK, f"{verifiees} op(s) relationnelle(s) : extremites "
+                            "existantes, type connu et nomme juste, aucune "
+                            "relation deja presente ni proposee deux fois")
+    # Non bloquant mais structurant : personne ne sait appliquer ces ops.
+    if not applicateurs_add_relation():
+        c.ajoute('C13', AVERT, f"{len(rel_ops)} op(s) ADD_RELATION : non "
+                               "applicable en l'etat, applicateur dedie "
+                               "requis (aucun scripts/make_*.py ne consomme "
+                               "ADD_RELATION)")
+
+
+def applicateurs_add_relation(repo=REPO):
+    """Meme balayage dynamique que pour CREATE_ENTITY, meme limite assumee."""
+    trouves = []
+    for motif in (os.path.join(repo, 'scripts', 'make_*.py'),
+                  os.path.join(repo, 'scripts', '*.mjs')):
+        for chemin in sorted(glob.glob(motif)):
+            try:
+                with open(chemin, encoding='utf-8') as f:
+                    if 'ADD_RELATION' in f.read():
+                        trouves.append(os.path.basename(chemin))
+            except OSError:
+                continue
+    return trouves
 
 
 def controle_types(c, ops, nom_type):
@@ -553,6 +654,14 @@ def visees_par(ops):
     for op in ops:
         if op.get('type') in OPS_SUR_ENTITE and op.get('entityId'):
             roles[op['entityId']].add(op['type'])
+        if op.get('type') in OPS_RELATION:
+            # Une relation vise DEUX entites. Les inscrire toutes deux fait
+            # apparaitre en C12 le cas « Favier retype par un patch ET relie
+            # par un autre » — utile, et invisible autrement.
+            for role, cle in (('depart de relation', 'from'),
+                              ('arrivee de relation', 'to')):
+                if op.get(cle):
+                    roles[op[cle]].add(role)
         if (op.get('type') == 'SET_ATTRIBUTE'
                 and op.get('attributeId') == 'duplicateOf'):
             cible = valeur_attribut(op)
@@ -600,6 +709,10 @@ def main(argv=None):
     noms_graphe = collections.defaultdict(list)
     for e in graphe['entities']:
         noms_graphe[normalise_nom(e.get('name'))].append(e['id'])
+    nom_relation = {t['id']: t.get('name') or t['id']
+                    for t in graphe.get('relation_types', [])}
+    relations_graphe = {(r['from'], r['to'], r['type'])
+                        for r in graphe.get('relations', [])}
     graphes_repo = {os.path.basename(x) for x in graphes_tries()}
     plus_recent = os.path.basename(graphe_le_plus_recent() or '')
     applicateurs = applicateurs_create_entity()
@@ -641,6 +754,7 @@ def main(argv=None):
             patchs.append((nom, None, str(err)))
 
     noms_du_lot = collections.defaultdict(list)   # nom normalise -> ops du lot
+    rel_du_lot = collections.defaultdict(list)    # (from,to,type) -> ops du lot
     dup_du_lot = collections.defaultdict(set)     # entite -> cibles duplicateOf
     visees_lot = collections.defaultdict(dict)    # entite -> {patch: roles}
     for nom, donnees, _ in patchs:
@@ -654,6 +768,10 @@ def main(argv=None):
             if op.get('type') == 'CREATE_ENTITY' and op.get('name'):
                 noms_du_lot[normalise_nom(op['name'])].append(
                     (nom, i, 'CREATE_ENTITY'))
+            if (op.get('type') in OPS_RELATION and op.get('from')
+                    and op.get('to') and op.get('relationTypeId')):
+                rel_du_lot[(op['from'], op['to'],
+                            op['relationTypeId'])].append((nom, i))
             if (op.get('type') == 'SET_ATTRIBUTE'
                     and op.get('attributeId') == 'duplicateOf'
                     and op.get('entityId')):
@@ -681,6 +799,8 @@ def main(argv=None):
         controle_create_entity(c, ops, applicateurs)
         controle_collisions(c, ops, noms_graphe, noms_du_lot, nom)
         controle_duplicate_of(c, ops, entites, dup_du_lot)
+        controle_relations(c, ops, entites, nom_relation, relations_graphe,
+                           rel_du_lot, nom)
         partages = sorted(eid for eid, par in visees_lot.items()
                           if nom in par and len(par) > 1)
         if partages:
