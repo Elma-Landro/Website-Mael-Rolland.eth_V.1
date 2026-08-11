@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "patch_id": "candidate-favier-2021-label-correction-v1",
+    "source_graph": "grc20-these-mael-rolland-v114.json",
+    "generated": "2026-08-11",
+    "description": "1 op SET_NAME sur la fiche 7f0f9cc4. Son libelle attribue l item Favier 2021 au blog « La voie du Bitcoin », alors que l unique entree Favier 2021 de la bibliographie (assets/MD/07_bibliographie.md:472) donne un podcast parlonsbitcoin.com. « La voie du Bitcoin » est l editeur de l entree :474 (Tulipes, 2017), qui a sa propre fiche b84f59ac portant cet editeur jusque dans son attribut `title`. Le support de deux entrees distinctes a ete recopie sur la mauvaise. L IDENTITE de l oeuvre n est pas en cause : :472 est l unique entree Favier 2021, son titre et l URL « bitcoin-et-religion » concordent avec le libelle, et le chapitre I la cite deux fois sous « (Favier 2021) ».",
+    "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Aucune op de ce fichier n a ete appliquee a v114 ni a aucun graphe. Le patch ne pose QU UN SET_NAME : aucune relation, aucun noeud, aucune fusion, aucun duplicateOf, aucune SourceQuote, aucun attribut, aucun retypage. DEUX arbitrages sont requis avant toute application : (1) corriger ou non le libelle ; (2) la FORME exacte retenue — la valeur ci-dessous est une PROPOSITION parmi trois instruites dans l audit, pas une decision. Un libelle designe une oeuvre et son support : l ecrire releve de l auteur.",
+    "arbitrage": {
+      "date": "2026-08-11",
+      "auteur": "Maël Rolland",
+      "pr_instruction": "chantier d instruction Favier 2021 Label Correction Lab v1",
+      "reponses": {
+        "1_corriger": "OUI. La dette est reelle et bornee : la fiche designe bien la bonne oeuvre, mais son support est faux. Corriger le nom/support, PAS l identite de la fiche, PAS les relations, PAS les authored.",
+        "2_forme": "FORME A retenue — « Favier 2021 — Bitcoin et la religion (podcast Parlons Bitcoin) », calquee sur la fiche soeur mais avec le bon support. B ecartee (trop large, elle importerait tout le titre bibliographique) ; C ecartee (trop pauvre — le support est precisement ce qui est faux et ce que la correction doit reparer). NE PAS ajouter `title` ni `year` dans ce lot : dette separee.",
+        "3_v115": "OUI, strictement bornee a DEUX choses : la correction du nom de 7f0f9cc4, ET la regeneration des 20 lignes de cartes qui portent la chaine denormalisee fausse (19 dans section_entities_map.json, 1 dans entity_section_map.json). Ces 20 lignes appartiennent au MEME lot : elles sont une consequence mecanique du renommage, et ne pas les regenerer laisserait le depot porter une chaine fausse versionnee alors meme que la fiche canonique est corrigee. La v115 doit rester une PR SEPAREE, et prouver SEPAREMENT : le changement canonique sur la fiche, les changements denormalises dans les cartes, et l absence de tout autre effet.",
+        "4_hors_perimetre": "OUI. Hors perimetre v115 : doublon DeNardis (e0b40d91 / 2272e5b8), SourceQuote, authored, fusions, creations, title/year manquants, Favier 1981, Favier 2018, et toute correction bibliographique plus large.",
+        "5_contraintes_v115": [
+          "creer uniquement grc20-these-mael-rolland-v115.json",
+          "ne corriger que 7f0f9cc4",
+          "ne modifier aucune relation",
+          "ne modifier aucun attribut autre que le champ de nom concerne, si c est bien lui qui porte la chaine fautive",
+          "ne creer aucun noeud",
+          "ne fusionner rien",
+          "ne toucher a aucune SourceQuote",
+          "ne toucher a aucun authored",
+          "regenerer seulement les 20 lignes de cartes portant l ancien nom",
+          "prouver que b84f59ac reste intact",
+          "prouver que l inversion avec :474 est impossible",
+          "prouver que l URL/slug « bitcoin-et-religion » rattache bien 7f0f9cc4 a l entree :472"
+        ]
+      },
+      "consigne_application": "NE PAS APPLIQUER dans le chantier d instruction. Seule une PR ulterieure, distincte, pourra ecrire l applicateur et creer v115.",
+      "pourquoi_ce_bloc_et_pas_la_policy": "La `policy` ci-dessus n est PAS modifiee : elle enregistre ce qui etait exige au depot, et C03 exige son prefixe. Ecrire l arbitrage DANS la policy reproduirait le defaut que le depot combat depuis v111 — une phrase qui cesse de dire la verite sans que rien ne le signale. L arbitrage se lit ici ; l etat applicatif se lit dans `lifecycleStatus`, derive du graphe. Ordre d autorite inchange : graphe, file, ledger."
+    },
+    "collateral_note": "Un renommage desynchronise 19 lignes de section_entities_map.json et 1 de entity_section_map.json, qui portent `entity_name` a cote de l identifiant. AUCUN controle du depot ne le detecte : verifie en renommant dans le graphe seul, check_anchoring, build_anchor_weights --check et check_graph_integrity restent VERTS. La regeneration des cartes doit donc appartenir au meme lot, ou etre explicitement exclue.",
+    "audit": "docs/audits/grc20-favier-2021-label-correction-lab-v1.md",
+    "evidence": [
+      "docs/audits/data/favier-2021-label-correction-v114.csv"
+    ],
+    "author": "mael-rolland.eth",
+    "op_count": 1,
+    "entities_touched": 1,
+    "skipped_count": 1,
+    "skipped": [
+      {
+        "entity_id": "b84f59ace9b6403c88067c46af4c7582",
+        "entity_label": "Favier 2017 — Tulipes (blog La voie du Bitcoin)",
+        "reason": "TEMOIN DE NON-INVERSION, deliberement intouche. C est ICI que « La voie du Bitcoin » est JUSTE : l entree :474 donne blog.lavoiedubitcoin.info et la fiche porte l editeur jusque dans son attribut `title`. Corriger des deux cotes detruirait l information au lieu de la reparer."
+      }
+    ],
+    "lifecycleStatus": "blocked_author_arbitration",
+    "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v114.json",
+    "measuredStatus": "still_candidate",
+    "noteForAgents": "NON APPLIQUE, et techniquement applicable n est PAS mur. Les cibles existent et les preconditions tiennent, mais l arbitrage de l auteur n a pas ete rendu : a reauditer avant tout chantier d application (arbitrage Q7 du 2026-08-09). Ce champ ne vaut pas feu vert."
+  },
+  "ops": [
+    {
+      "type": "SET_NAME",
+      "entityId": "7f0f9cc4c27040a78115b0294fd9bfe1",
+      "value": "Favier 2021 — Bitcoin et la religion (podcast Parlons Bitcoin)",
+      "currentValue": "Favier 2021 — Bitcoin et la religion (La voie du Bitcoin)",
+      "evidence": "assets/MD/07_bibliographie.md:472"
+    }
+  ]
+}
