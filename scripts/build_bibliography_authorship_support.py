@@ -37,8 +37,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import (REPO, graphe_le_plus_recent,  # noqa: E402
-                          numero_de_version)
+from grc20_commun import REPO, numero_de_version  # noqa: E402
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
 BIBLIO = os.path.join(REPO, 'assets', 'MD', '07_bibliographie.md')
@@ -261,9 +260,14 @@ def main():
     if args.csv and args.check:
         ap.error('--csv et --check sont exclusifs.')
 
-    courant = args.graph or graphe_le_plus_recent(REPO)
-    if not courant:
-        echec('aucun graphe numerote dans le depot', CODE_INVOCATION)
+    # Le defaut est le graphe FIGE, pas « le plus recent » : un releve fige
+    # doit rester rejouable apres un bump de version. Le viser par defaut ne
+    # relache rien — un `--graph` explicite vers une autre version est toujours
+    # refuse juste en dessous.
+    courant = args.graph or os.path.join(
+        REPO, f'grc20-these-mael-rolland-v{VERSION_FIGEE}.json')
+    if not os.path.exists(courant):
+        echec(f'graphe de reference introuvable : {courant}', CODE_INVOCATION)
     vue = numero_de_version(courant)
     if vue != VERSION_FIGEE:
         echec(f'ce releve est une preuve FIGEE sur v{VERSION_FIGEE} ; le '
