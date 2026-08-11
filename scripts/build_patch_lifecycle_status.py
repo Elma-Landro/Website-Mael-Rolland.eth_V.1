@@ -85,11 +85,15 @@ NOTES = {
         "existent et les preconditions tiennent, mais l arbitrage de l auteur "
         "n a pas ete rendu : a reauditer avant tout chantier d application "
         "(arbitrage Q7 du 2026-08-09). Ce champ ne vaut pas feu vert.",
+    # Le detail %(verrou)s est DERIVE des ops du patch. Une note generique
+    # disait « le contrat interdit de pre-assigner un entityId », vrai des
+    # creations et hors sujet d un patch relationnel : elle aurait laisse
+    # croire que ce patch cree des noeuds.
     'blocked_missing_applicator':
-        "NON APPLICABLE EN L ETAT. Aucun applicateur du depot ne consomme ces "
-        "ops, et le contrat de patch interdit de pre-assigner un entityId sur "
-        "une creation. Ecrire l applicateur est un chantier a part entiere, "
-        "distinct de l arbitrage scientifique sur le contenu.",
+        "NON APPLICABLE EN L ETAT. Aucun applicateur du depot ne consomme "
+        "%(ops)s. %(verrou)s Ecrire l applicateur est un chantier a part "
+        "entiere, distinct de l arbitrage scientifique sur le contenu : le "
+        "second ne debloque pas le premier.",
 }
 
 # Les DEUX ensembles ne sont volontairement PAS egaux, et l'invariant ne vaut
@@ -155,7 +159,30 @@ def graphe_de_version(nom, version):
           'de champ.')
 
 
-def bloc_pour(nom, ligne_gouv, entree_ledger, courant, csv_gouvernance):
+# Ce qui bloque, PAR type d op. Une entree manquante fait echouer le script
+# plutot que d ecrire une note vague sur un blocage qu on n a pas su nommer.
+VERROUS = {
+    'CREATE_ENTITY':
+        "Le contrat des patchs candidats interdit en outre de pre-assigner un "
+        "entityId sur une creation : l applicateur futur les assignera.",
+    'ADD_RELATION':
+        "La FORME de l op relationnelle reste a arbitrer : le contrat "
+        "(grc20-candidate-patch-contract-v1.md § 4) reserve ce choix a "
+        "l auteur, et les trois formes historiques sont incompatibles.",
+}
+
+
+def verrou_pour(nom, types_ops):
+    inconnus = sorted(t for t in types_ops if t not in VERROUS)
+    if inconnus:
+        echec(f'{nom} : aucun verrou redige pour le(s) type(s) d op '
+              f'{", ".join(inconnus)} — une note vague sur un blocage qu on '
+              'n a pas su nommer vaut moins que pas de note.')
+    return ' '.join(VERROUS[t] for t in sorted(types_ops))
+
+
+def bloc_pour(nom, ligne_gouv, entree_ledger, courant, csv_gouvernance,
+              types_ops=()):
     """Le bloc `_meta` de cycle de vie d un patch — entierement DERIVE."""
     statut = ligne_gouv['recommended_governance_status']
     if statut not in VOCABULAIRE:
@@ -202,9 +229,28 @@ def bloc_pour(nom, ligne_gouv, entree_ledger, courant, csv_gouvernance):
     # passait rouge pour une pure coincidence lexicale. Cause supprimee plutot
     # que faux positif declare — et le present commentaire evite de la nommer
     # sous forme de code, sinon il rouvrirait le defaut qu'il explique.
-    bloc['noteForAgents'] = NOTES[statut] % {'csv': csv_gouvernance,
-                                             'ledger': FICHIER_LEDGER}
+    # Le verrou n'est exige QUE la ou la note le reclame. L'exiger partout
+    # faisait echouer un patch `blocked_author_arbitration` porteur de
+    # SET_ATTRIBUTE — pour un champ que sa note n'utilise meme pas.
+    substitutions = {'csv': csv_gouvernance, 'ledger': FICHIER_LEDGER}
+    # Tester les DEUX cles, pas seulement `verrou` : une note future n'usant
+    # que de `%(ops)s` aurait leve un KeyError a la substitution.
+    if any(c in NOTES[statut] for c in ('%(ops)s', '%(verrou)s')):
+        # « ne consomme ni A ni B » — le premier « ni » manquait des qu il y
+        # avait plus d un type, ce qui donnait « ne consomme A ni B ».
+        tries = sorted(types_ops)
+        substitutions['ops'] = ('ni ' + ' ni '.join(tries) if len(tries) > 1
+                                else (tries[0] if tries else 'ces ops'))
+        substitutions['verrou'] = verrou_pour(nom, types_ops)
+    bloc['noteForAgents'] = NOTES[statut] % substitutions
     return bloc
+
+
+def types_ops_de(doc):
+    """Les types d ops que porte le patch — pour nommer le verrou, pas pour
+    decider du statut (celui-la vient de la table de gouvernance)."""
+    return {op.get('type') for op in (doc.get('ops') or [])
+            if isinstance(op, dict) and op.get('type')}
 
 
 def construire(courant):
@@ -230,7 +276,8 @@ def construire(courant):
                   'deja ; ce script ne le repare pas.')
         sorties.append((nom, chemin, doc,
                         bloc_pour(nom, par_chemin[nom], ledger.get(nom),
-                                  courant, csv_gouvernance)))
+                                  courant, csv_gouvernance,
+                                  types_ops_de(doc))))
     return sorties
 
 

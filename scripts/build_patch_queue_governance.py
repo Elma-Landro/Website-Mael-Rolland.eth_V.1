@@ -61,6 +61,16 @@ COLONNES = (
 # fichiers de la racine qui le portent, jamais aux patchs historiques.
 MOTIF_SOUS_C03 = 'patch_candidate_'
 
+# Ce qui bloque, PAR type d op — meme table que celle du cycle de vie, meme
+# motif : une note qui nomme le mauvais verrou est pire qu'une note absente.
+VERROUS = {
+    'CREATE_ENTITY': "Le contrat interdit en outre de pre-assigner un "
+                     "entityId sur une creation.",
+    'ADD_RELATION': "La FORME de l op relationnelle reste a arbitrer "
+                    "(contrat § 4), les formes historiques etant "
+                    "incompatibles.",
+}
+
 
 def echec(msg, code=CODE_DONNEES):
     famille = 'invocation' if code == CODE_INVOCATION else 'donnees'
@@ -139,10 +149,18 @@ def gouvernance(ligne, sous_c03, applique_par, nature_fichier):
                 'cibles mortes ou ont ete remplacees par une migration')
 
     if mesure == 'blocked_by_missing_applicator':
+        # Le verrou est DERIVE des types d op mesures sur CET artefact.
+        # Nommer les deux a chaque ligne faisait dire a la fiche des creations
+        # qu elle pose des relations, et l inverse — meme defaut que la note
+        # de cycle de vie, corrige de la meme facon.
+        vus = [t for t in VERROUS if t in (ligne['types_ops'] or '')]
+        detail = (' '.join(VERROUS[t] for t in vus) if vus
+                  else 'type d op non identifie : instruire a la main.')
         return ('blocked_missing_applicator', nature_fichier, 'non',
                 'aucun applicateur ne consomme ces ops',
-                'CREATE_ENTITY : le contrat interdit de pre-assigner un '
-                'entityId, et aucun make_* ne lit ce type d op')
+                f'aucun make_* ne lit {" ni ".join(vus) or "ce type d op"}. '
+                + detail + ' DEUX verrous : ecrire l applicateur est '
+                'technique, l arbitrage de fond ne le debloque pas')
 
     # ARBITRAGE Q7 : « applicable techniquement ne veut pas dire mur pour
     # v114 ». Un artefact entier dont les cibles existent n'est PAS un feu

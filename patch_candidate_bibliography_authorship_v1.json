@@ -1,0 +1,88 @@
+{
+  "_meta": {
+    "patch_id": "candidate-bibliography-authorship-v1",
+    "source_graph": "grc20-these-mael-rolland-v113.json",
+    "generated": "2026-08-10",
+    "description": "4 relations `authored` manquantes pour deux des six auteurs retypes en v113. Jacques Favier (3 oeuvres) et Adli Takkal Bataille (1 oeuvre) sont des Person depuis v113 mais ne pointent vers aucune de leurs oeuvres, alors que les quatre autres retypes en ont chacun une. Chaque relation est adossee a une entree nommant explicitement l auteur ET l oeuvre dans assets/MD/07_bibliographie.md (lignes 472, 474, 476), verifiee mot pour mot par scripts/build_bibliography_authorship_support.py, qui echoue si la bibliographie bouge.",
+    "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Aucune op de ce fichier n a ete appliquee a v113 ni a aucun graphe. Le patch ne pose QUE des relations `authored` : aucun noeud cree, aucune fusion, aucun duplicateOf, aucune SourceQuote, aucun attribut, aucun retypage, aucun renommage. DEUX arbitrages sont requis avant toute application : (1) la validation des paternites elles-memes ; (2) la FORME de l op relation, que le contrat de patch reserve explicitement a l auteur — docs/audits/grc20-candidate-patch-contract-v1.md § 4 : « Un futur patch candidat relationnel devra faire trancher la forme avant depot ». La forme proposee ici (dialecte C etendu, type de relation par id + nom declare) est une PROPOSITION, pas une decision.",
+    "arbitrage": {
+      "date": "2026-08-10",
+      "auteur": "Maël Rolland",
+      "pr_instruction": 123,
+      "reponses": {
+        "1_relations_certaines": "OUI — les 4 relations sont validees : Favier -> e19babe5, b84f59ac, 7f0f9cc4 ; Takkal Bataille -> e19babe5. Motif retenu : auteur et oeuvre nommes ensemble dans la bibliographie, auteurs uniques dans le graphe, oeuvres existantes, aucune relation deja sur la paire, aucune oeuvre identifiee comme doublon.",
+        "2_v114": "OUI SUR LE PRINCIPE, NON DANS CETTE PR. La v114 est validee pour ce seul lot relationnel, mais elle doit faire l objet d une PR SEPAREE avec un applicateur ADD_RELATION dedie. Cette PR-ci reste instruction + candidat non applique.",
+        "3_hors_perimetre": "OUI — la future v114 ne doit contenir AUCUNE fusion, AUCUN duplicateOf, AUCUNE creation de noeud, AUCUNE SourceQuote, AUCUN renommage, AUCUN retypage, AUCUNE correction de nom de fiche, et AUCUNE relation autre que ces quatre. La dette sur le nom de 7f0f9cc4 (editeur « La voie du Bitcoin » errone) reste hors perimetre : a instruire plus tard comme renommage.",
+        "4_probables_ambigues": "OUI — regle pour ce lot ET les suivants : seules les relations CERTAINES, avec preuve bibliographique explicite auteur + oeuvre, entrent dans un lot applicatif. Ici, rien a retrancher : le lot n en contient aucune.",
+        "5_forme": "VALIDEE — dialecte C etendu tel que propose : ADD_RELATION, extremites par identifiants, type par relationTypeId, nom declare relationTypeName verifie contre le graphe, controle C13 obligatoire. Forme retenue pour ce patch ET pour le futur applicateur v114. Une autre forme relationnelle proposee plus tard devra etre instruite separement et ne changera PAS retroactivement ce lot."
+      },
+      "consigne_application": "NE PAS APPLIQUER dans la PR #123. Seule une PR ulterieure pourra ecrire l applicateur et creer v114, et seulement si elle PROUVE que ces quatre relations sont les seules ajoutees.",
+      "pourquoi_ce_bloc_et_pas_la_policy": "La `policy` ci-dessus n est PAS modifiee : elle enregistre ce qui etait exige au depot, et le controle C03 exige d ailleurs son prefixe. Ecrire l arbitrage DANS la policy reproduirait le defaut que le depot combat depuis v111 — une phrase qui cesse de dire la verite sans que rien ne le signale. L arbitrage se lit ici ; l etat applicatif se lit dans `lifecycleStatus`, lui-meme derive du graphe. Ordre d autorite inchange : graphe, file, ledger."
+    },
+    "dialect_note": "Dialecte C etendu (camelCase, `_meta` + `ops`, cle `type`), choisi parce que c est celui que le graphe parle nativement. Le type de relation est donne par ID (`relationTypeId`) et double d un nom declare (`relationTypeName`) verifie contre le graphe — les trois formes historiques d ADD_RELATION donnaient le type par NOM, ce qui est ambigu. `fromName`/`toName`/`evidence` sont des annotations de lecture, sans effet applicatif.",
+    "applicator_note": "AUCUN applicateur du depot ne consomme ADD_RELATION. Ce patch est donc descriptif en l etat : l ecrire est un chantier distinct de l arbitrage scientifique, et le second ne debloque pas le premier.",
+    "audit": "docs/audits/grc20-bibliography-authorship-support-lab-v1.md",
+    "evidence": [
+      "docs/audits/data/bibliography-authorship-support-v113.csv"
+    ],
+    "author": "mael-rolland.eth",
+    "op_count": 4,
+    "skipped_count": 1,
+    "skipped": [
+      {
+        "author_entity_id": "5fc4278b78704f6c92c3744e2654518a",
+        "author_name": "Laura DeNardis",
+        "reference_entity_id": "e0b40d91bb424defaa9acf37536f339e",
+        "reference_name": "DeNardis & Musiani 2014 — Governance by Infrastructure",
+        "reason": "DOUBLON : cette fiche decrit la MEME entree bibliographique (07_bibliographie.md:394) que 2272e5b8, qui porte deja l authored de DeNardis. Poser un second authored graverait le doublon comme une oeuvre distincte. A instruire comme doublon, pas comme paternite manquante."
+      }
+    ],
+    "lifecycleStatus": "blocked_missing_applicator",
+    "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v113.json",
+    "measuredStatus": "blocked_by_missing_applicator",
+    "noteForAgents": "NON APPLICABLE EN L ETAT. Aucun applicateur du depot ne consomme ADD_RELATION. La FORME de l op relationnelle reste a arbitrer : le contrat (grc20-candidate-patch-contract-v1.md § 4) reserve ce choix a l auteur, et les trois formes historiques sont incompatibles. Ecrire l applicateur est un chantier a part entiere, distinct de l arbitrage scientifique sur le contenu : le second ne debloque pas le premier."
+  },
+  "ops": [
+    {
+      "type": "ADD_RELATION",
+      "from": "ec901513fae144a0a350e798b0351c6d",
+      "to": "e19babe53a3d4f0291ed683b3118e0ef",
+      "relationTypeId": "2d3f43441ee747dda4172f0954a9fadd",
+      "relationTypeName": "authored",
+      "fromName": "Adli Takkal Bataille",
+      "toName": "Favier & Takkal Bataille 2017 — Bitcoin la monnaie acéphale",
+      "evidence": "assets/MD/07_bibliographie.md:476 — FAVIER Jacques et TAKKAL BATAILLE Adli, 2017, Bitcoin, la monnaie acéphale"
+    },
+    {
+      "type": "ADD_RELATION",
+      "from": "53525938440543a5af359337eeab9823",
+      "to": "e19babe53a3d4f0291ed683b3118e0ef",
+      "relationTypeId": "2d3f43441ee747dda4172f0954a9fadd",
+      "relationTypeName": "authored",
+      "fromName": "Jacques Favier",
+      "toName": "Favier & Takkal Bataille 2017 — Bitcoin la monnaie acéphale",
+      "evidence": "assets/MD/07_bibliographie.md:476 — FAVIER Jacques et TAKKAL BATAILLE Adli, 2017, Bitcoin, la monnaie acéphale"
+    },
+    {
+      "type": "ADD_RELATION",
+      "from": "53525938440543a5af359337eeab9823",
+      "to": "b84f59ace9b6403c88067c46af4c7582",
+      "relationTypeId": "2d3f43441ee747dda4172f0954a9fadd",
+      "relationTypeName": "authored",
+      "fromName": "Jacques Favier",
+      "toName": "Favier 2017 — Tulipes (blog La voie du Bitcoin)",
+      "evidence": "assets/MD/07_bibliographie.md:474 — FAVIER Jacques, 2017, « Tulipes »"
+    },
+    {
+      "type": "ADD_RELATION",
+      "from": "53525938440543a5af359337eeab9823",
+      "to": "7f0f9cc4c27040a78115b0294fd9bfe1",
+      "relationTypeId": "2d3f43441ee747dda4172f0954a9fadd",
+      "relationTypeName": "authored",
+      "fromName": "Jacques Favier",
+      "toName": "Favier 2021 — Bitcoin et la religion (La voie du Bitcoin)",
+      "evidence": "assets/MD/07_bibliographie.md:472 — FAVIER Jacques, 2021, « Le Bitcoin, la religion du XXIe siècle née des mathématiques"
+    }
+  ]
+}

@@ -215,6 +215,37 @@ documentée ici.
 
 ---
 
+## 4 bis. `ADD_RELATION` — forme arrêtée le 2026-08-10
+
+Le § 4 réservait la forme d'un patch relationnel à l'arbitrage de l'auteur. Le premier lot relationnel candidat (`patch_candidate_bibliography_authorship_v1.json`, 4 relations `authored`) a posé la question ; **elle est tranchée**.
+
+**Forme retenue** — dialecte C étendu, camelCase, enveloppe `_meta` + `ops`, clé `type` :
+
+```json
+{
+  "type": "ADD_RELATION",
+  "from": "<entity_id>",
+  "to": "<entity_id>",
+  "relationTypeId": "<id du type de relation>",
+  "relationTypeName": "<nom déclaré, vérifié contre le graphe>"
+}
+```
+
+Annotations de lecture facultatives et sans effet applicatif : `fromName`, `toName`, `evidence`.
+
+**Pourquoi le type par id et non par nom.** Les trois formes historiques (§ 2.3) donnent toutes le type de relation **par nom**, ce qui est ambigu ; le graphe, lui, stocke un id. Le nom déclaré est conservé pour la lecture humaine, mais il est **vérifié contre l'id** — un `relationTypeName` menteur est BLOQUANT, sur le modèle du contrôle `typeNames` de C07.
+
+**Contrôle obligatoire — C13** de `preflight_candidate_patches.py`, cinq conditions :
+extrémités existantes, extrémités distinctes, `relationTypeId` connu du graphe, `relationTypeName` cohérent avec cet id, **aucune relation déjà portée par le graphe** et aucune proposée deux fois dans le lot. Plus un AVERTISSEMENT structurel tant qu'aucun applicateur ne consomme `ADD_RELATION`.
+
+La condition qui compte est l'avant-dernière : **une relation déjà présente et reposée est un doublon silencieux** — aucun nom ne collisionne, rien ne la signale, et le graphe se met à porter deux fois le même fait.
+
+**Portée.** Cette forme vaut pour les patchs candidats relationnels **et** pour le futur applicateur. Une autre forme relationnelle proposée plus tard devra être **instruite séparément** ; elle ne change pas rétroactivement les lots déjà déposés sous celle-ci. Les trois formes historiques restent invérifiables par le preflight et continueront de sortir BLOQUANT — c'est voulu, ce sont des archives.
+
+**Ce que l'arbitrage ne débloque pas.** Aucun applicateur du dépôt ne consomme `ADD_RELATION`. Valider la forme est une décision de modélisation ; écrire l'applicateur est un chantier technique distinct, et le second ne suit pas automatiquement du premier.
+
+---
+
 ## 5. Ce que ce contrat ne décide pas
 
 - **L'applicateur générique.** Chaque `make_vNNN` reste dédié. Un applicateur unique
@@ -228,6 +259,8 @@ documentée ici.
 - **Les opérations relationnelles au dialecte C.** Aucun applicateur ne consomme
   `ADD_RELATION`/`REMOVE_RELATION` ; leurs trois formes historiques sont incompatibles
   (§ 2.3). Un futur patch candidat relationnel devra faire trancher la forme avant dépôt.
+  > **Tranché le 2026-08-10** pour `ADD_RELATION` — voir § 4 bis. `REMOVE_RELATION`
+  > reste ouvert : aucun lot ne l'a exigé, et rien n'est décidé à l'avance.
 - **La fusion effective des doublons** marqués `duplicateOf`/`reviewStatus` : décision
   humaine postérieure, hors patch (policy de patch_10 et du candidat duplicates).
 - **L'extension du registre des propriétés** : le contrat exige la *déclaration* du

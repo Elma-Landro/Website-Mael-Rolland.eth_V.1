@@ -34,7 +34,8 @@ import sys
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from grc20_commun import REPO, graphe_le_plus_recent  # noqa: E402
+from grc20_commun import (REPO, applicateurs_par_op,  # noqa: E402
+                          graphe_le_plus_recent)
 
 CODE_DONNEES, CODE_INVOCATION = 1, 2
 # Le nom du CSV suit le graphe de reference : une file de patchs decrit un
@@ -306,15 +307,30 @@ def statut_de(chemin, doc, ops, par_id, types_par_nom, courant, relations,
     politique = str(meta_de(doc).get('policy', ''))
     candidat = 'CANDIDATE' in politique
 
-    cree = sum(1 for op in ops
-               if isinstance(op, dict)
-               and type_op(op) in ('CREATE_ENTITY', 'CREATE_ENTITY(implicite)'))
-    if cree and cree == len(ops) and deja == 0:
+    # Types d'op qu'AUCUN applicateur du depot ne consomme. La detection ne
+    # connaissait que CREATE_ENTITY ; ADD_RELATION est dans le meme cas et
+    # etait classe `still_candidate`, dont la note dit « TECHNIQUEMENT
+    # applicable ». C'etait faux, et de la pire maniere : la file affirmait
+    # qu'un oui de l'auteur suffirait, alors qu'il faudrait AUSSI ecrire un
+    # applicateur. Verifie avant extension : tous les artefacts historiques
+    # porteurs d'ADD_RELATION ont deja des ops realisees, donc la condition
+    # `deja == 0` ne deplace aucune ligne existante.
+    # La liste n'est plus statique : elle vient du balayage partage de
+    # `grc20_commun`, qui MESURE quels types aucun applicateur ne consomme.
+    # Une liste ecrite en dur aurait continue a dire « bloque faute
+    # d'applicateur » le jour ou l'applicateur existe.
+    sans_applicateur = {t for t, faits in applicateurs_par_op().items()
+                        if not faits}
+    types_vus = [type_op(op) for op in ops if isinstance(op, dict)]
+    orphelines = Counter(
+        t.replace('(implicite)', '') for t in types_vus
+        if t.replace('(implicite)', '') in sans_applicateur)
+    if orphelines and sum(orphelines.values()) == len(ops) and deja == 0:
+        quoi = ' + '.join(f'{n} {t}' for t, n in sorted(orphelines.items()))
         return ('blocked_by_missing_applicator',
-                f"{cree} op(s) CREATE_ENTITY et rien d'autre : AUCUN "
-                "applicateur du depot ne consomme ce type d'op, et le contrat "
-                "des patchs candidats interdit de pre-assigner un `entityId`",
-                'ecrire un applicateur ET arbitrer la politique de creation',
+                f"{quoi} et rien d'autre : AUCUN applicateur du depot ne "
+                "consomme ce(s) type(s) d'op",
+                'ecrire un applicateur ET rendre l arbitrage de fond',
                 (lisibles, deja, absentes))
 
     if lisibles == 0:
