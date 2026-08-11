@@ -287,6 +287,7 @@
         "graphe.panels.js",
         "lecteur.html",
         "scripts/audit_section_page_start.py",
+        "scripts/build_favier_2021_label_correction.py",
         "scripts/build_section_headings_map.py",
         "scripts/sourcequote-migration/apply.mjs",
         "scripts/sourcequote-migration/normalize.mjs"
@@ -660,6 +661,7 @@
       "count": 115,
       "status": "structural",
       "readBy": [
+        "scripts/build_favier_2021_label_correction.py",
         "scripts/resolve_entity_names.py"
       ],
       "vocabulary": null,
@@ -907,6 +909,7 @@
       "count": 77,
       "status": "structural",
       "readBy": [
+        "scripts/build_favier_2021_label_correction.py",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
         "scripts/make_v100_section_migration.py",
@@ -935,6 +938,7 @@
       "readBy": [
         "lecteur.html",
         "scripts/audit_section_page_start.py",
+        "scripts/build_favier_2021_label_correction.py",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
         "scripts/make_v100_section_migration.py",
@@ -1272,6 +1276,7 @@
       "count": 30,
       "status": "structural",
       "readBy": [
+        "scripts/build_favier_2021_label_correction.py",
         "scripts/check_anchoring.py",
         "scripts/resolve_entity_names.py"
       ],
