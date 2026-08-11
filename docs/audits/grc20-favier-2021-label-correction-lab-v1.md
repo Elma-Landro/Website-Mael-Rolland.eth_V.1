@@ -115,6 +115,53 @@ Douze contraintes encadrent l'application : créer uniquement `grc20-these-mael-
 
 **Rien n'est appliqué ici.** Le présent chantier reste une instruction et un patch candidat.
 
+## 8 bis. Régénération à blanc des cartes — **la voie 2 est inapplicable**
+
+Arbitrage du 2026-08-11 : voie 2 (régénération complète + preuve de confinement), **mais régénération à blanc d'abord**, avec pour consigne de s'arrêter si le diff révélait autre chose que les 20 lignes attendues.
+
+**Il révèle autre chose — et par le bas, pas par le haut.**
+
+| Mesure | Résultat |
+|---|---|
+| `build_anchor_weights.py --apply` sur l'état courant | **0 champ posé ou mis à jour** |
+| Diff de `section_entities_map.json` | **0 ligne** |
+| Diff de `entity_section_map.json` | **0 ligne** |
+| Occurrences de l'ancien libellé **après** régénération | **19 + 1 = 20, inchangées** |
+
+La régénération par le chemin normal est un **no-op sur le champ concerné**. Vérifié en copiant les deux cartes, en lançant le générateur, en comparant, puis en restaurant — cartes rendues à l'identique, `--check` vert.
+
+### Pourquoi
+
+`build_anchor_weights.py` **n'écrit jamais `entity_name`**. Son `--apply` ne pose que deux champs — `snippet_status` et `direct_anchor_count` — plus la suppression de deux clés héritées (lignes 218 et 303-312). Le nom, il ne fait que le **lire**, et en préférant celui du graphe : `noms.get(eid) or ent.get('entity_name', '')`.
+
+Balayage complet des scripts : **le seul qui écrive `entity_name` dans une carte est `fix_dead_ids_in_section_map.py:155`**, et uniquement comme effet de bord de la réparation d'un identifiant mort — `e = dict(e, entity_id=cible, entity_name=vivants[cible])`. Il ne réécrit le nom que des entités dont il répare l'id. Un renommage ne déclenche rien.
+
+`entity_section_map.json`, lui, **n'a aucun script écrivain** dans le dépôt : sept fichiers le lisent, aucun ne le produit.
+
+### Ce que cela change
+
+Il n'existe pas de « chemin normal de génération » capable de rafraîchir `entity_name`. **La voie 2 ne peut donc pas prouver ce qu'elle devait prouver** : sa preuve de confinement serait un diff vide, et les 20 lignes fausses resteraient.
+
+Ce n'est pas une dérive dormante qui contaminerait le lot — c'est l'inverse : **la couche dénormalisée n'a pas de mécanisme de rafraîchissement du tout.** Le constat du § 5 s'en trouve aggravé : non seulement aucun contrôle ne détecte la désynchronisation, mais **aucun outil ne sait la réparer**.
+
+Conformément à l'arbitrage : **arrêt, documentation, nouvel arbitrage.** Rien n'est écrit, aucune v115 n'est créée.
+
+### Nouvel arbitrage posé à Maël
+
+La voie 2 étant hors d'atteinte, trois options restent — et la troisième n'est pas une esquive :
+
+| | Option | Ce qu'elle implique |
+|---|---|---|
+| **1** | **Substitution ciblée** (voie 1, écartée précédemment) | L'applicateur v115 remplace la chaîne aux 20 emplacements. La preuve est directe — le diff *est* les 20 lignes. Coût : un second chemin d'écriture pour ces fichiers, ce que la voie 2 voulait éviter. Le motif de ce refus tombe en partie, puisqu'il n'y a pas de premier chemin pour ce champ. |
+| **2** | **Écrire le rafraîchisseur manquant** | Un `--refresh-names` dans `build_anchor_weights.py`, qui réaligne `entity_name` sur le graphe pour **toutes** les lignes. Répare la cause, pas le symptôme — mais devient un chantier à part entière, et sortirait v115 de son périmètre : il toucherait potentiellement d'autres lignes que ces 20. |
+| **3** | **Corriger le graphe seul en v115**, cartes renvoyées à un chantier dédié | v115 reste strictement bornée à `7f0f9cc4`. Les 20 lignes restent fausses le temps du chantier suivant — mais elles le sont déjà, et l'outillage ne s'en sert pas. |
+
+Mon avis, clairement séparé : **option 1 pour v115**, puis **option 2 comme chantier distinct**. La substitution ciblée est bornée, prouvable ligne à ligne, et n'invente pas de mécanisme ; le rafraîchisseur, lui, mérite d'être écrit — mais pour la cause générale, pas au détour d'une correction de libellé.
+
+**Aucune écriture avant réponse.**
+
+---
+
 ## 9. Limites connues
 
 - **La preuve est bibliographique, pas éditoriale.** Le script vérifie que `:472` nomme un podcast `parlonsbitcoin.com`. Il ne vérifie pas que l'URL répond encore, ni que « Parlons Bitcoin » est le libellé que l'éditeur se donne aujourd'hui — les accès réseau sortants ne le permettent pas ici, et une vérification de mémoire ne s'inscrit pas.
