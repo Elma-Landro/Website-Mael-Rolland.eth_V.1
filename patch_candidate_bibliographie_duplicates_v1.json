@@ -312,7 +312,7 @@
     "arbitrage_note": "ARBITRAGE Q4 (2026-08-07, Mael) : reutilisation des cles existantes duplicateOf/reviewStatus confirmee (pas de cles dediees bibliographiques), domaine elargi au moment de la regeneration du registre qui accompagnera l'application (arbitrage Q1-A : meme commit) ; la valeur pending-author est CONSERVEE — elle dit « en attente d'arbitrage auteur », pas « fusion deja decidee » comme duplicate-pending-merge ; les deux valeurs seront figees par le champ vocabulary du registre regenere.",
     "lifecycleStatus": "blocked_author_arbitration",
     "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
-    "measuredAgainstGraph": "grc20-these-mael-rolland-v113.json",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v114.json",
     "measuredStatus": "stale_source_graph_but_preconditions_intact",
     "noteForAgents": "NON APPLIQUE, et techniquement applicable n est PAS mur. Les cibles existent et les preconditions tiennent, mais l arbitrage de l auteur n a pas ete rendu : a reauditer avant tout chantier d application (arbitrage Q7 du 2026-08-09). Ce champ ne vaut pas feu vert."
   },

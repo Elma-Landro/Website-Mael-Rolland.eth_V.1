@@ -37,11 +37,15 @@
         "reason": "DOUBLON : cette fiche decrit la MEME entree bibliographique (07_bibliographie.md:394) que 2272e5b8, qui porte deja l authored de DeNardis. Poser un second authored graverait le doublon comme une oeuvre distincte. A instruire comme doublon, pas comme paternite manquante."
       }
     ],
-    "lifecycleStatus": "blocked_missing_applicator",
+    "lifecycleStatus": "candidate_applied",
     "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
-    "measuredAgainstGraph": "grc20-these-mael-rolland-v113.json",
-    "measuredStatus": "blocked_by_missing_applicator",
-    "noteForAgents": "NON APPLICABLE EN L ETAT. Aucun applicateur du depot ne consomme ADD_RELATION. La FORME de l op relationnelle reste a arbitrer : le contrat (grc20-candidate-patch-contract-v1.md § 4) reserve ce choix a l auteur, et les trois formes historiques sont incompatibles. Ecrire l applicateur est un chantier a part entiere, distinct de l arbitrage scientifique sur le contenu : le second ne debloque pas le premier."
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v114.json",
+    "measuredStatus": "already_applied",
+    "appliedBy": "scripts/make_v114_apply_bibliography_authorship_relations.py",
+    "appliedInGraph": "grc20-these-mael-rolland-v114.json",
+    "appliedInPR": 124,
+    "ledgerEntry": "patch-application-ledger.json",
+    "noteForAgents": "APPLIQUE. Ne pas rejouer : les ops de ce fichier ont deja leur effet dans le graphe courant. La `policy` ci-dessus dit « NOT APPLIED » parce que le controle C03 l exige, pas parce que c est vrai. Autorite : le graphe, puis docs/audits/data/patch-queue-governance-cases-current.csv, puis patch-application-ledger.json — jamais la policy, jamais ce champ."
   },
   "ops": [
     {

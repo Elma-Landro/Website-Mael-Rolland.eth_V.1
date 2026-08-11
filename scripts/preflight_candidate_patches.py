@@ -42,9 +42,11 @@ LES 13 CONTROLES (codes C01..C13), chacun OK / AVERTISSEMENT / BLOQUANT :
        (retypee ET marquee doublon, par exemple) -> AVERTISSEMENT detaille ;
   C13  ops relationnelles (ADD_RELATION) : extremites existantes et
        distinctes, relationTypeId connu, relationTypeName coherent avec lui,
-       et surtout AUCUNE relation deja portee par le graphe ni proposee deux
-       fois dans le lot -> BLOQUANT ; aucun applicateur ne consommant
-       ADD_RELATION -> AVERTISSEMENT structurel.
+       et aucune relation proposee deux fois dans le lot -> BLOQUANT.
+       Relations deja portees par le graphe : TOUTES -> AVERTISSEMENT (le
+       patch est applique, rejeu sans effet) ; QUELQUES-UNES -> BLOQUANT
+       (etat mixte, un rejeu ecrirait a cote). Aucun applicateur ne
+       consommant ADD_RELATION -> AVERTISSEMENT structurel.
 
 CODES DE SORTIE : 0 = aucun BLOQUANT ; 1 = au moins un BLOQUANT sur le lot ;
 2 = erreur d'invocation (graphe/registre illisible, --patch introuvable).
@@ -346,7 +348,7 @@ def controle_relations(c, ops, entites, nom_relation, relations_graphe,
     if not rel_ops:
         c.ajoute('C13', OK, "aucune op relationnelle")
         return
-    problemes, verifiees = [], 0
+    problemes, verifiees, deja = [], 0, []
     for i, op in rel_ops:
         depart, arrivee = op.get('from'), op.get('to')
         tid, tnom = op.get('relationTypeId'), op.get('relationTypeName')
@@ -368,19 +370,39 @@ def controle_relations(c, ops, entites, nom_relation, relations_graphe,
                                     f"!= nom reel « {nom_relation[tid]} » "
                                     "pour cet id"))
         if (depart, arrivee, tid) in relations_graphe:
-            problemes.append((BLOQ, f"op[{i}] la relation existe DEJA dans le "
-                                    f"graphe ({depart[:8]} -{tnom or tid}-> "
-                                    f"{arrivee[:8]}) : la reposer creerait un "
-                                    "doublon silencieux"))
+            deja.append(f"op[{i}] {depart[:8]} -{tnom or tid}-> {arrivee[:8]}")
         ailleurs = [p for (p, j) in relations_du_lot.get(
             (depart, arrivee, tid), []) if not (p == nom_patch and j == i)]
         if ailleurs:
             problemes.append((BLOQ, f"op[{i}] la meme relation est proposee "
                                     f"par {', '.join(sorted(set(ailleurs)))}"))
+    # UNE RELATION DEJA PRESENTE NE VEUT PAS DIRE LA MEME CHOSE SELON LE
+    # NOMBRE. C'est la lecon de l'application de v114 : ce controle criait au
+    # doublon sur un patch simplement APPLIQUE, dont toutes les relations sont
+    # evidemment presentes — un controle juste AVANT l'application devenait
+    # faux APRES. Les trois candidats deja appliques ne posent pas ce probleme
+    # parce que leurs ops (SET_*) n'ont jamais ete testees pour « effet deja
+    # la ». Le partage se fait donc sur le compte :
+    #   toutes presentes  -> le patch est applique, un rejeu est sans effet ;
+    #   quelques-unes     -> etat MIXTE, le cas le plus dangereux : un rejeu
+    #                        naif ecrirait a cote, et rien ne le signalerait ;
+    #   aucune            -> candidat intact.
+    # Le statut REEL se lit dans le graphe, la file et le ledger, jamais ici.
+    if deja and len(deja) == verifiees:
+        c.ajoute('C13', AVERT, f"les {verifiees} relation(s) du lot sont DEJA "
+                               "dans le graphe : ce patch est APPLIQUE, un "
+                               "rejeu serait sans effet. Lire son etat dans "
+                               "le graphe, la file vivante puis le ledger")
+    elif deja:
+        problemes.append((BLOQ, f"etat MIXTE : {len(deja)} relation(s) sur "
+                                f"{verifiees} sont deja dans le graphe "
+                                f"({' ; '.join(deja[:4])}) — un rejeu "
+                                "ecrirait a cote sans qu aucune collision de "
+                                "nom ne le signale"))
     for statut, detail in sorted(set(problemes),
                                  key=lambda x: (ORDRE_STATUT[x[0]], x[1])):
         c.ajoute('C13', statut, detail)
-    if not problemes:
+    if not problemes and not deja:
         c.ajoute('C13', OK, f"{verifiees} op(s) relationnelle(s) : extremites "
                             "existantes, type connu et nomme juste, aucune "
                             "relation deja presente ni proposee deux fois")
