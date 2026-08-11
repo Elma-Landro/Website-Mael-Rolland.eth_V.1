@@ -124,6 +124,20 @@ jobs:
           echo "fois, contenus identiques ; fichiers versionnes restaures"
 
 
+      # CONTROLE DUR, contrairement a l'etape ci-dessus — et la difference est
+      # le coeur du chantier lifecycleStatus. La file peut perimer sans danger
+      # (elle se regenere, et personne ne la lit comme une autorisation). Une
+      # mention `lifecycleStatus` perimee, elle, est le defaut meme qu'elle
+      # existe pour corriger : un patch applique qui continuerait d'annoncer
+      # qu'il ne l'est pas, ou un patch bloque qui annoncerait l'inverse.
+      #
+      # Ce controle est aussi ce qui EMPECHE `lifecycleStatus` de devenir une
+      # source de verite concurrente : il rougit des que la declaration
+      # s'ecarte de la mesure faite dans le graphe. La declaration ne peut donc
+      # jamais survivre a la mesure qui la contredit.
+      - name: Cycle de vie des patchs candidats = mesure du graphe
+        run: python3 scripts/build_patch_lifecycle_status.py --check
+
       - name: Recapitulatif
         if: always()
         run: |

@@ -364,8 +364,23 @@ applied by `make_v111`, is a 33rd, and
 **All three still carry the `CANDIDATE — NOT APPLIED` policy even though
 they were applied.** That is the repo convention, not an oversight — check C03
 of `preflight_candidate_patches.py` requires the string, and the applicators
-refuse a patch that lacks it. But nothing yet records *that they were
-applied*: read the inventory as a snapshot of v110, never as the current
+refuse a patch that lacks it.
+
+**Each of the five root candidate patches now says its real state in its own
+`_meta`**, next to that policy and without touching it:
+`lifecycleStatus` (one of the seven values the author fixed on 2026-08-09),
+`measuredStatus`, `measuredAgainstGraph`, plus `appliedBy` / `appliedInGraph` /
+`appliedInPR` / `ledgerEntry` on the three that were applied, and a
+`noteForAgents` that says in full whether replaying is safe. **It is a copy of
+a measurement, never a source of truth**: `scripts/build_patch_lifecycle_status.py`
+derives every value from the governance table, offers no way to write a chosen
+one, and its `--check` — a **hard** CI step, unlike the soft queue step — goes
+red the moment a declaration drifts from the graph. Read the order of authority
+literally: **graph → live queue → ledger. Never the policy, never
+`lifecycleStatus`.** Details in
+`docs/audits/grc20-patch-lifecycle-status-implementation-v1.md`.
+
+Read the v110 inventory below as a snapshot of v110, never as the current
 state. Three statuses:
 
 | Status | Count | What it means |

@@ -31,7 +31,16 @@
       {
         "reason": "La date de l'attaque The DAO : reste `non_verifie`. Elle est connue de memoire et le reseau ne permet pas de la sourcer. Instruction expresse de l'auteur : ne pas corriger depuis la memoire."
       }
-    ]
+    ],
+    "lifecycleStatus": "candidate_applied",
+    "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v113.json",
+    "measuredStatus": "already_applied",
+    "appliedBy": "scripts/make_v112_apply_chronology_dates_patch.py",
+    "appliedInGraph": "grc20-these-mael-rolland-v112.json",
+    "appliedInPR": 119,
+    "ledgerEntry": "patch-application-ledger.json",
+    "noteForAgents": "APPLIQUE. Ne pas rejouer : les ops de ce fichier ont deja leur effet dans le graphe courant. La `policy` ci-dessus dit « NOT APPLIED » parce que le controle C03 l exige, pas parce que c est vrai. Autorite : le graphe, puis docs/audits/data/patch-queue-governance-cases-current.csv, puis patch-application-ledger.json — jamais la policy, jamais ce champ."
   },
   "ops": [
     {

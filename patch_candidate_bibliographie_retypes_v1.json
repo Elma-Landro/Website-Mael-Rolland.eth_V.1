@@ -1,184 +1,193 @@
 {
- "_meta": {
-  "patch_id": "candidate-bibliographie-retypes-v1",
-  "source_graph": "grc20-these-mael-rolland-v110.json",
-  "generated": "2026-08-07",
-  "description": "Candidats de retypage issus du diagnostic docs/audits/data/bibliographie-18-fiches-douteuses-v1.csv (22 fiches Reference au nom de personne, ré-instruites une à une contre assets/MD/07_bibliographie.md) : 2 retypages sûrs (Shinobi (pseudonyme), Laura DeNardis — la raison d'exclusion du patch_18, « prénom contredit ou sans entrée d'auteur », est factuellement fausse pour ces deux fiches : l'entrée d'auteur du PDF confirme exactement le nom) et 4 renommer-puis-retyper (Audrey Takkal Bataille -> Adli, Gregor Loibl -> Andreas, Guillaume Dréan -> Gérard, Jérôme Favier -> Jacques : prénom du nœud contredit par l'unique entrée d'auteur du PDF, aucun homonyme Person dans v110). Id du type Person (ed738791205548e4b4c187c58be227dc) repris à l'identique de patch_18_bibliography_fixes.json.",
-  "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Aucune op de ce fichier n'a été appliquée à v110 ni à aucun graphe. SET_NAME et SET_TYPES uniquement, aucune relation touchée, aucune fusion. Application éventuelle : script dédié make_vNNN sur le modèle de scripts/make_v110_apply_bib_and_attribute_patches.py, après arbitrage de Maël Rolland.",
-  "op_count": 10,
-  "entities_touched": 6,
-  "skipped_count": 16,
-  "skipped": [
-   {
-    "entityId": "9b9c6eb4c0914b95a4cd087d1f5517b7",
-    "name": "\"The Madhatter\"",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Pseudonyme BitcoinTalk cité de seconde main (« \"The Madhatter\" cité par Sedgwick 2019b », chap. I) sans entrée d'auteur au PDF. Retyper supposerait de corriger d'abord la relation authored -> GameKyuubi qui soude deux pseudonymes distincts."
-   },
-   {
-    "entityId": "4722e76151654d63a64bf4ef0c209a4e",
-    "name": "Alain Maucourant",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Fiche sans description au prénom inventé: la retyper graverait une personne fausse. Alternative: renommer « Jérôme Maucourant » puis retyper (preuve hors bibliographie) ou laisser Reference."
-   },
-   {
-    "entityId": "bec0b6b26cb44424abbd499b86ebc87a",
-    "name": "Christine Desan",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Juriste (Harvard Law) citée selon la description via Théret et Blanc, identité réelle unique mais aucune entrée d'auteur au PDF. Alternative: retyper sur notoriété (hors preuve bibliographique) ou laisser Reference."
-   },
-   {
-    "entityId": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
-    "name": "De Boyer des Roches et Rosales",
-    "recommandation_csv": "laisser-reference",
-    "reason": "Retyper fusionnerait Jérôme de Boyer des Roches et Ricardo Solis Rosales en une seule Person. Doublon fonctionnel du nœud daté « De Boyer des Roches & Rosales 2003 » (4ccbb429), fusion éventuelle à l'arbitrage."
-   },
-   {
-    "entityId": "458f2205963eb70d776d08e70310cd09",
-    "name": "Desmedt et Lakomski-Laguerre",
-    "recommandation_csv": "laisser-reference",
-    "reason": "Retypage impossible (deux personnes réelles). Doublon fonctionnel du nœud daté « Desmedt & Lakomski-Laguerre 2015 » (d80bed08). Le renommage de la Person « Mathieu Desmedt » en Ludovic est un chantier distinct à arbitrer."
-   },
-   {
-    "entityId": "3a06841689ec4bebac553b2b7fc974b5",
-    "name": "Emmanuel Macron",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Acteur politique (déclaration de Davos, relation debated in vers le paradoxe du bouc émissaire), pas une référence bibliographique. Alternative: retyper en Person comme acteur cité (hors périmètre bibliographique) ou laisser Reference."
-   },
-   {
-    "entityId": "4d583f06ee5247f8bde64ae8dcfdc025",
-    "name": "Felix Albert",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Personne réelle nommée au chap. III (« Felix Albert et Auryn Macmillan ») mais la bibliographie ne connaît que le pseudonyme FELIXA: retypage sans preuve du patronyme, et ancrage de chapitre incohérent à corriger d'abord."
-   },
-   {
-    "entityId": "4efa5d34e66b4997be3c10dfeca63680",
-    "name": "Florence Dufy",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "« Florence Dufy » n'existe pas: fusion des deux co-autrices de L'ethnographie économique (incident documenté par l'audit du 06/08). Alternative: renommer « Caroline Dufy » puis retyper, ou réattribuer à Florence Weber si c'est elle que visait la fiche."
-   },
-   {
-    "entityId": "909cc7f5cae7466198dac07dff0b1f4f",
-    "name": "John Maynard Keynes",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Identité mondiale sans ambiguïté (relation source of vers la monnaie de compte, fondement de l'IMF) mais aucune entrée Keynes au PDF: la règle de preuve interdit le retypage mécanique. Alternative: retyper sur notoriété ou laisser Reference."
-   },
-   {
-    "entityId": "718e0d4dadda4180a04600fbf5c3ce51",
-    "name": "Joseph Stiglitz",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Économiste unique et notoire (Prix Nobel 2001), mais le PDF ne le connaît qu'en sujet d'une entrée anonyme Bloomberg: pas d'entrée d'auteur, donc pas de preuve admissible. Alternative: retyper sur notoriété ou laisser Reference."
-   },
-   {
-    "entityId": "03fd59f205f24666968722d5b4e1bab9",
-    "name": "Kyle Croman",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Premier auteur réel de Croman et al. 2016 (scalabilité), auteur du nœud homonyme dans le graphe, mais ni lui ni son article ne figurent dans la bibliographie du PDF: aucune preuve admissible. Alternative: retyper sur notoriété ou laisser Reference."
-   },
-   {
-    "entityId": "179aa1fe59cd4aa89596a7f6ac8a864c",
-    "name": "Lionel Robbins",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Fiche vide citée de seconde main dans l'introduction (définition formelle de l'économie): l'économiste visé est très probablement Lionel Robbins mais aucune preuve admissible au PDF. Alternative: retyper sur notoriété ou laisser Reference."
-   },
-   {
-    "entityId": "f270bfdb07d441d59eca436184b1450a",
-    "name": "Marco Corallo",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Retyper créerait une seconde Person de la même personne réelle sous un prénom faux, la description du nœud signale elle-même le doublon probable. Alternative: fusionner dans « Matt Corallo » (en réaffectant la relation mentions actor de I.2.2) ou supprimer la fiche."
-   },
-   {
-    "entityId": "10973e59658ab43d2652a03ebd56a505",
-    "name": "Martti Malmi (Sirius)",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Retyper garantirait deux Person pour le même développeur finlandais (premier contributeur après Nakamoto). Alternative: fusionner la fiche (sa quote et son cited in chap. I) dans la Person existante."
-   },
-   {
-    "entityId": "d66fdb7349e04a84b2850d2cb4b7f2de",
-    "name": "Neil Gandal",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Économiste réel (Tel-Aviv), auteur du nœud « Gandal et al. 2018 » dans le graphe, mais ni lui ni ses articles ne figurent dans la bibliographie du PDF: aucune preuve admissible. Alternative: retyper sur notoriété ou laisser Reference."
-   },
-   {
-    "entityId": "dcd10825d6ddd231dda4b6057d7296c1",
-    "name": "Tyler Winklevoss",
-    "recommandation_csv": "arbitrage-auteur",
-    "reason": "Le prénom Tyler est attesté par le texte de la thèse mais pas par la bibliographie, seule preuve admissible. Alternative: retyper sur la foi du texte (attribution explicite et répétée à Tyler) ou laisser Reference."
-   }
+  "_meta": {
+    "patch_id": "candidate-bibliographie-retypes-v1",
+    "source_graph": "grc20-these-mael-rolland-v110.json",
+    "generated": "2026-08-07",
+    "description": "Candidats de retypage issus du diagnostic docs/audits/data/bibliographie-18-fiches-douteuses-v1.csv (22 fiches Reference au nom de personne, ré-instruites une à une contre assets/MD/07_bibliographie.md) : 2 retypages sûrs (Shinobi (pseudonyme), Laura DeNardis — la raison d'exclusion du patch_18, « prénom contredit ou sans entrée d'auteur », est factuellement fausse pour ces deux fiches : l'entrée d'auteur du PDF confirme exactement le nom) et 4 renommer-puis-retyper (Audrey Takkal Bataille -> Adli, Gregor Loibl -> Andreas, Guillaume Dréan -> Gérard, Jérôme Favier -> Jacques : prénom du nœud contredit par l'unique entrée d'auteur du PDF, aucun homonyme Person dans v110). Id du type Person (ed738791205548e4b4c187c58be227dc) repris à l'identique de patch_18_bibliography_fixes.json.",
+    "policy": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQUIRED. Aucune op de ce fichier n'a été appliquée à v110 ni à aucun graphe. SET_NAME et SET_TYPES uniquement, aucune relation touchée, aucune fusion. Application éventuelle : script dédié make_vNNN sur le modèle de scripts/make_v110_apply_bib_and_attribute_patches.py, après arbitrage de Maël Rolland.",
+    "op_count": 10,
+    "entities_touched": 6,
+    "skipped_count": 16,
+    "skipped": [
+      {
+        "entityId": "9b9c6eb4c0914b95a4cd087d1f5517b7",
+        "name": "\"The Madhatter\"",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Pseudonyme BitcoinTalk cité de seconde main (« \"The Madhatter\" cité par Sedgwick 2019b », chap. I) sans entrée d'auteur au PDF. Retyper supposerait de corriger d'abord la relation authored -> GameKyuubi qui soude deux pseudonymes distincts."
+      },
+      {
+        "entityId": "4722e76151654d63a64bf4ef0c209a4e",
+        "name": "Alain Maucourant",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Fiche sans description au prénom inventé: la retyper graverait une personne fausse. Alternative: renommer « Jérôme Maucourant » puis retyper (preuve hors bibliographie) ou laisser Reference."
+      },
+      {
+        "entityId": "bec0b6b26cb44424abbd499b86ebc87a",
+        "name": "Christine Desan",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Juriste (Harvard Law) citée selon la description via Théret et Blanc, identité réelle unique mais aucune entrée d'auteur au PDF. Alternative: retyper sur notoriété (hors preuve bibliographique) ou laisser Reference."
+      },
+      {
+        "entityId": "5f599a1fd9eb23ccf1dae9d84c3cd76b",
+        "name": "De Boyer des Roches et Rosales",
+        "recommandation_csv": "laisser-reference",
+        "reason": "Retyper fusionnerait Jérôme de Boyer des Roches et Ricardo Solis Rosales en une seule Person. Doublon fonctionnel du nœud daté « De Boyer des Roches & Rosales 2003 » (4ccbb429), fusion éventuelle à l'arbitrage."
+      },
+      {
+        "entityId": "458f2205963eb70d776d08e70310cd09",
+        "name": "Desmedt et Lakomski-Laguerre",
+        "recommandation_csv": "laisser-reference",
+        "reason": "Retypage impossible (deux personnes réelles). Doublon fonctionnel du nœud daté « Desmedt & Lakomski-Laguerre 2015 » (d80bed08). Le renommage de la Person « Mathieu Desmedt » en Ludovic est un chantier distinct à arbitrer."
+      },
+      {
+        "entityId": "3a06841689ec4bebac553b2b7fc974b5",
+        "name": "Emmanuel Macron",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Acteur politique (déclaration de Davos, relation debated in vers le paradoxe du bouc émissaire), pas une référence bibliographique. Alternative: retyper en Person comme acteur cité (hors périmètre bibliographique) ou laisser Reference."
+      },
+      {
+        "entityId": "4d583f06ee5247f8bde64ae8dcfdc025",
+        "name": "Felix Albert",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Personne réelle nommée au chap. III (« Felix Albert et Auryn Macmillan ») mais la bibliographie ne connaît que le pseudonyme FELIXA: retypage sans preuve du patronyme, et ancrage de chapitre incohérent à corriger d'abord."
+      },
+      {
+        "entityId": "4efa5d34e66b4997be3c10dfeca63680",
+        "name": "Florence Dufy",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "« Florence Dufy » n'existe pas: fusion des deux co-autrices de L'ethnographie économique (incident documenté par l'audit du 06/08). Alternative: renommer « Caroline Dufy » puis retyper, ou réattribuer à Florence Weber si c'est elle que visait la fiche."
+      },
+      {
+        "entityId": "909cc7f5cae7466198dac07dff0b1f4f",
+        "name": "John Maynard Keynes",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Identité mondiale sans ambiguïté (relation source of vers la monnaie de compte, fondement de l'IMF) mais aucune entrée Keynes au PDF: la règle de preuve interdit le retypage mécanique. Alternative: retyper sur notoriété ou laisser Reference."
+      },
+      {
+        "entityId": "718e0d4dadda4180a04600fbf5c3ce51",
+        "name": "Joseph Stiglitz",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Économiste unique et notoire (Prix Nobel 2001), mais le PDF ne le connaît qu'en sujet d'une entrée anonyme Bloomberg: pas d'entrée d'auteur, donc pas de preuve admissible. Alternative: retyper sur notoriété ou laisser Reference."
+      },
+      {
+        "entityId": "03fd59f205f24666968722d5b4e1bab9",
+        "name": "Kyle Croman",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Premier auteur réel de Croman et al. 2016 (scalabilité), auteur du nœud homonyme dans le graphe, mais ni lui ni son article ne figurent dans la bibliographie du PDF: aucune preuve admissible. Alternative: retyper sur notoriété ou laisser Reference."
+      },
+      {
+        "entityId": "179aa1fe59cd4aa89596a7f6ac8a864c",
+        "name": "Lionel Robbins",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Fiche vide citée de seconde main dans l'introduction (définition formelle de l'économie): l'économiste visé est très probablement Lionel Robbins mais aucune preuve admissible au PDF. Alternative: retyper sur notoriété ou laisser Reference."
+      },
+      {
+        "entityId": "f270bfdb07d441d59eca436184b1450a",
+        "name": "Marco Corallo",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Retyper créerait une seconde Person de la même personne réelle sous un prénom faux, la description du nœud signale elle-même le doublon probable. Alternative: fusionner dans « Matt Corallo » (en réaffectant la relation mentions actor de I.2.2) ou supprimer la fiche."
+      },
+      {
+        "entityId": "10973e59658ab43d2652a03ebd56a505",
+        "name": "Martti Malmi (Sirius)",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Retyper garantirait deux Person pour le même développeur finlandais (premier contributeur après Nakamoto). Alternative: fusionner la fiche (sa quote et son cited in chap. I) dans la Person existante."
+      },
+      {
+        "entityId": "d66fdb7349e04a84b2850d2cb4b7f2de",
+        "name": "Neil Gandal",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Économiste réel (Tel-Aviv), auteur du nœud « Gandal et al. 2018 » dans le graphe, mais ni lui ni ses articles ne figurent dans la bibliographie du PDF: aucune preuve admissible. Alternative: retyper sur notoriété ou laisser Reference."
+      },
+      {
+        "entityId": "dcd10825d6ddd231dda4b6057d7296c1",
+        "name": "Tyler Winklevoss",
+        "recommandation_csv": "arbitrage-auteur",
+        "reason": "Le prénom Tyler est attesté par le texte de la thèse mais pas par la bibliographie, seule preuve admissible. Alternative: retyper sur la foi du texte (attribution explicite et répétée à Tyler) ou laisser Reference."
+      }
+    ],
+    "lifecycleStatus": "candidate_applied",
+    "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v113.json",
+    "measuredStatus": "already_applied",
+    "appliedBy": "scripts/make_v113_apply_bibliography_retypes.py",
+    "appliedInGraph": "grc20-these-mael-rolland-v113.json",
+    "appliedInPR": 120,
+    "ledgerEntry": "patch-application-ledger.json",
+    "noteForAgents": "APPLIQUE. Ne pas rejouer : les ops de ce fichier ont deja leur effet dans le graphe courant. La `policy` ci-dessus dit « NOT APPLIED » parce que le controle C03 l exige, pas parce que c est vrai. Autorite : le graphe, puis docs/audits/data/patch-queue-governance-cases-current.csv, puis patch-application-ledger.json — jamais la policy, jamais ce champ."
+  },
+  "ops": [
+    {
+      "type": "SET_NAME",
+      "entityId": "ec901513fae144a0a350e798b0351c6d",
+      "value": "Adli Takkal Bataille",
+      "_comment": "« Audrey Takkal Bataille » -> « Adli Takkal Bataille » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « FAVIER Jacques et TAKKAL BATAILLE Adli, 2017, Bitcoin, la monnaie acéphale, Paris, Cnrs, 280 p. ». Aucun homonyme Person dans v110."
+    },
+    {
+      "type": "SET_TYPES",
+      "entityId": "ec901513fae144a0a350e798b0351c6d",
+      "value": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "_comment": "« Adli Takkal Bataille » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
+    },
+    {
+      "type": "SET_NAME",
+      "entityId": "be8ac28672e44ef6852fd5b1d80f3b90",
+      "value": "Andreas Loibl",
+      "_comment": "« Gregor Loibl » -> « Andreas Loibl » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « LOIBL Andreas, 2014, « Namecoin », 2014, http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2014-08-1/NET-2014-08-1_14.pdf ». Aucun homonyme Person dans v110."
+    },
+    {
+      "type": "SET_TYPES",
+      "entityId": "be8ac28672e44ef6852fd5b1d80f3b90",
+      "value": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "_comment": "« Andreas Loibl » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
+    },
+    {
+      "type": "SET_NAME",
+      "entityId": "7cd4cfe4c8d74aaaaeabcd17ebf11b3a",
+      "value": "Gérard Dréan",
+      "_comment": "« Guillaume Dréan » -> « Gérard Dréan » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « DRÉAN Gérard, 2013, « Au-delà de Bitcoin (5) : l'avenir des monnaies et systèmes de paiement », Institut Turgot ». Aucun homonyme Person dans v110."
+    },
+    {
+      "type": "SET_TYPES",
+      "entityId": "7cd4cfe4c8d74aaaaeabcd17ebf11b3a",
+      "value": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "_comment": "« Gérard Dréan » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
+    },
+    {
+      "type": "SET_NAME",
+      "entityId": "53525938440543a5af359337eeab9823",
+      "value": "Jacques Favier",
+      "_comment": "« Jérôme Favier » -> « Jacques Favier » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « FAVIER Jacques, 2021 », « FAVIER Jacques, 2017, « Tulipes » », « FAVIER Jacques et TAKKAL BATAILLE Adli, 2017 ». Aucun homonyme Person dans v110."
+    },
+    {
+      "type": "SET_TYPES",
+      "entityId": "53525938440543a5af359337eeab9823",
+      "value": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "_comment": "« Jacques Favier » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
+    },
+    {
+      "type": "SET_TYPES",
+      "entityId": "5fc4278b78704f6c92c3744e2654518a",
+      "value": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "_comment": "« Laura DeNardis » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18). Preuve PDF : « DENARDIS Laura et MUSIANI Francesca, 2014, « Governance by Infrastructure: Introduction, \"The Turn to Infrastructure in Internet Governance\" » ». Raison d'exclusion du patch_18 factuellement fausse (cf. CSV fiches douteuses, ligne « Laura DeNardis »)."
+    },
+    {
+      "type": "SET_TYPES",
+      "entityId": "b332ace807b84fe4ab2373b8dc8f4856",
+      "value": [
+        "ed738791205548e4b4c187c58be227dc"
+      ],
+      "_comment": "« Shinobi (pseudonyme) » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18). Preuve PDF : « SHINOBI, 2022, « Why Bitcoin's Ossification Will Eventually Be Necessary », Bitcoin Magazine ». Raison d'exclusion du patch_18 factuellement fausse (cf. CSV fiches douteuses, ligne « Shinobi (pseudonyme) »)."
+    }
   ]
- },
- "ops": [
-  {
-   "type": "SET_NAME",
-   "entityId": "ec901513fae144a0a350e798b0351c6d",
-   "value": "Adli Takkal Bataille",
-   "_comment": "« Audrey Takkal Bataille » -> « Adli Takkal Bataille » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « FAVIER Jacques et TAKKAL BATAILLE Adli, 2017, Bitcoin, la monnaie acéphale, Paris, Cnrs, 280 p. ». Aucun homonyme Person dans v110."
-  },
-  {
-   "type": "SET_TYPES",
-   "entityId": "ec901513fae144a0a350e798b0351c6d",
-   "value": [
-    "ed738791205548e4b4c187c58be227dc"
-   ],
-   "_comment": "« Adli Takkal Bataille » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
-  },
-  {
-   "type": "SET_NAME",
-   "entityId": "be8ac28672e44ef6852fd5b1d80f3b90",
-   "value": "Andreas Loibl",
-   "_comment": "« Gregor Loibl » -> « Andreas Loibl » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « LOIBL Andreas, 2014, « Namecoin », 2014, http://www.net.in.tum.de/fileadmin/TUM/NET/NET-2014-08-1/NET-2014-08-1_14.pdf ». Aucun homonyme Person dans v110."
-  },
-  {
-   "type": "SET_TYPES",
-   "entityId": "be8ac28672e44ef6852fd5b1d80f3b90",
-   "value": [
-    "ed738791205548e4b4c187c58be227dc"
-   ],
-   "_comment": "« Andreas Loibl » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
-  },
-  {
-   "type": "SET_NAME",
-   "entityId": "7cd4cfe4c8d74aaaaeabcd17ebf11b3a",
-   "value": "Gérard Dréan",
-   "_comment": "« Guillaume Dréan » -> « Gérard Dréan » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « DRÉAN Gérard, 2013, « Au-delà de Bitcoin (5) : l'avenir des monnaies et systèmes de paiement », Institut Turgot ». Aucun homonyme Person dans v110."
-  },
-  {
-   "type": "SET_TYPES",
-   "entityId": "7cd4cfe4c8d74aaaaeabcd17ebf11b3a",
-   "value": [
-    "ed738791205548e4b4c187c58be227dc"
-   ],
-   "_comment": "« Gérard Dréan » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
-  },
-  {
-   "type": "SET_NAME",
-   "entityId": "53525938440543a5af359337eeab9823",
-   "value": "Jacques Favier",
-   "_comment": "« Jérôme Favier » -> « Jacques Favier » : prénom du nœud contredit par la seule entrée d'auteur du PDF. Preuve : « FAVIER Jacques, 2021 », « FAVIER Jacques, 2017, « Tulipes » », « FAVIER Jacques et TAKKAL BATAILLE Adli, 2017 ». Aucun homonyme Person dans v110."
-  },
-  {
-   "type": "SET_TYPES",
-   "entityId": "53525938440543a5af359337eeab9823",
-   "value": [
-    "ed738791205548e4b4c187c58be227dc"
-   ],
-   "_comment": "« Jacques Favier » (après SET_NAME ci-dessus) : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18)."
-  },
-  {
-   "type": "SET_TYPES",
-   "entityId": "5fc4278b78704f6c92c3744e2654518a",
-   "value": [
-    "ed738791205548e4b4c187c58be227dc"
-   ],
-   "_comment": "« Laura DeNardis » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18). Preuve PDF : « DENARDIS Laura et MUSIANI Francesca, 2014, « Governance by Infrastructure: Introduction, \"The Turn to Infrastructure in Internet Governance\" » ». Raison d'exclusion du patch_18 factuellement fausse (cf. CSV fiches douteuses, ligne « Laura DeNardis »)."
-  },
-  {
-   "type": "SET_TYPES",
-   "entityId": "b332ace807b84fe4ab2373b8dc8f4856",
-   "value": [
-    "ed738791205548e4b4c187c58be227dc"
-   ],
-   "_comment": "« Shinobi (pseudonyme) » : Reference -> Person (id ed738791205548e4b4c187c58be227dc = type Person, id repris de patch_18). Preuve PDF : « SHINOBI, 2022, « Why Bitcoin's Ossification Will Eventually Be Necessary », Bitcoin Magazine ». Raison d'exclusion du patch_18 factuellement fausse (cf. CSV fiches douteuses, ligne « Shinobi (pseudonyme) »)."
-  }
- ]
 }
