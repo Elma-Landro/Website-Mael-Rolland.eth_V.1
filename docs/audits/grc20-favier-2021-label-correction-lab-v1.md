@@ -66,7 +66,9 @@ Un renommage dans le graphe seul les laisserait porter le libellé faux. Et — 
 
 La raison est dans `build_anchor_weights.py:189` : `noms.get(eid) or ent.get('entity_name', '')`. L'outillage **préfère le nom du graphe** et ne se rabat sur la carte qu'à défaut. Il ne serait donc pas trompé — mais un lecteur humain, si, et le dépôt porterait une chaîne fausse dans deux fichiers versionnés sans que rien ne l'annonce.
 
-**La régénération des cartes doit appartenir au même lot, ou être explicitement exclue.** C'est l'arbitrage 3.
+> **Formulation à ne pas confondre — le § 8 bis l'a mesurée.** Ces cartes **ne sont pas désynchronisées malgré un pipeline de synchronisation** : elles portent **un champ dénormalisé sans aucun mécanisme de synchronisation**. La nuance décide de tout, parce que la première formulation suggère une réparation par régénération, et la seconde dit qu'il n'y a rien à relancer.
+
+**La correction des 20 lignes doit appartenir au même lot que la correction canonique, ou être explicitement exclue.** C'est l'arbitrage 3. *Par quel mécanisme*, en revanche, ne se décide pas ici : le § 8 bis établit qu'aucune régénération ne le fait.
 
 ## 6. Les trois formes possibles
 
@@ -103,7 +105,9 @@ Les quatre questions ont reçu réponse, et l'auteur a ajouté une cinquième ru
 
 **2 — forme A, avec les motifs de rejet des deux autres.** `Favier 2021 — Bitcoin et la religion (podcast Parlons Bitcoin)`. B est écartée comme trop large — elle importerait tout le titre bibliographique. C est écartée comme trop pauvre : *le support est précisément ce qui est faux et ce que la correction doit réparer*. **Ne pas ajouter `title` ni `year`** dans ce lot ; c'est une dette séparée.
 
-**3 — les 20 lignes de cartes appartiennent au même lot.** C'est la réponse au § 5 de cet audit, et le motif est explicite : elles sont une **conséquence mécanique** du renommage, et ne pas les régénérer laisserait le dépôt porter une chaîne fausse versionnée *alors même que la fiche canonique est corrigée*. La v115 reste une **PR séparée**.
+**3 — les 20 lignes de cartes appartiennent au même lot.** C'est la réponse au § 5 de cet audit, et le motif est explicite : elles sont une **conséquence mécanique** du renommage, et ne pas les corriger laisserait le dépôt porter une chaîne fausse versionnée *alors même que la fiche canonique est corrigée*. La v115 reste une **PR séparée**.
+
+> **Le mot « régénérer », employé ici et à l'arbitrage 5, supposait un mécanisme qui n'existe pas.** Le § 8 bis l'a mesuré : la correction se fera par **substitution ciblée**, arbitrée le 2026-08-11 après le test à blanc.
 
 **4 — périmètre exclu, en creux** : doublon DeNardis (`e0b40d91` / `2272e5b8`), `SourceQuote`, `authored`, fusions, créations, `title`/`year` manquants, Favier 1981, Favier 2018, et toute correction bibliographique plus large.
 
@@ -111,7 +115,7 @@ Les quatre questions ont reçu réponse, et l'auteur a ajouté une cinquième ru
 
 L'auteur exige **trois preuves distinctes**, et le mot compte : le changement **canonique** sur la fiche, les changements **dénormalisés** dans les cartes, et **l'absence de tout autre effet**. Les mélanger dans un seul diff global masquerait précisément ce que ce chantier a mis au jour — que les deux couches peuvent diverger sans que rien ne le signale.
 
-Douze contraintes encadrent l'application : créer uniquement `grc20-these-mael-rolland-v115.json` ; ne corriger que `7f0f9cc4` ; aucune relation modifiée ; aucun attribut autre que le champ de nom, **et seulement si c'est bien lui qui porte la chaîne fautive** ; aucun nœud créé ; aucune fusion ; aucune `SourceQuote` ; aucun `authored` ; régénérer **seulement** les 20 lignes portant l'ancien nom ; prouver que `b84f59ac` reste intact ; prouver que l'inversion avec `:474` est impossible ; prouver que le slug `bitcoin-et-religion` rattache bien `7f0f9cc4` à l'entrée `:472`.
+Douze contraintes encadrent l'application : créer uniquement `grc20-these-mael-rolland-v115.json` ; ne corriger que `7f0f9cc4` ; aucune relation modifiée ; aucun attribut autre que le champ de nom, **et seulement si c'est bien lui qui porte la chaîne fautive** ; aucun nœud créé ; aucune fusion ; aucune `SourceQuote` ; aucun `authored` ; corriger **seulement** les 20 lignes portant l'ancien nom — le texte d'origine disait « régénérer », mot que le § 8 bis a rendu impropre ; prouver que `b84f59ac` reste intact ; prouver que l'inversion avec `:474` est impossible ; prouver que le slug `bitcoin-et-religion` rattache bien `7f0f9cc4` à l'entrée `:472`.
 
 **Rien n'est appliqué ici.** Le présent chantier reste une instruction et un patch candidat.
 
