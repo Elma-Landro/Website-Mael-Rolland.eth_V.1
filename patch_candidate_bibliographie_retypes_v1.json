@@ -108,7 +108,7 @@
     ],
     "lifecycleStatus": "candidate_applied",
     "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
-    "measuredAgainstGraph": "grc20-these-mael-rolland-v114.json",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v115.json",
     "measuredStatus": "already_applied",
     "appliedBy": "scripts/make_v113_apply_bibliography_retypes.py",
     "appliedInGraph": "grc20-these-mael-rolland-v113.json",
