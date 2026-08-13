@@ -122,21 +122,17 @@ def valider_patch(patch):
 
 
 def emplacements_cartes(carte_entites, carte_sections):
-    """-> (emplacements de la 1re carte, de la 2nde), STRICTEMENT verifies."""
-    # --- carte par entite : la fiche doit y etre, et son nom etre l ancien ---
+    """-> (emplacements de la 1re carte, de la 2nde) + leur valeur portee.
+
+    Cette fonction LOCALISE et verifie la STRUCTURE ; elle ne juge pas de
+    l'etat d'avancement — c'est `etat_du_lot` qui le fait, apres avoir vu
+    les 20 emplacements. Les separer est le correctif du 2026-08-12 : la
+    version precedente concluait « DEJA APPLIQUE » des la PREMIERE carte,
+    sans avoir regarde les 19 autres. Un etat partiel — 1 corrige, 19
+    anciens — aurait donc ete declare complet."""
     bloc = carte_entites.get(ENTITE)
     if not isinstance(bloc, dict):
         echec(f'{CARTE_ENTITES} : {ENTITE[:8]} absent ou mal forme')
-    if bloc.get('name') == NOM_NOUVEAU:
-        # Meme lecon qu'en v114 avec C13 : un controle juste AVANT
-        # l'application devient trompeur APRES. « La carte a derive » est faux
-        # ici — elle porte deja la valeur cible, le lot est simplement pose.
-        echec(f'{CARTE_ENTITES} : {ENTITE[:8]} porte deja la valeur CIBLE — ce '
-              'lot est DEJA APPLIQUE. Rien a rejouer ; lire son etat dans le '
-              'graphe, la file vivante puis le ledger.')
-    if bloc.get('name') != NOM_ANCIEN:
-        echec(f'{CARTE_ENTITES} : {ENTITE[:8]} porte {bloc.get("name")!r}, '
-              f'attendu {NOM_ANCIEN!r} — la carte a derive, re-instruire')
     ailleurs = [k for k, b in carte_entites.items()
                 if isinstance(b, dict) and b.get('name') == NOM_ANCIEN
                 and k != ENTITE]
@@ -145,7 +141,6 @@ def emplacements_cartes(carte_entites, carte_sections):
               f'{ailleurs} — une substitution ciblee ne peut pas trancher '
               'quelle entite le merite')
 
-    # --- carte par section : exactement les 19 emplacements attendus ---
     trouves = []
     for cle, b in carte_sections.items():
         for i, ent in enumerate((b or {}).get('entities', [])):
@@ -165,12 +160,57 @@ def emplacements_cartes(carte_entites, carte_sections):
     if len(trouves) != ATTENDU_CARTE_SECTIONS:
         echec(f'{CARTE_SECTIONS} : {len(trouves)} emplacement(s), '
               f'{ATTENDU_CARTE_SECTIONS} attendus')
-    for cle, i in trouves:
-        nom = carte_sections[cle]['entities'][i].get('entity_name')
-        if nom != NOM_ANCIEN:
-            echec(f'{CARTE_SECTIONS} : {cle}[{i}] porte {nom!r}, attendu '
-                  f'{NOM_ANCIEN!r}')
     return [ENTITE], trouves
+
+
+def etat_du_lot(carte_entites, carte_sections, empl_s, graphe_source, cible):
+    """-> ('PRE' | 'POST' | 'MIXTE', lignes de detail).
+
+    TROIS etats, pas deux. Le lot porte 20 emplacements de carte ET un
+    graphe ; les regarder TOUS avant de conclure est le correctif du
+    2026-08-12. La lecon vient de C13 en v114 puis de la premiere version
+    de ce script : un controle binaire « ancien / pas ancien » declare
+    complet un etat partiel, et c'est le pire des trois cas — celui ou un
+    rejeu ecrirait a cote sans que rien ne le signale."""
+    porte = [(f'{CARTE_ENTITES}:{ENTITE[:8]}',
+              (carte_entites.get(ENTITE) or {}).get('name'))]
+    for cle, i in empl_s:
+        porte.append((f'{CARTE_SECTIONS}:{cle}[{i}]',
+                      carte_sections[cle]['entities'][i].get('entity_name')))
+
+    anciens = [x for x, v in porte if v == NOM_ANCIEN]
+    nouveaux = [x for x, v in porte if v == NOM_NOUVEAU]
+    autres = [(x, v) for x, v in porte
+              if v not in (NOM_ANCIEN, NOM_NOUVEAU)]
+    detail = [f'{len(anciens)}/{ATTENDU_TOTAL_CARTES} a l ancienne valeur, '
+              f'{len(nouveaux)} a la cible, {len(autres)} autre(s)']
+
+    # Etat du graphe : la cible existe-t-elle, et vaut-elle EXACTEMENT le
+    # resultat attendu ? Une v115 absente ou differente compte comme mixte.
+    cible_existe = os.path.exists(cible)
+    cible_conforme = False
+    if cible_existe:
+        attendu = copy.deepcopy(graphe_source)
+        {x['id']: x for x in attendu['entities']}[ENTITE]['name'] = NOM_NOUVEAU
+        with open(cible, encoding='utf-8') as f:
+            reelle = json.load(f)
+        a, b = signature_graphe(attendu), signature_graphe(reelle)
+        cible_conforme = not diff_graphe(a, b)
+        detail.append(f'{os.path.basename(cible)} present, conforme au diff '
+                      f'canonique attendu : {cible_conforme}')
+    else:
+        detail.append(f'{os.path.basename(cible)} absent')
+
+    if autres:
+        detail += [f'  valeur inattendue en {x} : {v!r}' for x, v in autres[:5]]
+        return 'MIXTE', detail
+    if len(anciens) == ATTENDU_TOTAL_CARTES and not cible_existe:
+        return 'PRE', detail
+    if len(nouveaux) == ATTENDU_TOTAL_CARTES and cible_existe and cible_conforme:
+        return 'POST', detail
+    if anciens and nouveaux:
+        detail.append(f'  emplacements encore anciens : {anciens[:6]}')
+    return 'MIXTE', detail
 
 
 def signature_graphe(g):
@@ -278,7 +318,24 @@ def main():
             fins[chemin] = '\n' if f.read().endswith('\n') else ''
     empl_e, empl_s = emplacements_cartes(carte_e, carte_s)
 
-    print(f'lot fige : 1 SET_NAME + {ATTENDU_TOTAL_CARTES} libelles '
+    # --- classification en TROIS etats, avant toute autre verification ---
+    etat, detail = etat_du_lot(carte_e, carte_s, empl_s, graphe, args.target)
+    print(f'etat du lot : {etat}')
+    for d in detail:
+        print(f'  {d}')
+    if etat == 'POST':
+        print('\nDEJA APPLIQUE — les 20 emplacements portent la cible et '
+              f'{os.path.basename(args.target)} vaut exactement le diff '
+              'canonique attendu. Rien a rejouer ; lire son etat dans le '
+              'graphe, la file vivante puis le ledger.')
+        return 0
+    if etat != 'PRE':
+        echec('etat MIXTE ou INCOHERENT : le lot n est ni entierement a '
+              'appliquer ni entierement applique. C est le cas le plus '
+              'dangereux — un rejeu ecrirait a cote sans qu aucune collision '
+              'ne le signale. Instruire a la main.\n  ' + '\n  '.join(detail))
+
+    print(f'\nlot fige : 1 SET_NAME + {ATTENDU_TOTAL_CARTES} libelles '
           'denormalises\n')
     print(f'  {NOM_ANCIEN!r}\n  -> {NOM_NOUVEAU!r}\n')
     print(f'  graphe               : {ENTITE[:8]} `name`')

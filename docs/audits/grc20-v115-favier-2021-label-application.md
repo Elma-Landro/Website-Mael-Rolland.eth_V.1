@@ -134,8 +134,36 @@ Les **44 divergences de `type`** relevées au § 2 lui appartiennent aussi : ell
 
 ---
 
-## 7. Limites connues
+## 7. Vérification navigateur — faite, et ce qu'elle établit
 
-- **Aucune vérification navigateur.** Le diff runtime est borné aux pointeurs, mais un libellé change ce que l'écran affiche : `graphe.html` et `lecteur.html` étiquettent leurs nœuds avec `name`. L'effet attendu est un libellé corrigé sur une fiche, et rien d'autre ; ce n'est pas prouvé ici.
+Exigée par `CLAUDE.md` pour tout changement de runtime. Chromium local (`/opt/pw-browsers/chromium-1194`), CDN interceptés et servis depuis `node_modules` (`cytoscape@3.28.1`, `marked@9.1.6`), dépôt servi par `python3 -m http.server`. **Comparaison avant / après** : l'état d'avant est la branche par défaut fusionnée (`26b79b6`, qui pointe sur v114), servie sur un second port.
+
+| Mesure | `graphe.html` avant → après | `lecteur.html` avant → après |
+|---|---|---|
+| graphe demandé | v114 → **v115** | v114 → **v115** |
+| **`pageerror`** | **0 → 0** | **0 → 0** |
+| `canvas` | 4 → 4 | 3 → 3 |
+| boutons | 60 → 60 | 13 → 13 |
+| sections | 65 → 65 | 27 → 27 |
+| panneaux | 2 → 2 | 1 → 1 |
+| `[data-entity-id]` | 0 → 0 | 375 → 375 |
+| longueur du texte rendu | 2 129 → 2 129 | 158 293 → 158 293 |
+| ancien libellé présent | non → non | non → non |
+
+**Tout est identique au caractère près, sauf le graphe demandé.** C'est exactement l'effet attendu : le comportement par défaut ne change pas.
+
+> Un premier passage a donné un `pageerror` sur l'état « avant » (`window.createGrapheState is not a function`). Il ne venait pas du dépôt mais de ma copie de comparaison, à laquelle manquaient les 14 scripts `graphe.*.js`. Rectifié, puis relancé — et c'est la raison pour laquelle une comparaison avant/après doit reconstruire l'état d'avant *en entier*, faute de quoi elle mesure sa propre incomplétude.
+
+### Ce que la vérification n'établit **pas**, et pourquoi
+
+**Le nouveau libellé n'apparaît à l'écran dans aucune des deux vues — ni avant, ni après.** Ce n'est pas un défaut de v115 : cette fiche n'est simplement pas exposée par défaut. `graphe.html` ne révèle les étiquettes qu'au-delà d'un seuil de zoom, et `lecteur.html` classe ses panneaux au top-12 par `occurrence_count × log(N/df)` — la fiche en porte 3.
+
+Trois tentatives ont été faites pour la faire remonter : lecture du DOM après défilement complet du lecteur (40 écrans), saisie dans le champ de recherche de `graphe.html`, puis réouverture forcée du panneau `explorer-menu` qui le masque. Aucune n'a fait apparaître la fiche.
+
+**Ce qui est donc prouvé** : les pages chargent v115 et rien d'autre, sans erreur ; le libellé fautif n'apparaît **nulle part** dans le rendu complet des deux pages ; le comportement est identique en tout point. **Ce qui ne l'est pas** : que le nouveau libellé s'affiche positivement — faute d'un chemin d'affichage par défaut menant à cette fiche. Le code d'étiquetage lit `entity.name` (`getNodeLabel(entity)`, `graphe.html:2335`) et le graphe servi porte la nouvelle valeur, mais c'est une lecture du code, pas une observation d'écran.
+
+## 8. Limites connues
+
+- **Le libellé n'a pas pu être observé à l'écran** (§ 7) : la fiche n'est exposée par défaut ni par `graphe.html` ni par `lecteur.html`. La preuve d'affichage reste donc indirecte.
 - **La preuve reste bibliographique, pas éditoriale.** Le nom « Parlons Bitcoin » vient de l'URL et du contexte de l'entrée `:472` ; l'accès réseau ne permet pas de vérifier que l'éditeur se désigne ainsi aujourd'hui.
 - **Le CSV d'instruction est figé sur v114 et le reste.** Ses deux lignes de cartes portent désormais les comptes **au diagnostic** (19 et 1), figés : les recompter aurait effacé la trace du problème que le relevé documente, puisqu'ils valent 0 depuis v115.

@@ -146,9 +146,30 @@ Balayage complet des scripts : **le seul qui écrive `entity_name` dans une cart
 
 Il n'existe pas de « chemin normal de génération » capable de rafraîchir `entity_name`. **La voie 2 ne peut donc pas prouver ce qu'elle devait prouver** : sa preuve de confinement serait un diff vide, et les 20 lignes fausses resteraient.
 
-Ce n'est pas une dérive dormante qui contaminerait le lot — c'est l'inverse : **la couche dénormalisée n'a pas de mécanisme de rafraîchissement du tout.** Le constat du § 5 s'en trouve aggravé : non seulement aucun contrôle ne détecte la désynchronisation, mais **aucun outil ne sait la réparer**.
+Ce n'est pas une dérive dormante qui contaminerait le lot — c'est l'inverse : **la couche dénormalisée n'a pas de mécanisme de rafraîchissement du tout.** Le § 5 s'en trouve précisé : non seulement aucun contrôle ne détecterait un écart, mais **aucun outil ne saurait le réparer**.
 
 Conformément à l'arbitrage : **arrêt, documentation, nouvel arbitrage.** Rien n'est écrit, aucune v115 n'est créée.
+
+### Corrigé par la mesure exhaustive ultérieure — le mot « désynchronisation » était faux
+
+Ce paragraphe a d'abord décrit les 20 lignes comme une **désynchronisation** que rien ne détecte. La mesure exhaustive faite ensuite (`scripts/check_map_entity_names.py`, lecture seule sur les 13 545 entrées résolues des deux cartes) établit quelque chose de plus précis, et il faut le dire dans cet ordre :
+
+| | `entity_name` |
+|---|---:|
+| **Avant v115** | **0 divergence** sur 13 545 entrées |
+| **Après v115** | **0 divergence** |
+
+- **Les 20 lignes ne constituaient pas une désynchronisation existante.** Elles portaient **fidèlement** le nom canonique du graphe — un nom qui était sémantiquement faux, mais que les cartes reflétaient exactement. La couche dénormalisée était en accord parfait avec la couche canonique ; c'est la couche canonique qui avait tort.
+- **Un renommage du graphe seul aurait créé 20 divergences** — pas révélé 20 divergences préexistantes. Et **aucun mécanisme existant ne les aurait réparées**, puisqu'il n'y en a aucun.
+- **Après v115, on retombe à 0** : les deux couches sont de nouveau d'accord, et cette fois sur la valeur juste.
+
+La formulation exacte, celle à retenir : **ces cartes ne sont pas désynchronisées malgré un pipeline de synchronisation ; elles portent un champ dénormalisé sans mécanisme de synchronisation.**
+
+### Découverte distincte, hors périmètre : `type`, 44 divergences réelles
+
+La même mesure exhaustive a fait apparaître un **second champ dénormalisé** dans `entity_section_map.json` : `type`, présent sur les 1 171 entrées. **44 d'entre elles divergent réellement du graphe** — par exemple `5d620327` porte `ActorNonHuman` dans la carte contre `CodeRepository` dans le graphe, `a444085b` porte `Concept` contre `CoreConcept`.
+
+Contrairement aux 20 lignes de `name`, **celles-ci sont de vraies divergences actuelles**, sans rapport avec Favier. **Aucune n'est corrigée** : hors périmètre, et matière du chantier séparé sur l'architecture de cet artefact. Elles montrent que la question dépasse le seul champ `name`.
 
 ### Nouvel arbitrage posé à Maël
 
