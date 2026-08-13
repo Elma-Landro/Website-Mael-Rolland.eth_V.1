@@ -48,11 +48,15 @@
         "reason": "TEMOIN DE NON-INVERSION, deliberement intouche. C est ICI que « La voie du Bitcoin » est JUSTE : l entree :474 donne blog.lavoiedubitcoin.info et la fiche porte l editeur jusque dans son attribut `title`. Corriger des deux cotes detruirait l information au lieu de la reparer."
       }
     ],
-    "lifecycleStatus": "blocked_author_arbitration",
+    "lifecycleStatus": "candidate_applied",
     "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
-    "measuredAgainstGraph": "grc20-these-mael-rolland-v114.json",
-    "measuredStatus": "still_candidate",
-    "noteForAgents": "NON APPLIQUE, et techniquement applicable n est PAS mur. Les cibles existent et les preconditions tiennent, mais l arbitrage de l auteur n a pas ete rendu : a reauditer avant tout chantier d application (arbitrage Q7 du 2026-08-09). Ce champ ne vaut pas feu vert."
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v115.json",
+    "measuredStatus": "already_applied",
+    "appliedBy": "scripts/make_v115_apply_favier_2021_label_correction.py",
+    "appliedInGraph": "grc20-these-mael-rolland-v115.json",
+    "appliedInPR": 126,
+    "ledgerEntry": "patch-application-ledger.json",
+    "noteForAgents": "APPLIQUE. Ne pas rejouer : les ops de ce fichier ont deja leur effet dans le graphe courant. La `policy` ci-dessus dit « NOT APPLIED » parce que le controle C03 l exige, pas parce que c est vrai. Autorite : le graphe, puis docs/audits/data/patch-queue-governance-cases-current.csv, puis patch-application-ledger.json — jamais la policy, jamais ce champ."
   },
   "ops": [
     {

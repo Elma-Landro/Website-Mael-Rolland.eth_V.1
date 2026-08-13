@@ -62,6 +62,11 @@ APPLICATIONS = (
          'scripts/make_v114_apply_bibliography_authorship_relations.py',
      'source_version': 'v113', 'applied_version': 'v114',
      'pr': 124, 'date': '2026-08-11'},
+    {'patch': 'patch_candidate_favier_2021_label_correction_v1.json',
+     'applicator':
+         'scripts/make_v115_apply_favier_2021_label_correction.py',
+     'source_version': 'v114', 'applied_version': 'v115',
+     'pr': 126, 'date': '2026-08-11'},
 )
 
 

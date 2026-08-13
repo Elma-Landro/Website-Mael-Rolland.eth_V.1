@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "source_graph": "grc20-these-mael-rolland-v114.json",
+    "source_graph": "grc20-these-mael-rolland-v115.json",
     "date": "2026-08-07",
     "generated_by": "scripts/build_properties_registry.py",
     "id_scheme": "md5('grc20-property-v1|' + key), 32 hexa minuscules",
@@ -565,6 +565,7 @@
         "scripts/make_v112_apply_chronology_dates_patch.py",
         "scripts/make_v113_apply_bibliography_retypes.py",
         "scripts/make_v114_apply_bibliography_authorship_relations.py",
+        "scripts/make_v115_apply_favier_2021_label_correction.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/match_chronology_events.py"
@@ -735,6 +736,7 @@
         "scripts/make_v112_apply_chronology_dates_patch.py",
         "scripts/make_v113_apply_bibliography_retypes.py",
         "scripts/make_v114_apply_bibliography_authorship_relations.py",
+        "scripts/make_v115_apply_favier_2021_label_correction.py",
         "scripts/make_v97_remove_truncated_broken_relations.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
@@ -2456,6 +2458,7 @@
         "scripts/make_v112_apply_chronology_dates_patch.py",
         "scripts/make_v113_apply_bibliography_retypes.py",
         "scripts/make_v114_apply_bibliography_authorship_relations.py",
+        "scripts/make_v115_apply_favier_2021_label_correction.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/polish_v105_editorial.py",

@@ -122,7 +122,7 @@
     ],
     "lifecycleStatus": "blocked_missing_applicator",
     "lifecycleGeneratedBy": "scripts/build_patch_lifecycle_status.py",
-    "measuredAgainstGraph": "grc20-these-mael-rolland-v114.json",
+    "measuredAgainstGraph": "grc20-these-mael-rolland-v115.json",
     "measuredStatus": "blocked_by_missing_applicator",
     "noteForAgents": "NON APPLICABLE EN L ETAT. Aucun applicateur du depot ne consomme CREATE_ENTITY. Le contrat des patchs candidats interdit en outre de pre-assigner un entityId sur une creation : l applicateur futur les assignera. Ecrire l applicateur est un chantier a part entiere, distinct de l arbitrage scientifique sur le contenu : le second ne debloque pas le premier."
   },

@@ -15,7 +15,7 @@
       "date": "2026-08-08",
       "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
       "measured": {
-        "graph": "grc20-these-mael-rolland-v114.json",
+        "graph": "grc20-these-mael-rolland-v115.json",
         "ops_total": 16,
         "ops_readable": 16,
         "ops_applied": 16,
@@ -32,7 +32,7 @@
       "date": "2026-08-09",
       "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
       "measured": {
-        "graph": "grc20-these-mael-rolland-v114.json",
+        "graph": "grc20-these-mael-rolland-v115.json",
         "ops_total": 2,
         "ops_readable": 2,
         "ops_applied": 2,
@@ -49,7 +49,7 @@
       "date": "2026-08-09",
       "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
       "measured": {
-        "graph": "grc20-these-mael-rolland-v114.json",
+        "graph": "grc20-these-mael-rolland-v115.json",
         "ops_total": 10,
         "ops_readable": 10,
         "ops_applied": 10,
@@ -66,10 +66,27 @@
       "date": "2026-08-11",
       "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
       "measured": {
-        "graph": "grc20-these-mael-rolland-v114.json",
+        "graph": "grc20-these-mael-rolland-v115.json",
         "ops_total": 4,
         "ops_readable": 4,
         "ops_applied": 4,
+        "ops_missing_targets": 0,
+        "status": "already_applied"
+      }
+    },
+    {
+      "patch": "patch_candidate_favier_2021_label_correction_v1.json",
+      "applicator": "scripts/make_v115_apply_favier_2021_label_correction.py",
+      "source_version": "v114",
+      "applied_version": "v115",
+      "pr": 126,
+      "date": "2026-08-11",
+      "policy_declared": "CANDIDATE — NOT APPLIED — AUTHOR ARBITRATION REQ",
+      "measured": {
+        "graph": "grc20-these-mael-rolland-v115.json",
+        "ops_total": 1,
+        "ops_readable": 1,
+        "ops_applied": 1,
         "ops_missing_targets": 0,
         "status": "already_applied"
       }
