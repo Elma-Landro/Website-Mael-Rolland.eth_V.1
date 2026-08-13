@@ -329,6 +329,22 @@ def main():
             fins[chemin] = '\n' if f.read().endswith('\n') else ''
     empl_e, empl_s = emplacements_cartes(carte_e, carte_s)
 
+    # Les deux cartes s ecrivent TOUJOURS dans le depot : leur chemin n est pas
+    # parametrable. La cible, elle, l etait — et le seul garde-fou (le nom de
+    # fichier en `-v115.json`, plus bas) laissait passer n importe quel
+    # repertoire. `--target /tmp/grc20-these-mael-rolland-v115.json` corrigeait
+    # donc les cartes DU DEPOT et deposait le graphe ailleurs : precisement
+    # l etat MIXTE que la classification ci-dessous existe pour refuser,
+    # fabrique par l applicateur lui-meme. Le controle vient AVANT elle, sans
+    # quoi elle statue sur un fichier qui n est pas celui du lot.
+    cible_canonique = os.path.realpath(os.path.join(
+        REPO, f'grc20-these-mael-rolland-{VERSION_CIBLE}.json'))
+    if os.path.realpath(args.target) != cible_canonique:
+        echec(f'cible {args.target!r} : cet applicateur ecrit trois fichiers '
+              'correles, et les deux cartes ne sont pas deplacables. La cible '
+              f'doit donc etre {os.path.relpath(cible_canonique, REPO)} dans '
+              'le depot lui-meme.', CODE_INVOCATION)
+
     # --- classification en TROIS etats, avant toute autre verification ---
     etat, detail = etat_du_lot(carte_e, carte_s, empl_s, graphe, args.target)
     print(f'etat du lot : {etat}')

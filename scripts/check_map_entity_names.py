@@ -49,20 +49,34 @@ def echec(msg, code=CODE_INVOCATION):
 
 
 def entrees_de(carte, chemin):
-    """-> [(emplacement lisible, entity_id, nom denormalise)]."""
+    """-> ([(emplacement lisible, entity_id, nom denormalise)], illisibles).
+
+    Une entree qui n est pas un dictionnaire ne peut pas etre comparee. Elle
+    est RECENSEE, jamais sautee en silence : ce script tire sa valeur du fait
+    qu il annonce « 0 divergence sur 13 545 entrees », et ce chiffre ne vaut
+    que s il couvre tout le fichier. Sauter une entree illisible ferait dire
+    « aucune divergence » a un controle qui aurait simplement detourne le
+    regard — le defaut exact que ce fichier existe pour empecher. La branche
+    `entity_section_map.json` le faisait deja, tacitement.
+    """
     with open(chemin, encoding='utf-8') as f:
         d = json.load(f)
-    sorties = []
+    sorties, illisibles = [], []
     if carte == 'entity_section_map.json':
         for eid, bloc in d.items():
             if isinstance(bloc, dict):
                 sorties.append((eid[:8], eid, bloc.get('name')))
+            else:
+                illisibles.append(f'{eid[:8]} : bloc {type(bloc).__name__}')
     else:
         for cle, bloc in d.items():
             for i, ent in enumerate((bloc or {}).get('entities', [])):
-                sorties.append((f'{cle}[{i}]', ent.get('entity_id'),
-                                ent.get('entity_name')))
-    return sorties
+                if isinstance(ent, dict):
+                    sorties.append((f'{cle}[{i}]', ent.get('entity_id'),
+                                    ent.get('entity_name')))
+                else:
+                    illisibles.append(f'{cle}[{i}] : {type(ent).__name__}')
+    return sorties, illisibles
 
 
 def construire(courant):
@@ -75,7 +89,7 @@ def construire(courant):
         chemin = os.path.join(REPO, carte)
         if not os.path.exists(chemin):
             echec(f'carte introuvable : {chemin}')
-        entrees = entrees_de(carte, chemin)
+        entrees, illisibles = entrees_de(carte, chemin)
         divergences, non_resolus, sans_nom = [], [], 0
         for emplacement, eid, denormalise in entrees:
             if not eid:
@@ -101,6 +115,7 @@ def construire(courant):
             'resolues': len(entrees) - len(non_resolus) - sans_nom,
             'ids_non_resolus': len(non_resolus),
             'sans_entity_id': sans_nom,
+            'entrees_illisibles': illisibles,
             'divergences': sorted(
                 divergences, key=lambda x: (x['entity_id'], x['emplacement'])),
         }
@@ -129,6 +144,9 @@ def main():
         print(f'    {bloc["entrees"]} entree(s), {bloc["resolues"]} '
               f'resolue(s) dans le graphe, '
               f'{bloc["ids_non_resolus"]} id(s) non resolu(s)')
+        if bloc['entrees_illisibles']:
+            print(f'    ILLISIBLES : {len(bloc["entrees_illisibles"])} — '
+                  f'{bloc["entrees_illisibles"][:5]}')
         print(f'    DIVERGENCES : {n}')
         par_entite = {}
         for d in bloc['divergences']:
@@ -139,9 +157,20 @@ def main():
             print(f'         graphe : {ds[0]["nom_canonique"]!r}')
         print()
 
+    illisibles = sum(len(b['entrees_illisibles'])
+                     for b in rapport['cartes'].values())
     print(f'TOTAL : {total} divergence(s) sur '
           f'{sum(b["resolues"] for b in rapport["cartes"].values())} '
           'entree(s) resolue(s)')
+    if illisibles:
+        # Ce total ne dit plus « il n y a pas de divergence » mais « il n y en
+        # a pas dans ce que j ai su lire » — deux phrases differentes. Le
+        # script le dit et sort en erreur plutot que de laisser croire a la
+        # premiere.
+        print(f'\nATTENTION : {illisibles} entree(s) de structure inattendue '
+              'n ont PAS pu etre comparees. Le total ci-dessus ne couvre donc '
+              'pas tout le fichier. Reparer la carte avant de le lire comme '
+              'une preuve de coherence.')
 
     if args.json:
         with open(args.json, 'w', encoding='utf-8') as f:
@@ -152,7 +181,7 @@ def main():
     # Sortie 1 s'il reste une divergence : ce script CONSTATE, il ne juge pas
     # de ce qu'il faut en faire. Le code permet de le cabler plus tard si
     # l'auteur decide que la coherence doit etre un invariant.
-    return CODE_DIVERGENCE if total else 0
+    return CODE_DIVERGENCE if (total or illisibles) else 0
 
 
 if __name__ == '__main__':
