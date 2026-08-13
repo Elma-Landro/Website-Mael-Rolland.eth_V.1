@@ -195,9 +195,20 @@ def etat_du_lot(carte_entites, carte_sections, empl_s, graphe_source, cible):
         with open(cible, encoding='utf-8') as f:
             reelle = json.load(f)
         a, b = signature_graphe(attendu), signature_graphe(reelle)
-        cible_conforme = not diff_graphe(a, b)
+        # `signature_graphe()` ne compare PAS le bloc `space` : elle sert a
+        # prouver que le contenu n a pas bouge, et une note ou un compteur ne
+        # sont pas du contenu. Mais un fichier dont `space.version` ne vaut
+        # pas v115 est refuse par `check_graph_integrity.py`, qui exige que la
+        # version declaree corresponde au nom du fichier. Sans ce controle,
+        # POST dirait « deja applique, tout est en ordre » d un graphe que la
+        # CI rejette — le lot serait declare sain et rouge en meme temps.
+        version_vue = (reelle.get('space') or {}).get('version')
+        cible_conforme = not diff_graphe(a, b) and version_vue == VERSION_CIBLE
         detail.append(f'{os.path.basename(cible)} present, conforme au diff '
                       f'canonique attendu : {cible_conforme}')
+        if version_vue != VERSION_CIBLE:
+            detail.append(f'  space.version vaut {version_vue!r} au lieu de '
+                          f'{VERSION_CIBLE!r}')
     else:
         detail.append(f'{os.path.basename(cible)} absent')
 
@@ -446,18 +457,58 @@ def main():
         echec(f'space.note fait {len(espace["note"])} caracteres pour un '
               f'plafond de {PLAFOND_NOTE}')
 
-    for chemin, donnees in ((args.target, resultat), (chemin_ce, neuf_e),
-                            (chemin_cs, neuf_s)):
-        temporaire = chemin + '.tmp'
-        try:
-            with open(temporaire, 'w', encoding='utf-8') as f:
+    # Trois sorties CORRELEES : le graphe et les deux cartes ne valent que
+    # ensemble. `os.replace` est atomique fichier par fichier, jamais sur un
+    # lot : ecrire-puis-basculer trois fois de suite laissait une panne au 2e
+    # ou au 3e tour produire exactement l etat que `etat_du_lot()` refuse —
+    # graphe corrige, cartes anciennes. POSIX ne sait pas rendre un lot de
+    # trois fichiers atomique, mais il sait deux choses utiles : tout ecrire
+    # AVANT de basculer quoi que ce soit, pour que la phase risquee se reduise
+    # a trois renommages ; et garder de quoi revenir en arriere si l un d eux
+    # echoue malgre tout.
+    sorties = ((args.target, resultat), (chemin_ce, neuf_e), (chemin_cs, neuf_s))
+    temporaires = {c: c + '.tmp' for c, _ in sorties}
+
+    def nettoyer():
+        for t in temporaires.values():
+            if os.path.exists(t):
+                os.unlink(t)
+
+    # Phase 1 — tout serialiser. Une panne ici ne touche aucun fichier suivi.
+    try:
+        for chemin, donnees in sorties:
+            with open(temporaires[chemin], 'w', encoding='utf-8') as f:
                 json.dump(donnees, f, ensure_ascii=False, indent=2)
                 f.write(fins.get(chemin, ''))
-            os.replace(temporaire, chemin)
-        except OSError as err:
-            if os.path.exists(temporaire):
-                os.unlink(temporaire)
-            echec(f'ecriture impossible : {err}')
+                f.flush()
+                os.fsync(f.fileno())
+    except OSError as err:
+        nettoyer()
+        echec(f'ecriture impossible, rien n a ete modifie : {err}')
+
+    # Phase 2 — basculer, en gardant l original de ce qui existait deja.
+    originaux, bascules = {}, []
+    for chemin, _ in sorties:
+        if os.path.exists(chemin):
+            with open(chemin, 'rb') as f:
+                originaux[chemin] = f.read()
+    try:
+        for chemin, _ in sorties:
+            os.replace(temporaires[chemin], chemin)
+            bascules.append(chemin)
+    except OSError as err:
+        for chemin in reversed(bascules):
+            if chemin in originaux:
+                with open(chemin, 'wb') as f:
+                    f.write(originaux[chemin])
+            else:
+                os.unlink(chemin)
+        nettoyer()
+        echec(f'bascule impossible ({err}) — les {len(bascules)} fichier(s) '
+              'deja remplaces ont ete restaures, le depot est intact. '
+              'Relancer le lot entier.')
+    nettoyer()
+    for chemin, _ in sorties:
         print(f'ecrit : {os.path.relpath(chemin, REPO)}')
     return 0
 
