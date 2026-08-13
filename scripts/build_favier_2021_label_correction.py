@@ -90,6 +90,36 @@ def attribut(entite, cle):
     return v
 
 
+def note_champs_nommants(entite, presents):
+    """La note de lecture des champs nommants, DEDUITE de ce qu'on a mesure.
+
+    Elle disait « la fiche ne porte AUCUN attribut » en dur, sur toutes les
+    lignes — y compris celle d'un champ qu'on venait de trouver present et de
+    marquer « A INSTRUIRE ». La ligne se contredisait donc elle-meme. C'est
+    aujourd'hui sans consequence (la fiche n'a pas de bloc `attributes` en
+    v114, et le script refuse tout autre graphe), mais une phrase vraie par
+    accident de donnees reste une phrase non verifiee : le jour ou elle
+    devient fausse, elle le devient en silence, dans un CSV d'instruction dont
+    tout le propos est de ne rien affirmer qu'il n'ait relu.
+    """
+    if presents:
+        return ('la fiche porte ' + ', '.join(f'`{c}`' for c in presents) +
+                " : `name` n est PLUS son seul appui nommant. Le chantier a "
+                'ete instruit sur une fiche qui n en portait aucun — une '
+                'correction limitee a `name` laisserait le libelle faux '
+                'accessible ailleurs. Reinstruire avant d appliquer.')
+    portes = sorted((entite.get('attributes') or {}))
+    if portes:
+        return ('la fiche ne porte aucun champ NOMMANT (ni title, ni label, '
+                'ni alias) ; ses seuls attributs sont ' +
+                ', '.join(f'`{c}`' for c in portes) + '. Son seul appui '
+                'nommant est `name` — c est aussi pourquoi la correction ne '
+                'peut porter que sur lui.')
+    return ("la fiche ne porte AUCUN attribut : ni title, ni year, ni "
+            "label, ni alias. Son seul appui nommant est `name` — c est "
+            "aussi pourquoi la correction ne peut porter que sur lui.")
+
+
 def construire(courant):
     with open(courant, encoding='utf-8') as f:
         g = json.load(f)
@@ -144,6 +174,13 @@ def construire(courant):
             "le SUPPORT est faux : « La voie du Bitcoin » appartient a :474.",
     }]
 
+    # Mesure d'abord, redaction ensuite : la note est commune aux lignes, donc
+    # elle doit connaitre TOUS les champs presents, pas seulement celui de la
+    # ligne en cours. Une note deduite ligne par ligne dirait « aucun » sur la
+    # ligne d'un champ absent alors qu'un autre champ est present.
+    presents = [c for c in CHAMPS_NOMMANTS if attribut(fiche, c) is not None]
+    note_nommants = note_champs_nommants(fiche, presents)
+
     for cle in CHAMPS_NOMMANTS:
         valeur = attribut(fiche, cle)
         lignes.append({
@@ -160,10 +197,7 @@ def construire(courant):
                                 else 'un champ nommant non corrige laisserait '
                                      'le libelle faux accessible ailleurs',
             'decision_needed': 'aucune' if valeur is None else 'a arbitrer',
-            'note_de_lecture':
-                "la fiche ne porte AUCUN attribut : ni title, ni year, ni "
-                "label, ni alias. Son seul appui nommant est `name` — c est "
-                "aussi pourquoi la correction ne peut porter que sur lui.",
+            'note_de_lecture': note_nommants,
         })
 
     lignes.append({
