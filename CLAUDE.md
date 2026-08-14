@@ -151,7 +151,9 @@ Converts the JSON snapshot to GRC-20 wire format and publishes it on-chain.
 | `--batch-size <n>` | Ops per IPFS edit (default: 200) |
 | `--author <ens>` | ENS address for authorship |
 
-**Environment variables (preferred over CLI flags):**
+**Environment variables** — the recommended way to configure the pipeline, and
+the only acceptable one for the private key (a flag value lands in the shell
+history and in `ps` output):
 ```
 GEO_PRIVATE_KEY     # Ethereum private key — NEVER commit this
 GEO_SPACE_ID        # Target GRC-20 space
@@ -159,6 +161,18 @@ GEO_NETWORK         # TESTNET or MAINNET
 GEO_INPUT           # Path to input JSON
 GEO_AUTHOR          # ENS address
 ```
+
+> **Precedence — a CLI flag that is present wins over its variable.**
+> Recommending the variables is a matter of hygiene; it is *not* the resolution
+> order, and this file used to state the two as one. `grc20-publish.mjs:93-100`
+> resolves each setting as `args['<flag>'] || process.env.GEO_<NAME>`, so the
+> variable is the **fallback**, consulted only when the flag is absent
+> (`--network` then `GEO_NETWORK`, else `TESTNET`).
+>
+> Practical consequence, since the `npm` scripts pass flags: `npm run mainnet`
+> hard-codes `--network MAINNET --input <graph>`, so neither `GEO_NETWORK` nor
+> `GEO_INPUT` can redirect it. Use `node grc20-publish.mjs` directly to drive
+> the run from the environment.
 
 ### `graph-worker.mjs` — Cloudflare Worker API
 
