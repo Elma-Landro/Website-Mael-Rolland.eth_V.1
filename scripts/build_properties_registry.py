@@ -161,7 +161,16 @@ EXCLUSIONS_READ_BY = {
                'scripts/build_patch_application_ledger.py'},
     'note': {'scripts/audit_section_page_start.py',
              'scripts/build_patch_queue_governance.py',
-             'scripts/build_bibliography_authorship_support.py'},
+             'scripts/build_bibliography_authorship_support.py',
+             'scripts/build_applicator_inventory.py'},
+    # `source` et `note` dans build_applicator_inventory.py : vocabulaire
+    # ordinaire, pas des cles d'attribut. Cet inventaire parle de la version
+    # SOURCE d'un applicateur et de `space.note` — un champ de l'enveloppe
+    # `space`, qui n'est pas un attribut d'entite. Il ne lit du graphe que
+    # `entities`, `relations` et `space` pour comparer deux instantanes.
+    # Ce n'est pas non plus un SCRIPTS_ENUMERANTS : il n'enumere aucune famille
+    # de cles, il en croise deux par accident de langue.
+    'source': {'scripts/build_applicator_inventory.py'},
     # `risk` et `note` sont, dans build_bibliography_authorship_support.py, des
     # NOMS DE COLONNE du CSV de decision — imposes par le cahier des charges du
     # chantier, donc non renommables. Le script ne lit aucun attribut d'entite :

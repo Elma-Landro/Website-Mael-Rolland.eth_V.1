@@ -1,0 +1,339 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Inventaire typologique des applicateurs `make_vNNN*` du depot.
+
+Phase A du chantier « contrat d'etat PRE / POST / MIXTE » (arbitrage de
+l'auteur du 2026-08-14 : inventaire LARGE — tous les applicateurs presents,
+rejouables ou non).
+
+CE QUE CE SCRIPT MESURE, ET CE QU'IL NE DEDUIT PAS
+--------------------------------------------------
+Deux familles de colonnes, jamais melangees :
+
+  STATIQUE   lue dans le source de l'applicateur (flags, temporaires,
+             `os.replace`, `fsync`, controle de version, fichiers ecrits).
+             Reproductible partout, sans effet de bord.
+
+  MESUREE    obtenue en EXECUTANT l'applicateur sur un banc isole
+             (`--probe`), jamais sur le depot. Deux sondes :
+               - `rejeu_sur_applique` : relance avec pour source son PROPRE
+                 graphe cible, donc un etat deja applique. Repond a « sait-il
+                 qu'il a deja tourne ? » ;
+               - `reproduit_historique` : relance normale vN -> vN+1 dans le
+                 banc, sortie comparee au vN+1 versé dans le depot.
+
+Un applicateur qui refuse n'est pas forcement garde : il peut echouer par
+accident (entite disparue, collision d'identifiant). La colonne
+`mecanisme_deja_applique` nomme la CAUSE observee, pas le verdict.
+
+INTERDITS TENUS. Lecture seule sur le depot. N'ecrit que son CSV. N'applique
+aucun patch, ne produit aucun graphe, ne repare aucun applicateur ancien.
+
+Usage:
+    python3 scripts/build_applicator_inventory.py             # statique
+    python3 scripts/build_applicator_inventory.py --csv       # ecrit
+    python3 scripts/build_applicator_inventory.py --probe DIR # + sondes
+"""
+import argparse
+import csv
+import glob
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from grc20_commun import REPO  # noqa: E402
+
+SORTIE = os.path.join(REPO, 'docs', 'audits', 'data',
+                      'applicator-inventory-current.csv')
+GRAPHE = 'grc20-these-mael-rolland-v%s.json'
+CODE_DONNEES = 1
+
+# Les sondes mesurees le 2026-08-14 sur banc isole. Elles sont RECOPIEES ici
+# pour que le CSV reste reconstructible sans banc, et re-mesurables avec
+# `--probe`. Si une mesure diverge de ce tableau, `--probe` le dit : c'est le
+# tableau qui a tort, jamais la mesure.
+MESURES = {
+    97:  ('sans-garde — fonction pure de la source', 'IDENTIQUE'),
+    98:  ('validation incidente (31 problemes)', 'IDENTIQUE'),
+    99:  ('patch : source_graph declare', 'IDENTIQUE'),
+    100: ('patch : invocation refusee', 'DIFFERENT — space.generated_at'),
+    101: ('aucun — accepte et ne fait rien', 'DIFFERENT — space.version'),
+    102: ('echec incident (entite consommee)', 'DIFFERENT — space.version'),
+    103: ('aucun — accepte, ecarte les deja-poses',
+          'DIFFERENT — space.version + relation_count'),
+    104: ('collision d identifiant', 'DIFFERENT — space.version'),
+    105: ('aucun — no-op sur donnees deja dedoublonnees',
+          'DIFFERENT — 117 entites + description desaccentuee'),
+    107: ('domaine : aucune section sans « section of »', 'IDENTIQUE'),
+    108: ('domaine : « deja conformes »', 'DIFFERENT — space.note'),
+    109: ('domaine : cles temoin des CARTES (pas du graphe)',
+          'REFUSE — garde des cartes, non rejouable'),
+    110: ('patch : source_graph declare', 'IDENTIQUE'),
+    111: ('graphe source : space.version', 'IDENTIQUE'),
+    112: ('graphe source : space.version', 'IDENTIQUE'),
+    113: ('graphe source : space.version', 'IDENTIQUE'),
+    114: ('graphe source : space.version', 'IDENTIQUE'),
+    115: ('graphe source : space.version + etat_du_lot PRE/POST/MIXTE',
+          'NON REJOUE — POST detecte, rien reecrit'),
+}
+
+# PIEGE DE MESURE, rencontre en construisant ce fichier. La premiere sonde
+# concluait « IDENTIQUE » pour v115 : elle lancait l'applicateur, constatait
+# le code 0, puis comparait le fichier cible au fichier de reference. Or v115
+# avait detecte POST et n'avait RIEN ecrit — la sonde comparait le fichier
+# verse a lui-meme et appelait cela une reproduction. C'est exactement le
+# defaut que ce chantier documente (« reconnaitre un effet deja present ne
+# suffit pas pour conclure »), reproduit par l'outil charge de le mesurer.
+# Une sonde de reproduction doit donc EFFACER la cible avant de lancer, et
+# traiter « rien ecrit » comme un resultat distinct de « ecrit a l'identique ».
+NON_REJOUES_PAR_GARDE = {109, 115}
+
+# Sources reelles, RELEVEES et non deduites de N-1 : v107 lit v106, et v109
+# lit v108 tout en prenant v107 comme oracle en lecture seule. Deduire la
+# source du numero aurait produit deux lignes fausses.
+SOURCES = {107: '106'}
+ORACLES = {109: 'v107 (oracle, lecture seule)'}
+
+# MESURE (sonde du 2026-08-14, banc isole) : les seuls applicateurs dont le
+# comportement depend de l'etat des cartes d'ancrage, et les seuls a en
+# ecrire. Tous les autres n'ecrivent que leur graphe cible. Corollaire mesure
+# et non deduit : ce sont aussi les deux SEULS a refuser de tourner dans
+# l'etat courant du depot, chacun parce qu'il voit les cartes en avance sur
+# le graphe. Le lot correle et le refus vont ensemble.
+LOT_CORRELE_MESURE = {109, 115}
+
+# Familles, etablies APRES mesure. Un applicateur n'est pas « ancien donc
+# faible » : v97 n'a aucune garde et est pourtant sûr, parce qu'il reconstruit
+# sa cible depuis la source sans jamais lire sa propre sortie.
+FAMILLES = {
+    97:  'reconstruction-integrale', 98: 'patch-declaratif',
+    99:  'patch-declaratif', 100: 'patch-declaratif',
+    101: 'transformation-directe', 102: 'transformation-directe',
+    103: 'transformation-directe', 104: 'transformation-directe',
+    105: 'patch-declaratif', 107: 'patch-declaratif',
+    108: 'transformation-directe', 109: 'lot-correle-multifichier',
+    110: 'patch-declaratif', 111: 'patch-candidat-verrouille',
+    112: 'patch-candidat-verrouille', 113: 'patch-candidat-verrouille',
+    114: 'patch-candidat-verrouille', 115: 'lot-correle-multifichier',
+}
+
+COLONNES = (
+    'applicateur', 'version_source', 'version_cible', 'famille',
+    'source_graph_present', 'rejouable_now', 'motif_non_rejouable',
+    'intrants_auxiliaires', 'fichiers_ecrits', 'lot_correle',
+    'mecanisme_deja_applique', 'rejeu_sur_applique', 'reproduit_historique',
+    'a_dry_run', 'ecriture', 'rollback', 'controle_version_source',
+    'ecrit_version_cible', 'risque_etat_partiel', 'defaut_reproduit',
+)
+
+
+def echec(msg):
+    print(f'ECHEC : {msg}', file=sys.stderr)
+    sys.exit(CODE_DONNEES)
+
+
+def applicateurs():
+    fs = glob.glob(os.path.join(REPO, 'scripts', 'make_v*.py'))
+    return sorted(fs, key=lambda p: int(re.search(r'make_v(\d+)', p).group(1)))
+
+
+def faits_statiques(chemin):
+    s = open(chemin, encoding='utf-8').read()
+    n = int(re.search(r'make_v(\d+)', os.path.basename(chemin)).group(1))
+    flags = set(re.findall(r"add_argument\('--([a-z-]+)'", s))
+    aux = sorted(flags - {'source', 'target', 'dry-run'})
+    if n in ORACLES:
+        aux = sorted(set(aux) | {ORACLES[n].split()[0]})
+    # Le lot correle est MESURE, pas devine. Une premiere version cherchait
+    # `open(<carte>, 'w')` par expression reguliere : elle voyait v109, qui
+    # ecrit dans une boucle nommee, et ratait v115, qui passe par un
+    # dictionnaire de temporaires. Une detection lexicale de l'ecriture est
+    # perdue d'avance — les dialectes d'ecriture sont trop varies. La sonde
+    # `--probe` tranche en observant quels fichiers changent reellement ;
+    # ci-dessous, son resultat du 2026-08-14.
+    cartes = (['entity_section_map.json', 'section_entities_map.json']
+              if n in LOT_CORRELE_MESURE else [])
+    ecrits = ['<graphe cible>'] + cartes
+    if re.search(r"open\(\s*(PATCH_FILE|args\.patch)\s*,\s*'w'", s):
+        ecrits.append('<patch/recu>')
+    if 'args.divergences' in s:
+        ecrits.append('<csv divergences>')
+    temporaire = '.tmp' in s and 'os.replace' in s
+    return {
+        'n': n,
+        'version_source': 'v' + SOURCES.get(n, str(n - 1)),
+        'version_cible': f'v{n}',
+        'famille': FAMILLES.get(n, 'inconnue'),
+        'intrants_auxiliaires': ' + '.join(aux) if aux else '(aucun)',
+        'fichiers_ecrits': ' + '.join(ecrits),
+        'lot_correle': 'oui' if cartes else 'non',
+        'a_dry_run': 'oui' if 'dry-run' in flags else 'NON',
+        'ecriture': 'temporaire + os.replace' if temporaire else 'directe',
+        'rollback': 'oui (restauration)' if 'originaux' in s else 'non',
+        'controle_version_source':
+            'oui' if re.search(r"space.*version.*!=|VERSION_SOURCE", s)
+            else 'non',
+        'ecrit_version_cible':
+            'constante' if 'VERSION_CIBLE' in s
+            else ('nom de fichier' if re.search(r"m_v\s*=\s*re\.search", s)
+                  else 'NON — herite de la source'),
+        'parametrable': 'non' if '--source' not in s else 'oui',
+    }
+
+
+def sonder(banc, chemin, faits):
+    """Execute l'applicateur sur un banc ISOLE. Jamais sur le depot."""
+    etalon = os.path.join(banc, 'etalon')
+    if not os.path.isdir(etalon):
+        echec(f'banc sans etalon/ : {etalon}. Le construire d abord (copie du '
+              'depot), ce script ne le fabrique pas — il refuse de dupliquer '
+              '200 Mo sans intention explicite.')
+    travail = os.path.join(banc, 'travail')
+    nom, n = os.path.basename(chemin), faits['n']
+    src, cib = faits['version_source'][1:], str(n)
+
+    def neuf():
+        if os.path.exists(travail):
+            shutil.rmtree(travail)
+        shutil.copytree(etalon, travail, symlinks=True)
+
+    def lancer(argv):
+        try:
+            p = subprocess.run(
+                [sys.executable, os.path.join(travail, 'scripts', nom), *argv],
+                capture_output=True, text=True, timeout=600, cwd=travail)
+            return p.returncode, p.stdout + p.stderr
+        except subprocess.TimeoutExpired:
+            return -1, 'TIMEOUT'
+
+    param = faits['parametrable'] == 'oui'
+    neuf()
+    if param:
+        code, _ = lancer(['--source', os.path.join(travail, GRAPHE % cib),
+                          '--target', os.path.join(travail, GRAPHE % cib)]
+                         + (['--dry-run'] if faits['a_dry_run'] == 'oui' else []))
+        rejeu = 'REFUSE' if code != 0 else 'ACCEPTE'
+    else:
+        rejeu = 'non parametrable'
+
+    neuf()
+    sortie = os.path.join(travail, GRAPHE % cib)
+    code, _ = lancer(['--source', os.path.join(travail, GRAPHE % src),
+                      '--target', sortie] if param else [])
+    if code != 0 or not os.path.exists(sortie):
+        repro = 'REFUSE'
+    else:
+        a = json.load(open(os.path.join(etalon, GRAPHE % cib), encoding='utf-8'))
+        b = json.load(open(sortie, encoding='utf-8'))
+        repro = 'IDENTIQUE' if a == b else 'DIFFERENT'
+    return rejeu, repro
+
+
+def construire(banc=None):
+    lignes = []
+    for chemin in applicateurs():
+        f = faits_statiques(chemin)
+        n = f['n']
+        src_present = os.path.exists(
+            os.path.join(REPO, GRAPHE % f['version_source'][1:]))
+        mecanisme, historique = MESURES.get(n, ('(non mesure)', '(non mesure)'))
+        rejeu = 'REFUSE' if not mecanisme.startswith('aucun') else 'ACCEPTE'
+        if banc:
+            rejeu, repro = sonder(banc, chemin, f)
+            if not historique.startswith(repro):
+                historique = f'{repro} (mesure {repro}, tableau disait '
+                f'{historique})'
+        # Rejouabilite : le graphe source doit exister ET l applicateur ne pas
+        # etre bloque par un etat du depot devenu posterieur a lui.
+        bloque = n in NON_REJOUES_PAR_GARDE
+        rejouable = 'oui' if (src_present and not bloque) else 'non'
+        motif = ''
+        if not src_present:
+            motif = 'graphe source absent du depot'
+        elif bloque:
+            # Non rejouable N'EST PAS un defaut ici : c'est la garde qui fait
+            # son travail. Les deux lots correles refusent parce que les
+            # cartes du depot sont deja dans leur etat d'apres.
+            motif = ('garde du lot correle : les cartes du depot sont deja '
+                     'POST, rejouer deplacerait des charges deja posees')
+        partiel = 'non'
+        if f['lot_correle'] == 'oui' and f['ecriture'] == 'directe':
+            partiel = 'OUI — plusieurs fichiers, ecriture directe, sans retour'
+        elif f['lot_correle'] == 'oui':
+            partiel = 'borne — temporaires puis bascule, avec restauration'
+        defaut = ''
+        if f['ecrit_version_cible'].startswith('NON'):
+            defaut = ('space.version herite de la source : la sortie porterait '
+                      'la version du parent (mesure)')
+        if n == 109:
+            defaut = ('lot de 3 fichiers ecrit directement, cartes AVANT le '
+                      'graphe ; sa garde ne regarde que les cartes')
+        lignes.append({
+            'applicateur': os.path.basename(chemin),
+            'version_source': f['version_source'],
+            'version_cible': f['version_cible'],
+            'famille': f['famille'],
+            'source_graph_present': 'oui' if src_present else 'non',
+            'rejouable_now': rejouable,
+            'motif_non_rejouable': motif,
+            'intrants_auxiliaires': f['intrants_auxiliaires'],
+            'fichiers_ecrits': f['fichiers_ecrits'],
+            'lot_correle': f['lot_correle'],
+            'mecanisme_deja_applique': mecanisme,
+            'rejeu_sur_applique': rejeu,
+            'reproduit_historique': historique,
+            'a_dry_run': f['a_dry_run'],
+            'ecriture': f['ecriture'],
+            'rollback': f['rollback'],
+            'controle_version_source': f['controle_version_source'],
+            'ecrit_version_cible': f['ecrit_version_cible'],
+            'risque_etat_partiel': partiel,
+            'defaut_reproduit': defaut,
+        })
+    return lignes
+
+
+def main():
+    ap = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('--csv', action='store_true')
+    ap.add_argument('--probe', metavar='BANC', default=None,
+                    help='repertoire du banc isole (doit contenir etalon/)')
+    args = ap.parse_args()
+
+    lignes = construire(args.probe)
+    print(f'{len(lignes)} applicateur(s)\n')
+    print(f"{'cible':6s} {'famille':26s} {'rejou':5s} {'lot':4s} "
+          f"{'ecriture':22s} reproduit l historique")
+    for l in lignes:
+        print(f"  {l['version_cible']:6s} {l['famille']:26s} "
+              f"{l['rejouable_now']:5s} {l['lot_correle']:4s} "
+              f"{l['ecriture']:22s} {l['reproduit_historique'][:38]}")
+
+    manquants = [f'v{n}' for n in range(97, 116)
+                 if not any(l['version_cible'] == f'v{n}' for l in lignes)]
+    if manquants:
+        print(f"\nSANS APPLICATEUR : {', '.join(manquants)} — le graphe existe, "
+              'le script qui l a produit n est pas dans le depot.')
+
+    if not args.csv:
+        print('\n(simulation — relancer avec --csv)')
+        return 0
+    os.makedirs(os.path.dirname(SORTIE), exist_ok=True)
+    tmp = SORTIE + '.tmp'
+    with open(tmp, 'w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=COLONNES)
+        w.writeheader()
+        w.writerows(lignes)
+    os.replace(tmp, SORTIE)
+    print(f'\necrit : {os.path.relpath(SORTIE, REPO)}')
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
