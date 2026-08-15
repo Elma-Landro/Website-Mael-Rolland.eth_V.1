@@ -1,6 +1,6 @@
 # Grille de rôles v0 — catalogue d'événements
 
-**Statut : v0 validée par Maël Rolland le 15/08/2026 (arbitrage D6), gelable seulement après la passe d'épreuve Q7 (arbitrage D11).** Une fois gelée, aucun renommage silencieux : tout changement produit une v1 ou une table de correspondance versionnée (règle de la page d'architecture, §7.3, appliquée ici par extension).
+**Statut : v0 validée par Maël Rolland le 15/08/2026 (arbitrage D6) ; passe d'épreuve Q7 réussie (14/14, `q7-epreuve-lot.csv` puis `q7-epreuve-lot-v2.csv`) ; GELÉE par ratification formelle du 15/08/2026** (verbatim : `docs/audits/arbitrages-gel-q7v1-roles-v0-2026-08-15.md`). Conséquences du gel : plus de renommage silencieux des rôles ; ajout possible seulement par version ultérieure ; `non_applicable` et `incertain` maintenus ; la table longue `event_id / actor_id ou actor_name / role / confidence / note` demeure la donnée maîtresse. Tout changement produit une v1 ou une table de correspondance versionnée (règle de la page d'architecture, §7.3, appliquée ici par extension).
 
 Destination au dépôt : `docs/research/catalogue-evenements/grille-roles-v0.md`.
 Document de référence : `docs/architecture/catalogue-graphe-site.md` §4 (grille de rôles v2 y était esquissée ; le présent document la remplace comme spécification, sur arbitrage D6).
@@ -34,7 +34,7 @@ La paire attaquant/résolveur est **refusée** (D6) : trop morale, trop étroite
 | `non_applicable` | — | l'événement ne se prête pas à ce codage (certains seuils) |
 | `incertain` | — | les sources ne permettent pas de trancher ; jamais de rôle forcé |
 
-Règles transversales : aucun rôle n'est forcé (une ligne sans rôle codable reste sans ligne de rôle, ou porte `incertain`) ; aucun rôle n'est créé en silence (trou typologique → note + arbitrage) ; le vocabulaire est fermé jusqu'à la passe d'épreuve.
+Règles transversales : aucun rôle n'est forcé (une ligne sans rôle codable reste sans ligne de rôle, ou porte `incertain`) ; aucun rôle n'est créé en silence (trou typologique → note + arbitrage) ; le vocabulaire est gelé (ratification du 15/08/2026) — ajout possible seulement par version ultérieure.
 
 ## 3. Forme de la donnée — table satellite (D6)
 
@@ -52,7 +52,7 @@ E065;core_devs;;correcteur;haute;réponse protocolaire
 - `actor_id` — un des 7 types d'acteurs v1, ou `nd` si hors typologie *(recommandation : garder la typologie v1 comme clé, le nom propre en précision — à confirmer à l'usage)* ;
 - `actor_name` — nom propre optionnel (personne, entité, protocole) quand il précise ;
 - `role` — un rôle du §2, exactement ;
-- `confidence` — `haute` / `moyenne` / `basse` *(vocabulaire proposé, non arbitré — la passe d'épreuve dira s'il suffit)* ;
+- `confidence` — `haute` / `moyenne` / `basse` *(suffisant à l'épreuve — 40 codages sans besoin d'un cran de plus ; gelé avec la table le 15/08/2026)* ;
 - `note` — source ou justification courte, recommandée dès que `confidence` n'est pas `haute`.
 
 Plusieurs lignes par événement sont la norme, pas l'exception. Une **vue pivotée** (une ligne par événement, rôles agrégés) pourra être dérivée par script pour les articles ou le site ; elle est un produit, jamais la source.
@@ -67,6 +67,8 @@ Pour le CSV maître, l'acteur principal ne revient **jamais automatiquement** à
 - **acte ponctuel** (une attaque datée, une publication, un patch, une annonce) → `acteur_principal` = **l'initiateur de l'acte** ;
 - le partage crise agrégée / acte ponctuel dépend de la **granularité de la ligne**, jamais d'un jugement moral ;
 - **doute** → `acteur_principal = a_arbitrer`.
+
+Règle affinée par les arbitrages A1-A2 du 15/08/2026 (incident ponctuel subi sans initiateur pertinent → entité affectée ; forme en colonnes `acteur_principal_mode` / `id` / `nom`) : voir `vocabulaire-q7-v1-proposition.md` §5, spécification gelée.
 
 Conséquence : les 40 lignes du lot 1 (codées sous l'ancienne convention E065) devront être re-passées sous cette règle — **hors périmètre du lot 2** (pas de codage massif), sauf celles qui entrent dans le lot d'épreuve Q7.
 
