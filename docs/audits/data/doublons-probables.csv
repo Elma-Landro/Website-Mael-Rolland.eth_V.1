@@ -1,0 +1,20 @@
+score;id_graphe;intitule_graphe;id_catalogue;intitule_catalogue
+0.5;G095;Bitcoin-QT 0.1 client lourd (9 janvier 2009);E004;Publication du client Bitcoin-Qt v0.1
+0.33;G174;Frontier (lancement mainnet Ethereum, juillet 2015);E062;Lancement d'Ethereum Frontier (mainnet)
+0.33;G165;NYSE publie données de prix Bitcoin (2015);E058;NYSE publie des cotations
+0.33;G110;Coinbase : croissance et levee de fonds 75M$ (2015);E059;Levee record Coinbase (75 M dollars)
+0.33;G109;Capital-risque dans l ecosysteme Bitcoin (2012-2015);E032;Entree du capital-risque (2.1 M dollars investis)
+0.33;G093;Slashdot article parite BTC/$ (fevrier 2011);E020;Parite 1 BTC = 1 dollar (saluee par Slashdot)
+0.33;G085;Lancement de Namecoin (merge mining);E031;Lancement de Litecoin (C. Lee)
+0.33;G083;Première pool de minage (Slush Pool);E016;Slushpool - premier pool de minage cooperatif
+0.33;G076;Premier minage GPU;E016;Slushpool - premier pool de minage cooperatif
+0.33;G055;Bitcoin Faucet;E014;Premier Faucet (Andresen - 50 BTC par visite)
+0.33;G054;Démantèlement de Silk Road;E041;Saisie de Silk Road (FBI) - arrestation d'Ulbricht
+0.33;G049;Bitcoin-Qt (client lourd);E073;Futures Bitcoin (CBOE et CME)
+0.33;G049;Bitcoin-Qt (client lourd);E004;Publication du client Bitcoin-Qt v0.1
+0.29;G145;Rapport BCE sur les monnaies virtuelles (octobre 201;E037;Rapport BCE Virtual Currency Schemes
+0.29;G104;Nasdaq publie donnees de prix Bitcoin (fin 2013);E042;Nasdaq publie des cotations agregees
+0.29;G080;Première bourse d’échange importante (MtGox);E012;Bitcoinmarket.com - premiere bourse et premiere cota
+0.29;G071;Publication du WP Bitcoin (mailing list);E002;Publication du WP via la Cryptography Mailing List
+0.29;G051;Crise chypriote (référence dans la monétisation);E045;Crise chypriote - BTC valeur refuge a 230 dollars
+0.29;G011;Fermeture Silk Road par le FBI (octobre 2013);E041;Saisie de Silk Road (FBI) - arrestation d'Ulbricht
