@@ -53,6 +53,7 @@ COULEURS = {
     '255,150,180,247': ('iv', '#96b4f7', 'bleu fonce', 'calibre : 3/4 sur le catalogue'),
     '255,157,239,250': ('v', '#9deffa', 'bleu clair', 'contenu : BCE, Senat, Tracfin, CFTC'),
     '255,247,179,179': ('vi', '#f7b3b3', 'rouge', 'calibre : 2/2 sur le catalogue'),
+    '255,240,91,155': ('vii', '#f05b9b', 'rose', 'contenu V2.8 : altcoins, Ethereum, Tether, DAO'),
     '255,237,166,247': ('viii', '#eda6f7', 'violet', 'contenu : levees de fonds, vols, faucet'),
 }
 
