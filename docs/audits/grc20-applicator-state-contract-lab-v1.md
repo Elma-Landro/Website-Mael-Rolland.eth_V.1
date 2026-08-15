@@ -34,6 +34,22 @@ effet déjà présent ne suffit pas pour conclure » — reproduit par l'outil c
 de le mesurer. Une sonde de reproduction doit **effacer la cible avant de
 lancer**, et traiter « rien écrit » comme distinct de « écrit à l'identique ».
 
+**Et documenter un piège ne le retire pas du code.** Le paragraphe ci-dessus
+était écrit, la table `MESURES` corrigée à la main — mais `sonder()` gardait la
+faute : elle laissait la cible en place et comparait du JSON chargé, ce qui ne
+peut pas soutenir la phrase « octet pour octet ». Signalé en revue, corrigé :
+la cible est effacée avant lancement, « code 0 sans écriture » est un résultat
+distinct d'un refus, et la comparaison se fait en octets. La sonde a ensuite été
+passée sur les 18 applicateurs : **elle ne contredit la table sur aucune ligne**,
+et un désaccord serait désormais écrit dans la colonne au lieu d'y disparaître.
+
+Deux autres défauts de cet outil, trouvés au même moment : le verdict de rejeu
+était *déduit* de la prose du mécanisme (`startswith('aucun')`) et se trompait
+sur trois lignes — v97, v107 et v108, mesurés acceptants, étaient écrits
+`REFUSE` ; et le message signalant un écart sonde/table était tronqué par une
+concaténation de f-strings cassée. Un verdict lu dans un texte explicatif est
+une paraphrase, pas une mesure : il est désormais stocké.
+
 ---
 
 ## Phase A — Inventaire

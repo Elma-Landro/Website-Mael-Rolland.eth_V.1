@@ -56,29 +56,46 @@ CODE_DONNEES = 1
 # pour que le CSV reste reconstructible sans banc, et re-mesurables avec
 # `--probe`. Si une mesure diverge de ce tableau, `--probe` le dit : c'est le
 # tableau qui a tort, jamais la mesure.
+# Trois valeurs par applicateur : (mecanisme observe, verdict de rejeu, and
+# reproduction de l'historique). Le verdict de rejeu est STOCKE, jamais deduit
+# du mecanisme : une premiere version le derivait de la prose
+# (`mecanisme.startswith('aucun')`), et ecrivait donc `REFUSE` pour v97, v107
+# et v108 — trois applicateurs mesures ACCEPTANTS. Un verdict lu dans un texte
+# explicatif n'est pas une mesure, c'est une paraphrase, et elle etait fausse
+# sur trois lignes sur dix-huit.
 MESURES = {
-    97:  ('sans-garde — fonction pure de la source', 'IDENTIQUE'),
-    98:  ('validation incidente (31 problemes)', 'IDENTIQUE'),
-    99:  ('patch : source_graph declare', 'IDENTIQUE'),
-    100: ('patch : invocation refusee', 'DIFFERENT — space.generated_at'),
-    101: ('aucun — accepte et ne fait rien', 'DIFFERENT — space.version'),
-    102: ('echec incident (entite consommee)', 'DIFFERENT — space.version'),
-    103: ('aucun — accepte, ecarte les deja-poses',
+    97:  ('sans-garde — fonction pure de la source',
+          'ACCEPTE (non parametrable — rejeu direct, reecrit a l identique)',
+          'IDENTIQUE'),
+    98:  ('validation incidente (31 problemes)', 'REFUSE', 'IDENTIQUE'),
+    99:  ('patch : source_graph declare', 'REFUSE', 'IDENTIQUE'),
+    100: ('patch : invocation refusee', 'REFUSE',
+          'DIFFERENT — space.generated_at'),
+    101: ('aucun — accepte et ne fait rien', 'ACCEPTE',
+          'DIFFERENT — space.version'),
+    102: ('echec incident (entite consommee)', 'REFUSE',
+          'DIFFERENT — space.version'),
+    103: ('aucun — accepte, ecarte les deja-poses', 'ACCEPTE',
           'DIFFERENT — space.version + relation_count'),
-    104: ('collision d identifiant', 'DIFFERENT — space.version'),
-    105: ('aucun — no-op sur donnees deja dedoublonnees',
+    104: ('collision d identifiant', 'REFUSE', 'DIFFERENT — space.version'),
+    105: ('aucun — no-op sur donnees deja dedoublonnees', 'ACCEPTE',
           'DIFFERENT — 117 entites + description desaccentuee'),
-    107: ('domaine : aucune section sans « section of »', 'IDENTIQUE'),
-    108: ('domaine : « deja conformes »', 'DIFFERENT — space.note'),
-    109: ('domaine : cles temoin des CARTES (pas du graphe)',
+    107: ('domaine : aucune section sans « section of »', 'ACCEPTE',
+          'IDENTIQUE'),
+    108: ('domaine : « deja conformes »', 'ACCEPTE', 'DIFFERENT — space.note'),
+    109: ('domaine : cles temoin des CARTES (pas du graphe)', 'REFUSE',
           'REFUSE — garde des cartes, non rejouable'),
-    110: ('patch : source_graph declare', 'IDENTIQUE'),
-    111: ('graphe source : space.version', 'IDENTIQUE'),
-    112: ('graphe source : space.version', 'IDENTIQUE'),
-    113: ('graphe source : space.version', 'IDENTIQUE'),
-    114: ('graphe source : space.version', 'IDENTIQUE'),
+    110: ('patch : source_graph declare', 'REFUSE', 'IDENTIQUE'),
+    111: ('graphe source : space.version', 'REFUSE', 'IDENTIQUE'),
+    112: ('graphe source : space.version', 'REFUSE', 'IDENTIQUE'),
+    113: ('graphe source : space.version', 'REFUSE', 'IDENTIQUE'),
+    114: ('graphe source : space.version', 'REFUSE', 'IDENTIQUE'),
+    # v115 : la sonde efface la cible avant de lancer (voir `sonder`), donc
+    # elle voit les cartes POST sans graphe -> MIXTE -> refus. C'est la mesure
+    # honnete ; « POST detecte, rien reecrit » decrivait l'ancienne sonde, qui
+    # laissait la cible en place.
     115: ('graphe source : space.version + etat_du_lot PRE/POST/MIXTE',
-          'NON REJOUE — POST detecte, rien reecrit'),
+          'REFUSE', 'REFUSE — cible effacee, cartes POST donc MIXTE'),
 }
 
 # PIEGE DE MESURE, rencontre en construisant ce fichier. La premiere sonde
@@ -241,6 +258,14 @@ def sonder(banc, chemin, faits):
             echec(f'{nom} du banc pointe hors du banc ({rs}) — un lien '
                   'symbolique ferait executer un fichier du depot reel.')
         try:
+            # nosemgrep: python.lang.security.audit.dangerous-subprocess-use-audit
+            # Alerte examinee, pas ignoree : forme LISTE sans `shell=True` (donc
+            # aucun interpreteur, aucun metacaractere), arguments issus de
+            # `sys.executable` et d'un glob du depot. Ce que la regle vise
+            # reellement — executer du code d'un repertoire fourni par
+            # l'appelant — est traite par les trois gardes ci-dessus, chacune
+            # provoquee. La regle ne peut pas etre satisfaite autrement : un
+            # banc de sonde execute par definition un chemin calcule.
             p = subprocess.run(
                 [sys.executable, script, *argv],
                 capture_output=True, text=True, timeout=600, cwd=travail)
@@ -260,13 +285,31 @@ def sonder(banc, chemin, faits):
 
     neuf()
     sortie = os.path.join(travail, GRAPHE % cib)
+    # EFFACER LA CIBLE AVANT DE LANCER. `neuf()` recopie l'etalon, cible
+    # historique comprise : sans cet `unlink`, un applicateur qui rend 0 sans
+    # rien ecrire — ce que fait v115 quand il detecte POST — laisse un fichier
+    # en place, et la comparaison confronte l'etalon a sa propre copie puis
+    # annonce « IDENTIQUE ». C'est le faux positif consigne au § 0 de l'audit,
+    # et il etait encore VIVANT ici : la table `MESURES` avait ete corrigee a
+    # la main, pas la sonde qui l'alimente. Documenter un piege ne le retire
+    # pas du code.
+    if os.path.exists(sortie):
+        os.unlink(sortie)
     code, _ = lancer(['--source', os.path.join(travail, GRAPHE % src),
                       '--target', sortie] if param else [])
-    if code != 0 or not os.path.exists(sortie):
+    if code != 0:
         repro = 'REFUSE'
+    elif not os.path.exists(sortie):
+        # Distinct d'un refus : l'applicateur a rendu 0 et n'a rien produit.
+        repro = 'NON REJOUE — code 0 sans ecriture'
     else:
-        a = json.load(open(os.path.join(etalon, GRAPHE % cib), encoding='utf-8'))
-        b = json.load(open(sortie, encoding='utf-8'))
+        # Comparaison en OCTETS, pas en JSON charge. L'audit annonce « octet
+        # pour octet » ; `json.load` egalise l'indentation, l'ordre des cles
+        # et la forme des nombres — il ne peut pas soutenir cette phrase.
+        with open(os.path.join(etalon, GRAPHE % cib), 'rb') as f:
+            a = f.read()
+        with open(sortie, 'rb') as f:
+            b = f.read()
         repro = 'IDENTIQUE' if a == b else 'DIFFERENT'
     return rejeu, repro
 
@@ -278,13 +321,18 @@ def construire(banc=None):
         n = f['n']
         src_present = os.path.exists(
             os.path.join(REPO, GRAPHE % f['version_source'][1:]))
-        mecanisme, historique = MESURES.get(n, ('(non mesure)', '(non mesure)'))
-        rejeu = 'REFUSE' if not mecanisme.startswith('aucun') else 'ACCEPTE'
+        mecanisme, rejeu, historique = MESURES.get(
+            n, ('(non mesure)', '(non mesure)', '(non mesure)'))
         if banc:
-            rejeu, repro = sonder(banc, chemin, f)
+            rejeu_m, repro = sonder(banc, chemin, f)
+            # Le desaccord entre la sonde et la table est un RESULTAT, pas un
+            # detail : c'est la table qui a tort, et elle doit le dire dans la
+            # colonne plutot que se laisser remplacer en silence.
             if not historique.startswith(repro):
-                historique = f'{repro} (mesure {repro}, tableau disait '
-                f'{historique})'
+                historique = (f'{repro} — la sonde contredit la table, '
+                              f'qui disait : {historique}')
+            if rejeu_m != rejeu:
+                rejeu = f'{rejeu_m} — la table disait : {rejeu}'
         # Rejouabilite : le graphe source doit exister ET l applicateur ne pas
         # etre bloque par un etat du depot devenu posterieur a lui.
         bloque = n in NON_REJOUES_PAR_GARDE
