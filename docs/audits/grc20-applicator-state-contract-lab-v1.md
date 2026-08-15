@@ -349,14 +349,26 @@ il réduit la fenêtre dangereuse à N renommages et rend la panne réversible.
 
 ---
 
-## Ce qui attend une décision
+## Arbitrages rendus — 15/08/2026
 
-1. **v106 n'a pas d'applicateur.** Le maillon le plus lourd de la chaîne est le
-   seul non inspectable. Faut-il le reconstruire *a posteriori*, ou acter que
-   v106 est un état historique dont seul le résultat fait foi ?
-2. **v103 versé porte 9 relations que son script ne produit pas.** À instruire :
-   soit un intrant a changé, soit une retouche hors applicateur.
-3. **v105 : 117 entités divergent au rejeu, et la description se désaccentue.**
-   Même question.
-4. **La primitive de D.1 : la créer maintenant, ou au prochain lot corrélé ?**
-   Aucun `make_v116` n'est prévu ; une primitive sans usage vieillit mal.
+Les quatre questions posées ci-dessus par ce chantier ont été tranchées par
+Maël le 15/08/2026 (chat Cowork, transmis pour inscription avant merge).
+Aucune de ces décisions n'ouvre de chantier : elles classent.
+
+1. **v106 sans applicateur — ne PAS reconstruire *a posteriori*.** v106 est
+   acté comme un état historique dont seul le résultat fait foi. Motif :
+   reconstruire maintenant un applicateur absent fabriquerait une preuve
+   tardive.
+2. **v103 (9 relations au versé absentes du rejeu) — ne PAS corriger
+   maintenant.** Classé **divergence historique**, à instruire séparément si
+   elle devient bloquante.
+3. **v105 (117 divergences d'entités, `space.description` désaccentuée) — ne
+   PAS corriger maintenant, ne pas modifier v105.** Classé
+   **non-reproductibilité partielle / divergence historique**.
+4. **Primitive D.1 (`ecrire_lot`, `exiger_cible_canonique`, `classer`) — ne
+   PAS implémenter maintenant.** Documentée comme recommandation pour le
+   **prochain lot corrélé réel**. Motif : aucun `make_v116` n'est prévu ; une
+   primitive sans usage réel vieillit mal.
+
+État du chantier après ces arbitrages : mesuré, classé, refermé — sans
+migration, sans primitive, sans correction rétroactive.
