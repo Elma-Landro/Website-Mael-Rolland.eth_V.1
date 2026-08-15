@@ -1,0 +1,31 @@
+name: bootstrap-catalogue-0508
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assembler, verifier les empreintes, committer
+        run: |
+          set -euo pipefail
+          B=_bootstrap
+          DEST_CAT=docs/research/catalogue-evenements
+          DEST_CHR=docs/research/chronologies
+          cat "$B/v31.part1.txt" "$B/v31.part2.txt" "$B/v31.part3.txt" > "$DEST_CAT/catalogue-evenements-v3-1.csv"
+          cat "$B/v3.part1.txt" "$B/v3.part2.txt" "$B/v3.part3.txt" > "$DEST_CAT/catalogue-evenements-v3.csv"
+          base64 -d "$B/chrono-v28-bin.b64" > "$DEST_CHR/Chrono_Bitcoin_institutionnalisation_V2_8__altcoin_addition_.bin"
+          cat "$B/lecture-xlsx.b64.part1" "$B/lecture-xlsx.b64.part2" | base64 -d > "$DEST_CAT/catalogue-evenements-LECTURE.xlsx"
+          check() { got=$(git hash-object "$1"); if [ "$got" != "$2" ]; then echo "ECHEC EMPREINTE $1 : $got attendu $2"; exit 1; fi; }
+          check "$DEST_CAT/catalogue-evenements-v3-1.csv" 19e788a303c9d74b0feb8c069245fe66db49462b
+          check "$DEST_CAT/catalogue-evenements-v3.csv" 43ec19ff3cbaaea2dad575c4434d7e6acab24388
+          check "$DEST_CHR/Chrono_Bitcoin_institutionnalisation_V2_8__altcoin_addition_.bin" be5f006474284a52bffc21457af79fe5f6f90ff4
+          check "$DEST_CAT/catalogue-evenements-LECTURE.xlsx" 520d9952a45842efde20038e44e57b14c183f00d
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -r -q _bootstrap
+          git add docs/research
+          git commit -m "docs(catalogue): v3-1 maitre, v3, .bin V2.8, LECTURE.xlsx - assembles et verifies a l'octet (lot 05/08, 4/5)" -m "Assemblage par workflow depuis _bootstrap/ (fragments texte + base64), chaque empreinte git verifiee avant commit. Le canal API plafonne la taille d'un appel : le commit 565bc24 annoncait v3-1 dans son intitule mais n'a pu transporter que lot1 - v3-1 arrive ici." -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>" -m "Claude-Session: https://claude.ai/code/session_01DKnhX3C9mtbDmXpj1mnx36"
+          git push
