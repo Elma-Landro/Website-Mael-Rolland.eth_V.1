@@ -1,6 +1,6 @@
-# Vocabulaire Q7 v1 — effets sur propriétés monétaires — PROPOSITION DE GEL
+# Vocabulaire Q7 v1 — effets sur propriétés monétaires — GELÉ
 
-**Statut : PROPOSITION, gel réservé à Maël.** Issue des arbitrages A1-A5 du 15/08/2026 (verbatim : `docs/audits/arbitrages-lot2-A1-A5-2026-08-15.md`) et de la mini-passe révisée sur les 14 lignes du lot d'épreuve, qui **passent toutes** (`q7-epreuve-lot-v2.csv` ; premier passage figé : `q7-epreuve-lot.csv`). Une fois gelé, ce vocabulaire devient v1 : aucun renommage silencieux, tout changement produit une v2 ou une table de correspondance versionnée (règle de la page d'architecture §7.3, par extension).
+**Statut : GELÉ le 15/08/2026 par arbitrage de Maël** (verbatim : `docs/audits/arbitrages-gel-q7v1-roles-v0-2026-08-15.md`). Proposition issue des arbitrages A1-A5 (verbatim : `docs/audits/arbitrages-lot2-A1-A5-2026-08-15.md`) et de la mini-passe révisée sur les 14 lignes du lot d'épreuve, qui **passent toutes** (`q7-epreuve-lot-v2.csv` ; premier passage figé : `q7-epreuve-lot.csv`). Plus de renommage silencieux : toute modification future passe par une Q7 v2, une table de correspondance v1 → v2, ou un arbitrage explicite. Le nom du fichier garde le suffixe `-proposition` pour la traçabilité de la provenance ; le présent statut fait foi.
 
 Remplace comme spécification le champ 14 `[PROVISOIRE, Q7]` de `docs/audits/grille-codage-catalogue-v1.md`, qu'il complète sans le réécrire.
 
@@ -58,16 +58,16 @@ Entités de référence résolues au graphe (v115, recherche name + nameEn + lab
 - **A4** : 4 lignes multi-effets, toutes contrôlées (vocabulaire fermé, signes obligatoires).
 - Les 6 `nd` d'effet restants (E055, E063, E064, G005, G143 — et rôles seuls) sont des `nd` d'énoncé, pas des trous de vocabulaire.
 
-## 7. Conventions résiduelles — à fixer d'un mot au moment du gel (non bloquantes)
+## 7. Conventions r1 et r2 — TRANCHÉES au gel du 15/08/2026
 
-- **r1** — `acteur_principal_mode` pour `nature=seuil` : proposition — `nd` admis (cohérent avec la grille v1, Q3 : un seuil peut n'avoir ni acteur ni type d'acte).
-- **r2** — direction d'une **mise en cause non activée** (vulnérabilité au monnayage jamais exploitée, cas E077) : proposition — `±` avec note obligatoire ; alternative : `-` sur la mise en cause, la préservation relevant de la résolution.
+- **r1 — validée** : `mode nd` admis lorsque l'événement est un seuil, un état agrégé ou une mesure sans mode d'action clairement qualifiable (extension arbitrée au-delà du seul `nature=seuil`). Codage contrôlé, pas une case paresseuse.
+- **r2 — validée** : pour une **mise en cause non activée** (vulnérabilité au monnayage jamais exploitée, cas E077), `±` est retenu — préféré à `-`, parce qu'une mise en cause non activée n'a pas le même statut analytique qu'une dégradation effective. Le `±` est toujours accompagné d'une note expliquant l'ambivalence (règle générale : `±` autorisé mais toujours justifié).
 
 Remarque hors lot (graphe, aucun patch ici) : la fiche « Mt. Gox » `6661cad8` est typée InfrastructureEvent alors qu'elle nomme une organisation — à examiner un jour via le classifieur sémantique.
 
-## 8. Ce que le gel engagerait
+## 8. Portée du gel (acté le 15/08/2026)
 
-Geler ce document comme **Q7 v1** fige : les neuf dimensions du §1, l'écriture du §2, la convention multi-effets du §3, la frontière du §4, la règle et la forme acteur principal du §5, plus r1 et r2 tels que tranchés. La grille de rôles v0 (`grille-roles-v0.md`) est déjà déclarée **gelable** par l'arbitrage du 15/08 ; son passage formel à « gelée » se fait d'un mot, séparément. Après gel : re-codage des 40 `propose(lot1)` sous la règle du §5 (lot dédié), puis extension progressive — jamais de codage massif sans lot arbitré.
+Le gel fige : les neuf dimensions du §1 (`integrite_monnayage` comprise), l'écriture du §2, la convention multi-effets du §3, la frontière du §4, la règle et la forme acteur principal du §5, et les conventions r1/r2 du §7. La grille de rôles v0 (`grille-roles-v0.md`) est **gelée par ratification formelle** du même arbitrage : plus de renommage silencieux des rôles, ajout possible seulement par version ultérieure, `non_applicable` et `incertain` maintenus, table longue conservée. Aucun codage massif n'est lancé : le prochain lot pourra être un codage contrôlé, sur la seule base des vocabulaires gelés — re-codage des 40 `propose(lot1)` sous la règle du §5 en lot dédié d'abord. Interdits reconduits : pas de patch vers le graphe, pas de modification du site, pas de fusion catalogue/graphe.
 
 ## Provenance
 
