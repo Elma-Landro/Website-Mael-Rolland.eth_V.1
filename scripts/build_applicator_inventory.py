@@ -186,7 +186,36 @@ def faits_statiques(chemin):
 
 
 def sonder(banc, chemin, faits):
-    """Execute l'applicateur sur un banc ISOLE. Jamais sur le depot."""
+    """Execute l'applicateur sur un banc ISOLE. Jamais sur le depot.
+
+    `--probe` fait deux choses qu'il faut dire en toutes lettres : il EXECUTE
+    les copies d'applicateurs que le banc contient, et il SUPPRIME
+    `<banc>/travail` a chaque tour. Les deux portent sur un chemin fourni par
+    l'appelant. Ce n'est pas un defaut — c'est le propos d'un banc — mais une
+    hypothese implicite, et ce chantier vient de documenter ce que coute une
+    hypothese de localisation non verifiee (§ C.4 : un `--target` accepte hors
+    du depot). Les deux hypotheses sont donc verifiees ci-dessous plutot que
+    supposees.
+
+    Sur l'alerte `dangerous-subprocess-use` : l'appel est en forme LISTE, sans
+    `shell=True` — aucun interpreteur de commande n'intervient, donc aucune
+    metacaractere n'est interpretable. Les elements viennent de `sys.executable`
+    et d'un `glob` sur `scripts/make_v*.py` du depot. La regle est un rappel
+    d'audit generique ; ce qu'elle vise reellement ici, c'est l'execution de
+    code depuis un repertoire choisi par l'appelant, traitee ci-dessous.
+    """
+    # Le banc ne doit pas recouvrir le depot : `neuf()` fait un rmtree, et un
+    # banc mal designe (`--probe .`) detruirait un repertoire de travail reel.
+    # CE CONTROLE VIENT EN PREMIER, et le placer ailleurs serait le defaut que
+    # ce chantier decrit : une garde posee APRES ce qu'elle doit proteger. Mis
+    # sous le controle d'`etalon/`, il etait inatteignable dans le seul cas qui
+    # compte — `--probe .` repondait « banc sans etalon/ », un message qui
+    # invite a creer `./etalon` DANS le depot, c'est-a-dire a construire la
+    # situation dangereuse au lieu de l'interdire.
+    rb, rr = os.path.realpath(banc), os.path.realpath(REPO)
+    if rb == rr or rb.startswith(rr + os.sep) or rr.startswith(rb + os.sep):
+        echec(f'le banc {banc!r} recouvre le depot : ce script y supprime '
+              '`travail/` a chaque tour. Le placer ailleurs (scratchpad).')
     etalon = os.path.join(banc, 'etalon')
     if not os.path.isdir(etalon):
         echec(f'banc sans etalon/ : {etalon}. Le construire d abord (copie du '
@@ -202,9 +231,18 @@ def sonder(banc, chemin, faits):
         shutil.copytree(etalon, travail, symlinks=True)
 
     def lancer(argv):
+        script = os.path.join(travail, 'scripts', nom)
+        # `nom` vient d'un basename, donc ne peut pas remonter — mais `travail`
+        # est une copie d'un `etalon` fourni, ou un lien symbolique a pu etre
+        # depose (copytree(symlinks=True) les preserve). On verifie donc que le
+        # fichier reellement ouvert est bien DANS le banc, jamais ailleurs.
+        rt, rs = os.path.realpath(travail), os.path.realpath(script)
+        if not rs.startswith(rt + os.sep):
+            echec(f'{nom} du banc pointe hors du banc ({rs}) — un lien '
+                  'symbolique ferait executer un fichier du depot reel.')
         try:
             p = subprocess.run(
-                [sys.executable, os.path.join(travail, 'scripts', nom), *argv],
+                [sys.executable, script, *argv],
                 capture_output=True, text=True, timeout=600, cwd=travail)
             return p.returncode, p.stdout + p.stderr
         except subprocess.TimeoutExpired:
