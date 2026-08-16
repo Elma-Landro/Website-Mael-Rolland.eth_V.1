@@ -18,21 +18,33 @@
  * Elle lit les CSV verses du depot en direct. Rien n'est duplique ici,
  * donc rien ne peut perimer en silence.
  *
- * COULEURS : les quatre teintes de statut sont validees par
- * scripts/validate_palette.js de la skill dataviz, en liste adjacente,
- * contre LES DEUX surfaces du site (#4d0000 clair, #000000 sombre) :
- * zero FAIL, pire paire adjacente CVD dE 8.4, vision normale dE 19.3,
- * contraste >= 3:1 partout. L'ordre est celui de l'incertitude
- * croissante, et c'est lui qui porte la separation.
+ * COULEURS : AUCUNE palette autonome. Les statuts n'empruntent qu'aux
+ * jetons deja definis dans style.css — or, ambre, or eteint, vert
+ * d'accent, sur bordeaux ou noir. Une premiere version portait quatre
+ * teintes propres (sarcelle, rose, bleu) : contrastes valides, mais la
+ * page ressemblait alors a un tableau de bord etranger au site. La
+ * validation de contraste reste utile ; elle ne fabrique pas une
+ * identite.
+ *
+ * Cinq statuts pour trois tons maison : la cinquieme distinction ne
+ * peut donc pas venir de la teinte. Elle vient d'une TRAME (hachures
+ * a 45 degres), lisible en niveaux de gris comme en daltonisme, et
+ * dans l'esprit pixel de la maison. L'ordre reste celui de
+ * l'incertitude croissante.
+ *
  * Le statut n'est JAMAIS porte par la couleur seule : chaque pastille
- * est suivie de son libelle.
+ * est suivie de son libelle, chaque rectangle porte son `aria-label`
+ * et sa bulle.
  * ------------------------------------------------------------------ */
 :root{
   --bg:#4d0000; --bg-2:#3a0000; --surface:#5c0505; --surface-2:#450303;
   --ink:#ffcc66; --ink-2:#ffaa33; --ink-muted:#c99a5e; --accent:#33ff33;
   --ligne:rgba(255,204,102,.28); --ligne-forte:rgba(255,204,102,.55);
-  /* palette de statut — validee, ne pas retoucher sans revalider */
-  --st-validee:#199e70; --st-chantier:#c98500; --st-douteuse:#d55181; --st-arbitrer:#3987e5;
+  /* Statuts — strictement les jetons maison, dans l'ordre d'incertitude.
+     `a_arbitrer` reprend l'or de `chantier` et s'en separe par la trame. */
+  --st-validee:var(--accent); --st-chantier:var(--ink);
+  --st-douteuse:var(--ink-2); --st-arbitrer:var(--ink);
+  --st-exclue:var(--ink-muted);
 }
 html[data-theme="dark"]{
   --bg:#000; --bg-2:#0a0a0a; --surface:#141414; --surface-2:#0e0e0e;
@@ -69,7 +81,13 @@ section{margin:0 0 26px}
 .filtre{display:flex;flex-direction:column;gap:2px}
 .filtre label{font-size:15px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.05em}
 .legende{display:flex;gap:14px;flex-wrap:wrap;font-size:17px;margin:8px 0 0}
-.pastille{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+.pastille{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;
+  vertical-align:baseline;border:1px solid var(--ligne-forte)}
+/* La bordure du meme or que le reste de la page tient lieu de contour : une
+   pastille eteinte reste visible sur bordeaux comme sur noir, sans qu'aucune
+   teinte etrangere ne soit introduite. */
+.pastille.trame{background-image:repeating-linear-gradient(45deg,
+  var(--bg-2) 0 2px, transparent 2px 4px)}
 .badge{display:inline-flex;align-items:center;white-space:nowrap;font-size:16px}
 table{border-collapse:collapse;width:100%;font-size:17px}
 th,td{text-align:left;padding:3px 8px 3px 0;border-bottom:1px solid var(--ligne);vertical-align:top}
@@ -199,8 +217,19 @@ const enObjets = (lignes) => {
 const STATUTS = ['validee', 'chantier', 'douteuse', 'a_arbitrer', 'exclue'];
 const COULEUR_STATUT = {
   validee:'var(--st-validee)', chantier:'var(--st-chantier)',
-  douteuse:'var(--st-douteuse)', a_arbitrer:'var(--st-arbitrer)', exclue:'var(--ink-muted)'
+  douteuse:'var(--st-douteuse)', a_arbitrer:'var(--st-arbitrer)',
+  exclue:'var(--st-exclue)'
 };
+/* `a_arbitrer` partage l'or de `chantier` : c'est la trame qui les separe,
+   en HTML par une classe, en SVG par un motif. Une teinte de plus aurait
+   voulu dire une teinte hors maison. */
+const TRAME_STATUT = new Set(['a_arbitrer']);
+/* Un seul endroit fabrique une pastille. Les trois appelants (tuiles,
+   insignes de tableau, legende) portaient la meme ligne recopiee : la trame
+   y aurait ete ajoutee deux fois sur trois, ou oubliee une fois sur trois. */
+const pastille = (s) =>
+  `<span class="pastille${TRAME_STATUT.has(s) ? ' trame' : ''}"
+    style="background-color:${COULEUR_STATUT[s] || 'var(--st-exclue)'}"></span>`;
 const DIMENSIONS_Q7 = ['usage_paiement','valorisation','unite_compte_etalon','liquidite_convertibilite',
   'conf_methodique','conf_hierarchique','conf_ethique','fongibilite','integrite_monnayage'];
 const DOMAINES = {i:'i · usage réel & financier', ii:'ii · traitement des transactions',
@@ -267,14 +296,14 @@ function rendreTuiles(sel){
   const tuiles = [
     {lib:'événements', val:n, part:`sur ${CAT.length} au catalogue`},
     ...STATUTS.filter(s => parStatut[s] || s !== 'exclue').map(s => ({
-      lib:s.replace('_', ' '), val:parStatut[s], couleur:COULEUR_STATUT[s],
+      lib:s.replace('_', ' '), val:parStatut[s], couleur:COULEUR_STATUT[s], statut:s,
       part:n ? Math.round(parStatut[s] / n * 100) + ' % de la sélection' : '—'})),
     {lib:'effet Q7 codé', val:codees, part:n ? Math.round(codees/n*100) + ' % de la sélection' : '—'},
     {lib:'rôles posés', val:avecRole, part:`${ROLES.length} lignes de rôle au total`},
   ];
   document.getElementById('tuiles').innerHTML = tuiles.map(t => `
     <div class="tuile">
-      <span class="lib">${t.couleur ? `<span class="pastille" style="background:${t.couleur}"></span>` : ''}${ech(t.lib)}</span>
+      <span class="lib">${t.statut ? pastille(t.statut) : ''}${ech(t.lib)}</span>
       <span class="val num" ${t.couleur ? `style="color:${t.couleur}"` : ''}>${t.val}</span>
       <span class="part">${ech(t.part)}</span>
     </div>`).join('');
@@ -299,9 +328,19 @@ function rendreChrono(sel){
       const h = (n / maxi) * (H - mg.h - mg.b);
       y -= h; total += n;
       /* 2px de surface entre segments empiles : la separation est structurelle */
+      /* `fill` en STYLE et non en attribut de presentation : les valeurs sont
+         des `var(--st-…)`, et `var()` n'est pas fiable dans un attribut de
+         presentation SVG. En style, il l'est. */
       barres += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bl.toFixed(1)}" height="${Math.max(1, h - 2).toFixed(1)}"
-        fill="${COULEUR_STATUT[s]}" data-an="${a}" data-statut="${s}" data-n="${n}" tabindex="0"
+        style="fill:${COULEUR_STATUT[s]}" data-an="${a}" data-statut="${s}" data-n="${n}" tabindex="0"
         role="img" aria-label="${a}, ${s} : ${n}"></rect>`;
+      if (TRAME_STATUT.has(s))
+        /* La trame est un calque par-dessus, pas un `fill` de remplacement :
+           le segment garde sa teinte maison et gagne sa texture. Non focusable
+           et `pointer-events:none` pour ne pas doubler la cible du rectangle. */
+        barres += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bl.toFixed(1)}"
+          height="${Math.max(1, h - 2).toFixed(1)}" fill="url(#trame-arbitrer)"
+          style="pointer-events:none" aria-hidden="true"></rect>`;
     });
     if (total) barres += `<text class="axe" x="${(x + bl/2).toFixed(1)}" y="${(y - 5).toFixed(1)}"
         text-anchor="middle" style="font-size:12px">${total}</text>`;
@@ -317,6 +356,12 @@ function rendreChrono(sel){
   }
   document.getElementById('chrono').innerHTML =
     `<svg viewBox="0 0 ${L} ${H}" role="img" aria-label="Nombre d'événements par année, empilés par statut de ligne">
+      <defs>
+        <pattern id="trame-arbitrer" width="6" height="6" patternUnits="userSpaceOnUse"
+                 patternTransform="rotate(45)">
+          <rect width="3" height="6" style="fill:var(--bg-2)"></rect>
+        </pattern>
+      </defs>
       ${grille}${barres}${axeX}</svg>`;
   document.querySelectorAll('#chrono rect').forEach(r => {
     const dire = (ev) => montrerBulle(ev,
@@ -416,8 +461,7 @@ function rendreTable(sel){
   });
 }
 /* La couleur ne porte JAMAIS seule : pastille + libelle, toujours. */
-const insigne = (s) => `<span class="badge"><span class="pastille"
-  style="background:${COULEUR_STATUT[s] || 'var(--ink-muted)'}"></span>${ech(s || '—')}</span>`;
+const insigne = (s) => `<span class="badge">${pastille(s)}${ech(s || '—')}</span>`;
 
 /* ------------------------------------------------------------------ *
  * 9. Anomalies — chaque famille dit sa regle
@@ -533,7 +577,7 @@ function rendreTout(){ rendreFiltres(); rendreSansFiltres(); }
 
 function rendreLegende(){
   document.getElementById('legende-statuts').innerHTML = STATUTS.map(s =>
-    `<span class="badge"><span class="pastille" style="background:${COULEUR_STATUT[s]}"></span>${s.replace('_',' ')}</span>`
+    `<span class="badge">${pastille(s)}${s.replace('_',' ')}</span>`
   ).join('') + '<span class="vide">— vocabulaire D4 gelé, ordre d\'incertitude croissante</span>';
 }
 
