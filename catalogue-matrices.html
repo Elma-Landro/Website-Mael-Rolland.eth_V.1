@@ -214,10 +214,18 @@ table.simple th{color:var(--ink-2);font-size:15px;text-transform:uppercase;lette
   <section aria-labelledby="t-m1">
     <h2 id="t-m1">2 · ACTEURS × RÔLES</h2>
     <div class="carte">
-      <p class="regle">Une cellule compte des <strong>lignes de rôle</strong> (fichier <span class="num">catalogue-roles-v0.csv</span>),
+      <p class="regle"><strong>Cette matrice mesure l'état du codage avant de mesurer le terrain.</strong>
+      Tant que la grille de rôles n'a pas été appliquée à tout le corpus, une case vide dit
+      « pas encore codé », jamais « ce rôle n'existe pas » — mesure du 16/08/2026 : 100 % des lignes
+      <span class="num">valide(lot3)</span> portent un rôle, contre 11 % des <span class="num">valide(calibrage)</span>,
+      la grille étant postérieure à la passe de calibrage.<br>
+      Une cellule compte des <strong>lignes de rôle</strong> (fichier <span class="num">catalogue-roles-v0.csv</span>),
       pas des événements : un même événement peut poser plusieurs rôles. Les onze rôles de la
       <strong>grille v0 gelée</strong> sont tous en colonne, y compris ceux que le codage n'a jamais employés —
-      une colonne vide est un résultat, pas un trou d'affichage. Idem pour les types d'acteurs du catalogue.</p>
+      une colonne vide est un résultat, pas un trou d'affichage. Idem pour les types d'acteurs du catalogue.<br>
+      Règle de codage ratifiée le 16/08/2026 : <strong>le rôle qualifie la fonction tenue dans la situation,
+      pas la grammaire de l'acte</strong> — une publication, une annonce ou une cotation ne donne pas
+      automatiquement <span class="num">initiateur</span> (grille v0, §7).</p>
       <div class="mx-options">
         <label>lignes :
           <select id="m1-axe">
@@ -245,8 +253,12 @@ table.simple th{color:var(--ink-2);font-size:15px;text-transform:uppercase;lette
       sans ligne de rôle</em> ». Cette vue ne réclame donc aucun remplissage : elle <strong>sépare les raisons</strong>
       d'une absence, pour qu'on ne confonde pas une absence prévue avec une absence à instruire.
       Les quatre classes ci-dessous sont des <strong>requêtes</strong>, chacune affiche sa règle, et une ligne
-      tombe dans la <strong>première</strong> classe qui la retient. Ce ne sont pas des verdicts.</p>
+      tombe dans la <strong>première</strong> classe qui la retient. Ce ne sont pas des verdicts.
+      Les lignes « à instruire » forment une <strong>file de diagnostic</strong>, jamais une file de correction :
+      elles s'instruisent une par une, contre leur source — voir
+      <span class="num">docs/audits/diagnostic-e060-e059-e032-2026-08-16.md</span> pour le format attendu.</p>
       <div id="sr-classes"></div>
+      <div id="sr-file" class="tiroir" style="border-style:solid"></div>
       <div class="mx-options">
         <label>afficher :
           <select id="sr-classe"><option value="">toutes les classes</option></select></label>
@@ -643,19 +655,25 @@ function rendreM1(sel){
  * verdicts — meme discipline que les anomalies de la page-labo.
  * ------------------------------------------------------------------ */
 const CLASSES_SANS_ROLE = [
-  {cle:'seuil', lib:"seuil — l'absence est prévue",
+  {cle:'seuil', lib:'rôle non nécessaire',
    regle:"nature = seuil : la grille v0 range explicitement certains seuils sous non_applicable",
    test:(e) => e.nature === 'seuil'},
   {cle:'sans_acteur', lib:'acteur non identifié',
    regle:"acteur_principal vide ou nd : sans acteur nommé, poser un rôle reviendrait à en inventer un",
    test:(e) => !e.acteur_principal || e.acteur_principal === 'nd'},
-  {cle:'portante', lib:'ligne portante sans rôle',
-   regle:"porte un effet Q7 codé, ou crise = oui, ou un CVE : la ligne sert à l'analyse, et personne n'y agit",
+  {cle:'portante', lib:'à instruire',
+   regle:"ligne portante : porte un effet Q7 codé, ou crise = oui, ou un CVE — elle sert à l'analyse, et personne n'y agit",
    test:(e) => effets(e).length > 0 || estCrise(e) || !!e.cve},
-  {cle:'jamais', lib:'jamais passée en revue de rôles',
+  {cle:'jamais', lib:'grille non encore appliquée',
    regle:"le reste : validées par le calibrage, qu'aucune passe de rôles n'a couvertes",
    test:() => true},
 ];
+/* File de diagnostic — les lignes « a instruire », ORDONNEES. Regle d'ordre
+   enoncee a l'ecran : les crises d'abord, puis par date. C'est une file de
+   travail, PAS une correction : rien n'est propose, rien n'est pre-rempli. */
+const fileDiagnostic = (lignes) => lignes.slice().sort((a, b) =>
+  (estCrise(b) ? 1 : 0) - (estCrise(a) ? 1 : 0) ||
+  (a.date || '9999').localeCompare(b.date || '9999') || a.id.localeCompare(b.id));
 const classeSansRole = (e) => CLASSES_SANS_ROLE.find(c => c.test(e));
 
 function rendreSansRole(sel){
@@ -676,6 +694,27 @@ function rendreSansRole(sel){
       return `<tr><td>${ech(c.lib)}</td><td class="num">${n}</td>
         <td class="vide">${ech(c.regle)}${crises ? ` <strong>— dont ${crises} marquée(s) crise</strong>` : ''}</td></tr>`;
     }).join('') + '</tbody></table>';
+
+  /* file de diagnostic — visible en permanence, ordonnee, jamais pre-remplie */
+  const aInstruire = fileDiagnostic(par.get('portante'));
+  document.getElementById('sr-file').innerHTML = aInstruire.length ? `
+    <h3>FILE DE DIAGNOSTIC — ${aInstruire.length} LIGNE(S) À INSTRUIRE</h3>
+    <p class="regle">Ordre affiché : <strong>les crises d'abord, puis par date</strong>. C'est une file de
+    travail, pas une correction : aucun rôle n'est proposé ici, aucune case n'est pré-remplie.
+    Chaque ligne devra être instruite séparément, contre sa source.</p>
+    <table class="simple"><thead><tr><th>rang</th><th>id</th><th>date</th><th>intitulé</th>
+      <th>acteur principal</th><th>ce qui la rend portante</th></tr></thead><tbody>` +
+    aInstruire.map((e, i) => {
+      const motifs = [];
+      if (estCrise(e)) motifs.push('<strong>crise</strong>');
+      if (effets(e).length) motifs.push('effet ' + ech(e.effet_prop_monetaires));
+      if (e.cve) motifs.push('CVE ' + ech(e.cve));
+      return `<tr><td class="num">${i + 1}</td><td class="num">${ech(e.id)}</td>
+        <td class="num">${ech(e.date) || '<span class="vide">—</span>'}</td>
+        <td>${ech(court(e.intitule, 56))}</td><td>${ech(e.acteur_principal)}</td>
+        <td class="vide">${motifs.join(' · ')}</td></tr>`;
+    }).join('') + '</tbody></table>'
+    : '<p class="vide">File vide : aucune ligne portante sans rôle dans la sélection.</p>';
 
   const sel2 = document.getElementById('sr-classe');
   const garde = sel2.value;
