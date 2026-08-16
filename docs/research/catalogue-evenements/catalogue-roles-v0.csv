@@ -75,3 +75,8 @@ G039;core_devs;;correcteur;haute;correctif protocolaire énoncé (wiki des crise
 G040;core_devs;;correcteur;haute;correctif protocolaire énoncé (wiki des crises via graphe, codage_justif)
 G042;core_devs;;correcteur;haute;correctif protocolaire énoncé (wiki des crises via graphe, codage_justif)
 G042;core_devs;;initiateur;haute;déploiement du soft fork BIP-0034 (wiki des crises)
+E073;institutions_financieres;CBOE et CME;initiateur;haute;creation d'un produit financier qui n'existait pas (ch.I l.289 : « la CREATION de produit financier specifique par des acteurs reconnus ») - precedent E052 (Tether Ltd initiateur)
+E042;institutions_financieres;Nasdaq;validateur;moyenne;acceptation institutionnelle sans production (ch.I l.289 : « de maniere tres indirecte d'abord, par SIMPLE PUBLICATION de donnees de prix agregees ») - precedent E044 (BitGo validateur)
+E058;institutions_financieres;NYSE;validateur;moyenne;meme acte et meme phrase source que E042 (ch.I l.289 : « Nasdaq fin 2013, suivi par le NYSE en 2015 ») - lecture solidaire des deux lignes
+E027;institutions_financieres;PayPal;opposant;moyenne;retrait de service = blocage agissant, pas une creation - la ligne code elle-meme liquidite_convertibilite(-) (ch.I n.75 l.609)
+E037;regulateurs_etats;Banque centrale europeenne;revelateur;moyenne;ecrit qui rend visible ET dont l'effet est atteste (ch.I l.289 : « Les premieres publications et mises en garde (European Central Bank 2012) POUSSENT A L'EMERGENCE de premiers services de conformite ») - precedent E064
