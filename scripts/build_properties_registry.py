@@ -191,11 +191,24 @@ EXCLUSIONS_READ_BY = {
     # Sans cette exclusion, une page qui pose un attribut d'accessibilite ferait
     # croire que le graphe depend d'une cle que rien ne lit — et le registre
     # deviendrait perime a chaque page ajoutee a l'Observatoire.
-    'phase': {'catalogue-lab.html'},
-    'role': {'catalogue-lab.html'},
+    # catalogue-matrices.html (Observatoire, lot 2) : meme cas, meme preuve —
+    # la page ne charge que les deux memes CSV, aucun graphe. Ses sept
+    # occurrences sont verifiees une a une :
+    #   `date`, `phase` .......... NOMS DE COLONNE du CSV catalogue ;
+    #   `note`, `role` ........... NOMS DE COLONNE de catalogue-roles-v0.csv ;
+    #   `description` ............ la balise `<meta name="description">` ;
+    #   `status` ................. `role="status"` (ARIA) et `r.status`, le code
+    #                              HTTP d'une reponse fetch ;
+    #   `type` ................... la valeur d'une option de menu
+    #                              (`<option value="type">types d'acteurs`),
+    #                              qui choisit l'axe des lignes d'une matrice.
+    'phase': {'catalogue-lab.html', 'catalogue-matrices.html'},
+    'role': {'catalogue-lab.html', 'catalogue-matrices.html'},
 }
 for _cle in ('date', 'description', 'source', 'status'):
     EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-lab.html')
+for _cle in ('date', 'description', 'note', 'status', 'type'):
+    EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-matrices.html')
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
 # l'auto-exclusion de ce generateur. Un inventaire dont l'objet est de
