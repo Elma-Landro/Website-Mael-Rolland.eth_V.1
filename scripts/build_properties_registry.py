@@ -178,7 +178,24 @@ EXCLUSIONS_READ_BY = {
     # Sans exclusion, `risk` bascule de `editorial` a `structural`, ce qui
     # ferait croire que le graphe depend d'une cle qu'aucun code ne lit.
     'risk': {'scripts/build_bibliography_authorship_support.py'},
+    # catalogue-lab.html (Observatoire du catalogue) ne lit AUCUN graphe : il
+    # charge deux CSV du catalogue et les affiche. Ses six occurrences sont
+    # verifiees une a une :
+    #   `date`, `phase`, `source` .. NOMS DE COLONNE du CSV catalogue ;
+    #   `role` ................... attribut ARIA (`role="img"`, `role="status"`)
+    #                              et colonne `role` de catalogue-roles-v0.csv,
+    #                              c'est-a-dire un role de la grille D6 ;
+    #   `description` ............ la balise `<meta name="description">` ;
+    #   `status` ................. `role="status"` (ARIA) et `r.status`, le code
+    #                              HTTP d'une reponse fetch.
+    # Sans cette exclusion, une page qui pose un attribut d'accessibilite ferait
+    # croire que le graphe depend d'une cle que rien ne lit — et le registre
+    # deviendrait perime a chaque page ajoutee a l'Observatoire.
+    'phase': {'catalogue-lab.html'},
+    'role': {'catalogue-lab.html'},
 }
+for _cle in ('date', 'description', 'source', 'status'):
+    EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-lab.html')
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
 # l'auto-exclusion de ce generateur. Un inventaire dont l'objet est de
