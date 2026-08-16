@@ -192,9 +192,11 @@ EXCLUSIONS_READ_BY = {
     # croire que le graphe depend d'une cle que rien ne lit — et le registre
     # deviendrait perime a chaque page ajoutee a l'Observatoire.
     # catalogue-matrices.html (Observatoire, lot 2) : meme cas, meme preuve —
-    # la page ne charge que les deux memes CSV, aucun graphe. Ses sept
+    # la page ne charge que les deux memes CSV, aucun graphe. Ses huit
     # occurrences sont verifiees une a une :
-    #   `date`, `phase` .......... NOMS DE COLONNE du CSV catalogue ;
+    #   `date`, `phase`, `nature`  NOMS DE COLONNE du CSV catalogue
+    #                              (`nature` sert a la vue « validees sans
+    #                              role » : nature = seuil) ;
     #   `note`, `role` ........... NOMS DE COLONNE de catalogue-roles-v0.csv ;
     #   `description` ............ la balise `<meta name="description">` ;
     #   `status` ................. `role="status"` (ARIA) et `r.status`, le code
@@ -207,7 +209,7 @@ EXCLUSIONS_READ_BY = {
 }
 for _cle in ('date', 'description', 'source', 'status'):
     EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-lab.html')
-for _cle in ('date', 'description', 'note', 'status', 'type'):
+for _cle in ('date', 'description', 'nature', 'note', 'status', 'type'):
     EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-matrices.html')
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
