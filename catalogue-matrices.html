@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrices du catalogue d'événements — Maël Rolland</title>
+<meta name="description" content="Quatre croisements du catalogue codé de la thèse : acteurs × rôles, événements × effets Q7, phases × types d'actes, arènes × effets Q7. Instrument de travail ; la donnée versée fait foi.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon_32x32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------ *
+ * Observatoire du catalogue — lot visible 2 : LES MATRICES
+ *
+ * DONNEE VERROUILLEE : cette page ne contient AUCUNE donnee d'evenement.
+ * Elle lit les CSV verses du depot en direct, comme catalogue-lab.html.
+ * Elle ne tranche rien : ni statut, ni perimetre, ni doublon.
+ *
+ * COULEURS — deux encodages, tous deux MESURES, jamais choisis a l'oeil,
+ * par scripts/validate_palette.js de la skill dataviz, contre LES DEUX
+ * surfaces du site (bordeaux #4d0000 et noir #000000) :
+ *
+ *  1. EFFECTIF (matrices de comptage) — rampe mono-teinte or, 5 pas,
+ *     validee en mode --ordinal : 0 echec sur les deux surfaces,
+ *     ecarts de clarte tous >= 0.06, pas le plus sombre a 2.84:1
+ *     (bordeaux) et 3.74:1 (noir), au-dessus du plancher de 2:1.
+ *     Le pas le plus sombre reste donc distinct d'une cellule vide.
+ *     Chaque cellule porte SON EFFECTIF EN CHIFFRES : la couleur ne
+ *     porte jamais seule.
+ *
+ *  2. SIGNE D'EFFET Q7 (+ / - / ±) — trois teintes validees en
+ *     --pairs all : 0 echec, pire paire CVD dE 8.6 (cible >= 8),
+ *     vision normale dE 22.5 (plancher >= 15), contraste >= 3:1
+ *     sur les deux surfaces. Chaque pastille porte SON SIGNE ecrit.
+ *     Ces trois teintes sont prises HORS de la palette de statut du
+ *     lot 1, pour qu'aucune couleur n'ait deux sens sur une page.
+ *
+ * Contraste du texte dans les cellules, mesure : blanc sur le pas 1
+ * (5.62:1), noir sur les pas 2 a 5 (5.03 / 6.62 / 8.58 / 11.00:1).
+ *
+ * HORS PERIMETRE R3 : marque par hachure + mention « R3 » ecrite,
+ * jamais par la couleur seule.
+ * ------------------------------------------------------------------ */
+:root{
+  --bg:#4d0000; --bg-2:#3a0000; --surface:#5c0505; --surface-2:#450303;
+  --ink:#ffcc66; --ink-2:#ffaa33; --ink-muted:#c99a5e; --accent:#33ff33;
+  --ligne:rgba(255,204,102,.28); --ligne-forte:rgba(255,204,102,.55);
+  /* palette de statut — identique au lot 1, deja validee, ne pas retoucher */
+  --st-validee:#199e70; --st-chantier:#c98500; --st-douteuse:#d55181; --st-arbitrer:#3987e5;
+  /* rampe d'effectif — validee --ordinal, ne pas retoucher sans revalider */
+  --mx-1:#8d5e05; --mx-2:#a87102; --mx-3:#c38406; --mx-4:#dd981b; --mx-5:#f5ae3d;
+  /* signes Q7 — valides --pairs all, ne pas retoucher sans revalider */
+  --sg-plus:#008300; --sg-moins:#e66767; --sg-ambi:#9085e9;
+}
+html[data-theme="dark"]{
+  --bg:#000; --bg-2:#0a0a0a; --surface:#141414; --surface-2:#0e0e0e;
+  --ink:#ffd700; --ink-2:#ffb733; --ink-muted:#b39247;
+  --ligne:rgba(255,215,0,.24); --ligne-forte:rgba(255,215,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'VT323',ui-monospace,'Courier New',monospace;font-size:20px;line-height:1.35}
+h1,h2,h3,.pix{font-family:'Press Start 2P',ui-monospace,monospace;line-height:1.6}
+h1{font-size:15px;margin:0 0 6px}
+h2{font-size:11px;margin:0 0 12px;color:var(--ink-2)}
+h3{font-size:9px;margin:0 0 8px;color:var(--ink-2)}
+a{color:var(--accent)}
+header{padding:18px 20px 12px;border-bottom:2px solid var(--ligne-forte);background:var(--bg-2)}
+.sous{font-size:18px;color:var(--ink-muted);max-width:92ch}
+.barre-outils{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+button,select,input{font-family:inherit;font-size:17px;background:var(--surface);color:var(--ink);
+  border:1px solid var(--ligne-forte);padding:4px 8px;border-radius:2px}
+button{cursor:pointer}
+button:hover,button:focus-visible{background:var(--surface-2);color:var(--accent);outline:none}
+button[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+main{padding:16px 20px 60px;max-width:1500px}
+section{margin:0 0 26px}
+.carte{background:var(--surface);border:1px solid var(--ligne);padding:12px 14px;border-radius:2px;margin-bottom:18px}
+.filtres{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;
+  background:var(--surface-2);border:1px solid var(--ligne);padding:10px 12px;border-radius:2px}
+.filtre{display:flex;flex-direction:column;gap:2px}
+.filtre label{font-size:15px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.05em}
+.legende{display:flex;gap:14px;flex-wrap:wrap;font-size:17px;margin:8px 0 0;align-items:center}
+.pastille{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+.badge{display:inline-flex;align-items:center;white-space:nowrap;font-size:16px}
+.num{font-variant-numeric:tabular-nums}
+.vide{color:var(--ink-muted)}
+.regle{font-size:17px;color:var(--ink-muted);margin:0 0 8px;max-width:98ch}
+.pied{border-top:2px solid var(--ligne-forte);margin-top:24px;padding-top:12px;
+  font-size:17px;color:var(--ink-muted);max-width:92ch}
+.err{border:1px solid var(--st-douteuse);padding:12px;color:var(--ink)}
+.infobulle{position:fixed;pointer-events:none;background:var(--bg-2);border:1px solid var(--ligne-forte);
+  padding:5px 9px;font-size:17px;border-radius:2px;z-index:50;opacity:0;transition:opacity .1s;max-width:380px}
+
+/* ---- couverture : ce que la matrice voit reellement ---- */
+.couv{font-size:17px;margin:0 0 10px}
+.couv .piste{display:inline-block;vertical-align:middle;width:180px;height:11px;
+  background:rgba(255,255,255,.07);border:1px solid var(--ligne);border-radius:2px;overflow:hidden;margin:0 8px}
+.couv .rempl{display:block;height:100%;background:var(--mx-4)}
+.couv .manque{color:var(--ink-muted)}
+
+/* ---- la matrice ---- */
+.mx-wrap{overflow:auto;max-height:640px;border:1px solid var(--ligne)}
+table.mx{border-collapse:separate;border-spacing:0;font-size:17px;width:auto;min-width:100%}
+table.mx th,table.mx td{padding:2px 6px;border-bottom:1px solid var(--ligne);
+  border-right:1px solid var(--ligne);white-space:nowrap}
+table.mx thead th{position:sticky;top:0;z-index:3;background:var(--bg-2);color:var(--ink-2);
+  font-size:14px;text-transform:uppercase;letter-spacing:.04em;text-align:center;vertical-align:bottom}
+table.mx tbody th{position:sticky;left:0;z-index:2;background:var(--bg-2);text-align:left;
+  font-size:17px;font-weight:normal;color:var(--ink)}
+table.mx thead th:first-child{left:0;z-index:4}
+table.mx td{text-align:center;min-width:44px}
+.cel{cursor:pointer}
+.cel:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cel-0{color:var(--ink-muted)}
+.p1{background:var(--mx-1);color:#fff}
+.p2{background:var(--mx-2);color:#000}
+.p3{background:var(--mx-3);color:#000}
+.p4{background:var(--mx-4);color:#000}
+.p5{background:var(--mx-5);color:#000}
+/* hors echelle : contexte compte mais volontairement hors rampe */
+.hors-ech{background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 4px,transparent 4px 8px);
+  color:var(--ink-muted)}
+th.hors-ech,td.hors-ech{font-style:italic}
+/* marquage hors perimetre R3 — hachure + mention ecrite, jamais la couleur seule */
+.hp{position:relative;
+  background-image:repeating-linear-gradient(45deg,rgba(0,0,0,.55) 0 3px,transparent 3px 7px);
+  outline:2px dashed var(--ink);outline-offset:-2px}
+.hp .r3{display:block;font-size:12px;letter-spacing:.04em;line-height:1}
+.tot{background:var(--surface-2);color:var(--ink-2);font-weight:normal}
+tr.tot th,tr.tot td{border-top:2px solid var(--ligne-forte)}
+/* la colonne des totaux reste visible quand la matrice defile en largeur */
+table.mx td.tot,table.mx th.tot{border-left:2px solid var(--ligne-forte);
+  position:sticky;right:0;z-index:2;background:var(--surface-2)}
+table.mx thead th.tot{z-index:5;background:var(--bg-2)}
+table.mx tr.tot td.tot{z-index:3}
+.sgn{display:inline-block;min-width:22px;padding:0 4px;border-radius:2px;font-size:17px;line-height:1.25}
+.sg-p{background:var(--sg-plus);color:#fff}
+.sg-m{background:var(--sg-moins);color:#000}
+.sg-a{background:var(--sg-ambi);color:#000}
+.ech-pas{display:inline-block;width:26px;height:13px;border-radius:2px;margin-right:4px;vertical-align:middle}
+
+/* ---- panneau R3 ---- */
+.r3-panneau{border-left:3px solid var(--ink-2);padding-left:12px}
+table.simple{border-collapse:collapse;font-size:17px;margin-top:8px}
+table.simple th,table.simple td{text-align:left;padding:2px 12px 2px 0;border-bottom:1px solid var(--ligne)}
+table.simple th{color:var(--ink-2);font-size:15px;text-transform:uppercase;letter-spacing:.05em;font-weight:normal}
+.ecart-nul{color:var(--ink-muted)}
+.ecart-non-nul{color:var(--accent)}
+
+/* ---- tiroir : le contenu d'une cellule ---- */
+.tiroir{border:1px dashed var(--ligne-forte);padding:8px 10px;margin-top:10px;font-size:17px}
+.tiroir h3{margin-bottom:6px}
+.tiroir ul{margin:0;padding-left:18px;max-height:220px;overflow:auto}
+.tiroir li{margin-bottom:2px}
+.mx-options{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:0 0 10px;font-size:17px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (forced-colors:active){.p1,.p2,.p3,.p4,.p5{forced-color-adjust:none}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MATRICES DU CATALOGUE D'ÉVÉNEMENTS</h1>
+  <p class="sous">Quatre croisements du catalogue codé de la thèse.
+  <strong>Instrument de travail, pas une source</strong> : cette page ne contient aucune donnée, elle lit les
+  CSV versés au dépôt. En cas d'écart, le CSV fait foi. Elle ne tranche rien —
+  ni statut, ni périmètre, ni doublon. Lot visible 2 de l'Observatoire ;
+  le poste de lecture est <a href="catalogue-lab.html">la page-labo</a>.</p>
+  <div class="barre-outils">
+    <button id="theme" aria-pressed="true">thème : sombre</button>
+    <button id="r3" aria-pressed="true">périmètre R3 : hors périmètre inclus</button>
+    <button id="raz">réinitialiser les filtres</button>
+    <a href="catalogue-lab.html">→ page-labo (chronologie, anomalies)</a>
+  </div>
+  <p class="sous" id="provenance"></p>
+</header>
+<main>
+  <section id="zone-erreur" hidden><div class="err" id="msg-erreur"></div></section>
+
+  <section aria-labelledby="t-r3">
+    <h2 id="t-r3">0 · PÉRIMÈTRE R3 — CE QUE LE BASCULEMENT DÉPLACE</h2>
+    <div class="carte r3-panneau">
+      <p class="regle">Règle R3 de la grille v1 : le catalogue est borné au <strong>18/07/2008 → début 2020</strong>.
+      Quatre lignes versées sortent de ces bornes. <strong>Cette page ne les exclut pas, ne les corrige pas et ne
+      change pas leur statut</strong> : elle les marque, et elle mesure ce que leur bascule déplace dans chaque
+      matrice. La décision reste entière.</p>
+      <div id="r3-liste"></div>
+      <h3>EFFET MESURÉ DU BASCULEMENT, MATRICE PAR MATRICE</h3>
+      <div id="r3-effet"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-filtres">
+    <h2 id="t-filtres">1 · FILTRES <span class="vide" id="compte-sel"></span></h2>
+    <div class="filtres" id="filtres"></div>
+  </section>
+
+  <section aria-labelledby="t-m1">
+    <h2 id="t-m1">2 · ACTEURS × RÔLES</h2>
+    <div class="carte">
+      <p class="regle">Une cellule compte des <strong>lignes de rôle</strong> (fichier <span class="num">catalogue-roles-v0.csv</span>),
+      pas des événements : un même événement peut poser plusieurs rôles. Les onze rôles de la
+      <strong>grille v0 gelée</strong> sont tous en colonne, y compris ceux que le codage n'a jamais employés —
+      une colonne vide est un résultat, pas un trou d'affichage. Idem pour les types d'acteurs du catalogue.</p>
+      <div class="mx-options">
+        <label>lignes :
+          <select id="m1-axe">
+            <option value="type">types d'acteurs (vocabulaire du catalogue)</option>
+            <option value="nom">acteurs nommés (champ actor_name)</option>
+          </select></label>
+        <label>confiance :
+          <select id="m1-conf">
+            <option value="">toutes</option><option value="haute">haute seule</option>
+            <option value="moyenne">moyenne seule</option><option value="basse">basse seule</option>
+          </select></label>
+      </div>
+      <div class="couv" id="m1-couv"></div>
+      <div class="mx-wrap"><table class="mx" id="m1"><caption class="vide" style="text-align:left;padding:4px 6px">acteurs en lignes, rôles en colonnes — effectif de lignes de rôle</caption></table></div>
+      <div class="legende" id="m1-legende"></div>
+      <div class="tiroir" id="m1-tiroir" hidden></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-m2">
+    <h2 id="t-m2">3 · ÉVÉNEMENTS × EFFETS Q7</h2>
+    <div class="carte">
+      <p class="regle">Une cellule porte un <strong>signe</strong>, pas un effectif : c'est le signe posé par le codage
+      sur cette dimension (<span class="num">+</span> renforcement, <span class="num">−</span> mise en cause,
+      <span class="num">±</span> ambivalent ou mise en cause non activée — convention r2, note obligatoire).
+      Les neuf dimensions du <strong>vocabulaire Q7 v1 gelé</strong> sont toutes en colonne. Seules les lignes
+      portant au moins un effet codé sont en ligne : par la règle D4, une ligne non validée n'exporte pas
+      d'effet au maître, donc l'absence de ligne signifie le plus souvent « pas encore codé », jamais « aucun effet ».</p>
+      <div class="couv" id="m2-couv"></div>
+      <div class="mx-wrap"><table class="mx" id="m2"><caption class="vide" style="text-align:left;padding:4px 6px">événements en lignes, dimensions Q7 en colonnes — signe de l'effet</caption></table></div>
+      <div class="legende" id="m2-legende"></div>
+      <div class="tiroir" id="m2-tiroir" hidden></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-m3">
+    <h2 id="t-m3">4 · PHASES × TYPES D'ACTES</h2>
+    <div class="carte">
+      <p class="regle">Une cellule compte des <strong>événements</strong>. La colonne
+      <em>(type non codé)</em> et la ligne <em>(sans phase)</em> sont <strong>hors échelle de couleur</strong> :
+      elles mesurent l'état du codage, pas une distribution — les laisser dans la rampe écraserait tout le reste.
+      C'est là que se logent les quatre lignes hors périmètre R3, qui ne portent aucun type d'acte.</p>
+      <div class="mx-options">
+        <label><input type="checkbox" id="m3-t2"> compter aussi le type d'acte secondaire
+          (<span class="num" id="m3-t2-n"></span> lignes en portent un)</label>
+      </div>
+      <div class="couv" id="m3-couv"></div>
+      <div class="mx-wrap"><table class="mx" id="m3"><caption class="vide" style="text-align:left;padding:4px 6px">phases en lignes, types d'actes en colonnes — effectif d'événements</caption></table></div>
+      <div class="legende" id="m3-legende"></div>
+      <div class="tiroir" id="m3-tiroir" hidden></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-m4">
+    <h2 id="t-m4">5 · ARÈNES × EFFETS Q7</h2>
+    <div class="carte">
+      <p class="regle">Une cellule compte des <strong>couples (événement, effet)</strong> : un événement portant
+      deux effets compte dans deux colonnes. Par défaut chaque dimension est <strong>scindée par signe</strong> —
+      c'est le seul moyen de ne pas additionner un renforcement et une mise en cause dans la même case.
+      Les colonnes sont celles que le codage a effectivement produites.</p>
+      <div class="mx-options">
+        <label><input type="checkbox" id="m4-grp"> regrouper les signes (une colonne par dimension)</label>
+      </div>
+      <div class="couv" id="m4-couv"></div>
+      <div class="mx-wrap"><table class="mx" id="m4"><caption class="vide" style="text-align:left;padding:4px 6px">arènes en lignes, dimensions Q7 × signe en colonnes — effectif de couples</caption></table></div>
+      <div class="legende" id="m4-legende"></div>
+      <div class="tiroir" id="m4-tiroir" hidden></div>
+    </div>
+  </section>
+
+  <div class="pied" id="pied"></div>
+</main>
+<div class="infobulle" id="bulle" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+/* ------------------------------------------------------------------ *
+ * 1. Lecture des CSV verses. Aucune donnee n'est ecrite ici.
+ *    Analyseur identique a celui de catalogue-lab.html : le depot n'a
+ *    pas de chaine de build et le site est servi depuis IPFS/Swarm.
+ * ------------------------------------------------------------------ */
+const DOSSIER = 'docs/research/catalogue-evenements/';
+const F_CATALOGUE = DOSSIER + 'catalogue-evenements-v3-3.csv';
+const F_ROLES     = DOSSIER + 'catalogue-roles-v0.csv';
+
+function analyserCSV(texte){
+  if (texte.charCodeAt(0) === 0xFEFF) texte = texte.slice(1);
+  const lignes = [];
+  let champ = '', ligne = [], dansGuillemets = false;
+  for (let i = 0; i < texte.length; i++){
+    const c = texte[i];
+    if (dansGuillemets){
+      if (c === '"'){
+        if (texte[i+1] === '"'){ champ += '"'; i++; } else dansGuillemets = false;
+      } else champ += c;
+    } else if (c === '"'){ dansGuillemets = true; }
+    else if (c === ';'){ ligne.push(champ); champ = ''; }
+    else if (c === '\n'){ ligne.push(champ); lignes.push(ligne); ligne = []; champ = ''; }
+    else if (c !== '\r'){ champ += c; }
+  }
+  if (champ !== '' || ligne.length) { ligne.push(champ); lignes.push(ligne); }
+  return lignes.filter(l => l.length > 1 || (l[0] || '').trim() !== '');
+}
+const enObjets = (lignes) => {
+  const t = lignes[0].map(s => s.trim());
+  return lignes.slice(1).map(l => Object.fromEntries(t.map((c, i) => [c, (l[i] ?? '').trim()])));
+};
+
+/* ------------------------------------------------------------------ *
+ * 2. Vocabulaires GELES — recopies pour lire, jamais pour decider.
+ * ------------------------------------------------------------------ */
+const STATUTS = ['validee', 'chantier', 'douteuse', 'a_arbitrer', 'exclue'];
+const COULEUR_STATUT = {
+  validee:'var(--st-validee)', chantier:'var(--st-chantier)',
+  douteuse:'var(--st-douteuse)', a_arbitrer:'var(--st-arbitrer)', exclue:'var(--ink-muted)'
+};
+/* grille de roles v0, GELEE — les onze roles, dans l'ordre de la grille */
+const ROLES_V0 = ['initiateur','exploiteur','affecte','revelateur','correcteur','validateur',
+  'coordinateur','opposant','observateur','non_applicable','incertain'];
+/* vocabulaire Q7 v1, GELE — les neuf dimensions */
+const DIMENSIONS_Q7 = ['usage_paiement','valorisation','unite_compte_etalon','liquidite_convertibilite',
+  'conf_methodique','conf_hierarchique','conf_ethique','fongibilite','integrite_monnayage'];
+/* vocabulaire d'acteurs du catalogue (colonne acteur_principal / actor_id) */
+const ACTEURS_TYPES = ['core_devs','mineurs','entrepreneurs_exchanges','institutions_financieres',
+  'communautes_forums','medias_connaissance','regulateurs_etats','nd'];
+/* phases de la these */
+const PHASES = ['poc','peche','maturation'];
+const SIGNES = ['+','-','±'];
+const CLASSE_SIGNE = {'+':'sg-p','-':'sg-m','±':'sg-a'};
+const LIB_SIGNE = {'+':'renforcement','-':'mise en cause','±':'ambivalent / non activé'};
+
+/* ------------------------------------------------------------------ *
+ * 3. Derivations de lecture (jamais ecrites au CSV)
+ * ------------------------------------------------------------------ */
+const annee = (e) => (e.date || '').slice(0, 4);
+const estCrise = (e) => /^oui/i.test(e.crise || '');
+const domaineBase = (e) => (e.domaine_8 || '').replace('*', '');
+const effets = (e) => {
+  const v = (e.effet_prop_monetaires || '').trim();
+  if (!v || v === 'nd') return [];
+  return v.split(/\s+/).map(t => {
+    const m = t.match(/^([a-z_]+)\((.)\)$/);
+    return m ? {dimension:m[1], signe:m[2], brut:t} : null;
+  }).filter(Boolean);
+};
+/* Regle R3 appliquee a l'identique du lot 1 : une ligne SANS date n'est
+   ni dedans ni dehors — elle n'est jamais marquee hors perimetre.
+   Verifie : la lecture stricte (< 18/07/2008 ou > 31/12/2020) designe
+   exactement les memes quatre lignes que la lecture par annee. */
+const horsPerimetre = (e) => { const a = +annee(e); return !!a && (a < 2008 || a > 2020); };
+
+let CAT = [], ROLES = [], PAR_ID = new Map();
+
+/* ------------------------------------------------------------------ *
+ * 4. Filtres — memes champs que la page-labo, pour que les deux pages
+ *    se lisent l'une l'autre sans traduction.
+ * ------------------------------------------------------------------ */
+const CHAMPS_FILTRE = [
+  {cle:'statut_ligne', lib:'statut de ligne', valeurs:e => [e.statut_ligne]},
+  {cle:'systeme',      lib:'système',         valeurs:e => [e.systeme]},
+  {cle:'phase',        lib:'phase',           valeurs:e => [e.phase]},
+  {cle:'domaine',      lib:'domaine',         valeurs:e => [domaineBase(e)]},
+  {cle:'arene',        lib:'arène',           valeurs:e => [e.arene]},
+  {cle:'type_acte',    lib:"type d'acte",     valeurs:e => [e.type_acte, e.type_acte_2]},
+  {cle:'crise',        lib:'crise',           valeurs:e => [estCrise(e) ? 'oui' : 'non']},
+  {cle:'effet',        lib:'effet Q7',        valeurs:e => effets(e).map(x => x.dimension)},
+  {cle:'acteur',       lib:'acteur principal',valeurs:e => [e.acteur_principal]},
+  {cle:'origine',      lib:'origine',         valeurs:e => [e.origine]},
+];
+const etat = Object.fromEntries(CHAMPS_FILTRE.map(c => [c.cle, '']));
+etat.recherche = '';
+let INCLURE_HP = true;   /* defaut : inclure — exclure serait deja decider */
+
+const passe = (e) => CHAMPS_FILTRE.every(c => {
+  if (!etat[c.cle]) return true;
+  const vals = c.valeurs(e).map(v => (v || '').trim()).filter(Boolean);
+  return etat[c.cle] === '(vide)' ? vals.length === 0 : vals.includes(etat[c.cle]);
+}) && (!etat.recherche || (e.id + ' ' + e.intitule + ' ' + (e.notes||'') + ' ' + (e.cve||''))
+        .toLowerCase().includes(etat.recherche.toLowerCase()));
+
+/* selection(hp) : hp force l'inclusion des hors perimetre, quel que soit
+   l'etat du bouton — c'est ce qui rend l'ecart mesurable des deux cotes. */
+const selection = (hp) => CAT.filter(e => passe(e) && ((hp === undefined ? INCLURE_HP : hp) || !horsPerimetre(e)));
+
+const ech = (s) => String(s ?? '').replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const court = (s, n) => { s = String(s || ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
+
+/* ------------------------------------------------------------------ *
+ * 5. Echelle d'effectif — 5 pas, progression logarithmique.
+ *    Les comptages de ce catalogue sont tres dissymetriques (une case a
+ *    48, la plupart a 1 ou 2) : une echelle lineaire ecraserait tout
+ *    dans le premier pas. La legende affiche les BORNES REELLES de
+ *    chaque pas, recalculees a chaque rendu — rien n'est suppose.
+ * ------------------------------------------------------------------ */
+const NB_PAS = 5;
+function pasDe(v, maxi){
+  if (!v) return 0;
+  if (maxi <= 1) return 1;
+  /* ancrage aux deux bouts : l'effectif 1 tombe toujours au pas 1, le
+     maximum toujours au pas 5 — sinon le premier pas reste inemployé et
+     l'échelle ment d'un cran. */
+  const p = 1 + Math.floor((NB_PAS - 1) * Math.log(v) / Math.log(maxi));
+  return Math.min(NB_PAS, Math.max(1, p));
+}
+function bornesEchelle(maxi){
+  const b = [];
+  for (let p = 1; p <= NB_PAS; p++){
+    let lo = null, hi = null;
+    for (let v = 1; v <= maxi; v++){ if (pasDe(v, maxi) === p){ if (lo === null) lo = v; hi = v; } }
+    b.push(lo === null ? null : (lo === hi ? String(lo) : lo + '–' + hi));
+  }
+  return b;
+}
+function legendeEffectif(maxi, note){
+  const b = bornesEchelle(maxi);
+  const pas = b.map((t, i) => t === null ? '' :
+    `<span class="badge"><span class="ech-pas" style="background:var(--mx-${i+1})"></span>${ech(t)}</span>`).join('');
+  return `<span class="vide">effectif :</span>${pas}
+    <span class="badge"><span class="ech-pas" style="background:transparent;border:1px solid var(--ligne)"></span>0</span>
+    <span class="vide">— l'effectif est aussi écrit dans chaque case${note ? ' · ' + ech(note) : ''}</span>`;
+}
+function legendeSignes(){
+  return SIGNES.map(s => `<span class="badge"><span class="sgn ${CLASSE_SIGNE[s]}">${s}</span>&nbsp;${ech(LIB_SIGNE[s])}</span>`).join('')
+    + `<span class="vide">— le signe est écrit dans la pastille ; la couleur ne porte jamais seule</span>`;
+}
+const marqueHP = () => `<span class="badge"><span class="ech-pas hp" style="background:var(--mx-3)"></span>
+  contient une ligne hors périmètre R3 (hachure + mention « R3 »)</span>`;
+
+/* ------------------------------------------------------------------ *
+ * 6. Fabrique de matrice — une seule, pour les quatre.
+ *    spec = {lignes:[{cle,lib,horsEchelle?}], colonnes:[{cle,lib,entete?,horsEchelle?}],
+ *            cellules:Map('l||c' -> [items]), cle:(item)=>id, hp:(item)=>bool,
+ *            rendu:(items)=>html|null}
+ * ------------------------------------------------------------------ */
+function rendreMatrice(idTable, spec, idTiroir){
+  const t = document.getElementById(idTable);
+  const get = (l, c) => spec.cellules.get(l + '||' + c) || [];
+  /* maxi calcule sur les seules cellules DANS l'echelle */
+  let maxi = 0;
+  spec.lignes.forEach(L => spec.colonnes.forEach(C => {
+    if (L.horsEchelle || C.horsEchelle) return;
+    maxi = Math.max(maxi, get(L.cle, C.cle).length);
+  }));
+
+  const totLigne = L => spec.colonnes.reduce((s, C) => s + get(L.cle, C.cle).length, 0);
+  const totCol   = C => spec.lignes.reduce((s, L) => s + get(L.cle, C.cle).length, 0);
+  const totGen   = spec.lignes.reduce((s, L) => s + totLigne(L), 0);
+
+  let html = t.querySelector('caption') ? t.querySelector('caption').outerHTML : '';
+  html += '<thead><tr><th scope="col">' + ech(spec.coinLib || '') + '</th>';
+  spec.colonnes.forEach(C => {
+    html += `<th scope="col" class="${C.horsEchelle ? 'hors-ech' : ''}" title="${ech(C.titre || C.lib)}">${C.entete || ech(C.lib)}</th>`;
+  });
+  html += '<th scope="col" class="tot">total</th></tr></thead><tbody>';
+
+  spec.lignes.forEach(L => {
+    html += `<tr><th scope="row" class="${L.horsEchelle ? 'hors-ech' : ''}" title="${ech(L.titre || L.lib)}">${ech(L.lib)}</th>`;
+    spec.colonnes.forEach(C => {
+      const items = get(L.cle, C.cle);
+      const n = items.length;
+      const horsEch = L.horsEchelle || C.horsEchelle;
+      const nbHP = spec.hp ? items.filter(spec.hp).length : 0;
+      const contenu = spec.rendu ? spec.rendu(items) : (n ? String(n) : '·');
+      const cls = [];
+      if (horsEch) cls.push('hors-ech'); else if (n && !spec.sansRampe) cls.push('p' + pasDe(n, maxi));
+      if (!n) cls.push('cel-0');
+      if (nbHP) cls.push('hp');
+      if (n) cls.push('cel');
+      html += `<td class="${cls.join(' ')}"${n ? ` tabindex="0" role="button" data-l="${ech(L.cle)}" data-c="${ech(C.cle)}"` : ''}
+        data-n="${n}" data-hp="${nbHP}">${contenu}${nbHP ? '<span class="r3">R3</span>' : ''}</td>`;
+    });
+    html += `<td class="tot num">${totLigne(L)}</td></tr>`;
+  });
+  html += '<tr class="tot"><th scope="row">total</th>';
+  spec.colonnes.forEach(C => { html += `<td class="num${C.horsEchelle ? ' hors-ech' : ''}">${totCol(C)}</td>`; });
+  html += `<td class="tot num">${totGen}</td></tr></tbody>`;
+  t.innerHTML = html;
+
+  /* infobulle + tiroir */
+  t.querySelectorAll('td.cel').forEach(td => {
+    const L = spec.lignes.find(x => x.cle === td.dataset.l);
+    const C = spec.colonnes.find(x => x.cle === td.dataset.c);
+    const items = get(td.dataset.l, td.dataset.c);
+    const nbHP = +td.dataset.hp;
+    const dire = (ev) => montrerBulle(ev,
+      `<strong>${ech(L.lib)} × ${ech(C.lib)}</strong><br>${items.length} ${ech(spec.unite || 'lignes')}` +
+      (nbHP ? `<br><span style="color:var(--ink-2)">dont ${nbHP} hors périmètre R3</span>` : '') +
+      `<br><span class="vide">cliquer pour le détail</span>`);
+    td.addEventListener('mouseenter', dire);
+    td.addEventListener('focus', dire);
+    td.addEventListener('mouseleave', cacherBulle);
+    td.addEventListener('blur', cacherBulle);
+    const ouvrir = () => ouvrirTiroir(idTiroir, L, C, items, spec);
+    td.addEventListener('click', ouvrir);
+    td.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); ouvrir(); } });
+  });
+  return {maxi, totGen};
+}
+
+function ouvrirTiroir(idTiroir, L, C, items, spec){
+  const d = document.getElementById(idTiroir);
+  d.hidden = false;
+  d.innerHTML = `<h3>${ech(L.lib)} × ${ech(C.lib)} — ${items.length} ${ech(spec.unite || 'lignes')}</h3><ul>` +
+    items.map(it => spec.ligneTiroir(it)).join('') +
+    `</ul><button class="fermer">fermer</button>`;
+  d.querySelector('.fermer').onclick = () => { d.hidden = true; };
+  d.scrollIntoView({block:'nearest'});
+}
+const pastilleStatut = (e) => e ?
+  `<span class="pastille" style="background:${COULEUR_STATUT[e.statut_ligne] || 'var(--ink-muted)'}"></span>${ech(e.statut_ligne)}` : '';
+const lienEvt = (e, id) => e
+  ? `<span class="num">${ech(e.id)}</span> ${ech(court(e.intitule, 78))} <span class="vide">[${pastilleStatut(e)}${horsPerimetre(e) ? ' · hors périmètre R3' : ''}]</span>`
+  : `<span class="num">${ech(id)}</span> <span class="vide">[absent du catalogue]</span>`;
+
+const bulle = document.getElementById('bulle');
+function montrerBulle(ev, html){
+  bulle.innerHTML = html; bulle.style.opacity = '1';
+  const x = (ev.clientX ?? 100) + 14, y = (ev.clientY ?? 100) + 14;
+  bulle.style.left = Math.min(x, innerWidth - 400) + 'px';
+  bulle.style.top = Math.min(y, innerHeight - 110) + 'px';
+}
+const cacherBulle = () => { bulle.style.opacity = '0'; };
+
+/* ------------------------------------------------------------------ *
+ * 7. Couverture — ce que la matrice voit vraiment, dit en clair.
+ * ------------------------------------------------------------------ */
+function rendreCouverture(idCouv, portantes, base, texteManque, nbHP){
+  const pct = base ? Math.round(portantes / base * 100) : 0;
+  const totalHP = CAT.filter(horsPerimetre).length;
+  const hp = nbHP === undefined ? '' :
+    `<br><span class="manque"><strong>hors périmètre R3 dans cette matrice</strong> : ` +
+    (nbHP ? `<span class="num">${nbHP}</span> — cases marquées d'une hachure et de la mention « R3 »`
+          : `<span class="num">0</span> sur les ${totalHP} lignes hors bornes du catalogue : elles ne portent
+             aucun des deux axes croisés ici, donc le basculement du périmètre ne déplace aucune case`) +
+    `</span>`;
+  document.getElementById(idCouv).innerHTML =
+    `<strong>couverture réelle</strong> : <span class="num">${portantes}</span> sur
+     <span class="num">${base}</span> <span class="piste"><span class="rempl" style="width:${pct}%"></span></span>
+     <span class="num">${pct} %</span>
+     <span class="manque">— ${texteManque}</span>${hp}`;
+}
+
+/* ------------------------------------------------------------------ *
+ * 8. M1 — acteurs x roles
+ * ------------------------------------------------------------------ */
+function rolesRetenus(sel){
+  const ids = new Set(sel.map(e => e.id));
+  const conf = document.getElementById('m1-conf').value;
+  return ROLES.filter(r => ids.has(r.event_id) && (!conf || r.confidence === conf));
+}
+function rendreM1(sel){
+  const rr = rolesRetenus(sel);
+  const parNom = document.getElementById('m1-axe').value === 'nom';
+  let lignes;
+  if (parNom){
+    const noms = [...new Set(rr.map(r => r.actor_name).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'fr'));
+    lignes = noms.map(n => ({cle:'n:' + n, lib:court(n, 34), titre:n}));
+    if (rr.some(r => !r.actor_name)) lignes.push({cle:'n:', lib:'(sans nom — type seul)', horsEchelle:true});
+  } else {
+    const vus = [...new Set(rr.map(r => r.actor_id).filter(Boolean))];
+    const sup = vus.filter(v => !ACTEURS_TYPES.includes(v)).sort();
+    lignes = ACTEURS_TYPES.concat(sup).map(a => ({cle:'t:' + a, lib:a, titre:a}));
+  }
+  const rolesVus = [...new Set(rr.map(r => r.role).filter(Boolean))];
+  const sup = rolesVus.filter(v => !ROLES_V0.includes(v)).sort();
+  const colonnes = ROLES_V0.concat(sup).map(r => ({cle:r, lib:r, titre:r}));
+
+  const cellules = new Map();
+  rr.forEach(r => {
+    const cleL = parNom ? 'n:' + (r.actor_name || '') : 't:' + r.actor_id;
+    const k = cleL + '||' + r.role;
+    if (!cellules.has(k)) cellules.set(k, []);
+    cellules.get(k).push(r);
+  });
+  const {maxi} = rendreMatrice('m1', {
+    coinLib: parNom ? 'acteur nommé' : "type d'acteur",
+    lignes, colonnes, cellules, unite:'lignes de rôle',
+    hp: (r) => { const e = PAR_ID.get(r.event_id); return !!e && horsPerimetre(e); },
+    ligneTiroir: (r) => `<li>${lienEvt(PAR_ID.get(r.event_id), r.event_id)} — <span class="num">${ech(r.role)}</span>
+      · confiance ${ech(r.confidence)}${r.note ? ' · ' + ech(court(r.note, 90)) : ''}</li>`,
+  }, 'm1-tiroir');
+
+  const evtAvecRole = new Set(rr.map(r => r.event_id)).size;
+  const inemployes = colonnes.filter(c => !rr.some(r => r.role === c.cle)).length;
+  rendreCouverture('m1-couv', evtAvecRole, sel.length,
+    `${rr.length} lignes de rôle portées par ${evtAvecRole} événements de la sélection ; ` +
+    `${sel.length - evtAvecRole} n'ont aucun rôle posé. ` +
+    (inemployes ? `${inemployes} des ${colonnes.length} rôles de la grille ne sont jamais employés ici (colonnes vides).`
+                : `les ${colonnes.length} rôles de la grille sont tous employés au moins une fois.`),
+    rr.filter(r => { const e = PAR_ID.get(r.event_id); return !!e && horsPerimetre(e); }).length);
+  document.getElementById('m1-legende').innerHTML = legendeEffectif(maxi) + marqueHP();
+}
+
+/* ------------------------------------------------------------------ *
+ * 9. M2 — evenements x effets Q7 (le signe EST la valeur)
+ * ------------------------------------------------------------------ */
+function rendreM2(sel){
+  const codes = sel.filter(e => effets(e).length)
+    .sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999') || a.id.localeCompare(b.id));
+  const lignes = codes.map(e => ({cle:e.id, lib:e.id + ' · ' + court(e.intitule, 44), titre:e.intitule}));
+  const dimsVues = [...new Set(codes.flatMap(e => effets(e).map(x => x.dimension)))];
+  const sup = dimsVues.filter(d => !DIMENSIONS_Q7.includes(d)).sort();
+  const colonnes = DIMENSIONS_Q7.concat(sup).map(d => ({
+    cle:d, lib:d, titre:d,
+    entete:`<span style="writing-mode:vertical-rl;transform:rotate(180deg);display:inline-block">${ech(d)}</span>`}));
+  const cellules = new Map();
+  codes.forEach(e => effets(e).forEach(x => {
+    const k = e.id + '||' + x.dimension;
+    if (!cellules.has(k)) cellules.set(k, []);
+    cellules.get(k).push({evt:e, ...x});
+  }));
+  rendreMatrice('m2', {
+    coinLib:'événement', lignes, colonnes, cellules, unite:'effets', sansRampe:true,
+    hp: (it) => horsPerimetre(it.evt),
+    rendu: (items) => items.length
+      ? items.map(it => `<span class="sgn ${CLASSE_SIGNE[it.signe] || ''}">${ech(it.signe)}</span>`).join('')
+      : '·',
+    ligneTiroir: (it) => `<li>${lienEvt(it.evt, it.evt.id)} — <span class="sgn ${CLASSE_SIGNE[it.signe] || ''}">${ech(it.signe)}</span>
+      <span class="num">${ech(it.brut)}</span>${it.evt.codage_justif ? ' · ' + ech(court(it.evt.codage_justif, 120)) : ''}</li>`,
+  }, 'm2-tiroir');
+
+  const nbEffets = codes.reduce((s, e) => s + effets(e).length, 0);
+  const parStatut = STATUTS.map(s => [s, codes.filter(e => e.statut_ligne === s).length])
+    .filter(([, n]) => n).map(([s, n]) => `${n} ${s}`).join(', ');
+  const dimsVides = colonnes.filter(c => !codes.some(e => effets(e).some(x => x.dimension === c.cle))).length;
+  rendreCouverture('m2-couv', codes.length, sel.length,
+    `${nbEffets} signes posés sur ${codes.length} événements (${parStatut || '—'}) ; ` +
+    `${sel.length - codes.length} lignes de la sélection n'ont pas d'effet codé — ` +
+    (dimsVides ? `${dimsVides} des ${colonnes.length} dimensions Q7 ne sont jamais employées ici (colonnes vides).`
+               : `les ${colonnes.length} dimensions Q7 sont toutes employées au moins une fois.`),
+    codes.filter(horsPerimetre).length);
+  document.getElementById('m2-legende').innerHTML = legendeSignes() + marqueHP();
+}
+
+/* ------------------------------------------------------------------ *
+ * 10. M3 — phases x types d'actes
+ * ------------------------------------------------------------------ */
+function typesDe(e){
+  const avecT2 = document.getElementById('m3-t2').checked;
+  const t = [e.type_acte, avecT2 ? e.type_acte_2 : ''].map(v => (v || '').trim()).filter(Boolean);
+  return t.length ? [...new Set(t)] : [''];
+}
+function rendreM3(sel){
+  const phasesVues = [...new Set(sel.map(e => e.phase).filter(Boolean))];
+  const supPh = phasesVues.filter(p => !PHASES.includes(p)).sort();
+  const lignes = PHASES.concat(supPh).map(p => ({cle:p, lib:p, titre:p}));
+  if (sel.some(e => !e.phase)) lignes.push({cle:'', lib:'(sans phase)', horsEchelle:true});
+
+  const typesVus = [...new Set(sel.flatMap(e => typesDe(e)).filter(Boolean))].sort();
+  const colonnes = typesVus.map(t => ({cle:t, lib:t, titre:t}));
+  /* la colonne de contexte est placee EN TETE, contre l'en-tete de ligne :
+     c'est la plus grosse, c'est celle qui porte le marquage R3, et la
+     reléguer en fin de table la rendait invisible sans defilement. */
+  if (sel.some(e => typesDe(e).includes('')))
+    colonnes.unshift({cle:'', lib:'(type non codé)', horsEchelle:true});
+
+  const cellules = new Map();
+  sel.forEach(e => typesDe(e).forEach(t => {
+    const k = (e.phase || '') + '||' + t;
+    if (!cellules.has(k)) cellules.set(k, []);
+    cellules.get(k).push(e);
+  }));
+  const {maxi} = rendreMatrice('m3', {
+    coinLib:'phase', lignes, colonnes, cellules, unite:'événements',
+    hp: horsPerimetre,
+    ligneTiroir: (e) => `<li>${lienEvt(e, e.id)} — ${ech(e.date || 'sans date')} · ${ech(e.type_acte || 'type non codé')}${e.type_acte_2 ? ' + ' + ech(e.type_acte_2) : ''}</li>`,
+  }, 'm3-tiroir');
+
+  const portantes = sel.filter(e => e.phase && e.type_acte).length;
+  rendreCouverture('m3-couv', portantes, sel.length,
+    `${sel.filter(e => !e.phase).length} lignes sans phase, ${sel.filter(e => !e.type_acte).length} sans type d'acte ; ` +
+    `seules les cases colorées sont dans l'échelle.`,
+    sel.filter(horsPerimetre).length);
+  document.getElementById('m3-legende').innerHTML =
+    legendeEffectif(maxi, "colonne « (type non codé) » et ligne « (sans phase) » hors échelle") + marqueHP();
+}
+
+/* ------------------------------------------------------------------ *
+ * 11. M4 — arenes x effets Q7
+ * ------------------------------------------------------------------ */
+function rendreM4(sel){
+  const grouper = document.getElementById('m4-grp').checked;
+  const avecEffet = sel.filter(e => effets(e).length);
+  const arenesVues = [...new Set(avecEffet.map(e => e.arene).filter(Boolean))].sort();
+  const lignes = arenesVues.map(a => ({cle:a, lib:a, titre:a}));
+  if (avecEffet.some(e => !e.arene)) lignes.push({cle:'', lib:'(arène non codée)', horsEchelle:true});
+
+  const paires = new Set();
+  avecEffet.forEach(e => effets(e).forEach(x => paires.add(grouper ? x.dimension : x.dimension + ' ' + x.signe)));
+  const rang = (d) => { const i = DIMENSIONS_Q7.indexOf(d); return i < 0 ? 99 : i; };
+  const colonnes = [...paires].sort((a, b) => {
+    const [da, sa] = a.split(' '), [db, sb] = b.split(' ');
+    return rang(da) - rang(db) || da.localeCompare(db) || SIGNES.indexOf(sa) - SIGNES.indexOf(sb);
+  }).map(k => {
+    const [d, s] = k.split(' ');
+    return {cle:k, lib:d + (s ? ' (' + s + ')' : ''), titre:d + (s ? ' — ' + LIB_SIGNE[s] : ''),
+      entete:`<span style="writing-mode:vertical-rl;transform:rotate(180deg);display:inline-block">${ech(d)}</span>` +
+             (s ? `<br><span class="sgn ${CLASSE_SIGNE[s] || ''}">${ech(s)}</span>` : '')};
+  });
+
+  const cellules = new Map();
+  avecEffet.forEach(e => effets(e).forEach(x => {
+    const k = (e.arene || '') + '||' + (grouper ? x.dimension : x.dimension + ' ' + x.signe);
+    if (!cellules.has(k)) cellules.set(k, []);
+    cellules.get(k).push({evt:e, ...x});
+  }));
+  const {maxi} = rendreMatrice('m4', {
+    coinLib:'arène', lignes, colonnes, cellules, unite:'couples (événement, effet)',
+    hp: (it) => horsPerimetre(it.evt),
+    ligneTiroir: (it) => `<li>${lienEvt(it.evt, it.evt.id)} — <span class="sgn ${CLASSE_SIGNE[it.signe] || ''}">${ech(it.signe)}</span>
+      <span class="num">${ech(it.brut)}</span></li>`,
+  }, 'm4-tiroir');
+
+  const portantes = sel.filter(e => e.arene && effets(e).length).length;
+  rendreCouverture('m4-couv', portantes, sel.length,
+    `${avecEffet.length} lignes à effet codé, dont ${avecEffet.filter(e => !e.arene).length} sans arène ; ` +
+    `${sel.filter(e => e.arene).length} lignes de la sélection portent une arène, dont ${portantes} seulement portent aussi un effet codé.`,
+    avecEffet.filter(e => e.arene && horsPerimetre(e)).length);
+  document.getElementById('m4-legende').innerHTML =
+    legendeEffectif(maxi) + legendeSignes() + marqueHP();
+}
+
+/* ------------------------------------------------------------------ *
+ * 12. Panneau R3 — l'ecart est MESURE, des deux cotes, a chaque rendu.
+ * ------------------------------------------------------------------ */
+function mesures(sel){
+  const ids = new Set(sel.map(e => e.id));
+  const conf = document.getElementById('m1-conf').value;
+  const rr = ROLES.filter(r => ids.has(r.event_id) && (!conf || r.confidence === conf));
+  const avecEffet = sel.filter(e => effets(e).length);
+  return {
+    m1: rr.length,
+    m2: avecEffet.reduce((s, e) => s + effets(e).length, 0),
+    m3: sel.filter(e => e.phase && typesDe(e).some(Boolean)).length,
+    m4: avecEffet.filter(e => e.arene).reduce((s, e) => s + effets(e).length, 0),
+    lignes: sel.length,
+  };
+}
+function rendreR3(){
+  const hp = CAT.filter(horsPerimetre)
+    .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+  document.getElementById('r3-liste').innerHTML = hp.length ? `
+    <table class="simple"><thead><tr>
+      <th>id</th><th>date</th><th>intitulé</th><th>statut</th><th>phase</th><th>arène</th>
+      <th>type d'acte</th><th>effet Q7</th><th>rôles</th></tr></thead><tbody>` +
+    hp.map(e => {
+      const nr = ROLES.filter(r => r.event_id === e.id).length;
+      const c = (v) => v ? ech(v) : '<span class="vide">—</span>';
+      return `<tr><td class="num">${ech(e.id)}</td><td class="num">${ech(e.date)}</td>
+        <td>${ech(court(e.intitule, 62))}</td><td>${pastilleStatut(e)}</td><td>${c(e.phase)}</td>
+        <td>${c(e.arene)}</td><td>${c(e.type_acte)}</td>
+        <td>${e.effet_prop_monetaires === 'nd' ? '<span class="vide">nd</span>' : ech(e.effet_prop_monetaires)}</td>
+        <td>${nr ? nr : '<span class="vide">0</span>'}</td></tr>`;
+    }).join('') + '</tbody></table>' : '<p class="vide">Aucune ligne hors des bornes R3 dans la donnée versée.</p>';
+
+  const avec = mesures(selection(true)), sans = mesures(selection(false));
+  const rangs = [
+    ['1 · acteurs × rôles', 'lignes de rôle', avec.m1, sans.m1],
+    ['2 · événements × effets Q7', 'signes posés', avec.m2, sans.m2],
+    ["3 · phases × types d'actes", 'événements croisés (hors colonne non codée)', avec.m3, sans.m3],
+    ['4 · arènes × effets Q7', 'couples (événement, effet)', avec.m4, sans.m4],
+    ['— corpus filtré', 'lignes', avec.lignes, sans.lignes],
+  ];
+  document.getElementById('r3-effet').innerHTML =
+    `<table class="simple"><thead><tr><th>matrice</th><th>unité comptée</th>
+      <th>hors périmètre inclus</th><th>hors périmètre exclu</th><th>écart</th></tr></thead><tbody>` +
+    rangs.map(([m, u, a, s]) => {
+      const d = a - s;
+      return `<tr><td>${ech(m)}</td><td class="vide">${ech(u)}</td><td class="num">${a}</td>
+        <td class="num">${s}</td><td class="num ${d ? 'ecart-non-nul' : 'ecart-nul'}">${d > 0 ? '+' + d : d}</td></tr>`;
+    }).join('') + '</tbody></table>' +
+    `<p class="regle" style="margin-top:8px">Lecture : un écart nul signifie que ces quatre lignes
+     <strong>ne portent aucun codage sur les axes de la matrice</strong> — les inclure ou les exclure ne
+     déplace pas une seule case. Elles pèsent seulement sur les dénominateurs de couverture, où elles
+     comptent comme non codées. L'écart est recalculé à chaque filtre : il dit l'état de la donnée versée,
+     pas une opinion sur le périmètre.</p>`;
+}
+
+/* ------------------------------------------------------------------ *
+ * 13. Filtres et orchestration
+ * ------------------------------------------------------------------ */
+function rendreFiltres(){
+  const base = CAT.filter(e => INCLURE_HP || !horsPerimetre(e));
+  const zone = document.getElementById('filtres');
+  zone.innerHTML = CHAMPS_FILTRE.map(c => {
+    const compte = new Map();
+    let vides = 0;
+    base.forEach(e => {
+      const v = c.valeurs(e).map(x => (x || '').trim()).filter(Boolean);
+      if (!v.length) vides++;
+      new Set(v).forEach(x => compte.set(x, (compte.get(x) || 0) + 1));
+    });
+    const opts = [...compte.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([v, n]) => `<option value="${ech(v)}"${etat[c.cle] === v ? ' selected' : ''}>${ech(v)} (${n})</option>`).join('');
+    return `<div class="filtre"><label for="f-${c.cle}">${ech(c.lib)}</label>
+      <select id="f-${c.cle}" data-cle="${c.cle}"><option value="">tous (${base.length})</option>${opts}
+      ${vides ? `<option value="(vide)"${etat[c.cle] === '(vide)' ? ' selected' : ''}>(vide) (${vides})</option>` : ''}</select></div>`;
+  }).join('') +
+  `<div class="filtre"><label for="f-recherche">recherche</label>
+   <input id="f-recherche" type="search" placeholder="id, intitulé, note, CVE" value="${ech(etat.recherche)}"></div>`;
+
+  zone.querySelectorAll('select[data-cle]').forEach(s => {
+    s.onchange = () => { etat[s.dataset.cle] = s.value; rendreTout(); };
+  });
+  const rech = document.getElementById('f-recherche');
+  rech.oninput = () => { etat.recherche = rech.value; rendreTout(false); };
+}
+
+function rendreTout(refaireFiltres){
+  const sel = selection();
+  document.getElementById('compte-sel').textContent =
+    `— ${sel.length} lignes retenues sur ${CAT.length}`;
+  rendreM1(sel); rendreM2(sel); rendreM3(sel); rendreM4(sel);
+  rendreR3();
+  if (refaireFiltres !== false) rendreFiltres();
+}
+
+async function demarrer(){
+  try {
+    const [tc, tr] = await Promise.all([
+      fetch(F_CATALOGUE).then(r => { if (!r.ok) throw new Error(F_CATALOGUE + ' : HTTP ' + r.status); return r.text(); }),
+      fetch(F_ROLES).then(r => { if (!r.ok) throw new Error(F_ROLES + ' : HTTP ' + r.status); return r.text(); }),
+    ]);
+    CAT = enObjets(analyserCSV(tc));
+    ROLES = enObjets(analyserCSV(tr));
+    PAR_ID = new Map(CAT.map(e => [e.id, e]));
+    const orphelins = ROLES.filter(r => !PAR_ID.has(r.event_id)).length;
+    document.getElementById('provenance').innerHTML =
+      `source : <span class="num">${F_CATALOGUE}</span> — ${CAT.length} lignes × ${Object.keys(CAT[0] || {}).length} colonnes ·
+       <span class="num">${F_ROLES}</span> — ${ROLES.length} lignes de rôle` +
+      (orphelins ? ` · <strong>${orphelins} lignes de rôle sans événement au catalogue</strong>` : ' · aucune ligne de rôle orpheline');
+    document.getElementById('m3-t2-n').textContent = CAT.filter(e => e.type_acte_2).length;
+    rendreTout();
+    document.getElementById('pied').innerHTML =
+      `Lot visible 2 de l'Observatoire. Les vocabulaires affichés sont <strong>gelés</strong> :
+       grille de rôles v0 (11 rôles), effets Q7 v1 (9 dimensions), statut de ligne D4.
+       Cette page les <em>lit</em> ; elle n'en crée aucun, n'en complète aucun et ne décide d'aucun périmètre.
+       Toute correction de donnée passe par un applicateur du dépôt
+       (<span class="num">scripts/make_v3_3_catalogue.py</span>), jamais par cette page.
+       Les deux échelles de couleur — rampe d'effectif et signes Q7 — sont
+       <strong>mesurées</strong> par <span class="num">scripts/validate_palette.js</span> de la skill dataviz
+       contre les deux surfaces du site : 0 échec. L'effectif et le signe sont toujours écrits en clair
+       dans la case ; la couleur ne porte jamais seule.`;
+  } catch (err) {
+    document.getElementById('zone-erreur').hidden = false;
+    document.getElementById('msg-erreur').innerHTML =
+      `<strong>Lecture impossible.</strong><br>${ech(err.message)}<br><br>
+       Cette page lit les CSV du dépôt en relatif : elle doit être servie par HTTP
+       (<span class="num">python3 -m http.server</span> à la racine du dépôt), pas ouverte en
+       <span class="num">file://</span>.`;
+  }
+}
+
+document.getElementById('theme').onclick = (ev) => {
+  const sombre = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', sombre ? 'light' : 'dark');
+  ev.target.textContent = 'thème : ' + (sombre ? 'bordeaux' : 'sombre');
+  ev.target.setAttribute('aria-pressed', String(!sombre));
+};
+document.getElementById('r3').onclick = (ev) => {
+  INCLURE_HP = !INCLURE_HP;
+  ev.target.textContent = 'périmètre R3 : ' + (INCLURE_HP ? 'hors périmètre inclus' : 'hors périmètre exclu');
+  ev.target.setAttribute('aria-pressed', String(INCLURE_HP));
+  rendreTout();
+};
+document.getElementById('raz').onclick = () => {
+  CHAMPS_FILTRE.forEach(c => etat[c.cle] = '');
+  etat.recherche = '';
+  rendreTout();
+};
+['m1-axe','m1-conf','m3-t2','m4-grp'].forEach(id => {
+  document.getElementById(id).onchange = () => rendreTout(false);
+});
+demarrer();
+</script>
+</body>
+</html>
