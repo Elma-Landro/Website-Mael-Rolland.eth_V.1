@@ -83,3 +83,49 @@ Conséquence : les 40 lignes du lot 1 (codées sous l'ancienne convention E065) 
 ## 6. Provenance
 
 Vocabulaire, forme de table et règle D7 : arbitrages de Maël Rolland du 15/08/2026 (verbatim intégral archivé dans `docs/audits/PROMPT-COWORK-lot2-statut-roles-q7.md`, BLOC C). Esquisse antérieure : `docs/architecture/catalogue-graphe-site.md` §4 (décisions D6/D7 alors ouvertes, désormais tranchées). Grille d'acteurs v1 : `docs/audits/grille-codage-catalogue-v1.md`.
+
+---
+
+## 7. Guide de codage — la fonction, pas la grammaire de l'acte
+
+**Amendement du 16/08/2026, ratifié par Maël Rolland.** Ajout de **guide de codage uniquement** : aucun rôle ajouté, aucun rôle renommé, aucune définition du §2 modifiée. Le vocabulaire reste **gelé** dans l'état ratifié le 15/08/2026 — les onze rôles du §2 sont inchangés, mot pour mot. Cet amendement ne produit donc **pas** de v1.
+
+### La règle
+
+> **Le rôle qualifie la fonction tenue dans la situation, pas la grammaire de l'acte.**
+
+Conséquence directe : **une publication, une annonce, une cotation ou une décision ne donne pas automatiquement `initiateur`.** Pris à la lettre de la grammaire, l'auteur d'une publication est toujours l'initiateur de sa publication — et `initiateur` deviendrait automatique sur toute ligne `qualification_publique`, sans rien apprendre. Il faut coder la fonction effective :
+
+| la fonction effective est… | le rôle est |
+|---|---|
+| créer, lancer ce qui n'existait pas | `initiateur` |
+| rendre visible, ou produire un effet d'alerte | `revelateur` |
+| valider, coter, ratifier, reconnaître | `validateur` |
+| bloquer, refuser, contester activement | `opposant` |
+| commenter, documenter sans effet direct sur le cours de l'événement | `observateur` |
+
+Ce tableau **ne remplace pas** les définitions du §2 : il dit dans quel ordre les lire quand plusieurs semblent convenir. En cas de conflit, le §2 fait foi.
+
+### Comment cette règle a été établie
+
+Elle n'a pas été décrétée : elle a été **lue dans les codages déjà versés**, puis ratifiée.
+
+- **E064** — les auteurs du papier d'alerte sur The DAO sont codés `revelateur`, non `initiateur` de leur propre publication.
+- **E052** et **E063** — `initiateur` est réservé à qui crée ce qui n'existait pas (le premier stablecoin dollar ; la mise en ligne de la crowdsale).
+- **E044** — BitGo et les services de portefeuilles sont `validateur` pour l'intégration de BIP-16 : un acte d'acceptation distinct de la production.
+
+La thèse elle-même oppose les deux fonctions, chapitre I, l.289, à propos des mêmes acteurs :
+
+> « de manière très indirecte d'abord, par **simple publication** de données de prix agrégées (Nasdaq fin 2013, suivi par le NYSE en 2015), plus directement ensuite, par la **création** de produit financier spécifique par des acteurs reconnus (marchés futurs par le *Chicago Board Option Exchange* ou le *Chicago Mercantile Exchange*, courant 2017). »
+
+Le partage `validateur` / `initiateur` est donc **écrit dans le texte source**, pas déduit.
+
+### Deux avertissements de lecture
+
+**La couverture avant le terrain.** Une matrice acteurs × rôles **mesure l'état du codage avant de mesurer le terrain**. Tant que la grille n'a pas été appliquée à l'ensemble du corpus, une case vide dit « pas encore codé », jamais « ce rôle n'existe pas ». Preuve mesurée le 16/08/2026 : 100 % des lignes `valide(lot3)` portent un rôle, contre 11 % des lignes `valide(calibrage)` — la grille, gelée le 15/08/2026, est postérieure à la passe de calibrage.
+
+**Aucun rôle n'est forcé.** La règle transversale du §2 tient sans réserve : une ligne sans rôle codable reste sans ligne de rôle, ou porte `incertain`. Le guide ci-dessus sert à choisir un rôle quand il y en a un à choisir — jamais à en produire un pour remplir une case.
+
+### Provenance de cet amendement
+
+Arbitrages de Maël Rolland du 16/08/2026, point 1, rendus après le diagnostic `docs/audits/diagnostic-roles-institutions-regulateurs-2026-08-16.md`. Premier lot codé sous cette règle : `scripts/make_roles_v0_lot4.py` (5 rôles, 76 → 81 lignes).
