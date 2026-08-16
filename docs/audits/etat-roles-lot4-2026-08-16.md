@@ -94,7 +94,26 @@ Chromium, pages servies en HTTP, polices distantes coupées : **22 contrôles, 0
 
 Suite CI locale complète au vert. Effet de bord traité dans le même lot : trois faux positifs lexicaux du nouvel applicateur (`count`, `note`, `role` — la méthode `bytes.count()` et deux noms de colonnes) ajoutés aux exclusions du registre, vérifiés occurrence par occurrence ; `--check` reste vert **sans régénérer le registre**, qui ne bouge pas.
 
-## 9. Ce qui reste ouvert
+## 9. Correction au registre : l'historique distant de ce lot est en quatre commits, pas deux
+
+Ce lot devait être poussé en **deux** commits — l'exclusion du registre, puis le reste. Il en compte **quatre** sur la branche. Le contenu est intact et vérifié (les sept empreintes de blob sont identiques aux locales, l'arbre distant égale l'arbre local, et **les quatre exécutions de CI sont vertes**, 12 étapes sur 12, aucune reprise), mais le découpage n'est pas celui annoncé :
+
+| commit | contenu réel |
+|---|---|
+| `48f955f` | `scripts/build_properties_registry.py` — conforme au plan |
+| `5b159b1` | **`catalogue-roles-v0.csv` seul** |
+| `d6d1d0b` | l'applicateur, le §7 de la grille, les deux rapports |
+| `3de1fc8` | `catalogue-matrices.html` |
+
+**Le défaut à connaître : le message de `5b159b1` surdécrit son contenu.** Il porte le message complet du lot — applicateur, guide de codage, file de diagnostic — alors qu'il ne contient que le fichier de données. Cause : la charge utile des six fichiers dépassait la taille transmissible en un seul appel ; une première tentative a été tronquée (sans rien écrire, l'opération étant atomique), et la reprise n'a embarqué qu'un fichier tout en conservant le message d'origine.
+
+Deux conséquences, énoncées plutôt que tues. D'abord, **`5b159b1` fait exister la donnée sans l'applicateur qui l'a produite** — l'ordre maison veut qu'ils voyagent ensemble. C'est un état transitoire d'un seul commit, la CI y est verte, et l'applicateur arrive au suivant ; mais qui lit l'historique commit par commit croisera 81 lignes de rôle sans le script qui les explique. Ensuite, **un message de commit qui ment est une atteinte à la mémoire du dépôt**, qui est précisément ce que `docs/audits/` sert à protéger.
+
+**Pourquoi ce n'est pas réparé mais documenté** : réécrire l'historique demande un `force-push`, or le transport git direct est refusé par le proxy sur ce dépôt (403 — le dépôt n'est pas dans l'ensemble autorisé de la session) et le connecteur GitHub ne sait qu'ajouter des commits. Le seul remède disponible est celui-ci : **corriger le registre par un enregistrement postérieur**, pas par une réécriture. L'ordre essentiel, lui, est tenu — l'exclusion du registre précède bien l'arrivée de l'applicateur, ce qui était la raison d'être du découpage.
+
+*Note de méthode, pour la même raison :* en préparant cette correction j'ai lancé un `git reset --hard` inutile qui a effacé une première rédaction de cette section. Sans conséquence — rien n'était poussé, et le texte a été réécrit — mais c'est le second geste de la journée dont l'effet dépassait l'intention.
+
+## 10. Ce qui reste ouvert
 
 Les quatre questions du rapport de diagnostic : le rôle d'E060 et le sens de « conserver `a_arbitrer` » ; l'inversion d'acteur principal sur E059 ; la nature d'E032 ; et, à terme, les 16 lignes de la file.
 
