@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observatoire du catalogue d'événements — Maël Rolland</title>
+<meta name="description" content="Poste de lecture du catalogue d'événements de la thèse : chronologie codée, distributions, anomalies. Instrument de travail ; la donnée versée fait foi.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon_32x32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------ *
+ * Observatoire du catalogue — lot visible 1
+ *
+ * DONNEE VERROUILLEE : cette page ne contient AUCUNE donnee d'evenement.
+ * Elle lit les CSV verses du depot en direct. Rien n'est duplique ici,
+ * donc rien ne peut perimer en silence.
+ *
+ * COULEURS : les quatre teintes de statut sont validees par
+ * scripts/validate_palette.js de la skill dataviz, en liste adjacente,
+ * contre LES DEUX surfaces du site (#4d0000 clair, #000000 sombre) :
+ * zero FAIL, pire paire adjacente CVD dE 8.4, vision normale dE 19.3,
+ * contraste >= 3:1 partout. L'ordre est celui de l'incertitude
+ * croissante, et c'est lui qui porte la separation.
+ * Le statut n'est JAMAIS porte par la couleur seule : chaque pastille
+ * est suivie de son libelle.
+ * ------------------------------------------------------------------ */
+:root{
+  --bg:#4d0000; --bg-2:#3a0000; --surface:#5c0505; --surface-2:#450303;
+  --ink:#ffcc66; --ink-2:#ffaa33; --ink-muted:#c99a5e; --accent:#33ff33;
+  --ligne:rgba(255,204,102,.28); --ligne-forte:rgba(255,204,102,.55);
+  /* palette de statut — validee, ne pas retoucher sans revalider */
+  --st-validee:#199e70; --st-chantier:#c98500; --st-douteuse:#d55181; --st-arbitrer:#3987e5;
+}
+html[data-theme="dark"]{
+  --bg:#000; --bg-2:#0a0a0a; --surface:#141414; --surface-2:#0e0e0e;
+  --ink:#ffd700; --ink-2:#ffb733; --ink-muted:#b39247;
+  --ligne:rgba(255,215,0,.24); --ligne-forte:rgba(255,215,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'VT323',ui-monospace,'Courier New',monospace;font-size:20px;line-height:1.35}
+h1,h2,h3,.pix{font-family:'Press Start 2P',ui-monospace,monospace;line-height:1.6}
+h1{font-size:15px;margin:0 0 6px}
+h2{font-size:11px;margin:0 0 12px;color:var(--ink-2)}
+h3{font-size:9px;margin:0 0 8px;color:var(--ink-2)}
+a{color:var(--accent)}
+header{padding:18px 20px 12px;border-bottom:2px solid var(--ligne-forte);background:var(--bg-2)}
+.sous{font-size:18px;color:var(--ink-muted);max-width:88ch}
+.barre-outils{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+button,select,input{font-family:inherit;font-size:17px;background:var(--surface);color:var(--ink);
+  border:1px solid var(--ligne-forte);padding:4px 8px;border-radius:2px}
+button{cursor:pointer}
+button:hover,button:focus-visible{background:var(--surface-2);color:var(--accent);outline:none}
+button[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+main{padding:16px 20px 60px;max-width:1500px}
+section{margin:0 0 26px}
+.tuiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px}
+.tuile{background:var(--surface);border:1px solid var(--ligne);padding:10px 12px;border-radius:2px}
+.tuile .val{font-family:'Press Start 2P',monospace;font-size:19px;display:block;margin:4px 0 2px}
+.tuile .lib{font-size:16px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em}
+.tuile .part{font-size:15px;color:var(--ink-muted)}
+.grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+.carte{background:var(--surface);border:1px solid var(--ligne);padding:12px 14px;border-radius:2px}
+.filtres{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;
+  background:var(--surface-2);border:1px solid var(--ligne);padding:10px 12px;border-radius:2px}
+.filtre{display:flex;flex-direction:column;gap:2px}
+.filtre label{font-size:15px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.05em}
+.legende{display:flex;gap:14px;flex-wrap:wrap;font-size:17px;margin:8px 0 0}
+.pastille{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+.badge{display:inline-flex;align-items:center;white-space:nowrap;font-size:16px}
+table{border-collapse:collapse;width:100%;font-size:17px}
+th,td{text-align:left;padding:3px 8px 3px 0;border-bottom:1px solid var(--ligne);vertical-align:top}
+th{position:sticky;top:0;background:var(--bg);color:var(--ink-2);font-size:15px;
+  text-transform:uppercase;letter-spacing:.05em;cursor:pointer;z-index:2}
+th:hover{color:var(--accent)}
+.tbl-wrap{max-height:520px;overflow:auto;border:1px solid var(--ligne);padding:0 10px}
+.num{font-variant-numeric:tabular-nums}
+.vide{color:var(--ink-muted)}
+.rang{display:grid;grid-template-columns:150px 1fr 46px;gap:8px;align-items:center;
+  font-size:17px;margin-bottom:3px}
+.rang .piste{background:rgba(255,255,255,.07);height:13px;border-radius:2px;overflow:hidden}
+.rang .rempl{height:100%;border-radius:0 2px 2px 0;background:var(--ink-2)}
+.rang .n{text-align:right;color:var(--ink-muted)}
+.anom{border-left:3px solid var(--st-douteuse);padding-left:10px;margin-bottom:14px}
+.anom.ok{border-left-color:var(--st-validee)}
+.anom h3{margin-bottom:2px}
+.anom .regle{font-size:16px;color:var(--ink-muted);margin-bottom:4px}
+.anom .liste{font-size:17px;max-height:130px;overflow:auto}
+.puce{display:inline-block;border:1px solid var(--ligne-forte);border-radius:2px;
+  padding:0 5px;margin:0 4px 4px 0;cursor:pointer}
+.puce:hover{color:var(--accent);border-color:var(--accent)}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.axe{fill:var(--ink-muted);font-size:13px}
+.gtick{stroke:var(--ligne);stroke-width:1}
+.infobulle{position:fixed;pointer-events:none;background:var(--bg-2);border:1px solid var(--ligne-forte);
+  padding:5px 9px;font-size:17px;border-radius:2px;z-index:50;opacity:0;transition:opacity .1s;max-width:320px}
+.pied{border-top:2px solid var(--ligne-forte);margin-top:24px;padding-top:12px;
+  font-size:17px;color:var(--ink-muted);max-width:92ch}
+.err{border:1px solid var(--st-douteuse);padding:12px;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>OBSERVATOIRE DU CATALOGUE D'ÉVÉNEMENTS</h1>
+  <p class="sous">Poste de lecture du catalogue codé de la thèse — chronologie, distributions, anomalies.
+  <strong>Instrument de travail, pas une source</strong> : cette page ne contient aucune donnée, elle lit les
+  CSV versés au dépôt. En cas d'écart, le CSV fait foi.</p>
+  <div class="barre-outils">
+    <button id="theme" aria-pressed="true">thème : sombre</button>
+    <button id="raz">réinitialiser les filtres</button>
+    <span id="provenance" class="sous"></span>
+  </div>
+</header>
+<main>
+  <section id="zone-erreur" hidden><div class="err" id="msg-erreur"></div></section>
+
+  <section aria-labelledby="t-compteurs">
+    <h2 id="t-compteurs">1 · ÉTAT DU CORPUS</h2>
+    <div class="tuiles" id="tuiles"></div>
+    <div class="legende" id="legende-statuts"></div>
+  </section>
+
+  <section aria-labelledby="t-chrono">
+    <h2 id="t-chrono">2 · CHRONOLOGIE CODÉE</h2>
+    <div class="carte">
+      <h3 id="titre-chrono">ÉVÉNEMENTS PAR ANNÉE, EMPILÉS PAR STATUT DE LIGNE</h3>
+      <div id="chrono"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-filtres">
+    <h2 id="t-filtres">3 · FILTRES</h2>
+    <div class="filtres" id="filtres"></div>
+  </section>
+
+  <section aria-labelledby="t-distrib">
+    <h2 id="t-distrib">4 · DISTRIBUTIONS DE LA SÉLECTION</h2>
+    <div class="grille" id="distributions"></div>
+  </section>
+
+  <section aria-labelledby="t-table">
+    <h2 id="t-table">5 · ÉVÉNEMENTS <span id="compte-table" class="num"></span></h2>
+    <div class="tbl-wrap"><table id="table"><thead></thead><tbody></tbody></table></div>
+  </section>
+
+  <section aria-labelledby="t-anomalies">
+    <h2 id="t-anomalies">6 · ANOMALIES ET CHOSES À REVOIR</h2>
+    <p class="sous">Chaque famille dit sa règle. Ce sont des <em>requêtes sur la donnée versée</em>, jamais
+    des jugements : cliquer un identifiant le cherche dans la table ci-dessus.</p>
+    <div class="grille" id="anomalies"></div>
+  </section>
+
+  <div class="pied" id="pied"></div>
+</main>
+<div class="infobulle" id="bulle" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+/* ------------------------------------------------------------------ *
+ * 1. Lecture des CSV verses. Aucune donnee n'est ecrite ici.
+ * ------------------------------------------------------------------ */
+const DOSSIER = 'docs/research/catalogue-evenements/';
+const F_CATALOGUE = DOSSIER + 'catalogue-evenements-v3-3.csv';
+const F_ROLES     = DOSSIER + 'catalogue-roles-v0.csv';
+
+/* Analyseur CSV complet : separateur ';', guillemets doubles, CRLF.
+   Ecrit a la main plutot qu'importe d'un CDN — le site est servi depuis
+   IPFS/Swarm et le depot n'a pas de chaine de build. */
+function analyserCSV(texte){
+  if (texte.charCodeAt(0) === 0xFEFF) texte = texte.slice(1);
+  const lignes = [];
+  let champ = '', ligne = [], dansGuillemets = false;
+  for (let i = 0; i < texte.length; i++){
+    const c = texte[i];
+    if (dansGuillemets){
+      if (c === '"'){
+        if (texte[i+1] === '"'){ champ += '"'; i++; } else dansGuillemets = false;
+      } else champ += c;
+    } else if (c === '"'){ dansGuillemets = true; }
+    else if (c === ';'){ ligne.push(champ); champ = ''; }
+    else if (c === '\n'){ ligne.push(champ); lignes.push(ligne); ligne = []; champ = ''; }
+    else if (c !== '\r'){ champ += c; }
+  }
+  if (champ !== '' || ligne.length) { ligne.push(champ); lignes.push(ligne); }
+  return lignes.filter(l => l.length > 1 || (l[0] || '').trim() !== '');
+}
+const enObjets = (lignes) => {
+  const t = lignes[0].map(s => s.trim());
+  return lignes.slice(1).map(l => Object.fromEntries(t.map((c, i) => [c, (l[i] ?? '').trim()])));
+};
+
+/* ------------------------------------------------------------------ *
+ * 2. Vocabulaires GELES — recopies pour lire, jamais pour decider.
+ * ------------------------------------------------------------------ */
+const STATUTS = ['validee', 'chantier', 'douteuse', 'a_arbitrer', 'exclue'];
+const COULEUR_STATUT = {
+  validee:'var(--st-validee)', chantier:'var(--st-chantier)',
+  douteuse:'var(--st-douteuse)', a_arbitrer:'var(--st-arbitrer)', exclue:'var(--ink-muted)'
+};
+const DIMENSIONS_Q7 = ['usage_paiement','valorisation','unite_compte_etalon','liquidite_convertibilite',
+  'conf_methodique','conf_hierarchique','conf_ethique','fongibilite','integrite_monnayage'];
+const DOMAINES = {i:'i · usage réel & financier', ii:'ii · traitement des transactions',
+  iii:'iii · portefeuilles & paiements', iv:'iv · information & connaissance',
+  v:'v · conformité réglementaire', vi:'vi · protocole', vii:'vii · altcoins', viii:'viii · autres'};
+
+/* ------------------------------------------------------------------ *
+ * 3. Derivations de lecture (jamais ecrites au CSV)
+ * ------------------------------------------------------------------ */
+const annee = (e) => (e.date || '').slice(0, 4);
+const estCrise = (e) => /^oui/i.test(e.crise || '');
+const domaineBase = (e) => (e.domaine_8 || '').replace('*', '');
+const effets = (e) => {
+  const v = (e.effet_prop_monetaires || '').trim();
+  if (!v || v === 'nd') return [];
+  return v.split(/\s+/).map(t => {
+    const m = t.match(/^([a-z_]+)\((.)\)$/);
+    return m ? {dimension:m[1], signe:m[2], brut:t} : null;
+  }).filter(Boolean);
+};
+const acteurPrincipal = (e) => e.acteur_principal_nom || e.acteur_principal || '';
+
+let CAT = [], ROLES = [], ROLES_PAR_EVT = new Map();
+
+/* ------------------------------------------------------------------ *
+ * 4. Filtres
+ * ------------------------------------------------------------------ */
+const CHAMPS_FILTRE = [
+  {cle:'statut_ligne', lib:'statut de ligne', valeurs:e => [e.statut_ligne]},
+  {cle:'systeme',      lib:'système',         valeurs:e => [e.systeme]},
+  {cle:'phase',        lib:'phase',           valeurs:e => [e.phase]},
+  {cle:'domaine',      lib:'domaine',         valeurs:e => [domaineBase(e)]},
+  {cle:'arene',        lib:'arène',           valeurs:e => [e.arene]},
+  {cle:'type_acte',    lib:"type d'acte",     valeurs:e => [e.type_acte, e.type_acte_2]},
+  {cle:'crise',        lib:'crise',           valeurs:e => [estCrise(e) ? 'oui' : 'non']},
+  {cle:'effet',        lib:'effet Q7',        valeurs:e => effets(e).map(x => x.dimension)},
+  {cle:'acteur',       lib:'acteur principal',valeurs:e => [e.acteur_principal]},
+  {cle:'origine',      lib:'origine',         valeurs:e => [e.origine]},
+];
+const etat = Object.fromEntries(CHAMPS_FILTRE.map(c => [c.cle, '']));
+etat.recherche = '';
+let tri = {colonne:'date', sens:1};
+
+const passe = (e) => CHAMPS_FILTRE.every(c => {
+  if (!etat[c.cle]) return true;
+  const vals = c.valeurs(e).map(v => (v || '').trim()).filter(Boolean);
+  return etat[c.cle] === '(vide)' ? vals.length === 0 : vals.includes(etat[c.cle]);
+}) && (!etat.recherche || (e.id + ' ' + e.intitule + ' ' + (e.notes||'') + ' ' + (e.cve||''))
+        .toLowerCase().includes(etat.recherche.toLowerCase()));
+
+const selection = () => CAT.filter(passe);
+
+/* ------------------------------------------------------------------ *
+ * 5. Rendu — compteurs
+ * ------------------------------------------------------------------ */
+const ech = (s) => String(s ?? '').replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function rendreTuiles(sel){
+  const n = sel.length, parStatut = {};
+  STATUTS.forEach(s => parStatut[s] = sel.filter(e => e.statut_ligne === s).length);
+  const codees = sel.filter(e => effets(e).length).length;
+  const avecRole = sel.filter(e => ROLES_PAR_EVT.has(e.id)).length;
+  const tuiles = [
+    {lib:'événements', val:n, part:`sur ${CAT.length} au catalogue`},
+    ...STATUTS.filter(s => parStatut[s] || s !== 'exclue').map(s => ({
+      lib:s.replace('_', ' '), val:parStatut[s], couleur:COULEUR_STATUT[s],
+      part:n ? Math.round(parStatut[s] / n * 100) + ' % de la sélection' : '—'})),
+    {lib:'effet Q7 codé', val:codees, part:n ? Math.round(codees/n*100) + ' % de la sélection' : '—'},
+    {lib:'rôles posés', val:avecRole, part:`${ROLES.length} lignes de rôle au total`},
+  ];
+  document.getElementById('tuiles').innerHTML = tuiles.map(t => `
+    <div class="tuile">
+      <span class="lib">${t.couleur ? `<span class="pastille" style="background:${t.couleur}"></span>` : ''}${ech(t.lib)}</span>
+      <span class="val num" ${t.couleur ? `style="color:${t.couleur}"` : ''}>${t.val}</span>
+      <span class="part">${ech(t.part)}</span>
+    </div>`).join('');
+}
+
+/* ------------------------------------------------------------------ *
+ * 6. Chronologie — barres empilees par annee (SVG, sans dependance)
+ * ------------------------------------------------------------------ */
+function rendreChrono(sel){
+  const annees = [...new Set(CAT.map(annee).filter(Boolean))].sort();
+  const parAn = new Map(annees.map(a => [a, Object.fromEntries(STATUTS.map(s => [s, 0]))]));
+  sel.forEach(e => { const a = annee(e); if (parAn.has(a)) parAn.get(a)[e.statut_ligne] = (parAn.get(a)[e.statut_ligne] || 0) + 1; });
+  const maxi = Math.max(1, ...annees.map(a => STATUTS.reduce((s, k) => s + parAn.get(a)[k], 0)));
+  const L = 1000, H = 260, mg = {h:14, b:34, g:34, d:8};
+  const larg = (L - mg.g - mg.d) / annees.length, bl = Math.max(6, larg - 4);
+  let barres = '', axeX = '';
+  annees.forEach((a, i) => {
+    const x = mg.g + i * larg + (larg - bl) / 2;
+    let y = H - mg.b, total = 0;
+    STATUTS.forEach(s => {
+      const n = parAn.get(a)[s]; if (!n) return;
+      const h = (n / maxi) * (H - mg.h - mg.b);
+      y -= h; total += n;
+      /* 2px de surface entre segments empiles : la separation est structurelle */
+      barres += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bl.toFixed(1)}" height="${Math.max(1, h - 2).toFixed(1)}"
+        fill="${COULEUR_STATUT[s]}" data-an="${a}" data-statut="${s}" data-n="${n}" tabindex="0"
+        role="img" aria-label="${a}, ${s} : ${n}"></rect>`;
+    });
+    if (total) barres += `<text class="axe" x="${(x + bl/2).toFixed(1)}" y="${(y - 5).toFixed(1)}"
+        text-anchor="middle" style="font-size:12px">${total}</text>`;
+    if (annees.length <= 30 || i % 2 === 0)
+      axeX += `<text class="axe" x="${(x + bl/2).toFixed(1)}" y="${H - mg.b + 15}" text-anchor="middle"
+        transform="rotate(-42 ${(x + bl/2).toFixed(1)} ${H - mg.b + 15})">${a}</text>`;
+  });
+  let grille = '';
+  for (let t = 0; t <= 4; t++){
+    const v = Math.round(maxi * t / 4), y = H - mg.b - (v / maxi) * (H - mg.h - mg.b);
+    grille += `<line class="gtick" x1="${mg.g}" y1="${y.toFixed(1)}" x2="${L - mg.d}" y2="${y.toFixed(1)}"></line>
+      <text class="axe" x="${mg.g - 6}" y="${(y + 4).toFixed(1)}" text-anchor="end">${v}</text>`;
+  }
+  document.getElementById('chrono').innerHTML =
+    `<svg viewBox="0 0 ${L} ${H}" role="img" aria-label="Nombre d'événements par année, empilés par statut de ligne">
+      ${grille}${barres}${axeX}</svg>`;
+  document.querySelectorAll('#chrono rect').forEach(r => {
+    const dire = (ev) => montrerBulle(ev,
+      `<strong>${r.dataset.an}</strong><br>${r.dataset.statut} : ${r.dataset.n} événement(s)`);
+    r.addEventListener('mousemove', dire);
+    r.addEventListener('focus', dire);
+    r.addEventListener('mouseleave', cacherBulle);
+    r.addEventListener('blur', cacherBulle);
+  });
+}
+
+const bulle = document.getElementById('bulle');
+function montrerBulle(ev, html){
+  bulle.innerHTML = html; bulle.style.opacity = '1';
+  const x = (ev.clientX ?? 100) + 14, y = (ev.clientY ?? 100) + 14;
+  bulle.style.left = Math.min(x, innerWidth - 340) + 'px';
+  bulle.style.top = Math.min(y, innerHeight - 90) + 'px';
+}
+const cacherBulle = () => { bulle.style.opacity = '0'; };
+
+/* ------------------------------------------------------------------ *
+ * 7. Distributions — barres horizontales, une carte par dimension
+ * ------------------------------------------------------------------ */
+function rendreDistributions(sel){
+  const cartes = [
+    ['SYSTÈME', compter(sel, e => [e.systeme])],
+    ['PHASE', compter(sel, e => [e.phase])],
+    ['DOMAINE (8 de la thèse)', compter(sel, e => [domaineBase(e)], k => DOMAINES[k] || k)],
+    ['ARÈNE', compter(sel, e => [e.arene])],
+    ["TYPE D'ACTE", compter(sel, e => [e.type_acte, e.type_acte_2])],
+    ['EFFETS Q7 (dimension × signe)', compter(sel, e => effets(e).map(x => x.dimension + '(' + x.signe + ')'))],
+    ['RÔLES POSÉS (grille v0 gelée)', compter(sel, e => (ROLES_PAR_EVT.get(e.id) || []).map(r => r.role))],
+    ["TYPES D'ACTEURS AUX RÔLES", compter(sel, e => (ROLES_PAR_EVT.get(e.id) || []).map(r => r.actor_id))],
+  ];
+  document.getElementById('distributions').innerHTML = cartes.map(([titre, {rangs, nonCode}]) => {
+    /* Le non-codé est du CONTEXTE, pas une catégorie du vocabulaire : il sort de
+       l'échelle, sinon il écrase les valeurs réellement codées (298 contre 14). */
+    const maxi = Math.max(1, ...rangs.map(r => r[1]));
+    return `<div class="carte"><h3>${ech(titre)}</h3>${
+      nonCode ? `<p class="regle">non codé : <span class="num">${nonCode}</span> ligne(s) — hors échelle</p>` : ''}${
+      rangs.length ? rangs.map(([k, n]) => `
+        <div class="rang"><span title="${ech(k)}">${ech(k)}</span>
+          <span class="piste"><span class="rempl" style="width:${(n/maxi*100).toFixed(1)}%"></span></span>
+          <span class="n num">${n}</span></div>`).join('')
+      : '<p class="vide">aucune valeur codée dans la sélection</p>'}</div>`;
+  }).join('');
+}
+function compter(sel, extraire, libeller){
+  const c = new Map();
+  let nonCode = 0;
+  sel.forEach(e => {
+    const vs = extraire(e).map(v => (v || '').trim()).filter(Boolean);
+    if (!vs.length) { nonCode++; return; }
+    [...new Set(vs)].forEach(v => c.set(v, (c.get(v) || 0) + 1));
+  });
+  return {nonCode, rangs:[...c.entries()]
+    .sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])))
+    .map(([k, n]) => [libeller ? libeller(k) : k, n])};
+}
+
+/* ------------------------------------------------------------------ *
+ * 8. Table
+ * ------------------------------------------------------------------ */
+const COLONNES = [
+  ['id','id'], ['date','date'], ['intitule','intitulé'], ['systeme','système'],
+  ['phase','phase'], ['domaine_8','dom.'], ['arene','arène'], ['type_acte',"type d'acte"],
+  ['effet_prop_monetaires','effet Q7'], ['__acteur','acteur principal'],
+  ['__roles','rôles'], ['statut_ligne','statut'], ['source','source'],
+];
+function rendreTable(sel){
+  const th = COLONNES.map(([c, l]) =>
+    `<th data-col="${c}" title="trier">${ech(l)}${tri.colonne === c ? (tri.sens > 0 ? ' ▲' : ' ▼') : ''}</th>`).join('');
+  document.querySelector('#table thead').innerHTML = `<tr>${th}</tr>`;
+  const val = (e, c) => c === '__acteur' ? acteurPrincipal(e)
+    : c === '__roles' ? (ROLES_PAR_EVT.get(e.id) || []).map(r => r.role).join(' ')
+    : (e[c] || '');
+  /* Les cellules vides vont TOUJOURS en fin de tri, quel que soit le sens :
+     sinon un tri par date ouvre sur les 18 lignes sans date, et la table
+     donne l'impression d'un catalogue sans dates. */
+  const lignes = [...sel].sort((a, b) => {
+    const x = val(a, tri.colonne), y = val(b, tri.colonne);
+    if (!x !== !y) return x ? -1 : 1;
+    return (x < y ? -1 : x > y ? 1 : 0) * tri.sens || a.id.localeCompare(b.id);
+  });
+  document.querySelector('#table tbody').innerHTML = lignes.map(e => `<tr id="l-${ech(e.id)}">${
+    COLONNES.map(([c]) => {
+      if (c === 'statut_ligne') return `<td>${insigne(e.statut_ligne)}</td>`;
+      const v = val(e, c);
+      const cls = c === 'date' || c === 'id' ? 'num' : '';
+      return `<td class="${cls}">${v ? ech(v) : '<span class="vide">·</span>'}</td>`;
+    }).join('')}</tr>`).join('');
+  document.getElementById('compte-table').textContent = `(${sel.length})`;
+  document.querySelectorAll('#table thead th').forEach(th => th.onclick = () => {
+    const c = th.dataset.col;
+    tri = {colonne:c, sens: tri.colonne === c ? -tri.sens : 1};
+    rendreTable(selection());
+  });
+}
+/* La couleur ne porte JAMAIS seule : pastille + libelle, toujours. */
+const insigne = (s) => `<span class="badge"><span class="pastille"
+  style="background:${COULEUR_STATUT[s] || 'var(--ink-muted)'}"></span>${ech(s || '—')}</span>`;
+
+/* ------------------------------------------------------------------ *
+ * 9. Anomalies — chaque famille dit sa regle
+ * ------------------------------------------------------------------ */
+function familles(){
+  const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ').trim();
+  /* doublons probables : meme date + intitules partageant >= 2 mots longs */
+  const doublons = [];
+  const parDate = new Map();
+  CAT.filter(e => e.date).forEach(e => {
+    const k = e.date.slice(0, 7);
+    if (!parDate.has(k)) parDate.set(k, []);
+    parDate.get(k).push(e);
+  });
+  parDate.forEach(groupe => {
+    for (let i = 0; i < groupe.length; i++) for (let j = i + 1; j < groupe.length; j++){
+      const a = new Set(norm(groupe[i].intitule).split(' ').filter(m => m.length > 4));
+      const b = norm(groupe[j].intitule).split(' ').filter(m => m.length > 4);
+      const communs = b.filter(m => a.has(m));
+      if (communs.length >= 2) doublons.push({ids:[groupe[i].id, groupe[j].id], mots:communs.join(', ')});
+    }
+  });
+  const champsAnalytiques = ['acteur_principal','arene','type_acte','domaine_8','fil','effet_prop_monetaires'];
+  const remplis = (e) => champsAnalytiques.filter(c => (e[c] || '').trim() && e[c] !== 'nd').length;
+  const HORS_PERIMETRE = (e) => { const a = +annee(e); return a && (a < 2008 || a > 2020); };
+
+  return [
+    {t:'LIGNES DOUTEUSES', regle:'statut_ligne = douteuse — validité empirique ou rattachement incertain',
+     ids:CAT.filter(e => e.statut_ligne === 'douteuse').map(e => e.id)},
+    {t:'À ARBITRER', regle:'statut_ligne = a_arbitrer — bloquée par une décision à rendre',
+     ids:CAT.filter(e => e.statut_ligne === 'a_arbitrer').map(e => e.id)},
+    {t:'CHANTIER DÉJÀ TRÈS CODÉ', regle:'statut chantier mais ≥ 4 champs analytiques remplis — candidates à validation',
+     ids:CAT.filter(e => e.statut_ligne === 'chantier' && remplis(e) >= 4).map(e => e.id)},
+    {t:'VALIDÉES À CHAMPS MANQUANTS', regle:'statut validee mais acteur principal, arène ou type d\'acte vide',
+     ids:CAT.filter(e => e.statut_ligne === 'validee' &&
+       (!e.acteur_principal || !e.arene || !e.type_acte)).map(e => e.id)},
+    {t:'DOUBLONS PROBABLES', unite:`lignes dans ${doublons.length} paire(s)`,
+     regle:'même mois + au moins 2 mots longs communs dans l\'intitulé — indice à vérifier, jamais un verdict',
+     ids:[...new Set(doublons.flatMap(d => d.ids))],
+     detail:doublons.map(d => d.ids.join(' ↔ ') + ' (' + d.mots + ')')},
+    {t:'SANS IDENTIFIANT DE GRAPHE', regle:'colonne gid vide — la ligne n\'est reliée à aucune entité du graphe',
+     ids:CAT.filter(e => !e.gid).map(e => e.id)},
+    {t:'EFFETS AMBIVALENTS (±)', regle:'convention r2 : le ± exige une note — vérifier qu\'elle est présente',
+     ids:CAT.filter(e => effets(e).some(x => x.signe === '±')).map(e => e.id)},
+    {t:'MULTI-EFFETS', regle:'convention A4 : plusieurs effets analytiques sur un même événement',
+     ids:CAT.filter(e => effets(e).length > 1).map(e => e.id)},
+    {t:'HORS PÉRIMÈTRE DÉCLARÉ', regle:'règle R3 de la grille v1 : 18/07/2008 → début 2020',
+     ids:CAT.filter(HORS_PERIMETRE).map(e => e.id)},
+    {t:'MARQUEURS [CHANTIER RÉSIDUELS', regle:'un marqueur [CHANTIER subsiste dans une colonne',
+     ids:CAT.filter(e => Object.values(e).some(v => String(v).includes('[CHANTIER'))).map(e => e.id)},
+  ];
+}
+function rendreAnomalies(){
+  const html = familles().map(f => `
+    <div class="anom ${f.ids.length ? '' : 'ok'}">
+      <h3>${ech(f.t)} <span class="num">— ${f.ids.length}${f.unite ? ' ' + ech(f.unite) : ''}</span></h3>
+      <p class="regle">${ech(f.regle)}</p>
+      <div class="liste">${f.ids.length
+        ? f.ids.map(id => `<span class="puce" data-id="${ech(id)}">${ech(id)}</span>`).join('')
+          + (f.detail ? `<p class="regle">${f.detail.map(ech).join('<br>')}</p>` : '')
+        : '<span class="vide">aucune</span>'}</div>
+    </div>`).join('');
+  const connues = `
+    <div class="carte"><h3>INCOHÉRENCES CONNUES, CONSIGNÉES AUX AUDITS</h3>
+      <p class="regle">Constats déjà instruits ailleurs — rappelés ici, non recalculés.</p>
+      <ul style="margin:0;padding-left:18px">
+        <li><strong>Genèse en triple</strong> — E003 (texte), G013 (graphe, réglée par M1 : lancement et non crise), G063 (graphe). Signalées, non fusionnées.</li>
+        <li><strong>Mt. Gox</strong> — la fiche <span class="num">6661cad8</span> du graphe est typée InfrastructureEvent alors qu'elle nomme une organisation (v3-3, §5).</li>
+        <li><strong>G001 ↔ E015</strong> — même crise n°4 ; E015 est canonique (arbitrage M2), G001 reste douteuse.</li>
+      </ul></div>`;
+  document.getElementById('anomalies').innerHTML = html + connues;
+  document.querySelectorAll('.puce').forEach(p => p.onclick = () => {
+    etat.recherche = p.dataset.id;
+    document.getElementById('rech').value = p.dataset.id;
+    rendreTout();
+    document.getElementById('t-table').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * 10. Assemblage
+ * ------------------------------------------------------------------ */
+function rendreFiltres(){
+  const html = CHAMPS_FILTRE.map(c => {
+    const vals = new Map();
+    CAT.forEach(e => {
+      const vs = c.valeurs(e).map(v => (v || '').trim()).filter(Boolean);
+      if (!vs.length) vals.set('(vide)', (vals.get('(vide)') || 0) + 1);
+      [...new Set(vs)].forEach(v => vals.set(v, (vals.get(v) || 0) + 1));
+    });
+    const options = [...vals.entries()].sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])))
+      .map(([v, n]) => `<option value="${ech(v)}" ${etat[c.cle] === v ? 'selected' : ''}>${ech(v)} (${n})</option>`).join('');
+    return `<div class="filtre"><label for="f-${c.cle}">${ech(c.lib)}</label>
+      <select id="f-${c.cle}" data-cle="${c.cle}"><option value="">— tous —</option>${options}</select></div>`;
+  }).join('');
+  document.getElementById('filtres').innerHTML = html +
+    `<div class="filtre"><label for="rech">recherche (id, intitulé, note, CVE)</label>
+      <input id="rech" type="search" value="${ech(etat.recherche)}" placeholder="ex. DAO, CVE-2018, G013" size="26"></div>`;
+  document.querySelectorAll('#filtres select').forEach(s => s.onchange = () => {
+    etat[s.dataset.cle] = s.value; rendreTout();
+  });
+  document.getElementById('rech').oninput = (e) => {
+    etat.recherche = e.target.value;
+    rendreSansFiltres();
+  };
+}
+function rendreSansFiltres(){
+  const sel = selection();
+  rendreTuiles(sel); rendreChrono(sel); rendreDistributions(sel); rendreTable(sel);
+}
+function rendreTout(){ rendreFiltres(); rendreSansFiltres(); }
+
+function rendreLegende(){
+  document.getElementById('legende-statuts').innerHTML = STATUTS.map(s =>
+    `<span class="badge"><span class="pastille" style="background:${COULEUR_STATUT[s]}"></span>${s.replace('_',' ')}</span>`
+  ).join('') + '<span class="vide">— vocabulaire D4 gelé, ordre d\'incertitude croissante</span>';
+}
+
+async function demarrer(){
+  try {
+    const [tc, tr] = await Promise.all([
+      fetch(F_CATALOGUE).then(r => { if (!r.ok) throw new Error(F_CATALOGUE + ' : HTTP ' + r.status); return r.text(); }),
+      fetch(F_ROLES).then(r => { if (!r.ok) throw new Error(F_ROLES + ' : HTTP ' + r.status); return r.text(); }),
+    ]);
+    CAT = enObjets(analyserCSV(tc));
+    ROLES = enObjets(analyserCSV(tr));
+    ROLES_PAR_EVT = new Map();
+    ROLES.forEach(r => {
+      if (!ROLES_PAR_EVT.has(r.event_id)) ROLES_PAR_EVT.set(r.event_id, []);
+      ROLES_PAR_EVT.get(r.event_id).push(r);
+    });
+    document.getElementById('provenance').textContent =
+      `source : ${F_CATALOGUE} — ${CAT.length} lignes × ${Object.keys(CAT[0] || {}).length} colonnes · ${F_ROLES} — ${ROLES.length} lignes de rôle`;
+    rendreLegende(); rendreTout(); rendreAnomalies();
+    document.getElementById('pied').innerHTML =
+      `Lot visible 1 de l'Observatoire. Les vocabulaires affichés sont <strong>gelés</strong> :
+       statut de ligne (D4), effets Q7 v1, grille de rôles v0. Cette page les <em>lit</em> ;
+       elle n'en crée aucun. Toute correction de donnée passe par un applicateur du dépôt
+       (<span class="num">scripts/make_v3_3_catalogue.py</span>), jamais par cette page.
+       Palette de statut validée contre les deux surfaces du site
+       (<span class="num">scripts/validate_palette.js</span> de la skill dataviz, liste adjacente : 0 échec).`;
+  } catch (err) {
+    document.getElementById('zone-erreur').hidden = false;
+    document.getElementById('msg-erreur').innerHTML =
+      `<strong>Lecture impossible.</strong><br>${ech(err.message)}<br><br>
+       Cette page lit les CSV du dépôt en relatif : elle doit être servie par HTTP
+       (<span class="num">python3 -m http.server</span> à la racine du dépôt), pas ouverte en
+       <span class="num">file://</span>.`;
+  }
+}
+document.getElementById('theme').onclick = (ev) => {
+  const sombre = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', sombre ? 'light' : 'dark');
+  ev.target.textContent = 'thème : ' + (sombre ? 'bordeaux' : 'sombre');
+  ev.target.setAttribute('aria-pressed', String(!sombre));
+};
+document.getElementById('raz').onclick = () => {
+  CHAMPS_FILTRE.forEach(c => etat[c.cle] = '');
+  etat.recherche = '';
+  rendreTout();
+};
+demarrer();
+</script>
+</body>
+</html>
