@@ -24,7 +24,7 @@ E065;nd;attaquant anonyme;exploiteur;haute;hors typologie v1, précédent E065 (
 E065;communautes_forums;DAO Token Holders et porteurs d'ETH;affecte;haute;« krach du cours DAO Token et surtout celui de l'Ether » (ch.III l.561)
 E065;communautes_forums;Griff Green et communauté;revelateur;moyenne;« découvrir en temps réel l'attaque » (ch.III l.561)
 E077;core_devs;Awemany (dev Bitcoin Cash);revelateur;haute;découvreur « extérieur » du 17/09/2018 (ch.III l.39)
-E077;core_devs;Awemany, équipes Core et ABC;coordinateur;moyenne;divulgation discrète inter-implémentations (ch.III n.19 l.801)
+E077;core_devs;Awemany, équipes Core et ABC;coordinateur;moyenne;divulgation discrète inter-implementations (ch.III n.19 l.801)
 E077;core_devs;P. Wuille, G. Maxwell et Bitcoin Core;correcteur;haute;correctif secret 0.16.3 (ch.III l.11 + l.125)
 E077;mineurs;nœuds et mineurs mettant à jour;validateur;haute;mobilisation communautaire autour de 0.16.3 (ch.III l.125)
 E077;medias_connaissance;Bitcoin Optech;revelateur;moyenne;publicisation post-correctif (ch.III l.125 + n.37)
@@ -80,3 +80,4 @@ E042;institutions_financieres;Nasdaq;validateur;moyenne;acceptation institutionn
 E058;institutions_financieres;NYSE;validateur;moyenne;meme acte et meme phrase source que E042 (ch.I l.289 : « Nasdaq fin 2013, suivi par le NYSE en 2015 ») - lecture solidaire des deux lignes
 E027;institutions_financieres;PayPal;opposant;moyenne;retrait de service = blocage agissant, pas une creation - la ligne code elle-meme liquidite_convertibilite(-) (ch.I n.75 l.609)
 E037;regulateurs_etats;Banque centrale europeenne;revelateur;moyenne;ecrit qui rend visible ET dont l'effet est atteste (ch.I l.289 : « Les premieres publications et mises en garde (European Central Bank 2012) POUSSENT A L'EMERGENCE de premiers services de conformite ») - precedent E064
+E060;institutions_financieres;;opposant;moyenne;opposition strategique « blockchain not bitcoin » — l'idee emane d'acteurs de la finance traditionnelle (ch.I n.86 l.631, slogan « Forget Bitcoin, embrace blockchain »), ils en « font leur publicite » et l'effet est mesure : « nombreuses sont les entreprises de l'ecosysteme a pivoter » (ch.I l.289). Arbitrage du 16/08/2026
