@@ -376,6 +376,7 @@
         "scripts/add_statut_ligne.py",
         "scripts/make_v104_ethereum_hard_forks.py",
         "scripts/make_v112_apply_chronology_dates_patch.py",
+        "scripts/make_v3_3_catalogue.py",
         "scripts/match_chronology_events.py",
         "scripts/verif_doublons.py",
         "workshop/scripts/lint-workshop-artifacts.mjs"
@@ -568,6 +569,7 @@
         "scripts/make_v113_apply_bibliography_retypes.py",
         "scripts/make_v114_apply_bibliography_authorship_relations.py",
         "scripts/make_v115_apply_favier_2021_label_correction.py",
+        "scripts/make_v3_3_catalogue.py",
         "scripts/make_v98_add_missing_chronology_events.py",
         "scripts/make_v99_wire_maturation_phase.py",
         "scripts/match_chronology_events.py"
@@ -3216,6 +3218,7 @@
         "scripts/check_anchoring.py",
         "scripts/make_section_creation_patch.py",
         "scripts/make_section_migration_patch.py",
+        "scripts/make_v3_3_catalogue.py",
         "workshop/scripts/build-export-dry-run.mjs"
       ],
       "vocabulary": null,
