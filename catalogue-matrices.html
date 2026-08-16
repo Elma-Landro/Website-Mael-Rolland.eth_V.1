@@ -18,27 +18,38 @@
  * Elle lit les CSV verses du depot en direct, comme catalogue-lab.html.
  * Elle ne tranche rien : ni statut, ni perimetre, ni doublon.
  *
- * COULEURS — deux encodages, tous deux MESURES, jamais choisis a l'oeil,
- * par scripts/validate_palette.js de la skill dataviz, contre LES DEUX
- * surfaces du site (bordeaux #4d0000 et noir #000000) :
+ * COULEURS — CHARTE MAISON, decision Mael du 16/08/2026 : rouge vin,
+ * bordeaux, dore, noir, et le vert neon de --text-accent. Aucune teinte
+ * etrangere a la charte. La validation de contraste reste un CONTROLE,
+ * elle ne cree pas d'esthetique autonome : on part des teintes du site,
+ * on mesure, et la ou la charte ne separe pas, la categorie passe par le
+ * LIBELLE ECRIT et par la FORME — jamais par une teinte inventee.
  *
- *  1. EFFECTIF (matrices de comptage) — rampe mono-teinte or, 5 pas,
- *     validee en mode --ordinal : 0 echec sur les deux surfaces,
- *     ecarts de clarte tous >= 0.06, pas le plus sombre a 2.84:1
- *     (bordeaux) et 3.74:1 (noir), au-dessus du plancher de 2:1.
- *     Le pas le plus sombre reste donc distinct d'une cellule vide.
- *     Chaque cellule porte SON EFFECTIF EN CHIFFRES : la couleur ne
- *     porte jamais seule.
+ * Trois encodages, tous mesures par scripts/validate_palette.js contre
+ * LES DEUX surfaces du site (bordeaux #4d0000 et noir #000000) :
  *
- *  2. SIGNE D'EFFET Q7 (+ / - / ±) — trois teintes validees en
- *     --pairs all : 0 echec, pire paire CVD dE 8.6 (cible >= 8),
- *     vision normale dE 22.5 (plancher >= 15), contraste >= 3:1
- *     sur les deux surfaces. Chaque pastille porte SON SIGNE ecrit.
- *     Ces trois teintes sont prises HORS de la palette de statut du
- *     lot 1, pour qu'aucune couleur n'ait deux sens sur une page.
+ *  1. EFFECTIF — rampe mono-teinte dans l'OR MAISON (teinte de --ink,
+ *     dernier pas = #ffcc64, l'or du site), 5 pas, mode --ordinal :
+ *     0 echec, ecarts de clarte tous >= 0.06, pas le plus sombre a
+ *     3.70:1 (bordeaux) et 4.87:1 (noir), tres au-dessus du plancher de
+ *     2:1 — il reste donc distinct d'une cellule vide. Chaque cellule
+ *     porte SON EFFECTIF EN CHIFFRES : la couleur ne porte jamais seule.
  *
- * Contraste du texte dans les cellules, mesure : blanc sur le pas 1
- * (5.62:1), noir sur les pas 2 a 5 (5.03 / 6.62 / 8.58 / 11.00:1).
+ *  2. STATUT — rampe mono-teinte dans le VERT MAISON, identique a celle
+ *     de catalogue-lab.html, ordre d'incertitude croissante, --ordinal :
+ *     0 echec, pas le plus sombre a 3.11:1 / 4.09:1. Toujours suivie du
+ *     libelle ecrit.
+ *
+ *  3. SIGNE D'EFFET Q7 (+ / - / ±) — AUCUNE teinte propre. La charte
+ *     maison n'offre pas trois teintes separables de plus, et en
+ *     inventer serait exactement ce qui est proscrit. Le signe est donc
+ *     porte par la FORME — plein / contour / contour pointille hachure —
+ *     et par le GLYPHE ECRIT dans la case. Aucun risque de confusion de
+ *     daltonisme, par construction : il n'y a pas de teinte a confondre.
+ *
+ * Contraste du texte dans les cellules, mesure : NOIR sur les cinq pas
+ * (4.87 / 6.48 / 8.53 / 11.02 / 14.07:1). Aucun blanc n'est requis :
+ * la charte suffit.
  *
  * HORS PERIMETRE R3 : marque par hachure + mention « R3 » ecrite,
  * jamais par la couleur seule.
@@ -47,12 +58,10 @@
   --bg:#4d0000; --bg-2:#3a0000; --surface:#5c0505; --surface-2:#450303;
   --ink:#ffcc66; --ink-2:#ffaa33; --ink-muted:#c99a5e; --accent:#33ff33;
   --ligne:rgba(255,204,102,.28); --ligne-forte:rgba(255,204,102,.55);
-  /* palette de statut — identique au lot 1, deja validee, ne pas retoucher */
-  --st-validee:#199e70; --st-chantier:#c98500; --st-douteuse:#d55181; --st-arbitrer:#3987e5;
-  /* rampe d'effectif — validee --ordinal, ne pas retoucher sans revalider */
-  --mx-1:#8d5e05; --mx-2:#a87102; --mx-3:#c38406; --mx-4:#dd981b; --mx-5:#f5ae3d;
-  /* signes Q7 — valides --pairs all, ne pas retoucher sans revalider */
-  --sg-plus:#008300; --sg-moins:#e66767; --sg-ambi:#9085e9;
+  /* statut — rampe mono-teinte VERT MAISON, identique a catalogue-lab.html */
+  --st-validee:#2eff35; --st-chantier:#08ce1a; --st-douteuse:#03a612; --st-arbitrer:#00800a;
+  /* effectif — rampe mono-teinte OR MAISON, ne pas retoucher sans revalider */
+  --mx-1:#9c7305; --mx-2:#b78701; --mx-3:#d39c06; --mx-4:#eeb21e; --mx-5:#ffcc64;
 }
 html[data-theme="dark"]{
   --bg:#000; --bg-2:#0a0a0a; --surface:#141414; --surface-2:#0e0e0e;
@@ -115,7 +124,9 @@ table.mx td{text-align:center;min-width:44px}
 .cel{cursor:pointer}
 .cel:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .cel-0{color:var(--ink-muted)}
-.p1{background:var(--mx-1);color:#fff}
+/* texte NOIR sur les cinq pas — charte maison, et mesure : 4.87 / 6.48 /
+   8.53 / 11.02 / 14.07:1, tous au-dessus de 4.5:1. Aucun blanc n'est requis. */
+.p1{background:var(--mx-1);color:#000}
 .p2{background:var(--mx-2);color:#000}
 .p3{background:var(--mx-3);color:#000}
 .p4{background:var(--mx-4);color:#000}
@@ -136,10 +147,13 @@ table.mx td.tot,table.mx th.tot{border-left:2px solid var(--ligne-forte);
   position:sticky;right:0;z-index:2;background:var(--surface-2)}
 table.mx thead th.tot{z-index:5;background:var(--bg-2)}
 table.mx tr.tot td.tot{z-index:3}
-.sgn{display:inline-block;min-width:22px;padding:0 4px;border-radius:2px;font-size:17px;line-height:1.25}
-.sg-p{background:var(--sg-plus);color:#fff}
-.sg-m{background:var(--sg-moins);color:#000}
-.sg-a{background:var(--sg-ambi);color:#000}
+/* signe Q7 : la FORME porte le signe, le glyphe le nomme — aucune teinte propre */
+.sgn{display:inline-block;min-width:24px;padding:0 5px;border-radius:2px;font-size:17px;
+  line-height:1.25;border:1px solid var(--ink);color:var(--ink);background:transparent}
+.sg-p{background:var(--ink);color:var(--bg)}                    /* + : plein */
+.sg-m{border-width:2px}                                          /* − : contour epais */
+.sg-a{border-style:dashed;                                       /* ± : pointille + hachure */
+  background:repeating-linear-gradient(45deg,var(--ligne) 0 2px,transparent 2px 6px)}
 .ech-pas{display:inline-block;width:26px;height:13px;border-radius:2px;margin-right:4px;vertical-align:middle}
 
 /* ---- panneau R3 ---- */
@@ -223,8 +237,27 @@ table.simple th{color:var(--ink-2);font-size:15px;text-transform:uppercase;lette
     </div>
   </section>
 
+  <section aria-labelledby="t-sansrole">
+    <h2 id="t-sansrole">3 · VALIDÉES SANS RÔLE</h2>
+    <div class="carte">
+      <p class="regle">Une ligne <span class="num">validee</span> <strong>n'a pas à porter un rôle</strong> :
+      la grille v0 le dit en toutes lettres — « <em>aucun rôle n'est forcé ; une ligne sans rôle codable reste
+      sans ligne de rôle</em> ». Cette vue ne réclame donc aucun remplissage : elle <strong>sépare les raisons</strong>
+      d'une absence, pour qu'on ne confonde pas une absence prévue avec une absence à instruire.
+      Les quatre classes ci-dessous sont des <strong>requêtes</strong>, chacune affiche sa règle, et une ligne
+      tombe dans la <strong>première</strong> classe qui la retient. Ce ne sont pas des verdicts.</p>
+      <div id="sr-classes"></div>
+      <div class="mx-options">
+        <label>afficher :
+          <select id="sr-classe"><option value="">toutes les classes</option></select></label>
+        <span class="vide" id="sr-compte"></span>
+      </div>
+      <div class="mx-wrap" style="max-height:420px"><table class="simple" id="sr-table"></table></div>
+    </div>
+  </section>
+
   <section aria-labelledby="t-m2">
-    <h2 id="t-m2">3 · ÉVÉNEMENTS × EFFETS Q7</h2>
+    <h2 id="t-m2">4 · ÉVÉNEMENTS × EFFETS Q7</h2>
     <div class="carte">
       <p class="regle">Une cellule porte un <strong>signe</strong>, pas un effectif : c'est le signe posé par le codage
       sur cette dimension (<span class="num">+</span> renforcement, <span class="num">−</span> mise en cause,
@@ -240,7 +273,7 @@ table.simple th{color:var(--ink-2);font-size:15px;text-transform:uppercase;lette
   </section>
 
   <section aria-labelledby="t-m3">
-    <h2 id="t-m3">4 · PHASES × TYPES D'ACTES</h2>
+    <h2 id="t-m3">5 · PHASES × TYPES D'ACTES</h2>
     <div class="carte">
       <p class="regle">Une cellule compte des <strong>événements</strong>. La colonne
       <em>(type non codé)</em> et la ligne <em>(sans phase)</em> sont <strong>hors échelle de couleur</strong> :
@@ -258,7 +291,7 @@ table.simple th{color:var(--ink-2);font-size:15px;text-transform:uppercase;lette
   </section>
 
   <section aria-labelledby="t-m4">
-    <h2 id="t-m4">5 · ARÈNES × EFFETS Q7</h2>
+    <h2 id="t-m4">6 · ARÈNES × EFFETS Q7</h2>
     <div class="carte">
       <p class="regle">Une cellule compte des <strong>couples (événement, effet)</strong> : un événement portant
       deux effets compte dans deux colonnes. Par défaut chaque dimension est <strong>scindée par signe</strong> —
@@ -355,7 +388,7 @@ const effets = (e) => {
    exactement les memes quatre lignes que la lecture par annee. */
 const horsPerimetre = (e) => { const a = +annee(e); return !!a && (a < 2008 || a > 2020); };
 
-let CAT = [], ROLES = [], PAR_ID = new Map();
+let CAT = [], ROLES = [], PAR_ID = new Map(), ROLES_PAR_EVT = new Map();
 
 /* ------------------------------------------------------------------ *
  * 4. Filtres — memes champs que la page-labo, pour que les deux pages
@@ -428,7 +461,8 @@ function legendeEffectif(maxi, note){
 }
 function legendeSignes(){
   return SIGNES.map(s => `<span class="badge"><span class="sgn ${CLASSE_SIGNE[s]}">${s}</span>&nbsp;${ech(LIB_SIGNE[s])}</span>`).join('')
-    + `<span class="vide">— le signe est écrit dans la pastille ; la couleur ne porte jamais seule</span>`;
+    + `<span class="vide">— le signe est porté par la forme (plein · contour · pointillé) et écrit dans la pastille :
+       aucune teinte hors charte maison</span>`;
 }
 const marqueHP = () => `<span class="badge"><span class="ech-pas hp" style="background:var(--mx-3)"></span>
   contient une ligne hors périmètre R3 (hachure + mention « R3 »)</span>`;
@@ -596,6 +630,76 @@ function rendreM1(sel){
                 : `les ${colonnes.length} rôles de la grille sont tous employés au moins une fois.`),
     rr.filter(r => { const e = PAR_ID.get(r.event_id); return !!e && horsPerimetre(e); }).length);
   document.getElementById('m1-legende').innerHTML = legendeEffectif(maxi) + marqueHP();
+}
+
+/* ------------------------------------------------------------------ *
+ * 8 bis. Validees sans role — SEPARER LES RAISONS D'UNE ABSENCE.
+ *
+ * La grille v0 est explicite : « aucun role n'est force ; une ligne sans
+ * role codable reste sans ligne de role ». Cette vue ne reclame donc
+ * aucun remplissage. Elle classe les absences par leur RAISON, chaque
+ * classe enoncant sa regle, et une ligne tombe dans la PREMIERE classe
+ * qui la retient. Ce sont des requetes sur la donnee versee, jamais des
+ * verdicts — meme discipline que les anomalies de la page-labo.
+ * ------------------------------------------------------------------ */
+const CLASSES_SANS_ROLE = [
+  {cle:'seuil', lib:"seuil — l'absence est prévue",
+   regle:"nature = seuil : la grille v0 range explicitement certains seuils sous non_applicable",
+   test:(e) => e.nature === 'seuil'},
+  {cle:'sans_acteur', lib:'acteur non identifié',
+   regle:"acteur_principal vide ou nd : sans acteur nommé, poser un rôle reviendrait à en inventer un",
+   test:(e) => !e.acteur_principal || e.acteur_principal === 'nd'},
+  {cle:'portante', lib:'ligne portante sans rôle',
+   regle:"porte un effet Q7 codé, ou crise = oui, ou un CVE : la ligne sert à l'analyse, et personne n'y agit",
+   test:(e) => effets(e).length > 0 || estCrise(e) || !!e.cve},
+  {cle:'jamais', lib:'jamais passée en revue de rôles',
+   regle:"le reste : validées par le calibrage, qu'aucune passe de rôles n'a couvertes",
+   test:() => true},
+];
+const classeSansRole = (e) => CLASSES_SANS_ROLE.find(c => c.test(e));
+
+function rendreSansRole(sel){
+  const sans = sel.filter(e => e.statut_ligne === 'validee' && !ROLES_PAR_EVT.has(e.id));
+  const par = new Map(CLASSES_SANS_ROLE.map(c => [c.cle, []]));
+  sans.forEach(e => par.get(classeSansRole(e).cle).push(e));
+  const validees = sel.filter(e => e.statut_ligne === 'validee').length;
+
+  document.getElementById('sr-classes').innerHTML =
+    `<p class="couv"><strong>${sans.length}</strong> lignes <span class="num">validee</span> sans aucune ligne de rôle,
+      sur <strong>${validees}</strong> validées dans la sélection
+      <span class="piste"><span class="rempl" style="width:${validees ? Math.round(sans.length/validees*100) : 0}%"></span></span>
+      <span class="num">${validees ? Math.round(sans.length/validees*100) : 0} %</span></p>
+     <table class="simple"><thead><tr><th>classe</th><th>n</th><th>règle calculée</th></tr></thead><tbody>` +
+    CLASSES_SANS_ROLE.map(c => {
+      const n = par.get(c.cle).length;
+      const crises = par.get(c.cle).filter(estCrise).length;
+      return `<tr><td>${ech(c.lib)}</td><td class="num">${n}</td>
+        <td class="vide">${ech(c.regle)}${crises ? ` <strong>— dont ${crises} marquée(s) crise</strong>` : ''}</td></tr>`;
+    }).join('') + '</tbody></table>';
+
+  const sel2 = document.getElementById('sr-classe');
+  const garde = sel2.value;
+  sel2.innerHTML = `<option value="">toutes les classes (${sans.length})</option>` +
+    CLASSES_SANS_ROLE.map(c => `<option value="${c.cle}">${ech(c.lib)} (${par.get(c.cle).length})</option>`).join('');
+  sel2.value = garde;
+  const montrees = garde ? par.get(garde) : sans;
+  document.getElementById('sr-compte').textContent = `${montrees.length} ligne(s) affichée(s)`;
+
+  document.getElementById('sr-table').innerHTML =
+    `<thead><tr><th>id</th><th>date</th><th>intitulé</th><th>statut</th><th>acteur principal</th>
+      <th>effet Q7</th><th>crise</th><th>classe</th></tr></thead><tbody>` +
+    montrees.slice().sort((a, b) =>
+      CLASSES_SANS_ROLE.findIndex(c => c.cle === classeSansRole(a).cle) -
+      CLASSES_SANS_ROLE.findIndex(c => c.cle === classeSansRole(b).cle) ||
+      (a.date || '9999').localeCompare(b.date || '9999') || a.id.localeCompare(b.id))
+    .map(e => `<tr><td class="num">${ech(e.id)}</td><td class="num">${ech(e.date) || '<span class="vide">—</span>'}</td>
+      <td>${ech(court(e.intitule, 62))}</td><td>${pastilleStatut(e)}</td>
+      <td>${ech(e.acteur_principal) || '<span class="vide">—</span>'}</td>
+      <td>${effets(e).length ? ech(e.effet_prop_monetaires) : '<span class="vide">nd</span>'}</td>
+      <td>${estCrise(e) ? 'oui' : '<span class="vide">non</span>'}</td>
+      <td class="vide">${ech(classeSansRole(e).lib)}</td></tr>`).join('') +
+    (montrees.length ? '' : '<tr><td colspan="8" class="vide">aucune ligne dans cette classe</td></tr>') +
+    '</tbody>';
 }
 
 /* ------------------------------------------------------------------ *
@@ -817,7 +921,7 @@ function rendreTout(refaireFiltres){
   const sel = selection();
   document.getElementById('compte-sel').textContent =
     `— ${sel.length} lignes retenues sur ${CAT.length}`;
-  rendreM1(sel); rendreM2(sel); rendreM3(sel); rendreM4(sel);
+  rendreM1(sel); rendreSansRole(sel); rendreM2(sel); rendreM3(sel); rendreM4(sel);
   rendreR3();
   if (refaireFiltres !== false) rendreFiltres();
 }
@@ -831,6 +935,11 @@ async function demarrer(){
     CAT = enObjets(analyserCSV(tc));
     ROLES = enObjets(analyserCSV(tr));
     PAR_ID = new Map(CAT.map(e => [e.id, e]));
+    ROLES_PAR_EVT = new Map();
+    ROLES.forEach(r => {
+      if (!ROLES_PAR_EVT.has(r.event_id)) ROLES_PAR_EVT.set(r.event_id, []);
+      ROLES_PAR_EVT.get(r.event_id).push(r);
+    });
     const orphelins = ROLES.filter(r => !PAR_ID.has(r.event_id)).length;
     document.getElementById('provenance').innerHTML =
       `source : <span class="num">${F_CATALOGUE}</span> — ${CAT.length} lignes × ${Object.keys(CAT[0] || {}).length} colonnes ·
@@ -844,10 +953,13 @@ async function demarrer(){
        Cette page les <em>lit</em> ; elle n'en crée aucun, n'en complète aucun et ne décide d'aucun périmètre.
        Toute correction de donnée passe par un applicateur du dépôt
        (<span class="num">scripts/make_v3_3_catalogue.py</span>), jamais par cette page.
-       Les deux échelles de couleur — rampe d'effectif et signes Q7 — sont
-       <strong>mesurées</strong> par <span class="num">scripts/validate_palette.js</span> de la skill dataviz
-       contre les deux surfaces du site : 0 échec. L'effectif et le signe sont toujours écrits en clair
-       dans la case ; la couleur ne porte jamais seule.`;
+       Couleurs : <strong>charte maison</strong> (rouge vin, bordeaux, doré, noir, vert néon), aucune teinte
+       étrangère. L'effectif est une rampe dans l'or maison, le statut une rampe dans le vert maison —
+       toutes deux contrôlées en mode <span class="num">--ordinal</span> contre les deux surfaces du site
+       (<span class="num">scripts/validate_palette.js</span> : 0 échec). Le signe Q7 n'a
+       <strong>aucune teinte propre</strong> : la charte n'en offrait pas trois de plus, et en inventer était
+       exclu — il passe par la forme et par le glyphe écrit. L'effectif et le signe sont toujours écrits
+       en clair dans la case.`;
   } catch (err) {
     document.getElementById('zone-erreur').hidden = false;
     document.getElementById('msg-erreur').innerHTML =
@@ -875,7 +987,7 @@ document.getElementById('raz').onclick = () => {
   etat.recherche = '';
   rendreTout();
 };
-['m1-axe','m1-conf','m3-t2','m4-grp'].forEach(id => {
+['m1-axe','m1-conf','m3-t2','m4-grp','sr-classe'].forEach(id => {
   document.getElementById(id).onchange = () => rendreTout(false);
 });
 demarrer();

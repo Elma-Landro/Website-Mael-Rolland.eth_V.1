@@ -18,21 +18,30 @@
  * Elle lit les CSV verses du depot en direct. Rien n'est duplique ici,
  * donc rien ne peut perimer en silence.
  *
- * COULEURS : les quatre teintes de statut sont validees par
- * scripts/validate_palette.js de la skill dataviz, en liste adjacente,
- * contre LES DEUX surfaces du site (#4d0000 clair, #000000 sombre) :
- * zero FAIL, pire paire adjacente CVD dE 8.4, vision normale dE 19.3,
- * contraste >= 3:1 partout. L'ordre est celui de l'incertitude
- * croissante, et c'est lui qui porte la separation.
+ * COULEURS — CHARTE MAISON, decision Mael du 16/08/2026 : rouge vin,
+ * bordeaux, dore, noir, et le vert neon de --text-accent. Aucune teinte
+ * etrangere. La validation de contraste est un CONTROLE, jamais une
+ * source d'esthetique.
+ *
+ * Le statut n'est donc plus code par quatre teintes distinctes : dans la
+ * charte, quatre teintes separables n'existent pas (or et orange mesurent
+ * dE 7.9 en vision normale, sous le plancher de 15). Il est code par une
+ * RAMPE MONO-TEINTE dans le vert maison, dans l'ordre d'incertitude
+ * croissante — le plus certain est le plus present. Validee par
+ * scripts/validate_palette.js en mode --ordinal contre LES DEUX surfaces
+ * du site (#4d0000 et #000000) : 0 echec, ecarts de clarte tous >= 0.06,
+ * pas le plus sombre a 3.11:1 (bordeaux) et 4.09:1 (noir).
  * Le statut n'est JAMAIS porte par la couleur seule : chaque pastille
- * est suivie de son libelle.
+ * est suivie de son libelle, et les segments empiles sont separes par
+ * 2px de surface.
  * ------------------------------------------------------------------ */
 :root{
   --bg:#4d0000; --bg-2:#3a0000; --surface:#5c0505; --surface-2:#450303;
   --ink:#ffcc66; --ink-2:#ffaa33; --ink-muted:#c99a5e; --accent:#33ff33;
   --ligne:rgba(255,204,102,.28); --ligne-forte:rgba(255,204,102,.55);
-  /* palette de statut — validee, ne pas retoucher sans revalider */
-  --st-validee:#199e70; --st-chantier:#c98500; --st-douteuse:#d55181; --st-arbitrer:#3987e5;
+  /* statut — rampe mono-teinte dans le VERT MAISON (teinte de --text-accent),
+     ordre d'incertitude croissante. Ne pas retoucher sans revalider --ordinal. */
+  --st-validee:#2eff35; --st-chantier:#08ce1a; --st-douteuse:#03a612; --st-arbitrer:#00800a;
 }
 html[data-theme="dark"]{
   --bg:#000; --bg-2:#0a0a0a; --surface:#141414; --surface-2:#0e0e0e;
@@ -559,8 +568,10 @@ async function demarrer(){
        statut de ligne (D4), effets Q7 v1, grille de rôles v0. Cette page les <em>lit</em> ;
        elle n'en crée aucun. Toute correction de donnée passe par un applicateur du dépôt
        (<span class="num">scripts/make_v3_3_catalogue.py</span>), jamais par cette page.
-       Palette de statut validée contre les deux surfaces du site
-       (<span class="num">scripts/validate_palette.js</span> de la skill dataviz, liste adjacente : 0 échec).`;
+       Couleurs : <strong>charte maison</strong> (rouge vin, bordeaux, doré, noir, vert néon).
+       Le statut est une <strong>rampe mono-teinte</strong> dans le vert maison, par incertitude
+       croissante, contrôlée en mode <span class="num">--ordinal</span> contre les deux surfaces du site
+       (<span class="num">scripts/validate_palette.js</span> : 0 échec) — et toujours écrit en toutes lettres.`;
   } catch (err) {
     document.getElementById('zone-erreur').hidden = false;
     document.getElementById('msg-erreur').innerHTML =
