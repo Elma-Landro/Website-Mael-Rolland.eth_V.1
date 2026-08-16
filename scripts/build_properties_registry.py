@@ -211,6 +211,13 @@ for _cle in ('date', 'description', 'source', 'status'):
     EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-lab.html')
 for _cle in ('date', 'description', 'nature', 'note', 'status', 'type'):
     EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('catalogue-matrices.html')
+# make_roles_v0_lot4.py : applicateur du catalogue de ROLES, il ne lit aucun
+# graphe. Trois faux positifs verifies occurrence par occurrence :
+#   `note`, `role` .. NOMS DE COLONNE de catalogue-roles-v0.csv ;
+#   `count` ........ la methode `bytes.count()` des controles d'octets
+#                    (comptage de CRLF, de NUL), homonyme de l'attribut.
+for _cle in ('count', 'note', 'role'):
+    EXCLUSIONS_READ_BY.setdefault(_cle, set()).add('scripts/make_roles_v0_lot4.py')
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
 # l'auto-exclusion de ce generateur. Un inventaire dont l'objet est de
