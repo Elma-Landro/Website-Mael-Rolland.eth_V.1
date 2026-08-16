@@ -373,6 +373,7 @@
       "readBy": [
         "crisis-fr.html",
         "crisis.html",
+        "scripts/add_statut_ligne.py",
         "scripts/make_v104_ethereum_hard_forks.py",
         "scripts/make_v112_apply_chronology_dates_patch.py",
         "scripts/match_chronology_events.py",
@@ -550,6 +551,7 @@
       "status": "structural",
       "readBy": [
         "graphe.html",
+        "scripts/add_statut_ligne.py",
         "scripts/decode_chronologie.py",
         "scripts/make_v100_section_migration.py",
         "scripts/make_v101_drop_orphan_ops.py",
@@ -1872,6 +1874,7 @@
       "count": 14,
       "status": "structural",
       "readBy": [
+        "scripts/add_statut_ligne.py",
         "scripts/match_chronology_events.py"
       ],
       "vocabulary": null,
@@ -3207,6 +3210,7 @@
       "count": 2,
       "status": "structural",
       "readBy": [
+        "scripts/add_statut_ligne.py",
         "scripts/apply-sourcequote-phases.mjs",
         "scripts/audit_graph.py",
         "scripts/check_anchoring.py",
@@ -3502,6 +3506,7 @@
         "crisis-fr.html",
         "crisis.html",
         "graphe.html",
+        "scripts/add_statut_ligne.py",
         "scripts/apply-sourcequote-phases.mjs",
         "scripts/match_chronology_events.py"
       ],

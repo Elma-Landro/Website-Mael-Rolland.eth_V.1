@@ -1,0 +1,147 @@
+source;date_iso;intitule;couleur_rgba;couleur_hex;couleur_nom;domaine_8;provenance_correspondance
+Chrono_Bitcoin_institutionnalisation_V2_;2008-07-18;"Nakamoto réserve le nom de domaine ""bitcoin.org""";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2008-10-31;Publication du WP Bitcoin, via la Cryptography Mailing List, par Nakamoto;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2008-12-10;"Nakamoto créer une liste de diffusion dédiée sur ""Source Forge""";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2009-01-03;"""Genesis Block"", Lancement de Bitcoin par Nakamoto";255,255,255,255;;;;
+Chrono_Bitcoin_institutionnalisation_V2_;2009-01-09;Publicisation de Bitcoin et publication de la première version logicielle (V0.1);255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2009-01-12;"Première transaction Bitcoin (Hors ""Coinbase transaction""), réalisée entre S. Nakamoto et H. Finney";255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2009-10-05;"Première échange BTC / $ et première modélisation de leur valeur via les coûts de production"", par ""New Liberty Standard""";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2009-10-12;"Premier échange BTC / $, entre M. Malmy et ""NewLibertyStandard"", via Paypal";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2009-11-22;Création du forum Bitcointalk par Nakamoto;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-02-05;"Proposition du ticker BTC pour l'UCN bitcoin par ""NewLibertyStandard"", via ""BitcoinTalk""";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-03-10;Premier tournois de Poker en ligne utilisant le BTC;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-03-17;"Premier service d'échange & cotation BTC/Dollars, ""Bitcoinmarket.com"", par dwdollar";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-04-01;Premier minage d'une PoW via carte graphique (GPU), par L. Hanyecz;255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2010-05-21;Premier échange BTC contre une marchandise physique (deux pizzas / 10 000 btc), par L. Hanyecz;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-07-03;Premier service de Faucet Bitcoin, par G. Andresen;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2010-07-11;"Première couverte médiatique de Bitcoin, par ""Slashdot""";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-07-15;Première modification protocolaire par Nakamoto #deuxpoint# introduction d'une taille limite de bloc (activée le 12/09/2010);255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-07-18;Première bourse d'échange importante, MtGox, par J. McCaleb;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-07-28;"Première modification protocolaire (Soft Fork), correction d'un bogue de type ""Vol de bitcoin"")";255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-07-29;Premier service de séquestre, offert par Theymos;255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-09-01;"Premier service d'anonymisation par Mixage, ""BitLaundry""";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-10-25;"Premier portefeuille custodial en ligne, ""MyBitcoin"", par B. Wagner";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-11-01;Discussion d'un projet de DNS via protocole de registre distribué, BitDNS, Participation de Finney et Nakamoto;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2010-11-15;"Modification protocolaire, Correction d'un bogue de type ""Inflation""";255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-11-27;"Première ""Pool de minage"", ""Slush Pool"" par M. Palatinus";255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2010-12-10;"Publication d'un article sur Bitcoin dans ""PCWorld""";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-12-12;Dernier message public de S. Nakamoto;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2010-12-23;"Premier site d'information français, ""Bitcoin.fr""";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-02-01;"Première place d'échange illégale en BTC, ""SilkRoad"", par R. Ulbricht";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-02-10;Article sur le cours du BTC qui atteint la parité avec le Dollars, par Slashdot;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-03-25;Site d'éducation à Bitcoin, Weusecoins.com;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-04-18;"Lancement de ""Namecoin"", premier altcoin arrimé à Bitcoin via ""merge mining""";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2011-06-01;Premier minage par FGPA;255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2011-06-03;"Service de portefeuille et de paiement custudial ""BitPay""";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-06-13;Premier vol de BTC;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2011-06-13;La bourse d'échange MtGox perd 25 000 BTC (~400 000$ à l'époque) dans un vol;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2011-06-15;WikiLeaks accepte le BTC;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-07-17;[RU] Création de la plateforme BTC-E, par A. Vinnik et A. Bilyuchenko;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-08-16;"Première bourse d'échange BTC / Euro, ""Paymium""";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-08-19;Standardisation des modifications protocolaires (BIP), par A. Taaki,;255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2011-10-13;"Lancement du Litecoin (LTC), dont la PoW relève de l'algorithme ""Script"" conçu comme résistant au GPU et ASIC, par Charlie Lee";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2011-11-09;"Premier logiciel de portefeuille léger, ""Electrum"" par T. Voedtlin";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-01-01;"Proposition de métaprotocole sur Bitcoin, ""The Second Bitcoin Whitepaper"", par JR Willet";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2012-03-15;Premier Split de chain (BIP 30);255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-04-01;Modification protocolaire BIP16 (P2SH) pour portefeuille multi-signatures;255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-04-02;Service de processeurs de paiement (B2C, B2B), par OpenNode;255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-04-24;"Premier jeux de hazard, ""SatoshiDice"", par E. Voorhees";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-05-01;Première publication de Bitcoin Magazine créer par V. Buterin & M. Alisie;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-06-01;"Bourse d'échange P2P BTC / Fiat, ""LocalBitcoin"", par J. Kangas";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-06-20;Création de Coinbase, plateforme d'échange;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-08-19;"Lancement de ""Peercoin"", premier Altcoin à remplacer la PoW par la PoS, par S. King et S. Nadal";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2012-09-01;"Lancement de ""Ripple"", protocole à consensus fermé, par Ripple Lab";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2012-09-17;Premier ASIC (~66 GH/s), par Avalon (auj. Canaan);255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2012-09-27;"Création de la ""Fondation Bitcoin""";255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2012-10-01;"[UE] Premier rapport de la BCE sur les ""Virtual Currency Schemes""";255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2012-10-29;"Lancement d'une API de portefeuille, par ""Blockchain.com""";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-11-15;"La plateforme ""WordPress"" accepte les BTC";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2012-12-04;"Proposition du métaprotocole ""Colored Coin"", par M. Rosenfeld";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2013-01-01;Lancement de service financier sur Bitcoin, par BTCJam;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-01-24;Premier services de Conformité (AML/KWC), par Walledo;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2013-03-11;Split de Chain lié à un bogue lié à une optimisation de base de données;255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-07-07;"Lancement de ""PrimeCoin"", sa PoW sert à la découverte de nombres premiers, par S. King";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2013-07-13;"Premier métaprotocole ""MasterCoin / Omni"" & Première ""ICO"", émission d'UCN contre des BTC; par J.R. Willet";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2013-07-29;"Création d'un comité interprofessionnel de standardisation et de conformité, ""Digital Asset Transfer Authority"" (DATA).";255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2013-10-02;"Fermeture de ""SilkRoad"" par la justice Américaine";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-10-29;Premier distributeur automatique de Bitcoin, par Robocoin [Canada];255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-11-01;Lancement de portefeuille multi-signature, par Bitgo, BitPay, Circle, Coinbase, etc.;255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-11-01;ASIC Antminer S1 (~180 GH/s), par Bitmain;255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2013-11-16;Lancement d'une API d'index de prix de Bitcoin, par NASDAQ;255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-11-21;"Ouverture d'un Master d'économie dédié aux CM; BTC acceptés en paiement des frais d'inscription";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-12-01;Portefeuille avec service d'anonymisation (mixing), par Dark Wallet;255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2013-12-05;[Chine] Communiqué de la BC Chinoise rappelant que le BTC n'a pas de statut légal de monnaie. [France] Note d'information de la Banque de France sur les risque des CM;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2013-12-06;Lancement du DogeCoin, par B. Markus et J. Palmer;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2013-12-31;"Service de portefeuille ""custodial"" et traitement de paiement, par BitGo";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-01;La bourse CoinBase atteint 1 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-02;"Métaprotocole Counterparty et émission des UCN (XCP) via ""Proof of Burn"" ; par R. Dermody, A. Krellenstein, O. Slama";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-10;L'entreprise Overstock accepte les BTC.;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-15;"[France] Première audition au Sénat autour des ""monnaies virtuelles""";255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-18;Lancement de Darkcoin/Dash, hybride PoW/PoS avec option de paiement avancée, par E. Duffield;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-24;Article de présentation d'Ethereum dans Bitcoin Magazine, par V. Buterin;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-26;Annonce officielle d'Ethereum, durant la North American Bitcoin Conference, par V. Buterin entouré des fondateurs;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2014-01-29;[France] Fixation du cadre de la vente de BTC à titre habituel sous agrément.;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-02-11;Attaque DDOS du réseau Bitcoin et de nombreuse bourse d'échange;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2014-02-25;Fermeture de la bourse d'échange MtGox, suite au vol des fonds clients;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2014-03-19;Modification de l'Op_Return de 80 à 40 Bytes, limite l'usage de Bitcoin par les métaprotocoles;255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2014-03-25;[USA] L'autorité fiscale (IRS) statue sur le BTC;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-04-01;Première carte de crédit attachée à un compte BTC, par XAPO;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2014-04-03;Lancement de Storj, service de stockage distribué en P2P utilisant Counterparty, par S. Wilkinson;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2014-05-09;"Premier portefeuille Bitcoin physique, ""Trezor One par SatoshiLabs";255,248,216,136;#f8d888;orange;iii;calibre : 1/1 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2014-05-24;"ASIC ""Antminer S2"" (~1 TH/s), par Bitmain";255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-06-13;La pool de mineur Ghash.io rassemble 51% de la puissance du réseau;255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-06-16;BitGo lève 12 Millions de $;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2014-07-11;[France] Rapport de Tracfin & publication du régime fiscal du Bitcoin;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-07-22;ICO d'Ethereum, échange de BTC contre de futures UCN ETH;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2014-07-23;"[France] Rapport de la Commission des Finance sur les ""monnaies virtuelles""";255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-10-01;"ASIC ""Antminer S4"" (~2 TH/s), par Bitmain";255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2014-10-06;Premier stablecoin Tether, via Omni/Mastercoin, par B. Pierce, R. Collins et C. Sellars;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2015-01-01;CoinBase atteint 2 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2015-01-05;La bourse d'échange Bitstamp se fait voler 18 864 BTC;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2015-01-21;Coinbase lève 75 Millions de $, (valorisation à 490 Millions);255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2015-02-01;"[UE] Second rapport de la BCE sur les ""Virtual Currency Scheme""";255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2015-02-19;L'entreprise de portefeuille physique Ledger lève 1,3 Millions d'euro;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2015-05-19;Le New York Stock Exchange intègre un indice de prix du BTC (NYXBT).;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2015-05-21;Bitcoin entre dans les dictionnaires Petit Robert et Larousse;255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2015-06-01;"Première bourse d'échange sans conservation, ""Shapeshift"" par E. Voorhees";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2015-06-08;"Première sidechain Bitcoin, , ""Sidechain Elements"", par Blockstream";255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2015-07-15;Modification en sens inverse de la taille de l'Op_Return de 40 à 80 Bytes;255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2015-07-30;Lancement d'Ethereum;255,255,255,255;;;;
+Chrono_Bitcoin_institutionnalisation_V2_;2015-09-16;"ASIC ""Antminer S5+"" (~7,7 TH/s), par Bitmain";255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2015-09-17;[USA] La CFTC déclare assimilée Bitcoin à une marchandise dont elle assure la régulation;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2015-09-17;"Modification protocolaire d'Ethereum, Hard Fork ""Frontier"" introduisant la Bombe de difficulté";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2015-10-01;Première ICO sur Ethereum, le projet de marché prédictif Augur lève 18 600 BTC et 1 180 000 ETH (eq. 5 140 000 $);255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2015-11-20;Coinbase lance aux USA sa carte de paiement;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2016-01-01;CoinBase atteint 5 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2016-01-14;"Publication du WP du protocole de couche 2 (L2), Bitcoin Lightning Network""";255,150,180,247;#96b4f7;bleu fonce;iv;calibre : 3/4 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2016-04-04;"Lancement d'OpenBaazar, ""Ebay distribué"" usant du BTC";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2016-04-19;"Lancement de la bourse d'échange P2P en BTC ""Bisq""";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2016-04-25;La bourse d'échange Bitstamp obtient l'agrément d’établissement de paiement (Luxembourg).;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2016-05-01;"ICO de ""The DAO"", fond d'investissement distribué sur Ethereum (près de 16% des ETH en circulation sont levé)";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2016-06-17;"Un attaquant exploite une vulnérabilité dans ""The DAO"", vol potentiel de 31% des fonds qu'elle contient (3 641 694 ETH eq. 49 millions de $)";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2016-07-02;"ASIC ""Antminer S9"" (~14 TH/s), par Bitmain";255,248,252,146;#f8fc92;jaune;ii;contenu : minage GPU, Slush, FPGA, ASIC
+Chrono_Bitcoin_institutionnalisation_V2_;2016-07-20;"Modification protocolaire d'Ethereum afin de solutionner l'attaque de ""The DAO"" ; Conflit communautaire et scission par un premier Hard fork contentieux, naissance de la CM ETC";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2016-08-03;La bourse d'échange Bitfinex perd 119 756 BTC (~72 Millions à l'époque) dans une attaque;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2016-11-14;Lancement de produits dérivés Bitcoin, par le Chicago Mercantile Exchange;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2017-01-01;CoinBase atteint 13 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2017-03-23;Migration de Storj vers Ethereum, citant un manque de développement et des frais de transaction trop élevés;255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2017-04-01;[Japon] Le BTC et les monnaies dites « virtuelles » obtiennent le statut de moyens de paiement légaux.;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2017-05-23;"Accord de 56 entreprises sur une modification futures de la ""taille des Blocs"" (SEGWIT2X)";255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2017-07-14;"Lancement de la plateforme d'échange en CM Binance, par ""CZ"" Changpeng Zhao";255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2017-08-01;Coinbase lève 100 Millions de $, (valorisation à 1.6 Milliards);255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2017-08-01;Premier Hard Fork contentieux sur Bitcoin, naissance de la CM Bitcoin Cash;255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2017-08-24;"Modification protocolaires ""Segwit"" (BIP 141, 143, 147), modification du schéma des signature";255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2017-10-16;"Modification protocolaire d'Ethereum, mise à jour ""Byzantium"", retardement de la bombe de difficulté et réduction de l'émission d'UCN (EIP 649)";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2017-12-18;Lancement de produits dérivés futurs Bitcoin, par le Chicago Board Options Exchange;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2018-01-01;CoinBase atteint 22 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2018-01-10;"Tether migre vers Ethereum, soulignant la lenteur d'Omni/Mastercoin ; lancement d'un stablecoin Euro (EURT)";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2018-01-15;[France] Ouverture d'une mission par le Ministère des Finance sur les CM, dirigée par JP. Landau;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2018-02-06;[USA] Débat au Sénat Américain sur les CM;255,157,239,250;#9deffa;bleu clair;v;contenu : BCE, Senat, Tracfin, CFTC
+Chrono_Bitcoin_institutionnalisation_V2_;2018-03-15;"Première implémentation logiciel du protocole L2 ""Lightning Network"", par Lighning Labs";255,247,179,179;#f7b3b3;rouge;vi;calibre : 2/2 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2018-03-15;Lightning Labs lève 2,5 Millions de $;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2018-04-03;Bitmain annonce la sortie d'un ASIC dedié au minage d'Ethereum (Antminer E3);255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2018-10-26;Lancement du Wrapped Bitcoin (WBTC) sur Ethereum, par Bitgo et d'autres entreprises;255,188,241,158;#bcf19e;vert;i;calibre : 7/8 sur le catalogue
+Chrono_Bitcoin_institutionnalisation_V2_;2019-01-01;La bourse d'échange CoinBase atteint 30 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2019-02-28;"Modification protocolaire d'Ethereum, Hard Fork ""Constantinople / St Petersbourg"", retardement de la bombe de difficulté et baisse de l'émission d'UCN (EIP 1234)";255,240,91,155;#f05b9b;rose;vii;contenu V2.8 : altcoins, Ethereum, Tether, DAO
+Chrono_Bitcoin_institutionnalisation_V2_;2019-05-07;La bourse d'échange Binance perd 7000 BTC, (~40 Millions $);255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
+Chrono_Bitcoin_institutionnalisation_V2_;2020-01-01;La bourse d'échange CoinBase atteint 35 Millions d'utilisateurs;255,237,166,247;#eda6f7;violet;viii;contenu : levees de fonds, vols, faucet
