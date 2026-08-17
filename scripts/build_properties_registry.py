@@ -221,6 +221,10 @@ for _cle in ('date', 'description', 'nature', 'note', 'status', 'type'):
 for _applicateur in ('scripts/make_roles_v0_lot4.py', 'scripts/make_roles_v0_lot5.py'):
     for _cle in ('count', 'note', 'role'):
         EXCLUSIONS_READ_BY.setdefault(_cle, set()).add(_applicateur)
+# make_v3_4_catalogue.py : applicateur du catalogue MAITRE, il ne lit aucun
+# graphe non plus. Un seul faux positif — `count`, la methode `bytes.count()`
+# des controles de CRLF et de NUL. Verifie : deux occurrences, aucune autre.
+EXCLUSIONS_READ_BY.setdefault('count', set()).add('scripts/make_v3_4_catalogue.py')
 
 # Scripts d'ENUMERATION, exclus en bloc du balayage `readBy` — meme motif que
 # l'auto-exclusion de ce generateur. Un inventaire dont l'objet est de
